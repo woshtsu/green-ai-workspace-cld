@@ -1,0 +1,82 @@
+# HANDOFF — migración a green-ai-monorepo
+
+Actualizado por Claude Code el 2026-11-06. Encargo original: `../output/traspaso-claude/PROMPT_CLAUDE.md`.
+Hechos históricos previos: `../output/semana10/HANDOFF.md` (el estado y las pruebas actuales prevalecen).
+
+## Estado en una línea
+Monorepo creado, fuentes copiadas sin Git anidados; las 6 suites de pruebas reproducen la línea base; Antigravity
+CLI validado con una revisión de solo lectura y un cambio pequeño integrado. **Nada publicado, nada desplegado,
+workspace antiguo intacto.**
+
+## Requisitos del encargo (resumen)
+Monorepo con un solo Git; copiar (no mover) preservando cambios locales; recomendaciones dentro de Prediction;
+ramas `main`/`test`; perfil SQLite de desarrollo con puertos/adaptadores sin simular Supabase; evaluar Go;
+comparar hosting a costo cero; CI/CD revisable sin despliegue automático; DOCX desde Markdown; Claude coordina a
+Antigravity sin IDE; honestidad experimental.
+
+## Fuentes copiadas (SHA en `docs/migracion/manifiesto-copia.json`)
+| Servicio | Origen | Rama / SHA | Archivos |
+|---|---|---|---|
+| monitoring | green-ai-monitoring | main d476c32 | 60 |
+| simulator | green-ai-simulator | main 47536d7 | 32 |
+| gateway | green-ai-gateway | main 9d043fa | 16 |
+| data-processing | green-ai-data-processing/Green-IA/data-processing-service (+ datasets/) | main 9d24e3e | 60 + 4 |
+| prediction | green-ai-prediction/green-ai-project-docs | Criss 8585d6b | 127 |
+| frontend | green-ai-front-end/Frontend-GreenAi | main 2b34192 | 26 |
+| infraestructura | raíz del workspace (compose, prometheus-demo, observability/) | b644980 | 10 |
+Los 9 repos hijos estaban limpios (sin cambios locales) al copiar; coincide con `output/traspaso-claude/estado-final-repos.json`.
+GreenAi_TPI no se migra (D-03). `project-docs` tiene sin versionar `Semana12/` y un PDF: se copiaron las guías y el entregable de Semana 12.
+
+## Commits en `main` (monorepo)
+Traslado verbatim → rutas de dataset → Compose aislado → adaptador agy → documentación base → cambio de Antigravity (merge).
+Ver `git log --oneline`. Rama `test` creada desde `main`.
+
+## Pruebas ejecutadas en el monorepo (2026-11-06)
+| Servicio | Comando | Resultado | Comparación |
+|---|---|---|---|
+| monitoring | `mvnw.cmd -q -B verify` | 112 tests, 0 fallos | — |
+| gateway | `mvnw.cmd -q -B verify` | 11 tests, 0 fallos | = handoff semana10 |
+| simulator | `uv run --frozen python -m unittest discover -s tests` | 10 tests, 1 fallo | El fallo (`test_realtime_exporter_and_graceful_termination`) ocurre igual en el repo original en Windows; el README lo ejecuta en Docker Linux. **Pendiente comprobar en Docker.** |
+| data-processing | `pytest -q` | 88 passed | Antes del ajuste de rutas: 2 fallos por no encontrar `BD_GreenAi.xlsx` |
+| prediction | `run_pipeline.py --skip-mlflow` + `pytest` | 96 passed | Sin el pipeline: 6 fallos con 503 MODEL_UNAVAILABLE (esperado: el modelo se genera en build) |
+| frontend | `node --test tests/*.test.cjs` (lista explícita) | 13/13 | `node --test tests/` falla en Node actual: hay que pasar los archivos |
+| infraestructura | `docker compose ... config --quiet` | OK (también overlay Grafana) | No se arrancaron contenedores |
+Avisos de deprecación en pytest/Maven no se ocultaron ni se cambiaron umbrales.
+El pipeline de Prediction reescribe `software/prediction/results/manifest.json` (versionado); se restauró con `git checkout`.
+
+## Antigravity
+Detalle y registro de la prueba inicial: [TOOLS_EVALUATION.md](TOOLS_EVALUATION.md). Resumen:
+- `agy` 1.5.2 autenticado; headless `-p --output-format json`; continuidad con `--conversation <id>`.
+- Lecciones: (1) `SUCCESS` + exit 0 puede venir vacío o con "Wait for subagent response."; (2) las acciones denegadas solo aparecen en `denied_actions`; (3) las reglas `command` se comparan con la línea completa → lanzar con `cwd` del servicio y regex anclada; (4) concesión global heredada `command(powershell)` → denegada siempre por el adaptador.
+- Plan Google AI Pro: no verificado en la cuenta (lo confirma el usuario). Créditos de pago desactivados por sesión.
+
+## Honestidad experimental
+Sin respaldo verificado (no convertir en resultados): XGBoost como modelo final, RMSE 7,1 %, mejora 57,7 %, 45 ms,
+RAM < 35 MB, ahorro 18,4 %, 50 propuestas rechazadas, afirmaciones de Kubernetes/RabbitMQ. El informe copiado en
+`entregables/semana12/` contiene 66 menciones de estos términos; revisarlo antes de reutilizarlo. Capturas prueban
+solo el caso mostrado; Swagger no prueba precisión; CPU simulada no es energía física.
+
+## Riesgos detectados
+- `GreenAi_TPI/Backend/.env` versionado en GitHub (clave Supabase *publishable* + URL). Decide el propietario.
+- `.gitignore` del workspace antiguo está envuelto literalmente en un here-string de PowerShell (`@' ... '@ | Set-Content`): sus reglas pueden no aplicarse como se espera. No se modificó.
+
+## Pendientes (en orden propuesto)
+1. Simulator: ejecutar la suite en Docker para confirmar que el fallo es solo de Windows.
+2. Arrancar `green-ai-mono` con Docker y repetir el smoke del handoff de semana 10 (frontend → gateway → servicios, recomendación con telemetría simulada, 401 sin JWT, 422 inválido).
+3. Graphify del monorepo: generado con `graphify update .` (ver abajo); revisar `.graphifyignore`.
+4. Hosting (D-07): investigación con fuentes oficiales fechadas y recomendación; workflows `.github/workflows` con activación manual (`workflow_dispatch`) y GitHub Environments. Adaptar `software/frontend/.github/workflows/deploy.yml` (no se ejecuta desde una subcarpeta).
+5. SQLite (D-05): inventario de persistencia real por servicio, puertos y pruebas de contrato.
+6. Evaluación Go (D-06) para Gateway/Monitoring con medición.
+7. DOCX: instalar Pandoc de forma reproducible (o `pypandoc-binary` en `.tools/`) y exportar `entregables/semana12/`; revisar tablas e imágenes visualmente.
+8. Perfiles de Agency Agents (máx. 3) tras verificar nombres en el repositorio oficial.
+9. Comprobación final: sin gitlinks/secretos/Git anidados, arranque desde clon limpio, lista de aceptación.
+10. Refactor sugerido por la revisión 01: `application/runner.py` importa adaptadores y maneja señales (hexagonal).
+
+## Comandos útiles
+```powershell
+git -C C:\Practicas\202620\TallerProyectos\green-ai-workspace\green-ai-monorepo status
+git ls-files -s | Select-String '^160000'        # debe estar vacío
+git worktree list                                  # worktrees de agentes
+```
+
+No borrar el workspace antiguo ni cambiar producción: requiere autorización expresa tras la lista de aceptación.
