@@ -48,7 +48,7 @@ def build_argv(agy: str, prompt: str, args: argparse.Namespace) -> list[str]:
     if args.readonly:
         settings["permissions"] = {"deny": READONLY_DENY + ALWAYS_DENY}
     else:
-        allow = [f"write_file({p})" for p in args.allow_write] + [f"command(regex:{r})" for r in args.allow_command]
+        allow = [f"write_file({p})" for p in args.allow_write] + [f"command({r})" for r in args.allow_command]
         settings["permissions"] = {"allow": allow, "deny": ALWAYS_DENY}
     argv = [agy, "-p", prompt, "--output-format", "json", "--settings", json.dumps(settings)]
     if args.mode:
@@ -69,7 +69,7 @@ def main() -> int:
     p.add_argument("--readonly", action="store_true", help="Deniega escritura, comandos, URLs y MCP")
     p.add_argument("--mode", choices=["plan", "accept-edits"], default=None)
     p.add_argument("--allow-write", action="append", default=[], help="Ruta permitida para write_file (repetible)")
-    p.add_argument("--allow-command", action="append", default=[], help="Regex de comando permitido (repetible)")
+    p.add_argument("--allow-command", action="append", default=[], help="Destino de command(...): 'uv' o 'regex:...' (repetible)")
     p.add_argument("--model", default=None)
     p.add_argument("--conversation", default=None, help="Reanudar una conversación concreta")
     p.add_argument("--timeout", type=int, default=600, help="Segundos (también se pasa a --print-timeout)")
@@ -120,6 +120,8 @@ def main() -> int:
     # Observado en la prueba inicial: status SUCCESS y exit 0 con la respuesta
     # "Wait for subagent response." al agotarse --print-timeout. No basta el código de salida.
     warnings = []
+    if envelope.get("denied_actions"):
+        warnings.append("acciones denegadas por permisos")
     if len(response.strip()) < 200:
         warnings.append("respuesta vacía o demasiado corta")
     if "subagent" in response.lower():
@@ -139,6 +141,7 @@ def main() -> int:
         "usage": envelope.get("usage"),
         "error": envelope.get("error"),
         "permission_notices": denied,
+        "denied_actions": envelope.get("denied_actions") or [],
         "quota_notices": quota,
         "git_changed": None if before is None or after is None else before != after,
         "git_status_after": after,
