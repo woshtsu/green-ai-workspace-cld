@@ -27,6 +27,11 @@ from pathlib import Path
 MAX_PROMPT_CHARS = 20_000  # margen frente al límite de línea de comandos de Windows (32 767)
 
 READONLY_DENY = ["write_file(*)", "command(*)", "read_url(*)", "execute_url(*)", "mcp(*)"]
+# Siempre denegado: los permisos globales del usuario (~/.gemini/config/config.json) pueden incluir
+# concesiones amplias heredadas del IDE, p. ej. command(powershell). Deny tiene prioridad sobre Allow.
+ALWAYS_DENY = ["command(powershell)", "command(pwsh)", "command(cmd)", "command(bash)",
+               "command(regex:^git\\s+(push|remote|config|reset|clean|checkout|switch|rebase))",
+               "read_url(*)", "execute_url(*)", "mcp(*)"]
 
 
 def git_snapshot(cwd: Path) -> str | None:
@@ -41,7 +46,10 @@ def git_snapshot(cwd: Path) -> str | None:
 def build_argv(agy: str, prompt: str, args: argparse.Namespace) -> list[str]:
     settings: dict = {"useG1Credits": False}
     if args.readonly:
-        settings["permissions"] = {"deny": READONLY_DENY}
+        settings["permissions"] = {"deny": READONLY_DENY + ALWAYS_DENY}
+    else:
+        allow = [f"write_file({p})" for p in args.allow_write] + [f"command(regex:{r})" for r in args.allow_command]
+        settings["permissions"] = {"allow": allow, "deny": ALWAYS_DENY}
     argv = [agy, "-p", prompt, "--output-format", "json", "--settings", json.dumps(settings)]
     if args.mode:
         argv += ["--mode", args.mode]
@@ -60,6 +68,8 @@ def main() -> int:
     p.add_argument("--prompt-file", required=True, type=Path)
     p.add_argument("--readonly", action="store_true", help="Deniega escritura, comandos, URLs y MCP")
     p.add_argument("--mode", choices=["plan", "accept-edits"], default=None)
+    p.add_argument("--allow-write", action="append", default=[], help="Ruta permitida para write_file (repetible)")
+    p.add_argument("--allow-command", action="append", default=[], help="Regex de comando permitido (repetible)")
     p.add_argument("--model", default=None)
     p.add_argument("--conversation", default=None, help="Reanudar una conversación concreta")
     p.add_argument("--timeout", type=int, default=600, help="Segundos (también se pasa a --print-timeout)")
@@ -105,9 +115,21 @@ def main() -> int:
 
     denied = [ln for ln in stderr.splitlines() if "deni" in ln.lower() or "permission" in ln.lower()]
     quota = [ln for ln in stderr.splitlines() if "quota" in ln.lower() or "rate limit" in ln.lower()]
+    elapsed = round((dt.datetime.now() - started).total_seconds(), 1)
+    response = envelope.get("response") or ""
+    # Observado en la prueba inicial: status SUCCESS y exit 0 con la respuesta
+    # "Wait for subagent response." al agotarse --print-timeout. No basta el código de salida.
+    warnings = []
+    if len(response.strip()) < 200:
+        warnings.append("respuesta vacía o demasiado corta")
+    if "subagent" in response.lower():
+        warnings.append("el turno terminó esperando a un subagente")
+    if args.timeout and elapsed >= args.timeout * 0.95:
+        warnings.append("probable agotamiento de --print-timeout")
     summary = {
         "started": started.isoformat(timespec="seconds"),
-        "elapsed_s": round((dt.datetime.now() - started).total_seconds(), 1),
+        "elapsed_s": elapsed,
+        "warnings": warnings,
         "cwd": str(cwd),
         "readonly": args.readonly,
         "mode": args.mode,
@@ -122,10 +144,10 @@ def main() -> int:
         "git_status_after": after,
     }
     (out / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
-    (out / "response.md").write_text(envelope.get("response") or "", encoding="utf-8")
+    (out / "response.md").write_text(response, encoding="utf-8")
     print(json.dumps(summary, indent=2, ensure_ascii=False))
     print(f"\nResultados en: {out}")
-    ok = code == 0 and envelope.get("status") == "SUCCESS"
+    ok = code == 0 and envelope.get("status") == "SUCCESS" and not warnings
     return 0 if ok else 1
 
 
