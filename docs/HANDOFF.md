@@ -84,6 +84,22 @@ Comandos: ver `software/infraestructura/compose.sqlite-dev.yml` y `compose.contr
 La BD de contrato se levantó y destruyó (`down -v`) en cada ejecución; sus contraseñas y el secreto JWT fueron
 aleatorios en memoria y no se guardaron.
 
+## Documentación académica corregida (2026-11-06, segunda parte)
+- El usuario aportó las guías del docente (`guias/exportados_docente/`, leídas íntegras), los trabajos previos
+  (`guias/TrabajosDesarrollados/`) y 9 artículos (`guias/articulos/`).
+- Se creó `docs/academico/` (**sin imágenes; no se entrega**), con el índice C1–C6, la revisión docente con
+  puntajes (8,5/20 según la captura) y el plan de la semana 13, más un documento por competencia.
+- Es la referencia para las próximas entregas. Lo único que se exportará será el documento de la semana 13.
+- **Hallazgos clave:**
+  1. Las cifras de la PoC (XGBoost MAE 5,4 %, RMSE 7,1 %, 45 ms, menos de 35 MB) no tienen experimento. El
+     pipeline real elige Random Forest (MAE 3,22, RMSE 4,59 pp en validación).
+  2. Khan et al. está mal citado (el 87,48 % es la mejora de un clustering).
+  3. El presupuesto omitía recursos en la línea base y fijaba la contingencia sin vínculo con los riesgos.
+  4. Las listas de Trello no coinciden con la lista de cotejo S10.
+  5. Nombre inconsistente del integrante Quintana.
+  6. `S6.Arquitectura Híbrida.md` está vacío.
+- EDT en `herramientas_IA/diagramas/edt-green-ai.puml` (sin renderizar).
+
 ## Documentación académica (2026-11-06)
 - Índice por semana: `entregables/README.md`; guías: `guias/README.md`; cambios técnicos que deben reflejarse en
   las semanas 13–16: `entregables/notas/reestructuracion-monorepo.md`.

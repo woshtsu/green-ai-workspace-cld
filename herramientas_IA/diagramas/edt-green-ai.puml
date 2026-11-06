@@ -1,0 +1,19 @@
+@startwbs
+' EDT de Green AI con ramas de Gestión e Ingeniería (observación del docente, Unidad III).
+' Renderizar solo cuando el usuario lo pida: plantuml herramientas_IA/diagramas/edt-green-ai.puml
+* Green AI
+** 1 Gestión del proyecto
+*** 1.1 Inicio: charter, stakeholders
+*** 1.2 Planificación: backlog, EDT, cronograma, presupuesto, riesgos, comunicaciones
+*** 1.3 Monitoreo y control: sprints, Trello, reporte de estado, Gantt ejecutado, registro de cambios
+*** 1.4 Calidad: DoD, matriz de pruebas por HU
+*** 1.5 Cierre: acta, lecciones aprendidas, informe final, sustentación
+** 2 Ingeniería
+*** 2.1 Requisitos: RF/RNF, HU con criterios Given/When/Then
+*** 2.2 Arquitectura: componentes, despliegue, contratos OpenAPI
+*** 2.3 PMV1 Observabilidad: Simulator, Prometheus, Monitoring, Gateway, Frontend, Auth
+*** 2.4 PMV2 Inteligencia: Data Processing, PoC, Prediction, política de recomendación, energía
+*** 2.5 PMV3 Validación: experimento baseline vs Green AI, reportes, carbono
+*** 2.6 Infraestructura y despliegue: Docker Compose, nube de staging, CI
+*** 2.7 Pruebas: unitarias, contrato, integración, smoke, carga
+@endwbs

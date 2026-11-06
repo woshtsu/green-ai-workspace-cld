@@ -1,4 +1,11 @@
-# Entregables por semana (Markdown = fuente de verdad; imágenes en `evidencias/` de cada carpeta)
+# Entregables originales importados (con imágenes)
+
+> **Actualización 2026-11-06.** Con las guías del docente ya disponibles (`guias/exportados_docente/`), se
+> comprobó que las guías 0–6 están numeradas **por competencia, no por semana**. Las carpetas `semana01-02`,
+> `semana06` y `semana-por-confirmar` contienen las versiones entregadas de los capítulos de Lineamientos (guía
+> 0), Conocimientos de Ingeniería (portada «Guía 6») y Gestión del Proyecto (guía 4). La documentación
+> **corregida y sin imágenes**, que es la que guía las próximas entregas, está en `docs/academico/`. Estos
+> archivos se conservan como registro de lo entregado.
 
 Plan del proyecto (`semana-por-confirmar/gestion-del-proyecto.md`, §4.6): 16 semanas, 8 sprints de 2 semanas,
 PMV1 = semanas 1–6, PMV2 = semanas 7–12, PMV3 = semanas 13–16. La semana 8 no tiene entregable.
