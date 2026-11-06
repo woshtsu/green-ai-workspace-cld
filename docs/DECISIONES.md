@@ -118,6 +118,23 @@ Activarlo como predeterminado requiere decisión del usuario/equipo, actualizar 
 **Monitoring y Simulator.** No se reescribieron. Monitoring (112 pruebas, constructor PromQL) es el siguiente
 candidato solo si D-07 lo justifica. Prediction sigue en Python.
 
-## D-07 Hosting a costo cero — Pendiente
-- No se ha investigado todavía en esta sesión. Requiere comparar Render gratuito con alternativas vigentes (documentación oficial fechada) sobre suspensión, arranque en frío, RAM/CPU, cuotas, Docker, red interna, almacenamiento, tarjeta requerida y riesgo de cobro, incluida la viabilidad de Prometheus continuo e inferencia ML.
+## D-07 Hosting a costo cero — Investigado (2026-11-06), decisión pendiente del usuario
+Revisión de las páginas oficiales del 2026-11-06 (koyeb.com/pricing, docs.fly.io/about/pricing, railway.com/pricing,
+northflank.com/pricing, huggingface.co/docs/hub/spaces-overview, render.com/docs/free, azure.microsoft.com/pricing):
+- **Northflank Sandbox:** sin tarjeta, sin suspensión, 2 servicios + 1 BD, hasta $20/mes de recursos, Docker y
+  volúmenes. Mostraba un aviso de incidente de seguridad (rotar credenciales).
+- **Koyeb:** 1 servicio gratuito (512 MB, 0,1 vCPU), con tarjeta obligatoria y suspensión tras 1 h; Frankfurt o
+  Washington.
+- **Railway:** $1/mes de crédito; insuficiente.
+- **Fly.io:** sin plan gratuito para organizaciones nuevas.
+- **Hugging Face:** los Spaces con Docker requieren PRO.
+- **Azure:** F1 con 60 min de CPU al día; Azure for Students con $100 temporales.
+- **Render:** 750 h al mes; suspende tras 15 min y tarda ~1 min en despertar; sin red privada.
+- **Oracle Always Free y Cloud Run:** no verificados (403 o páginas vacías).
+**Ningún plan gratuito aloja el stack completo.** Propuesta:
+1. Northflank: Gateway Go + Prediction.
+2. Data Processing en Koyeb o Render.
+3. Prometheus, Monitoring y Simulator en local para la demo, documentado así.
+Oracle (una VM con todo el Compose) queda como opción si el usuario acepta registrar una tarjeta.
+- Investigación previa: Requiere comparar Render gratuito con alternativas vigentes (documentación oficial fechada) sobre suspensión, arranque en frío, RAM/CPU, cuotas, Docker, red interna, almacenamiento, tarjeta requerida y riesgo de cobro, incluida la viabilidad de Prometheus continuo e inferencia ML.
 - El frontend es estático (HTML/JS + nginx), compatible en principio con GitHub Pages; falta base path, URL HTTPS del Gateway, CORS y redirects de Supabase Auth.
