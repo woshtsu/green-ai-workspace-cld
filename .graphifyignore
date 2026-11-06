@@ -19,4 +19,4 @@ software/prediction/data/
 software/prediction/results/
 software/prediction/models/
 software/simulator/runs/
-entregables/semana12/evidencias/
+entregables/**/evidencias/

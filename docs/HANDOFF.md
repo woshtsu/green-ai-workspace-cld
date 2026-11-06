@@ -84,6 +84,19 @@ Comandos: ver `software/infraestructura/compose.sqlite-dev.yml` y `compose.contr
 La BD de contrato se levantó y destruyó (`down -v`) en cada ejecución; sus contraseñas y el secreto JWT fueron
 aleatorios en memoria y no se guardaron.
 
+## Documentación académica (2026-11-06)
+- Índice por semana: `entregables/README.md`; guías: `guias/README.md`; cambios técnicos que deben reflejarse en
+  las semanas 13–16: `entregables/notas/reestructuracion-monorepo.md`.
+- Semanas 9–12: el **informe entregado** (PDF del usuario en `exportados/semana12/`, no versionado) se convirtió a
+  `entregables/semana09-12/informe-unidad-III.md` con 54 imágenes y 41 tablas, mediante
+  `herramientas_IA/exportacion/pdf_a_markdown.py`. Se revisaron a mano la portada y varias páginas (22, 47); el
+  código del anexo perdió la sangría.
+- Semanas 1–2, 4 (por confirmar) y 6 importadas desde `project-docs` con las imágenes separadas.
+- **Faltan las guías del docente de las semanas 1–7 (y 10–11, si existen)**: el usuario ofreció enviarlas.
+- No exportar DOCX/PDF salvo pedido expreso del usuario (instrucción del 2026-11-06).
+- El informe entregado contiene cifras sin respaldo (XGBoost RMSE 7,1 %, 57,7 %, 45 ms, menos de 35 MB, 18,4 %):
+  no reutilizarlas en las próximas entregas.
+
 ## Riesgos detectados
 - **Supabase con RLS permisiva (según el snapshot `software/simulator/docs/assets/esquema-verificado.json`, 2026-09-22):**
   políticas `"Permitir todo"` (`ALL`, `true`, rol `public`) en `hardware`, `logs` y `usuario`. Además `usuario`
