@@ -1,0 +1,8 @@
+* text=auto
+*.xlsx binary
+*.png binary
+*.jpg binary
+*.docx binary
+*.ps1 text eol=crlf
+*.sh text eol=lf
+mvnw text eol=lf

@@ -1,0 +1,9 @@
+apiVersion: 1
+providers:
+  - name: Green AI PMV2
+    folder: Green AI
+    type: file
+    disableDeletion: true
+    editable: false
+    options:
+      path: /var/lib/grafana/dashboards

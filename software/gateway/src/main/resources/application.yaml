@@ -1,0 +1,79 @@
+spring:
+  application:
+    name: green-ai-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: monitoring-metrics
+              uri: ${GATEWAY_MONITORING_BASE_URL:http://127.0.0.1:8080}
+              predicates:
+                - Path=/api/monitoring/v1/metrics/catalog,/api/monitoring/v1/metrics/current,/api/monitoring/v1/metrics/history
+                - Method=GET
+              filters:
+                - StripPrefix=3
+                - PrefixPath=/api/v1
+            - id: data-processing
+              uri: ${GATEWAY_DATA_PROCESSING_BASE_URL:http://data-processing:8000}
+              predicates:
+                - Path=/api/processing/v1/metrics/history,/api/processing/v1/historical-logs,/api/processing/v1/prediction/dataset
+                - Method=GET
+              filters:
+                - StripPrefix=3
+                - PrefixPath=/api/v1
+              metadata:
+                response-timeout: 15000
+            - id: prediction-inference
+              uri: ${GATEWAY_PREDICTION_BASE_URL:http://prediction:8000}
+              predicates:
+                - Path=/api/prediction/v1/predictions
+                - Method=POST
+              filters:
+                - StripPrefix=2
+                - name: RequestSize
+                  args:
+                    maxSize: 2MB
+              metadata:
+                response-timeout: 30000
+            - id: recommendations
+              uri: ${GATEWAY_PREDICTION_BASE_URL:http://prediction:8000}
+              predicates:
+                - Path=/api/recommendations/v1/recommendations,/api/recommendations/v1/energy
+                - Method=POST
+              filters:
+                - StripPrefix=2
+                - name: RequestSize
+                  args:
+                    maxSize: 2MB
+              metadata:
+                response-timeout: 30000
+          httpclient:
+            connect-timeout: 1000
+            response-timeout: 6s
+
+server:
+  port: ${GATEWAY_PORT:8081}
+  max-http-request-header-size: 16KB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+
+gateway:
+  auth:
+    issuer: ${GATEWAY_AUTH_ISSUER_URI}
+    jwks: ${GATEWAY_AUTH_JWK_SET_URI}
+    audience: authenticated
+
+info:
+  app:
+    name: green-ai-gateway
+    version: 0.1.0

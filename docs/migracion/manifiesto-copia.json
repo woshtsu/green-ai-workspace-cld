@@ -1,0 +1,115 @@
+{
+  "units": {
+    "monitoring": {
+      "source": "green-ai-monitoring",
+      "target": "software/monitoring",
+      "branch": "main",
+      "sha": "d476c32d1dea2f79b6a4032bd8703d37a234fa21",
+      "dirty_files": [],
+      "copied": 60,
+      "excluded": []
+    },
+    "simulator": {
+      "source": "green-ai-simulator",
+      "target": "software/simulator",
+      "branch": "main",
+      "sha": "47536d78bdaa4639f459f0334c0a99fe2457669b",
+      "dirty_files": [],
+      "copied": 32,
+      "excluded": []
+    },
+    "gateway": {
+      "source": "green-ai-gateway",
+      "target": "software/gateway",
+      "branch": "main",
+      "sha": "9d043fa2d3924e8fe0ae03610a81f0da2981d06f",
+      "dirty_files": [],
+      "copied": 16,
+      "excluded": []
+    },
+    "data-processing": {
+      "source": "green-ai-data-processing/Green-IA/data-processing-service",
+      "target": "software/data-processing",
+      "branch": "main",
+      "sha": "9d24e3e96f8894fe2105b7d862d01028afae2ffa",
+      "dirty_files": [],
+      "copied": 60,
+      "excluded": []
+    },
+    "data-processing-datasets": {
+      "source": "green-ai-data-processing/Green-IA/datasets",
+      "target": "software/data-processing/datasets",
+      "branch": "main",
+      "sha": "9d24e3e96f8894fe2105b7d862d01028afae2ffa",
+      "dirty_files": [],
+      "copied": 4,
+      "excluded": [
+        "processed/dataset_green_ai_v2_hexagonal.csv"
+      ]
+    },
+    "prediction": {
+      "source": "green-ai-prediction/green-ai-project-docs",
+      "target": "software/prediction",
+      "branch": "Criss",
+      "sha": "8585d6b08c397b80bc21132d6b4db18d870f2bed",
+      "dirty_files": [],
+      "copied": 127,
+      "excluded": [
+        "2. Conocimiento de Ingenieria.md",
+        "4. Gestión de Proyecto.md"
+      ]
+    },
+    "frontend": {
+      "source": "green-ai-front-end/Frontend-GreenAi",
+      "target": "software/frontend",
+      "branch": "main",
+      "sha": "2b3419209595cc595bee33240edca165d7d06a93",
+      "dirty_files": [],
+      "copied": 26,
+      "excluded": []
+    }
+  },
+  "root_files": {
+    "docker-compose.yml": {
+      "target": "software/infraestructura/docker-compose.yml",
+      "sha256": "2bccd11e77030a34ab6db4cb7cbe330075f8383575d7b1f446ae2d457492ade7"
+    },
+    "compose.swagger.yaml": {
+      "target": "software/infraestructura/compose.swagger.yaml",
+      "sha256": "295d4943ea5252df18edbb1d754fc78b0c1c1df843b6d985a55c2d8de0f9a4b5"
+    },
+    "compose.observability.yml": {
+      "target": "software/infraestructura/compose.observability.yml",
+      "sha256": "de298f08f49958807fb493b7c03def9b5efd96f6310bc71713db54ec0d1c3d54"
+    },
+    "prometheus-demo.yml": {
+      "target": "software/infraestructura/prometheus/prometheus.yml",
+      "sha256": "b6501bba08611ce05cbcf3dd8c2bab2928083d9e5de8e6fad4f5d27ed8f2ee92"
+    },
+    "observability/alerts.yml": {
+      "target": "software/infraestructura/prometheus/alerts.yml",
+      "sha256": "cb855e0c22b0d30488c702cc5f611556badd4d0d07efaca236da643ef1c9165c"
+    },
+    "observability/grafana/dashboards/pmv2.json": {
+      "target": "software/infraestructura/grafana/dashboards/pmv2.json",
+      "sha256": "39e4955380be2dd3f23428f1f8c9eef9293491b02bb05fc86159594ec484814d"
+    },
+    "observability/grafana/provisioning/dashboards/pmv2.yml": {
+      "target": "software/infraestructura/grafana/provisioning/dashboards/pmv2.yml",
+      "sha256": "454afc33358f708dfe05e7c2d1096a2aa7344c356c67bd8c14392c85cacf5596"
+    },
+    "observability/grafana/provisioning/datasources/prometheus.yml": {
+      "target": "software/infraestructura/grafana/provisioning/datasources/prometheus.yml",
+      "sha256": "f418b4fc59ba3abd672fc888730f8dbe29ba3120ccd456a793a9279e061b02a9"
+    },
+    "deployment/crear_paquete.py": {
+      "target": "herramientas_IA/exportacion/crear_paquete.py",
+      "sha256": "78bedae3ecc212c9c5f1250f2a6f82ebb548b5bd81d1f73fd5dc35955ae5b0c1"
+    },
+    "deployment/exportar.ps1": {
+      "target": "herramientas_IA/exportacion/exportar.ps1",
+      "sha256": "d1aa34672eb2acf3c714e83fb5b33bb69e3d934855bb26e46d9fb19cf710f95d"
+    }
+  },
+  "root_workspace_sha": "b644980fff4e92c2090406162e144349b9c12aea"
+}

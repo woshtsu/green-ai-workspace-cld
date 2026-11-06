@@ -1,0 +1,98 @@
+services:
+  # 1. El Simulador (produce los datos en texto plano en el puerto 8000)
+  simulator:
+    build: 
+      context: ./green-ai-simulator
+    ports:
+      - "127.0.0.1:8000:8000"
+    command: >
+      run 
+      --inventory ${SIMULATOR_INVENTORY:-configs/inventory.hardware.json}
+      --scenario ${SIMULATOR_SCENARIO:-configs/scenarios/normal.json}
+      --seed 42 
+      --duration-seconds ${SIMULATOR_DURATION_SECONDS:-3600}
+      --tick-seconds 5 
+      --mode realtime 
+      --output-dir runs 
+      --host 0.0.0.0 
+      --port 8000
+
+  # 2. La Bodega (Prometheus: lee del simulador y guarda los datos en el puerto 9090)
+  prometheus:
+    image: prom/prometheus:v3.13.3
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - ./prometheus-demo.yml:/etc/prometheus/prometheus.yml
+      - ./observability/alerts.yml:/etc/prometheus/alerts.yml:ro
+    depends_on:
+      - simulator
+
+  # 3. Tu API de Monitoreo (lee de Prometheus y expone tu API en el puerto 8080)
+  monitoring:
+    build:
+      context: ./green-ai-monitoring
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      - MONITORING_PROMETHEUS_URL=http://prometheus:9090
+      - MONITORING_PROMETHEUS_DEFAULT_CLUSTER=sim-lab
+      - MONITORING_PROMETHEUS_INSTANCE_LABEL=node
+    depends_on:
+      - prometheus
+
+  data-processing:
+    build: ./green-ai-data-processing/Green-IA/data-processing-service
+    env_file:
+      - path: ./green-ai-data-processing/Green-IA/data-processing-service/.env
+        required: false
+    environment:
+      MONITORING_BASE_URL: http://monitoring:8080
+      REQUEST_TIMEOUT_SECONDS: "10"
+    expose:
+      - "8000"
+    depends_on:
+      - monitoring
+
+  prediction:
+    build: ./green-ai-prediction/green-ai-project-docs
+    environment:
+      DEMO_POLICY_JSON: '${DEMO_POLICY_JSON:-{}}'
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  # Entrada HTTP del Frontend: rutas explícitas de los servicios integrados.
+  gateway:
+    build:
+      context: ./green-ai-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8081:8081"
+    environment:
+      - GATEWAY_MONITORING_BASE_URL=http://monitoring:8080
+      - GATEWAY_DATA_PROCESSING_BASE_URL=http://data-processing:8000
+      - GATEWAY_PREDICTION_BASE_URL=http://prediction:8000
+      - GATEWAY_AUTH_ISSUER_URI=https://jpfugpsdhuucmilgysgg.supabase.co/auth/v1
+      - GATEWAY_AUTH_JWK_SET_URI=https://jpfugpsdhuucmilgysgg.supabase.co/auth/v1/.well-known/jwks.json
+      # Debe coincidir exactamente con la URL usada para abrir el Frontend.
+      - GATEWAY_CORS_ALLOWED_ORIGIN=${GATEWAY_CORS_ALLOWED_ORIGIN:-http://127.0.0.1:3001}
+    depends_on:
+      - monitoring
+      - data-processing
+      - prediction
+
+  frontend:
+    build: ./green-ai-front-end/Frontend-GreenAi
+    ports:
+      - "127.0.0.1:3001:3001"
+    volumes:
+      - ./green-ai-front-end/Frontend-GreenAi/config.local.js:/usr/share/nginx/html/config.local.js:ro
+    depends_on:
+      - gateway

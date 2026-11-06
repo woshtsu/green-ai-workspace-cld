@@ -1,0 +1,233 @@
+openapi: 3.1.0
+info:
+  title: Green AI API Gateway
+  version: 0.1.0
+  description: Superficie externa de Monitoring, Data Processing y Prediction, que también aloja recomendaciones y cálculo energético. Se conservan los contratos funcionales upstream.
+servers:
+  - url: /
+security:
+  - bearerAuth: []
+paths:
+  /api/recommendations/v1/recommendations:
+    $ref: './recommendations-v1.json#/paths/~1api~1recommendations~1v1~1recommendations'
+  /api/recommendations/v1/energy:
+    $ref: './recommendations-v1.json#/paths/~1api~1recommendations~1v1~1energy'
+  /api/prediction/v1/predictions:
+    post:
+      operationId: createPrediction
+      summary: Estima CPU a partir de un dataset preparado por Data Processing
+      description: Modelo experimental. Requiere OPERATOR o ADMIN; máximo 2 MB y timeout 30 segundos. No se reintenta automáticamente.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [schemaVersion, datasetId, resource, period, features, origins, dataStatus]
+              properties:
+                schemaVersion: {type: string, const: '1.0'}
+                datasetId: {type: string}
+                resource: {type: object}
+                period: {type: object}
+                features: {type: array, items: {type: object}}
+                origins: {type: array, items: {type: string}}
+                dataStatus: {type: string}
+      responses:
+        '200': {description: Estimación de CPU con origin estimated, unidad %, modelo, horizonte y dataset de entrada}
+        '400': {description: Entrada inválida}
+        '401': {description: JWT ausente o inválido}
+        '403': {description: Rol insuficiente}
+        '413': {description: Cuerpo demasiado grande}
+        '422': {description: Datos insuficientes o inválidos}
+        '503': {description: Modelo o servicio no disponible}
+        '504': {description: Tiempo de espera excedido}
+  /api/monitoring/v1/metrics/catalog:
+    get:
+      operationId: getMetricCatalog
+      summary: Obtiene el catálogo de métricas permitido
+      responses:
+        '200':
+          description: Catálogo definido por Monitoring v0.1
+        '502':
+          $ref: '#/components/responses/GatewayFailure'
+        '503':
+          $ref: '#/components/responses/GatewayFailure'
+        '504':
+          $ref: '#/components/responses/GatewayFailure'
+  /api/monitoring/v1/metrics/current:
+    get:
+      operationId: getCurrentMetrics
+      summary: Consulta métricas actuales normalizadas
+      parameters:
+        - $ref: '#/components/parameters/metric'
+        - $ref: '#/components/parameters/resourceType'
+        - $ref: '#/components/parameters/cluster'
+        - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: MetricsResponse definido por Monitoring v0.1
+        '400':
+          $ref: '#/components/responses/UpstreamProblem'
+        '422':
+          $ref: '#/components/responses/UpstreamProblem'
+        '502':
+          $ref: '#/components/responses/GatewayFailure'
+        '503':
+          $ref: '#/components/responses/GatewayFailure'
+        '504':
+          $ref: '#/components/responses/GatewayFailure'
+  /api/monitoring/v1/metrics/history:
+    get:
+      operationId: getMetricHistory
+      summary: Consulta métricas históricas normalizadas
+      parameters:
+        - $ref: '#/components/parameters/metric'
+        - $ref: '#/components/parameters/resourceType'
+        - $ref: '#/components/parameters/cluster'
+        - $ref: '#/components/parameters/resourceId'
+        - name: start
+          in: query
+          required: true
+          schema: {type: string, format: date-time}
+        - name: end
+          in: query
+          required: true
+          schema: {type: string, format: date-time}
+        - name: stepSeconds
+          in: query
+          schema: {type: integer, minimum: 15, maximum: 3600, default: 15}
+      responses:
+        '200':
+          description: MetricsResponse definido por Monitoring v0.1
+        '400':
+          $ref: '#/components/responses/UpstreamProblem'
+        '422':
+          $ref: '#/components/responses/UpstreamProblem'
+        '502':
+          $ref: '#/components/responses/GatewayFailure'
+        '503':
+          $ref: '#/components/responses/GatewayFailure'
+        '504':
+          $ref: '#/components/responses/GatewayFailure'
+  /api/processing/v1/metrics/history:
+    get:
+      operationId: getProcessedMetricHistory
+      summary: Consulta historial de métricas procesado
+      description: Conserva contrato y validación de Data Processing v1.
+      parameters:
+        - $ref: '#/components/parameters/metric'
+        - name: start
+          in: query
+          required: true
+          schema: {type: string, format: date-time}
+        - name: end
+          in: query
+          required: true
+          schema: {type: string, format: date-time}
+        - $ref: '#/components/parameters/resourceType'
+        - $ref: '#/components/parameters/cluster'
+        - $ref: '#/components/parameters/resourceId'
+        - name: stepSeconds
+          in: query
+          schema: {type: integer, minimum: 15, maximum: 3600, default: 15}
+      responses:
+        '200': {description: ProcessedHistory de Data Processing v1}
+        '422': {$ref: '#/components/responses/UpstreamProblem'}
+        '500': {$ref: '#/components/responses/UpstreamProblem'}
+        '502': {$ref: '#/components/responses/UpstreamProblem'}
+        '503': {$ref: '#/components/responses/UpstreamProblem'}
+        '504': {$ref: '#/components/responses/GatewayFailure'}
+  /api/processing/v1/historical-logs:
+    get:
+      operationId: getHistoricalLogs
+      summary: Consulta logs históricos paginados
+      parameters:
+        - name: start
+          in: query
+          required: true
+          schema: {type: string, format: date-time}
+        - name: end
+          in: query
+          required: true
+          schema: {type: string, format: date-time}
+        - name: hardwareId
+          in: query
+          required: true
+          schema: {type: string, minLength: 1, maxLength: 20}
+        - name: limit
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 500, default: 100}
+        - name: cursor
+          in: query
+          schema: {type: string, maxLength: 2048}
+      responses:
+        '200': {description: HistoricalPage de Data Processing v1}
+        '422': {$ref: '#/components/responses/UpstreamProblem'}
+        '500': {$ref: '#/components/responses/UpstreamProblem'}
+        '502': {$ref: '#/components/responses/UpstreamProblem'}
+        '503': {$ref: '#/components/responses/UpstreamProblem'}
+        '504': {$ref: '#/components/responses/GatewayFailure'}
+  /api/processing/v1/prediction/dataset:
+    get:
+      operationId: getPredictionDataset
+      summary: Prepara un dataset para predicción
+      description: Contrato provisional; prepara datos y no ejecuta inferencia.
+      parameters:
+        - name: start
+          in: query
+          required: true
+          schema: {type: string, format: date-time}
+        - name: end
+          in: query
+          required: true
+          schema: {type: string, format: date-time}
+        - name: cluster
+          in: query
+          required: true
+          schema: {type: string, pattern: '^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$'}
+        - name: resourceId
+          in: query
+          required: true
+          schema: {type: string, pattern: '^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$'}
+        - name: stepSeconds
+          in: query
+          schema: {type: integer, minimum: 15, maximum: 3600, default: 15}
+      responses:
+        '200': {description: PredictionDataset de Data Processing v1}
+        '422': {$ref: '#/components/responses/UpstreamProblem'}
+        '500': {$ref: '#/components/responses/UpstreamProblem'}
+        '502': {$ref: '#/components/responses/UpstreamProblem'}
+        '503': {$ref: '#/components/responses/UpstreamProblem'}
+        '504': {$ref: '#/components/responses/GatewayFailure'}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT de Supabase Auth con user_role OPERATOR o ADMIN. Ausente/inválido devuelve 401; rol insuficiente, 403.
+  parameters:
+    metric:
+      name: metric
+      in: query
+      required: true
+      schema:
+        type: string
+        enum: [node.cpu.utilization, node.memory.used, node.network.receive, node.network.transmit, node.filesystem.used]
+    resourceType:
+      name: resourceType
+      in: query
+      schema: {type: string, const: node, default: node}
+    cluster:
+      name: cluster
+      in: query
+      schema: {type: string, pattern: '^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$'}
+    resourceId:
+      name: resourceId
+      in: query
+      schema: {type: string, pattern: '^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$'}
+  responses:
+    UpstreamProblem:
+      description: application/problem+json conservado desde el servicio upstream
+    GatewayFailure:
+      description: Fallo del servicio upstream o de comunicación, sin detalles internos

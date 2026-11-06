@@ -1,0 +1,66 @@
+# Green AI monorepo — un solo repositorio Git (sin submódulos ni gitlinks)
+
+# Secretos: solo se versionan ejemplos vacíos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+kubeconfig
+*.kubeconfig
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+coverage.xml
+*.egg-info/
+mlruns/
+mlflow.db
+
+# Datos generados / bases locales de desarrollo
+*.db
+*.sqlite
+*.sqlite3
+software/data-processing/datasets/processed/*.csv
+software/simulator/runs/
+# Resultados y modelos de Prediction: ver software/prediction/.gitignore
+
+# Java / Maven
+target/
+.m2/
+*.class
+hs_err_pid*
+
+# Node / frontend
+node_modules/
+dist/
+.vite/
+
+# Exportados (DOCX generados desde Markdown; se publican como artefactos de CI)
+exportados/*
+!exportados/.gitkeep
+
+# Herramientas locales y salidas de agentes
+.tools/
+agy-runs/
+graphify-out/cache/
+graphify-out/*.html
+
+# Editores / SO
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

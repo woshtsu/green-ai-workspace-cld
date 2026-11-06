@@ -1,0 +1,9 @@
+# Acceso local a Swagger de los servicios FastAPI.
+# Usar junto con docker-compose.yml desde la raiz del workspace.
+services:
+  prediction:
+    ports:
+      - "127.0.0.1:8002:8000"
+  data-processing:
+    ports:
+      - "127.0.0.1:8003:8000"
