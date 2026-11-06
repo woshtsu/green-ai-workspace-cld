@@ -1,0 +1,2097 @@
+{
+  "timestamp": "2026-11-06T18:21:04.144048+00:00",
+  "dataKind": "simulated",
+  "limitation": "No autentica un usuario real de Supabase; no prueba precisión observada ni ahorro.",
+  "passed": 14,
+  "total": 14,
+  "results": [
+    {
+      "name": "prediction ready",
+      "method": "GET",
+      "url": "http://127.0.0.1:18002/health/ready",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "response": {
+        "status": "ready",
+        "modelLoaded": true,
+        "modelVersion": "1.0.0",
+        "horizon": "15m",
+        "artifactCompatible": true,
+        "precise": false,
+        "note": "Readiness checks artifact presence and hash, not model accuracy."
+      }
+    },
+    {
+      "name": "OpenAPI de prediction incluye predicción y recomendaciones",
+      "method": "GET",
+      "url": "http://127.0.0.1:18002/openapi.json",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "response": {
+        "openapi": "3.1.0",
+        "info": {
+          "title": "Prediction Service",
+          "description": "Internal API for short-term computational demand estimates.",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/v1/recommendations": {
+            "post": {
+              "tags": [
+                "Recommendations"
+              ],
+              "summary": "Recommend",
+              "operationId": "recommend_v1_recommendations_post",
+              "requestBody": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/RecommendationRequest"
+                    }
+                  }
+                },
+                "required": true
+              },
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Recommendation"
+                      }
+                    }
+                  }
+                },
+                "400": {
+                  "description": "Bad Request",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/InferenceProblem"
+                      }
+                    }
+                  }
+                },
+                "422": {
+                  "description": "Unprocessable Entity",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "anyOf": [
+                          {
+                            "$ref": "#/components/schemas/Problem"
+                          },
+                          {
+                            "$ref": "#/components/schemas/InferenceProblem"
+                          }
+                        ],
+                        "title": "Response 422 Recommend V1 Recommendations Post"
+                      }
+                    }
+                  }
+                },
+                "502": {
+                  "description": "Bad Gateway",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Problem"
+                      }
+                    }
+                  }
+                },
+                "503": {
+                  "description": "Service Unavailable",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/InferenceProblem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/v1/energy": {
+            "post": {
+              "tags": [
+                "Recommendations"
+              ],
+              "summary": "Energy",
+              "operationId": "energy_v1_energy_post",
+              "requestBody": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/EnergyRequest"
+                    }
+                  }
+                },
+                "required": true
+              },
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/EnergyResult"
+                      }
+                    }
+                  }
+                },
+                "422": {
+                  "description": "Unprocessable Entity",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Problem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/health": {
+            "get": {
+              "summary": "Health",
+              "operationId": "health_health_get",
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "additionalProperties": true,
+                        "type": "object",
+                        "title": "Response Health Health Get"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/health/live": {
+            "get": {
+              "summary": "Liveness",
+              "operationId": "liveness_health_live_get",
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Response Liveness Health Live Get"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/health/ready": {
+            "get": {
+              "summary": "Readiness",
+              "operationId": "readiness_health_ready_get",
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "additionalProperties": true,
+                        "type": "object",
+                        "title": "Response Readiness Health Ready Get"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/v1/predictions": {
+            "post": {
+              "summary": "Create Prediction",
+              "operationId": "create_prediction_v1_predictions_post",
+              "parameters": [
+                {
+                  "name": "X-Request-Id",
+                  "in": "header",
+                  "required": false,
+                  "schema": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "X-Request-Id"
+                  }
+                }
+              ],
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "additionalProperties": true,
+                      "title": "Payload"
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "title": "Response Create Prediction V1 Predictions Post"
+                      }
+                    }
+                  }
+                },
+                "422": {
+                  "description": "Validation Error",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/HTTPValidationError"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/predict": {
+            "post": {
+              "summary": "Create Prediction",
+              "operationId": "create_prediction_predict_post",
+              "parameters": [
+                {
+                  "name": "X-Request-Id",
+                  "in": "header",
+                  "required": false,
+                  "schema": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "X-Request-Id"
+                  }
+                }
+              ],
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "additionalProperties": true,
+                      "title": "Payload"
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "title": "Response Create Prediction Predict Post"
+                      }
+                    }
+                  }
+                },
+                "422": {
+                  "description": "Validation Error",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/HTTPValidationError"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "components": {
+          "schemas": {
+            "Check": {
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "title": "Name"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "pass",
+                    "fail",
+                    "unknown"
+                  ],
+                  "title": "Status"
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "name",
+                "status"
+              ],
+              "title": "Check"
+            },
+            "EnergyRequest": {
+              "properties": {
+                "origin": {
+                  "type": "string",
+                  "enum": [
+                    "observed",
+                    "simulated",
+                    "estimated"
+                  ],
+                  "title": "Origin"
+                },
+                "samples": {
+                  "items": {
+                    "$ref": "#/components/schemas/PowerSample"
+                  },
+                  "type": "array",
+                  "maxItems": 10000,
+                  "minItems": 2,
+                  "title": "Samples"
+                },
+                "emissionFactorKgPerKwh": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "maximum": 100.0,
+                      "minimum": 0.0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Emissionfactorkgperkwh"
+                },
+                "emissionFactorSource": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 500,
+                      "minLength": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Emissionfactorsource"
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "origin",
+                "samples"
+              ],
+              "title": "EnergyRequest"
+            },
+            "EnergyResult": {
+              "properties": {
+                "origin": {
+                  "type": "string",
+                  "title": "Origin"
+                },
+                "energyKwh": {
+                  "type": "number",
+                  "title": "Energykwh"
+                },
+                "co2eKg": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Co2Ekg"
+                },
+                "start": {
+                  "type": "string",
+                  "format": "date-time",
+                  "title": "Start"
+                },
+                "end": {
+                  "type": "string",
+                  "format": "date-time",
+                  "title": "End"
+                },
+                "emissionFactorKgPerKwh": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Emissionfactorkgperkwh"
+                },
+                "emissionFactorSource": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Emissionfactorsource"
+                },
+                "method": {
+                  "type": "string",
+                  "title": "Method",
+                  "default": "trapezoidal_power_integration"
+                },
+                "warnings": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Warnings"
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "origin",
+                "energyKwh",
+                "co2eKg",
+                "start",
+                "end",
+                "emissionFactorKgPerKwh",
+                "emissionFactorSource",
+                "warnings"
+              ],
+              "title": "EnergyResult"
+            },
+            "HTTPValidationError": {
+              "properties": {
+                "detail": {
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationError"
+                  },
+                  "type": "array",
+                  "title": "Detail"
+                }
+              },
+              "type": "object",
+              "title": "HTTPValidationError"
+            },
+            "InferenceProblem": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "title": "Code"
+                },
+                "message": {
+                  "type": "string",
+                  "title": "Message"
+                },
+                "details": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Details"
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "code",
+                "message",
+                "details"
+              ],
+              "title": "InferenceProblem"
+            },
+            "Policy": {
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "const": "demonstration",
+                  "title": "Mode",
+                  "default": "demonstration"
+                },
+                "cpuLowPercent": {
+                  "type": "number",
+                  "maximum": 100.0,
+                  "minimum": 0.0,
+                  "title": "Cpulowpercent",
+                  "default": 30
+                },
+                "cpuHighPercent": {
+                  "type": "number",
+                  "maximum": 100.0,
+                  "minimum": 0.0,
+                  "title": "Cpuhighpercent",
+                  "default": 80
+                },
+                "memoryMaxPercent": {
+                  "type": "number",
+                  "maximum": 100.0,
+                  "minimum": 0.0,
+                  "title": "Memorymaxpercent",
+                  "default": 85
+                },
+                "latencyP95MaxMs": {
+                  "type": "number",
+                  "exclusiveMinimum": 0.0,
+                  "title": "Latencyp95Maxms",
+                  "default": 500
+                },
+                "errorRateMaxPercent": {
+                  "type": "number",
+                  "maximum": 100.0,
+                  "minimum": 0.0,
+                  "title": "Errorratemaxpercent",
+                  "default": 1
+                },
+                "freshnessSeconds": {
+                  "type": "integer",
+                  "maximum": 3600.0,
+                  "minimum": 1.0,
+                  "title": "Freshnessseconds",
+                  "default": 300
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "title": "Policy"
+            },
+            "PowerSample": {
+              "properties": {
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "title": "Timestamp"
+                },
+                "watts": {
+                  "type": "number",
+                  "maximum": 1000000000000.0,
+                  "minimum": 0.0,
+                  "title": "Watts"
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "timestamp",
+                "watts"
+              ],
+              "title": "PowerSample"
+            },
+            "Problem": {
+              "properties": {
+                "detail": {
+                  "type": "string",
+                  "title": "Detail"
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "detail"
+              ],
+              "title": "Problem"
+            },
+            "Recommendation": {
+              "properties": {
+                "recommendationId": {
+                  "type": "string",
+                  "title": "Recommendationid"
+                },
+                "generatedAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "title": "Generatedat"
+                },
+                "predictionId": {
+                  "type": "string",
+                  "title": "Predictionid"
+                },
+                "inputDatasetId": {
+                  "type": "string",
+                  "title": "Inputdatasetid"
+                },
+                "predictedCpuPercent": {
+                  "type": "number",
+                  "maximum": 100.0,
+                  "minimum": 0.0,
+                  "title": "Predictedcpupercent"
+                },
+                "telemetry": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Telemetry"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "resource": {
+                  "$ref": "#/components/schemas/Resource"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "not_evaluable",
+                    "blocked",
+                    "eligible_for_review"
+                  ],
+                  "title": "Status"
+                },
+                "action": {
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "maintain",
+                    "review_capacity_reduction",
+                    "review_capacity_increase"
+                  ],
+                  "title": "Action"
+                },
+                "executionAllowed": {
+                  "type": "boolean",
+                  "const": false,
+                  "title": "Executionallowed",
+                  "default": false
+                },
+                "policy": {
+                  "$ref": "#/components/schemas/Policy"
+                },
+                "checks": {
+                  "items": {
+                    "$ref": "#/components/schemas/Check"
+                  },
+                  "type": "array",
+                  "title": "Checks"
+                },
+                "warnings": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Warnings"
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "recommendationId",
+                "generatedAt",
+                "predictionId",
+                "inputDatasetId",
+                "predictedCpuPercent",
+                "telemetry",
+                "resource",
+                "status",
+                "action",
+                "policy",
+                "checks",
+                "warnings"
+              ],
+              "title": "Recommendation"
+            },
+            "RecommendationRequest": {
+              "properties": {
+                "dataset": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Dataset"
+                },
+                "telemetry": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Telemetry"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "dataset"
+              ],
+              "title": "RecommendationRequest"
+            },
+            "Resource": {
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "node",
+                  "title": "Type"
+                },
+                "id": {
+                  "type": "string",
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "title": "Id"
+                },
+                "cluster": {
+                  "type": "string",
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "title": "Cluster"
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "type",
+                "id",
+                "cluster"
+              ],
+              "title": "Resource"
+            },
+            "Telemetry": {
+              "properties": {
+                "resource": {
+                  "$ref": "#/components/schemas/Resource"
+                },
+                "observedAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "title": "Observedat"
+                },
+                "origin": {
+                  "type": "string",
+                  "enum": [
+                    "observed",
+                    "simulated"
+                  ],
+                  "title": "Origin"
+                },
+                "memoryPercent": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "maximum": 100.0,
+                      "minimum": 0.0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Memorypercent"
+                },
+                "latencyP95Ms": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0.0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Latencyp95Ms"
+                },
+                "errorRatePercent": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "maximum": 100.0,
+                      "minimum": 0.0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Errorratepercent"
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "resource",
+                "observedAt",
+                "origin"
+              ],
+              "title": "Telemetry"
+            },
+            "ValidationError": {
+              "properties": {
+                "loc": {
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "integer"
+                      }
+                    ]
+                  },
+                  "type": "array",
+                  "title": "Location"
+                },
+                "msg": {
+                  "type": "string",
+                  "title": "Message"
+                },
+                "type": {
+                  "type": "string",
+                  "title": "Error Type"
+                },
+                "input": {
+                  "title": "Input"
+                },
+                "ctx": {
+                  "type": "object",
+                  "title": "Context"
+                }
+              },
+              "type": "object",
+              "required": [
+                "loc",
+                "msg",
+                "type"
+              ],
+              "title": "ValidationError"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "predicción con fixture simulado",
+      "method": "POST",
+      "url": "http://127.0.0.1:18002/v1/predictions",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "response": {
+        "predictionId": "pred-9a66914d-c462-4bd5-9deb-3604e0866114",
+        "resource": {
+          "type": "node",
+          "cluster": "fixture-lab",
+          "id": "fixture-node-01"
+        },
+        "target": "cpu_utilization",
+        "predictedFor": "2026-11-06T18:35:00+00:00",
+        "value": 53.0820604668762,
+        "unit": "%",
+        "modelVersion": "1.0.0",
+        "inputDatasetId": "mono-smoke-simulated-001",
+        "origin": "estimated",
+        "generatedAt": "2026-11-06T18:21:04.414099+00:00",
+        "horizon": "15m",
+        "warnings": [
+          "Fixture SIMULADO del smoke del monorepo (forma de GET /api/v1/prediction/dataset).",
+          "Adapted inside ML. External contracts were not modified.",
+          "Resampled observed cadence 0 days 00:00:15 to 5m. Empty bins were dropped and were not filled with zero."
+        ]
+      }
+    },
+    {
+      "name": "recomendación con telemetría simulada",
+      "method": "POST",
+      "url": "http://127.0.0.1:18002/v1/recommendations",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "response": {
+        "recommendationId": "8a50f43f-54a6-47a6-90be-fd60a00a5ec0",
+        "generatedAt": "2026-11-06T18:21:04.533781Z",
+        "predictionId": "pred-52af127b-fe0b-48e8-8f40-1dd59d257106",
+        "inputDatasetId": "mono-smoke-simulated-001",
+        "predictedCpuPercent": 53.0820604668762,
+        "telemetry": {
+          "resource": {
+            "type": "node",
+            "id": "fixture-node-01",
+            "cluster": "fixture-lab"
+          },
+          "observedAt": "2026-11-06T18:21:04.144048Z",
+          "origin": "simulated",
+          "memoryPercent": 40.0,
+          "latencyP95Ms": 100.0,
+          "errorRatePercent": 0.1
+        },
+        "resource": {
+          "type": "node",
+          "id": "fixture-node-01",
+          "cluster": "fixture-lab"
+        },
+        "status": "eligible_for_review",
+        "action": "maintain",
+        "executionAllowed": false,
+        "policy": {
+          "mode": "demonstration",
+          "cpuLowPercent": 30.0,
+          "cpuHighPercent": 80.0,
+          "memoryMaxPercent": 85.0,
+          "latencyP95MaxMs": 500.0,
+          "errorRateMaxPercent": 1.0,
+          "freshnessSeconds": 300
+        },
+        "checks": [
+          {
+            "name": "prediction_freshness",
+            "status": "pass"
+          },
+          {
+            "name": "telemetry_identity_and_freshness",
+            "status": "pass"
+          },
+          {
+            "name": "memoryPercent",
+            "status": "pass"
+          },
+          {
+            "name": "latencyP95Ms",
+            "status": "pass"
+          },
+          {
+            "name": "errorRatePercent",
+            "status": "pass"
+          }
+        ],
+        "warnings": [
+          "Umbrales de demostración; no representan SLA aprobados.",
+          "Telemetría proporcionada por el operador, sin verificación independiente.",
+          "La evaluación actual no garantiza el SLA futuro ni cuantifica ahorro. Requiere revisión humana."
+        ]
+      }
+    },
+    {
+      "name": "recomendación inválida",
+      "method": "POST",
+      "url": "http://127.0.0.1:18002/v1/recommendations",
+      "expected": 422,
+      "status": 422,
+      "passed": true,
+      "response": {
+        "detail": "Dataset sin identidad de recurso válida."
+      }
+    },
+    {
+      "name": "data-processing health",
+      "method": "GET",
+      "url": "http://127.0.0.1:18003/api/v1/health",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "response": {
+        "status": "healthy",
+        "service": "data-processing-service",
+        "project": "Green AI"
+      }
+    },
+    {
+      "name": "monitoring catálogo",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/v1/metrics/catalog",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "response": [
+        {
+          "id": "node.cpu.utilization",
+          "group": "A",
+          "resourceType": "node",
+          "unit": "ratio",
+          "aggregation": "mean_non_idle",
+          "windowSeconds": 60,
+          "description": "1 - media de la tasa idle por CPU lógica en 60 s. Iowait cuenta como no-idle.",
+          "denominator": "Capacidad de todas las CPU lógicas del nodo; no requests/limits de pods.",
+          "seriesLabels": []
+        },
+        {
+          "id": "node.memory.used",
+          "group": "A",
+          "resourceType": "node",
+          "unit": "bytes",
+          "aggregation": "instant",
+          "windowSeconds": null,
+          "description": "MemTotal - MemAvailable; no equivale a MemTotal - MemFree.",
+          "denominator": "No aplica: magnitud absoluta.",
+          "seriesLabels": []
+        },
+        {
+          "id": "node.network.receive",
+          "group": "A",
+          "resourceType": "node",
+          "unit": "bytes/s",
+          "aggregation": "rate",
+          "windowSeconds": 60,
+          "description": "Tasa de bytes recibidos en 60 s por interfaz, sin sumar interfaces.",
+          "denominator": "Segundos transcurridos en la ventana de 60 s.",
+          "seriesLabels": [
+            "device"
+          ]
+        },
+        {
+          "id": "node.network.transmit",
+          "group": "A",
+          "resourceType": "node",
+          "unit": "bytes/s",
+          "aggregation": "rate",
+          "windowSeconds": 60,
+          "description": "Tasa de bytes transmitidos en 60 s por interfaz, sin sumar interfaces.",
+          "denominator": "Segundos transcurridos en la ventana de 60 s.",
+          "seriesLabels": [
+            "device"
+          ]
+        },
+        {
+          "id": "node.filesystem.used",
+          "group": "A",
+          "resourceType": "node",
+          "unit": "bytes",
+          "aggregation": "instant",
+          "windowSeconds": null,
+          "description": "size - free por filesystem (incluye bloques reservados en free); no size - avail. Solo ext2/ext3/ext4/xfs/btrfs/zfs; excluir /proc,/sys,/dev,/run y descendientes.",
+          "denominator": "No aplica: bytes absolutos; capacidad de referencia size del mismo filesystem.",
+          "seriesLabels": [
+            "device",
+            "mountpoint",
+            "fstype"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "monitoring CPU actual (vía Prometheus, datos simulados)",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/v1/metrics/current?metric=node.cpu.utilization",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "response": {
+        "metric": "node.cpu.utilization",
+        "unit": "ratio",
+        "aggregation": "mean_non_idle",
+        "windowSeconds": 60,
+        "start": "2026-11-06T18:21:04Z",
+        "end": "2026-11-06T18:21:04Z",
+        "stepSeconds": null,
+        "dataStatus": "complete",
+        "series": [
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW001"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7960039097471936,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW002"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.798562662757544,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW003"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7932948412786208,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW004"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.803268931873983,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW005"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7966678800360087,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW006"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7919339621034678,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW007"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7980237086690424,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW008"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7930750444024308,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW009"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7967030009860643,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW010"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7868891030331836,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW011"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8042633316306462,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW012"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7914892308900687,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW013"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8017883068399353,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW014"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7938880832414482,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW015"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7960126698147939,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW016"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7985889413252486,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW017"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8000207371683168,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW018"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7951237258923458,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW019"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8029898533933003,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW020"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7875653752271251,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW021"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7922846379720911,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW022"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.799247544434945,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW023"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.799380479802206,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW024"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7905990191115457,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW025"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7882572393259417,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW026"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7989724377656688,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW027"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7916812565155524,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW028"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8008639045141261,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW029"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8062947003226377,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW030"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7995990977692107,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW031"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7977801418511618,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW032"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8016988014695832,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW033"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7933868812106737,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW034"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8027344933499491,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW035"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7960519135509381,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW036"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7982230035047864,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW037"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7958291594324024,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW038"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7934220606407154,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW039"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7903246823491556,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW040"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7860686200121261,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW041"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8018099066299703,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW042"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7941765969904242,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW043"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8004745530947588,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW044"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.8053511245674627,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW045"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.800123301662804,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW046"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.785855842350549,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW047"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7938387025312881,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW048"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7996833958140519,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW049"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7937440181355322,
+                "quality": "valid"
+              }
+            ]
+          },
+          {
+            "resource": {
+              "type": "node",
+              "cluster": "sim-run-374324ea-5a58-4ea1-a83f-ba0d2d159074",
+              "id": "HW050"
+            },
+            "labels": {},
+            "source": "prometheus",
+            "origin": "simulated",
+            "samples": [
+              {
+                "timestamp": "2026-11-06T18:21:04Z",
+                "value": 0.7962808034285804,
+                "quality": "valid"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "name": "gateway rechaza anónimo /api/prediction/v1/predictions",
+      "method": "POST",
+      "url": "http://127.0.0.1:18081/api/prediction/v1/predictions",
+      "expected": 401,
+      "status": 401,
+      "passed": true,
+      "response": {
+        "type": "about:blank",
+        "title": "Unauthorized",
+        "status": 401,
+        "detail": "Inicia sesión con un token válido."
+      }
+    },
+    {
+      "name": "gateway rechaza anónimo /api/recommendations/v1/recommendations",
+      "method": "POST",
+      "url": "http://127.0.0.1:18081/api/recommendations/v1/recommendations",
+      "expected": 401,
+      "status": 401,
+      "passed": true,
+      "response": {
+        "type": "about:blank",
+        "title": "Unauthorized",
+        "status": 401,
+        "detail": "Inicia sesión con un token válido."
+      }
+    },
+    {
+      "name": "gateway rechaza JWT inválido",
+      "method": "GET",
+      "url": "http://127.0.0.1:18081/api/monitoring/v1/metrics/catalog",
+      "expected": 401,
+      "status": 401,
+      "passed": true,
+      "response": {
+        "type": "about:blank",
+        "title": "Unauthorized",
+        "status": 401,
+        "detail": "Inicia sesión con un token válido."
+      }
+    },
+    {
+      "name": "gateway CORS preflight desde el frontend",
+      "method": "OPTIONS",
+      "url": "http://127.0.0.1:18081/api/monitoring/v1/metrics/catalog",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "response": null
+    },
+    {
+      "name": "frontend sirve login",
+      "method": "GET",
+      "url": "http://127.0.0.1:13001/login.html",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "response": "<!DOCTYPE html>\r\n<html lang=\"es\">\r\n<head>\r\n  <meta charset=\"UTF-8\" />\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n  <title>Green AI | Login</title>\r\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.co"
+    },
+    {
+      "name": "prometheus: targets prediction y simulator UP",
+      "method": "GET",
+      "url": "http://127.0.0.1:19090/api/v1/targets",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "response": {
+        "status": "success",
+        "data": {
+          "activeTargets": [
+            {
+              "discoveredLabels": {
+                "__address__": "prediction:8000",
+                "__always_scrape_classic_histograms__": "false",
+                "__convert_classic_histograms_to_nhcb__": "false",
+                "__metrics_path__": "/metrics",
+                "__scheme__": "http",
+                "__scrape_interval__": "5s",
+                "__scrape_native_histograms__": "false",
+                "__scrape_timeout__": "5s",
+                "job": "green-ai-prediction"
+              },
+              "labels": {
+                "instance": "prediction:8000",
+                "job": "green-ai-prediction"
+              },
+              "scrapePool": "green-ai-prediction",
+              "scrapeUrl": "http://prediction:8000/metrics",
+              "globalUrl": "http://prediction:8000/metrics",
+              "lastError": "",
+              "lastScrape": "2026-11-06T18:21:04.942079743Z",
+              "lastScrapeDuration": 0.003529705,
+              "health": "up",
+              "scrapeInterval": "5s",
+              "scrapeTimeout": "5s"
+            },
+            {
+              "discoveredLabels": {
+                "__address__": "simulator:8000",
+                "__always_scrape_classic_histograms__": "false",
+                "__convert_classic_histograms_to_nhcb__": "false",
+                "__metrics_path__": "/metrics",
+                "__scheme__": "http",
+                "__scrape_interval__": "5s",
+                "__scrape_native_histograms__": "false",
+                "__scrape_timeout__": "5s",
+                "job": "green-ai-simulator"
+              },
+              "labels": {
+                "instance": "simulator:8000",
+                "job": "green-ai-simulator"
+              },
+              "scrapePool": "green-ai-simulator",
+              "scrapeUrl": "http://simulator:8000/metrics",
+              "globalUrl": "http://simulator:8000/metrics",
+              "lastError": "",
+              "lastScrape": "2026-11-06T18:21:02.24947962Z",
+              "lastScrapeDuration": 0.06097296,
+              "health": "up",
+              "scrapeInterval": "5s",
+              "scrapeTimeout": "5s"
+            }
+          ],
+          "droppedTargets": [],
+          "droppedTargetCounts": {
+            "green-ai-prediction": 0,
+            "green-ai-simulator": 0
+          }
+        }
+      }
+    }
+  ]
+}

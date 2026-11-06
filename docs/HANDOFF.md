@@ -4,9 +4,9 @@ Actualizado por Claude Code el 2026-11-06. Encargo original: `../output/traspaso
 Hechos históricos previos: `../output/semana10/HANDOFF.md` (el estado y las pruebas actuales prevalecen).
 
 ## Estado en una línea
-Monorepo creado, fuentes copiadas sin Git anidados; las 6 suites de pruebas reproducen la línea base; Antigravity
-CLI validado con una revisión de solo lectura y un cambio pequeño integrado. **Nada publicado, nada desplegado,
-workspace antiguo intacto.**
+Monorepo creado, fuentes copiadas sin Git anidados; las 6 suites de pruebas reproducen la línea base; el stack
+`green-ai-mono` arranca en Docker y pasa el smoke 14/14 con datos simulados; Antigravity CLI validado con una revisión
+de solo lectura y un cambio pequeño integrado. **Nada publicado, nada desplegado, workspace antiguo intacto.**
 
 ## Requisitos del encargo (resumen)
 Monorepo con un solo Git; copiar (no mover) preservando cambios locales; recomendaciones dentro de Prediction;
@@ -36,11 +36,26 @@ Ver `git log --oneline`. Rama `test` creada desde `main`.
 |---|---|---|---|
 | monitoring | `mvnw.cmd -q -B verify` | 112 tests, 0 fallos | — |
 | gateway | `mvnw.cmd -q -B verify` | 11 tests, 0 fallos | = handoff semana10 |
-| simulator | `uv run --frozen python -m unittest discover -s tests` | 10 tests, 1 fallo | El fallo (`test_realtime_exporter_and_graceful_termination`) ocurre igual en el repo original en Windows; el README lo ejecuta en Docker Linux. **Pendiente comprobar en Docker.** |
+| simulator | `uv run --frozen python -m unittest discover -s tests` | Windows: 10 tests, 1 fallo | El fallo (`test_realtime_exporter_and_graceful_termination`) ocurre igual en el repo original en Windows (señales). |
+| simulator (Docker) | `docker run ... green-ai-mono-simulator:local -m unittest discover -s /tests -v` | **10/10 OK** | Confirma que el fallo es solo de Windows. |
 | data-processing | `pytest -q` | 88 passed | Antes del ajuste de rutas: 2 fallos por no encontrar `BD_GreenAi.xlsx` |
 | prediction | `run_pipeline.py --skip-mlflow` + `pytest` | 96 passed | Sin el pipeline: 6 fallos con 503 MODEL_UNAVAILABLE (esperado: el modelo se genera en build) |
 | frontend | `node --test tests/*.test.cjs` (lista explícita) | 13/13 | `node --test tests/` falla en Node actual: hay que pasar los archivos |
-| infraestructura | `docker compose ... config --quiet` | OK (también overlay Grafana) | No se arrancaron contenedores |
+| infraestructura | `docker compose ... config --quiet` | OK (también overlay Grafana) | — |
+| stack completo | `docker compose -f .../docker-compose.yml -f .../compose.swagger.yaml up -d --build` | 7 servicios Up; prediction y data-processing healthy | Proyecto `green-ai-mono`; workspace antiguo sin contenedores en marcha |
+| smoke HTTP | `python software/infraestructura/smoke/smoke.py --out docs/evidencias/smoke-20261106.json` | **14/14** | Mismos casos que el smoke de semana 10 + monitoring vía Prometheus, JWT inválido, CORS y frontend |
+
+### Smoke 2026-11-06 (datos SIMULADOS)
+Prediction ready/OpenAPI 200; predicción 200 `origin=estimated`; recomendación 200 `eligible_for_review`,
+`executionAllowed=false`; recomendación inválida 422; data-processing health 200; monitoring catálogo y CPU actual 200
+con series `origin=simulated` del simulador vía Prometheus; Gateway 401 sin JWT (predicción y recomendación) y con JWT
+inválido; preflight CORS desde `http://127.0.0.1:13001` aceptado; frontend 200; Prometheus con jobs prediction y
+simulator UP. **No** autentica un usuario real de Supabase ni prueba precisión o ahorro.
+
+### Consumo observado en reposo (docker stats, Windows/WSL2)
+gateway 283 MiB · monitoring 211 MiB · prediction 174 MiB · data-processing 76 MiB · prometheus 41 MiB ·
+simulator 22 MiB · frontend 9 MiB. Imágenes: prediction 2,85 GB (el lock incluye jupyter/mlflow), gateway 520 MB,
+monitoring 457 MB. Relevante para D-06 (Go) y D-07 (hosting con 512 MB típicos en planes gratuitos); medición única, sin carga.
 Avisos de deprecación en pytest/Maven no se ocultaron ni se cambiaron umbrales.
 El pipeline de Prediction reescribe `software/prediction/results/manifest.json` (versionado); se restauró con `git checkout`.
 
@@ -61,10 +76,11 @@ solo el caso mostrado; Swagger no prueba precisión; CPU simulada no es energía
 - `.gitignore` del workspace antiguo está envuelto literalmente en un here-string de PowerShell (`@' ... '@ | Set-Content`): sus reglas pueden no aplicarse como se espera. No se modificó.
 
 ## Pendientes (en orden propuesto)
-1. Simulator: ejecutar la suite en Docker para confirmar que el fallo es solo de Windows. Intento del 2026-11-06:
-   Docker Desktop no estaba en ejecución (`dockerDesktopLinuxEngine` no encontrado); no se arrancó por iniciativa propia
-   para no levantar a la vez los contenedores del workspace antiguo. Comando: ver `software/simulator/README.md`.
-2. Arrancar `green-ai-mono` con Docker y repetir el smoke del handoff de semana 10 (frontend → gateway → servicios, recomendación con telemetría simulada, 401 sin JWT, 422 inválido).
+1. ~~Simulator en Docker~~ — hecho (10/10) tras arrancar Docker Desktop con autorización del usuario.
+2. ~~Arrancar `green-ai-mono` y smoke~~ — hecho (14/14). Falta: recorrido desde el navegador con sesión real de
+   Supabase (añadir `http://127.0.0.1:13001` a los redirects de Supabase Auth si se usa login) y capturas sin tokens.
+   El stack queda en marcha; detener con `docker compose -f software/infraestructura/docker-compose.yml down` (sin `-v`).
+   Separar dependencias de entrenamiento/notebooks de la imagen de inferencia de Prediction (2,85 GB).
 3. Graphify del monorepo: generado con `graphify update .` (ver abajo); revisar `.graphifyignore`.
 4. Hosting (D-07): investigación con fuentes oficiales fechadas y recomendación; workflows `.github/workflows` con activación manual (`workflow_dispatch`) y GitHub Environments. Adaptar `software/frontend/.github/workflows/deploy.yml` (no se ejecuta desde una subcarpeta).
 5. SQLite (D-05): inventario de persistencia real por servicio, puertos y pruebas de contrato.
