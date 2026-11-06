@@ -21,11 +21,37 @@ Formato breve: contexto → decisión → consecuencias. Estado: **Aceptada**, *
 ## D-04 Compose del monorepo aislado — Aceptada
 - Proyecto `green-ai-mono` y puertos 18000/18080/18081/19090/13001 (Swagger 18002/18003, Grafana 13002) configurables por `MONO_*`. Validado con `docker compose config`; **no arrancado todavía**.
 
-## D-05 SQLite para desarrollo — Propuesta
+## D-05 SQLite para desarrollo — Aceptada e implementada (2026-11-06)
 - Requisito: persistencia ligera en desarrollo sin reemplazar Supabase/PostgreSQL.
 - Restricción docente (lista de cotejo, criterio 11): "uso de procedimientos almacenados". SQLite no tiene procedimientos, RLS ni Auth; esa evidencia **solo** puede venir de Supabase/PostgreSQL.
-- Propuesta: puerto de persistencia por servicio que realmente persista (pendiente inventario: Prediction/recomendaciones, Data Processing); adaptador SQLite (dev) y PostgreSQL (test/prod) con el mismo esquema en lo posible; pruebas de contrato comunes a ambos; integración contra un Supabase de pruebas antes de promover a `main`. Monitoring y Gateway sin BD.
-- Autenticación local: pendiente de diseño. Cualquier emisor JWT de desarrollo será explícito, activado solo por perfil `dev` y rechazado en producción por configuración probada. No se desactiva la validación JWT del Gateway.
+- **Inventario de persistencia real** (Graphify + lectura): el único acceso a BD del backend es la lectura de
+  históricos de `public.logs` en Data Processing (puerto `HistoricalLogsSource`, adaptador PostgREST de Supabase,
+  solo lectura). Prediction no persiste (modelo como artefacto de archivo). Monitoring y Gateway sin BD (se mantienen
+  así). El frontend usa Supabase Auth y las tablas `user_profiles`/`user_roles` con RLS y trigger
+  (`supabase-auth-setup.sql`): eso no tiene equivalente SQLite y no se simula.
+- **Implementación (Data Processing):**
+  - `SqliteHistoricalLogsAdapter` (solo lectura, `mode=ro`), mismo puerto y mismas reglas: rango inclusivo,
+    orden `(timestamp, log_id)`, cursor keyset, solo 7 columnas.
+  - Esquema `infrastructure/persistence/sqlite/schema.sql` equivalente a `hardware`/`logs`, con divergencias
+    documentadas en el propio archivo: sin `usuario`, timestamps TEXT UTC canónicos forzados por CHECK y REAL
+    en lugar de numeric.
+  - Semilla `scripts/seed_sqlite.py` con Hardware y Logs de `BD_GreenAi.xlsx` (sintéticos; **nunca** la hoja
+    Usuarios). Tarda unos 13 s y ocupa 26 MB.
+  - Selección por entorno: `HISTORICAL_SOURCE=none|supabase|sqlite`, compatible con `SUPABASE_ENABLED`.
+    `sqlite` exige `APP_ENV=development|test`, y `APP_ENV` vale `production` por defecto.
+  - **Contrato ampliado:** cada registro declara `source: "supabase" | "sqlite"` (antes fijo en `"supabase"`,
+    lo que con SQLite habría mentido sobre la procedencia). Se regeneró el OpenAPI; el Gateway lo reenvía sin
+    esquema y el frontend no lo consume.
+- **Pruebas de contrato comunes** (`tests/test_historical_logs_contract.py`): la misma batería contra SQLite
+  (siempre) y contra PostgreSQL 17 + PostgREST v13 reales (`compose.contract-postgres.yml`, secretos aleatorios
+  por ejecución). Este segundo backend prueba la consulta del adaptador Supabase **sin modificarla**. También
+  comprueba que la identidad de lectura no puede escribir. Limitación: no es Supabase (sin su Auth, RLS ni red)
+  y **no** sustituye una prueba contra un proyecto Supabase de pruebas antes de promover a `main`.
+- **Autenticación local:** no se añadió ningún proveedor JWT de desarrollo. El Gateway sigue validando JWT de
+  Supabase en todos los perfiles. Para probar con usuario, usar el proyecto Supabase (idealmente uno de pruebas),
+  añadiendo `http://127.0.0.1:13001` a sus redirects. Los servicios internos se pueden probar sin JWT por sus
+  puertos loopback (18002/18003), que no se publican. Si en el futuro se añade un emisor de desarrollo, deberá
+  activarse solo con `APP_ENV=development` y tener una prueba que demuestre su rechazo en `production`.
 
 ## D-06 Go — Pendiente
 - Candidatos naturales por tamaño y forma: Gateway (proxy + JWT + CORS) y Monitoring (cliente de Prometheus). Simulator también es pequeño.

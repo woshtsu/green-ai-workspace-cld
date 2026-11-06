@@ -5,7 +5,8 @@ Hechos históricos previos: `../output/semana10/HANDOFF.md` (el estado y las pru
 
 ## Estado en una línea
 Monorepo creado, fuentes copiadas sin Git anidados; las 6 suites de pruebas reproducen la línea base; el stack
-`green-ai-mono` arranca en Docker y pasa el smoke 14/14 con datos simulados; Antigravity CLI validado con una revisión
+`green-ai-mono` arranca en Docker y pasa el smoke 14/14 con datos simulados; perfil SQLite de desarrollo con
+pruebas de contrato compartidas con PostgreSQL/PostgREST real; Antigravity CLI validado con una revisión
 de solo lectura y un cambio pequeño integrado. **Nada publicado, nada desplegado, workspace antiguo intacto.**
 
 ## Requisitos del encargo (resumen)
@@ -71,7 +72,26 @@ RAM < 35 MB, ahorro 18,4 %, 50 propuestas rechazadas, afirmaciones de Kubernetes
 `entregables/semana12/` contiene 66 menciones de estos términos; revisarlo antes de reutilizarlo. Capturas prueban
 solo el caso mostrado; Swagger no prueba precisión; CPU simulada no es energía física.
 
+## Perfil SQLite (2026-11-06) — ver D-05
+| Prueba | Resultado |
+|---|---|
+| Data Processing completo, sin PostgREST | 106 passed, 8 skipped (PostgREST de pruebas no configurado → NO verificado en esa ejecución) |
+| Data Processing completo + PostgreSQL 17/PostgREST v13 de pruebas | **114 passed** (contrato idéntico en ambos backends + lector sin escritura) |
+| Stack con `compose.sqlite-dev.yml`, semilla completa (50 hardware, 100 000 logs) | `/api/v1/historical-logs` 200 `source=sqlite`; página 2 por cursor coherente; cursor inválido 422; Gateway sin JWT 401 |
+| Smoke del stack con el overlay | 14/14 |
+Comandos: ver `software/infraestructura/compose.sqlite-dev.yml` y `compose.contract-postgres.yml` (cabeceras).
+La BD de contrato se levantó y destruyó (`down -v`) en cada ejecución; sus contraseñas y el secreto JWT fueron
+aleatorios en memoria y no se guardaron.
+
 ## Riesgos detectados
+- **Supabase con RLS permisiva (según el snapshot `software/simulator/docs/assets/esquema-verificado.json`, 2026-09-22):**
+  políticas `"Permitir todo"` (`ALL`, `true`, rol `public`) en `hardware`, `logs` y `usuario`. Además `usuario`
+  tiene una columna `password` junto a `password_hash`. Si sigue vigente, la clave *publishable* (pública en el
+  frontend) permitiría leer y modificar esas tablas. **No se comprobó el estado actual ni se tocó la BD**. Revisar
+  con prioridad en Supabase: restringir las políticas y eliminar `password` en texto plano.
+- `BD_GreenAi.xlsx` (versionado aquí y en el repo original) contiene en la hoja `Usuarios` contraseñas en texto
+  plano de usuarios sintéticos (`Admin123!N`). No son credenciales reales conocidas, pero no deben reutilizarse; si
+  se usaron para crear usuarios reales en Supabase, cambiarlas. La semilla SQLite no carga esa hoja.
 - `GreenAi_TPI/Backend/.env` versionado en GitHub (clave Supabase *publishable* + URL). Decide el propietario.
 - `.gitignore` del workspace antiguo está envuelto literalmente en un here-string de PowerShell (`@' ... '@ | Set-Content`): sus reglas pueden no aplicarse como se espera. No se modificó.
 
@@ -83,8 +103,8 @@ solo el caso mostrado; Swagger no prueba precisión; CPU simulada no es energía
    Separar dependencias de entrenamiento/notebooks de la imagen de inferencia de Prediction (2,85 GB).
 3. Graphify del monorepo: generado con `graphify update .` (ver abajo); revisar `.graphifyignore`.
 4. Hosting (D-07): investigación con fuentes oficiales fechadas y recomendación; workflows `.github/workflows` con activación manual (`workflow_dispatch`) y GitHub Environments. Adaptar `software/frontend/.github/workflows/deploy.yml` (no se ejecuta desde una subcarpeta).
-5. SQLite (D-05): inventario de persistencia real por servicio, puertos y pruebas de contrato.
-6. Evaluación Go (D-06) para Gateway/Monitoring con medición.
+5. ~~SQLite (D-05)~~ — hecho. Pendiente: ejecutar `tests/test_historical_logs_contract.py` contra un proyecto
+   **Supabase de pruebas** (requiere su URL, API key y JWT de lectura, aportados por el usuario) antes de promover a `main`.6. Evaluación Go (D-06) para Gateway/Monitoring con medición.
 7. DOCX: instalar Pandoc de forma reproducible (o `pypandoc-binary` en `.tools/`) y exportar `entregables/semana12/`; revisar tablas e imágenes visualmente.
 8. Perfiles de Agency Agents (máx. 3) tras verificar nombres en el repositorio oficial.
 9. Comprobación final: sin gitlinks/secretos/Git anidados, arranque desde clon limpio, lista de aceptación.

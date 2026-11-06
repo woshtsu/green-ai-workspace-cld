@@ -89,6 +89,20 @@ SQL ni cambia grants o RLS. No usar el token de usuario ni compartir secretos en
 `HISTORICAL_MAX_PAGE_SIZE=500` admite 1..500; solicitar un límite no mayor al configurado.
 No versionar secretos. El código no crea tablas, no modifica RLS y no hace escrituras.
 
+### Perfil SQLite de desarrollo
+`HISTORICAL_SOURCE=none|supabase|sqlite` elige el adaptador del puerto `HistoricalLogsSource`. Si se deja vacío,
+se mantiene el comportamiento anterior: decide `SUPABASE_ENABLED`. `sqlite` requiere `APP_ENV=development` o
+`test` (por defecto `production`, que lo rechaza al arrancar) y `SQLITE_PATH` apuntando a una base existente:
+
+```powershell
+.venv\Scripts\python.exe scripts\seed_sqlite.py --db .local\greenai-dev.sqlite   # Hardware y Logs sintéticos, sin Usuarios
+$env:APP_ENV='development'; $env:HISTORICAL_SOURCE='sqlite'; $env:SQLITE_PATH='.local\greenai-dev.sqlite'
+```
+Cada registro devuelto declara `source` (`supabase` o `sqlite`). SQLite no replica Auth, RLS ni procedimientos:
+las divergencias están en `infrastructure/persistence/sqlite/schema.sql`. Las pruebas de contrato
+`tests/test_historical_logs_contract.py` corren siempre contra SQLite, y contra PostgreSQL + PostgREST de pruebas
+si se definen `CONTRACT_POSTGREST_URL` y `CONTRACT_JWT_SECRET` (ver `software/infraestructura/compose.contract-postgres.yml`).
+
 ## Errores y correlación
 
 Todos los errores documentados usan `application/problem+json`, `code`, `status`,
