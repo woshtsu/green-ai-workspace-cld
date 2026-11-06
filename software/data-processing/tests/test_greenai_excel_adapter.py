@@ -3,7 +3,7 @@ import sys
 
 
 SERVICE_ROOT = Path(__file__).resolve().parents[1]
-PROJECT_ROOT = SERVICE_ROOT.parent
+PROJECT_ROOT = SERVICE_ROOT  # monorepo: datasets/ vive dentro del servicio
 
 sys.path.insert(
     0,

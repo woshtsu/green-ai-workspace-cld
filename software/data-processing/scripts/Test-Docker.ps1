@@ -3,7 +3,7 @@ param()
 
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
-$fixturePath = Join-Path (Split-Path -Parent $projectRoot) 'datasets/raw/synthetic_greenai/BD_GreenAi.xlsx'
+$fixturePath = Join-Path $projectRoot 'datasets/raw/synthetic_greenai/BD_GreenAi.xlsx'
 $runId = [Guid]::NewGuid().ToString('N').Substring(0, 12)
 $imageName = "green-ai-data-processing:verify-$runId"
 $networkName = "greenai-test-$runId"
