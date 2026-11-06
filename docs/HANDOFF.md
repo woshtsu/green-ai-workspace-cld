@@ -61,7 +61,9 @@ solo el caso mostrado; Swagger no prueba precisión; CPU simulada no es energía
 - `.gitignore` del workspace antiguo está envuelto literalmente en un here-string de PowerShell (`@' ... '@ | Set-Content`): sus reglas pueden no aplicarse como se espera. No se modificó.
 
 ## Pendientes (en orden propuesto)
-1. Simulator: ejecutar la suite en Docker para confirmar que el fallo es solo de Windows.
+1. Simulator: ejecutar la suite en Docker para confirmar que el fallo es solo de Windows. Intento del 2026-11-06:
+   Docker Desktop no estaba en ejecución (`dockerDesktopLinuxEngine` no encontrado); no se arrancó por iniciativa propia
+   para no levantar a la vez los contenedores del workspace antiguo. Comando: ver `software/simulator/README.md`.
 2. Arrancar `green-ai-mono` con Docker y repetir el smoke del handoff de semana 10 (frontend → gateway → servicios, recomendación con telemetría simulada, 401 sin JWT, 422 inválido).
 3. Graphify del monorepo: generado con `graphify update .` (ver abajo); revisar `.graphifyignore`.
 4. Hosting (D-07): investigación con fuentes oficiales fechadas y recomendación; workflows `.github/workflows` con activación manual (`workflow_dispatch`) y GitHub Environments. Adaptar `software/frontend/.github/workflows/deploy.yml` (no se ejecuta desde una subcarpeta).
