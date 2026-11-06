@@ -16,12 +16,12 @@ Base: `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md`, §VII del inform
 | Objetivo | Prototipo con monitoreo, predicción y recomendaciones explicables bajo supervisión humana |
 | Entregables | PMV1 (observabilidad), PMV2 (predicción y recomendación), PMV3 (validación experimental); informe; video por PMV; repositorio |
 | Excluye | Acciones automáticas sobre producción; medición energética física (salvo que la UC la provea); despliegue institucional |
-| Equipo (4) | Cristhian Quintana Carhuaricra — PO y gobierno · Gina Barrera Peña — Scrum Master y ML · Ricardo Porras Veli — Backend y MLOps · Leonid Huamán Collazos — Infraestructura y UI/UX |
+| Equipo (4) | Jhonny Cristhian Quintana Carhuaricra — PO y gobierno · Gina Barrera Peña — Scrum Master y ML · Ricardo Porras Veli — Backend y MLOps · Leonid Huamán Collazos — Infraestructura y UI/UX |
 | Asesor | Ing. Jorge Alfredo Guevara Jiménez |
 | Hitos | PoC (S4) · cierre PMV1 (S6) · cierre PMV2 (S12) · revisión general (S13) · cierre PMV3 y sustentación (S15–S16) |
 | Supuestos y restricciones | Costo monetario S/ 0; 10 h/semana por integrante; sin datos institucionales garantizados |
-**Inconsistencia a corregir:** el §VII.4.2 del informe entregado nombra a «Jhonny Quintana»; la carátula, a
-«Cristhian Quintana Carhuaricra». Unificar con el nombre oficial de la matrícula.
+**Nombre oficial (confirmado por el usuario el 2026-11-06):** JHONNY CRISTHIAN QUINTANA CARHUARICRA. La carátula
+del informe entregado («Cristhian Quintana Carhuaricra») omite el primer nombre: corregirla en la semana 13.
 Nota: la rúbrica S8 asume 5 roles y el equipo tiene 4. Asignar QA/DevOps de forma compartida y declararlo.
 
 ## 2. Enfoque y metodología
