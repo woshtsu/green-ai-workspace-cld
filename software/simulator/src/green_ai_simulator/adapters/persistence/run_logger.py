@@ -63,3 +63,13 @@ class RunLogger:
         if self.samples_f and not self.samples_f.closed:
             self.samples_f.close()
         self._write_manifest()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc, tb):
+        if exc_type is not None and self.status not in ("COMPLETED", "STOPPED", "FAILED"):
+            reason = f"{exc_type.__name__}: {exc}" if exc and str(exc) else exc_type.__name__
+            self.update_status("FAILED", reason)
+        self.close()
+        return False
