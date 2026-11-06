@@ -1,0 +1,22 @@
+﻿# Indice de codigo y documentacion tecnica del monorepo.
+.tools/
+.agents/
+.venv/
+**/.venv/
+**/node_modules/
+**/target/
+**/__pycache__/
+exportados/
+agy-runs/
+AGENTS.md
+**/AGENTS.md
+CLAUDE.md
+*.xlsx
+*.docx
+*.pdf
+software/data-processing/datasets/
+software/prediction/data/
+software/prediction/results/
+software/prediction/models/
+software/simulator/runs/
+entregables/semana12/evidencias/
