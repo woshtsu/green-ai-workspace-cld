@@ -1,6 +1,6 @@
 # Reglas de green-ai-monitoring
 
-- Trabajar únicamente en este repositorio y no crear Git padre ni modificar proyectos hermanos. Publicar o hacer push solo por solicitud explícita del usuario.
+- Trabajar dentro de software/monitoring salvo encargo explícito; es un servicio del monorepo (un único Git en la raíz, política común en ../../AGENTS.md). Publicar o hacer push solo por solicitud explícita del usuario.
 - Conservar Java objetivo 21, Spring Boot 4.1.1 y Maven Wrapper fijado. Sin APIs posteriores a Java 21 o preview. Compilar/ejecutar Docker con Java 21 cuando se autorice empaquetado.
 - Dominio y aplicación Java puros; puertos de entrada/salida; adaptadores y configuración separados. No depender de Spring/HTTP/Prometheus desde el núcleo.
 - Alcance actual: Grupo A completo, fixture explícito, MVC, validaciones, errores, OpenAPI, adaptador Prometheus y Dockerfile Java 21. Sin Kubernetes, autenticación o servicios adicionales en este incremento.

@@ -1,6 +1,6 @@
 # Reglas de green-ai-gateway
 
-- Este directorio es un repositorio independiente. No modificar proyectos hermanos desde una tarea del Gateway.
+- Este directorio es un servicio del monorepo green-ai-monorepo (un único Git en la raíz; política común en ../../AGENTS.md). No modificar otros servicios desde una tarea del Gateway salvo que el encargo lo indique.
 - Conservar Java 21, Spring Boot 4.1.1 y el release train compatible de Spring Cloud fijado en el POM.
 - El Gateway es la única entrada del Frontend y solo publica rutas y métodos incluidos explícitamente.
 - No consultar Prometheus o Supabase; no ejecutar SQL, PromQL, ETL, predicción ni simulación.
