@@ -84,6 +84,26 @@ Comandos: ver `software/infraestructura/compose.sqlite-dev.yml` y `compose.contr
 La BD de contrato se levantó y destruyó (`down -v`) en cada ejecución; sus contraseñas y el secreto JWT fueron
 aleatorios en memoria y no se guardaron.
 
+## Sprint actual frente al plan (revisado el 2026-11-06)
+Plan base: `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md` §4.8 (8 sprints de 2 semanas desde el
+25/08/2026).
+- **Calendario:** el 06/11 corresponde al **Sprint 6** (03–14/11, semanas 11–12). La semana 13 empieza el **Sprint
+  7** (17–28/11). El curso va una semana por delante del calendario del plan: el informe 9–12 ya se entregó el
+  05/11. Ajustar las fechas del cronograma, línea base frente a ejecutado.
+
+| Sprint | Comprometido | Estado real |
+|---|---|---|
+| 5 (S9–10) | Modelo seleccionado «≥ 90 %», Policy Engine, API | Hecho (RF, política, `/v1/predictions`, `/v1/recommendations`). El criterio «≥ 90 %» no aplica a una regresión: reformular como MAE frente al baseline. MLflow no evidenciado |
+| 6 (S11–12) | Grafana con predicciones y eficiencia, alertas, indicadores de kWh y CO₂e | Parcial: el dashboard `pmv2.json` existe; solo hay alerta de disponibilidad; `/v1/energy` calcula kWh, pero no hay datos de potencia reales y el CO₂e exige un factor con fuente |
+| Lab. 11 (S11) | **Despliegue en la nube (no localhost)**, BD remota con *seeding*, pruebas G/W/T con URL pública | **Atrasado**: solo hay servicios antiguos en Render; el monorepo no está desplegado. Bloquea el video (ind. 9–10) |
+| **7 (S13–14)** | **RBAC, reportes PDF/CSV, diseño del plan experimental y ejecución del baseline** | RBAC casi hecho (ADMIN/OPERATOR en el Gateway; falta el rol «observador»). Reportes PDF/CSV, plan experimental y baseline **no iniciados** |
+| 8 (S15–16) | Experimento Green AI, análisis comparativo, informe y sustentación | Pendiente |
+
+Criterio del PMV3 por corregir: «ahorro energético ≥ 15 %» no tiene sustento. Reformular como «medir la
+diferencia de energía estimada, utilización y SLA frente al baseline, con su incertidumbre».
+Orden recomendado: (1) desplegar a staging (D-07) → (2) cerrar los pendientes del Sprint 6 → (3) Sprint 7:
+plan experimental + baseline, reportes CSV/PDF, rol observador → (4) documento de la semana 13.
+
 ## Documentación académica corregida (2026-11-06, segunda parte)
 - El usuario aportó las guías del docente (`guias/exportados_docente/`, leídas íntegras), los trabajos previos
   (`guias/TrabajosDesarrollados/`) y 9 artículos (`guias/articulos/`).
