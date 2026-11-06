@@ -6,7 +6,8 @@ Hechos históricos previos: `../output/semana10/HANDOFF.md` (el estado y las pru
 ## Estado en una línea
 Monorepo creado, fuentes copiadas sin Git anidados; las 6 suites de pruebas reproducen la línea base; el stack
 `green-ai-mono` arranca en Docker y pasa el smoke 14/14 con datos simulados; perfil SQLite de desarrollo con
-pruebas de contrato compartidas con PostgreSQL/PostgREST real; Antigravity CLI validado con una revisión
+pruebas de contrato compartidas con PostgreSQL/PostgREST real; Gateway Go equivalente al Java (alternativa, no
+predeterminada); Antigravity CLI validado con una revisión
 de solo lectura y un cambio pequeño integrado. **Nada publicado, nada desplegado, workspace antiguo intacto.**
 
 ## Requisitos del encargo (resumen)
@@ -104,7 +105,10 @@ aleatorios en memoria y no se guardaron.
 3. Graphify del monorepo: generado con `graphify update .` (ver abajo); revisar `.graphifyignore`.
 4. Hosting (D-07): investigación con fuentes oficiales fechadas y recomendación; workflows `.github/workflows` con activación manual (`workflow_dispatch`) y GitHub Environments. Adaptar `software/frontend/.github/workflows/deploy.yml` (no se ejecuta desde una subcarpeta).
 5. ~~SQLite (D-05)~~ — hecho. Pendiente: ejecutar `tests/test_historical_logs_contract.py` contra un proyecto
-   **Supabase de pruebas** (requiere su URL, API key y JWT de lectura, aportados por el usuario) antes de promover a `main`.6. Evaluación Go (D-06) para Gateway/Monitoring con medición.
+   **Supabase de pruebas** (requiere su URL, API key y JWT de lectura, aportados por el usuario) antes de promover a `main`.6. ~~Evaluación Go (D-06)~~ — Gateway Go validado (30 pruebas, 0 diferencias en 39 casos frente a Java, smoke 14/14,
+   16 MB / ~10 MiB / 0,5 s frente a 520 MB / ~290 MiB / 6–8 s). **No es el predeterminado**; activarlo es decisión del
+   usuario/equipo (afecta a `guia-exposicion` y a `software/gateway/AGENTS.md`). Monitoring en Go: solo si D-07 lo
+   justifica. Comandos: `software/gateway-go/README.md`. El contenedor `gateway-go` (puerto 18082) queda en marcha.
 7. DOCX: instalar Pandoc de forma reproducible (o `pypandoc-binary` en `.tools/`) y exportar `entregables/semana12/`; revisar tablas e imágenes visualmente.
 8. Perfiles de Agency Agents (máx. 3) tras verificar nombres en el repositorio oficial.
 9. Comprobación final: sin gitlinks/secretos/Git anidados, arranque desde clon limpio, lista de aceptación.

@@ -32,5 +32,9 @@ developers.google.com/gemini-code-assist/docs/deprecations/code-assist-individua
 | — | Sondas de permisos | `command(uv)`, `command(uv --version)` denegados; `command(*)` permitido; regex anclada con cwd del servicio permitido | — | ~8 000 c/u |
 | 02b | Cambio RunLogger (cwd = software/simulator) | ídem | Diff limitado a los 2 archivos, 4 pruebas nuevas; Claude reejecutó: 10 tests, 1 fallo previo de Windows. Integrado. | 135 385 |
 
+| 03 | Revisión de seguridad solo lectura de `software/gateway-go` (cwd del servicio) | deny escritura/comandos/URL/MCP | 384 s, `SUCCESS`, sin denegaciones. 8 hallazgos con archivo:línea; Claude verificó cada uno: 7 ciertos (3 sobre recarga JWKS, la más grave un reintento por petición tras fallo), 1 falso (X-Forwarded-For). Todos los ciertos se corrigieron con prueba. `git_changed=true` se debió a ediciones de Claude en paralelo, no del agente. | 110 278 |
+
 Consumo informado por la herramienta en tokens; no informa costo ni cuota restante.
+Lección del encargo 03: `git_changed` compara el árbol completo; si Claude edita en paralelo, verificar el diff
+de los archivos del encargo (o usar un worktree) antes de atribuir cambios al agente.
 Conclusión: la integración funciona para revisiones y cambios pequeños **con revisión obligatoria**; un `SUCCESS` puede venir vacío.

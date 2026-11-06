@@ -1,0 +1,51 @@
+﻿ARRANQUE hasta health 200 (s): java=6.49 go=0.45
+MEMORIA en reposo: gwdiff-java=224.1MiB / 7.718GiB  gwdiff-go=2.34MiB / 7.718GiB
+caso                                         java (estado ctype acao)   go                         
+sin token                                    401 problem+json false     401 problem+json false     =
+catálogo ADMIN                               200 json false             200 json false             =
+current OPERATOR + request id                200 json false             200 json false             =
+monitoring métrica inválida (422 upstream)   400 problem+json false     400 problem+json false     =
+processing history                           200 json false             200 json false             =
+historical-logs                              200 json false             200 json false             =
+predicción cuerpo inválido (422 upstream)    400 json false             400 json false             =
+recomendación inválida                       422 json false             422 json false             =
+rol ROOT                                     403 problem+json false     403 problem+json false     =
+sin rol                                      403 problem+json false     403 problem+json false     =
+método no publicado                          403 problem+json false     403 problem+json false     =
+ruta no publicada                            403 problem+json false     403 problem+json false     =
+ruta no publicada sin token                  401 problem+json false     401 problem+json false     =
+actuator prometheus con token                403 problem+json false     403 problem+json false     =
+emisor erróneo                               401 problem+json false     401 problem+json false     =
+audiencia errónea                            401 problem+json false     401 problem+json false     =
+expirado 2 min                               401 problem+json false     401 problem+json false     =
+expirado 30 s                                401 problem+json false     401 problem+json false     =
+expirado 5 s                                 401 problem+json false     401 problem+json false     =
+expirado 1 s                                 401 problem+json false     401 problem+json false     =
+nbf futuro 2 min                             401 problem+json false     401 problem+json false     =
+nbf futuro 20 s                              200 json false             200 json false             =
+sub vacío                                    401 problem+json false     401 problem+json false     =
+aud en lista                                 200 json false             200 json false             =
+role anon                                    401 problem+json false     401 problem+json false     =
+is_anonymous                                 401 problem+json false     401 problem+json false     =
+otra clave                                   401 problem+json false     401 problem+json false     =
+alg none                                     401 problem+json false     401 problem+json false     =
+HS256                                        401 problem+json false     401 problem+json false     =
+Basic                                        401 problem+json false     401 problem+json false     =
+preflight ok                                 200 - true                 200 - true                 =
+preflight otro origen                        403 - false                403 - false                =
+preflight método DELETE                      403 - false                403 - false                =
+simple con origen permitido                  200 json true              200 json true              =
+simple con otro origen                       403 - false                403 - false                =
+cuerpo > 2 MB                                413 - false                413 problem+json false     =
+cabecera 17 KB                               431 - false                431 text/plain false       =
+health liveness                              200 json false             200 json false             =
+openapi                                      200 octet-stream false     200 text/plain false       =
+
+Diferencias: 0 de 39 casos
+
+CARGA java  proxy catálogo (ADMIN)   n=2000 conc=16 p50=26.24ms p95=57.29ms rps=542 inesperados=0
+CARGA java  rechazo 401 (sin token)  n=2000 conc=16 p50=6.89ms p95=17.2ms rps=2001 inesperados=0
+CARGA go    proxy catálogo (ADMIN)   n=2000 conc=16 p50=3.54ms p95=7.45ms rps=4139 inesperados=0
+CARGA go    rechazo 401 (sin token)  n=2000 conc=16 p50=510µs p95=3.21ms rps=16648 inesperados=0
+MEMORIA tras carga: gwdiff-java=287MiB / 7.718GiB CPU=0.16%  gwdiff-go=9.812MiB / 7.718GiB CPU=0.00%
+IMAGEN: green-ai-mono-gateway-go:local=16.2MB  green-ai-mono-gateway-go:latest=16.2MB  green-ai-mono-gateway:latest=520MB
