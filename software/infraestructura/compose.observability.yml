@@ -1,14 +1,15 @@
+# Overlay opcional de Grafana sobre docker-compose.yml.
 services:
   grafana:
     image: grafana/grafana:12.4.0
     ports:
-      - "127.0.0.1:3002:3000"
+      - "127.0.0.1:${MONO_GRAFANA_PORT:-13002}:3000"
     environment:
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?Define GRAFANA_ADMIN_PASSWORD before starting Grafana}
       GF_USERS_ALLOW_SIGN_UP: "false"
     volumes:
-      - ./observability/grafana/provisioning:/etc/grafana/provisioning:ro
-      - ./observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
       - grafana-data:/var/lib/grafana
     depends_on:
       - prometheus

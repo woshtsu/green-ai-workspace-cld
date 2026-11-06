@@ -1,9 +1,9 @@
-# Acceso local a Swagger de los servicios FastAPI.
-# Usar junto con docker-compose.yml desde la raiz del workspace.
+# Acceso local a Swagger de los servicios FastAPI (overlay de docker-compose.yml).
+# docker compose -f software/infraestructura/docker-compose.yml -f software/infraestructura/compose.swagger.yaml up -d
 services:
   prediction:
     ports:
-      - "127.0.0.1:8002:8000"
+      - "127.0.0.1:${MONO_PREDICTION_SWAGGER_PORT:-18002}:8000"
   data-processing:
     ports:
-      - "127.0.0.1:8003:8000"
+      - "127.0.0.1:${MONO_DATAPROC_SWAGGER_PORT:-18003}:8000"

@@ -64,3 +64,6 @@ graphify-out/*.html
 Thumbs.db
 desktop.ini
 *.log
+
+# Configuración local del frontend (publishable key)
+software/frontend/config.local.js
