@@ -1,0 +1,21 @@
+# Overlay de EVALUACIÓN: Gateway Go en paralelo al Java (no lo reemplaza). Mismas variables de entorno.
+#   docker compose -f software/infraestructura/docker-compose.yml -f software/infraestructura/compose.gateway-go.yml up -d --build gateway-go
+#   $env:MONO_GATEWAY_PORT=18082; python software/infraestructura/smoke/smoke.py
+services:
+  gateway-go:
+    build:
+      context: ..
+      dockerfile: gateway-go/Dockerfile
+    ports:
+      - "127.0.0.1:${MONO_GATEWAY_GO_PORT:-18082}:8081"
+    environment:
+      - GATEWAY_MONITORING_BASE_URL=http://monitoring:8080
+      - GATEWAY_DATA_PROCESSING_BASE_URL=http://data-processing:8000
+      - GATEWAY_PREDICTION_BASE_URL=http://prediction:8000
+      - GATEWAY_AUTH_ISSUER_URI=${GATEWAY_AUTH_ISSUER_URI:-https://jpfugpsdhuucmilgysgg.supabase.co/auth/v1}
+      - GATEWAY_AUTH_JWK_SET_URI=${GATEWAY_AUTH_JWK_SET_URI:-https://jpfugpsdhuucmilgysgg.supabase.co/auth/v1/.well-known/jwks.json}
+      - GATEWAY_CORS_ALLOWED_ORIGIN=${GATEWAY_CORS_ALLOWED_ORIGIN:-http://127.0.0.1:13001}
+    depends_on:
+      - monitoring
+      - data-processing
+      - prediction
