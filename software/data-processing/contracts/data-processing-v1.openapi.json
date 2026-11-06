@@ -1319,7 +1319,10 @@
           },
           "source": {
             "type": "string",
-            "const": "supabase",
+            "enum": [
+              "supabase",
+              "sqlite"
+            ],
             "title": "Source"
           },
           "quality": {

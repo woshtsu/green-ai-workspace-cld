@@ -8,7 +8,7 @@ from application.use_cases.read_historical_logs import ReadHistoricalLogsUseCase
 from domain.errors import InvalidQuery, SourceNotConfigured
 from domain.monitoring_contract import Metric
 from infrastructure.adapters.input.monitoring_http_adapter import MonitoringHttpAdapter
-from infrastructure.adapters.input.supabase_historical_logs_adapter import SupabaseHistoricalLogsAdapter
+from infrastructure.historical_sources import historical_source
 from infrastructure.adapters.input.api.models import HistoricalPage, PredictionDataset, ProcessedHistory, Problem
 
 ERRORS = {status: {"description": description,
@@ -66,10 +66,7 @@ def get_historical_logs(
     hardwareId es un filtro, no autorización por usuario. Publicar únicamente detrás del Gateway autorizado.
     """
     settings = request.app.state.settings
-    if not settings.supabase_enabled:
-        raise SourceNotConfigured("La lectura de Supabase no está configurada.")
-    adapter = SupabaseHistoricalLogsAdapter(settings.supabase_url, settings.supabase_key,
-        settings.supabase_token, settings.timeout, request.state.request_id)
+    adapter = historical_source(settings, request.state.request_id)
     return ReadHistoricalLogsUseCase(adapter, settings.historical_page_size).execute(hardware_id, start, end, limit, cursor)
 
 

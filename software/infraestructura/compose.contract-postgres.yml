@@ -1,0 +1,40 @@
+# PostgreSQL + PostgREST de PRUEBAS para el contrato de históricos de Data Processing.
+# No es Supabase: no hay Auth, RLS de Supabase ni red pública. Solo loopback.
+#   $env:CONTRACT_DB_PASSWORD=...; $env:CONTRACT_AUTH_PASSWORD=...; $env:CONTRACT_JWT_SECRET=<32+ caracteres>
+#   docker compose -f software/infraestructura/compose.contract-postgres.yml up -d
+#   $env:CONTRACT_POSTGREST_URL='http://127.0.0.1:13300/rest/v1'; pytest tests/test_historical_logs_contract.py
+name: green-ai-contract
+
+services:
+  db:
+    image: postgres:17.6-alpine
+    environment:
+      POSTGRES_PASSWORD: ${CONTRACT_DB_PASSWORD:?Define CONTRACT_DB_PASSWORD}
+      AUTHENTICATOR_PASSWORD: ${CONTRACT_AUTH_PASSWORD:?Define CONTRACT_AUTH_PASSWORD}
+    volumes:
+      - ../data-processing/infrastructure/persistence/postgres/contract-schema.sql:/docker-entrypoint-initdb.d/00-schema.sql:ro
+      - ../data-processing/infrastructure/persistence/postgres/01-authenticator.sh:/docker-entrypoint-initdb.d/01-authenticator.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 3s
+      retries: 20
+
+  postgrest:
+    image: postgrest/postgrest:v13.0.7
+    environment:
+      PGRST_DB_URI: postgres://authenticator:${CONTRACT_AUTH_PASSWORD}@db:5432/postgres
+      PGRST_DB_SCHEMAS: public
+      PGRST_DB_ANON_ROLE: web_anon
+      PGRST_JWT_SECRET: ${CONTRACT_JWT_SECRET:?Define CONTRACT_JWT_SECRET (32+ caracteres)}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  gateway:
+    image: nginx:1.28.0-alpine
+    ports:
+      - "127.0.0.1:${CONTRACT_POSTGREST_PORT:-13300}:80"
+    volumes:
+      - ./contract-postgres/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - postgrest

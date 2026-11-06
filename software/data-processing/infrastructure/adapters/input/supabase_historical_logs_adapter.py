@@ -15,6 +15,8 @@ def quoted(value):
 
 
 class SupabaseHistoricalLogsAdapter(HistoricalLogsSource):
+    source = "supabase"
+
     def __init__(self, base_url, api_key, read_token, timeout_seconds=10, request_id=None):
         self.base_url = validate_url(base_url, secure=True)
         self.api_key = api_key

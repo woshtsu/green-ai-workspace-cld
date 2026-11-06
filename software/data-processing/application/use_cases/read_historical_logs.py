@@ -9,6 +9,7 @@ from domain.validation import interval, timestamp, utc
 
 UNITS = {"cpu_utilization_pct": "%", "ram_utilization_pct": "%",
          "temperatura_celsius": "degC", "energia_watts": "W"}
+SOURCES = ("supabase", "sqlite")
 
 
 def context(hardware_id, start, end):
@@ -48,9 +49,12 @@ class ReadHistoricalLogsUseCase:
             raise InvalidQuery(f"limit debe estar entre 1 y {self.max_page_size}.")
         scope = context(hardware_id, start, end)
         after = decode_cursor(cursor, scope)
+        source_name = getattr(self.source, "source", "")
+        if source_name not in SOURCES:
+            raise ValueError("El adaptador de históricos debe declarar su procedencia.")
         rows = self.source.read_page(hardware_id, start, end, limit, after)
         if len(rows) > limit:
-            raise InvalidResponse("Supabase excedió el tamaño de página.")
+            raise InvalidResponse("La fuente de históricos excedió el tamaño de página.")
         records, warnings, seen = [], ["Procedencia de los históricos no confirmada; origin=unknown."], set()
         previous_key = after if after else (start, "")
         for row in rows:
@@ -65,7 +69,7 @@ class ReadHistoricalLogsUseCase:
                 seen.add(log_id)
                 previous_key = key
                 record = {"log_id": log_id, "hardware_id": hardware_id,
-                          "timestamp": timestamp(instant), "origin": "unknown", "source": "supabase", "quality": {}}
+                          "timestamp": timestamp(instant), "origin": "unknown", "source": source_name, "quality": {}}
                 for field in UNITS:
                     value = row[field]
                     quality = "valid"
@@ -83,7 +87,7 @@ class ReadHistoricalLogsUseCase:
                         warnings.append(f"Registro {log_id}: {field} marcado {quality}, sin imputación.")
                 records.append(record)
             except (ValueError, TypeError, KeyError) as exc:
-                raise InvalidResponse("Supabase devolvió registros incompatibles con el contrato.") from exc
+                raise InvalidResponse("La fuente de históricos devolvió registros incompatibles con el contrato.") from exc
         # A full page MAY have more data, including server-side caps. Continue
         # after any nonempty page; only an empty page proves exhaustion.
         next_cursor = None

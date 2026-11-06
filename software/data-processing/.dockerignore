@@ -18,3 +18,6 @@ __pycache__
 *.local.json
 datasets
 tests/temp
+.local
+*.sqlite
+*.sqlite3

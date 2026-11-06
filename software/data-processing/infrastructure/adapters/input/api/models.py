@@ -60,7 +60,7 @@ class HistoricalRecord(BaseModel):
     temperatura_celsius: float | None
     energia_watts: float | None
     origin: Literal["unknown"]
-    source: Literal["supabase"]
+    source: Literal["supabase", "sqlite"]
     quality: dict[str, Literal["valid", "missing", "non_finite", "out_of_range"]]
 
 

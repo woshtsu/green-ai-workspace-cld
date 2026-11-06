@@ -18,6 +18,8 @@ def row(log_id="log-1"):
 
 
 class Pages:
+    source = "supabase"
+
     def __init__(self, pages):
         self.pages = iter(pages)
         self.requests = []

@@ -67,3 +67,6 @@ desktop.ini
 
 # Configuración local del frontend (publishable key)
 software/frontend/config.local.js
+
+# Bases SQLite locales de desarrollo
+software/data-processing/.local/

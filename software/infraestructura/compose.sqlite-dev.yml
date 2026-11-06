@@ -1,0 +1,19 @@
+# Overlay de DESARROLLO: históricos de Data Processing desde SQLite (datos sintéticos de BD_GreenAi.xlsx).
+# No sustituye a Supabase: sin Auth, RLS ni procedimientos. El servicio rechaza este perfil con APP_ENV=production.
+# 1) cd software/data-processing; .venv\Scripts\python.exe scripts/seed_sqlite.py --db .local/greenai-dev.sqlite
+# 2) docker compose -f software/infraestructura/docker-compose.yml -f software/infraestructura/compose.swagger.yaml \
+#      -f software/infraestructura/compose.sqlite-dev.yml up -d data-processing
+services:
+  data-processing:
+    environment:
+      APP_ENV: development
+      HISTORICAL_SOURCE: sqlite
+      SQLITE_PATH: /data/greenai-dev.sqlite
+      SUPABASE_ENABLED: "false"
+    volumes:
+      - type: bind
+        source: ../data-processing/.local
+        target: /data
+        read_only: true
+        bind:
+          create_host_path: false
