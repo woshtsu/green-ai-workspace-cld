@@ -205,7 +205,7 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: JWT de Supabase Auth con user_role OPERATOR o ADMIN. Ausente/inválido devuelve 401; rol insuficiente, 403.
+      description: JWT de Supabase Auth con user_role OPERATOR o ADMIN (todas las rutas) o VIEWER (solo GET). Ausente/inválido devuelve 401; rol insuficiente, 403.
   parameters:
     metric:
       name: metric

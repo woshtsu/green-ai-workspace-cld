@@ -485,3 +485,16 @@ func TestOpenAPIDirectoryIsNotListed(t *testing.T) {
 		}
 	}
 }
+
+// HU-14: rol observador (VIEWER) de solo lectura.
+func TestViewerRoleIsReadOnly(t *testing.T) {
+	e := newEnv(t)
+	resp, _ := e.do(req{path: path, token: e.valid("VIEWER")})
+	expect(t, resp, 200)
+	resp, _ = e.do(req{path: "/api/processing/v1/historical-logs?hardwareId=HW1&start=2026-09-01T00:00:00Z&end=2026-09-02T00:00:00Z", token: e.valid("VIEWER")})
+	expect(t, resp, 200)
+	for _, p := range []string{"/api/prediction/v1/predictions", "/api/recommendations/v1/recommendations", "/api/recommendations/v1/energy"} {
+		resp, _ = e.do(req{method: "POST", path: p, token: e.valid("VIEWER"), body: "{}"})
+		expect(t, resp, 403)
+	}
+}

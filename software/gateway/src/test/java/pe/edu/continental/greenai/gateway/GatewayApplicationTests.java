@@ -157,4 +157,11 @@ class GatewayApplicationTests {
             }
         }
     }
+    @Test void viewerRoleIsReadOnly() throws Exception {
+        String viewer = valid("VIEWER");
+        client.get().uri(PATH).headers(h -> h.setBearerAuth(viewer)).exchange().expectStatus().isOk();
+        for (String p : List.of("/api/prediction/v1/predictions", "/api/recommendations/v1/recommendations", "/api/recommendations/v1/energy"))
+            client.post().uri(p).headers(h -> h.setBearerAuth(viewer)).header("Content-Type", "application/json")
+                .bodyValue("{}").exchange().expectStatus().isForbidden();
+    }
 }

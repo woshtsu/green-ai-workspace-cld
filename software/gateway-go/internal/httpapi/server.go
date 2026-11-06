@@ -125,7 +125,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	route, ok := policy.Match(r.Method, r.URL.Path)
-	if !ok || !policy.RoleAllowed(principal.Role) {
+	if !ok || !route.Allows(principal.Role) {
 		problem(w, http.StatusForbidden, "Forbidden", "Tu cuenta no tiene permiso para esta operación.")
 		return
 	}

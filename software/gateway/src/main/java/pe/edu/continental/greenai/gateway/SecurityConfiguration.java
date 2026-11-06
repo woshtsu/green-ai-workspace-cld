@@ -56,7 +56,7 @@ class SecurityConfiguration {
         var converter = new ReactiveJwtAuthenticationConverter();
         converter.setJwtGrantedAuthoritiesConverter(jwt -> {
             String role = jwt.getClaimAsString("user_role");
-            return List.of("ADMIN", "OPERATOR").contains(role == null ? "" : role)
+            return List.of("ADMIN", "OPERATOR", "VIEWER").contains(role == null ? "" : role)
                 ? Flux.just(new SimpleGrantedAuthority("ROLE_" + role)) : Flux.empty();
         });
         return http.csrf(ServerHttpSecurity.CsrfSpec::disable)
@@ -69,10 +69,10 @@ class SecurityConfiguration {
                 .pathMatchers("/actuator/health/**", "/openapi/**").permitAll()
                 .pathMatchers(HttpMethod.GET, "/api/monitoring/v1/metrics/catalog",
                     "/api/monitoring/v1/metrics/current", "/api/monitoring/v1/metrics/history")
-                    .hasAnyRole("OPERATOR", "ADMIN")
+                    .hasAnyRole("OPERATOR", "ADMIN", "VIEWER")
                 .pathMatchers(HttpMethod.GET, "/api/processing/v1/metrics/history",
                     "/api/processing/v1/historical-logs", "/api/processing/v1/prediction/dataset")
-                    .hasAnyRole("OPERATOR", "ADMIN")
+                    .hasAnyRole("OPERATOR", "ADMIN", "VIEWER") // VIEWER (observador, HU-14): solo lectura
                 .pathMatchers(HttpMethod.POST, "/api/prediction/v1/predictions",
                     "/api/recommendations/v1/recommendations", "/api/recommendations/v1/energy")
                     .hasAnyRole("OPERATOR", "ADMIN")

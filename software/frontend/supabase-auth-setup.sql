@@ -3,10 +3,13 @@
 
 do $$
 begin
-  create type public.app_role as enum ('ADMIN', 'OPERATOR');
+  create type public.app_role as enum ('ADMIN', 'OPERATOR', 'VIEWER');
 exception
   when duplicate_object then null;
 end $$;
+
+-- HU-14: rol observador (solo lectura en el Gateway). Idempotente en bases ya creadas.
+alter type public.app_role add value if not exists 'VIEWER';
 
 create table if not exists public.user_profiles (
   id uuid primary key references auth.users(id) on delete cascade,

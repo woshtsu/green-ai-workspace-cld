@@ -48,3 +48,14 @@ func TestRoles(t *testing.T) {
 		}
 	}
 }
+
+func TestViewerIsReadOnly(t *testing.T) {
+	get, _ := Match("GET", "/api/monitoring/v1/metrics/current")
+	post, _ := Match("POST", "/api/prediction/v1/predictions")
+	if !get.Allows("VIEWER") || post.Allows("VIEWER") {
+		t.Fatal("VIEWER debe poder leer (GET) y no invocar inferencia (POST)")
+	}
+	if !post.Allows("OPERATOR") || !post.Allows("ADMIN") || post.Allows("ROOT") || get.Allows("") {
+		t.Fatal("roles ADMIN/OPERATOR completos; desconocidos sin acceso")
+	}
+}

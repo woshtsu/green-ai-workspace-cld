@@ -66,7 +66,16 @@ func Match(method, path string) (Route, bool) {
 }
 
 // RoleAllowed indica si el rol del token puede usar rutas publicadas.
-func RoleAllowed(role string) bool { return allowedRoles[role] }
+func RoleAllowed(role string) bool { return allowedRoles[role] || role == "VIEWER" }
+
+// Allows decide el acceso por ruta: ADMIN y OPERATOR usan todas las rutas publicadas;
+// VIEWER (observador, HU-14) solo las de lectura (GET), no la inferencia ni las recomendaciones.
+func (r Route) Allows(role string) bool {
+	if allowedRoles[role] {
+		return true
+	}
+	return role == "VIEWER" && r.Method == "GET"
+}
 
 // UpstreamPath aplica StripPrefix y PrefixPath.
 func (r Route) UpstreamPath() string {
