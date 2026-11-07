@@ -42,3 +42,35 @@ button:disabled { opacity:.5; cursor:wait; }
 .data-table td:first-child { max-width:240px; overflow-wrap:anywhere; }
 :focus-visible { outline:2px solid var(--neon-cyan); outline-offset:4px; }
 @media(max-width:640px) { .monitor-panel { padding:18px; } .filters label,.filters select { max-width:100%; } .topbar-actions { flex-wrap:wrap; } .monitor-chart { height:280px; } }
+
+/* Sección PMV2 en el Dashboard */
+.section-desc { color: var(--text-muted); font-size: 0.85rem; margin: 4px 0 16px; line-height: 1.4; }
+.pmv2-section { display: flex; flex-direction: column; gap: 20px; }
+.pmv2-header { border-bottom: 1px solid var(--border-soft); padding-bottom: 14px; }
+.pmv2-cards-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.pmv2-card { padding: 20px; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--border-soft); display: flex; flex-direction: column; gap: 16px; }
+.pmv2-card-header h3 { margin: 6px 0 2px; font-size: 1.1rem; color: var(--text-strong); }
+.card-badge { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--neon-cyan); padding: 2px 8px; border-radius: 999px; background: rgba(6, 182, 212, 0.1); border: 1px solid var(--border-cyan); }
+.pmv2-form-grid { display: grid; gap: 10px; margin: 12px 0; }
+.pmv2-form-grid label { display: grid; gap: 4px; font-size: 0.8rem; color: var(--text-muted); }
+.pmv2-form-grid input, .pmv2-form-grid select { padding: 8px 12px; background: var(--input-bg); color: var(--text-main); border: 1px solid var(--border-soft); border-radius: 8px; font-family: var(--mono); font-size: 0.85rem; width: 100%; box-sizing: border-box; }
+.pmv2-actions-row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.pmv2-status { margin: 0; font-size: 0.82rem; color: var(--text-muted); min-height: 1.2em; line-height: 1.4; }
+.pmv2-result-box { background: var(--surface-soft); border: 1px solid var(--border-soft); border-radius: 8px; padding: 12px; font-family: var(--mono); font-size: 0.78rem; color: var(--text-main); max-height: 220px; overflow-y: auto; overflow-wrap: anywhere; }
+.pmv2-result-box[hidden] { display: none; }
+
+/* Tarjeta Experimento */
+.experiment-kpis { display: flex; flex-direction: column; gap: 12px; }
+.exp-kpi-group { background: var(--surface-soft); border: 1px solid var(--border-soft); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.exp-kpi-title { font-size: 0.75rem; text-transform: uppercase; color: var(--neon-cyan); font-weight: 700; letter-spacing: 0.05em; }
+.exp-kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.exp-label { display: block; font-size: 0.7rem; color: var(--text-muted); margin-bottom: 2px; }
+.exp-val { font-family: var(--mono); font-size: 1.1rem; color: var(--text-strong); }
+.exp-delta-row { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border-soft); padding-top: 6px; font-size: 0.78rem; }
+.exp-delta-label { color: var(--text-muted); }
+.exp-delta-val { font-family: var(--mono); color: var(--neon-green); font-weight: 700; }
+.experiment-badge { font-size: 0.75rem; color: var(--neon-amber); border: 1px dashed var(--neon-amber); padding: 8px 12px; border-radius: 6px; background: rgba(245, 158, 11, 0.08); margin: 0; text-align: center; }
+
+@media(max-width: 1024px) {
+  .pmv2-cards-grid { grid-template-columns: 1fr; }
+}
