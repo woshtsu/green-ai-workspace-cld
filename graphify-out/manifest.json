@@ -349,14 +349,14 @@
   },
   "software/data-processing/infrastructure/persistence/postgres/contract-schema.sql": {
     "mtime": 1793990837.0304482,
-    "seen": 1794023537.4762206,
-    "ast_hash": "",
+    "seen": 1794071218.2421083,
+    "ast_hash": "cedf41e738441ba40df69b385d4ae69f",
     "semantic_hash": ""
   },
   "software/data-processing/infrastructure/persistence/sqlite/schema.sql": {
     "mtime": 1793990727.8307588,
-    "seen": 1794023537.476222,
-    "ast_hash": "",
+    "seen": 1794071218.242111,
+    "ast_hash": "c7fe6d68c21d4acc08741b8e4be54bee",
     "semantic_hash": ""
   },
   "software/data-processing/infrastructure/settings.py": {
@@ -577,8 +577,8 @@
   },
   "software/frontend/supabase-auth-setup.sql": {
     "mtime": 1794009107.0467737,
-    "seen": 1794023537.4762692,
-    "ast_hash": "",
+    "seen": 1794071218.242355,
+    "ast_hash": "34a3b6b197274beaa4e506de0cb29bcd",
     "semantic_hash": ""
   },
   "software/frontend/tests/frontend.test.cjs": {

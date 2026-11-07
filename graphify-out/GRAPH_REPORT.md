@@ -6,12 +6,12 @@
 - Unclassified: 60 file(s) not represented in the graph (top: (none) 34, .puml 7, .css 6)
 
 ## Summary
-- 4330 nodes · 7750 edges · 357 communities (276 shown, 81 thin omitted)
+- 4347 nodes · 7774 edges · 357 communities (270 shown, 87 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 496 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ac052617`
+- Built from commit: `edb0b84e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -24,9 +24,9 @@
 - jwks.go
 - InvalidResponse
 - inference/predict.py
-- json
+- run_pipeline
 - GatewayApplicationTests
-- pathlib
+- ProcessGreenAIDatasetUseCase
 - promt.md
 - pytest
 - test_health_and_predict.py
@@ -44,13 +44,13 @@
 - Monitoring explicado desde el código
 - gateway/src/main/resources/application.yaml
 - app.py
-- 11. Implementación, evidencias y trazabilidad de ingeniería
+- 11.8 Roadmap
 - SecurityConfiguration.java
 - steps
 - Arquitectura del API Gateway e integración con Data Processing
-- routes.py
+- timestamp
 - test_sqlite_profile.py
-- PrometheusProperties
+- QueryMetrics
 - org.junit.jupiter.api.Test
 - test_historical_report.py
 - Modelo de base de datos e integración
@@ -66,7 +66,7 @@
 - conocimientos-de-ingenieria.md
 - environment
 - .map
-- run_experiment.py
+- routes.py
 - jwks_test.go
 - Prepare Your Paper Before Styling
 - 2. Conocimiento de Ingenieria.md
@@ -83,13 +83,13 @@
 - Documentación de endpoints de Green AI
 - copiar_fuentes.py
 - racks.js
-- RunLogger
+- engine.py
 - Evaluación práctica por bloques
-- QueryMetrics
+- MonitoringConfiguration.java
 - Green AI — Data Processing
 - app.js
-- runner.py
-- engine.py
+- pathlib
+- _write_outputs
 - HANDOFF-previo-reconciliacion.md
 - III. INGENIERO Y LA SOCIEDAD
 - monitoring_contract.py
@@ -99,26 +99,25 @@
 - Computational demand prediction (ML)
 - PrometheusProperties
 - Fundamentos de Java Spring y arquitectura para Green AI
-- SimulatorCollector
+- clean_dataset
 - Encargo para Claude: migración de Green AI a monorepositorio
-- loader.py
+- Monitoring explicado desde el código
 - Acta_Reunion_Director_Area_TI_Recoleccion_Informacion_Proyecto_20.md
 - Contrato Monitoring v0.1 — propuesta
 - c. Conocimientos de ingeniería
 - services
-- test_runtime_regressions.py
 - volumes
 - ServiceTests
-- harness.py
+- json
 - ProcessMetricsUseCase
 - argparse
 - routes.go
 - environment
 - config.yaml
-- run_simulation
+- gateway/RequestIdFilter.java
 - C1 · Análisis del problema (AG-T08 / AG-C08)
 - Métricas Prometheus y significado de los datos
-- Simulator y su modelo matemático
+- 11. Implementación, evidencias y trazabilidad de ingeniería
 - Integración y demostración de Green AI
 - Supabase y las relaciones del diagrama de Green AI
 - Guía de ensamblaje de microservicios Green AI
@@ -133,7 +132,7 @@
 - Contrato de comunicación por componente
 - Resumen de Integración y Funcionamiento (MVP)
 - grafana
-- Validación — Monitoring Grupo A y adaptador Prometheus
+- Green AI — Monitoring Service
 - C4 · Gestión del proyecto (ICACIT + PMBOK 7 + Scrum)
 - Guion de exposición y defensa técnica
 - Docker aplicado a Green AI
@@ -144,7 +143,7 @@
 - Contexto para Gemini — criterio 5 de Supabase
 - Lista de revisión final del informe Green AI
 - **8\. Aplicación de conocimientos al diseño de la solución**
-- C2 · Conocimientos de ingeniería (AG-I07)
+- web/RequestIdFilter.java
 - 6. Conocimientos especializados del dominio
 - 4. Gestión de Proyecto.md
 - Guia_6_Prueba_de_Concepto_Completa_Revisada.md
@@ -155,7 +154,7 @@
 - Resumen de Integración y Funcionamiento (MVP)
 - project-docs/ENSAMBLAJE-MICROSERVICIOS.md
 - Historias de usuario y plan de evidencias
-- Revision_Arquitectura_Hexagonal.md
+- 11.8.12.1 E1. Capturas de pantalla del software
 - **6\. Conocimientos especializados del dominio**
 - gestion-del-proyecto.md
 - VIII.2. Pruebas y Evidencias de Ejecución por Producto Mínimo Viable (PMV1, PMV2 y PMV3)
@@ -165,7 +164,7 @@
 - data-processing
 - providers
 - datasources
-- Green AI — Monitoring Service
+- Monitoring PMV1: inspección y propuesta
 - features
 - xgboost
 - Model card
@@ -197,10 +196,10 @@
 - org.springframework.boot.autoconfigure.SpringBootApplication
 - MetricsSource
 - prometheus/prometheus.yml
-- Punto de integración para software/simulator
+- resample_to_frequency
 - VII.4. GESTIÓN ECONÓMICA Y PRESUPUESTO DEL PROYECTO
 - random_forest
-- pandas
+- training/train.py
 - H
 - C5 · Uso de herramientas modernas (AG-I11: crear, seleccionar, aplicar, reconocer limitaciones)
 - Pruebas, resultados y discusión (PMV1 y PMV2)
@@ -217,7 +216,7 @@
 - Revisión docente del informe de la Unidad III (semanas 9–12) y plan de levantamiento
 - C6-B · Arquitectura híbrida (microservicios + hexagonal) y despliegue
 - Antecedentes y referencias (ISO 690-2, sistema numérico)
-- Ruta de estudio para exponer Green AI
+- supabase-auth-setup.sql
 - Diagnóstico inicial de la entrega
 - Lista de aceptación para retirar el workspace antiguo
 - Entregables
@@ -263,11 +262,10 @@
 - Decisiones de arquitectura y migración
 - Cómo mejorar la precisión del modelo de predicción de CPU (propuesta, 2026-11-07)
 - VII.5. CRONOGRAMA DE ACTIVIDADES Y DIAGRAMA DE GANTT
-- 2. Necesidades y requerimientos de ingeniería
-- 7.2 Selección de metodología de desarrollo
-- 7.3 Selección de metodología para Machine Learning
-- 7.4 Selección del enfoque de validación
-- 7.5 Selección del enfoque MLOps
+- test_experiment.py
+- CsvDatasetRepository
+- prediction/scripts/export_openapi.py
+- contract-schema.sql
 - 4.6 Plan de entregas en tres PMV
 - 15. Criterios de calidad de la evidencia
 - prediction.js
@@ -300,7 +298,7 @@
 - **1\. Problema complejo de ingeniería**
 - **4.12 Ejecución y validación del PMV2**
 - **4.13 Ejecución y validación del PMV3**
-- MLError
+- schema.sql
 - 4. Crear los servicios (en este orden)
 - docs/HANDOFF.md
 - **4.11 Ejecución y validación del PMV1**
@@ -313,7 +311,7 @@
 - **9\. Integración de conocimientos de ingeniería**
 - **4.6 Plan de entregas en tres PMV**
 - extraer_imagenes_base64.py
-- Data contract
+- 4. Conocimientos de computación
 - Prediction: imagen de inferencia ligera (2026-11-07)
 - Despliegue de desarrollo en Render (2026-11-07)
 - Pruebas ejecutadas en el monorepo (2026-11-06)
@@ -338,35 +336,35 @@
   docs/academico/02-conocimientos-de-ingenieria.md → software/data-processing/domain/ports/historical_logs_source.py
 - `6.2 GET `/api/v1/historical-logs`` --references--> `timestamp()`  [INFERRED]
   docs/historico/project-docs/ENDPOINTS-GREEN-AI.md → software/data-processing/domain/validation.py
-- `5.3 Respetar unidades e identidad` --references--> `timestamp()`  [INFERRED]
-  docs/historico/project-docs/GUIA-INTEGRACION-DATA-PROCESSING.md → software/data-processing/domain/validation.py
 - `Correspondencia con Monitoring e históricos` --references--> `timestamp()`  [INFERRED]
   docs/historico/project-docs/modelo-bd.md → software/data-processing/domain/validation.py
+- `4. Errores, configuración y trazabilidad` --references--> `MonitoringHttpAdapter`  [INFERRED]
+  docs/historico/project-docs/GUIA-INTEGRACION-DATA-PROCESSING.md → software/data-processing/infrastructure/adapters/input/monitoring_http_adapter.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (357 total, 81 thin omitted)
+## Communities (357 total, 87 thin omitted)
 
 ### Community 0 - "pandas"
 Cohesion: 0.09
-Nodes (36): InsufficientDataError, LeakageError, add_lags(), add_rolling_features(), add_target(), add_temporal_features(), assert_features_not_copied_from_future(), assert_no_future_features() (+28 more)
+Nodes (40): main(), LeakageError, add_lags(), add_rolling_features(), add_target(), add_temporal_features(), assert_features_not_copied_from_future(), assert_no_future_features() (+32 more)
 
 ### Community 1 - "numpy"
 Cohesion: 0.07
-Nodes (33): compare_distributions(), compare_errors(), _finite_array(), persist_alert(), population_stability_index(), comparison_frame(), _complexity(), _finite() (+25 more)
+Nodes (34): main(), compare_distributions(), compare_errors(), _finite_array(), persist_alert(), population_stability_index(), comparison_frame(), _complexity() (+26 more)
 
 ### Community 2 - "recommendations.py"
-Cohesion: 0.11
-Nodes (19): A. Servicio de Predicción y Recomendaciones Integrado (`green-ai-prediction`), Recorrido de `POST /v1/energy`:, Recorrido de `POST /v1/recommendations`:, evaluate_policy(), Check, energy(), EnergyRequest, EnergyResult (+11 more)
+Cohesion: 0.05
+Nodes (40): 10. Validación (evidencia del 2026-11-06, ver `08-`), 11. Conclusión, 1. Problema de ingeniería (de C1), 2. Requerimientos (RF-01..RF-20 del informe; los de IA en negrita), 3. Fundamentos matemáticos y estadísticos (y dónde se usan), 4. Ciencias naturales, 5. Computación, 6. Ingeniería de software (+32 more)
 
 ### Community 3 - "MetricsHttpContractTest.java"
-Cohesion: 0.09
-Nodes (5): FixedClock, FixedClock, PrometheusHttpContractTest, WithoutFixtureHttpTest, MonitoringServiceApplicationTests
+Cohesion: 0.07
+Nodes (4): FixedClock, FixedClock, WithoutFixtureHttpTest, MonitoringServiceApplicationTests
 
 ### Community 4 - "MetricQuery"
 Cohesion: 0.07
-Nodes (26): 2 Cómo arranca y elige la fuente, 3 Recorrido de una consulta actual, BoundedMetricsSource, UnavailableMetricsSource, MetricsSource, MetricData, Quality, missing (+18 more)
+Nodes (23): 2 Cómo arranca y elige la fuente, 3 Recorrido de una consulta actual, PrometheusMetricsSource, UnavailableMetricsSource, Identity, MonitoringService, MetricsSource, MetricData (+15 more)
 
 ### Community 5 - "jwks.go"
 Cohesion: 0.08
@@ -374,35 +372,35 @@ Nodes (16): result, tc, ctxKey, env(), main(), probe(), run(), NewJWKSVerifier()
 
 ### Community 6 - "InvalidResponse"
 Cohesion: 0.08
-Nodes (7): Data Processing, MonitoringHttpAdapter, test_get_history_checks_an_explicit_empty_string_filter(), test_get_history_preserves_monitoring_response(), test_get_history_raises_runtime_error_when_monitoring_unavailable(), test_get_history_raises_value_error_for_invalid_query(), test_monitoring_adapter_configuration()
+Nodes (15): C. Servicio de Procesamiento de Datos (`green-ai-data-processing`), InvalidResponse, ServiceError, SourceForbidden, SourceTimeout, validate_payload(), monitoring_data(), MonitoringHttpAdapter (+7 more)
 
 ### Community 7 - "inference/predict.py"
-Cohesion: 0.25
-Nodes (10): ArtifactIntegrityError, _as_frame(), load_selected_model(), _model_frequency(), predict(), predict_from_payload(), predict_from_window(), _resolve_resource() (+2 more)
+Cohesion: 0.17
+Nodes (12): adapt_output(), _as_frame(), load_selected_model(), _model_frequency(), predict(), predict_from_payload(), predict_from_window(), _resolve_resource() (+4 more)
 
-### Community 8 - "json"
-Cohesion: 0.16
-Nodes (12): test_prediction_contract_fixture_is_valid(), export(), run_pipeline(), _write_candidate(), test_dataprocessing_json_to_prediction_response(), test_predict_from_payload_uses_output_contract(), _train(), test_selected_artifact_can_be_reloaded_and_used() (+4 more)
+### Community 8 - "run_pipeline"
+Cohesion: 0.13
+Nodes (14): write_simulated_dataset(), _load(), run_pipeline(), test_health_reports_model_state(), test_predict_from_fixture_window(), test_predict_model_unavailable(), _train(), test_dataprocessing_json_to_prediction_response() (+6 more)
 
 ### Community 9 - "GatewayApplicationTests"
 Cohesion: 0.06
 Nodes (13): 10 Explicación oral breve, 1 Para qué separar una entrada pública, 2 Ruta predicado y filtro, 3 Reescritura explicada segmento por segmento, 4 MVC frente a WebFlux, 5 Correlación y su límite actual, 6 CORS explicado con un caso real, 7 Timeouts y errores (+5 more)
 
-### Community 10 - "pathlib"
-Cohesion: 0.07
-Nodes (9): ProcessGreenAIDatasetUseCase, DatasetRepository, DatasetSource, GreenAIExcelAdapter, CsvDatasetRepository, main(), test_repository(), test_adapter() (+1 more)
+### Community 10 - "ProcessGreenAIDatasetUseCase"
+Cohesion: 0.14
+Nodes (6): Data Processing, ProcessGreenAIDatasetUseCase, DatasetRepository, DatasetSource, main(), test_process_greenai_dataset()
 
 ### Community 11 - "promt.md"
 Cohesion: 0.04
 Nodes (45): 10. CALIDAD DE DATOS, 11. PROCEDENCIA, 12. VARIABLE OBJETIVO, 13. HORIZONTES, 15. DATA LEAKAGE, 16. TARGET, 17. SPLIT, 18. BASELINE (+37 more)
 
 ### Community 12 - "pytest"
-Cohesion: 0.16
-Nodes (29): _detect_gaps(), _infer_frequency(), _is_inf(), _iso(), _reject_blocking_status(), validate_dataset(), _validate_duplicates(), _validate_metadata() (+21 more)
+Cohesion: 0.17
+Nodes (28): _detect_gaps(), _infer_frequency(), _is_inf(), _iso(), _reject_blocking_status(), validate_dataset(), _validate_duplicates(), _validate_metadata() (+20 more)
 
 ### Community 13 - "test_health_and_predict.py"
-Cohesion: 0.12
-Nodes (19): generate_dataprocessing_dataset(), generate_name_value_unit_dataset(), generate_no_data_dataset(), generate_simulated_dataset(), write_json_dataset(), write_simulated_dataset(), write_standard_fixtures(), test_health_reports_model_state() (+11 more)
+Cohesion: 0.17
+Nodes (14): generate_dataprocessing_dataset(), generate_name_value_unit_dataset(), generate_no_data_dataset(), generate_simulated_dataset(), write_json_dataset(), write_standard_fixtures(), compact_payload(), config() (+6 more)
 
 ### Community 14 - "TrabajosDesarrollados/5.Uso de herramientas modernas.md"
 Cohesion: 0.05
@@ -441,32 +439,24 @@ Cohesion: 0.14
 Nodes (25): adapt_input(), AdaptedDataset, _build_metadata(), _fallback_timestamp(), _first_origin(), _from_name_value_unit(), _from_temporal_records(), _is_name_value_unit() (+17 more)
 
 ### Community 23 - "PrometheusClient.java"
-Cohesion: 0.09
-Nodes (3): LimitedSubscriber, PrometheusClient, PrometheusClientIntegrationTest
+Cohesion: 0.10
+Nodes (9): LimitedSubscriber, PrometheusClient, Code, INVALID_QUERY, METRICS_SOURCE_TIMEOUT, METRICS_SOURCE_UNAVAILABLE, QUERY_LIMIT_EXCEEDED, UPSTREAM_INVALID_RESPONSE (+1 more)
 
 ### Community 24 - "QueryMetrics"
 Cohesion: 0.07
-Nodes (12): BoundedJson, LimitedOutput, MetricsController, QueryParameters, Code, INVALID_QUERY, METRICS_SOURCE_TIMEOUT, METRICS_SOURCE_UNAVAILABLE (+4 more)
-
-### Community 25 - "Monitoring explicado desde el código"
-Cohesion: 0.13
-Nodes (12): 10 Pruebas y alcance de la evidencia, 11 Explicación oral breve, 1 Organización de las capas, 4 Recorrido de un histórico, 5 Qué comprueba cada clase, 6 Por qué no recibe PromQL del cliente, 7 Concurrencia timeout y saturación, 8 Límites y errores (+4 more)
+Nodes (7): BoundedJson, LimitedOutput, MetricsController, QueryParameters, MonitoringFailure, ApiFailureMappingTest, BoundedJsonTest
 
 ### Community 26 - "gateway/src/main/resources/application.yaml"
 Cohesion: 0.06
 Nodes (33): name, version, name, audience, issuer, jwks, gateway, health (+25 more)
 
 ### Community 27 - "app.py"
-Cohesion: 0.10
-Nodes (15): problem(), root(), source_error(), unexpected_error(), validation_error(), add_request_id(), create_prediction(), _error_payload() (+7 more)
+Cohesion: 0.11
+Nodes (15): ArtifactIntegrityError, MLError, ModelNotFoundError, add_request_id(), create_prediction(), _error_payload(), health(), liveness() (+7 more)
 
-### Community 28 - "11. Implementación, evidencias y trazabilidad de ingeniería"
-Cohesion: 0.06
-Nodes (32): 11.10 Evidencias gráficas requeridas, 11.1 Arquitectura física y despliegue, 11.2 Arquitectura de comunicación y APIs, 11.3 Observabilidad y SRE, 11.4 Plan de pruebas, 11.5 Requerimientos de información e infraestructura, 11.6 Entregables técnicos, 11.7 MVP (+24 more)
-
-### Community 29 - "SecurityConfiguration.java"
-Cohesion: 0.07
-Nodes (3): RequestIdFilter, SecurityConfiguration, RequestIdFilter
+### Community 28 - "11.8 Roadmap"
+Cohesion: 0.14
+Nodes (14): 11.8.10 Resultado esperado del roadmap, 11.8.1 Roadmap general de desarrollo, 11.8.2 Plan de releases y Productos Mínimos Viables, 11.8.3 Planificación detallada de los sprints, 11.8.4 Componentes técnicos incorporados progresivamente, 11.8.5 Eventos principales de la arquitectura, 11.8.6 Hitos de control del roadmap, 11.8.7 Adaptación del roadmap (+6 more)
 
 ### Community 30 - "steps"
 Cohesion: 0.06
@@ -476,25 +466,25 @@ Nodes (33): concurrency, cancel-in-progress, group, env, environment, runs-on, s
 Cohesion: 0.06
 Nodes (29): 10. Decisiones pendientes antes de implementar, 1. Contexto confirmado, 2. Arquitectura acordada, 3. Responsabilidades, 4. Dos conexiones diferentes con Data Processing, 5. Rutas del Gateway, 6. Contrato mínimo propuesto para Data Processing, 7. Consumo exacto de Monitoring desde Data Processing (+21 more)
 
-### Community 32 - "routes.py"
-Cohesion: 0.14
-Nodes (16): percentile_95(), context(), decode_cursor(), ReadHistoricalLogsUseCase, InvalidQuery, interval(), timestamp(), utc() (+8 more)
+### Community 32 - "timestamp"
+Cohesion: 0.26
+Nodes (11): 5.1 Acordar acceso con el responsable de Supabase, 5.2 Añadir un puerto y un adaptador, 5.3 Respetar unidades e identidad, 5. Implementar la lectura de Supabase con alcance mínimo, percentile_95(), context(), decode_cursor(), InvalidQuery (+3 more)
 
 ### Community 33 - "test_sqlite_profile.py"
-Cohesion: 0.10
-Nodes (18): configured_credential(), Settings, lifespan(), test_configuration_rejected_at_startup(), test_placeholder_or_api_key_is_not_a_read_token(), clean_env(), load_seed(), seeded_db() (+10 more)
+Cohesion: 0.11
+Nodes (17): configured_credential(), Settings, validate_timeout(), validate_url(), lifespan(), sqlite_backend(), test_configuration_rejected_at_startup(), test_placeholder_or_api_key_is_not_a_read_token() (+9 more)
 
-### Community 34 - "PrometheusProperties"
-Cohesion: 0.13
-Nodes (6): 3 Records colecciones y enums, PrometheusMetricsSource, PrometheusQueryBuilder, MetricCatalog, MetricDefinition, PrometheusQueryBuilderTest
+### Community 34 - "QueryMetrics"
+Cohesion: 0.15
+Nodes (10): B. Servicio de Monitoreo (`green-ai-monitoring`), Recorrido de `GET /api/v1/metrics/history`:, QueryMetrics, MetricCatalog, Response, Status, complete, no_data (+2 more)
 
 ### Community 35 - "org.junit.jupiter.api.Test"
 Cohesion: 0.20
 Nodes (3): FixtureMetricsSource, MonitoringServiceTest, MonitoringConfigurationTest
 
 ### Community 36 - "test_historical_report.py"
-Cohesion: 0.17
-Nodes (14): HistoricalReportUseCase, clean_env(), load_seed(), MockSource, row(), seeded_db(), test_calculation_with_known_data_and_gap_ignored(), test_csv_format_structure_and_values() (+6 more)
+Cohesion: 0.14
+Nodes (15): HistoricalReportUseCase, get_historical_summary(), clean_env(), load_seed(), MockSource, row(), seeded_db(), test_calculation_with_known_data_and_gap_ignored() (+7 more)
 
 ### Community 37 - "Modelo de base de datos e integración"
 Cohesion: 0.08
@@ -509,7 +499,7 @@ Cohesion: 0.07
 Nodes (27): condition, environment, healthcheck, image, volumes, db, AUTHENTICATOR_PASSWORD, PGRST_DB_ANON_ROLE (+19 more)
 
 ### Community 40 - "math"
-Cohesion: 0.31
+Cohesion: 0.33
 Nodes (5): clean(), create_schema(), main(), seed(), utc_text()
 
 ### Community 41 - "1. ANÁLISIS DEL PROBLEMA"
@@ -517,20 +507,20 @@ Cohesion: 0.08
 Nodes (25): 1.10 Conclusiones del análisis del problema, 1.1.1 Evidencia institucional pública de demanda e infraestructura digital, 1.1 Contexto del problema, 1.2 Situación problemática, 1.3.1 SIPOC preliminar del proceso AS-IS, 1.3.2.2 Datos requeridos para validar el AS-IS, 1.3.2.3 Proceso TO-BE propuesto, 1.3.2.4 Flujo TO-BE (+17 more)
 
 ### Community 42 - "tracking.py"
-Cohesion: 0.09
-Nodes (19): DatasetBundle, current_environment(), current_git_commit(), _flatten_params(), _is_number(), MLflowTracker, _NullRun, sha256_file() (+11 more)
+Cohesion: 0.12
+Nodes (11): main(), current_environment(), current_git_commit(), _flatten_params(), _is_number(), MLflowTracker, _NullRun, sha256_file() (+3 more)
 
 ### Community 43 - "pdf_a_markdown.py"
-Cohesion: 0.17
-Nodes (12): captions(), clean(), inside(), join(), main(), merge(), norm(), page_items() (+4 more)
+Cohesion: 0.10
+Nodes (17): captions(), clean(), inside(), join(), main(), merge(), norm(), page_items() (+9 more)
 
 ### Community 44 - "MovingAverageBaseline"
-Cohesion: 0.15
-Nodes (5): MovingAverageBaseline, PersistenceBaseline, test_baselines_do_not_use_future_columns(), test_moving_average_uses_current_and_lags(), test_persistence_equals_current_cpu()
+Cohesion: 0.14
+Nodes (6): MovingAverageBaseline, PersistenceBaseline, _build_models(), _retrain_selected(), test_baselines_do_not_use_future_columns(), test_persistence_equals_current_cpu()
 
 ### Community 45 - "origin"
-Cohesion: 0.12
-Nodes (20): Qué debes dominar antes de exponer, 9 Procedencia y calidad, 5.2 GET `/api/v1/metrics/current`, 6.1 GET `/api/v1/metrics/history`, Monitoring, 3. Conservar el contrato y la semántica de Monitoring, Correspondencia con Simulator, Falencias prioritarias (+12 more)
+Cohesion: 0.09
+Nodes (25): Cómo comprobar las afirmaciones, La idea central, Observaciones importantes de la revisión, Orden de lectura, Qué debes dominar antes de exponer, Ruta de estudio para exponer Green AI, 9 Procedencia y calidad, 5.2 GET `/api/v1/metrics/current` (+17 more)
 
 ### Community 47 - "conocimientos-de-ingenieria.md"
 Cohesion: 0.09
@@ -540,9 +530,13 @@ Nodes (22): **12.1 Conclusión de trazabilidad AG-I07**, **12\. Conclusiones de 
 Cohesion: 0.09
 Nodes (22): build, environment, expose, healthcheck, networks, HISTORICAL_MAX_PAGE_SIZE, MONITORING_BASE_URL, REQUEST_TIMEOUT_SECONDS (+14 more)
 
-### Community 50 - "run_experiment.py"
-Cohesion: 0.39
-Nodes (5): evaluate(), load(), main(), reserve(), run()
+### Community 49 - ".map"
+Cohesion: 0.20
+Nodes (4): PrometheusResponseMapper, PrometheusResponseMapperTest, PrometheusTestData, OpenApiAssertions
+
+### Community 50 - "routes.py"
+Cohesion: 0.16
+Nodes (15): CpuSummary, HistoricalPage, HistoricalRecord, HistoricalSummary, MetricRecord, Period, PredictionDataset, PredictionFeature (+7 more)
 
 ### Community 51 - "jwks_test.go"
 Cohesion: 0.20
@@ -553,12 +547,12 @@ Cohesion: 0.09
 Nodes (21): Abbreviations and Acronyms, Acknowledgment *(Heading 5)*, Authors and Affiliations, Change number of columns: Select the Columns icon from the MS Word Standard toolbar and then select the correct number of columns from the selection palette., Deletion: Delete the author and affiliation lines for the extra authors., Ease of Use, Equations, Figures and Tables (+13 more)
 
 ### Community 53 - "2. Conocimiento de Ingenieria.md"
-Cohesion: 0.09
-Nodes (21): 12.1 Conclusión de trazabilidad AG-I07, 12. Conclusiones de conocimientos de ingeniería, 2.4 Matriz de Épicas, Historias de Usuario y Criterios de Aceptación, 2.5 Cuadro de Requerimientos por PMV con IA, 2.6 Requerimientos relacionados con el uso de IA, 2.7 Trazabilidad entre necesidades, requerimientos, PMV y validación, 4.1 Procesamiento y arquitectura de datos, 4.2 Sistemas distribuidos y Kubernetes (+13 more)
+Cohesion: 0.11
+Nodes (17): 12.1 Conclusión de trazabilidad AG-I07, 12. Conclusiones de conocimientos de ingeniería, 2.4 Matriz de Épicas, Historias de Usuario y Criterios de Aceptación, 2.5 Cuadro de Requerimientos por PMV con IA, 2.6 Requerimientos relacionados con el uso de IA, 2.7 Trazabilidad entre necesidades, requerimientos, PMV y validación, 9.1 Relación con la arquitectura, 9.2 Relación con la experimentación (+9 more)
 
 ### Community 54 - "test_historical_logs_contract.py"
-Cohesion: 0.13
-Nodes (13): main(), run(), ids(), instant(), jwt(), log(), postgrest_backend(), test_inclusive_range_hardware_filter_and_total_order() (+5 more)
+Cohesion: 0.14
+Nodes (12): run(), ids(), instant(), jwt(), log(), postgrest_backend(), test_inclusive_range_hardware_filter_and_total_order(), test_keyset_cursor_breaks_ties_by_log_id() (+4 more)
 
 ### Community 55 - "pmv2.test.cjs"
 Cohesion: 0.15
@@ -573,8 +567,8 @@ Cohesion: 0.16
 Nodes (8): jwk, JWKSVerifier, Principal, audienceContains(), decodeJSON(), filter(), numericDate(), verifySignature()
 
 ### Community 58 - "HistoricalLogsSource"
-Cohesion: 0.12
-Nodes (11): D-05 SQLite para desarrollo — Aceptada e implementada (2026-11-06), 5.1 Acordar acceso con el responsable de Supabase, 5.2 Añadir un puerto y un adaptador, 5.3 Respetar unidades e identidad, 5. Implementar la lectura de Supabase con alcance mínimo, SourceNotConfigured, HistoricalLogsSource, canonical() (+3 more)
+Cohesion: 0.16
+Nodes (6): D-05 SQLite para desarrollo — Aceptada e implementada (2026-11-06), SourceNotConfigured, HistoricalLogsSource, canonical(), SqliteHistoricalLogsAdapter, historical_source()
 
 ### Community 59 - "**7\. Selección y justificación de metodologías y tecnologías**"
 Cohesion: 0.10
@@ -589,8 +583,8 @@ Cohesion: 0.10
 Nodes (20): **1.1 Antecedentes internacionales**, **1.2 Antecedente nacional**, **1.3 Antecedente local / vinculado con Universidad Continental**, **1.5 Brecha identificada**, **1.6 Sustento técnico del modelo de IA**, **1.7 Validación experimental propuesta**, **1\. Antecedentes del problema**, **2.1 Requerimientos funcionales** (+12 more)
 
 ### Community 62 - "7. Selección y justificación de metodologías y tecnologías"
-Cohesion: 0.10
-Nodes (20): 7.1 Escala de evaluación, 7.6.1 Principios de la arquitectura seleccionada, 7.6 Selección de arquitectura, 7.7.10 Orquestación de contenedores, 7.7.11 Contenedorización, 7.7.1 Lenguaje principal para Machine Learning, 7.7.2 Framework para exposición de servicios, 7.7.3 Procesamiento y preparación de datos (+12 more)
+Cohesion: 0.06
+Nodes (36): 7.1 Escala de evaluación, 7.2 Selección de metodología de desarrollo, 7.3 Selección de metodología para Machine Learning, 7.4 Selección del enfoque de validación, 7.5 Selección del enfoque MLOps, 7.6.1 Principios de la arquitectura seleccionada, 7.6 Selección de arquitectura, 7.7.10 Orquestación de contenedores (+28 more)
 
 ### Community 63 - "VIII. PRUEBAS Y RESULTADOS y DISCUSIÓN"
 Cohesion: 0.10
@@ -608,13 +602,17 @@ Nodes (8): git(), build_argv(), git_snapshot(), main(), excluded(), git(), main(
 Cohesion: 0.23
 Nodes (18): buildAriaLabel(), computeSummary(), currentGroupedRacks, fetchCurrentMetrics(), formatCpu(), getCpuCategory(), getCpuColor(), groupByRack() (+10 more)
 
+### Community 67 - "engine.py"
+Cohesion: 0.05
+Nodes (50): 10 Validaciones y límites actuales, 11 Explicación oral breve, 1 Python mínimo para leer el proyecto, 2 Inventario escenario y estado, 3 Flujo de ejecución, 4 Determinismo semilla y ruido, 5 CPU paso a paso, 6 Memoria red y disco (+42 more)
+
 ### Community 68 - "Evaluación práctica por bloques"
 Cohesion: 0.11
 Nodes (17): APARTADO ESPECIAL: INSTRUCCIONES PARA CODEX ANTES DE MIGRAR EL PROYECTO A CLAUDE CODE, Arquitectura y visualización, Catálogo de herramientas para Codex y Claude Code, Checklist de adopción, Contexto para el agente que lea este documento, Evaluación práctica por bloques, Infraestructura, frontend y contenido, Instrucciones concretas para Codex (+9 more)
 
-### Community 69 - "QueryMetrics"
-Cohesion: 0.12
-Nodes (7): B. Servicio de Monitoreo (`green-ai-monitoring`), Recorrido de `GET /api/v1/metrics/history`:, Identity, MonitoringService, QueryMetrics, MonitoringConfiguration, ApiFailureMappingTest
+### Community 69 - "MonitoringConfiguration.java"
+Cohesion: 0.17
+Nodes (5): Estado real de la separación interna, Monitoring, Prediction, BoundedMetricsSource, MonitoringConfiguration
 
 ### Community 70 - "Green AI — Data Processing"
 Cohesion: 0.11
@@ -624,13 +622,9 @@ Nodes (16): Cambios, Ejecutado en Docker, Pendientes externos, Repetir la compar
 Cohesion: 0.17
 Nodes (16): authenticatedFetch(), decodeJwtClaims(), GATEWAY_BASE_URL, getAuthSession(), getSupabaseClient(), sessionUserView(), setMessage(), setupLoginForm() (+8 more)
 
-### Community 72 - "runner.py"
-Cohesion: 0.25
-Nodes (9): 1 Python mínimo para leer el proyecto, _check_keys(), parse_inventory_json(), _parse_value_with_origin(), FileSystem, Inventory, NetworkInterface, Node (+1 more)
-
-### Community 73 - "engine.py"
-Cohesion: 0.39
-Nodes (13): _calculate_cpu_state(), _calculate_fs_state(), _calculate_memory_state(), _calculate_network_state(), compute_next_state(), create_initial_state(), Scenario, CpuState (+5 more)
+### Community 73 - "_write_outputs"
+Cohesion: 0.26
+Nodes (6): _assert_enough_rows(), _insufficient_details(), _jsonable(), _write_candidate(), _write_outputs(), _xy()
 
 ### Community 74 - "HANDOFF-previo-reconciliacion.md"
 Cohesion: 0.12
@@ -641,48 +635,52 @@ Cohesion: 0.12
 Nodes (17): a. Justificación social, Antecedente 1. Beloglazov, Abawajy y Buyya (2012), Antecedente 2. Ji et al. (2021), Antecedente 3. Reddy, Rao y Aiello (2024), Antecedente ML-1. Khan et al. (2022), Antecedente ML-2. Prediction Models for Clustered Virtual Machines in Data Centers (2023), Antecedente ML-3. Marwan, Ait Temghart y Lazaar (2026), ANTECEDENTES (+9 more)
 
 ### Community 76 - "monitoring_contract.py"
-Cohesion: 0.12
-Nodes (17): Contract, MetricsPayload, MonitoringResponse, Resource, Sample, Series, CpuSummary, HistoricalPage (+9 more)
+Cohesion: 0.18
+Nodes (6): Contract, MetricsPayload, MonitoringResponse, Resource, Sample, Series
 
 ### Community 77 - "Fundamentos matemáticos y estadísticos"
-Cohesion: 0.12
-Nodes (17): 2.4.10 División temporal de los datos, 2.4.11 Prevención de fuga de información, 2.4.12 Características estadísticas móviles, 2.4.13 Purga temporal, 2.4.14 Latencia de inferencia, 2.4.15 Relación entre predicción, decisión y optimización, 2.4.16 Resumen de fundamentos matemáticos, 2.4.1 Formulación matemática del problema predictivo (+9 more)
+Cohesion: 0.10
+Nodes (21): 2.2 Requerimientos de IA y predicción, 2.3 Requerimientos no funcionales, 2.4.10 División temporal de los datos, 2.4.11 Prevención de fuga de información, 2.4.12 Características estadísticas móviles, 2.4.13 Purga temporal, 2.4.14 Latencia de inferencia, 2.4.15 Relación entre predicción, decisión y optimización (+13 more)
 
 ### Community 78 - "Formulario_Entrevista_Jefe_Workloads.md"
 Cohesion: 0.12
 Nodes (16): 10. Infraestructura de ejecución, 11. Predicción y toma de decisiones, 12. Restricciones y condiciones de operación, 13. Información y evidencias disponibles, 14. Priorización desde la perspectiva del responsable, 15. Observaciones adicionales, 16. Validación de la información, 1. Datos generales (+8 more)
 
 ### Community 79 - "test_historical_logs.py"
-Cohesion: 0.16
-Nodes (19): Fuentes locales revisadas, InvalidResponse, ServiceError, SourceForbidden, SourceTimeout, quoted(), SupabaseHistoricalLogsAdapter, validate_timeout() (+11 more)
+Cohesion: 0.29
+Nodes (13): ReadHistoricalLogsUseCase, adapter(), Pages, row(), test_adapter_error_classification(), test_adapter_filters_in_source_and_only_gets(), test_cursor_bound_to_hardware_and_period(), test_failure_on_next_page_is_not_hidden() (+5 more)
 
 ### Community 80 - "Computational demand prediction (ML)"
 Cohesion: 0.12
 Nodes (15): Contratos, Organización, Recomendaciones dentro de Prediction, Verificación, Architecture, Computational demand prediction (ML), Contract, Docker (+7 more)
 
 ### Community 81 - "PrometheusProperties"
-Cohesion: 0.10
-Nodes (7): PrometheusProperties, Origin, estimated, observed, simulated, unknown, PrometheusTestData
+Cohesion: 0.09
+Nodes (9): 3 Records colecciones y enums, PrometheusQueryBuilder, PrometheusProperties, Origin, estimated, observed, simulated, unknown (+1 more)
 
 ### Community 82 - "Fundamentos de Java Spring y arquitectura para Green AI"
 Cohesion: 0.18
 Nodes (10): 1 De una clase a un servicio, 2 Interfaces y polimorfismo, 4 Inyección de dependencias y beans, 5 Anotaciones que sí aparecen, 6 Arquitectura hexagonal, 7 HTTP JSON y contrato, 8 Maven Boot y ejecución, 9 Comprobación de aprendizaje (+2 more)
 
+### Community 83 - "clean_dataset"
+Cohesion: 0.26
+Nodes (5): _canonicalize_numeric(), clean_dataset(), _token_to_nan(), test_missing_tokens_are_not_converted_to_zero(), test_naive_timestamps_are_not_localized_to_utc()
+
 ### Community 84 - "Encargo para Claude: migración de Green AI a monorepositorio"
 Cohesion: 0.12
 Nodes (15): Actualización realizada antes del traspaso, Claude coordina Antigravity sin IDE, Documentación y honestidad experimental, Ejecución y cierre, Encargo para Claude: migración de Green AI a monorepositorio, Estado persistente y aceptación del traspaso, Estructura objetivo, Fuentes principales (rutas antiguas) (+7 more)
 
-### Community 85 - "loader.py"
-Cohesion: 0.14
-Nodes (4): adapt_output(), load_dataset(), _looks_internal(), test_output_origin_is_always_estimated()
+### Community 85 - "Monitoring explicado desde el código"
+Cohesion: 0.18
+Nodes (11): 10 Pruebas y alcance de la evidencia, 11 Explicación oral breve, 1 Organización de las capas, 4 Recorrido de un histórico, 5 Qué comprueba cada clase, 6 Por qué no recibe PromQL del cliente, 7 Concurrencia timeout y saturación, 8 Límites y errores (+3 more)
 
 ### Community 86 - "Acta_Reunion_Director_Area_TI_Recoleccion_Informacion_Proyecto_20.md"
 Cohesion: 0.12
 Nodes (15): 10. Restricciones y condiciones comunicadas por el Área de TI, 11. Acuerdos de la reunión, 12. Próximas acciones del equipo del proyecto, 13. Observaciones finales del Director del Área de TI, 14. Validación y conformidad, 1. Datos generales de la reunión, 2. Participantes, 3. Finalidad de la reunión (+7 more)
 
 ### Community 87 - "Contrato Monitoring v0.1 — propuesta"
-Cohesion: 0.14
-Nodes (14): 6.2 GET `/api/v1/historical-logs`, 6.3 GET `/api/v1/prediction/dataset`, 6.4 Errores de Data Processing, 6. Data Processing, Errores y correlación, status(), Contrato Monitoring v0.1 — propuesta, Errores (+6 more)
+Cohesion: 0.13
+Nodes (15): 6.2 GET `/api/v1/historical-logs`, 6.3 GET `/api/v1/prediction/dataset`, 6.4 Errores de Data Processing, 6. Data Processing, Errores y correlación, status(), Contrato Monitoring v0.1 — propuesta, Ejemplo de respuesta histórica (+7 more)
 
 ### Community 88 - "c. Conocimientos de ingeniería"
 Cohesion: 0.12
@@ -692,29 +690,21 @@ Nodes (16): a. Conocimientos en matemáticas y computación, Aprendizaje supervi
 Cohesion: 0.12
 Nodes (15): key, sync, value, services, autoDeployTrigger, branch, dockerContext, dockerfilePath (+7 more)
 
-### Community 90 - "test_runtime_regressions.py"
-Cohesion: 0.15
-Nodes (3): HardwareInventoryTests, RuntimeRegressionTests, Sample
-
 ### Community 91 - "volumes"
 Cohesion: 0.13
 Nodes (14): create_host_path, environment, volumes, APP_ENV, HISTORICAL_SOURCE, SQLITE_PATH, SUPABASE_ENABLED, services (+6 more)
 
-### Community 92 - "ServiceTests"
-Cohesion: 0.14
-Nodes (4): ModelNotFoundError, test_health_without_model(), _missing(), ServiceTests
-
-### Community 93 - "harness.py"
-Cohesion: 0.12
-Nodes (5): b64(), Handler, call(), main(), check()
+### Community 93 - "json"
+Cohesion: 0.09
+Nodes (14): b64(), Handler, test_prediction_contract_fixture_is_valid(), call(), fixture(), main(), check(), main() (+6 more)
 
 ### Community 94 - "ProcessMetricsUseCase"
-Cohesion: 0.24
-Nodes (7): C. Servicio de Procesamiento de Datos (`green-ai-data-processing`), ProcessMetricsUseCase, validate_payload(), test_process_metrics_handles_no_data_without_error(), test_process_metrics_keeps_different_series_separated(), test_process_metrics_preserves_quality_and_series_identity(), test_monitoring_response_can_be_prepared_for_prediction()
+Cohesion: 0.28
+Nodes (5): ProcessMetricsUseCase, test_process_metrics_handles_no_data_without_error(), test_process_metrics_keeps_different_series_separated(), test_process_metrics_preserves_quality_and_series_identity(), test_monitoring_response_can_be_prepared_for_prediction()
 
 ### Community 95 - "argparse"
-Cohesion: 0.13
-Nodes (10): main(), main(), main(), json_summary(), main(), main(), _apply_env_overrides(), get_settings() (+2 more)
+Cohesion: 0.24
+Nodes (7): main(), json_summary(), main(), _apply_env_overrides(), get_settings(), load_config(), resolve_path()
 
 ### Community 96 - "routes.go"
 Cohesion: 0.22
@@ -728,10 +718,6 @@ Nodes (13): build, environment, extra_hosts, ports, HISTORICAL_MAX_PAGE_SIZE, MO
 Cohesion: 0.14
 Nodes (13): baseline, moving_average_window, default_horizon, environment, equivalence_mae_relative, horizons, latency_repeats, min_eval_samples (+5 more)
 
-### Community 99 - "run_simulation"
-Cohesion: 0.29
-Nodes (7): create_parser(), main(), parse_scenario_json(), run_simulation(), validate_inventory(), ValidationError, validate_scenario()
-
 ### Community 100 - "C1 · Análisis del problema (AG-T08 / AG-C08)"
 Cohesion: 0.15
 Nodes (13): 10. Restricciones, 11. Conclusión del análisis, 1. Contexto, 2. Situación problemática (evidencia, sin proponer todavía la solución), 3. Caracterización (AS-IS → TO-BE), 4. Causas: Ishikawa (6M) sobre el efecto «adaptación reactiva o ineficiente de recursos a la demanda», 5. Efectos, 6. Formulación (alineada a los 3 PMV) (+5 more)
@@ -740,9 +726,9 @@ Nodes (13): 10. Restricciones, 11. Conclusión del análisis, 1. Contexto, 2. Si
 Cohesion: 0.17
 Nodes (12): 10 Cardinalidad y presupuesto, 11 Qué significa Green AI en este alcance, 1 Qué es una serie temporal, 2 Counter y gauge, 3 Cómo aparece una tasa, 4 CPU y denominador, 5 Memoria utilizada, 6 Red y almacenamiento (+4 more)
 
-### Community 102 - "Simulator y su modelo matemático"
-Cohesion: 0.15
-Nodes (12): 10 Validaciones y límites actuales, 11 Explicación oral breve, 2 Inventario escenario y estado, 3 Flujo de ejecución, 4 Determinismo semilla y ruido, 5 CPU paso a paso, 6 Memoria red y disco, 7 Tiempo lógico offline y realtime (+4 more)
+### Community 102 - "11. Implementación, evidencias y trazabilidad de ingeniería"
+Cohesion: 0.20
+Nodes (10): 11.10 Evidencias gráficas requeridas, 11.1 Arquitectura física y despliegue, 11.2 Arquitectura de comunicación y APIs, 11.3 Observabilidad y SRE, 11.4 Plan de pruebas, 11.5 Requerimientos de información e infraestructura, 11.6 Entregables técnicos, 11.7 MVP (+2 more)
 
 ### Community 103 - "Integración y demostración de Green AI"
 Cohesion: 0.15
@@ -785,12 +771,12 @@ Cohesion: 0.15
 Nodes (13): Aportes, Conclusión del objetivo específico 1 — Monitoreo y telemetría, Conclusión del objetivo específico 2 — Preparación y trazabilidad de datos, Conclusión del objetivo específico 3 — Predicción de demanda computacional, Conclusión del objetivo específico 4 — Recomendaciones y restricciones operativas, Conclusión del objetivo específico 5 — Evaluación de eficiencia, Conclusión del objetivo general, Limitaciones (+5 more)
 
 ### Community 113 - "Arquitectura híbrida de Green AI"
-Cohesion: 0.18
-Nodes (10): Abrir los resultados, Arquitectura híbrida de Green AI, Cambios respecto a la imagen original, Cómo regenerar, Estado real de la separación interna, Leyenda y dirección de las flechas, Monitoring, Prediction (+2 more)
+Cohesion: 0.25
+Nodes (7): Abrir los resultados, Arquitectura híbrida de Green AI, Cambios respecto a la imagen original, Cómo regenerar, Fuentes locales revisadas, Leyenda y dirección de las flechas, Qué significa híbrido
 
 ### Community 114 - "Contrato de comunicación por componente"
-Cohesion: 0.18
-Nodes (11): Alineación del prototipo `GreenAi_TPI`, API Gateway, Contrato de comunicación por componente, Data Processing, Estado del avance ML revisado — 2026-09-23, Frontend, Prediction, Prometheus (+3 more)
+Cohesion: 0.17
+Nodes (12): Alineación del prototipo `GreenAi_TPI`, API Gateway, Contrato de comunicación por componente, Data Processing, Estado del avance ML revisado — 2026-09-23, Frontend, Monitoring, Prediction (+4 more)
 
 ### Community 115 - "Resumen de Integración y Funcionamiento (MVP)"
 Cohesion: 0.17
@@ -800,9 +786,9 @@ Nodes (12): 1. Arquitectura Desplegada, 2. Flujo de Datos Comprobado, 3. Evidenc
 Cohesion: 0.17
 Nodes (11): GF_SECURITY_ADMIN_PASSWORD, GF_USERS_ALLOW_SIGN_UP, depends_on, environment, image, ports, volumes, services (+3 more)
 
-### Community 117 - "Validación — Monitoring Grupo A y adaptador Prometheus"
-Cohesion: 0.12
-Nodes (14): Comunicación y propiedad de datos acordadas, Decisiones propuestas, Evidencias y estado, Incrementos verificables, Información pendiente, Inspección del punto de partida, Monitoring PMV1: inspección y propuesta, Requisitos y diferencias documentales (+6 more)
+### Community 117 - "Green AI — Monitoring Service"
+Cohesion: 0.07
+Nodes (24): Decisiones consolidadas del adaptador Prometheus, Flujo y separación, Identidad y procedencia, Métricas compatibles con Grupo A, Primer incremento recomendado del simulador, Punto de integración para software/simulator, Referencia de BD actualizada — 2026-09-22, Reloj y reproducibilidad (+16 more)
 
 ### Community 118 - "C4 · Gestión del proyecto (ICACIT + PMBOK 7 + Scrum)"
 Cohesion: 0.18
@@ -810,7 +796,7 @@ Nodes (11): 10. Medición del desempeño, 1. Inicio: Project Charter (resumen), 
 
 ### Community 120 - "Guion de exposición y defensa técnica"
 Cohesion: 0.17
-Nodes (12): 10 Frases que conviene corregir antes de exponer, 11 Ensayo final, 1 Apertura de un minuto, 2 Guion de quince minutos, 3 Recorrido de código recomendado, 4 Preguntas sobre arquitectura, 5 Preguntas sobre datos y métricas, 6 Preguntas sobre Simulator (+4 more)
+Nodes (11): 10 Frases que conviene corregir antes de exponer, 11 Ensayo final, 1 Apertura de un minuto, 2 Guion de quince minutos, 4 Preguntas sobre arquitectura, 5 Preguntas sobre datos y métricas, 6 Preguntas sobre Simulator, 7 Preguntas sobre Spring y Gateway (+3 more)
 
 ### Community 121 - "Docker aplicado a Green AI"
 Cohesion: 0.18
@@ -843,10 +829,6 @@ Nodes (11): 10. Discusión con tres estudios, 5. Pruebas organizadas por histori
 ### Community 128 - "**8\. Aplicación de conocimientos al diseño de la solución**"
 Cohesion: 0.15
 Nodes (13): **8.1 Arquitectura general**, **8.2 Arquitectura lógica**, **8.3 Estructura interna**, **8.4 Arquitectura de datos**, **8.5 Modelo de datos**, **8.6 Machine Learning aplicado**, **8.7 MLOps aplicado**, **8.8 Motor de optimización** (+5 more)
-
-### Community 129 - "C2 · Conocimientos de ingeniería (AG-I07)"
-Cohesion: 0.17
-Nodes (12): 10. Validación (evidencia del 2026-11-06, ver `08-`), 11. Conclusión, 1. Problema de ingeniería (de C1), 2. Requerimientos (RF-01..RF-20 del informe; los de IA en negrita), 3. Fundamentos matemáticos y estadísticos (y dónde se usan), 4. Ciencias naturales, 5. Computación, 6. Ingeniería de software (+4 more)
 
 ### Community 130 - "6. Conocimientos especializados del dominio"
 Cohesion: 0.18
@@ -888,9 +870,9 @@ Nodes (3): Estado resumido, Orden recomendado, Revisión de avances de los equip
 Cohesion: 0.20
 Nodes (9): 1. Los documentos todavía no son equivalentes, 2. Qué podemos demostrar ahora, 3. Guion para recoger evidencia de aceptación, 4. Evidencia técnica ya capturada, 5. Paquete recomendado para el informe, Historias de usuario y plan de evidencias, HU-01 — visualización actual, HU-02 — consulta histórica (+1 more)
 
-### Community 140 - "Revision_Arquitectura_Hexagonal.md"
-Cohesion: 0.18
-Nodes (9): 1. Mapeo de Capas y Recorrido por Capas (Layer Traversal), 2. Matriz de Dependencias y Deuda Técnica, 3. Conclusión para la Entrega S10, 5. Criterio 3: Integración REST — CONFIRMADO Y EVIDENCIADO, 6. Criterio 4: Predicción, Precisión y Resultados — CORREGIDO Y SUSTENTADO, 7. Criterio 6: Pruebas por HU y Discusión Académica — COMPLETADO, 8. Criterio 7: Enlaces y Publicación — CONFIRMADO, D. Enrutamiento en Gateway (`green-ai-gateway`) (+1 more)
+### Community 140 - "11.8.12.1 E1. Capturas de pantalla del software"
+Cohesion: 0.25
+Nodes (8): 11.8.12.1 E1. Capturas de pantalla del software, 11.8.12.2 Interfaz principal, 11.8.12.3 Flujo principal, 11.8.12.4 Entrada de datos, 11.8.12.5 Módulo de IA, 11.8.12.6 Resultados predictivos, 11.8.12.7 Indicadores, 11.8.12.8 Responsive
 
 ### Community 141 - "**6\. Conocimientos especializados del dominio**"
 Cohesion: 0.18
@@ -928,9 +910,9 @@ Nodes (9): apiVersion, path, providers, disableDeletion, editable, folder, name,
 Cohesion: 0.20
 Nodes (9): apiVersion, datasources, access, editable, isDefault, name, type, uid (+1 more)
 
-### Community 152 - "Green AI — Monitoring Service"
-Cohesion: 0.20
-Nodes (10): Arquitectura, Cierre con Prometheus real, Configurar Prometheus, Contrato, Ejecutar, Green AI — Monitoring Service, Imagen de aplicación, Modelo de base de datos (+2 more)
+### Community 152 - "Monitoring PMV1: inspección y propuesta"
+Cohesion: 0.25
+Nodes (8): Comunicación y propiedad de datos acordadas, Decisiones propuestas, Evidencias y estado, Incrementos verificables, Información pendiente, Inspección del punto de partida, Monitoring PMV1: inspección y propuesta, Requisitos y diferencias documentales
 
 ### Community 153 - "features"
 Cohesion: 0.20
@@ -1048,9 +1030,9 @@ Nodes (8): 4.15.1 Estructura jerárquica (4 niveles), 4.15.2 Tabla resumen de pa
 Cohesion: 0.25
 Nodes (7): global, scrape_interval, rule_files, scrape_configs, job_name, static_configs, targets
 
-### Community 184 - "Punto de integración para software/simulator"
-Cohesion: 0.25
-Nodes (8): Decisiones consolidadas del adaptador Prometheus, Flujo y separación, Identidad y procedencia, Métricas compatibles con Grupo A, Primer incremento recomendado del simulador, Punto de integración para software/simulator, Referencia de BD actualizada — 2026-09-22, Reloj y reproducibilidad
+### Community 184 - "resample_to_frequency"
+Cohesion: 0.29
+Nodes (3): _first_valid(), _resample_label(), resample_to_frequency()
 
 ### Community 185 - "VII.4. GESTIÓN ECONÓMICA Y PRESUPUESTO DEL PROYECTO"
 Cohesion: 0.22
@@ -1060,9 +1042,9 @@ Nodes (9): Ecuación de Cálculo del Esfuerzo:, VII.4.1. Fundamentación Metodol
 Cohesion: 0.25
 Nodes (8): random_forest, max_depth, max_features, min_samples_leaf, min_samples_split, n_estimators, n_jobs, random_state
 
-### Community 187 - "pandas"
+### Community 187 - "training/train.py"
 Cohesion: 0.09
-Nodes (20): main(), _canonicalize_numeric(), clean_dataset(), _token_to_nan(), _first_valid(), _resample_label(), resample_to_frequency(), _assert_boundary() (+12 more)
+Nodes (13): DatasetBundle, load_dataset(), _looks_internal(), validate_payload(), InsufficientDataError, _assert_boundary(), assert_purged_boundaries(), _period() (+5 more)
 
 ### Community 189 - "C5 · Uso de herramientas modernas (AG-I11: crear, seleccionar, aplicar, reconocer limitaciones)"
 Cohesion: 0.29
@@ -1120,9 +1102,9 @@ Nodes (5): 1. Selección de arquitectura (la guía S2 pide 3 alternativas ponder
 Cohesion: 0.33
 Nodes (5): 1. Fichas resumidas (cifras con su origen en el artículo), 2. Cumplimiento de lo exigido, 3. Discusión propuesta (ind. 6: comparar los resultados de cada PMV con los antecedentes), 4. Referencias (formato ISO 690 numérico; confirmar con la guía de estilo de la biblioteca UC), Antecedentes y referencias (ISO 690-2, sistema numérico)
 
-### Community 204 - "Ruta de estudio para exponer Green AI"
-Cohesion: 0.40
-Nodes (5): Cómo comprobar las afirmaciones, La idea central, Observaciones importantes de la revisión, Orden de lectura, Ruta de estudio para exponer Green AI
+### Community 204 - "supabase-auth-setup.sql"
+Cohesion: 0.52
+Nodes (5): on_auth_user_created_green_ai, public.custom_access_token_hook(), public.handle_new_auth_user(), public.user_profiles, public.user_roles
 
 ### Community 205 - "Diagnóstico inicial de la entrega"
 Cohesion: 0.33
@@ -1296,25 +1278,13 @@ Nodes (5): Criterio de aceptación sugerido, Cómo mejorar la precisión del mod
 Cohesion: 0.33
 Nodes (6): VII.5.1. Cronograma y Diagrama de Gantt Planificado, VII.5.2. Cronograma y Diagrama de Gantt Ejecutado, VII.5.3. Fundamentación de la Gestión Temporal y Control de Línea Base, VII.5.4. Cronograma planificado, VII.5.5. Trazabilidad de Hitos de Cierre y Criterios de Transición entre PMVs, VII.5. CRONOGRAMA DE ACTIVIDADES Y DIAGRAMA DE GANTT
 
-### Community 250 - "2. Necesidades y requerimientos de ingeniería"
-Cohesion: 0.50
-Nodes (4): 2.2 Requerimientos de IA y predicción, 2.3 Requerimientos no funcionales, 2. Necesidades y requerimientos de ingeniería, Requerimientos funcionales
+### Community 250 - "test_experiment.py"
+Cohesion: 0.43
+Nodes (4): rows(), test_energy_follows_linear_power_model(), test_perfect_forecast_never_underprovisions_and_beats_reactive_on_a_ramp(), test_rejects_non_contiguous_series()
 
-### Community 251 - "7.2 Selección de metodología de desarrollo"
-Cohesion: 0.50
-Nodes (4): 7.2 Selección de metodología de desarrollo, Kanban, Scrum, Waterfall
-
-### Community 252 - "7.3 Selección de metodología para Machine Learning"
-Cohesion: 0.50
-Nodes (4): 7.3 Selección de metodología para Machine Learning, CRISP-DM, SEMMA, TDSP
-
-### Community 253 - "7.4 Selección del enfoque de validación"
-Cohesion: 0.50
-Nodes (4): 7.4 Selección del enfoque de validación, Enfoque cuasi-experimental, Experimento controlado, Simulación
-
-### Community 254 - "7.5 Selección del enfoque MLOps"
-Cohesion: 0.50
-Nodes (4): 7.5 Selección del enfoque MLOps, Despliegue tradicional, Gestión manual, MLOps estructurado
+### Community 254 - "contract-schema.sql"
+Cohesion: 0.70
+Nodes (4): idx_logs_hardware_timestamp, idx_logs_timestamp, public.hardware, public.logs
 
 ### Community 255 - "4.6 Plan de entregas en tres PMV"
 Cohesion: 0.50
@@ -1400,6 +1370,10 @@ Nodes (6): **4.12 Ejecución y validación del PMV2**, **Cambios esperados respe
 Cohesion: 0.33
 Nodes (6): **4.13 Ejecución y validación del PMV3**, **Ciclo: Planificar → Ejecutar → Validar → Consolidar**, **Entregables de cierre del PMV3**, **Evidencias obligatorias del PMV3**, **Monitoreo del PMV3**, **Transición hacia el producto final**
 
+### Community 337 - "schema.sql"
+Cohesion: 0.60
+Nodes (4): hardware, idx_logs_hardware_timestamp, idx_logs_timestamp, logs
+
 ### Community 338 - "4. Crear los servicios (en este orden)"
 Cohesion: 0.40
 Nodes (5): 4.1 Prediction, 4.2 Data Processing, 4.3 Monitoring (opcional), 4.4 Gateway (al final: necesita las URLs anteriores), 4. Crear los servicios (en este orden)
@@ -1444,9 +1418,9 @@ Nodes (4): **9.1 Relación con la arquitectura**, **9.2 Relación con la experim
 Cohesion: 0.50
 Nodes (4): **4.6 Plan de entregas en tres PMV**, **PMV1 — Validar viabilidad técnica y pipeline de datos (Sprints 1-3, Semanas 1-6)**, **PMV2 — Validar la solución predictiva y el motor de recomendaciones (Sprints 4-6, Semanas 7-12)**, **PMV3 — Validar producto consolidado y experimentación final (Sprints 7-8, Semanas 13-16)**
 
-### Community 350 - "Data contract"
+### Community 350 - "4. Conocimientos de computación"
 Cohesion: 0.50
-Nodes (3): Data contract, Input, Output
+Nodes (4): 4.1 Procesamiento y arquitectura de datos, 4.2 Sistemas distribuidos y Kubernetes, 4.3 Observabilidad, 4. Conocimientos de computación
 
 ### Community 353 - "Pruebas ejecutadas en el monorepo (2026-11-06)"
 Cohesion: 0.67
@@ -1454,23 +1428,23 @@ Nodes (3): Consumo observado en reposo (docker stats, Windows/WSL2), Pruebas eje
 
 ## Knowledge Gaps
 - **21 isolated node(s):** `greenai/gateway`, `pe.edu.continental.greenai:gateway-service`, `pe.edu.continental.greenai:monitoring-service`, `observed`, `simulated` (+16 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 2159 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **81 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 2160 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **87 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `2. Componentes (vista de paquetes) y cumplimiento hexagonal` connect `Server` to `C6-B · Arquitectura híbrida (microservicios + hexagonal) y despliegue`, `pathlib`, `HistoricalLogsSource`, `QueryMetrics`?**
-  _High betweenness centrality (0.073) - this node is a cross-community bridge._
+- **Why does `2. Componentes (vista de paquetes) y cumplimiento hexagonal` connect `Server` to `QueryMetrics`, `MonitoringConfiguration.java`, `C6-B · Arquitectura híbrida (microservicios + hexagonal) y despliegue`, `ProcessGreenAIDatasetUseCase`, `HistoricalLogsSource`?**
+  _High betweenness centrality (0.081) - this node is a cross-community bridge._
 - **Are the 20 inferred relationships involving `ValidationError` (e.g. with `MovingAverageBaseline` and `PersistenceBaseline`) actually correct?**
   _`ValidationError` has 20 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `greenai/gateway`, `pe.edu.continental.greenai:gateway-service`, `pe.edu.continental.greenai:monitoring-service` to the rest of the system?**
   _21 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `pandas` be split into smaller, more focused modules?**
-  _Cohesion score 0.08953418027828192 - nodes in this community are weakly interconnected._
-- **Why does `timestamp()` connect `routes.py` to `Revisión del avance de Prediction — rama `Criss``, `Modelo de base de datos e integración`, `InvalidResponse`, `origin`, `test_historical_logs.py`, `Contrato Monitoring v0.1 — propuesta`, `HistoricalLogsSource`?**
-  _High betweenness centrality (0.068) - this node is a cross-community bridge._
+  _Cohesion score 0.08811188811188811 - nodes in this community are weakly interconnected._
+- **Why does `source()` connect `origin` to `engine.py`, `Green AI — Data Processing`, `Fundamentos de Java Spring y arquitectura para Green AI`, `Contrato de comunicación por componente`, `test_historical_logs_contract.py`, `C4 · Gestión del proyecto (ICACIT + PMBOK 7 + Scrum)`, `Contrato Monitoring v0.1 — propuesta`?**
+  _High betweenness centrality (0.054) - this node is a cross-community bridge._
 - **Should `numpy` be split into smaller, more focused modules?**
-  _Cohesion score 0.07033248081841433 - nodes in this community are weakly interconnected._
-- **Why does `source()` connect `origin` to `run_simulation`, `Green AI — Data Processing`, `Fundamentos de Java Spring y arquitectura para Green AI`, `test_historical_logs_contract.py`, `C4 · Gestión del proyecto (ICACIT + PMBOK 7 + Scrum)`?**
-  _High betweenness centrality (0.061) - this node is a cross-community bridge._
+  _Cohesion score 0.06807511737089202 - nodes in this community are weakly interconnected._
+- **Why does `HistoricalLogsSource` connect `HistoricalLogsSource` to `timestamp`, `recommendations.py`, `test_historical_report.py`, `Server`, `InvalidResponse`, `Green AI — Data Processing`, `ProcessGreenAIDatasetUseCase`, `test_historical_logs.py`?**
+  _High betweenness centrality (0.053) - this node is a cross-community bridge._
