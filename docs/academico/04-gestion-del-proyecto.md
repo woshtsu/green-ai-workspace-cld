@@ -122,6 +122,7 @@ Esto lo hace el usuario en Trello.
 | CHG-03 | 2026-11-06 | Perfil SQLite de desarrollo con pruebas de contrato contra PostgreSQL | Desarrollo sin depender de Supabase | D-05; el contrato añade `source` |
 | CHG-04 | 2026-11-06 | Gateway en Go validado como alternativa (no predeterminado) | Consumo (16 MB frente a 520 MB) para el hosting | D-06 |
 | CHG-05 | 2026-11-06 | Corrección de cifras de IA: Random Forest en lugar de «XGBoost final» | Las cifras previas no tenían experimento | `06-`, `08-` |
+| CHG-07 | 2026-11-06 | HU-13: el reporte se entrega en JSON/CSV (API) y Markdown; **se descarta el PDF** | Decisión del usuario: todo el texto en Markdown; evidencias con capturas | Backlog y criterio de HU-13 |
 | CHG-06 | Pendiente | Alcance: Kubernetes, MLflow Registry y JMeter pasan a «opcional PMV3» | No ejecutados | EDT §4 |
 
 ## 10. Medición del desempeño
