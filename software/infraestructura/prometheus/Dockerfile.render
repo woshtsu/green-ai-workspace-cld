@@ -1,0 +1,8 @@
+# Imagen de Prometheus con la configuración incluida (Render no monta archivos).
+# Contexto de build: software/infraestructura/prometheus
+FROM prom/prometheus:v3.13.3
+COPY prometheus.render.yml /etc/prometheus/prometheus.yml
+COPY alerts.yml /etc/prometheus/alerts.yml
+EXPOSE 10000
+# Retención corta y datos en /tmp: sin disco persistente en el plan gratuito.
+CMD ["--config.file=/etc/prometheus/prometheus.yml", "--web.listen-address=0.0.0.0:10000", "--storage.tsdb.path=/tmp/prometheus", "--storage.tsdb.retention.time=6h"]
