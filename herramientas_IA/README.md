@@ -16,8 +16,8 @@ Versión fijada: paquete PyPI `graphifyy==0.9.96` (la misma que el workspace ant
 & .\.tools\graphify\Scripts\graphify.exe query "pregunta" --budget 1500
 & .\.tools\graphify\Scripts\graphify.exe update .
 ```
-Mientras no se ejecute el instalador, puede usarse el runtime del workspace antiguo:
-`& ..\.tools\graphify\Scripts\graphify.exe ...` desde la raíz del monorepo.
+Mientras no se ejecute el instalador, puede usarse el runtime `.tools/graphify` (instalar con `herramientas_IA/instalar-graphify.ps1`):
+`& .\.tools\graphify\Scripts\graphify.exe ...` desde la raíz del monorepo.
 
 ## Antigravity
 ```powershell

@@ -9,7 +9,7 @@ de Data Processing, no una ejecución integrada en vivo con todos los servicios.
 - Frontend: la rama `integration/design-monitoring` ya integra Supabase Auth con JWT
   y Monitoring. Las observaciones de la revisión del 2026-09-24 sobre ausencia de
   Authorization y login antiguo son históricas y están superadas por esa rama.
-- Prediction: el repositorio hermano `green-ai-prediction/green-ai-project-docs`
+- Prediction: el repositorio hermano `software/prediction`
   documenta `POST /v1/predictions`, `POST /predict` y una ruta de salud ready. La
   API existe en contrato; su conexión desde Data Processing y el recorrido completo
   con servicios ejecutándose todavía no se han validado.

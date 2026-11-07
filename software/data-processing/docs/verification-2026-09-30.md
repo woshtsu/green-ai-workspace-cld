@@ -19,7 +19,7 @@ Orden estricto `(timestamp, log_id)` dentro de páginas y contra el cursor; comp
 Desde la raíz del workspace en PowerShell, con servicios levantados y muestras CPU disponibles:
 
 ```powershell
-Get-Content -Raw green-ai-data-processing/Green-IA/data-processing-service/scripts/check_monitoring_integration.py | docker compose exec -T data-processing python -
+Get-Content -Raw software/data-processing/scripts/check_monitoring_integration.py | docker compose exec -T data-processing python -
 ```
 
 El script solo consulta servicios privados. Falla si los valores no coinciden o no hay muestras válidas; recibir 200 por sí solo no basta.
