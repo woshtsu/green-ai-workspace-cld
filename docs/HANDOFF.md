@@ -84,6 +84,20 @@ Comandos: ver `software/infraestructura/compose.sqlite-dev.yml` y `compose.contr
 La BD de contrato se levantó y destruyó (`down -v`) en cada ejecución; sus contraseñas y el secreto JWT fueron
 aleatorios en memoria y no se guardaron.
 
+## Avance del 2026-11-06 (tarde)
+- **HU-05 MLflow:** `run_pipeline.py` sin `--skip-mlflow` registra el experimento `computational-demand-prediction`
+  (id 394141087236111562), con 1 run `random_forest_15m` y MAE de test 3,85, en `software/prediction/mlruns/`
+  (ignorado por Git). Falta una captura de la UI (`mlflow ui`).
+- **CHG-07:** sin PDF; el reporte se entrega en JSON/CSV + Markdown; las pruebas, con capturas.
+- **Frontend «Racks con calor»** (`software/frontend/network.html`, `racks.js`, `racks.css`, `racks.json`):
+  50 nodos simulados en 5 racks, CPU en vivo cada 15 s y predicción por nodo. Lo hizo Antigravity (encargo 06,
+  Gemini Flash) y lo revisó Claude: 20/20 pruebas. **Falta la verificación visual con sesión real**: el usuario
+  inicia sesión en http://127.0.0.1:13001.
+- Pendiente del frontend: reducir la verbosidad del resto de páginas y mostrar el PMV2 completo (reporte CSV,
+  recomendación, experimento, alertas).
+- Despliegue: el usuario evalúa Back4App (contenedores desde GitHub) y Deno Deploy (probablemente solo JS/TS:
+  verificar). Idea: repartir servicios entre dos proveedores, con llamadas HTTPS públicas entre ellos.
+
 ## Sprint actual frente al plan (revisado el 2026-11-06)
 Plan base: `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md` §4.8 (8 sprints de 2 semanas desde el
 25/08/2026).
