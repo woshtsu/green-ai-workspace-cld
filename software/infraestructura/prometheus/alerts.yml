@@ -14,3 +14,33 @@ groups:
           severity: warning
         annotations:
           summary: "Una evaluación excedió límites de demostración; requiere revisión, no prueba una violación de SLA aprobado"
+  - name: green-ai-pmv2-operacion
+    # HU-12 (Sprint 6). Umbrales de DEMOSTRACIÓN sobre telemetría simulada; no son SLA aprobados por la UC.
+    rules:
+      - alert: SimulatorTelemetryDown
+        expr: up{job="green-ai-simulator"} == 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Sin telemetría del simulador durante 2 minutos: Monitoring y Prediction trabajarán sin datos frescos"
+      - alert: NodeCpuSaturationRisk
+        expr: (1 - avg by (cluster, node) (rate(node_cpu_seconds_total{mode="idle"}[2m]))) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CPU > 85 % sostenida 5 min en {{ $labels.node }}: riesgo de degradar el servicio (umbral de demostración)"
+      - alert: NodeMemoryPressure
+        expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 90
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Memoria > 90 % sostenida 5 min en {{ $labels.node }}"
+      - alert: PredictedCpuHigh
+        expr: green_ai_last_prediction_cpu_percent > 85
+        labels:
+          severity: info
+        annotations:
+          summary: "La última predicción anticipa CPU > 85 % (alerta preventiva; revisar la recomendación asociada)"

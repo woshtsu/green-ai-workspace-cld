@@ -167,6 +167,20 @@ paths:
         '502': {$ref: '#/components/responses/UpstreamProblem'}
         '503': {$ref: '#/components/responses/UpstreamProblem'}
         '504': {$ref: '#/components/responses/GatewayFailure'}
+  /api/processing/v1/reports/historical-summary:
+    get:
+      operationId: getHistoricalSummary
+      summary: Reporte resumen de históricos (HU-13) en JSON o CSV
+      parameters:
+        - {name: hardwareId, in: query, required: true, schema: {type: string, minLength: 1, maxLength: 20}}
+        - {name: start, in: query, required: true, schema: {type: string, format: date-time}}
+        - {name: end, in: query, required: true, schema: {type: string, format: date-time}}
+        - {name: format, in: query, schema: {type: string, enum: [json, csv], default: json}}
+      responses:
+        '200': {description: HistoricalSummary de Data Processing v1 (JSON) o una fila CSV}
+        '422': {$ref: '#/components/responses/UpstreamProblem'}
+        '503': {$ref: '#/components/responses/UpstreamProblem'}
+        '504': {$ref: '#/components/responses/GatewayFailure'}
   /api/processing/v1/prediction/dataset:
     get:
       operationId: getPredictionDataset

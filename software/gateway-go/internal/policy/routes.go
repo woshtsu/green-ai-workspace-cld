@@ -42,7 +42,7 @@ func buildTable() []Route {
 	for _, p := range []string{"catalog", "current", "history"} {
 		routes = append(routes, Route{"GET", "/api/monitoring/v1/metrics/" + p, Monitoring, 3, "/api/v1", 0, defaultTimeout})
 	}
-	for _, p := range []string{"metrics/history", "historical-logs", "prediction/dataset"} {
+	for _, p := range []string{"metrics/history", "historical-logs", "prediction/dataset", "reports/historical-summary"} {
 		routes = append(routes, Route{"GET", "/api/processing/v1/" + p, DataProcessing, 3, "/api/v1", 0, 15 * time.Second})
 	}
 	routes = append(routes, Route{"POST", "/api/prediction/v1/predictions", Prediction, 2, "", maxBody, 30 * time.Second})

@@ -11,8 +11,8 @@ func TestUpstreamPathsMatchJavaGateway(t *testing.T) {
 		"POST /api/recommendations/v1/energy":          "/v1/energy",
 		"POST /api/recommendations/v1/recommendations": "/v1/recommendations",
 	}
-	if n := len(Routes()); n != 9 {
-		t.Fatalf("se esperaban 9 rutas publicadas, hay %d", n)
+	if n := len(Routes()); n != 10 {
+		t.Fatalf("se esperaban 10 rutas publicadas, hay %d", n)
 	}
 	for key, path := range want {
 		var method, p string

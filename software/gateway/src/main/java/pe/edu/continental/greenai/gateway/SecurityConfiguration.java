@@ -71,7 +71,8 @@ class SecurityConfiguration {
                     "/api/monitoring/v1/metrics/current", "/api/monitoring/v1/metrics/history")
                     .hasAnyRole("OPERATOR", "ADMIN", "VIEWER")
                 .pathMatchers(HttpMethod.GET, "/api/processing/v1/metrics/history",
-                    "/api/processing/v1/historical-logs", "/api/processing/v1/prediction/dataset")
+                    "/api/processing/v1/historical-logs", "/api/processing/v1/prediction/dataset",
+                    "/api/processing/v1/reports/historical-summary")
                     .hasAnyRole("OPERATOR", "ADMIN", "VIEWER") // VIEWER (observador, HU-14): solo lectura
                 .pathMatchers(HttpMethod.POST, "/api/prediction/v1/predictions",
                     "/api/recommendations/v1/recommendations", "/api/recommendations/v1/energy")

@@ -17,7 +17,7 @@ spring:
             - id: data-processing
               uri: ${GATEWAY_DATA_PROCESSING_BASE_URL:http://data-processing:8000}
               predicates:
-                - Path=/api/processing/v1/metrics/history,/api/processing/v1/historical-logs,/api/processing/v1/prediction/dataset
+                - Path=/api/processing/v1/metrics/history,/api/processing/v1/historical-logs,/api/processing/v1/prediction/dataset,/api/processing/v1/reports/historical-summary
                 - Method=GET
               filters:
                 - StripPrefix=3
