@@ -1,0 +1,60 @@
+# Blueprint de Render: entorno de DESARROLLO (rama test), plan gratuito, sin despliegue automático.
+# Uso: Render -> New -> Blueprint -> repo woshtsu/green-ai-workspace-cld -> rama test.
+# Las variables con `sync: false` se piden en el panel al crear (nunca van en el repo).
+# Para PRODUCCIÓN: crear un segundo Blueprint con la rama main y renombrar los servicios (*-prod).
+# Guía: docs/GUIA-DESPLIEGUE-RENDER.md
+services:
+  - type: web
+    name: green-ai-prediction-dev
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: test
+    dockerContext: software/prediction
+    dockerfilePath: software/prediction/Dockerfile
+    healthCheckPath: /health/ready
+    autoDeployTrigger: "off"
+    envVars:
+      - { key: ML_ENV, value: experimental }
+      - { key: ML_PORT, value: "8000" }
+      - { key: PORT, value: "8000" }
+
+  - type: web
+    name: green-ai-data-processing-dev
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: test
+    dockerContext: software/data-processing
+    dockerfilePath: software/data-processing/Dockerfile
+    healthCheckPath: /api/v1/health
+    autoDeployTrigger: "off"
+    envVars:
+      - { key: PORT, value: "8000" }
+      - { key: APP_ENV, value: production }
+      - { key: HISTORICAL_SOURCE, value: none }
+      - { key: REQUEST_TIMEOUT_SECONDS, value: "10" }
+      # Monitoring no se despliega en el plan gratuito: URL de relleno (esas rutas responderán error controlado).
+      - { key: MONITORING_BASE_URL, value: "https://example.invalid" }
+
+  - type: web
+    name: green-ai-gateway-dev
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: test
+    # El Dockerfile copia gateway-go/ y los OpenAPI de gateway/: el contexto es software/.
+    dockerContext: software
+    dockerfilePath: software/gateway-go/Dockerfile
+    autoDeployTrigger: "off"
+    envVars:
+      - { key: GATEWAY_PORT, value: "10000" }
+      - { key: PORT, value: "10000" }
+      - { key: GATEWAY_CORS_ALLOWED_ORIGIN, value: "https://woshtsu.github.io" }
+      - { key: GATEWAY_MONITORING_BASE_URL, value: "https://example.invalid" }
+      # URLs públicas https de los otros dos servicios, tras su primer despliegue (sin "/" final).
+      - { key: GATEWAY_PREDICTION_BASE_URL, sync: false }
+      - { key: GATEWAY_DATA_PROCESSING_BASE_URL, sync: false }
+      # Supabase: https://<ref>.supabase.co/auth/v1  y  .../auth/v1/.well-known/jwks.json
+      - { key: GATEWAY_AUTH_ISSUER_URI, sync: false }
+      - { key: GATEWAY_AUTH_JWK_SET_URI, sync: false }

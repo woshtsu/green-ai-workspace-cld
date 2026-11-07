@@ -104,3 +104,8 @@ Después, iniciar sesión en el frontend publicado y abrir el dashboard. Un 401 
 | Servicio "Deploying" sin pasar a Live | Health Check Path o puerto incorrecto |
 | 502/504 desde el Gateway | El servicio destino estaba dormido; reintentar a los 60 s |
 | `INSUFFICIENT_DATA` al predecir | Falta historial (Simulator no conectado); esperado |
+
+## 9. Atajo: crear los tres servicios de una vez (Blueprint)
+El archivo `render.yaml` de la raíz define Prediction, Data Processing y Gateway (desarrollo, rama `test`, plan gratuito, Auto-Deploy apagado). Render → **New → Blueprint** → repo → rama `test`. Pide los valores `sync: false` (URLs de Prediction y Data Processing, issuer y JWKS de Supabase); como esas URLs no existen hasta el primer despliegue, pon un valor provisional y corrígelo después en *Environment* del Gateway.
+
+**Nota sobre rutas al crear a mano:** en el formulario de Render, *Docker Build Context Directory* y *Dockerfile Path* son relativos a la **raíz del repositorio** (no a *Root Directory*). Prediction: contexto `software/prediction`, Dockerfile `software/prediction/Dockerfile`. Gateway Go: contexto `software`, Dockerfile `software/gateway-go/Dockerfile`. *Auto-Deploy* en *Off*.
