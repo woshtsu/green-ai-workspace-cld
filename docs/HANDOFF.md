@@ -227,3 +227,5 @@ Resumen para continuar en un chat nuevo: `docs/CONTINUAR-EN-NUEVO-CHAT.md`. Fron
 
 Incidencias: Antigravity intentó ejecutar un comando en el encargo 17 (denegado; se reanudó la conversación).
 Una exportación de Excel por COM se colgó (instancia oculta cerrada a mano). `exportados/` sigue sin versionar.
+
+Push a `origin/test` (autorizado por el usuario, 2026-11-07): commits d24d86f..900d173. GitHub Actions run 42403467382 (CI): prediction, data-processing, gateway-go, frontend, monitoring e imágenes Docker **success**; Pages (run 42403467377) **success** con las acciones fijadas por SHA.
