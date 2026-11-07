@@ -6,7 +6,6 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
-from xgboost import XGBRegressor
 
 from src.exceptions import ValidationError
 
@@ -27,6 +26,9 @@ class XGBoostDemandModel:
             "n_jobs": params.get("n_jobs", 1),
             "verbosity": params.get("verbosity", 0),
         }
+        # Importación diferida: la imagen de inferencia (Random Forest) no instala xgboost.
+        from xgboost import XGBRegressor
+
         self.model = XGBRegressor(**self.params)
         self.feature_names: list[str] = []
         self.fitted = False
