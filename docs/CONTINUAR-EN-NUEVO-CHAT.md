@@ -31,3 +31,9 @@ URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend
 - Pruebas: `cd software/frontend && node --test tests/*.test.cjs` (48); Prediction `pytest` en `software/prediction` (100); smoke del stack local `python software/infraestructura/smoke/smoke.py`.
 - Verificación visual del frontend sin login: `python herramientas_IA/arnes_frontend/harness.py software/frontend 18999`.
 - Worktree auxiliar `../green-ai-wt-front` (rama `agy/frontend-redesign`, ya integrada en `test`): puede borrarse con `git worktree remove ../green-ai-wt-front`.
+
+## Actualización (2026-11-07, mañana)
+- El compañero (dueño de Supabase) ya configuró las URLs de redirección; los servicios de Render se suspendieron a mano; el login con Supabase funciona.
+- Local: `docker compose -f software/infraestructura/docker-compose.yml -f software/infraestructura/compose.swagger.yaml up -d --build` (frontend en `http://127.0.0.1:13001`). Se corrigió el `Dockerfile` del frontend (copiaba los JS por nombre y omitía los módulos nuevos; commit `a760602`, **sin subir**). El stack local quedó detenido (`down`, sin borrar volúmenes).
+- Para iterar el frontend sin reconstruir imagen: `docker compose ... stop frontend` y `python -m http.server 13001 --bind 127.0.0.1 --directory software/frontend` (el Gateway local solo acepta el origen `http://127.0.0.1:13001`). Refrescar con Ctrl+F5 por caché.
+- Regla permanente nueva en `AGENTS.md`: documentar en HANDOFF y en este archivo al cierre de cada sesión.

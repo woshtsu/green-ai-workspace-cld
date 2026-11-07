@@ -17,6 +17,7 @@ Contexto extenso y estado actual: [docs/HANDOFF.md](docs/HANDOFF.md). Léelo ant
 - Secretos solo por variables de entorno; versionar únicamente `.env.example` vacíos. Nada de secretos de servidor en el frontend.
 - No convertir afirmaciones históricas sin evidencia en requisitos cumplidos (ver docs/HANDOFF.md, "Honestidad experimental").
 - No declarar terminado lo que no se probó; registrar comandos, resultados y fallos en docs/HANDOFF.md.
+- **Cierre de cada sesión (preferencia permanente del usuario, sin que lo pida):** antes de terminar, documentar lo hecho en `docs/HANDOFF.md` (cambios, pruebas con resultado, fallos) y actualizar `docs/CONTINUAR-EN-NUEVO-CHAT.md` (estado, URLs, pendientes en orden, cómo trabajar) para que otro chat pueda continuar sin contexto previo. Dejar evidencias (capturas, salidas) en `docs/evidencias/` y, si afectan al informe, en `entregables/informe-corregido/`. Commit local; el push solo con autorización.
 
 ## Graphify (índice de código)
 - Grafo propio en `graphify-out/graph.json`. Antes de leer código, consulta: `graphify query "<pregunta>" --budget 1500`; usa `path` y `explain` para relaciones.
