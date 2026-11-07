@@ -48,7 +48,8 @@ def build_argv(agy: str, prompt: str, args: argparse.Namespace) -> list[str]:
     if args.readonly:
         settings["permissions"] = {"deny": READONLY_DENY + ALWAYS_DENY}
     else:
-        allow = [f"write_file({p})" for p in args.allow_write] + [f"command({r})" for r in args.allow_command]
+        allow = ([f"write_file({p})" for p in args.allow_write] + [f"read_file({p})" for p in args.allow_read]
+                 + [f"command({r})" for r in args.allow_command])
         settings["permissions"] = {"allow": allow, "deny": ALWAYS_DENY}
     argv = [agy, "-p", prompt, "--output-format", "json", "--settings", json.dumps(settings)]
     if args.mode:
@@ -69,6 +70,7 @@ def main() -> int:
     p.add_argument("--readonly", action="store_true", help="Deniega escritura, comandos, URLs y MCP")
     p.add_argument("--mode", choices=["plan", "accept-edits"], default=None)
     p.add_argument("--allow-write", action="append", default=[], help="Ruta permitida para write_file (repetible)")
+    p.add_argument("--allow-read", action="append", default=[], help="Ruta permitida para read_file (repetible)")
     p.add_argument("--allow-command", action="append", default=[], help="Destino de command(...): 'uv' o 'regex:...' (repetible)")
     p.add_argument("--model", default=None)
     p.add_argument("--conversation", default=None, help="Reanudar una conversación concreta")
