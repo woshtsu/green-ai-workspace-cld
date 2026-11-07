@@ -1710,9 +1710,9 @@
     "semantic_hash": ""
   },
   "docs/HANDOFF.md": {
-    "mtime": 1794041690.394834,
-    "seen": 1794070932.1915019,
-    "ast_hash": "67baa61e3c59c44a8ae0594382241060",
+    "mtime": 1794076192.5763826,
+    "seen": 1794076258.3828797,
+    "ast_hash": "691c866c78426ec397befd61a1dc9d5e",
     "semantic_hash": ""
   },
   "docs/RETIRO-WORKSPACE.md": {
@@ -2268,9 +2268,9 @@
     "semantic_hash": ""
   },
   "herramientas_IA/README.md": {
-    "mtime": 1794017932.1887116,
-    "seen": 1794023537.4766366,
-    "ast_hash": "a3d42ac204795d55fdc970f12a2400f7",
+    "mtime": 1794076172.929943,
+    "seen": 1794076258.3831167,
+    "ast_hash": "a9fff1cb80ac30fd2339320081be3572",
     "semantic_hash": ""
   },
   "software/data-processing/README.md": {
@@ -2310,33 +2310,33 @@
     "semantic_hash": ""
   },
   "software/frontend/dashboard.html": {
-    "mtime": 1794041634.3578382,
-    "seen": 1794070932.2092218,
-    "ast_hash": "513ef2a47c7ed81d420b2021633693bc",
+    "mtime": 1794073898.0342617,
+    "seen": 1794076258.383131,
+    "ast_hash": "f7fee9cc935e2fcad9e8649a54ed81e8",
     "semantic_hash": ""
   },
   "software/frontend/index.html": {
-    "mtime": 1793253834.6252708,
-    "seen": 1794023537.476647,
-    "ast_hash": "db7eca5998864d24b145b9da7803a909",
+    "mtime": 1794073898.0614223,
+    "seen": 1794076258.383135,
+    "ast_hash": "f017efa5866d08f0b24c0fde7d49ba2c",
     "semantic_hash": ""
   },
   "software/frontend/login.html": {
-    "mtime": 1793253834.628623,
-    "seen": 1794023537.476648,
-    "ast_hash": "caa7a41e2fe871eaa2c4a9a5efe8a9ba",
+    "mtime": 1794073898.083239,
+    "seen": 1794076258.3831365,
+    "ast_hash": "6f2b189da7bb93e03624facf22d023d0",
     "semantic_hash": ""
   },
   "software/frontend/network.html": {
-    "mtime": 1794041634.3638992,
-    "seen": 1794070932.2097788,
-    "ast_hash": "3845e215c9562cf8860f50c64506a6b9",
+    "mtime": 1794073898.1088033,
+    "seen": 1794076258.3831377,
+    "ast_hash": "e560e249107d58c74e2546df6e2dbe35",
     "semantic_hash": ""
   },
   "software/frontend/register.html": {
-    "mtime": 1793253834.645182,
-    "seen": 1794023537.4766507,
-    "ast_hash": "4e594c98f564c1ebcab3af87d519e645",
+    "mtime": 1794073898.120442,
+    "seen": 1794076258.3831394,
+    "ast_hash": "f6afaaf63eec232280d043c6861cc4e8",
     "semantic_hash": ""
   },
   "software/gateway-go/README.md": {
@@ -2736,15 +2736,15 @@
     "semantic_hash": ""
   },
   ".github/workflows/ci.yml": {
-    "mtime": 1794037974.9140215,
-    "seen": 1794070932.1395638,
-    "ast_hash": "54f748825a513a60c805c47af018438f",
+    "mtime": 1794073942.0001197,
+    "seen": 1794076258.3821862,
+    "ast_hash": "63b4c64325e332d740f08f724ad25c2a",
     "semantic_hash": ""
   },
   ".github/workflows/pages.yml": {
-    "mtime": 1794037403.0281255,
-    "seen": 1794070932.1395702,
-    "ast_hash": "18341e0fe17efa74c86ace9829d7abdb",
+    "mtime": 1794073942.001131,
+    "seen": 1794076258.3822002,
+    "ast_hash": "33e45a91f85e09579763ea852a39f5f4",
     "semantic_hash": ""
   },
   "docs/evidencias/smoke-20261107-prediction-slim.json": {
@@ -2892,9 +2892,9 @@
     "semantic_hash": ""
   },
   "docs/CONTINUAR-EN-NUEVO-CHAT.md": {
-    "mtime": 1794070500.8037498,
-    "seen": 1794070932.191333,
-    "ast_hash": "8f793a1cbf5416d81b3b46904a3cb020",
+    "mtime": 1794076206.7744284,
+    "seen": 1794076258.3828704,
+    "ast_hash": "f93e62c7080968687802c5b8b8dccf71",
     "semantic_hash": ""
   },
   "docs/GUIA-DESPLIEGUE-RENDER.md": {
@@ -2928,9 +2928,9 @@
     "semantic_hash": ""
   },
   "entregables/informe-corregido/informe-unidad-III.md": {
-    "mtime": 1793995423.6431744,
-    "seen": 1794070932.199317,
-    "ast_hash": "c5af67a98c099872ed369f0512abef4b",
+    "mtime": 1794076104.810421,
+    "seen": 1794076258.3829947,
+    "ast_hash": "0dc0b879dea157be3ae5ed1d19ba04d8",
     "semantic_hash": ""
   },
   "entregables/trabajos-previos/conocimientos-de-ingenieria/conocimientos-de-ingenieria.md": {
@@ -2958,9 +2958,9 @@
     "semantic_hash": ""
   },
   "software/frontend/flows.html": {
-    "mtime": 1794041634.3598368,
-    "seen": 1794070932.2092252,
-    "ast_hash": "7f03d1256e52a145ce3bfb86c06ffb18",
+    "mtime": 1794073898.0493248,
+    "seen": 1794076258.383133,
+    "ast_hash": "ce0daa87a355759571a348c9c502412a",
     "semantic_hash": ""
   },
   "software/prediction/requirements.serve.txt": {
@@ -3087,6 +3087,168 @@
     "mtime": 1793253919.0604436,
     "seen": 1794070932.2222316,
     "ast_hash": "ea7a9ab254a828256e62a76cd224a6a6",
+    "semantic_hash": ""
+  },
+  "guias/trello/PL8uQ4rF - green-ai-para-centros-de-datos-universitarios.json": {
+    "mtime": 1794072126.9773488,
+    "seen": 1794076258.3822758,
+    "ast_hash": "e5a3104ba52fe8486812cc32307158d1",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/calidad/llenar_modelo_furps.py": {
+    "mtime": 1794074451.991485,
+    "seen": 1794076258.3822818,
+    "ast_hash": "6f22016517c63acb0a867f8550be0676",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/exportacion/actualizar_word.ps1": {
+    "mtime": 1794075152.600784,
+    "seen": 1794076258.3822834,
+    "ast_hash": "cf276d10c078c4ec08430520fde36835",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/exportacion/lista_capturas.py": {
+    "mtime": 1794075351.9199252,
+    "seen": 1794076258.3822904,
+    "ast_hash": "9357f08e071bf5890155d05a95ac1900",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/exportacion/md_a_docx.py": {
+    "mtime": 1794075832.130538,
+    "seen": 1794076258.3822923,
+    "ast_hash": "b5f5ed421d60202e169edce50d5aa2e5",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/trello/validar_trello.py": {
+    "mtime": 1794073664.3722453,
+    "seen": 1794076258.3823013,
+    "ast_hash": "bbb5bda710aa6a69332f66c63485f791",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/video/carga_transacciones.py": {
+    "mtime": 1794073754.9444013,
+    "seen": 1794076258.382303,
+    "ast_hash": "0e6620914862acf2580d71452e7ed4bb",
+    "semantic_hash": ""
+  },
+  "skills-lock.json": {
+    "mtime": 1794074969.3739731,
+    "seen": 1794076258.3823066,
+    "ast_hash": "8545a14ece744a533a452f03d68a68d8",
+    "semantic_hash": ""
+  },
+  ".claude/skills/find-skills/SKILL.md": {
+    "mtime": 1794074969.3718352,
+    "seen": 1794076258.382865,
+    "ast_hash": "62b297abdee9aea84c577ab2e04e1974",
+    "semantic_hash": ""
+  },
+  "docs/GUIA-RAPIDA-USUARIO.md": {
+    "mtime": 1794074761.3215864,
+    "seen": 1794076258.3828783,
+    "ast_hash": "f00af17e45ea876baf73c11ab73b44b5",
+    "semantic_hash": ""
+  },
+  "docs/calidad/01_auditoria_furps.md": {
+    "mtime": 1794074411.9380987,
+    "seen": 1794076258.382906,
+    "ast_hash": "a808f9544c3f1a5d2651864d3b033cda",
+    "semantic_hash": ""
+  },
+  "docs/calidad/02_plan_furps.md": {
+    "mtime": 1794074743.3720462,
+    "seen": 1794076258.3829074,
+    "ast_hash": "7f0a10f7038a503edb9a5845e1d22457",
+    "semantic_hash": ""
+  },
+  "docs/calidad/03_auditoria_implementacion_furps.md": {
+    "mtime": 1794074890.846172,
+    "seen": 1794076258.3829088,
+    "ast_hash": "a598af9d8c9b5cc3d48ba9c92db560f5",
+    "semantic_hash": ""
+  },
+  "docs/calidad/04_auditoria_owasp.md": {
+    "mtime": 1794074422.0980346,
+    "seen": 1794076258.3829103,
+    "ast_hash": "0f67f94567c91c3911581c2c5d992515",
+    "semantic_hash": ""
+  },
+  "docs/calidad/05_plan_owasp.md": {
+    "mtime": 1794074411.937098,
+    "seen": 1794076258.3829114,
+    "ast_hash": "56fea3988b6dc2e046f1f10192fb76d0",
+    "semantic_hash": ""
+  },
+  "docs/calidad/06_auditoria_implementacion_owasp.md": {
+    "mtime": 1794075028.4312737,
+    "seen": 1794076258.3829129,
+    "ast_hash": "1660dc0c31721d61d626367a2303c724",
+    "semantic_hash": ""
+  },
+  "docs/calidad/07_auditoria_final.md": {
+    "mtime": 1794075023.7288084,
+    "seen": 1794076258.3829143,
+    "ast_hash": "fca5acc683a0596d08d81e0bb478d274",
+    "semantic_hash": ""
+  },
+  "docs/evidencias/semana13-ola1-verificacion.md": {
+    "mtime": 1794074661.8101747,
+    "seen": 1794076258.3829222,
+    "ast_hash": "c851abdc9261b07b8c13e22df72f4d75",
+    "semantic_hash": ""
+  },
+  "docs/exposicion/GUION-VIDEO-UNIDAD-III.md": {
+    "mtime": 1794076115.8890102,
+    "seen": 1794076258.3829453,
+    "ast_hash": "b045129ed773a955bf69bc9e1fe8c09c",
+    "semantic_hash": ""
+  },
+  "entregables/CAPTURAS-PENDIENTES.md": {
+    "mtime": 1794076104.804844,
+    "seen": 1794076258.3829892,
+    "ast_hash": "8714c81180a25ea509667f5052db289f",
+    "semantic_hash": ""
+  },
+  "entregables/semana13/semana13-calidad-furps-owasp.md": {
+    "mtime": 1794076104.816435,
+    "seen": 1794076258.3829963,
+    "ast_hash": "e339dc73cbe40da1774755dedffc4ab4",
+    "semantic_hash": ""
+  },
+  "guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md": {
+    "mtime": 1794076104.819971,
+    "seen": 1794076258.3831134,
+    "ast_hash": "9ceaf5576685e77a7c827c9b9a67ac3f",
+    "semantic_hash": ""
+  },
+  "guias/trello/pront evaluacion mediante json.txt": {
+    "mtime": 1794072365.6057093,
+    "seen": 1794076258.3831153,
+    "ast_hash": "645bce9891256bbc6a5e5ab0657433fd",
+    "semantic_hash": ""
+  },
+  "guias/trello/muestra-tarjeta-trello.jpg": {
+    "mtime": 1794072548.9444718,
+    "seen": 1794076258.3832896,
+    "ast_hash": "26a89bb4efa655b07cf761a861f0f654",
+    "semantic_hash": ""
+  },
+  "guias/trello/referencia_tablero_trello.jpg": {
+    "mtime": 1794072233.576715,
+    "seen": 1794076258.3832915,
+    "ast_hash": "046b9d40ed928256b6cd80c6345c97b2",
+    "semantic_hash": ""
+  },
+  "guias/trello/trelloActual-sin-validar.jpg": {
+    "mtime": 1794072462.9831238,
+    "seen": 1794076258.383293,
+    "ast_hash": "cdd4bb270b1fb44ae09bcbdb0bc9c321",
+    "semantic_hash": ""
+  },
+  "guias/trello/trelloActual-sin-validar2.jpg": {
+    "mtime": 1794072484.4973164,
+    "seen": 1794076258.383294,
+    "ast_hash": "af70a9a54746e59a2e172c4651425228",
     "semantic_hash": ""
   }
 }

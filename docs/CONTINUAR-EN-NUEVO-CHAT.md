@@ -1,8 +1,21 @@
-# Continuar en un chat nuevo (resumen al 2026-11-07, noche)
+# Continuar en un chat nuevo (resumen al 2026-11-07, tarde — semana 13)
 
 Lee primero `AGENTS.md`, `docs/HANDOFF.md` y este archivo. Rama de trabajo: **`test`** (publicada en `origin/test`). `main` no se tocó desde el retiro del workspace antiguo.
 
-## Qué quedó hecho hoy
+## Lo nuevo de la semana 13 (2026-11-07, tarde) — leer primero
+| Qué | Dónde | Estado |
+|---|---|---|
+| Informe corregido (Word) | `entregables/informe-corregido/informe-unidad-III.md` → `exportados/semana13/…-informe-unidad-III-CORREGIDO.docx` | Listo para revisión del equipo; faltan 15 capturas, NRC y URL del video |
+| Documento semana 13 (Word) | `entregables/semana13/semana13-calidad-furps-owasp.md` → `exportados/semana13/…-semana13-calidad-FURPS-OWASP.docx` + `MODELO-FURPSPLUS-Green-AI.xlsx` | Listo para revisión; faltan 11 capturas y NRC |
+| Auditorías FURPS+/OWASP 01–07 | `docs/calidad/` | Ola 1 implementada (commit `d24d86f`); olas 2–3 planificadas (17/11–12/12) |
+| Capturas por integrante | `entregables/CAPTURAS-PENDIENTES.md` | Por hacer (equipo) |
+| Trello | `guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md` + `herramientas_IA/trello/validar_trello.py` | Días 1–4 (07/11–13/11) por hacer, cada uno con su cuenta; luego exportar JSON y validar |
+| Video | `docs/exposicion/GUION-VIDEO-UNIDAD-III.md` + `herramientas_IA/video/carga_transacciones.py` | Guion listo; script sin ejecutar |
+| Exportar a Word | `herramientas_IA/README.md` § Exportación DOCX | `md_a_docx.py` + `actualizar_word.ps1` |
+
+URL real de Prediction en Render: `https://green-ai-prediction-dev-zxly.onrender.com` (las de Monitoring, Simulator y Prometheus: copiarlas del panel).
+
+## Qué quedó hecho la noche anterior
 | Área | Estado | Dónde |
 |---|---|---|
 | Carpeta `entregables/` | Reorganizada: `informe-corregido/` (lo que se entrega: `informe-unidad-III.md`, `evidencias/`, `evidencias-nube/`, `cambios-tecnicos-a-reflejar.md`) y `trabajos-previos/` | `entregables/README.md` |
@@ -19,8 +32,8 @@ URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend
 1. **Supabase (lo hace el dueño del proyecto):** añadir a *Authentication → URL Configuration* las URLs `https://woshtsu.github.io/green-ai-workspace-cld/` y `.../dev/`; aplicar el enum `VIEWER`; revisar RLS «Permitir todo» y la columna `password` en texto plano (ver «Riesgos» en `docs/HANDOFF.md`).
 2. Fijar el *Health Check Path* en cada servicio de Render (Prediction `/health/ready`, Data Processing `/api/v1/health`, Gateway/Monitoring `/actuator/health`, Simulator `/health`, Prometheus `/-/healthy`).
 3. Verificar con sesión real el frontend nuevo en `/dev/` (cada pestaña, «Predecir 15 min», energía con el simulador, `flows.html`) y tomar capturas para el informe. Lo verificado hasta ahora fue con un arnés local (`herramientas_IA/arnes_frontend/`) que simula la sesión y usa datos reales de Render.
-4. Video (guion en `guias/semana12/lista-cotejo-unidad3.md`, líneas 41–61: 7 episodios, 20–30 min, con 500–1000 transacciones y entorno de calidad): preparar datos masivos y el episodio de métricas.
-5. Informe `entregables/informe-corregido/informe-unidad-III.md`: corregir las cifras sin respaldo (XGBoost RMSE 7,1 %, 57,7 %, 45 ms, 18,4 %…; ver `docs/HANDOFF.md`) y reflejar los cambios técnicos de `cambios-tecnicos-a-reflejar.md`.
+4. Video: seguir `docs/exposicion/GUION-VIDEO-UNIDAD-III.md`; ensayar y ejecutar `carga_transacciones.py` contra Render (verificar que funciona antes de grabar).
+5. Informe y semana 13: insertar capturas (`entregables/CAPTURAS-PENDIENTES.md`), NRC y URL del video; reexportar si se edita el .md. Olas 2–3 del plan de calidad: `docs/calidad/02_plan_furps.md` y `05_plan_owasp.md` (HU-07 aprobación humana, PDF HU-13, rate limiting, registro de 401/403, RLS).
 6. Mejora del modelo según `docs/MEJORA-MODELO-PREDICCION.md` (empezar por la evaluación walk-forward vs persistencia).
 7. Producción real: crear servicios `*-prod` con rama `main`, y poner `GATEWAY_URL_PROD` distinto (hoy es igual a `GATEWAY_URL_DEV`). Cuidado con las 750 h/mes gratuitas compartidas (también las gasta `SoftwareAnemia`).
 8. Pendientes técnicos viejos: Prometheus/Grafana con predicciones, reporte PDF, factor de emisión con fuente para CO₂e, refactor hexagonal de `application/runner.py` (ver HANDOFF).

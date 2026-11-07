@@ -1,0 +1,68 @@
+# Capturas pendientes para los dos documentos de la semana 13
+
+Documentos (en `exportados/semana13/`, carpeta local no versionada; los comparte Ricardo):
+- **Informe corregido:** `Porras-Huaman-Barrera-Quintana-informe-unidad-III-CORREGIDO.docx` (IDs `C1xx`, `C2xx` y `C3xx`).
+- **Semana 13:** `Porras-Huaman-Barrera-Quintana-semana13-calidad-FURPS-OWASP.docx` (IDs `Sxx`).
+
+## Cómo insertar cada captura en Word (30 segundos por captura)
+1. Abre el .docx, pulsa **Ctrl + B** y busca el ID exacto, por ejemplo `CAPTURA-PENDIENTE-C306`. Cada ID aparece una sola vez, en un **recuadro amarillo**.
+2. Haz **triple clic** dentro del recuadro para seleccionar el párrafo completo.
+3. Ve a **Insertar → Imágenes → Este dispositivo** y elige tu captura: la imagen **reemplaza** al recuadro.
+4. No borres el pie «Figura N. …» que está debajo. Si la imagen queda grande, arrastra una esquina, nunca un lado, para no deformarla.
+5. Antes de entregar, vuelve a buscar `CAPTURA-PENDIENTE`: Word debe responder que no encontró resultados.
+6. Si Word pregunta «¿Desea actualizar los campos?», responde **Sí**: solo actualiza el índice y los números de página.
+
+Reglas: captura solo la ventana (Win + Shift + S), en modo claro y sin pestañas, marcadores ni datos personales. Nunca muestres tokens, contraseñas ni claves (DevTools → Application no). Si algo falla, captura el error real y avisa: no se maquilla.
+
+## Orden de trabajo por integrante
+
+### Jhonny Cristhian Quintana Carhuaricra (Product Owner): carátulas y Trello
+Hazlo **después** de completar los días 1 a 4 de `guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md`, para que el tablero tenga actividad real.
+| # | ID | Documento | Qué capturar y dónde |
+|---|---|---|---|
+| 1 | `C100` | Informe | Logo oficial de la Universidad Continental (de la plantilla institucional o el portal UC). Pega la imagen del logo, no una captura de pantalla. |
+| 2 | `S00` | Semana 13 | El mismo logo. |
+| 3 | `C201` | Informe | Trello: vista completa del tablero con las 11 listas (aleja el zoom del navegador al 67 %). |
+| 4 | `C202` | Informe | Trello: tarjeta HU-03 abierta, con descripción, checklist, miembros, etiquetas, fecha y comentarios visibles. |
+| 5 | `C203` | Informe | Trello: la tarjeta Daily Scrum del lunes 09/11 con los comentarios de los 4 integrantes. |
+| 6 | `C204` | Informe | Trello: tarjeta «Sprint Review — Sprint 3» o «Retrospectiva — PMV1» abierta. |
+| 7 | `S05` | Semana 13 | `docs/GUIA-RAPIDA-USUARIO.md` abierto en GitHub (rama `test`), con la tabla de roles y la tarea 1 visibles. |
+
+### Leonid Kisley Orlando Huamán Collazos: aplicación web en la nube
+Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; ver `docs/exposicion/GUION-VIDEO-UNIDAD-III.md`, §2). Inicia sesión en https://woshtsu.github.io/green-ai-workspace-cld/dev/.
+| # | ID | Documento | Qué capturar y dónde |
+|---|---|---|---|
+| 1 | `S01` | Semana 13 | `dashboard.html`: el tablero con las pestañas visibles y el gráfico con datos. |
+| 2 | `S06` | Semana 13 | Racks (`network.html`): los 50 servidores con colores y el panel lateral de un servidor seleccionado. |
+| 3 | `C306` | Informe | Caso de uso de IA 1: en Racks, selecciona un servidor y pulsa «Predecir 15 min». Captura el resultado. Si sale «datos insuficientes», espera 20 minutos y repite. |
+| 4 | `C307` | Informe | Caso de uso de IA 2: en el dashboard, pestaña «Predicción y recomendación» → «Usar valores de ejemplo» → «Evaluar recomendación». Captura el resultado, con las restricciones y `executionAllowed=false`. |
+| 5 | `C308` | Informe | Pestaña «Reportes y experimento» → «Descargar CSV». Abre el CSV en Excel y captura la hoja. |
+| 6 | `S08` | Semana 13 | F12 → pestaña **Console** en `login.html` y en `dashboard.html`, sin errores de *integrity* (SRI). Una captura que muestre la consola limpia. |
+| 7 | `C304` y `S03` | Ambos | Prometheus de Render: servicio `green-ai-prometheus-dev`: abre su URL desde el panel de Render y añade `/alerts`, con las 4 reglas. Usa la misma imagen en los dos documentos. |
+
+### Gina Diana Barrera Peña: modelo de ML
+| # | ID | Documento | Qué capturar y dónde |
+|---|---|---|---|
+| 1 | `C303` y `S02` | Ambos | MLflow UI con el experimento `computational-demand-prediction` y el run `random_forest_15m` (MAE de test 3,85). En `software/prediction`: ejecuta el pipeline sin `--skip-mlflow` (ver `software/prediction/README.md`) con `python scripts/run_pipeline.py` (README, línea 62) y luego `mlflow ui --backend-store-uri ./mlruns` → http://127.0.0.1:5000. Si no se puede en tu PC, lo hace Ricardo, que ya tiene `mlruns/`. Misma imagen en los dos documentos. |
+
+### Ricardo Porras Veli: repositorio, pruebas y nube
+| # | ID | Documento | Qué capturar y dónde |
+|---|---|---|---|
+| 1 | `C101` | Informe | GitHub, rama `test`: `software/frontend/supabase-auth-setup.sql` abierto (función PL/pgSQL y *trigger*). |
+| 2 | `S09` | Semana 13 | GitHub: `.github/workflows/ci.yml` con las acciones fijadas por SHA y su comentario `# v4`. |
+| 3 | `S04` | Semana 13 | Panel de Render (workspace «My Workspace») con los 6 servicios `green-ai-*-dev`. No incluyas `SoftwareAnemia`. |
+| 4 | `C305` | Informe | Swagger de Prediction en Render: `https://green-ai-prediction-dev-zxly.onrender.com/docs`, con `/v1/predictions` y `/v1/recommendations`. |
+| 5 | `S10` | Semana 13 | Terminal: `cd software/frontend` y `node --test tests/*.test.cjs`, que debe terminar con `pass 48`. |
+| 6 | `S07` | Semana 13 | Terminal: cabeceras de nginx (comandos en `docs/evidencias/semana13-ola1-verificacion.md`). |
+| 7 | `C301` | Informe | Terminal con las suites por servicio (una captura por suite o un mosaico; comandos en `docs/CONTINUAR-EN-NUEVO-CHAT.md`). |
+| 8 | `C302` | Informe | Terminal: stack local levantado y `python software/infraestructura/smoke/smoke.py`, que debe dar 14/14. |
+| 9 | `C309` | Informe | Terminal: `python herramientas_IA/video/carga_transacciones.py --login --iteraciones 200` contra Render. Captura la tabla final; el CSV queda en `docs/evidencias/carga-video.csv`. **Hazlo durante la grabación del episodio 3 del video** y usa ese fotograma. |
+
+## Datos que completa Ricardo en ambos documentos
+- `NRC-PENDIENTE` (Ctrl + B): número NRC de la sección.
+- `VIDEO-URL-PENDIENTE` (solo en el informe, en Anexos): enlace del video cuando esté subido.
+
+## Control final antes de enviar
+- [ ] Buscar `CAPTURA-PENDIENTE`, `NRC-PENDIENTE` y `VIDEO-URL-PENDIENTE` → 0 resultados en ambos documentos.
+- [ ] Clic derecho en el índice → **Actualizar campo → Actualizar toda la tabla**.
+- [ ] Revisar que ninguna captura muestre tokens, contraseñas ni correos de terceros.

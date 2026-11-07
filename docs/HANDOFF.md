@@ -206,3 +206,24 @@ No borrar el workspace antiguo ni cambiar producción: requiere autorización ex
 
 ## Estado al 2026-11-07 (noche)
 Resumen para continuar en un chat nuevo: `docs/CONTINUAR-EN-NUEVO-CHAT.md`. Frontend nuevo (pestañas, ayuda, avisos de espera, energía, red de flujos) en `test` con 48 pruebas; mejora del modelo: solo plan (`docs/MEJORA-MODELO-PREDICCION.md`); Antigravity falló en headless por permisos de `command` (sin cambios), el frontend lo implementó Claude.
+
+## Semana 13 e informe corregido (2026-11-07, tarde) — Claude coordina, Antigravity (Gemini 3.8 Flash) redacta
+**Entregables exportados** (en `exportados/semana13/`, no versionado): `…-informe-unidad-III-CORREGIDO.docx` (99 págs.,
+15 capturas pendientes), `…-semana13-calidad-FURPS-OWASP.docx` (36 págs., 11 pendientes) y
+`MODELO-FURPSPLUS-Green-AI.xlsx` (hojas Inicial / Actual / Esperado). Instructivo de capturas por integrante:
+`entregables/CAPTURAS-PENDIENTES.md`. Faltan NRC (`NRC-PENDIENTE`) y URL del video (`VIDEO-URL-PENDIENTE`).
+
+| Trabajo | Resultado | Revisión de Claude |
+|---|---|---|
+| Informe corregido (`entregables/informe-corregido/informe-unidad-III.md`) | 3 encargos en paralelo (partes I–VI, VII, VIII–anexos); cifras sin respaldo retiradas; RF real; discusión con 3 antecedentes; presupuesto PMBOK (S/ 24 872,40 cuadra); carátula con Claude declarado como asistente de IA | Verificado XGBoost 15 min MAE 3,457 vs RF 3,222 (`results/metrics/model_comparison.csv`) y energía 4 888/4 896 Wh; borrada imagen vieja del presupuesto (S/ 22 080 con K8s); enlace Trello corregido a PL8uQ4rF; URL de Prediction corregida (`-zxly`) |
+| Diagramas | `componentes-green-ai.puml`, `despliegue-green-ai.puml` y EDT renderizados con PlantUML local | Sustituyen las capturas C102/C103 |
+| Auditorías S13 (`docs/calidad/01..07`) | FURPS+ 85 % → 87 % tras ola 1 (esperado 98 %); OWASP 80,5 → 85,0/100; dictamen «Apto para producción con observaciones» | La 1.ª auditoría FURPS+ daba 96 % (sobrecalificada): se recalificó (HU-05/07/09/11/13/15, hexagonal del simulador, cold start). Rutas `file:///` sustituidas |
+| Ola 1 de mejoras (commit `d24d86f`) | nginx: X-Frame-Options, Permissions-Policy, COOP y cabeceras repetidas en `config.local.js`; SRI SHA-384 en CDN; Actions fijadas por SHA; `docs/GUIA-RAPIDA-USUARIO.md` | `node --test` 48/48; `nginx -t` OK; cabeceras comprobadas con curl en contenedor; SRI cargado en navegador sin errores. Evidencia: `docs/evidencias/semana13-ola1-verificacion.md`. Workflows **no ejecutados** en GitHub |
+| Documento S13 (`entregables/semana13/semana13-calidad-furps-owasp.md`) | Redactado por Antigravity | Salidas de comandos **inventadas** (puerto 8080, grep, node --test) sustituidas por salidas reales; nombres de alertas corregidos |
+| Trello (`guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md`) | Tarjeta por tarjeta y plan por integrante en 4 días; sin dailies retroactivos inventados | 16 rutas de evidencia inventadas corregidas; checklist HU-07 sin falso «hecho». Validador `herramientas_IA/trello/validar_trello.py` (el JSON actual: 57 errores) |
+| Video (`docs/exposicion/GUION-VIDEO-UNIDAD-III.md`) | Guion de 25 min, 7 episodios, diálogos y planes B | Quitadas cifras anticipadas (600/600, p50 128 ms); marcadores `[leer …]`. Script `herramientas_IA/video/carga_transacciones.py` **no ejecutado** |
+| Exportación | `md_a_docx.py` rediseñado (plantilla de estilos, carátula, encabezado/pie, tablas verdes, horizontal para ≥ 9 columnas), `actualizar_word.ps1` | Revisado en PDF por Word. El validador XSD de la skill docx falla en Windows por su instalación (falta un archivo de esquemas), no por el documento |
+| Skills | `find-skills` (vercel-labs/skills) instalado en `.claude/skills/`; elegida la skill `docx` de Anthropic (214 k instalaciones) | Las demás opciones tenían < 1 k instalaciones |
+
+Incidencias: Antigravity intentó ejecutar un comando en el encargo 17 (denegado; se reanudó la conversación).
+Una exportación de Excel por COM se colgó (instancia oculta cerrada a mano). `exportados/` sigue sin versionar.
