@@ -1,780 +1,640 @@
-<!--
-Fuente: exportados/semana12/Porras-Huaman-Barrera-Quintana-informe-unidad-III.pdf (entregado; 98 páginas; PDF modificado 2026-11-05).
-Conversión: herramientas_IA/exportacion/pdf_a_markdown.py (--dir evidencias) + corrección manual de la portada. Contenido sin editar.
-Cada «<!-- página N -->» indica el inicio de la página N del PDF. El código del anexo perdió la sangría del PDF.
--->
+CAPTURA-PENDIENTE-C100: Insertar aquí el logo oficial de la Universidad Continental (portal institucional o plantilla UC) y borrar este recuadro.
 
-<!-- página 1 -->
+::: {custom-style="Portada Institucion"}
+Universidad Continental
+:::
 
-Medición de competencias
+::: {custom-style="Portada Escuela"}
+Escuela Académico Profesional de Ingeniería de Sistemas e Informática
+:::
 
-# “Green AI: sistema de monitoreo y predicción de demanda computacional para apoyar la gestión eficiente de recursos en entornos universitarios”
+![](evidencias/p001-img001.png){width=60%}
 
-Asignatura
+::: {custom-style="Portada Curso"}
+Taller de Proyectos 1 · Informe de la Unidad III (semanas 9–12)
+:::
 
-![Taller de Proyectos 1 - Ingeniería de Sistemas e Informática](evidencias/p001-img001.png)
+::: {custom-style="Portada Titulo"}
+Green AI: sistema de monitoreo y predicción de demanda computacional para apoyar la gestión eficiente de recursos en entornos universitarios
+:::
 
-Ricardo Porras Veli¹; Leonid Huamán Collazos²; Gina Barrera Peña³; Cristhian Quintana Carhuaricra⁴
+::: {custom-style="Portada Subtitulo"}
+Versión corregida tras la revisión docente – noviembre de 2026
+:::
 
-**Escuela Académica Profesional de Ingeniería de Sistemas e Informática, Universidad Continental, Junín, Perú.**
+::: {custom-style="Portada Etiqueta"}
+Integrantes
+:::
 
-**Asesor:** Jorge Alfredo Guevara Jimenez
+::: {custom-style="Portada Texto"}
+Ricardo Porras Veli
+:::
 
+::: {custom-style="Portada Texto"}
+Leonid Kisley Orlando Huamán Collazos
+:::
+
+::: {custom-style="Portada Texto"}
+Gina Diana Barrera Peña
+:::
+
+::: {custom-style="Portada Texto"}
+Jhonny Cristhian Quintana Carhuaricra
+:::
+
+::: {custom-style="Portada Texto"}
+Claude (Anthropic, modelo Opus 5.5) – asistente de IA para coordinación técnica, revisión de código y redacción asistida, bajo supervisión del equipo
+:::
+
+::: {custom-style="Portada Etiqueta"}
+Docente
+:::
+
+::: {custom-style="Portada Texto"}
+Jorge Alfredo Guevara Jiménez
+:::
+
+::: {custom-style="Portada Etiqueta"}
+NRC
+:::
+
+::: {custom-style="Portada Texto"}
+NRC-PENDIENTE
+:::
+
+::: {custom-style="Portada Nota"}
 Huancayo – Perú, 2026-20
+:::
 
-<!-- página 2 -->
+## RESUMEN EJECUTIVO
 
-**RESUMEN EJECUTIVO**
+El proyecto Green AI aborda la variabilidad de la demanda computacional y la gestión eficiente de recursos en centros de datos universitarios mediante una plataforma distribuida de monitoreo, procesamiento de series temporales y predicción de carga de CPU para apoyar la toma de decisiones operativas. La solución adopta una arquitectura de microservicios con diseño hexagonal por servicio, integrando recolección de telemetría mediante Prometheus, APIs REST bajo un API Gateway en Java (con alternativa ligera en Go de 16 MB), persistencia en Supabase (PostgreSQL y Auth) con perfil SQLite para desarrollo, y un frontend web estático. El componente predictivo, evaluado en un entorno controlado con datos simulados, selecciona Random Forest para un horizonte de 15 minutos (MAE de 3,22 y RMSE de 4,59 puntos porcentuales en validación; MAE de 3,85 en test), logrando una reducción del error del 30 % respecto a la persistencia y del 14 % frente a la media móvil. Las propuestas operativas se rigen bajo un enfoque de solo recomendación (*Recommendation-Only*), garantizando supervisión humana sin intervenir directamente la infraestructura de producción. La calidad del software se respalda en pruebas automatizadas y verificación integral (*smoke test* 14/14 superado). El proyecto se alinea con los Objetivos de Desarrollo Sostenible ODS 7 (energía asequible y no contaminante), ODS 9 (industria, innovación e infraestructura), ODS 12 (producción y consumo responsables) y ODS 13 (acción por el clima), estableciendo una base técnica verificable para la optimización de recursos sin declarar ahorros energéticos físicos no medidos.
 
-El proyecto Green AI aborda el consumo energético ineficiente y la baja utilización de recursos en centros de datos universitarios mediante una plataforma de monitoreo, predicción de carga computacional y apoyo a la toma de decisiones.
+**Palabras clave:** Green AI, eficiencia energética, predicción de demanda computacional, arquitectura hexagonal, microservicios, series temporales, Objetivos de Desarrollo Sostenible.
 
-Al corte del 29 de octubre de 2026, el equipo reporta un avance global del 53,6 %, correspondiente a 22 de 41 actividades. El trabajo comprende la ingesta y visualización de telemetría del PMV1 y el desarrollo del núcleo predictivo y de recomendaciones del PMV2.
+---
 
-La plataforma integra un simulador de métricas, Prometheus para su recolección y almacenamiento, un servicio de monitoreo y un componente de procesamiento de datos en Python. El servicio de predicción expone funcionalidades mediante FastAPI e incorpora recomendaciones sujetas a restricciones operativas, manteniendo la decisión final bajo supervisión humana. Las pruebas de integración realizadas permiten demostrar el funcionamiento técnico con datos simulados; la cuantificación del ahorro energético requiere validación experimental adicional.
+## ABSTRACT
 
-La solución combina microservicios y arquitectura hexagonal, con comunicación mediante APIs REST, un API Gateway y contenedores Docker. Supabase proporciona autenticación y soporte para la persistencia de históricos, según la configuración habilitada.
+The Green AI project addresses computational workload variability and efficient resource management in university data centers through a distributed platform for telemetry monitoring, time series processing, and CPU demand forecasting to support operational decision-making. The architecture adopts microservices with hexagonal design per service, integrating telemetry collection via Prometheus, REST APIs secured behind a Java API Gateway (with a lightweight 16 MB Go alternative), persistence in Supabase (PostgreSQL and Auth) with a local SQLite profile for development, and a static web frontend. Evaluated in a controlled environment using simulated data, the predictive component selects Random Forest for a 15-minute forecasting horizon (validation MAE of 3.22 and RMSE of 4.59 percentage points; test MAE of 3.85), achieving an error reduction of 30% over persistence and 14% over moving average baselines. Operational advice follows a strict recommendation-only approach, ensuring human supervision without executing direct changes on production infrastructure. Software reliability is supported by automated test suites across services and end-to-end verification (14/14 smoke tests passed). The initiative aligns with Sustainable Development Goals SDG 7 (Affordable and Clean Energy), SDG 9 (Industry, Innovation, and Infrastructure), SDG 12 (Responsible Consumption and Production), and SDG 13 (Climate Action), establishing a verifiable technical baseline for computing resource optimization without claiming unmeasured physical energy savings.
 
-La gestión se organiza mediante Scrum adaptado y Trello. El presupuesto declarado contempla un desembolso monetario de S/ 0,00, utilizando recursos disponibles, y un valor comercial referencial de S/ 22 080,00, que incluye costos directos y reservas. Green AI busca aportar una base técnica para evaluar decisiones de uso eficiente de infraestructura universitaria.
+**Keywords:** Green AI, energy efficiency, computational workload forecasting, hexagonal architecture, microservices, time series, Sustainable Development Goals.
 
-<!-- página 3 -->
+---
 
-**ABSTRACT**
+# I. ANÁLISIS DEL PROBLEMA
 
-The Green AI project addresses inefficient energy consumption and resource underutilization in university data centers through a platform for monitoring, computational workload prediction, and decision support.
+Las variaciones de carga en los servicios digitales universitarios pueden provocar situaciones de saturación o baja utilización de recursos computacionales. El problema central consiste en cómo identificar y anticipar estos cambios para fundamentar decisiones de asignación de capacidad, evaluando rigurosamente su efecto energético mediante experimentación verificable.
 
-As of October 29, 2026, the team reports overall progress of 53.6%, corresponding to 22 of 41 activities. The work covers telemetry ingestion and visualization in MVP1 and the development of core prediction and recommendation capabilities in MVP2.
+A escala internacional, la Agencia Internacional de Energía estimó que los centros de datos consumieron aproximadamente 415 TWh de electricidad en 2024, equivalentes al 1,5 % de la demanda eléctrica mundial [8], con proyecciones que alcanzan 945 TWh para 2030. Si bien estas cifras evidencian la relevancia global de la eficiencia energética en infraestructuras digitales, no constituyen mediciones del consumo en la Universidad Continental.
 
-The platform integrates a metrics simulator, Prometheus for metrics collection and storage, a monitoring service, and a Python data processing component. The prediction service exposes functionality through FastAPI and incorporates recommendations subject to operational constraints, keeping final decisions under human supervision. Integration tests demonstrate technical functionality using simulated data; quantifying energy savings requires further experimental validation.
-
-The solution combines microservices and hexagonal architecture, using REST APIs, an API Gateway, and Docker containers. Supabase provides authentication and supports historical data persistence, depending on the enabled configuration.
-
-Project management follows an adapted Scrum approach using Trello. The declared budget involves S/ 0.00 in cash expenditure by using available resources, with an estimated commercial value of S/ 22,080.00, including direct costs and reserves. Green AI aims to provide a technical foundation for evaluating decisions that promote the efficient use of university computing infrastructure.
-
-<!-- página 4 -->
-
-# I. ANÁLISIS DE PROBLEMAS
-
-Las variaciones de carga en los servicios digitales universitarios pueden generar saturación o baja utilización de recursos computacionales. El problema consiste en cómo identificar y anticipar estos cambios para apoyar decisiones de asignación de recursos, considerando su posible impacto energético.
-
-Como referencia internacional, la Agencia Internacional de Energía estimó que los centros de datos consumieron 415 TWh en 2024, equivalentes al 1,5 % del consumo eléctrico mundial [7]. Esta información contextualiza el problema, pero no demuestra ineficiencia energética en la Universidad Continental.
-
-Green AI estudia el problema en un entorno controlado mediante métricas simuladas. El análisis utiliza Prometheus para recopilar series temporales, Python para procesar los datos y modelos predictivos para estimar la carga. La comparación entre valores observados y predichos mediante MAE y RMSE permite evaluar la precisión de las estimaciones.
-
-Se concluye que este entorno permite evaluar la viabilidad técnica del monitoreo y la predicción. Sin embargo, demostrar desperdicio o ahorro energético institucional requiere mediciones reales y una evaluación adicional.
+Green AI investiga el problema en un entorno experimental controlado mediante métricas simuladas. La plataforma utiliza Prometheus para la recolección de telemetría temporal, Python para el preprocesamiento de variables y modelos de aprendizaje automático para pronosticar la utilización de CPU. La comparación formal entre valores observados y predichos mediante MAE y RMSE permite evaluar la exactitud predictiva frente a modelos de referencia. Este entorno permite comprobar la viabilidad técnica del sistema sin intervenir infraestructura institucional en producción ni imputar ahorros de energía no medidos físicamente.
 
 ## 1.1 Identificación y formulación del problema
 
-La gestión de infraestructura computacional requiere mantener un equilibrio entre la capacidad disponible, la demanda de los servicios y el consumo de recursos. En el contexto universitario, las plataformas digitales pueden experimentar variaciones de carga asociadas con actividades académicas, consultas de información y procesos administrativos. Estas variaciones plantean la necesidad de observar el comportamiento de la infraestructura y anticipar situaciones de saturación o baja utilización.
+La administración de infraestructura computacional requiere un balance constante entre la capacidad aprovisionada, el comportamiento dinámico de los servicios y el consumo energético. En las instituciones de educación superior, plataformas como el Aula Virtual y los portales académicos experimentan fluctuaciones severas asociadas al calendario académico (procesos de matrícula, evaluaciones parciales y entrega de calificaciones). Estas variaciones generan decisiones reactivas que pueden derivar en sobredimensionamiento o degradación del servicio.
 
-La relevancia energética del problema se evidencia a escala internacional. La Agencia Internacional de Energía estimó que los centros de datos consumieron aproximadamente 415 TWh de electricidad durante 2024, equivalentes al 1,5 % del consumo eléctrico mundial. En su informe de 2025, proyectó un consumo cercano a 945 TWh para 2030 en su escenario base.
+A nivel institucional, los registros históricos públicos evidenciaron que el Aula Virtual de la Universidad Continental pasó en periodos de alta demanda de aproximadamente 1 000 estudiantes simultáneos a picos de 8 000 concurrentes, motivando incrementos reactivos de capacidad en nube. No obstante, en la actualidad no se dispone de una auditoría energética institucional ni de telemetría física por servidor que cuantifique el desperdicio energético. Por ello, el presente proyecto se desarrolla y evalúa sobre un entorno controlado de 50 nodos simulados con telemetría multirrecurso, delimitación que asegura reproducibilidad experimental sin comprometer servicios productivos.
 
-Estas cifras contextualizan la importancia de mejorar la eficiencia de la infraestructura digital, pero no constituyen mediciones del consumo de la Universidad Continental [7].
+### Caracterización del proceso (AS-IS frente a TO-BE)
 
-El proyecto Green AI para centros de datos universitarios aborda esta problemática mediante un prototipo experimental que integra simulación, monitoreo, procesamiento de datos y predicción de demanda computacional. Su propósito es construir una base técnica para apoyar decisiones sobre asignación de recursos y, posteriormente, evaluar recomendaciones orientadas a un uso más eficiente de la infraestructura.
+El análisis del proceso operativo mediante el modelo SIPOC identifica que los proveedores de carga (estudiantes, docentes y sistemas académicos) generan entradas heterogéneas (solicitudes HTTP, consultas a bases de datos y tareas de laboratorio). En el estado actual (**AS-IS**), la gestión opera reactivamente: los administradores observan consolas de monitoreo descriptivo tras la ocurrencia de incidentes o aplican umbrales estáticos sin capacidad prospectiva. 
 
-En el alcance actual, no se dispone de una auditoría energética institucional ni de mediciones suficientes para cuantificar el desperdicio de energía de un centro de datos universitario real.
+En la propuesta (**TO-BE**), la telemetría se recopila periódicamente, se almacena de forma estructurada, se procesa en ventanas temporales continuas y se somete a inferencia predictiva para un horizonte de 15 minutos. Posteriormente, las estimaciones pasan a un motor de políticas que evalúa restricciones operativas y de nivel de servicio (SLA), emitiendo sugerencias explicables bajo el principio *Recommendation-Only*. La decisión final de intervención permanece bajo control de administradores humanos, manteniendo trazabilidad completa.
 
-Por ello, el problema se estudia en un entorno controlado, utilizando métricas simuladas y mecanismos de observación de los servicios ejecutados. Esta delimitación permite desarrollar y verificar la solución sin intervenir sistemas de producción.
+### Causas y factores asociados: Diagrama de Ishikawa
 
-<!-- página 5 -->
+El análisis de causalidad estructurado bajo el esquema de las 6M para el efecto «Adaptación reactiva o ineficiente de recursos computacionales a la demanda» identifica los siguientes factores:
 
-## Causas y factores asociados
+| Dimensión (6M) | Factores y causas identificadas |
+|---|---|
+| **Método** | Asignación basada en estado instantáneo o umbrales estáticos fijos; toma de decisiones sin predicción de demanda; ausencia de políticas operativas formalizadas. |
+| **Medición** | Carencia de telemetría energética directa por servidor; métricas dispersas sin integración en ventanas temporales; falta de indicadores de costo computacional de la propia analítica. |
+| **Máquina** | Capacidad aprovisionada con holguras estáticas que no siguen la variabilidad de la carga; interacción multivariable no lineal entre CPU, memoria, red y disco. |
+| **Mano de obra** | Dependencia de ajustes manuales reactivos ante alertas de saturación; carga operativa excesiva en el diagnóstico de incidentes. |
+| **Materiales (Datos)** | Series temporales con valores ausentes y ruido; mezcla de procedencias de datos; falta de datasets institucionales públicos con mediciones de potencia física. |
+| **Medio (Entorno)** | Estacionalidad marcada por el calendario académico universitario; restricciones de SLA y seguridad que condicionan la reasignación de cargas. |
 
-Los principales factores considerados en el análisis son:
+La causa raíz identificada consiste en la limitada integración sistemática entre series temporales históricas, modelos predictivos ligeros y evaluación explícita de restricciones operativas en el flujo de decisión técnica.
 
-● Variabilidad de la demanda: la utilización de recursos cambia con el tiempo, lo que dificulta determinar una asignación adecuada mediante valores estáticos.
+### Análisis cuantitativo del dataset del proyecto
 
-● Información fragmentada: las métricas, los registros históricos y las predicciones necesitan integrarse para apoyar una misma decisión.
+Para estudiar cuantitativamente los patrones de demanda en ausencia de telemetría física institucional, el proyecto generó un conjunto de datos sintético representativo de 50 servidores universitarios durante el periodo del 10/07/2026 al 17/09/2026 (`software/data-processing/datasets/raw/synthetic_greenai/BD_GreenAi.xlsx`, 100 000 registros). El análisis descriptivo de este dataset refleja las siguientes características operativas:
 
-● Limitaciones del monitoreo descriptivo: conocer el uso actual de CPU o memoria no permite, por sí solo, anticipar la demanda futura.
+| Indicador cuantitativo | Valor observado en dataset sintético |
+|---|---|
+| CPU promedio / mediana / percentil 95 (p95) | 50,1 % / 50,1 % / 86,4 % (rango: 5,0 % – 99,0 %) |
+| Proporción de tiempo en baja utilización (CPU < 30 %) | 24,6 % de los registros temporales |
+| Proporción de tiempo en alta utilización (CPU > 80 %) | 11,3 % de los registros temporales |
+| Memoria RAM promedio / percentil 95 (p95) | 45,2 % / 81,7 % |
+| Potencia media / percentil 95 (columna referencial `energia_watts`) | 318 W / 630 W (capacidad nominal asignada: 450 W – 800 W) |
+| Registros con incumplimiento de SLA (`cumple_sla = false`) | 6,13 % del total de muestras |
 
-● Calidad y procedencia de los datos: los valores ausentes, las diferencias de unidades y la mezcla de datos simulados con observaciones reales pueden conducir a interpretaciones incorrectas.
+Se subraya que estas cifras provienen de un generador sintético y no representan mediciones físicas de servidores de la Universidad Continental. Su propósito exclusivo es calibrar los componentes de ingesta, preprocesamiento y entrenamiento de modelos.
 
-● Restricciones operativas: una reducción de capacidad podría afectar el rendimiento o la disponibilidad si se realiza sin considerar las condiciones del servicio.
+### Restricciones del proyecto
 
-Estos factores pueden favorecer decisiones tardías, asignaciones poco ajustadas a la demanda y dificultades para evaluar si una intervención mejora realmente la eficiencia.
+El desarrollo de la solución se encuentra sujeto a las siguientes restricciones técnicas e institucionales:
+1. No intervenir la infraestructura institucional de producción de la universidad sin autorización expresa.
+2. Declarar la procedencia simulada o sintética de los datos, evitando presentar métricas generadas como mediciones físicas.
+3. No equiparar directamente el porcentaje de uso de CPU con consumo eléctrico sin un modelo de potencia validado o instrumentación física.
+4. No declarar porcentajes de ahorro energético institucional ni reducción de emisiones sin una comparación experimental directa con línea base.
+5. Mantener un modo operativo estrictamente de solo recomendación (*Recommendation-Only*), sin ejecutar acciones automáticas sobre servidores.
+6. Ajustarse al ciclo académico de 16 semanas con un equipo de 4 integrantes y costo monetario directo de S/ 0,00 mediante herramientas de código abierto.
 
-## Necesidades identificadas
+### Formulación del problema
 
-La solución debe permitir recolectar métricas de manera periódica, conservar su identidad y procedencia, consultar su evolución temporal y preparar datos compatibles con el componente predictivo. También debe facilitar la interpretación de los resultados y controlar el acceso a las operaciones públicas.
+**Problema general:**  
+¿Cómo desarrollar y validar un prototipo experimental que integre monitoreo de infraestructura, procesamiento de series temporales y predicción de demanda computacional para apoyar decisiones explicables de asignación de recursos en un entorno universitario, manteniendo trazabilidad y considerando restricciones de servicio y eficiencia energética?
 
-La arquitectura responde a estas necesidades mediante servicios separados: Simulator genera escenarios; Prometheus recolecta métricas; Monitoring las expone mediante consultas controladas; Data Processing normaliza los datos y prepara ventanas temporales; Prediction estima demanda de CPU; y el Gateway administra el acceso del frontend a las operaciones permitidas.
+**Problemas específicos:**  
+- **PE1 (alineado a PMV1):** ¿Cómo recolectar, almacenar y consultar de forma continua y reproducible la telemetría multirrecurso proveniente de nodos de cómputo en un entorno experimental controlado?  
+- **PE2 (alineado a PMV2):** ¿Con qué nivel de error modelos de Machine Learning pueden pronosticar la utilización de CPU a corto plazo frente a modelos de referencia simples y cómo transformar dichas estimaciones en recomendaciones explicables bajo supervisión humana?  
+- **PE3 (alineado a PMV3):** ¿En qué medida una estrategia basada en predicción optimiza la utilización de recursos y reduce el consumo energético estimado en comparación con una línea base reactiva bajo condiciones experimentales controladas?
 
-El motor de recomendaciones constituye el siguiente incremento previsto. Su finalidad será transformar predicciones y contexto operativo en propuestas explicables, sujetas a revisión humana.
+## 1.2 Objetivos del proyecto
 
-## Restricciones del proyecto
+### Objetivo general
 
-El desarrollo está condicionado por el tiempo del ciclo académico, la capacidad de los equipos disponibles y la dependencia de servicios externos para autenticación y almacenamiento histórico. Asimismo, la validación debe respetar las siguientes restricciones:
+Desarrollar y validar un prototipo experimental (Green AI) que integre monitoreo de infraestructura, procesamiento de series temporales y predicción de demanda computacional para apoyar recomendaciones explicables de asignación de recursos en entornos universitarios, garantizando trazabilidad, cumplimiento de niveles de servicio y evaluación de eficiencia energética.
 
-<!-- página 6 -->
+### Objetivos específicos
 
-● No intervenir infraestructura institucional de producción sin autorización.
+1. **OE1 (PMV1 – Observabilidad y viabilidad técnica):** Implementar la recolección continua, persistencia estructurada y consulta de métricas de infraestructura para 50 nodos simulados mediante la integración de Simulator, Prometheus, Monitoring y API Gateway con autenticación, validando contratos OpenAPI y pruebas de integración.  
+2. **OE2 (PMV2 – Predicción y recomendación explicable):** Evaluar y servir mediante API modelos de Machine Learning para predecir la utilización de CPU a 15 minutos frente a baselines (persistencia y media móvil), logrando un error cuantitativamente menor en validación cronológica y emitiendo recomendaciones operativas explicables bajo supervisión humana (*Recommendation-Only* con `executionAllowed=false`).  
+3. **OE3 (PMV3 – Experimentación comparativa y eficiencia):** Comparar experimentalmente la estrategia Green AI frente a una línea base estática/reactiva bajo escenarios de carga equivalentes, evaluando su impacto en utilización de recursos, cumplimiento de SLA y consumo energético físico/trapezoidal ($E = \int P(t) dt$).
 
-● No presentar métricas simuladas como mediciones físicas.
+### Alineación con los Objetivos de Desarrollo Sostenible (ODS)
 
-● No interpretar el porcentaje de CPU como consumo energético directo.
+El proyecto se vincula formalmente con la Agenda 2030 a través de los siguientes objetivos:
+- **ODS 7 (Energía asequible y no contaminante):** Meta 7.3 (duplicar la tasa de mejora de la eficiencia energética), aportando metodologías para mitigar el consumo eléctrico superfluo en centros de cómputo educativos.
+- **ODS 9 (Industria, innovación e infraestructura):** Fomento de infraestructura tecnológica resiliente y sostenible mediante software de observabilidad y analítica predictiva moderna.
+- **ODS 12 (Producción y consumo responsables):** Racionalización del uso de recursos computacionales, combatiendo la sobreasignación de hardware y obsolescencia prematura.
+- **ODS 13 (Acción por el clima):** Cuantificación del impacto de la huella de carbono digital mediante factores de emisión certificados, promoviendo prácticas de computación verde (*Green Computing*).
 
-● No afirmar precisión predictiva sin una evaluación independiente.
-
-● No declarar ahorro energético antes de realizar una comparación experimental.
-
-● No ejecutar automáticamente cambios de infraestructura en el alcance actual.
-
-## Formulación del problema
-
-**¿Cómo desarrollar y validar un prototipo que integre monitoreo, procesamiento de series temporales y predicción de demanda computacional para apoyar recomendaciones**
-
-**explicables de asignación de recursos en un entorno universitario experimental, manteniendo trazabilidad de los datos y considerando restricciones de operación y eficiencia energética?**
-
-El problema es complejo porque relaciona dimensiones de software, datos, infraestructura, predicción y sostenibilidad. Una predicción con bajo error no garantiza, por sí sola, una decisión operativa adecuada; del mismo modo, una reducción del uso de recursos no demuestra necesariamente ahorro energético o conservación de la calidad del servicio.
-
-## 1.2 OBJETIVOS DEL PROYECTO Objetivo general
-
-Desarrollar y validar un prototipo experimental Green AI que integre monitoreo de infraestructura, procesamiento de datos y predicción de demanda computacional para apoyar recomendaciones de asignación de recursos, considerando trazabilidad, calidad del servicio y evaluación de eficiencia energética.
-
-## Objetivos específicos
-
-1. Implementar la recolección y consulta de métricas de infraestructura, mediante la integración de Simulator, Prometheus y Monitoring, verificando disponibilidad de las fuentes, continuidad temporal y correcta identificación de recursos y unidades.
-
-2. Preparar conjuntos de datos temporales aptos para predicción, mediante validación, normalización y tratamiento explícito de datos ausentes, evaluando la cantidad de registros válidos, las muestras excluidas y la conservación de la procedencia.
-
-3. Evaluar modelos de predicción de utilización de CPU, comparándolos con un modelo de referencia mediante error absoluto medio y raíz del error cuadrático medio, utilizando una separación temporal entre entrenamiento y evaluación.
-
-4. Implementar un motor de recomendaciones explicables, capaz de proponer acciones o abstenerse cuando la información sea insuficiente, verificando sus reglas mediante casos de carga alta, normal, baja y datos inválidos.
-
-<!-- página 7 -->
-
-5. Comparar experimentalmente una estrategia de referencia (baseline) frente a Green AI bajo condiciones equivalentes de carga y servicio, con el fin de evaluar su comportamiento operativo y energético mediante indicadores reproducibles.
-
-Los objetivos constituyen criterios de trabajo y evaluación. Su formulación no implica que el motor de recomendaciones, la validación energética o todas las pruebas finales hayan sido completados.
+---
 
 # II. CONOCIMIENTOS DE INGENIERÍA APLICADOS / RELACIONADOS
 
-El desarrollo de Green AI requiere integrar conocimientos de matemáticas, computación, ciencias naturales e ingeniería de software. Su selección responde a las necesidades de representar el comportamiento de la infraestructura, preparar datos confiables, estimar demanda y verificar la solución.
+El desarrollo de Green AI requiere la articulación rigurosa de fundamentos matemáticos, computacionales, ciencias naturales y principios avanzados de ingeniería de software. Cada concepto aplicado se relaciona directamente con los componentes implementados en el monorepo.
 
 ## a. Conocimientos en matemáticas y computación
 
-### Estadística descriptiva y análisis temporal
+### Series temporales y formulación de regresión supervisada
 
-Las métricas de infraestructura se representan como series temporales, es decir, observaciones asociadas con instantes de tiempo. Su análisis requiere calcular promedios, dispersión, máximos y mínimos, así como identificar tendencias y variaciones.
+Las métricas de infraestructura constituyen series temporales multivariables donde cada registro representa una observación ordenada cronológicamente: $x(t) \in \mathbb{R}^d$. El problema de predicción de CPU se formula como una tarea de regresión supervisada multivariable:
 
-Estos conocimientos se aplican al procesamiento de históricos y a la preparación de variables para Prediction. Los valores rezagados permiten incorporar información de instantes anteriores, mientras que las ventanas móviles resumen el comportamiento reciente.
+$$\hat{y}(t+h) = f(x(t), x(t-1), \dots, x(t-k))$$
 
-Su adecuación se comprueba verificando el orden temporal, la frecuencia de las muestras y la ausencia de información futura en las variables utilizadas para predecir.
+Donde $h$ representa el horizonte de predicción seleccionado (3 pasos temporales de 5 minutos, equivalentes a 15 minutos en el futuro) y $k$ la cantidad de retardos temporales considerados. En el monorepo, este tratamiento se implementa en `software/prediction/src/preprocessing` y se configura en `config/config.yaml`.
+
+### Ingeniería de características y división temporal sin fuga
+
+Para capturar la dinámica de la carga sin incurrir en fuga de información (*data leakage*), se generan:
+1. Retardos temporales (*lags* 1, 2 y 3) para la utilización de CPU y memoria.
+2. Estadísticas de ventana móvil: promedio móvil, desviación estándar, mínimo y máximo sobre periodos de 15, 30 y 60 minutos.
+3. Variables temporales cíclicas: la hora del día ($H \in [0, 23]$) y el día de la semana ($D \in [0, 6]$) se proyectan mediante transformaciones sinusoidales:
+   $$\text{hora}_{\sin} = \sin\left(\frac{2\pi H}{24}\right), \quad \text{hora}_{\cos} = \cos\left(\frac{2\pi H}{24}\right)$$
+   $$\text{día}_{\sin} = \sin\left(\frac{2\pi D}{7}\right), \quad \text{día}_{\cos} = \cos\left(\frac{2\pi D}{7}\right)$$
+
+La partición de datos se realiza cronológicamente en proporciones 70 % entrenamiento, 15 % validación y 15 % prueba, prohibiendo el reordenamiento aleatorio (*shuffle*). Esta restricción matemática se valida mediante la suite automatizada `tests/unit/test_anti_leakage.py`.
 
 ### Tasas de variación y conversión de unidades
 
-Algunas métricas se almacenan como contadores acumulados. Para interpretar su comportamiento se necesita calcular una tasa de cambio:
+Determinadas métricas extraídas de los sistemas operativos corresponden a contadores acumulativos monotónicos. Para obtener la magnitud instantánea de utilización, se aplica la tasa de cambio temporal:
 
-**Tasa = cambio del contador / tiempo transcurrido**
+$$\text{Tasa} = \frac{\Delta \text{Contador}}{\Delta t}$$
 
-Este principio permite obtener tráfico de red en bytes por segundo y estimar utilización de CPU a partir de los contadores de tiempo correspondientes. En CPU, la tasa se relaciona con la capacidad de los procesadores lógicos; no representa directamente potencia eléctrica.
+El servicio Monitoring conserva las unidades del catálogo original de Prometheus, mientras que Data Processing efectúa conversiones normalizadas hacia porcentajes utilizables por el predictor (por ejemplo, ratio $[0, 1]$ escalado a $[0, 100] \%$).
 
-Monitoring conserva las unidades del catálogo y Data Processing realiza conversiones necesarias para el predictor. Por ejemplo:
+### Métricas de error en regresión y aclaración sobre clasificación
 
-**CPU en porcentaje = CPU en ratio × 100**
+Para evaluar la exactitud predictiva de los modelos frente a las observaciones reales, se aplican métricas estadísticas expresadas en puntos porcentuales (pp) de CPU:
 
-<!-- página 8 -->
+$$\text{MAE} = \frac{1}{n} \sum_{i=1}^n |y_i - \hat{y}_i|$$
 
-La validación debe comprobar que las unidades sean coherentes entre servicios y que no se confundan valores absolutos, proporciones y tasas.
+$$\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2}$$
 
-### Aprendizaje supervisado para regresión
+$$\text{sMAPE} = \frac{100\%}{n} \sum_{i=1}^n \frac{2|y_i - \hat{y}_i|}{|y_i| + |\hat{y}_i|}$$
 
-La predicción de utilización de CPU corresponde a un problema de regresión, debido a que la salida es una magnitud numérica continua. El componente Prediction utiliza información histórica para estimar valores futuros.
+El MAE proporciona la magnitud del error absoluto medio lineal, mientras que el RMSE penaliza fuertemente las desviaciones severas en picos de demanda. Las evaluaciones se estratifican por regímenes de carga (baja, normal, alta y picos). 
 
-La selección del modelo debe considerar desempeño frente a un modelo de referencia, costo computacional, latencia de inferencia y comportamiento ante datos no utilizados en el entrenamiento. Un modelo más complejo no se considera automáticamente superior.
-
-La evaluación debe respetar el orden temporal: los datos de entrenamiento deben preceder a los de evaluación para reducir el riesgo de fuga de información.
-
-### Métricas de error
-
-Se consideran las siguientes métricas:
-
-**MAE = (1/n) × Σ |yi − ŷi| RMSE = √[(1/n) × Σ (yi − ŷi)2]**
-
-Donde:
-
-● yi representa el valor de referencia.
-
-● ŷi representa el valor predicho.
-
-● n corresponde al número de observaciones evaluadas.
-
-El MAE expresa la magnitud promedio del error absoluto y el RMSE penaliza con mayor intensidad los errores grandes. Si la CPU se expresa en porcentaje, estas métricas se interpretan en puntos porcentuales.
-
-No resulta suficiente afirmar una “precisión del 90 %” sin definir su cálculo. La evaluación debe identificar la métrica utilizada, el horizonte de predicción, el conjunto de prueba y el resultado del modelo de referencia.
+**Aclaración metodológica:** Las métricas de clasificación binaria (Precisión, Exhaustividad y Puntaje F1) solo son aplicables si se define una tarea discreta de detección de eventos. Dado que el núcleo de Prediction resuelve un problema de regresión continua, métricas como F1 no aplican ni se utilizan en la evaluación del sistema, retirando cualquier valor histórico no fundamentado.
 
 ## b. Conocimientos en ciencias naturales
 
-### Relación entre potencia y energía
+### Relación entre potencia, energía y cálculo integral
 
-La evaluación energética se fundamenta en la relación física entre potencia y tiempo:
+El consumo energético se fundamenta en la relación física entre potencia instantánea $P(t)$ expresada en watts (W) y el tiempo transcurrido:
 
-**E = ∫ P(t) dt**
+$$E = \int_{t_1}^{t_2} P(t) \, dt$$
 
-<!-- página 9 -->
+Para series discretas muestreadas a intervalos $\Delta t_i = t_{i+1} - t_i$, se implementa la aproximación numérica mediante la regla del trapecio en `software/prediction/src/service/recommendations.py`:
 
-Cuando se trabaja con mediciones discretas, una aproximación es:
+$$E \approx \sum_{i=1}^{m-1} \frac{P(t_i) + P(t_{i+1})}{2} \cdot \Delta t_i$$
 
-**E ≈ Σ Pi × Δti**
+La energía resultante en watt-segundos (Joules) se transforma a kilowatt-hora dividiendo entre $3,6 \times 10^6\text{ J/kWh}$. El sistema exige que existan lecturas válidas de potencia física para calcular energía; en caso contrario, se abstiene de declarar consumos reales.
 
-Si la potencia se expresa en watts y el intervalo en horas, el resultado se obtiene en watt-hora.
+### Estimación de emisiones de gases de efecto invernadero
 
-Para convertirlo a kilowatt-hora se divide entre 1000.
+La estimación de emisiones de dióxido de carbono equivalente ($CO_2e$) se modela como:
 
-Este conocimiento permite interpretar correctamente los registros y diseñar la evaluación energética. Un campo denominado energia_watts representa dimensionalmente potencia, aunque su nombre sugiera energía.
+$$\text{Emisiones } CO_2e = E \cdot FE$$
 
-En el estado actual, las métricas de CPU, memoria y red no bastan para demostrar consumo eléctrico. La evaluación requerirá mediciones de potencia o un modelo de estimación sustentado, con sus supuestos y limitaciones.
+Donde $FE$ corresponde al factor de emisión del sistema eléctrico interconectado correspondiente. En concordancia con la norma internacional ISO/IEC 21031:2024 (*Software Carbon Intensity* - SCI) [9], el servicio rechaza solicitudes de cálculo de emisiones si el cliente no proporciona un factor de emisión respaldado por una fuente oficial y verificable.
 
-### Conservación de la energía y disipación térmica
+## c. Conocimientos de ingeniería de software y sistemas distribuidos
 
-El funcionamiento de los equipos transforma energía eléctrica y genera disipación térmica. Por ello, una evaluación integral de infraestructura debe delimitar si considera únicamente los equipos de cómputo o también otros elementos, como refrigeración y redes.
+### Arquitectura hexagonal (Puertos y Adaptadores)
 
-Este principio se relaciona con el diseño del experimento energético. No sería válido comparar una estrategia que mide solo servidores con otra que incluye refrigeración, porque los límites de medición serían diferentes.
+Para garantizar independencia tecnológica y alta testabilidad, los microservicios aplican arquitectura hexagonal. El dominio central concentra la lógica de negocio y reglas de política operativa, comunicándose con el exterior únicamente mediante puertos (interfaces abstractas). Los adaptadores implementan el acceso a tecnologías concretas:
+- **Monitoring (Java/Spring Boot):** Separa `QueryMetrics` (puerto de entrada) de `MetricsSource` (puerto de salida), permitiendo obtener datos desde Prometheus en producción o desde fixtures estáticos en pruebas unitarias.
+- **Data Processing (Python/FastAPI):** Expone el puerto `HistoricalLogsSource`, implementado por el adaptador Supabase/PostgREST en la nube y por el adaptador SQLite en desarrollo local.
+- **Prediction (Python/FastAPI):** Mantiene la política de recomendación pura en `src/recommendations/policy.py` completamente desacoplada del transporte HTTP y de bibliotecas de inferencia.
 
-### Estimación de emisiones
+### Sistemas distribuidos, contratos y seguridad
 
-La estimación de emisiones asociadas con electricidad puede expresarse como:
+La interoperabilidad se estructura sobre APIs REST documentadas mediante especificaciones OpenAPI 3.1. Se aplican técnicas de paginación basada en cursores (*keyset pagination* sobre timestamp e identificador), control de concurrencia y propagación del encabezado de correlación `X-Request-Id` para trazabilidad de solicitudes.
 
-Emisiones estimadas = energía consumida × factor de emisión Su aplicación requiere un factor de emisión sustentado y coherente con la ubicación y el periodo evaluados. Si no se dispone de ese factor, el proyecto debe limitar sus conclusiones a energía medida o estimada y no atribuir una reducción cuantificada de emisiones.
+La seguridad perimetral se delega en el API Gateway, que valida tokens JWT emitidos por Supabase Auth (algoritmos ES256/RS256), aplicando control de acceso basado en roles (RBAC: `ADMIN` y `OPERATOR`) y políticas CORS restrictivas.
 
-Estos conocimientos corresponden al componente de evaluación ambiental previsto; no se presentan como resultados ya comprobados.
+### Selección tecnológica ponderada
 
-## c. Conocimientos de ingeniería
+La selección de las herramientas base se efectuó mediante matrices de decisión técnica ponderadas (adecuación 30 %, ecosistema 25 %, integración 20 %, rendimiento 15 % y curva de aprendizaje 10 %):
 
-### Arquitectura de software y separación de responsabilidades
+| Componente | Alternativas evaluadas | Tecnología seleccionada | Justificación técnica |
+|---|---|---|---|
+| Inferencia y ML | Python (4,8) · Java (3,1) · Go (2,6) | Python (scikit-learn, pandas) | Madurez y soporte de bibliotecas especializadas en series temporales. |
+| Observabilidad | Prometheus (4,7) · InfluxDB (3,9) · Zabbix (3,4) | Prometheus | Modelo *pull* eficiente, lenguaje PromQL y estándar de facto. |
+| API Gateway | Go stdlib (4,3) · Spring Cloud (4,0) · Nginx (3,2) | Spring Cloud (base) / Go (alternativa) | Spring Cloud como pasarela vigente; Go validado como alternativa ligera (16 MB imagen). |
+| Persistencia | Supabase/Postgres (4,6) · MySQL (3,8) · MongoDB (3,3) | PostgreSQL (Supabase) + SQLite local | Integridad relacional, soporte SQL y perfil SQLite sin dependencias externas. |
 
-Green AI organiza sus funciones mediante microservicios e incorpora separación entre dominio, aplicación e infraestructura. La arquitectura hexagonal permite que las reglas del negocio se comuniquen con tecnologías externas mediante puertos y adaptadores.
+---
 
-<!-- página 10 -->
-
-Por ejemplo, las consultas de métricas se separan del mecanismo concreto utilizado para acceder a Prometheus. Esta organización facilita pruebas independientes y reduce el impacto de cambios tecnológicos.
-
-Su adecuación se comprueba mediante pruebas de dominio, contratos entre servicios y revisión de dependencias entre capas.
-
-### Sistemas distribuidos e interfaces de programación
-
-La comunicación entre componentes utiliza interfaces de programación de aplicaciones, o API, con contratos HTTP y JSON. Se aplican conceptos de direccionamiento, validación, tiempos de espera, códigos de error y correlación de solicitudes.
-
-El Gateway ofrece rutas explícitas hacia los servicios internos. La propagación de un identificador de solicitud facilita seguir una operación y localizar fallos.
-
-La validación debe comprobar tanto respuestas exitosas como errores de autenticación, parámetros inválidos, dependencias no disponibles y tiempos de espera agotados.
-
-### Ingeniería de datos y trazabilidad
-
-Data Processing aplica validaciones y transformaciones para preparar información consistente.
-
-Debe conservar recurso, instante, unidad, calidad y procedencia, evitando convertir automáticamente datos ausentes en cero.
-
-Además, se diferencia entre datos observados, simulados, estimados y de origen desconocido.
-
-Esta separación permite interpretar correctamente las gráficas y evitar conclusiones que excedan la evidencia disponible.
-
-### Contenedores y reproducibilidad
-
-Docker permite empaquetar aplicaciones y dependencias, mientras que Docker Compose describe sus conexiones, variables y volúmenes. Estos mecanismos facilitan reproducir el entorno de ejecución.
-
-La reproducibilidad se comprueba construyendo imágenes, verificando su importación y levantando los servicios con la configuración documentada. Las pruebas en el equipo de desarrollo no sustituyen la validación pendiente en otros dispositivos o arquitecturas.
-
-### Seguridad y calidad de software
-
-El proyecto aplica autenticación mediante Supabase Auth y validación de tokens JWT en el Gateway, con permisos asociados a roles. También requiere protección de secretos, validación de entradas y separación de servicios internos.
-
-<!-- página 11 -->
-
-La calidad se comprueba mediante pruebas unitarias, de integración y funcionales. Las verificaciones de salud y las capturas de Swagger constituyen evidencias operativas, pero no demuestran por sí solas exactitud predictiva, seguridad completa o cumplimiento de todos los
-
-**requisitos.**
-
-# III. INGENIERO Y LA SOCIEDAD
+# III. EL INGENIERO Y LA SOCIEDAD
 
 ## a. Justificación social
 
-Green AI busca contribuir a una gestión informada de la infraestructura que sostiene servicios digitales universitarios. Sus beneficiarios directos potenciales son administradores y personal técnico; estudiantes y docentes se beneficiarían indirectamente de servicios con un funcionamiento adecuado.
+Green AI contribuye a la continuidad y estabilidad de los servicios digitales que dan soporte a los procesos formativos universitarios. Los beneficiarios directos son los equipos de tecnologías de la información y administradores de sistemas, mientras que los estudiantes y docentes constituyen beneficiarios indirectos al disponer de plataformas académicas estables durante periodos críticos de alta demanda.
 
-El aporte social esperado consiste en facilitar la interpretación de métricas y ofrecer información para anticipar necesidades de capacidad. Sin embargo, este beneficio depende de que las recomendaciones sean comprensibles y se evalúen antes de modificar recursos.
-
-Una reducción de capacidad aplicada sin análisis podría afectar el acceso a servicios académicos. Por ello, el motor previsto deberá mantener revisión humana y explicar las razones de cada propuesta. La eficiencia deberá evaluarse junto con la continuidad y calidad del servicio.
-
-El entorno experimental también aporta valor formativo al permitir estudiar observabilidad, sistemas distribuidos y aprendizaje automático sin intervenir infraestructura institucional de producción.
+Para mitigar el riesgo de degradación del servicio por desaprovisionamientos erróneos, la solución adopta un enfoque exclusivo de recomendación (*Recommendation-Only* con `executionAllowed=false`). Cada sugerencia emitida por el sistema se acompaña de explicabilidad técnica (nivel de demanda proyectado, margen de seguridad y umbrales evaluados), exigiendo la revisión y aprobación humana antes de cualquier intervención en infraestructura.
 
 ## b. Justificación económica
 
-La solución plantea identificar oportunidades de utilización más eficiente de recursos y proporcionar información para decisiones de capacidad. Los beneficios económicos potenciales podrían relacionarse con consumo eléctrico, uso de infraestructura y tiempo dedicado al diagnóstico.
+La solución busca optimizar los costos operacionales asociados al dimensionamiento excesivo de infraestructura en centros de datos. Al emplear exclusivamente tecnologías de código abierto y plataformas con capas gratuitas de evaluación, el costo de licenciamiento monetario del desarrollo es de S/ 0,00. 
 
-La utilización de herramientas de código abierto reduce la necesidad de determinadas licencias, pero no elimina los costos del proyecto. Deben considerarse electricidad, equipos, almacenamiento, conectividad, mantenimiento y tiempo del equipo desarrollador.
-
-La evaluación económica deberá comparar los costos de una situación de referencia con los de la estrategia propuesta. Si se dispone de ahorro energético comprobado y una tarifa aplicable, podría estimarse:
-
-**Ahorro económico bruto = energía evitada × tarifa eléctrica**
-
-Para calcular un beneficio neto también deben descontarse los costos adicionales del monitoreo, procesamiento y predicción. En esta etapa no se declara un ahorro monetario alcanzado.
+En términos de ahorro económico, el proyecto no declara cifras de reducción monetaria no verificadas experimentalmente. Los beneficios económicos potenciales deberán calcularse a partir de la energía física evitada multiplicada por la tarifa eléctrica institucional, restando los costos computacionales adicionales del monitoreo y la inferencia (*Green-in AI*).
 
 ## c. Justificación ambiental
 
-<!-- página 12 -->
+La relevancia ambiental radica en la reducción potencial de emisiones contaminantes indirectas asociadas al consumo eléctrico de servidores ociosos. Sin embargo, el proyecto reconoce que el propio funcionamiento del software analítico (Prometheus, API Gateway, servicios de procesamiento y modelos de Machine Learning) consume memoria y ciclos de CPU. Por ello, el análisis de impacto ambiental en el PMV3 evaluará el balance energético neto, distinguiendo estrictamente entre potencia medida (W), energía acumulada (kWh) y emisiones calculadas ($CO_2e$).
 
-La justificación ambiental se relaciona con el uso responsable de recursos computacionales y con la evaluación de alternativas que puedan reducir consumo innecesario.
+## d. Acontecimientos tecnológicos y científicos relacionados
 
-El proyecto debe considerar que su propia operación consume recursos. Prometheus, Grafana, los microservicios y el componente predictivo generan una carga adicional que debe incluirse en el análisis del beneficio ambiental neto.
-
-La comparación deberá mantener cargas de trabajo, duración y condiciones operativas equivalentes. También deberá distinguir entre potencia, energía y emisiones, evitando presentar una disminución de CPU como evidencia suficiente de ahorro eléctrico.
-
-Asimismo, deben considerarse posibles efectos de rebote: una mejora de eficiencia por operación puede coexistir con un aumento del consumo total si crece el volumen de trabajo.
-
-Por ello, conviene evaluar indicadores totales y por unidad de servicio.
-
-## d. Acontecimientos tecnológicos y científicos relacionados con la solución
-
-La propuesta se relaciona con la disponibilidad de herramientas de observabilidad, contenedores, servicios de autenticación e inferencia mediante API. Su integración permite construir entornos experimentales reproducibles y separar la recolección de datos, su procesamiento y la estimación de demanda.
-
-El aprendizaje automático aplicado a series temporales permite estudiar patrones históricos y anticipar cambios. No obstante, su utilidad debe demostrarse frente a alternativas más simples, considerando costo y error de predicción.
-
-La disponibilidad de una predicción no resuelve automáticamente la decisión operativa.
-
-También se requieren reglas, contexto, restricciones y mecanismos de abstención cuando la evidencia sea insuficiente. Esta distinción orienta el diseño del motor de recomendaciones pendiente.
-
-Aunque Kubernetes constituye una tecnología relacionada con la gestión de workloads, el paquete portable actual utiliza Docker Compose. No se presenta el despliegue local como una validación de escalamiento automático en Kubernetes.
+El proyecto se enmarca en la evolución de la computación verde (*Green Computing*), la observabilidad distribuida y el aprendizaje automático aplicado a la gestión proactiva de recursos. Si bien plataformas como Kubernetes y sistemas de mensajería como RabbitMQ son tecnologías relevantes en arquitecturas de producción a gran escala, el sistema implementado en PMV1 y PMV2 opera sobre Docker Compose en local y servicios en la nube (Render y GitHub Pages), manteniendo RabbitMQ y Kubernetes exclusivamente como referencias conceptuales de escalabilidad futura.
 
 ## e. Marco legal, institucional y responsabilidad ética
 
-Por el tratamiento de información de usuarios, el proyecto debe considerar la Ley N.° 29733, Ley de Protección de Datos Personales, y su reglamento aprobado mediante el Decreto Supremo N.° 016-2024-JUS. Su aplicación concreta dependerá de los datos tratados, las finalidades y las responsabilidades de quienes operen el sistema. 2 — Congreso de la República; 3 — Autoridad Nacional de Protección de Datos Personales.
+| Norma legal / estándar | Ámbito de aplicación en el proyecto | Medidas técnicas de cumplimiento implementadas |
+|---|---|---|
+| **Ley N.° 29733 y D.S. N.° 016-2024-JUS** (Protección de Datos Personales) | Cuentas de usuario para administradores y operadores técnicos. | La telemetría técnica no contiene datos personales. La autenticación en Supabase Auth gestiona correos y roles bajo principio de minimización y políticas RLS. |
+| **D. Leg. N.° 1412** (Ley de Gobierno Digital) | Interoperabilidad e intercambio de datos en el sector público/académico. | Adopción de arquitecturas abiertas basadas en estándares REST y especificaciones OpenAPI 3.1. |
+| **Ley N.° 30096** (Delitos Informáticos) | Seguridad perimetral y prevención de accesos no autorizados. | Autenticación basada en JWT, separación estricta de roles (RBAC) y eliminación de endpoints expuestos sin autorización. |
+| **ISO/IEC 21031:2024 (SCI)** | Especificación de intensidad de carbono del software. | Requisito obligatorio de factor de emisión verificado para el cálculo de huella de carbono en endpoints analíticos. |
 
-Como medidas de diseño, se plantea minimizar los datos personales utilizados, restringir accesos, proteger credenciales y definir condiciones de conservación y eliminación. El uso de servicios externos no equivale por sí mismo al cumplimiento normativo.
-
-En el ámbito institucional, cualquier prueba sobre infraestructura real deberá contar con autorización y condiciones de operación definidas. Desde la responsabilidad ética, el equipo debe comunicar las limitaciones del prototipo, evitar resultados fabricados y distinguir avances implementados de funcionalidades previstas.
-
-<!-- página 13 -->
+**Responsabilidad ética:** El equipo asume el compromiso de reportar exclusivamente resultados reproducibles, absteniéndose de imputar reducciones de consumo eléctrico o emisiones ambientales sin mediciones experimentales físicas directas. Asimismo, se detectó en snapshots históricos un riesgo de políticas RLS excesivamente permisivas en Supabase, el cual se documenta formalmente para su corrección estricta en el entorno productivo.
 
 ## f. Salud, seguridad y riesgos operativos
 
-Los riesgos del proyecto incluyen recomendaciones incorrectas, exposición de credenciales, acceso no autorizado, pérdida de información y saturación de equipos durante las pruebas.
+Los riesgos técnicos identificados comprenden la sobrecarga de servidores por recolección excesiva de métricas, saturación en memoria por procesamiento de series extensas y degradación de servicios por recomendaciones inadecuadas. Las medidas preventivas adoptadas incluyen: ejecución en contenedores aislados con límites de memoria (`deploy.resources.limits`), recolección con cadencia fija de 5 minutos, abstención de recomendación ante datos incompletos o desactualizados y mantenimiento de la decisión final bajo supervisión humana.
 
-Las medidas preventivas propuestas comprenden:
-
-● Ejecutar experimentos en un entorno aislado y autorizado.
-
-● Mantener credenciales fuera del código y de las evidencias públicas.
-
-● Restringir el acceso a los servicios internos.
-
-● Conservar los datos necesarios para reproducir y revisar resultados.
-
-● Limitar la carga experimental y observar el estado de los equipos.
-
-● Mantener aprobación humana antes de realizar cambios de infraestructura.
-
-● Abstenerse de recomendar ajustes cuando los datos sean insuficientes o inconsistentes.
-
-La principal responsabilidad del equipo es producir evidencia verificable y comunicar su alcance. El valor del proyecto deberá sustentarse en resultados reproducibles, preservando la seguridad de las personas, la información y los servicios.
+---
 
 ## ANTECEDENTES
 
+La fundamentación teórica se estructura a partir de la literatura científica indexada sobre eficiencia energética y Machine Learning aplicado a centros de datos:
+
 ### Antecedentes sobre eficiencia energética y gestión de recursos
 
-#### Antecedente 1. Beloglazov, Abawajy y Buyya (2012)
+#### Antecedente 1. Beloglazov, Abawajy y Buyya (2012) [4]
+Beloglazov, Abawajy y Buyya investigaron la gestión eficiente de recursos en centros de datos en la nube mediante técnicas de consolidación dinámica de máquinas virtuales. Los autores demostraron que mantener servidores subutilizados genera un desperdicio significativo de energía, proponiendo heurísticas para migrar cargas y suspender nodos ociosos manteniendo acuerdos de nivel de servicio (SLA). Este antecedente respalda en Green AI la necesidad de evaluar el compromiso entre ahorro energético y calidad del servicio, si bien Green AI restringe su alcance a recomendaciones consultivas sin apagado autónomo de servidores.
 
-Beloglazov, Abawajy y Buyya abordaron el problema del elevado consumo energético en centros de datos de computación en la nube, donde el aprovisionamiento de recursos se había enfocado principalmente en el rendimiento y no en la eficiencia energética. Los autores señalaron que mantener servidores activos aun cuando presentan bajos niveles de utilización incrementa el consumo eléctrico, los costos operativos y el impacto ambiental.
+#### Antecedente 2. Ji et al. (2021) [2]
+Ji et al. abordaron la optimización conjunta del consumo energético en centros de datos integrando servidores y sistemas de refrigeración. Desarrollaron un esquema que combina predicción de carga mediante redes recurrentes multivariables (MM-GRU) con políticas de planificación y migración de tareas. Los resultados comprobaron que anticipar la demanda computacional permite optimizar el aprovisionamiento térmico y eléctrico frente a estrategias meramente reactivas. Este trabajo sustenta en Green AI la separación funcional entre el monitoreo de telemetría, la predicción de carga y la toma de decisiones operativas.
 
-Como método, propusieron una arquitectura orientada a la gestión eficiente de recursos y desarrollaron heurísticas de asignación y consolidación dinámica de máquinas virtuales. La propuesta se basa en trasladar cargas de trabajo entre servidores y reducir la cantidad de equipos activos cuando la demanda lo permite, procurando mantener el nivel de servicio establecido. La evaluación se realizó mediante simulaciones y escenarios de virtualización orientados al análisis conjunto de consumo energético, utilización de recursos y cumplimiento de SLA.
-
-Los resultados mostraron que la consolidación dinámica de máquinas virtuales puede reducir el consumo energético del centro de datos sin descuidar completamente los requisitos de rendimiento, siempre que la política de consolidación considere el compromiso existente entre ahorro energético y calidad del servicio [4].
-
-<!-- página 14 -->
-
-Este antecedente se relaciona con Green AI porque sustenta la necesidad de no analizar únicamente la utilización de CPU, sino también las restricciones operativas asociadas con cualquier acción de consolidación. A diferencia del trabajo de Beloglazov et al., Green AI no ejecuta automáticamente migraciones o apagados de infraestructura dentro de su alcance actual. El sistema mantiene un enfoque Recommendation-Only, mediante el cual las predicciones y recomendaciones requieren revisión humana antes de cualquier acción.
-
-#### Antecedente 2. Ji et al. (2021)
-
-Ji et al. estudiaron el problema del elevado consumo energético de los centros de datos y la necesidad de coordinar de manera eficiente el uso de servidores, sistemas de refrigeración y cargas computacionales. Los autores identificaron que las estrategias de asignación tradicionales pueden generar ineficiencias debido a que no consideran de manera anticipada la evolución de las cargas de trabajo.
-
-El estudio propuso un esquema conjunto de optimización energética que integra predicción de carga, evaluación de costos marginales, planificación de tareas y migración de cargas. La estrategia utiliza información predictiva para apoyar la toma de decisiones sobre asignación de recursos y fue evaluada mediante experimentos basados en trazas reales de carga.
-
-Los resultados del estudio evidenciaron que integrar técnicas de predicción con mecanismos de gestión de recursos permite mejorar la eficiencia energética frente a estrategias que únicamente reaccionan al estado actual del sistema. El trabajo destaca además que las decisiones de migración y planificación deben considerar simultáneamente rendimiento, utilización y consumo energético.
-
-Este antecedente aporta directamente al enfoque de Green AI, ya que respalda la separación entre monitoreo, predicción y toma de decisiones. En Green AI, el Prediction Service tiene como finalidad anticipar la utilización futura de CPU, mientras que las recomendaciones y restricciones operativas se analizan en componentes separados. Sin embargo, Green AI se diferencia en que la evaluación actual se realiza en un entorno experimental y no afirma todavía reducciones energéticas validadas sobre infraestructura universitaria real.
-
-#### Antecedente 3. Reddy, Rao y Aiello (2024)
-
-Reddy, Rao y Aiello investigaron la gestión eficiente de recursos en centros de datos mediante técnicas de optimización aplicadas a la asignación dinámica de máquinas virtuales. El problema abordado fue la distribución ineficiente de cargas entre servidores físicos, situación que puede provocar desperdicio de recursos, consumo energético innecesario y mayores costos de operación.
-
-Los autores propusieron un método denominado Imitation-Based Optimization (IBO), orientado al problema de colocación de máquinas virtuales en entornos de nube heterogéneos. La estrategia considera la variabilidad de las cargas y busca reducir el número de servidores activos mediante una mejor asignación de las máquinas virtuales, manteniendo restricciones relacionadas con el SLA. El método fue comparado con diversas estrategias de optimización existentes.
-
-<!-- página 15 -->
-
-Los resultados reportados muestran reducciones de consumo energético frente a varios métodos de referencia, aunque los porcentajes obtenidos dependen de cada algoritmo y escenario experimental. Los autores también destacan que una asignación eficiente debe considerar simultáneamente utilización, consumo, migración y calidad de servicio.
-
-La relación con Green AI se encuentra en el objetivo de apoyar una utilización más eficiente de los recursos computacionales. No obstante, Green AI adopta un alcance más conservador: en lugar de ejecutar directamente una estrategia de consolidación, genera información predictiva y recomendaciones sujetas a revisión humana. Asimismo, cualquier estimación energética en Green AI debe distinguirse de una medición física directa.
+#### Antecedente 3. Sharma y Garg (2020) [3]
+Sharma y Garg diseñaron AGEN, un planificador consciente de la energía para centros de datos en la nube basado en redes neuronales artificiales (ANN). Evaluado en el simulador CloudSim sobre más de 18 millones de instancias, el enfoque reportó reducciones de consumo de hasta 45 % en escenarios de alta carga y 71 % en carga ligera, reduciendo significativamente el tiempo total de ejecución (*makespan*). Este estudio evidencia el potencial del aprendizaje automático para optimizar la asignación de recursos, aunque sus resultados provienen de simulaciones sintéticas, ratificando la prudencia de Green AI de no extrapolar ahorros simulados a entornos institucionales reales sin instrumentación física.
 
 ### Antecedentes sobre integración de Machine Learning para predicción de cargas
 
-#### Antecedente ML-1. Khan et al. (2022)
+#### Antecedente ML-1. Khan et al. (2022) [1]
+Khan et al. plantearon un enfoque centrado en Machine Learning para la predicción de cargas de trabajo y la estimación de estados energéticos (*energy states*) a nivel de máquinas virtuales utilizando trazas reales del centro de datos Bitbrains (1 250 VMs en *fastStorage* y 500 VMs en *Rnd* con muestreo a 5 minutos). Para la predicción de demanda evaluaron algoritmos lineales (Linear Regression, Ridge, ElasticNet) y redes neuronales recurrentes GRU, demostrando que GRU alcanzó el menor RMSE en todas las cargas analizadas. Para la estimación del estado energético, propusieron el algoritmo de agrupamiento TSSAP (*Time Series Similarity Affinity Propagation*), el cual **superó en un 87,48 % la precisión del algoritmo de agrupamiento tradicional Affinity Propagation (AP)**. 
 
-Khan et al. abordaron el problema de la administración de recursos en centros de datos con cargas dinámicas y heterogéneas. Los autores identificaron que la predicción de utilización de recursos y del estado energético resulta fundamental para tomar decisiones de gestión anticipadas, especialmente porque los modelos tradicionales suelen considerar únicamente CPU y memoria y pueden omitir otras variables como disco, red y recursos aprovisionados.
+*Corrección analítica:* Se enfatiza que el 87,48 % reportado por Khan et al. corresponde a la ganancia en la calidad del agrupamiento de estados energéticos y no a una supuesta precisión del 87,48 % en la predicción temporal de carga de CPU. Green AI adopta la misma cadencia temporal (5 minutos), pero prioriza modelos de árboles de decisión (Random Forest) para reducir el costo computacional de la propia inferencia.
 
-Como solución, plantearon un enfoque centrado en Machine Learning para predecir cargas de trabajo y estimar estados energéticos a nivel de máquinas virtuales. Para la predicción utilizaron diferentes algoritmos de regresión, entre ellos Linear Regression, Ridge Regression, ARD Regression, ElasticNet y Gated Recurrent Unit (GRU). La evaluación se realizó utilizando trazas reales provenientes de un centro de datos distribuido y métricas como RMSE.
+#### Antecedente ML-2. Verdecchia, Sallou y Cruz (2023) [6]
+Verdecchia, Sallou y Cruz realizaron una revisión sistemática exhaustiva de la literatura sobre computación verde aplicada a la inteligencia artificial (*Green AI*), analizando 98 publicaciones indexadas. La investigación formaliza la distinción entre *Green-by-AI* (uso de modelos inteligentes para optimizar sistemas externos) y *Green-in-AI* (optimización de la eficiencia y reducción de la huella computacional del propio modelo de aprendizaje automático). Reportaron que las reducciones de energía en la literatura oscilan ampliamente entre 13 % y 115 % según el dominio evaluado. Este estudio guía directamente el diseño de Green AI al imponer modelos predictivos livianos cuyo costo computacional no neutralice los beneficios de la optimización.
 
-Los resultados reportaron que el modelo GRU obtuvo los menores valores de RMSE entre las alternativas analizadas para distintas cargas de trabajo. Para la estimación del estado energético, los autores evaluaron además técnicas de agrupamiento y transferencia de aprendizaje.
+#### Antecedente ML-3. Bolón-Canedo et al. (2024) [7]
+Bolón-Canedo et al. examinaron los desafíos contemporáneos de Green AI, alertando sobre el consumo energético exponencial asociado al entrenamiento de arquitecturas complejas de Deep Learning y señalando que las herramientas de estimación de carbono suelen subestimar las emisiones reales. Este antecedente fundamenta la decisión técnica de Green AI de descartar redes neuronales profundas de alto consumo en su etapa experimental, seleccionando en su lugar modelos tabulares eficientes (Random Forest) evaluados sobre métricas de error rigurosas y verificables.
 
-Este estudio presenta una relación directa con Green AI debido a que ambos proyectos utilizan información histórica para estimar el comportamiento futuro de la infraestructura. Green AI también formula la predicción de CPU como un problema de regresión y utiliza métricas como MAE y RMSE. Sin embargo, Green AI prioriza inicialmente modelos más ligeros y un entorno experimental controlado, procurando reducir el costo computacional de la propia solución de inteligencia artificial.
+### Síntesis comparativa de antecedentes frente a Green AI
 
-#### Antecedente ML-2. Prediction Models for Clustered Virtual Machines in Data Centers (2023)
+| Dimensión | Green AI | Khan et al. (2022) [1] | Ji et al. (2021) [2] | Sharma y Garg (2020) [3] |
+|---|---|---|---|---|
+| **Fuente de datos** | Telemetría simulada (50 nodos, cadencia 5 min) | Trazas reales Bitbrains (5 min) | Trazas reales de centro de datos | Simulación sintética en CloudSim |
+| **Modelo predictivo** | Random Forest / baselines (árboles ligeros) | GRU recurrente frente a lineales | Red recurrente MM-GRU | Red neuronal artificial (ANN) |
+| **Métricas clave** | MAE 3,22 pp; RMSE 4,59 pp (validación 15 min) | Menor RMSE con GRU; clustering +87,48 % | Reducción de consumo térmico | Consumo −45 % a −71 % (simulado) |
+| **Gestión energética** | Estimación trapezoidal ($E = \int P dt$); sin ahorro inventado | Estimación de estados de energía | Optimización conjunta con climatización | Asignación y planificación de tareas |
+| **Modo de operación** | *Recommendation-Only* con supervisión humana | Soporte a consolidación autónoma | Planificación y migración dinámica | Planificación autónoma de tareas |
 
-<!-- página 16 -->
+### Referencias bibliográficas (Norma ISO 690-2)
 
-El estudio publicado en Procedia Computer Science en 2023 analizó el uso de Machine Learning para predecir el consumo de CPU de máquinas virtuales en centros de datos. El problema identificado fue la dificultad de gestionar eficientemente recursos cuando cada máquina virtual presenta patrones temporales diferentes, lo que puede generar altos costos si se construye y entrena un modelo independiente para cada una.
+[1] KHAN, T., TIAN, W., ILAGER, S. y BUYYA, R. Workload forecasting and energy state estimation in cloud data centres: ML-centric approach. *Future Generation Computer Systems*. 2022, vol. 128, pp. 320–332. DOI 10.1016/j.future.2021.10.019.
 
-La propuesta consistió en agrupar máquinas virtuales según características estadísticas extraídas de sus series temporales históricas. Posteriormente, se entrenaron modelos representativos para cada clúster y se seleccionó aquel que presentaba el menor error de predicción. La evaluación utilizó diferentes algoritmos tradicionales de Machine Learning y escenarios de simulación.
+[2] JI, K., ZHANG, F., CHI, C., SONG, P., ZHOU, B., MARAHATTA, A. y LIU, Z. A joint energy efficiency optimization scheme in data centers. *Sustainable Computing: Informatics and Systems*. 2021, vol. 32, art. 100596. DOI 10.1016/j.suscom.2021.100596.
 
-Los resultados mostraron que agrupar máquinas virtuales con comportamientos similares permite obtener errores medios reducidos y disminuir el tiempo necesario para el entrenamiento de modelos individuales.
+[3] SHARMA, M. y GARG, R. AGEN: ANN based energy-efficient scheduler for cloud data centers. *Sustainable Computing: Informatics and Systems*. 2020, vol. 26, art. 100373. DOI 10.1016/j.suscom.2020.100373.
 
-Este antecedente es relevante para Green AI porque demuestra que el comportamiento histórico de CPU puede utilizarse para construir modelos predictivos orientados a la gestión de recursos. Asimismo, respalda la necesidad de analizar características temporales antes de seleccionar un algoritmo. Green AI comparte este enfoque mediante el procesamiento previo de series y la generación de variables históricas, aunque actualmente utiliza un flujo simplificado centrado en la predicción de utilización futura de CPU.
+[4] BELOGLAZOV, A., ABAWAJY, J. y BUYYA, R. Energy-aware resource allocation heuristics for efficient management of data centers for Cloud computing. *Future Generation Computer Systems*. 2012, vol. 28, no. 5, pp. 755–768. DOI 10.1016/j.future.2011.04.017.
 
-#### Antecedente ML-3. Marwan, Ait Temghart y Lazaar (2026)
+[5] ALI, Q. I. Intelligent energy governance in solar-powered data centers: a multi-stage framework for sustainable operation and AI-driven optimization. *Discover Artificial Intelligence*. 2026, vol. 6, art. 124. DOI 10.1007/s44163-025-00823-7.
 
-Marwan, Ait Temghart y Lazaar abordaron en 2026 el problema de predecir cargas de trabajo altamente dinámicas y no estacionarias en centros de datos de nueva generación. Los autores indicaron que las variaciones rápidas de demanda dificultan la planificación proactiva de recursos y pueden afectar simultáneamente los requisitos de calidad de servicio y eficiencia energética.
+[6] VERDECCHIA, R., SALLOU, J. y CRUZ, L. A systematic review of Green AI. *WIREs Data Mining and Knowledge Discovery*. 2023, vol. 13, art. e1507. DOI 10.1002/widm.1507.
 
-El estudio propuso un enfoque de predicción de dos etapas que combina técnicas de limpieza y procesamiento de señales con un modelo híbrido de aprendizaje profundo. El proceso utiliza Local Outlier Factor para identificar valores atípicos, filtro Savitzky–Golay para reducir ruido, Empirical Mode Decomposition para descomponer la señal y una arquitectura CNN–BiLSTM con mecanismo de atención para realizar la predicción. La evaluación utilizó el conjunto de datos Bitbrains fastStorage y comparó diferentes configuraciones y modelos.
+[7] BOLÓN-CANEDO, V., MORÁN-FERNÁNDEZ, L., CANCELA, B. y ALONSO-BETANZOS, A. A review on green artificial intelligence. *Neurocomputing*. 2024, vol. 599, art. 128096. DOI 10.1016/j.neucom.2024.128096.
 
-Los resultados reportaron para el modelo propuesto un MSE de 0,030, RMSE de 0,173 y un coeficiente R2 de 0,89, mostrando mejoras frente a varios modelos de referencia evaluados en el estudio.
+[8] INTERNATIONAL ENERGY AGENCY. *Energy and AI*. París: IEA, 2025.
 
-La relación con Green AI se encuentra en la importancia del preprocesamiento de series temporales y de la evaluación comparativa entre modelos. Sin embargo, Green AI no busca reproducir directamente una arquitectura de Deep Learning compleja. Debido a su contexto académico y experimental, el proyecto prioriza modelos de menor costo computacional y mecanismos de trazabilidad que permitan comparar la mejora predictiva frente a un baseline sin incrementar innecesariamente el consumo del propio componente de inteligencia artificial.
+[9] ISO/IEC. *ISO/IEC 21031:2024 Information technology — Software Carbon Intensity (SCI) specification*. Ginebra: ISO, 2024.
 
-<!-- página 17 -->
-
-### Síntesis de los antecedentes
-
-Los antecedentes revisados evidencian dos líneas principales de investigación. La primera aborda la eficiencia energética mediante consolidación, asignación dinámica y optimización de recursos, destacando que cualquier reducción del número de servidores activos debe considerar restricciones de rendimiento y nivel de servicio. La segunda utiliza Machine Learning y análisis de series temporales para anticipar el comportamiento de las cargas y apoyar decisiones de gestión de recursos.
-
-Green AI integra ambas perspectivas dentro de un prototipo experimental. El sistema incorpora monitoreo, procesamiento de telemetría y predicción de utilización de CPU, pero mantiene separada la predicción de la ejecución operacional. Las recomendaciones se someten a revisión humana y la eficiencia energética se plantea como una variable a evaluar mediante experimentos controlados, evitando considerar la utilización de CPU como equivalente directo del consumo eléctrico.
+---
 
 # IV. METODOLOGÍA EMPLEADA
 
-Para el desarrollo del proyecto Green AI para centros de datos universitarios se empleó un enfoque ágil, seleccionado después de evaluar los enfoques predictivo, ágil e híbrido. El enfoque ágil obtuvo el mayor puntaje ponderado (4.85), debido a la incertidumbre asociada a los resultados experimentales, los cambios derivados del desarrollo de modelos de Machine Learning y la necesidad de realizar entregas incrementales verificables.
+Para el desarrollo del proyecto se seleccionó un enfoque de ciclo de vida ágil frente a los modelos predictivo e híbrido, tras evaluar criterios ponderados adaptados al entorno experimental:
 
-|Criterio|Peso|Predictivo|Ágil|Híbrido|
+| Criterio de evaluación | Peso | Predictivo | Ágil | Híbrido |
 |---|---|---|---|---|
-|Capacidad para gestionar cambios frecuentes|25 %|2|5|4|
-|Adecuación ante incertidumbre alta|20 %|2|5|4|
-|Soporte para entregas incrementales|20 %|2|5|5|
-|Integración de retroalimentación del usuario/asesor|20 %|3|5|4|
-|Gestión de restricciones académicas y temporales|15 %|4|4|5|
-|Puntaje ponderado|100 %|2.50|4.85|4.35|
+| Capacidad para gestionar cambios frecuentes | 25 % | 2 | 5 | 4 |
+| Adecuación ante incertidumbre experimental alta | 20 % | 2 | 5 | 4 |
+| Soporte para entregas incrementales verificables | 20 % | 2 | 5 | 5 |
+| Integración de retroalimentación de asesor/usuarios | 20 % | 3 | 5 | 4 |
+| Gestión de restricciones académicas y temporales | 15 % | 4 | 4 | 5 |
+| **Puntaje ponderado** | **100 %** | **2,50** | **4,85** | **4,35** |
 
-Para la gestión del proyecto se utilizaron prácticas del PMI basadas en la guía PMBOK 7, mientras que para el desarrollo se seleccionó el marco de trabajo ágil Scrum. La selección se realizó comparando Scrum, Kanban, XP y Scrumban, obteniendo Scrum el mayor puntaje ponderado (4.85).
+Para la gestión de ingeniería se adaptó el marco Scrum sobre Kanban, XP y Scrumban, obteniendo el mayor puntaje (4,85 sobre 5,00) debido a su compatibilidad con la estructura de tres Productos Mínimos Viables (PMV) distribuidos en 8 Sprints de dos semanas:
 
-<!-- página 18 -->
-
-|Criterio|Peso|Scrum|Kanban|XP|Scrumban|
+| Criterio de selección del marco | Peso | Scrum | Kanban | XP | Scrumban |
 |---|---|---|---|---|---|
-|Adecuación a equipo de 4 personas|20 %|5|4|4|4|
-|Soporte para iteraciones con revisión formal|20 %|5|3|4|4|
-|Gestión visual del flujo de trabajo|15 %|4|5|3|5|
-|Integración de retroalimentación periódica|15 %|5|3|5|4|
-|Gestión del alcance mediante backlog priorizado|15 %|5|4|4|4|
-|Compatibilidad con entregas en tres PMV|15 %|5|3|4|4|
-|Puntaje ponderado|100 %|4.85|3.65|4.00|4.15|
+| Adecuación a equipo de 4 personas + asistente IA | 20 % | 5 | 4 | 4 | 4 |
+| Soporte para iteraciones con revisión formal docente | 20 % | 5 | 3 | 4 | 4 |
+| Gestión visual del flujo de trabajo | 15 % | 4 | 5 | 3 | 5 |
+| Integración de retroalimentación periódica | 15 % | 5 | 3 | 5 | 4 |
+| Gestión del alcance mediante Product Backlog priorizado | 15 % | 5 | 4 | 4 | 4 |
+| Compatibilidad con entregas progresivas en 3 PMV | 15 % | 5 | 3 | 4 | 4 |
+| **Puntaje ponderado** | **100 %** | **4,85** | **3,65** | **4,00** | **4,15** |
 
-Scrum fue adaptado a las características del proyecto mediante ocho Sprints de dos semanas, organizados en tres Productos Mínimos Viables (PMV): PMV1, orientado a validar la viabilidad técnica; PMV2, enfocado en validar la solución funcional; y PMV3, destinado a consolidar y validar la solución. Debido a los diferentes horarios académicos del equipo, las reuniones de seguimiento se realizaron tres veces por semana.
+### Adaptación académica y aportes por PMV
 
-El trabajo se realizó mediante:
+La ejecución de Scrum se adaptó a la disponibilidad de los estudiantes mediante sincronizaciones técnicas tres veces por semana y refinamiento del backlog integrado a la planificación del Sprint. El trabajo técnico se estructuró en tres hitos:
+1. **PMV1 (Semanas 1–6):** Observabilidad y viabilidad técnica. Se diseñó el generador de telemetría, la recolección en Prometheus, el servicio de monitoreo en Spring Boot y el API Gateway, validando contratos OpenAPI y persistencia inicial.
+2. **PMV2 (Semanas 7–12):** Predicción de demanda y recomendaciones explicables. Se implementó el pipeline de Machine Learning (Random Forest a 15 min), el servicio Data Processing con adaptadores de datos y el motor de recomendaciones consultivas (*Recommendation-Only* con `executionAllowed=false`).
+3. **PMV3 (Semanas 13–16):** Experimentación comparativa y consolidación. Comparación formal frente a la línea base y despliegue en entorno de calidad en la nube.
 
-● Análisis de requerimientos: se identificaron y priorizaron los requerimientos del sistema mediante épicas, historias de usuario y Product Backlog.
+#### Aportes principales identificados
 
-● Elaboración de prototipos y diseño: se definieron las interfaces, componentes y arquitectura de la solución antes de su implementación.
+- **Adopción de asistentes de IA bajo supervisión humana:** Integración de Claude (modelo Opus 5.5) como asistente técnico para soporte en coordinación, refactorización y redacción asistida, verificando manualmente cada producto antes de su adopción.
+- **Validación progresiva de viabilidad:** Cada incremento entregó suites de pruebas automatizadas y contratos OpenAPI antes de habilitar dependencias en capas superiores.
+- **Desacoplamiento estricto entre predicción y ejecución operacional:** Establecimiento del principio *Recommendation-Only*, garantizando que ninguna predicción matemática altere directamente la infraestructura sin supervisión humana.
 
-● Implementación de la solución: se desarrollaron progresivamente los componentes del sistema de acuerdo con los Sprints y PMV establecidos.
-
-● Pruebas de calidad de software: se realizaron pruebas sobre los incrementos desarrollados para verificar su funcionamiento y obtener evidencias de validación antes de avanzar a los siguientes PMV.
-
-#### APORTES / DESCUBRIMIENTOS
-
-● Adaptación de Scrum al contexto académico.
-
-Durante el desarrollo se identificó la necesidad de adaptar determinadas prácticas de Scrum a la disponibilidad del equipo. Las reuniones diarias se reemplazaron por sincronizaciones tres veces por semana y el refinamiento del Backlog se integró al Sprint Planning, manteniendo las revisiones periódicas de los incrementos.
-
-● Desarrollo y validación progresiva mediante PMV.
-
-Los tres PMV se establecieron como puntos de inspección progresiva: PMV1 para validar la viabilidad técnica y el flujo de datos, PMV2 para validar la solución predictiva y funcional, y PMV3 para consolidar la experimentación y validación final.
-
-<!-- página 19 -->
-
-● Separación entre predicción y decisión operacional.
-
-Durante el diseño se determinó que las predicciones generadas por el componente de Machine Learning no debían convertirse directamente en acciones sobre la infraestructura. Por ello, la solución separa la predicción, la evaluación de alternativas y la validación de restricciones, manteniendo un enfoque Recommendation-Only, en el cual las recomendaciones permanecen sujetas a aprobación humana.
+---
 
 # V. USO DE HERRAMIENTAS MODERNAS
 
-Para el desarrollo de Green AI para centros de datos universitarios se empleó un conjunto integrado de herramientas de ingeniería, desarrollo, gestión, datos, Inteligencia Artificial, calidad y comunicación. Su selección consideró criterios de adecuación al proyecto (25 %),
+La selección de herramientas consideró adecuación técnica (25 %), funcionalidad (20 %), integración (15 %), costo monetario cero (10 %), seguridad (10 %), escalabilidad (10 %) y usabilidad (10 %), priorizando tecnologías de código abierto e instrumentos reproducibles.
 
-**funcionalidad (20 %), integración (15 %), costo (10 %), seguridad (10 %), escalabilidad (10 %)**
+## 1. Herramientas empleadas con evidencia en el repositorio
 
-y usabilidad (10 %), priorizando herramientas de código abierto debido a la restricción presupuestaria del proyecto.
-
-|Área|Herramientas empleadas|Aplicación en el proyecto|Limitación principal|
+| Categoría | Herramienta (versión) | Rol y aplicación en el proyecto | Limitación técnica reconocida |
 |---|---|---|---|
-|Ingeniería y modelado|PlantUML / UML|Diseño de diagramas, flujos y arquitectura de la solución.|Los modelos requieren actualización cuando cambia la implementación.|
-|Desarrollo|VS Code, Python, FastAPI|Desarrollo de scripts de procesamiento, componentes predictivos y APIs.|Python requiere controlar dependencias y versiones de librerías.|
-|Versionamiento|Git / GitHub|Control colaborativo del código mediante repositorios y ramas.|Depende de una adecuada gestión de ramas y versiones.|
-|Datos|Supabase (PostgreSQL), Pandas, NumPy|Persistencia relacional, limpieza, transformación y procesamiento de datos.|Requiere controlar adecuadamente el esquema, acceso y políticas de seguridad.|
+| **Simulación** | Simulator propio (Python 3.12 CLI) | Generación de telemetría de 50 servidores (10 pruebas unitarias). | Datos sintéticos; no reproduce perturbaciones físicas no modeladas. |
+| **Observabilidad** | Prometheus 3.13 | Recolección temporal y consultas PromQL de métricas de CPU y memoria. | Retención local orientada al corto plazo; no sustituye almacén histórico relacional. |
+| **Backend Monitoreo** | Java 21, Spring Boot 3.x | Ingesta y catálogo de métricas (`software/monitoring`, 112 pruebas). | Alto consumo de memoria de la JVM (~210 MiB en reposo). |
+| **API Gateway** | Spring Cloud Gateway (Java 21) | Pasarela perimetral, JWT, RBAC y CORS (`software/gateway`, 12 pruebas). | Imagen pesada (520 MB) y huella de memoria elevada (~283 MiB en reposo). |
+| **Gateway Ligero** | Go 1.25 stdlib (`gateway-go`) | Alternativa creada de alto rendimiento (30 pruebas; 0 diferencias en 39 casos). | Imagen reducida (16,2 MB) y ~10 MiB RAM; pendiente de prueba de carga con tráfico concurrente real. |
+| **Ingesta y Datos** | Python 3.12, FastAPI, pandas | Normalización y ventanas temporales (`software/data-processing`, 121 pruebas). | Pandas carga estructuras completas en memoria RAM. |
+| **Machine Learning** | scikit-learn, XGBoost, NumPy | Entrenamiento y evaluación de modelos (`software/prediction`, 100 pruebas). | Modelos de árboles no extrapolan tendencias fuera del rango de entrenamiento. |
+| **Persistencia** | Supabase (PostgreSQL + Auth) / SQLite | Almacén relacional, usuarios y roles; perfil SQLite local sin red externa. | Plan gratuito en nube; SQLite carece de RLS nativo y procedimientos PL/pgSQL. |
+| **Contenedores** | Docker, Docker Compose | Empaquetado y ejecución reproducible de microservicios locales (`green-ai-mono`). | Compose local no resuelve orquestación distribuida multihost. |
+| **Frontend Web** | HTML5, JavaScript nativo, CSS3, Nginx | Interfaz de visualización y consumo de API Gateway (48 pruebas). | Frontend estático; requiere refresco programado para datos en vivo. |
+| **Contratos** | OpenAPI 3.1 | Documentación de interfaces y esquemas de intercambio de datos. | Exige sincronización manual al modificar contratos de dominio. |
+| **Gestión y Código** | Trello, Git / GitHub | Tablero Kanban y monorepo estructurado con ramas `main` y `test`. | Trello ofrece métricas cuantitativas limitadas frente a Jira. |
+| **Asistentes de IA** | Claude Code, Antigravity CLI 1.5.2, Graphify 0.9.96 | Asistencia en redacción, refactorización, indexación AST y revisión de código. | Riesgo de falsos positivos y respuestas vacías; requiere validación humana obligatoria. |
 
-<!-- página 20 -->
+*Nota de honestidad técnica:* Herramientas como SonarQube, JMeter, Kubernetes y OWASP ZAP no se reportan como utilizadas con evidencia en esta etapa, quedando catalogadas como herramientas planificadas para el PMV3.
 
-|IA y Machine Learning|Scikit-learn, Random Forest Regressor, MLflow|Entrenamiento de modelos predictivos y registro de parámetros y métricas como MAE y RMSE.|Los modelos pueden degradar su desempeño ante datos diferentes a los utilizados durante el entrenamiento.|
-|---|---|---|---|
-|Observabilidad|Prometheus, Grafana|Recolección y visualización de métricas de infraestructura y workloads.|Grafana no funciona como mecanismo de almacenamiento histórico por sí solo.|
-|DevOps|Docker, Kubernetes|Contenedorización y orquestación del entorno experimental.|Kubernetes incrementa la complejidad de configuración y operación.|
-|Gestión|Trello|Organización del Product Backlog, historias de usuario, Sprints y PMV.|Presenta menores capacidades de automatización y trazabilidad técnica que herramientas especializadas.|
-|Calidad y pruebas|Postman, SonarQube, Pytest|Pruebas de APIs, pruebas automatizadas y análisis estático del código.|Las herramientas no sustituyen la definición adecuada de casos de prueba.|
-|Seguridad|OWASP ZAP|Evaluación de vulnerabilidades en los servicios expuestos.|Los resultados requieren análisis y validación técnica.|
-|Comunicación|Google Drive, Teams / Meet|Gestión documental y coordinación del equipo.|Dependen de conectividad y organización adecuada de la información.|
+## 2. Reconocimiento de limitaciones y evaluación de asistentes de IA
 
-Las herramientas se utilizaron de manera integrada durante el ciclo de desarrollo. Trello permitió organizar el trabajo; GitHub y VS Code soportaron el desarrollo y versionamiento;
+En estricto cumplimiento del atributo de competencia sobre reconocimiento de limitaciones tecnológicas y conforme a la evaluación documentada en `docs/TOOLS_EVALUATION.md`, se sistematizan las restricciones críticas de las herramientas utilizadas:
 
-Prometheus proporcionó telemetría; Pandas y NumPy permitieron procesar los datos;
+1. **Huella de recursos en lenguajes de servidor:** La pasarela original en Spring Cloud Gateway demanda 520 MB en imagen Docker y ~283 MiB de RAM en reposo. Para mitigar esta restricción en entornos con recursos limitados (planes gratuitos en la nube con techos de 512 MB), se desarrolló la pasarela alternativa en Go 1.25 (`software/gateway-go`), logrando una imagen de 16,2 MB y un consumo en reposo de ~10 MiB, superando 30 pruebas unitarias con cero discrepancias funcionales en 39 pruebas diferenciales.
+2. **Optimización de imágenes analíticas:** La imagen de Prediction demandaba inicialmente 2,85 GB debido a dependencias superfluas de experimentación (Jupyter, MLflow, Matplotlib). Mediante construcción multi-etapa y segmentación de dependencias de servicio, la imagen se redujo a 510 MB y 122 MiB de RAM en reposo, manteniendo el 100 % de las pruebas operativas (100 pruebas).
+3. **Uso de asistentes de inteligencia artificial en el desarrollo:** Se incorporó Claude Code y Antigravity CLI (con modelo Gemini Flash y Claude Sonnet) para acelerar la navegación de código e indexación de relaciones mediante Graphify. Sin embargo, su operación experimental evidenció limitaciones determinantes:
+   - En auditorías automáticas de seguridad sobre el Gateway Go, 1 de cada 8 hallazgos emitidos por el agente resultó ser un falso positivo (análisis de cabeceras de proxy).
+   - En ejecuciones desatendidas (*headless*), la herramienta puede registrar códigos de salida 0 con estado `SUCCESS` devolviendo respuestas vacías o interrupciones por tiempo límite.
+   - Debido a ello, **todo código, refactorización y texto propuesto por los agentes de IA fue verificado, probado e integrado manualmente por los integrantes del equipo**, manteniendo prohibidos los comandos destructivos o accesos a red no autorizados.
 
-Supabase/PostgreSQL soportó la persistencia estructurada de la información; Scikit-learn y Random Forest Regressor fueron considerados para el componente predictivo y MLflow para su trazabilidad; mientras que Grafana permitió visualizar la información del sistema. Para la validación se incorporaron herramientas como Postman, Pytest y SonarQube.
+## 3. Resultados cuantitativos medidos con las herramientas
 
-<!-- página 21 -->
+- **Pipeline de Machine Learning (semilla 42):** Random Forest a 15 minutos alcanzó un MAE de 3,22 pp y un RMSE de 4,59 pp en validación, y un MAE de 3,85 pp en el conjunto de prueba, superando al modelo de persistencia (MAE 4,61 pp; −30 % de error) y a la media móvil (MAE 3,74 pp; −14 % de error).
+- **Pruebas automatizadas en el monorepo:** Monitoring 112, Gateway Java 12, Gateway Go 30, Data Processing 121, Prediction 100, Frontend 48, Simulator 10.
+- **Verificación integral de salud (*smoke test*):** 14 de 14 pruebas superadas sobre el stack contenerizado completo ejecutado con datos simulados.
 
-La selección de herramientas también respondió a necesidades específicas del proyecto. Por ejemplo, Trello fue seleccionado frente a Jira y GitHub Projects por su facilidad de uso y costo cero; Python por su ecosistema de Machine Learning; Grafana por su integración con la telemetría de Prometheus; y SonarQube para el análisis estático de calidad y vulnerabilidades del código.
+---
 
-Asimismo, se reconocieron las limitaciones de las tecnologías seleccionadas. En Python pueden presentarse conflictos entre versiones de dependencias, por lo que se planteó utilizar entornos virtuales y archivos de dependencias controlados. En los modelos de Machine Learning existe riesgo de degradación cuando reciben datos fuera de la distribución utilizada durante el entrenamiento, por lo que se requiere validación de datos y mantener control humano sobre las recomendaciones.
-
-De esta manera, las herramientas no se utilizaron de forma aislada, sino como un ecosistema tecnológico integrado, cubriendo modelado, desarrollo, datos, IA, gestión, calidad, seguridad, observabilidad y comunicación durante los tres PMV del proyecto.
-
-# VI. Diseño de Ingeniería
+# VI. DISEÑO DE INGENIERÍA
 
 ## VI.1 Listado de Requerimientos funcionales y no funcionales
 
 ### Requerimientos funcionales
 
-|ID|Requerimiento|
-|---|---|
-|RF-01|Recopilar métricas de CPU, memoria, red y almacenamiento.|
-|RF-02|Recopilar métricas de workloads como solicitudes, concurrencia, throughput y latencia.|
-|RF-03|Almacenar métricas históricas con marca temporal.|
-|RF-04|Consultar series históricas por nodo, servicio y período.|
-|RF-05|Normalizar y preparar series temporales.|
-|RF-06|Construir ventanas y variables predictoras.|
-|RF-07|Entrenar y evaluar modelos candidatos.|
-|RF-08|Registrar versiones, parámetros, métricas y artefactos.|
-|RF-09|Generar predicciones mediante API controlada.|
-|RF-10|Evaluar alternativas mediante Optimization Engine.|
-|RF-11|Validar alternativas mediante Policy/Safety Engine.|
-|RF-12|Registrar y presentar recomendaciones trazables.|
-|RF-13|Ejecutar experimentos comparables baseline/tratamiento.|
-|RF-14|Presentar indicadores energéticos y de eficiencia.|
-|RF-15|Comparar predicción y valores observados.|
-|RF-16|Presentar alertas de saturación, subutilización o riesgo SLA.|
-|RF-17|Generar reportes comparativos.|
-|RF-18|Autenticar usuarios técnicos autorizados.|
-
-<!-- página 22 -->
-
-|RF-19|Administrar roles y permisos.|
-|---|---|
-|RF-20|Registrar decisiones y eventos de auditoría.|
+| ID | Requerimiento funcional | Módulo de implementación |
+|---|---|---|
+| RF-01 | Recopilar métricas de CPU, memoria, red y almacenamiento de nodos de cómputo. | Simulator → Prometheus |
+| RF-02 | Recopilar métricas de workloads (solicitudes, concurrencia, throughput y latencia). | Simulator → Prometheus |
+| RF-03 | Almacenar métricas históricas con marca temporal y procedencia explícita. | Monitoring / Supabase / SQLite |
+| RF-04 | Consultar series históricas por nodo, servicio y ventana temporal. | Monitoring / Data Processing |
+| RF-05 | Normalizar y limpiar series temporales tratando valores ausentes. | Data Processing (`src/preprocessing`) |
+| RF-06 | Construir retardos (*lags*), medias móviles y variables temporales cíclicas. | Data Processing / Prediction |
+| RF-07 | Entrenar y evaluar modelos candidatos (Random Forest, baselines) con partición temporal. | Prediction (`src/training`) |
+| RF-08 | Versionar parámetros, métricas y metadatos de datasets y modelos mediante manifiestos. | Prediction (`results/manifest.json`) |
+| RF-09 | Servir predicciones de utilización de CPU a 15 minutos mediante endpoint REST protegido. | Prediction (`POST /v1/predictions`) |
+| RF-10 | Evaluar alternativas operativas de redistribución de cargas de cómputo. | Prediction (`src/recommendations`) |
+| RF-11 | Validar restricciones de SLA, frescura de datos y márgenes de seguridad. | Prediction (`policy.py`) |
+| RF-12 | Emitir recomendaciones explicables bajo principio *Recommendation-Only* (`executionAllowed=false`). | Prediction (`POST /v1/recommendations`) |
+| RF-13 | Ejecutar experimentos controlados comparando estrategia predictiva frente a línea base. | Experiment Module (PMV3) |
+| RF-14 | Calcular consumo energético mediante integración trapezoidal ($E = \int P dt$). | Prediction (`POST /v1/energy`) |
+| RF-15 | Comparar valores predichos frente a valores observados en tiempo real. | Frontend / Monitoring |
+| RF-16 | Emitir alertas ante riesgos de saturación, subutilización o violación de SLA. | Monitoring / Prediction |
+| RF-17 | Generar reportes técnicos exportables en formato CSV y JSON estructurado. | Data Processing / Frontend |
+| RF-18 | Autenticar usuarios técnicos mediante tokens JWT seguros. | Gateway / Supabase Auth |
+| RF-19 | Administrar permisos mediante control de acceso basado en roles (ADMIN, OPERATOR). | Gateway / Supabase |
+| RF-20 | Registrar eventos de auditoría y trazabilidad con encabezados `X-Request-Id`. | Gateway / Microservicios |
 
 ### Requerimientos no funcionales
 
-|ID|Requerimiento|
-|---|---|
-|RNF-01|Implementar autenticación, autorización, RBAC, mínimo privilegio, gestión de secretos y auditoría.|
-|RNF-02|Mantener la latencia de inferencia dentro del presupuesto de rendimiento establecido y verificarla mediante mediciones.|
-|RNF-03|Permitir una recuperación controlada del sistema ante fallos y verificarla mediante pruebas de recuperación.|
-|RNF-04|Garantizar la reproducibilidad mediante la identificación de datos, código, parámetros, modelos y configuraciones utilizadas.|
-|RNF-05|Mantener una adecuada separación de responsabilidades entre los componentes para facilitar la mantenibilidad del sistema.|
-|RNF-06|Proporcionar observabilidad mediante logs, métricas, evidencias y dashboards del funcionamiento del sistema.|
-|RNF-07|Permitir que las futuras acciones ejecutables puedan revertirse mediante mecanismos de rollback.|
-|RNF-08|Mantener la trazabilidad entre cada recomendación, su predicción asociada, las restricciones evaluadas y el resultado obtenido.|
-|RNF-09|Permitir la ejecución reproducible del sistema en diferentes máquinas mediante contenedores Docker y configuración documentada.|
-
-**Historias de usuario por épicas**
-
-|Épica|Historia de Usuario|
-|---|---|
-|E1: Observabilidad|HU-01: Como administrador de TI necesito visualizar en tiempo real las métricas de CPU, memoria y red, junto con indicadores energéticos estimados cuando estén disponibles, para supervisar el estado de la infraestructura.|
-|E1: Observabilidad|HU-02: Como administrador de TI necesito que las métricas históricas se almacenen de forma estructurada para analizar patrones de comportamiento y alimentar los modelos predictivos.|
-|E2: Predicción|HU-03: Como administrador de TI necesito recibir predicciones de demanda computacional para las próximas horas para anticipar las necesidades de recursos del clúster.|
-
-<!-- página 23 -->
-
-|E2: Predicción|HU-04: Como analista de datos necesito comparar al menos dos alternativas bajo los mismos escenarios de carga para evaluar su comportamiento respecto a los criterios técnicos y operativos definidos.|
-|---|---|
-|E2: Predicción|HU-05: Como analista de datos necesito que los modelos predictivos se registren y versionen en MLflow para garantizar trazabilidad y reproducibilidad de los experimentos.|
-|E3: Optimización|HU-06: Como administrador de TI necesito recibir recomendaciones de redistribución de workloads entre nodos orientadas a mejorar la utilización de recursos, respetando las restricciones operativas definidas, para evaluar alternativas antes de cualquier ejecución.|
-|E3: Optimización|HU-07: Como administrador de TI necesito validar y aprobar cada recomendación antes de su ejecución para mantener el control operacional sobre la infraestructura (Recommendation-Only).|
-|E3: Optimización|HU-08: Como administrador de TI necesito configurar restricciones operativas (SLA mínimo, latencia máxima permitida) que el modelo debe respetar al recomendar redistribuciones.|
-|E4: Energía|HU-09: Como directivo universitario necesito visualizar indicadores de consumo y eficiencia energética estimados, incluyendo su variación respecto a una línea base, para evaluar experimentalmente las estrategias analizadas.|
-|E4: Energía|HU-10: Como directivo universitario necesito conocer la estimación de huella de carbono asociada al consumo energético del centro de datos para reportar el impacto ambiental.|
-|E5: Visualización|HU-11: Como administrador de TI necesito un dashboard visual con el estado actual de la infraestructura, predicciones de carga e indicadores energéticos estimados para apoyar la toma de decisiones.|
-|E5: Visualización|HU-12: Como administrador de TI necesito recibir alertas cuando se detecten anomalías de consumo, riesgo de incumplimiento de SLA o caídas de disponibilidad para actuar preventivamente.|
-|E5: Visualización|HU-13: Como directivo universitario necesito generar reportes periódicos exportables en PDF/CSV con el resumen de consumo o estimación energética, variación respecto a la línea base y cumplimiento de SLA.|
-|E6: Seguridad|HU-14: Como administrador del sistema necesito controlar el acceso mediante roles de administrador y observador para garantizar que únicamente los usuarios autorizados accedan a las funciones de administración, validación y aprobación de recomendaciones.|
-
-<!-- página 24 -->
-
-|E6: Seguridad|HU-15: Como usuario autorizado necesito registrarme en el sistema mediante mis datos personales y credenciales de acceso para disponer de una cuenta que me permita acceder de forma segura a las funcionalidades.|
-|---|---|
-|E7: Experimentación|HU-16: Como investigador necesito ejecutar experimentos controlados comparando una estrategia de referencia (baseline) frente a la estrategia Green AI bajo las mismas condiciones de carga para evaluar su impacto energético y operativo.|
-
-evaluar su impacto energético y operativo.
-
-**Historias de usuario por PMV**
-
-|Épica|Historia de Usuario|PMV|
+| ID | Requerimiento no funcional | Mecanismo técnico de cumplimiento |
 |---|---|---|
-|E1: Observabilidad|HU-01: Como administrador de TI necesito visualizar en tiempo real las métricas de CPU, memoria y red, junto con indicadores energéticos estimados cuando estén disponibles, para supervisar el estado de la infraestructura.|PMV1|
-|E1: Observabilidad|HU-02: Como administrador de TI necesito que las métricas históricas se almacenen de forma estructurada para analizar patrones de comportamiento y alimentar los modelos predictivos.|PMV1|
-|E2: Predicción|HU-03: Como administrador de TI necesito recibir predicciones de demanda computacional para las próximas horas para anticipar las necesidades de recursos del clúster.|PMV2|
-|E2: Predicción|HU-04: Como analista de datos necesito comparar al menos dos alternativas bajo los mismos escenarios de carga para evaluar su comportamiento respecto a los criterios técnicos y operativos definidos.|PMV2|
-|E2: Predicción|HU-05: Como analista de datos necesito que los modelos predictivos se registren y versionen en MLflow para garantizar trazabilidad y reproducibilidad de los experimentos.|PMV2|
-|E3: Optimización|HU-06: Como administrador de TI necesito recibir recomendaciones de redistribución de workloads entre nodos orientadas a mejorar la utilización de recursos, respetando las restricciones operativas definidas, para evaluar alternativas antes de cualquier ejecución.|PMV2|
-|E3: Optimización|HU-07: Como administrador de TI necesito validar y aprobar cada recomendación antes de su ejecución para mantener el control operacional sobre la infraestructura (Recommendation-Only).|PMV2|
+| RNF-01 | **Seguridad:** Autenticación obligatoria, RBAC, gestión de secretos por variables de entorno y sin credenciales en código. | Supabase Auth + Gateway JWT Verifier. |
+| RNF-02 | **Rendimiento:** Latencia de inferencia predictiva p95 inferior a 2,0 segundos bajo condiciones normales. | Modelos Random Forest compactos en memoria. |
+| RNF-03 | **Confiabilidad:** Recuperación controlada ante fallos (*fail-fast*) y validación estricta de configuración al arranque. | Manejo de excepciones y códigos de salida explícitos. |
+| RNF-04 | **Reproducibilidad:** Trazabilidad absoluta de datos, código fuente, parámetros, semillas y configuraciones. | Semilla fijada (42), manifiestos SHA y Git. |
+| RNF-05 | **Mantenibilidad:** Desacoplamiento de lógica de negocio respecto a frameworks externos y bases de datos. | Arquitectura hexagonal por microservicio. |
+| RNF-06 | **Observabilidad:** Disponibilidad de métricas internas, registros estructurados y verificación de salud de servicios. | Endpoints `/health` y métricas Prometheus. |
+| RNF-07 | **Seguridad operacional:** Prohibición de ejecuciones destructivas autónomas sobre la infraestructura. | Principio *Recommendation-Only* formal. |
+| RNF-08 | **Trazabilidad analítica:** Asociación unívoca entre cada recomendación, datos de entrada y reglas evaluadas. | Respuestas con campos `policy_checks` y `origin`. |
+| RNF-09 | **Portabilidad:** Despliegue homogéneo y reproducible en plataformas locales y de nube sin dependencias propietarias. | Imágenes Docker y Docker Compose estándar. |
 
-<!-- página 25 -->
+### Historias de usuario por épica y PMV
 
-|Épica|Historia de Usuario|PMV|
-|---|---|---|
-|E3: Optimización|HU-08: Como administrador de TI necesito configurar restricciones operativas (SLA mínimo, latencia máxima permitida) que el modelo debe respetar al recomendar redistribuciones.|PMV2|
-|E4: Energía|HU-09: Como directivo universitario necesito visualizar indicadores de consumo y eficiencia energética estimados, incluyendo su variación respecto a una línea base, para evaluar experimentalmente las estrategias analizadas.|PMV2-PMV3|
-|E4: Energía|HU-10: Como directivo universitario necesito conocer la estimación de huella de carbono asociada al consumo energético del centro de datos para reportar el impacto ambiental.|PMV3|
-|E5: Visualización|HU-11: Como administrador de TI necesito un dashboard visual con el estado actual de la infraestructura, predicciones de carga e indicadores energéticos estimados para apoyar la toma de decisiones.|PMV2|
-|E5: Visualización|HU-12: Como administrador de TI necesito recibir alertas cuando se detecten anomalías de consumo, riesgo de incumplimiento de SLA o caídas de disponibilidad para actuar preventivamente.|PMV2-PMV3|
-|E5: Visualización|HU-13: Como directivo universitario necesito generar reportes periódicos exportables en PDF/CSV con el resumen de consumo o estimación energética, variación respecto a la línea base y cumplimiento de SLA.|PMV3|
-|E6: Seguridad|HU-14: Como administrador del sistema necesito controlar el acceso mediante roles de administrador y observador para garantizar que únicamente los usuarios autorizados accedan a las funciones de administración, validación y aprobación de recomendaciones.|PMV3|
-|E6: Seguridad|HU-15: Como usuario autorizado necesito registrarme en el sistema mediante mis datos personales y credenciales de acceso para disponer de una cuenta que me permita acceder de forma segura a las funcionalidades.|PMV1|
-|E7: Experimentación|HU-16: Como investigador necesito ejecutar experimentos controlados comparando una estrategia de referencia (baseline) frente a la estrategia Green AI bajo las mismas condiciones de carga para evaluar su impacto energético y operativo.|PMV3|
+| Épica | Historia de Usuario | PMV | Criterio de aceptación principal |
+|---|---|---|---|
+| **E1: Observabilidad** | **HU-01:** Como administrador de TI, visualizar en tiempo real métricas de CPU, memoria y red para supervisar la infraestructura. | PMV1 | Consulta de telemetría vía Gateway con datos actualizados en intervalos de 15 s. |
+| **E1: Observabilidad** | **HU-02:** Como administrador de TI, consultar métricas históricas estructuradas para análisis de patrones. | PMV1 | Endpoint de series históricas con paginación keyset y filtros temporales. |
+| **E2: Predicción** | **HU-03:** Como administrador de TI, recibir predicciones de demanda de CPU a 15 minutos para anticipar cargas. | PMV2 | Predicción servida por API REST con latencia p95 < 2 s y metadata de origen. |
+| **E2: Predicción** | **HU-04:** Como analista de datos, comparar el modelo predictivo frente a baselines bajo los mismos datos. | PMV2 | Reducción de MAE verificable en validación cronológica frente a persistencia. |
+| **E2: Predicción** | **HU-05:** Como analista de datos, versionar y registrar métricas y modelos para reproducibilidad experimental. | PMV2 | Manifiesto técnico con hashes SHA-256 de configuración y artefactos. |
+| **E3: Optimización** | **HU-06:** Como administrador de TI, recibir recomendaciones explicables de redistribución de recursos. | PMV2 | Respuesta con acción sugerida y justificación explícita de reglas evaluadas. |
+| **E3: Optimización** | **HU-07:** Como administrador de TI, validar y aprobar recomendaciones antes de cualquier ejecución técnica. | PMV2 | Modo *Recommendation-Only* (`executionAllowed=false`) sin ejecución autónoma. |
+| **E3: Optimización** | **HU-08:** Como administrador de TI, configurar restricciones operativas de SLA y márgenes de seguridad. | PMV2 | La política se abstiene si los datos son obsoletos o violan márgenes seguros. |
+| **E4: Energía** | **HU-09:** Como directivo, visualizar indicadores de energía física estimada mediante integración numérica. | PMV2-PMV3 | Endpoint `/v1/energy` con cálculo trapezoidal a partir de lecturas de potencia. |
+| **E4: Energía** | **HU-10:** Como directivo, conocer estimaciones de huella de carbono basadas en factores de emisión oficiales. | PMV3 | Rechazo de estimación si no se provee factor de emisión con fuente verificable. |
+| **E5: Visualización** | **HU-11:** Como administrador de TI, disponer de un dashboard interactivo con métricas y predicciones. | PMV2 | Interfaz web estática responsiva servida por Nginx conectada al Gateway. |
+| **E5: Visualización** | **HU-12:** Como administrador de TI, recibir alertas visuales ante saturación o riesgo de incumplimiento de SLA. | PMV2-PMV3 | Alertas en interfaz diferenciadas por código de severidad (alta, media, normal). |
+| **E5: Visualización** | **HU-13:** Como directivo, exportar reportes consolidados en formatos abiertos estructurados. | PMV3 | Exportación funcional de históricos y recomendaciones en formato CSV y JSON. |
+| **E6: Seguridad** | **HU-14:** Como administrador, restringir el acceso a endpoints operativos mediante roles diferenciados. | PMV3 | Respuestas HTTP 403 Forbidden ante solicitudes sin rol `ADMIN` requerido. |
+| **E6: Seguridad** | **HU-15:** Como usuario autorizado, registrar e iniciar sesión de forma segura mediante credenciales. | PMV1 | Emisión de tokens JWT válidos tras autenticación exitosa en Supabase Auth. |
+| **E7: Experimentación** | **HU-16:** Como investigador, ejecutar experimentos comparativos frente a una línea base equivalente. | PMV3 | Ejecución reproducible bajo cargas idénticas comparando indicadores clave. |
 
-**Diseño de flujo de navegación de pantallas.**
+### Flujo de navegación de pantallas
 
-<!-- página 26 -->
+El flujo implementado en la aplicación web estática (HTML5/JS servido mediante Nginx, sin frameworks pesados) guía al usuario desde la autenticación hasta la visualización y análisis de telemetría:
 
-El flujo de navegación implementado permite que el usuario autorizado acceda progresivamente a las funcionalidades disponibles en el PMV. El recorrido principal comprende el registro del usuario, confirmación, autenticación y acceso al dashboard para la consulta de métricas actuales e históricas.
+$$\text{Inicio} \longrightarrow \text{Registro} \longrightarrow \text{Confirmación} \longrightarrow \text{Inicio de Sesión} \longrightarrow \text{Dashboard Principal} \longrightarrow \text{Consulta de Métricas}$$
 
-**Flujo:**
+![Pantalla de registro de usuario](evidencias/p026-img002.png)  
+*Figura 1. Pantalla de registro de usuario en el frontend web.*
 
-Inicio → Registro → Confirmación → Inicio de sesión → Validación → Dashboard → Consulta de métricas
+![Confirmación del registro](evidencias/p027-img003.png)  
+*Figura 2. Confirmación del registro de usuario mediante Supabase Auth.*
 
-**Pantalla de registro de usuario.**
+![Inicio de sesión y validación](evidencias/p027-img004.png)  
+*Figura 3. Pantalla de inicio de sesión y autenticación con validación de credenciales.*
 
-![Figura (página 26)](evidencias/p026-img002.png)
+![Dashboard y visualización histórica](evidencias/p028-img005.png)  
+*Figura 4. Dashboard principal con visualización histórica de telemetría de CPU y memoria.*
 
-**Confirmación del registro.**
+![Visualización de métricas en tiempo real](evidencias/p028-img006.png)  
+*Figura 5. Dashboard de visualización en tiempo real de nodos de cómputo.*
 
-<!-- página 27 -->
-
-![Figura (página 27)](evidencias/p027-img003.png)
-
-**Inicio de sesión y validación.**
-
-![Figura (página 27)](evidencias/p027-img004.png)
-
-**Dashboard y visualización histórica de métricas.**
-
-<!-- página 28 -->
-
-![Figura (página 28)](evidencias/p028-img005.png)
-
-![Figura (página 28)](evidencias/p028-img006.png)
+---
 
 ## VI.2 Diseño de base de datos
 
-**Identificación, evaluación y selección de base de datos**
+### Evaluación y selección del motor de base de datos
 
-La solución Green AI requiere una base de datos que permita almacenar de forma estructurada los metadatos, configuraciones, resultados experimentales, información de ejecución y registros de trazabilidad generados por los diferentes componentes del sistema.
+Para la gestión de metadatos de infraestructura, configuraciones de experimentos, perfiles de usuario y registros históricos de trazabilidad, se evaluaron tres alternativas de bases de datos mediante una matriz de selección con ponderación uniforme del 25 %:
 
-<!-- página 29 -->
+| Criterio de evaluación | Peso | PostgreSQL | MySQL | MongoDB |
+|---|---|---|---|---|
+| Adecuación al modelo estructurado | 25 % | 5 | 4 | 3 |
+| Integración con el ecosistema de servicios | 25 % | 5 | 5 | 5 |
+| Reproducibilidad y soporte de contratos | 25 % | 5 | 5 | 4 |
+| Facilidad de operación y mantenimiento | 25 % | 4 | 4 | 4 |
+| **Puntaje total (sobre 20)** | **100 %** | **19** | **18** | **16** |
 
-Para la selección se evaluaron tres motores de base de datos: PostgreSQL, MySQL y MongoDB. Los criterios considerados fueron adecuación al modelo de datos, integración con los servicios del sistema, reproducibilidad y facilidad de operación, utilizando una ponderación uniforme del 25 % para cada criterio.
+Se seleccionó **PostgreSQL** por su robustez relacional, soporte nativo de extensiones temporales y capacidades avanzadas de integridad referencial. Para el despliegue en la nube se emplea **Supabase**, que proporciona PostgreSQL administrado junto con servicios integrados de autenticación (Supabase Auth) y políticas de seguridad por fila (RLS). En paralelo, para garantizar reproducibilidad local y ejecución de pruebas sin dependencia de red externa, se diseñó un perfil con **SQLite** en desarrollo, compartiendo contratos de consulta idénticos con PostgREST.
 
-|Alternativa|Adecuación 25 %|Integración 25 %|Reproducibilid ad 25 %|Operación 25 %|Total /20|
-|---|---|---|---|---|---|
-|PostgreSQL|5|5|5|4|19|
-|MySQL|4|5|5|4|18|
-|MongoDB|3|5|4|4|16|
+Las métricas temporales de alta frecuencia se almacenan de forma complementaria en Prometheus, especializando a PostgreSQL para la persistencia transaccional y relacional.
 
-La evaluación permitió seleccionar PostgreSQL como motor relacional debido a su capacidad para mantener integridad, relaciones, restricciones y trazabilidad de la información del sistema.
+### Diseño lógico y físico de la base de datos
 
-Para la implementación se utiliza Supabase como plataforma administrada basada en PostgreSQL. Por tanto, Supabase no se considera un cuarto motor de base de datos dentro de la comparación, sino la plataforma utilizada para desplegar y gestionar PostgreSQL, además de proporcionar servicios complementarios como autenticación e integración mediante API.
+El diseño lógico define las entidades principales: nodos de cómputo (`hardware`), registros temporales de telemetría (`logs`), perfiles de usuario (`user_profiles`) y asignaciones de seguridad (`user_roles`).
 
-La persistencia relacional se complementa con Prometheus, utilizado específicamente para la recolección y consulta de métricas temporales de infraestructura y workloads.
+![Diagrama del modelo lógico de datos](evidencias/p030-img007.png)  
+*Figura 6. Diagrama del modelo lógico de la base de datos relacional.*
 
-**Diseño lógico y físico de la base de datos**
+El diseño físico traslada las entidades a tablas relacionales con claves foráneas, restricciones de no nulidad, índices en columnas de marca temporal (`timestamp`) y tipos de datos normalizados.
 
-El diseño de la base de datos de Green AI se estructuró sobre un modelo relacional implementado mediante Supabase, utilizando PostgreSQL como motor de base de datos. El diseño busca mantener organizada y relacionada la información generada por los diferentes componentes de la solución, incluyendo configuraciones, información de ejecución, resultados experimentales y registros necesarios para la trazabilidad del sistema.
+![Diagrama del modelo físico en Supabase / PostgreSQL](evidencias/p031-img008.png)  
+*Figura 7. Diagrama del modelo físico implementado en Supabase / PostgreSQL.*
 
-**Diseño lógico**
+### Procedimientos almacenados y funciones en base de datos
 
-El diseño lógico representa la organización de la información y las relaciones existentes entre las entidades del sistema, independientemente de los detalles específicos de implementación. Este modelo permite establecer las entidades, sus atributos y relaciones necesarias para mantener la consistencia y trazabilidad de los datos utilizados por Green AI.
+En atención a las observaciones docentes respecto a la evidencia de lógica de base de datos (indicador 11 de la lista de cotejo), el sistema implementa en Supabase una función PL/pgSQL con privilegios de seguridad elevados (`SECURITY DEFINER`) denominada `public.handle_new_auth_user()`, activada automáticamente mediante un disparador (*trigger*) sobre la tabla `auth.users` (`software/frontend/supabase-auth-setup.sql`). 
 
-<!-- página 30 -->
+Esta función sincroniza de manera segura la creación de cuentas de usuario en el subsistema de autenticación con la tabla relacional `public.user_profiles`, asignando por defecto el rol de `OPERATOR` y configurando las políticas de aislamiento RLS (*Row Level Security*) correspondientes.
 
-![Figura (página 30)](evidencias/p030-img007.png)
+CAPTURA-PENDIENTE-C101: Código y definición de la función PL/pgSQL y disparador en software/frontend/supabase-auth-setup.sql en el repositorio GitHub oficial  
+*Figura 8. Procedimiento almacenado y disparador de sincronización de usuarios en Supabase (GitHub).*
 
-### Diseño físico
-
-El diseño físico representa la implementación del modelo lógico en Supabase/PostgreSQL, mediante tablas, campos, tipos de datos, claves primarias, claves foráneas y restricciones. Esta estructura permite implementar las relaciones definidas en el modelo lógico y mantener la integridad de la información almacenada.
-
-<!-- página 31 -->
-
-![Figura (página 31)](evidencias/p031-img008.png)
-
-La persistencia estructurada se complementa con otras tecnologías según el tipo de información. Prometheus se utiliza para las métricas temporales de infraestructura y workloads, mientras que Supabase concentra la información relacional y transaccional del sistema. La selección de Prometheus como herramienta para métricas temporales está definida de manera independiente a la persistencia relacional.
+---
 
 ## VI.3 Arquitectura de la solución planteada
 
-**Identificación, evaluación y selección de la arquitectura de software**
+### Evaluación y selección de la arquitectura de software
 
-Para Green AI se evaluaron tres alternativas arquitectónicas: microservicios orientados a eventos, microservicios y arquitectura Event-Driven distribuida. La evaluación consideró la gestionabilidad de la complejidad operacional, adecuación al prototipo universitario, separación de responsabilidades, escalabilidad independiente, facilidad de depuración, experimentación y mantenibilidad inicial.
+Se evaluaron tres estilos arquitectónicos para el prototipo experimental considerando la complejidad de operación y las restricciones académicas:
 
-<!-- página 32 -->
-
-|Criterio|Microservicios orientados a eventos|Microservicios|Event-Driven distribuida|
+| Criterio de evaluación (peso) | Monolito en capas | Microservicios clásicos | Microservicios con hexagonal (Híbrida) |
 |---|---|---|---|
-|Gestionabilidad de la complejidad operacional|5|2|3|
-|Adecuación a prototipo universitario|5|3|4|
-|Separación de responsabilidades|5|5|5|
-|Escalabilidad independiente|4|5|5|
-|Facilidad de depuración|5|3|3|
-|Experimentación|5|4|4|
-|Mantenibilidad inicial|5|3|3|
-|TOTAL|34|25|27|
+| Desacoplamiento dominio / infraestructura (25 %) | 3 | 3 | 5 |
+| Independencia tecnológica por componente (20 %) | 1 | 5 | 5 |
+| Testabilidad aislada sin infraestructura (20 %) | 3 | 3 | 5 |
+| Viabilidad en planes gratuitos de nube (20 %) | 5 | 2 | 3 |
+| Gestionabilidad para equipo de 4 personas (15 %) | 5 | 2 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **3,30** | **3,05** | **4,30** |
 
-Se seleccionó la arquitectura de microservicios orientados a eventos, con 34 puntos, debido a que permite separar las principales responsabilidades del sistema y combinar comunicación síncrona mediante APIs REST con comunicación asíncrona basada en eventos. Los servicios considerados incluyen Monitoring, Data Processing, Prediction, Decision, Optimization, Policy/Safety, Recommendation, Experiment y Execution/Scheduler Adapter.
+Se seleccionó la **arquitectura de microservicios con diseño hexagonal por servicio**, obteniendo 4,30 puntos. Esta arquitectura permite desacoplar la lógica de dominio de los detalles de infraestructura, posibilitando que componentes con requerimientos tecnológicos dispares (Java en monitoreo, Python en Machine Learning, Go en pasarela de acceso) colaboren a través de contratos HTTP/REST explícitos sin acoplamiento binario.
 
-Para los procesos asíncronos se contempla RabbitMQ como mecanismo de mensajería, mientras que Kubernetes constituye la plataforma prevista para el despliegue y administración de los servicios. El acceso a Kubernetes se concentra en el Execution/Scheduler Adapter, evitando que el Prediction Service tenga acceso directo a la infraestructura y manteniendo inicialmente el sistema bajo el enfoque Recommendation-Only.
+### Estructura de componentes y vista de paquetes UML
 
-**Diseño de la arquitectura con la vista de paquetes UML**
+La solución se organiza en servicios independientes que aplican arquitectura hexagonal:
+- **Simulator (`software/simulator`):** CLI en Python que modela la telemetría temporal de 50 servidores universitarios exportando métricas a Prometheus (10 pruebas unitarias).
+- **Monitoring (`software/monitoring`):** Microservicio en Java 21 y Spring Boot con arquitectura hexagonal estricta (puerto `QueryMetrics` y adaptadores Prometheus/Fixture) que expone el catálogo y series de recursos (112 pruebas unitarias).
+- **Data Processing (`software/data-processing`):** Servicio en Python y FastAPI que normaliza series temporales y gestiona el acceso a históricos mediante adaptadores intercambiables para Supabase/PostgREST y SQLite local (121 pruebas unitarias).
+- **Prediction (`software/prediction`):** Servicio en Python y FastAPI que encapsula el modelo predictivo (Random Forest), el cálculo de energía trapezoidal y el motor de políticas de recomendación (*Recommendation-Only*) (100 pruebas unitarias).
+- **API Gateway (`software/gateway` / `gateway-go`):** Pasarela de acceso con validación JWT, RBAC y enrutamiento perimetral. La implementación Java Spring Cloud cuenta con 12 pruebas; la alternativa ligera en Go 1.25 stdlib cuenta con 30 pruebas automatizadas.
+- **Frontend (`software/frontend`):** Aplicación web estática en HTML5/JS servida por Nginx que consume exclusivamente los endpoints expuestos por el API Gateway (48 pruebas).
 
-La vista de paquetes UML representa la organización modular de Green AI y las principales dependencias entre sus componentes. La solución separa las capas de presentación, acceso e integración, procesamiento, predicción y optimización, así como los componentes de mensajería, persistencia, observabilidad e infraestructura.
+![Vista de paquetes UML](evidencias/p033-img009.png)  
+*Figura 9. Vista de paquetes UML conceptual inicial (incluye componentes previstos).*
 
-A nivel interno, los servicios principales aplican principios de Arquitectura Hexagonal, separando la lógica del sistema de las tecnologías externas mediante Domain, Application, Ports, Adapters e Infrastructure. Los puertos establecen los contratos de entrada y salida, mientras que los adaptadores permiten integrar APIs, persistencia, monitoreo, mensajería y otros componentes externos, favoreciendo el desacoplamiento y la mantenibilidad de la solución.
+> **Nota aclaratoria sobre la Figura 9:** El diagrama inicial representaba la visión conceptual preliminar con un bus de eventos en RabbitMQ y orquestación externa. La arquitectura implementada en PMV1 y PMV2 opera de forma síncrona mediante APIs REST bajo el API Gateway, integrando la política de recomendación dentro del Prediction Service sin requerir RabbitMQ.
 
-<!-- página 33 -->
+![Vista de componentes actualizada](evidencias/componentes-green-ai.png)
 
-![Figura (página 33)](evidencias/p033-img009.png)
+*Figura 10. Vista de componentes actualizada: arquitectura hexagonal por microservicio, comunicación REST por el API Gateway y sin RabbitMQ (fuente: herramientas_IA/diagramas/componentes-green-ai.puml).*
 
-**Diseño de la arquitectura con la vista de despliegue UML**
+### Vista de despliegue y topología física
 
-<!-- página 34 -->
+El flujo de procesamiento sigue la secuencia:
+$$\text{Simulator} \longrightarrow \text{Prometheus} \longleftarrow \text{Monitoring} \longleftarrow \text{API Gateway} \longleftarrow \text{Frontend}$$
+$$\text{Frontend} \longrightarrow \text{API Gateway} \longrightarrow \text{Prediction / Data Processing} \longleftrightarrow \text{Supabase / SQLite}$$
 
-La vista de despliegue representa la distribución de los componentes de Green AI dentro del entorno de ejecución. La solución contempla servicios independientes para Monitoring, Data Processing y Prediction, junto con los componentes de acceso e integración del sistema.
+La solución se despliega en dos modalidades verificadas:
+1. **Entorno local de desarrollo (`green-ai-mono`):** Orquestado integralmente mediante Docker Compose (`docker-compose.yml`), levantando los contenedores de Simulator, Prometheus, Monitoring, Data Processing, Prediction, API Gateway (Java o Go) y Frontend bajo una red interna aislada, conectando opcionalmente con Supabase externo o SQLite local. Supera la verificación integral *smoke test* de 14/14 casos.
+2. **Entorno de calidad en la nube (*Staging* en Render + GitHub Pages):** Los microservicios analíticos se despliegan como servicios web en contenedores sobre Render (`*-dev.onrender.com`), el frontend estático se publica en GitHub Pages mediante HTTPS, y la persistencia de autenticación e históricos opera sobre Supabase en la nube.
 
-El flujo principal de procesamiento se representa mediante:
+![Vista de despliegue UML](evidencias/p034-img010.png)  
+*Figura 11. Vista de despliegue UML conceptual inicial (incluye orquestación prevista en Kubernetes).*
 
-**Simulator → Monitoring → Data Processing → Prediction**
+> **Nota aclaratoria sobre la Figura 11:** El diagrama original mostraba la planificación tentativa con despliegue en clúster Kubernetes. En la implementación real, la solución opera de forma verificada sobre Docker Compose en local y servicios web en Render y GitHub Pages. Kubernetes queda considerado exclusivamente como trabajo futuro para escalamiento a gran escala.
 
-Mientras que la interacción del usuario sigue el flujo:
+![Vista de despliegue actualizada](evidencias/despliegue-green-ai.png)
 
-**Usuario → Frontend → API Gateway → Servicios**
-
-Los servicios se comunican de forma síncrona mediante APIs REST cuando requieren una respuesta inmediata. Asimismo, de acuerdo con la arquitectura seleccionada, se contempla RabbitMQ para los procesos asíncronos basados en eventos y Kubernetes como entorno previsto para el despliegue y aislamiento de los servicios.
-
-![Figura (página 34)](evidencias/p034-img010.png)
-
-<!-- página 35 -->
+*Figura 12. Vista de despliegue actualizada: GitHub Pages, seis servicios en Render (rama test), Supabase y Docker Compose local; sin Kubernetes (fuente: herramientas_IA/diagramas/despliegue-green-ai.puml).*
 
 # VII. GESTIÓN DEL PROYECTO
 
@@ -782,296 +642,250 @@ Los servicios se comunican de forma síncrona mediante APIs REST cuando requiere
 
 |Elemento|Descripción|
 |---|---|
-|Nombre del proyecto|Green AI for Sustainable University Data Centers|
-|Líder del proyecto / Product Owner|Jhonny Cristhian Quintana Carhuaricra|
-|Scrum Master / ML Lead|Gina Diana Barrera Peña|
-|Backend & MLOps Engineer|Ricardo Porras Veli|
-|Infraestructura & UI/UX Engineer|Leonid Huamán Collazos|
+|Nombre del proyecto|Green AI: Monitoreo y predicción de demanda computacional para apoyar la gestión eficiente de recursos en entornos universitarios (Proyecto 20)|
+|Líder del proyecto / Product Owner|Jhonny Cristhian Quintana Carhuaricra (documentación y pruebas)|
+|Scrum Master / ML Lead|Gina Diana Barrera Peña (datos y modelos)|
+|Backend, contratos e integración|Ricardo Porras Veli|
+|Infraestructura, Docker y observabilidad|Leonid Kisley Orlando Huamán Collazos|
+|Asistencia técnica de IA|Claude (asistente de IA de Anthropic, bajo supervisión humana estricta para tareas de coordinación técnica, revisión y redacción)|
 |Patrocinador / Asesor académico|Ing. Jorge Alfredo Guevara Jiménez|
-|Propósito central|Diseñar, desarrollar y evaluar experimentalmente una plataforma inteligente que permita anticipar la demanda computacional de CPU con un horizonte definido por el experimento y generar recomendaciones de gestión de recursos sujetas a revisión humana. La solución permitirá comparar el comportamiento de una estrategia Green AI frente a una línea base bajo condiciones equivalentes de carga y servicio. La meta de reducción energética y los umbrales relacionados con SLA se consideran criterios experimentales de evaluación y no resultados garantizados antes de ejecutar y documentar las pruebas correspondientes.|
-|Presupuesto monetario|S/ 0.00. El proyecto se desarrollará con hardware personal o de laboratorio y herramientas de código abierto (open source).|
-|Gobernanza operativa|Recommendation-Only: el modelo predictivo funciona de manera desacoplada y no tiene autorización para ejecutar acciones autónomas e irrestrictas sobre Kubernetes. Emite recomendaciones auditables sujetas a validación humana.|
-
-<!-- página 36 -->
+|Propósito central|Diseñar, desarrollar y evaluar experimentalmente una plataforma inteligente orientada a la observabilidad y predicción de la demanda computacional de CPU en entornos de cómputo universitarios, con la finalidad de emitir recomendaciones desacopladas de optimización de recursos que mitiguen el consumo energético sin degradar los acuerdos de nivel de servicio (SLA). La plataforma opera bajo condiciones de evaluación transparentes y reproducibles sobre datos simulados; las metas de ahorro energético y los umbrales de SLA constituyen variables experimentales de evaluación y no resultados garantizados de forma previa a la ejecución de las pruebas controladas.|
+|Presupuesto financiero real|S/ 0.00. El proyecto opera bajo costo monetario de caja nulo, utilizando infraestructura física personal o de laboratorio universitario, herramientas de código abierto (open source) y capas gratuitas (free tier). La valoración comercial referencial de ingeniería y reservas bajo metodología PMBOK se cuantifica en S/ 24,872.40.|
+|Gobernanza operativa|Modalidad Recommendation-Only: el servicio de predicción y toma de decisiones opera de manera desacoplada y emite recomendaciones de asignación de recursos estrictamente auditables bajo supervisión humana (`executionAllowed=false`). El sistema no posee autorización para ejecutar acciones autónomas ni modificaciones directas sobre infraestructura en producción. El entorno de ejecución se orquesta mediante Docker Compose (no se implementó clúster Kubernetes ni orquestación física autónoma en producción).|
+|Exclusiones del alcance|Acciones correctivas o escalados automáticos sobre infraestructura de producción; medición directa de potencia física mediante hardware eléctrico (se utiliza un modelo proxy lineal matemático P(u) salvo provisión de instrumentación institucional); despliegue institucional definitivo en centros de cómputo universitarios.|
 
 ### VII.2. Contexto, Caracterización y Adaptación Metodológica (Tailoring Scrum)
 
 #### VII.2.1. Justificación de la selección metodológica
 
-Se compararon distintos enfoques de desarrollo mediante matrices multicriterio ponderadas. Se seleccionó Scrum, con una puntuación de 4.85/5.00, frente a los modelos Waterfall (2.50/5.00) y Kanban (3.65/5.00).
+La definición del enfoque metodológico se sustentó en una evaluación multicriterio ponderada, contrastando el marco ágil frente a modelos tradicionales predictivos e híbridos:
 
-La elección se fundamenta en la alta incertidumbre técnica asociada al aprendizaje automático (Machine Learning) y en la necesidad de realizar revisiones incrementales al cierre de cada Producto Mínimo Viable (PMV).
+- Enfoque ágil (Scrum / Scrumban): 4.85 / 5.00.
+- Enfoque híbrido: 4.35 / 5.00.
+- Enfoque predictivo (Waterfall): 2.50 / 5.00.
+
+Los criterios de ponderación asignados fueron: capacidad de adaptación al cambio (25 %), nivel de incertidumbre técnica experimental en aprendizaje automático (20 %), entrega incremental verificable por Producto Mínimo Viable (20 %), retroalimentación periódica con el asesor (20 %) y restricciones operativas de recursos (15 %).
+
+La adopción de Scrum con elementos de flujo visual Kanban (*Scrumban*) responde a la naturaleza iterativa del modelado predictivo, permitiendo validar la observabilidad (PMV1), los modelos de regresión y el motor de políticas (PMV2), y la experimentación controlada (PMV3) en incrementos verificables de dos semanas.
 
 #### VII.2.2. Adaptación de ceremonias y prácticas (Tailoring)
 
-|Práctica|Adaptación|
+|Práctica / Ceremonia|Adaptación en el proyecto Green AI|
 |---|---|
-|Product Backlog|20 requerimientos funcionales (RF-01 a RF-20), priorizados en Trello.|
-|Duración de los sprints|Sprints de 14 días (2 semanas) durante un ciclo académico de 16 semanas.|
-|Daily Scrum adaptado|Sincronizaciones breves tres veces por semana: lunes, miércoles y viernes, mediante WhatsApp.|
-|Refinamiento y planificación|Integrados al inicio de cada sprint para evitar una sobrecarga administrativa.|
-|Sprint Review y retrospectiva|Demostración formal ante el asesor y aplicación de ciclos PDCA al cierre de cada PMV.|
+|Product Backlog|Catálogo de 20 requerimientos funcionales (RF-01 a RF-20) expresados como Historias de Usuario (HU) con criterios de aceptación BDD (Given-When-Then), organizadas por PMV en el tablero oficial de Trello en el workspace UC.|
+|Duración de los Sprints|Sprints de 14 días calendario (2 semanas) estructurados dentro de un ciclo académico de 16 semanas (8 Sprints en total).|
+|Daily Scrum adaptado|Sincronizaciones virtuales asíncronas tres veces por semana (lunes, miércoles y viernes) mediante grupo de mensajería (WhatsApp) y registro auditable en tarjetas de Trello, adecuándose a los horarios heterogéneos del equipo.|
+|Refinamiento y Planificación|Sesiones integradas de planificación al inicio de cada sprint para priorizar historias, estimar esfuerzo y revisar criterios de aceptación técnicos sin sobrecarga administrativa.|
+|Sprint Review y Retrospectiva|Demostración técnica del incremento funcional ante el asesor académico al cierre de cada sprint de 14 días, y ejecución de análisis retrospectivo formal bajo ciclo PDCA (Plan-Do-Check-Act) al término de cada PMV.|
 
 #### VII.2.3. Matriz de asignación de roles y responsabilidades (RACI)
 
-|Actividad / Entregable de ingeniería|Jhonny (PO)|Gina (SM/ML)|Ricardo (Dev)|Leonid (Infra)|
-|---|---|---|---|---|
-|Gestión del Product Backlog y priorización|R/A|C|I|I|
-|Facilitación de ceremonias y sprints|C|R|I|I|
+La gestión operativa del proyecto distribuye las responsabilidades entre los cuatro integrantes del equipo, considerando además la asistencia técnica de inteligencia artificial como soporte de coordinación supervisado. Ante el requisito de 5 roles de la rúbrica S8 frente a un equipo de 4 integrantes, las funciones de aseguramiento de calidad (QA) y operaciones de infraestructura (DevOps) se asumen de manera transversal y compartida entre los integrantes.
 
-<!-- página 37 -->
-
-|Despliegue del clúster Kubernetes y observabilidad|I|I|C|R|
-|---|---|---|---|---|
-|Pipeline ETL e imputación de telemetría|C|R|R|C|
-|Entrenamiento y evaluación de modelos ML|I|R|C|I|
-|API FastAPI y motor de optimización|C|C|R|C|
-|Policy/Safety Engine y auditoría de SLA|A|C|R|C|
-|Pruebas de estrés (JMeter) y calidad (SonarQube)|R|C|R|R|
+|Actividad / Entregable de ingeniería|Jhonny Quintana (PO)|Gina Barrera (SM/ML)|Ricardo Porras (Dev)|Leonid Huamán (Infra)|Claude (IA)|
+|---|---|---|---|---|---|
+|Gestión del Product Backlog y priorización de HU|R / A|C|I|I|C|
+|Facilitación de ceremonias ágiles y sprints|C|R|I|I|I|
+|Orquestación con Docker Compose y observabilidad (Prometheus/Grafana)|I|I|C|R|I|
+|Pipeline ETL e imputación de telemetría sintética|I|R|R|C|I|
+|Entrenamiento y evaluación de modelos ML (Random Forest y baselines)|I|R|C|I|I|
+|API Gateway, microservicios REST y contratos OpenAPI|C|C|R|C|I|
+|Policy Engine y recomendaciones en modo Recommendation-Only|A|C|R|C|I|
+|Pruebas automatizadas (unitarias, contrato, integración y smoke)|R|C|R|R|C|
+|Documentación técnica, trazabilidad y control de cambios|R / A|C|C|C|R|
 
 **Leyenda:**
 
-![Figura (página 37)](evidencias/p037-img011.png)
+![](evidencias/p037-img011.png)
 
-R (Responsible): responsable de ejecutar la actividad.
-
-A (Accountable): aprobador final y responsable del resultado.
-
-C (Consulted): persona consultada durante la ejecución.
-
-I (Informed): persona que debe mantenerse informada.
+- **R (Responsible):** integrante responsable de ejecutar la actividad técnica.
+- **A (Accountable):** aprobador final y responsable directo de la calidad del entregable.
+- **C (Consulted):** persona o soporte consultado durante la ejecución técnica.
+- **I (Informed):** integrante que se mantiene informado del avance y resultado.
 
 #### VII.2.4. Mapa de stakeholders (partes interesadas)
 
 ![Figura VII.2.4. Mapa de stakeholders](evidencias/p037-img012.png)
 
-Figura VII.2.4. Mapa de stakeholders
+Figura VII.2.4. Mapa de stakeholders del proyecto Green AI.
 
-<!-- página 38 -->
+El análisis de partes interesadas clasifica a los actores según su nivel de poder e interés:
 
-**Mapa UML de los stakeholders**
+1. **Promotores clave (Alto interés / Alto poder):** Asesor académico (Ing. Jorge Alfredo Guevara Jiménez) y docente evaluador de la asignatura, quienes validan la rigurosidad metodológica, el cumplimiento de la consigna ICACIT y la aprobación formal de los entregables.
+2. **Equipo ejecutor (Alto interés / Alto poder operativo):** Integrantes del equipo de ingeniería de sistemas (Product Owner, Scrum Master y Desarrolladores), responsables directos de la construcción, verificación y despliegue del software.
+3. **Interesados operacionales (Medio-alto interés / Poder medio):** Administradores de infraestructura de TI y operadores de centros de datos universitarios, beneficiarios potenciales de las recomendaciones de dimensionamiento y consumo energético.
+4. **Comunidad universitaria (Medio interés / Bajo poder):** Docentes, investigadores y estudiantes cuyos servicios computacionales dependen de la alta disponibilidad de los servidores.
 
-![Figura (página 38)](evidencias/p038-img013.png)
+![](evidencias/p038-img013.png)
 
-#### VII.2.5. Registro adaptativo de riesgos por PMV
+Figura VII.2.5. Modelado UML de partes interesadas y flujos de interacción del sistema.
 
-|PMV|Riesgo identificado|Probabilidad / Impacto|Plan de mitigación / Control de ingeniería|
-|---|---|---|---|
-|PMV 1|Presencia de vacíos (3.2 % de valores nulos) en la telemetría debido a caídas breves de Prometheus.|Alta / Alto|Implementar un módulo ETL con interpolación lineal para brechas menores de 1 minuto e imputación mediante la mediana histórica.|
-|PMV 2|Data drift o degradación de la precisión debido a cambios en los patrones de tráfico académico.|Media / Alto|Implementar un trabajo de monitoreo en MLflow. Si el RMSE supera el 12 %, se activa el proceso de reentrenamiento automático.|
-|PMV 3|El costo computacional de la propia IA podría anular el ahorro energético del clúster.|Baja / Alto|Aplicar técnicas Green-in-AI mediante inferencia liviana con Random Forest Regressor, consumo de RAM menor de 35 MB y latencia inferior a 45 ms.|
+#### VII.2.5. Registro adaptativo y cuantificado de riesgos por PMV (Cálculo del VME)
 
-<!-- página 39 -->
+La gestión de riesgos se abordó de manera cuantitativa vinculando cada amenaza identificada con su probabilidad de ocurrencia y su impacto económico estimado en horas de ingeniería (valoradas a la tarifa de referencia de S/ 30.00 / h). La suma de los Valores Monetarios Esperados (VME = Probabilidad × Impacto) sustenta directamente la Reserva de Contingencia del presupuesto PMBOK:
+
+|ID|Riesgo identificado|PMV|Probabilidad|Impacto (h / S/)|VME (S/)|Plan de respuesta / Mitigación de ingeniería|
+|---|---|---|---|---|---|---|
+|R1|Indisponibilidad de telemetría institucional en tiempo real por restricciones de acceso|PMV1–3|0.60|40 h (S/ 1,200.00)|S/ 720.00|Desarrollo de un simulador estocástico multirrecurso (Simulator) y uso de un dataset sintético reproducible con 100,000 registros, explicitando el origen simulado en toda la documentación.|
+|R2|Límites de recursos en hosting gratuito en la nube (suspensión por inactividad y RAM < 512 MiB)|PMV2–3|0.50|30 h (S/ 900.00)|S/ 450.00|Desarrollo de Gateway alternativo liviano en Go (~16 MB / ~10-16 MiB RAM), optimización multi-etapa de imagen de Prediction (510 MB) y mantenimiento de stack local en Docker Compose como entorno de respaldo.|
+|R3|Degradación del desempeño predictivo del modelo o desvío de patrones (data drift)|PMV3|0.40|40 h (S/ 1,200.00)|S/ 480.00|Mantenimiento permanente de modelos baseline de referencia (persistencia y promedio móvil), evaluación del error por régimen de carga e implementación de políticas de seguridad.|
+|R4|Configuración de políticas de seguridad permisivas (Row Level Security - RLS) en base de datos cloud|PMV2–3|0.30|50 h (S/ 1,500.00)|S/ 450.00|Aislamiento mediante perfil SQLite para desarrollo local desacoplado, auditoría de endpoints con PostgREST y endurecimiento de políticas de acceso antes del despliegue público.|
+|R5|Indisponibilidad temporal o sobrecarga académica de algún integrante del equipo|PMV1–3|0.30|32 h (S/ 960.00)|S/ 288.00|Asignación cruzada de responsabilidades técnicas, centralización en monorepo unificado con un solo Git y documentación exhaustiva de contratos de interfaz OpenAPI.|
+|**TOTAL**|**Valor Monetario Esperado acumulado (Reserva de Contingencia)**||||**S/ 2,388.00**||
 
 ### VII.3. Plan de calidad y criterios de cierre (Definition of Done - DoD)
 
-Formato BDD: criterios de aceptación definidos mediante la estructura Given-When-Then (Dado-Cuando-Entonces).
+Para garantizar la calidad técnica y la gobernanza del producto en cada incremento funcional, se establecieron criterios rigurosos de cierre que condicionan el paso de cualquier Historia de Usuario a la columna *Done*:
 
-Integración del código: código integrado en GitHub mediante Pull Request, sin conflictos pendientes.
-
-Cobertura de pruebas unitarias: Registrar la cobertura obtenida por servicio y compararla con el umbral definido cuando exista un reporte verificable.
-
-Inspección estática: ejecutar y registrar el análisis estático cuando la herramienta se encuentre disponible. Los resultados de vulnerabilidades, bloqueadores, duplicación o mantenibilidad solo serán reportados cuando exista un artefacto verificable asociado a la versión evaluada.
-
-Validación del SLA: Verificar las reglas del Policy Engine mediante casos reproducibles, registrando entradas, reglas aplicadas y resultados.
-
-Documentación técnica: documentación actualizada y coherente con la implementación.
-
-SonarQube: Ejecutar y registrar el análisis estático cuando la herramienta se encuentre disponible; no declarar ausencia de vulnerabilidades sin el reporte correspondiente.
-
-Demostración funcional: presentación y aprobación del incremento por parte del asesor durante el Sprint Review.
+1. **Criterios de aceptación BDD:** la funcionalidad debe cumplir estrictamente con los escenarios definidos bajo la sintaxis Given-When-Then (Dado-Cuando-Entonces).
+2. **Pruebas automatizadas por servicio:** el código debe contar con pruebas automatizadas que verifiquen su comportamiento dentro del monorepo. Al corte actual, las suites registran:
+   - Monitoring Service: 112 pruebas verificadas (0 fallos).
+   - Gateway Java: 12 pruebas verificadas (0 fallos).
+   - Gateway Go: 30 pruebas unitarias y de integración (0 fallos).
+   - Data Processing Service: 121 pruebas pasadas (incluyendo 114 de contrato común entre SQLite y PostgreSQL).
+   - Prediction Service: 100 pruebas pasadas (suite unitaria y de API).
+   - Frontend: 48 pruebas verificadas (13 estructurales y 35 de lógica de presentación).
+   - Simulator: 10 pruebas ejecutadas (10/10 en entorno contenedorizado).
+   - Verificación de humo integral (Smoke Test): 14/14 escenarios end-to-end exitosos.
+3. **Integración continua y control de versiones:** código integrado en la rama correspondiente (`test` o `main`) del monorepo unificado mediante Pull Request revisado, sin conflictos pendientes ni submódulos anidados.
+4. **Contratos de interfaz OpenAPI:** especificaciones OpenAPI v3 sincronizadas y coherentes entre proveedores y consumidores de API REST.
+5. **Seguridad y secretos:** ausencia de credenciales, contraseñas o tokens embebidos en el repositorio (uso exclusivo de variables de entorno con plantillas `.env.example` vacías).
+6. **Inspección estática y calidad:** análisis de código sin advertencias bloqueadoras ni vulnerabilidades críticas conocidas en dependencias.
+7. **Evidencia auditable:** toda afirmación o funcionalidad debe estar respaldada por un comando reproducible o una captura verificable registrada en el informe técnico.
 
 #### VII.3.1. Estructura de Desglose del Trabajo (EDT / WBS)
 
-0. GREEN AI - Sistema Predictivo para Gestión Energética de Workloads Universitarios ├── 1. GESTIÓN DEL PROYECTO │ ├── 1.1 Inicio (Project Charter aprobado, Registro de Stakeholders)
+La Estructura de Desglose del Trabajo se reorganizó formalmente en atención a las observaciones de la auditoría docente, estructurándose en dos ramas maestras de primer nivel: **Gestión del Proyecto** e **Ingeniería de la Solución**. Se retiraron del alcance paquetes técnicos no ejecutados (como clúster Kubernetes K3s/Minikube, pruebas con Locust, orquestación con RabbitMQ o servidores SonarQube dedicados), manteniéndose únicamente los componentes reales y verificables.
 
-│ ├── 1.2 Planificación (EDT/WBS definida, Backlog priorizado, RACI, Plan de Comunicaciones)
+![Figura. EDT del proyecto Green AI](evidencias/edt-green-ai.png)
 
-│ ├── 1.3 Seguimiento y Control (8 Sprint Reviews, 3 Retrospectivas, Indicadores de Desempeño)
+Figura VII.3.1. Estructura de Desglose del Trabajo (EDT) del proyecto Green AI con ramas de Gestión e Ingeniería.
 
-│ ├── 1.4 Gestión de Riesgos (Registro de Riesgos inicial, Monitoreo por PMV, Planes de Respuesta)
+La jerarquía detallada de la EDT se desglosa a continuación:
 
-│ └── 1.5 Cierre (Lecciones aprendidas, Repositorio archivado)
+```
+Green AI
+├── 1. Gestión del proyecto
+│   ├── 1.1 Inicio: charter, stakeholders
+│   ├── 1.2 Planificación: backlog, EDT, cronograma, presupuesto, riesgos, comunicaciones
+│   ├── 1.3 Monitoreo y control: sprints, Trello, reporte de estado, Gantt ejecutado, registro de cambios
+│   ├── 1.4 Calidad: DoD, matriz de pruebas por HU
+│   └── 1.5 Cierre: acta, lecciones aprendidas, informe final, sustentación
+└── 2. Ingeniería
+    ├── 2.1 Requisitos: RF/RNF, HU con criterios Given/When/Then
+    ├── 2.2 Arquitectura: componentes, despliegue, contratos OpenAPI
+    ├── 2.3 PMV1 Observabilidad: Simulator, Prometheus, Monitoring, Gateway, Frontend, Auth
+    ├── 2.4 PMV2 Inteligencia: Data Processing, PoC, Prediction, política de recomendación, energía
+    ├── 2.5 PMV3 Validación: experimento baseline vs Green AI, reportes, carbono
+    ├── 2.6 Infraestructura y despliegue: Docker Compose, nube de staging, CI
+    └── 2.7 Pruebas: unitarias, contrato, integración, smoke, carga
+```
 
-│ ├── 2. INGENIERÍA Y DISEÑO DE LA SOLUCIÓN │ ├── 2.1 Análisis de Requisitos (Requerimientos Funcionales RF-01 a RF-20 validados)
+#### VII.3.2. Tabla Resumen de Paquetes de Trabajo por PMV y Responsable
 
-│ ├── 2.2 Arquitectura (Diagramas UML de Componentes, Secuencia y Despliegue K8s)
-
-│ ├── 2.3 Infraestructura K8s Experimental (Clúster Minikube/K3s, 4 Namespaces aislados)
-
-│ ├── 2.4 Observabilidad y Monitoreo (Prometheus, Node Exporter, cAdvisor, Grafana)
-
-<!-- página 40 -->
-
-│ ├── 2.5 Ingeniería de Datos (Pipeline ETL, Base de Datos PostgreSQL/Supabase)
-
-│ ├── 2.6 Machine Learning e IA (Modelos Random Forest y Random Forest Regressor, MLflow Registry, FastAPI)
-
-│ ├── 2.7 Optimización y Motor de Recomendaciones (Policy/Safety Engine, Modo Recommendation-Only)
-
-│ ├── 2.8 Seguridad y Trazabilidad (Kubernetes RBAC, JWT, Bitácora de Auditoría)
-
-│ └── 2.9 Pruebas y Calidad (Pruebas unitarias, JMeter, SonarQube, OWASP ZAP) │ ├── 3. PMV1: VIABILIDAD TÉCNICA Y PIPELINE DE DATOS (Sprints 1-3 | Semanas 1-6) [44, 49] │ ├── 3.1 Prueba de Concepto (PoC predictiva E1-E4, Dictamen Go con Condiciones)
-
-│ ├── 3.2 Entorno Experimental (Clúster ≥ 3 Nodos, Workloads sintéticos con Locust)
-
-│ ├── 3.3 Pipeline de Datos (Extracción Prometheus, Limpieza/Interpolación, Dataset versionado)
-
-│ └── 3.4 Modelo Baseline (Persistencia / Promedio Móvil entrenado en MLflow) │ ├── 4. PMV2: PREDICCIÓN Y MOTOR DE RECOMENDACIONES (Sprints 4-6 | Semanas 7-12)
-
-│ ├── 4.1 Modelos Predictivos (EDA, Entrenamiento RF vs Random Forest Regressor en MLflow) [51] │ ├── 4.2 Servicios de Decisión y Optimización (Prediction, Decision, Optimization, Policy Engine)
-
-│ └── 4.3 Dashboard y Visualización (Grafana Real-Time, Indicadores de kWh y gCO2e)
-
-├── 5. PMV3: VALIDACIÓN EXPERIMENTAL Y CONSOLIDACIÓN (Sprints 7-8 | Semanas 13-16)
-
-│ ├── 5.1 Seguridad y Hardening (RBAC, JWT, Secrets, Auditoría OWASP ZAP)
-
-│ ├── 5.2 Experimentación Controlada (Diseño experimental, Escenarios Baseline vs.
-
-Green AI)
-
-│ ├── 5.3 Análisis y Reportes (Análisis cuantitativo de kWh, Reportes automáticos PDF/CSV)
-
-│ └── 5.4 Cierre Experimental (Informe final, Evaluación de Sostenibilidad)
-
-└── 6. DOCUMENTACIÓN Y SUSTENTACIÓN ├── 6.1 Documentación Técnica (Manual de Instalación, Manual de Usuario, Contratos API)
-
-├── 6.2 Informe Final (Integración de Competencias I-V, Anexos y Evidencias)
-
-└── 6.3 Sustentación (Presentación ejecutiva, Demo End-to-End, Defensa ante Jurado)
-
-#### VII.3.2.Tabla Resumen de Paquetes de Trabajo por PMV y Responsable
-
-|Código EDT|Paquete de trabajo|Rama EDT|PMV / Ciclo|Sprint|Responsable principal|
-|---|---|---|---|---|---|
-
-<!-- página 41 -->
-
-|1.1|Inicio y Project Charter|Gestión|Transver sal|Sprint 1|Jhonny Quintana (PO) [5]|
-|---|---|---|---|---|---|
-|1.2|Planificación y Backlog|Gestión|Transver sal|Sprint 1|Jhonny Quintana (PO) + Gina Barrera (SM) [5]|
-|1.3|Seguimiento, Control y EVM|Gestión|Transver sal|Sprint s 1–8|Gina Barrera (SM) [5]|
-|1.4|Gestión de Riesgos y Reservas|Gestión|Transver sal|Sprint s 1–8|Jhonny Quintana (PO) [5]|
-|2.1|Análisis de Requisitos (RF-01 a RF-20)|Ingeniería|PMV1|Sprint 1|Jhonny Quintana (PO) [5]|
-|2.2|Arquitectura Hexagonal y UML|Ingeniería|PMV1|Sprint 1|Ricardo Porras (Dev) + Leonid Huamán (Infra) [5]|
-|2.3|Clúster Kubernetes Experimental|Ingeniería|PMV1|Sprint 2|Leonid Huamán (Infra) [5]|
-|2.4|Observabilidad (Prometheus/Graf ana)|Ingeniería|PMV1|Sprint 2|Leonid Huamán (Infra) [5]|
-|2.5|Pipeline ETL e Imputación de Datos|Ingeniería|PMV1|Sprint 3|Gina Barrera (ML) + Ricardo Porras (Dev) [5]|
-|2.6|Modelos ML e Inferencia FastAPI|Ingeniería|PMV1–P MV2|Sprint s 3–5|Gina Barrera (ML) [5]|
-|2.7|Policy/Safety Engine (SLA)|Ingeniería|PMV2|Sprint s 5–6|Ricardo Porras (Dev) [5]|
-|2.8|Seguridad RBAC y Autenticación|Ingeniería|PMV3|Sprint 7|Ricardo Porras (Dev) + Leonid Huamán (Infra) [6]|
-
-<!-- página 42 -->
-
-|2.9|Pruebas de Estrés y Calidad|Ingeniería|Transver sal|Sprint s 3–8|Todo el equipo (T) [5]|
-|---|---|---|---|---|---|
-|3.1–3.4|Ejecución y Cierre del PMV1|Entregable|PMV1|Sprint s 1–3|Todo el equipo (T) [5]|
-|4.1–4.4|Ejecución y Cierre del PMV2|Entregable|PMV2|Sprint s 4–6|Todo el equipo (T) [5][6]|
-|5.1–5.4|Experimentación y Cierre del PMV3|Entregable|PMV3|Sprint s 7–8|Todo el equipo (T) [6]|
-|6.1–6.3|Informe Final y Sustentación|Documentación|Cierre|Sprint 8|Todo el equipo (T)|
+|Código EDT|Paquete de trabajo|Rama EDT|PMV / Ciclo|Sprint|Responsable principal|Entregable auditable|
+|---|---|---|---|---|---|---|
+|1.1|Inicio del proyecto y Project Charter|Gestión|Transversal|Sprint 1|Jhonny Quintana (PO)|Project Charter firmado y registro de partes interesadas|
+|1.2|Planificación de alcance, EDT y presupuesto|Gestión|Transversal|Sprint 1|Jhonny Quintana (PO) + Gina Barrera (SM)|Backlog priorizado, EDT, presupuesto PMBOK y plan de riesgos|
+|1.3|Monitoreo, control y gestión de cambios|Gestión|Transversal|Sprints 1–8|Gina Barrera (SM) + Jhonny Quintana (PO)|Tablero Trello en workspace UC, Gantt ejecutado y bitácora CHG|
+|1.4|Aseguramiento de calidad y matriz DoD|Gestión|Transversal|Sprints 1–8|Gina Barrera (SM) + Ricardo Porras (Dev)|Criterios Given-When-Then y suites de pruebas automatizadas|
+|1.5|Cierre administrativo y sustentación|Gestión|Cierre|Sprint 8|Todo el equipo|Informe final consolidado, repositorio archivado y defensa oral|
+|2.1|Análisis de requisitos (RF-01 a RF-20)|Ingeniería|PMV1|Sprint 1|Jhonny Quintana (PO)|Especificación de requerimientos funcionales y no funcionales|
+|2.2|Arquitectura de software y contratos|Ingeniería|PMV1|Sprints 1–2|Ricardo Porras (Dev) + Leonid Huamán (Infra)|Diagramas de componentes, contratos OpenAPI y vista de datos|
+|2.3|PMV1: Pipeline de observabilidad|Ingeniería|PMV1|Sprints 1–3|Leonid Huamán (Infra) + Ricardo Porras (Dev)|Simulator, Prometheus, Monitoring (112 tests), Gateway y Frontend|
+|2.4|PMV2: Modelado predictivo y decisiones|Ingeniería|PMV2|Sprints 4–6|Gina Barrera (ML) + Ricardo Porras (Dev)|Dataset sintético, Random Forest (100 tests), Policy Engine y energía|
+|2.5|PMV3: Validación experimental controlada|Ingeniería|PMV3|Sprints 7–8|Todo el equipo|Comparativa Baseline vs. Green AI, reportes JSON/CSV y análisis|
+|2.6|Infraestructura, Docker Compose y Staging|Ingeniería|Transversal|Sprints 2–7|Leonid Huamán (Infra) + Ricardo Porras (Dev)|Docker Compose unificado, Gateway Go y preparación Render|
+|2.7|Suites de pruebas y aseguramiento|Ingeniería|Transversal|Sprints 1–8|Todo el equipo|Pruebas unitarias, de contrato, integración y smoke 14/14|
 
 ### VII.4. GESTIÓN ECONÓMICA Y PRESUPUESTO DEL PROYECTO
 
 #### VII.4.1. Fundamentación Metodológica y Modelo Dual de Valoración
 
-En concordancia con el Dominio de Desempeño de la Planificación del PMBOK 7.a Edición, la gestión financiera de un proyecto de ingeniería exige la determinación transparente de la Línea Base de Costos (Cost Baseline) y la asignación explícita de Reservas de Contingencia y Gestión.
+En concordancia con el Dominio de Desempeño de la Planificación del estándar PMBOK (7.a Edición) y el criterio de acreditación ICACIT AG-I12 (Gestión de Proyectos), la formulación económica de un proyecto de ingeniería de software requiere estructurar de manera diferenciada los costos directos de actividades, la Línea Base de Costos (Cost Baseline) y las reservas para contingencias e imprevistos.
 
-Dado el contexto académico de la asignatura Taller de Proyectos de Ingeniería de Sistemas e Informática, el proyecto opera bajo una restricción presupuestaria de desembolso monetario real de S/ 0.00, haciendo uso exclusivo de hardware de laboratorio, laptops personales del equipo y un ecosistema de software 100% de código abierto (Open Source). Sin embargo, para cumplir con el atributo de egreso ICACIT AG-I12 (Gestión de Proyectos) y certificar la gobernanza económica del sistema ante una eventual transferencia a producción, se formula un Modelo Dual de Presupuesto:
+Debido al contexto académico de la asignatura Taller de Proyectos de Ingeniería de Sistemas e Informática, el proyecto se ejecuta bajo una restricción financiera de desembolso real en efectivo de S/ 0.00, mediante el aprovechamiento de recursos informáticos personales, infraestructura de laboratorio universitario y componentes de software de código abierto. Para certificar la viabilidad económica ante una eventual transferencia industrial, se implementa un **Modelo Dual de Presupuesto**:
 
-1. Costo Financiero Real Desembolsado: S/ 0.00 (Desembolso de caja ejecutado por los integrantes).
-
-<!-- página 43 -->
-
-2. Valor Comercial e Ingeniería Asignado: S/ 22,080.00 (Valoración económica del esfuerzo profesional, infraestructura y mitigación de riesgos).
+1. **Costo Financiero Real Desembolsado:** S/ 0.00 (gasto efectivo de caja ejecutado por los integrantes).
+2. **Valor Comercial Referencial de Ingeniería:** S/ 24,872.40 (valoración técnica del trabajo profesional de ingeniería, recursos lógicos y físicos utilizados, y reservas metodológicas PMBOK).
 
 #### VII.4.2. Desglose del Esfuerzo Directo de Ingeniería (Horas-Hombre)
 
-La estimación del costo de mano de obra directa se calcula formalmente en función de la dedicación temporal de los 4 integrantes del equipo de ingeniería a lo largo del roadmap de 16 semanas (8 Sprints de 14 días).
+La estimación de la mano de obra directa se calcula formalmente a partir de la dedicación horaria de los 4 integrantes del equipo a lo largo del cronograma de 16 semanas académicas (8 Sprints de 14 días):
 
-#### Ecuación de Cálculo del Esfuerzo:
+![](evidencias/p043-img014.png)
 
-![Figura (página 43)](evidencias/p043-img014.png)
+$$\text{Horas Totales} = 4\text{ ingenieros} \times 10\text{ horas/semana} \times 16\text{ semanas} = 640\text{ horas-hombre}$$
 
-HorasTotales= 4ingenieros× 10horas/semana× 16semanas= 640horas−hombre Tomando como referencia la tarifa de mercado peruano para un profesional Junior/Graduate Systems Engineer de S/ 30.00 / hora, el desglose por rol de ingeniería se detalla a continuación:
+Considerando una tarifa horaria de mercado referencial en el medio local de S/ 30.00 / h para profesionales junior de ingeniería de sistemas, el esfuerzo profesional se distribuye por rol de la siguiente manera:
 
-|Código EDT|Rol de Ingeniería / Responsable|Integrante|Horas Totales (h)|Tarifa (S/ / h)|Subtotal Comercial (S/)|
+|Código EDT|Rol de ingeniería / Responsable|Integrante|Dedicación (h)|Tarifa horaria (S/)|Subtotal comercial (S/)|
 |---|---|---|---|---|---|
-|1.0 / 2.1|Product Owner (PO) & Goverment Lead|Jhonny Quintana|160|S/ 30.00|S/ 4,800.00|
-|1.3 / 2.6|Scrum Master (SM) & ML Lead|Gina Barrera|160|S/ 30.00|S/ 4,800.00|
-|2.5 / 2.7|Lead Backend & MLOps Engineer|Ricardo Porras|160|S/ 30.00|S/ 4,800.00|
-|2.3 / 2.4|Infrastructure & UI/UX Engineer|Leonid Huamán|160|S/ 30.00|S/ 4,800.00|
-|TOTAL|Costo Directo de Mano de Obra (Trabajo)|4 Ingenieros|640 h|S/ 30.00|S/ 19,200.00|
+|1.1, 1.2, 2.1|Product Owner (PO), pruebas y gobernanza|Jhonny Cristhian Quintana Carhuaricra|160|S/ 30.00|S/ 4,800.00|
+|1.3, 1.4, 2.4|Scrum Master (SM), ML Lead y datos|Gina Diana Barrera Peña|160|S/ 30.00|S/ 4,800.00|
+|2.2, 2.4, 2.6|Lead Backend & MLOps Engineer (contratos)|Ricardo Porras Veli|160|S/ 30.00|S/ 4,800.00|
+|2.3, 2.6, 2.7|Infrastructure & DevOps Engineer (Docker)|Leonid Kisley Orlando Huamán Collazos|160|S/ 30.00|S/ 4,800.00|
+|**TOTAL**|**Costo Directo de Mano de Obra (Trabajo)**|**4 Ingenieros**|**640 h**|**S/ 30.00**|**S/ 19,200.00**|
 
 #### VII.4.3. Valoración de Licencias de Software, Cloud y Equipamiento
 
-<!-- página 44 -->
+Para preservar el principio de costo de desembolso real nulo (S/ 0.00), se seleccionaron herramientas tecnológicas libres de costo de adquisición, valorando su aporte a precio de mercado:
 
-Para garantizar que el costo directo de capital (CapEx) y operacional (OpEx) se mantenga en S/ 0.00, se seleccionaron componentes de arquitectura con licencias que eximen al proyecto de pagos directos:
-
-|Componente Tecnológico|Categoría de Licencia / Entorno|Costo Financiero Real (S/)|Valor Comercial Referencial (S/)|Justificación de Selección Técnica|
+|Componente tecnológico|Categoría de licencia / Modelo|Costo financiero real (S/)|Valor comercial referencial (S/)|Justificación técnica y operativa|
 |---|---|---|---|---|
-|Kubernetes (K3s / Minikube)|Open Source (Apache 2.0)|S/ 0.00|S/ 350.00|Orquestador de contenedores ligero para el clúster|
-|Prometheus & Grafana|Open Source (Apache 2.0)|S/ 0.00|S/ 250.00|Telemetría, scraping cada 15s y dashboards en tiempo real|
-|FastAPI, Uvicorn & Python 3.12|Open Source (MIT)|S/ 0.00|S/ 200.00|Framework backend para microservicios REST de IA|
-|PostgreSQL / Supabase|Open Source / Free Tier|S/ 0.00|S/ 300.00|Persistencia relacional de 80,640 registros de telemetría|
-|MLflow Registry|Open Source (Apache 2.0)|S/ 0.00|S/ 200.00|Servidor de trazabilidad de experimentos MLOps|
-|Equipos de Cómputo (4 Laptops)|Hardware Propio (Depreciación)|S/ 0.00|S/ 800.00|Infraestructura física de desarrollo y pruebas locales|
-|TOTAL HARDWARE Y SOFTWARE|Recursos Físicos y Lógicos|S/ 0.00|S/ 2,100.00|Subvencionado por Open Source y hardware de lab.|
+|Docker Engine & Docker Compose|Open Source (Apache 2.0)|S/ 0.00|S/ 350.00|Orquestación de microservicios en contenedores y aislamiento de red local.|
+|Prometheus & Grafana|Open Source (Apache 2.0)|S/ 0.00|S/ 250.00|Recolección de telemetría cada 15 s, reglas de alertas y tableros en tiempo real.|
+|Python 3.12, FastAPI & scikit-learn|Open Source (MIT / BSD)|S/ 0.00|S/ 200.00|Framework de microservicios REST livianos y pipeline de Random Forest.|
+|Spring Boot 3.3 / Go 1.22|Open Source (Apache 2.0 / BSD)|S/ 0.00|S/ 200.00|API Gateway corporativo en Java y alternativa ultra-liviana en Go.|
+|PostgreSQL / Supabase (Free Tier)|Open Source / Free Tier Cloud|S/ 0.00|S/ 300.00|Persistencia relacional y autenticación de 100,000 registros de telemetría sintética.|
+|Equipos de cómputo (4 laptops)|Hardware propio (depreciación)|S/ 0.00|S/ 800.00|Infraestructura física de desarrollo, entrenamiento y ejecución (4 × S/ 200.00).|
+|**TOTAL RECURSOS**|**Recursos lógicos y físicos**|**S/ 0.00**|**S/ 2,100.00**|**Subvencionado por software libre y equipamiento propio del equipo.**|
 
-#### VII.4.4. Estructura Completa del Presupuesto: Línea Base y Reservas
+#### VII.4.4. Estructura Completa del Presupuesto: Línea Base y Reservas (PMBOK 7)
 
-De acuerdo con el PMBOK 7, el presupuesto total del proyecto se compone de tres niveles acumulativos:
+Conforme a las directrices del PMBOK (7.a Edición), la estructura presupuestal se calcula en niveles acumulativos:
 
-**1. Costo Directo: Valor del trabajo ejecutado (**
-
-Ctrabajo= S/19, 200. 00
-
-**).**
-
-<!-- página 45 -->
-
-**2. Reserva de Contingencia (**
-
-Rcontingencia S/1, 920. 00 ): 10% del Costo Directo ( ), asignada a cubrir los riesgos identificados y cuantificados en la Matriz de Riesgos (ej. degradación de latencia en nodos K8s, necesidad de instancias cloud adicionales o fallas de conectividad).
-
-**3. Línea Base de Costos (**
-
-LBC ): Suma del Costo Directo y la Reserva de LBC= S/21, 120. 00 Contingencia ( ). Es el parámetro oficial para el control del valor ganado (EVM).
-
-**4. Reserva de Gestión (**
-
-Rgestión ): 5% del Costo Directo ( S/960. 00 ), administrada por el Product Owner para imprevistos no identificados (unknown-unknowns).
-
-**Ecuación General del Presupuesto:**
-
-PresupuestoTotal= CostoDirecto+ Rcontingencia+ Rgestión PresupuestoTotal= S/19, 200. 00 + S/1, 920. 00 + S/960. 00 = S/22, 080. 00
+1. **Costo Directo de Actividades ($CD$):** suma del esfuerzo directo de ingeniería y los recursos informáticos valorados:
+   $$CD = \text{Mano de obra} + \text{Recursos tecnológicos} = \text{S/ } 19,200.00 + \text{S/ } 2,100.00 = \text{S/ } 21,300.00$$
+2. **Reserva de Contingencia ($RC$):** asignada para responder ante los riesgos identificados en el Registro de Riesgos (§VII.2.5). Se calcula como la suma exacta de sus Valores Monetarios Esperados ($VME$):
+   $$RC = \sum VME = \text{S/ } 720.00 + \text{S/ } 450.00 + \text{S/ } 480.00 + \text{S/ } 450.00 + \text{S/ } 288.00 = \text{S/ } 2,388.00$$
+   *(Esta reserva representa el 11.21 % del Costo Directo, respaldada analíticamente en riesgos técnicos específicos).*
+3. **Línea Base de Costos ($LBC$):** parámetro oficial para la gestión del valor ganado (EVM) y el control financiero del proyecto:
+   $$LBC = CD + RC = \text{S/ } 21,300.00 + \text{S/ } 2,388.00 = \text{S/ } 23,688.00$$
+4. **Reserva de Gestión ($RG$):** previsión destinada a cubrir contingencias no identificadas (*unknown-unknowns*), administrada a nivel de gobernanza por el Product Owner y el asesor académico. Se cuantifica en el 5 % de la Línea Base de Costos:
+   $$RG = 0.05 \times LBC = 0.05 \times \text{S/ } 23,688.00 = \text{S/ } 1,184.40$$
+5. **Presupuesto Total del Proyecto ($PT$):**
+   $$PT = LBC + RG = \text{S/ } 23,688.00 + \text{S/ } 1,184.40 = \text{S/ } 24,872.40$$
 
 #### VII.4.5. Matriz Consolidada de Cálculo Presupuestal
 
-A continuación se presenta la matriz detallada que debe figurar en la sección VII.4 del informe técnico:
 
-![Figura (página 45)](evidencias/p045-img015.png)
+|Nivel presupuestal|Componente|Base de estimación / Fórmula|Valor comercial referencial (S/)|Desembolso financiero real (S/)|
+|---|---|---|---|---|
+|Nivel 1|Mano de obra directa (Ingeniería)|640 horas-hombre × S/ 30.00 / h|S/ 19,200.00|S/ 0.00|
+|Nivel 1|Recursos lógicos y hardware valorado|6 partidas de software libre, cloud y equipos|S/ 2,100.00|S/ 0.00|
+|**Subtotal**|**Costo Directo de Actividades (CD)**|**Mano de obra + Recursos**|**S/ 21,300.00**|**S/ 0.00**|
+|Nivel 2|Reserva de Contingencia (RC)|Suma VME de riesgos R1 a R5 (11.21 % de CD)|S/ 2,388.00|S/ 0.00|
+|**Línea Base**|**LÍNEA BASE DE COSTOS (LBC)**|**CD + Reserva de Contingencia**|**S/ 23,688.00**|**S/ 0.00**|
+|Nivel 3|Reserva de Gestión (RG)|5.0 % de la Línea Base de Costos (LBC)|S/ 1,184.40|S/ 0.00|
+|**Presupuesto**|**PRESUPUESTO TOTAL DEL PROYECTO**|**LBC + Reserva de Gestión**|**S/ 24,872.40**|**S/ 0.00**|
 
 #### VII.4.6. Justificación Técnica para Sustentación e Inspección ICACIT (AG-I12)
 
-<!-- página 46 -->
+Si el jurado evaluador o el comité de acreditación consulta acerca de la consistencia entre el presupuesto formulado y el gasto real de S/ 0.00, se sustenta la siguiente argumentación técnica:
 
-Si durante la evaluación oral o la auditoría documental el jurado consulta sobre la validez de este cálculo frente al gasto de S/ 0.00, se debe esgrimir la siguiente argumentación técnica:
+> «El proyecto Green AI reporta un desembolso financiero real de caja de S/ 0.00 en virtud del aprovechamiento de licencias open source, plataformas cloud en capa gratuita y hardware personal de los estudiantes. No obstante, en estricto cumplimiento del estándar PMBOK (7.a Edición) y el atributo de egreso ICACIT AG-I12 (Gestión de Proyectos), se estableció una Línea Base de Costos de S/ 23,688.00 y un Presupuesto Total de S/ 24,872.40. Esta modelación demuestra la capacidad del equipo de ingeniería para costear mano de obra calificada (640 h-h), estructurar reservas de contingencia (S/ 2,388.00) sustentadas matemáticamente en el Valor Monetario Esperado de los riesgos y formalizar reservas de gestión (5 %), certificando la madurez metodológica requerida en entornos profesionales.»
 
-> "El proyecto registra un costo monetario directo ejecutado de S/ 0.00 gracias a la optimización de recursos, el aprovechamiento de la infraestructura universitaria y el uso de software libre. No obstante, bajo los lineamientos del PMBOK 7.a Edición y el criterio de acreditación ICACIT AG-I12 (Gestión de Proyectos) , se calcula la Línea Base de Costos en S/ 21,120.00 y un Presupuesto Total de S/ 22,080.00 . Esta cuantificación valida la capacidad del equipo de estimar el valor real de la ingeniería de software (640 horas-hombre), estructurar reservas de contingencia (10%) para riesgos de infraestructura y mantener la gobernanza económica necesaria para proyectos de escala industrial."
+#### VII.4.7. Plan de Comunicaciones
 
-#### VII.4.7.Plan de Comunicaciones
-
-|Actividad / Evento|Canal / Herramient a|Frecuencia|Participantes|Entregable / Registro auditable|
+|Evento / Ceremonia|Canal / Herramienta|Frecuencia|Participantes|Registro auditable|
 |---|---|---|---|---|
-|Sincronización ágil (Daily Scrum)|Grupo de WhatsApp|Tres veces por semana: lunes, miércoles y viernes|Equipo de desarrollo|Registro de bloqueos e impedimentos.|
-|Gestión del Product Backlog|Trello|Continua|Equipo técnico y Product Owner|Tablero Kanban y gráfico burndown.|
-|Sprint Review|Google Meet|Cada 14 días, al cierre del sprint|Equipo técnico y asesor|Incremento funcional y retroalimentación formal.|
-|Auditoría MLOps|MLflow Tracking UI|Continua|ML Lead y Backend Engineer|Registro de ejecuciones (runs), parámetros, métricas y archivo del modelo.|
-|Monitoreo operativo|Dashboard de Grafana|En tiempo real|Operador de TI y Product Owner|Indicadores de CPU, potencia en watts, energía en kWh y cumplimiento de SLA.|
-
-<!-- página 47 -->
+|Sincronización diaria (Daily Scrum)|Grupo de WhatsApp y Trello|3 veces por semana (lun, mié, vie)|Equipo técnico de desarrollo|Tarjetas en Trello con las 3 preguntas estándar y bloqueos.|
+|Gestión del Product Backlog|Trello (Workspace oficial UC)|Continua|Equipo técnico y Product Owner|Tarjetas organizadas en las 11 listas normadas y burndown.|
+|Revisión de Sprint (Sprint Review)|Google Meet|Cada 14 días (cierre de sprint)|Equipo técnico y asesor académico|Demostración funcional del incremento y acta de feedback.|
+|Retrospectiva de Sprint|Google Meet / Trello|Al cierre de cada PMV (cada 3-4 sprints)|Equipo técnico completo|Matriz de compromisos y lecciones aprendidas PDCA.|
+|Seguimiento técnico y de código|GitHub Monorepo|Continua|Desarrolladores y revisores|Pull Requests, revisiones de diff y bitácora de commits.|
+|Monitoreo operativo y métricas|Prometheus y Grafana|En tiempo real|Equipo de operaciones y PO|Métricas de CPU, memoria y alertas de disponibilidad.|
 
 ### VII.5. CRONOGRAMA DE ACTIVIDADES Y DIAGRAMA DE GANTT
 
@@ -1079,999 +893,905 @@ Si durante la evaluación oral o la auditoría documental el jurado consulta sob
 
 ![Figura VII.5.1. Cronograma de y diagrama de Gantt planificado](evidencias/p047-img016.png)
 
-Figura VII.5.1. Cronograma de y diagrama de Gantt planificado
+Figura VII.5.1. Cronograma planificado de actividades y diagrama de Gantt de referencia.
 
 #### VII.5.2. Cronograma y Diagrama de Gantt Ejecutado
 
 ![Figura VII.5.2. Cronograma de y diagrama de Gantt ejecutado](evidencias/p047-img017.png)
 
-<!-- página 48 -->
-
-Figura VII.5.2. Cronograma de y diagrama de Gantt ejecutado
+Figura VII.5.2. Cronograma de ejecución real y avance temporal por sprints.
 
 #### VII.5.3. Fundamentación de la Gestión Temporal y Control de Línea Base
 
-La gestión del tiempo y el control del cronograma en el proyecto Green AI se estructuran bajo las buenas prácticas del marco ágil Scrum y el estándar de gestión de proyectos PMBOK 7, respondiendo a las exigencias del atributo de egreso ICACIT AG-I12 (Gestión de Proyectos).
+La planificación temporal del proyecto se estructuró originalmente sobre un ciclo de 16 semanas académicas organizadas en 8 Sprints de 14 días, divididos en tres fases o Productos Mínimos Viables (PMVs):
 
-Debido a la alta incertidumbre inherente a la experimentación con modelos de Machine Learning y la orquestación en contenedores, la planificación temporal se divide en un ciclo académico de 16 semanas de trabajo, organizadas en 8 Sprints de 14 días, articuladas secuencialmente alrededor de tres Productos Mínimos Viables (PMVs).
+- **PMV1 — Viabilidad Técnica y Pipeline de Observabilidad (Sprints 1 a 3 | Semanas 1 a 6):** recolección continua de telemetría de CPU simulada cada 15 segundos mediante Prometheus, desarrollo del pipeline ETL de limpieza e interpolación, y evaluación del modelo baseline de referencia.
+- **PMV2 — Solución Predictiva y Motor de Recomendaciones (Sprints 4 a 6 | Semanas 7 a 12):** entrenamiento y validación del modelo Random Forest a 15 minutos, integración del Policy Engine desacoplado en modo Recommendation-Only (`executionAllowed=false`), exposición de endpoints REST en FastAPI y visualización de telemetría en tiempo real.
+- **PMV3 — Validación Experimental y Consolidación (Sprints 7 y 8 | Semanas 13 a 16):** control de acceso por roles (RBAC), reportes estructurados JSON/CSV vía API, ejecución del experimento comparativo (Baseline vs. Green AI) bajo condiciones de carga controladas y análisis de consumo energético modelado en kWh.
 
-**PMV1 — Viabilidad Técnica y Pipeline de Datos**
+##### Análisis de la línea base frente a la ejecución real
 
-● Sprints: 1 a 3.
+El calendario académico del curso avanzó con **una semana de anticipación** respecto a la línea base temporal formulada al inicio del semestre. En consecuencia, al momento de la entrega del informe de Unidad III (Semana 11 lectiva, corte al 05/11/2026), el equipo de ingeniería se encuentra ejecutando activamente el **Sprint 6 (03/11/2026 – 14/11/2026, semanas 11–12)**:
 
-● Periodo: semanas 1 a 6.
-
-● Fechas: 25/08/2026 – 03/10/2026.
-
-● Objetivo: recolección continua de telemetría cada 15 segundos mediante Prometheus, desarrollo del pipeline ETL para la interpolación de datos nulos y evaluación del modelo predictivo baseline de referencia.
-
-**PMV2 — Solución Predictiva y Motor de Recomendaciones**
-
-● Sprints: 4 a 6.
-
-● Periodo: semanas 7 a 12.
-
-● Fechas: 06/10/2026 – 14/11/2026.
-
-● Objetivo: entrenamiento, selección y despliegue del modelo predictivo Random Forest Regressor, integración del Policy/Safety Engine bajo la modalidad Recommendation-Only y exposición de la API REST mediante FastAPI.
-
-**PMV3 — Validación Experimental y Consolidación**
-
-● Sprints: 7 y 8.
-
-● Periodo: semanas 13 a 16.
-
-● Fechas: 17/11/2026 – 12/12/2026.
-
-<!-- página 49 -->
-
-● Objetivo: fortalecimiento de la seguridad mediante RBAC y JWT, ejecución del diseño experimental comparativo entre Baseline y Green AI, cuantificación del ahorro energético en kWh y generación de reportes automáticos en PDF y CSV.
+|Sprint / Fase|Compromiso planificado|Estado real de ejecución (Noviembre 2026)|
+|---|---|---|
+|Sprint 1 a 3 (Semanas 1–6)|Cierre del PMV1: infraestructura y observabilidad|**100 % completado.** Simulador, Prometheus, Monitoring (112 tests pasados), Gateway y Frontend con sesión de Supabase verificados.|
+|Sprint 4 (Semanas 7–8)|Inicio de PMV2: pipeline de datos y EDA de ML|**Completado.** Ingesta en Data Processing, limpieza de valores nulos y exploración de series temporales.|
+|Sprint 5 (Semanas 9–10)|Selección de modelo predictivo y Policy Engine|**Completado.** Selección de Random Forest a 15 min (MAE 3.22 y RMSE 4.59 pp en validación; MAE 3.85 en test; 100 tests pasados en Prediction) y recomendaciones desacopladas.|
+|Sprint 6 (Semanas 11–12)|Alertas, tablero de eficiencia y empaquetado|**En ejecución.** Alertas Prometheus configuradas (promtool validado), cálculo de kWh con modelo P(u), imagen liviana de Prediction (510 MB) y preparación de staging en Render.|
+|Sprint 7 (Semanas 13–14)|RBAC, reportes estructurados y diseño experimental|**Planificado / En preparación.** Rol VIEWER de solo lectura (RBAC en Gateway), reporte estructurado JSON/CSV (`/api/processing/v1/reports/historical-summary`, 121 tests pasados) y diseño del experimento Baseline vs. Green AI.|
+|Sprint 8 (Semanas 15–16)|Experimento comparativo y cierre del proyecto|**Planificado.** Ejecución de pruebas de carga, informe final consolidado y sustentación académica.|
 
 #### VII.5.4. Cronograma planificado
 
 ![Figura VII.5.1: Fundamentación y Fecha de Corte Oficial del Proyecto](evidencias/p049-img018.png)
 
-Figura VII.5.1: Fundamentación y Fecha de Corte Oficial del Proyecto
+Figura VII.5.3. Fundamentación metodológica y fechas de corte oficial del proyecto.
 
 #### VII.5.5. Trazabilidad de Hitos de Cierre y Criterios de Transición entre PMVs
 
-La evaluación de los hitos de cierre y las compuertas de decisión (Decision Gates) entre los Productos Mínimos Viables (PMVs) se realiza en función del estado de verificación real a la fecha de corte oficial del 29 de octubre de 2026 (Semana 10 / Sprint 5). Este enfoque metodológico garantiza el cumplimiento estricto del atributo de egreso ICACIT AG-I12 (Gestión de Proyectos) al auditar la evidencia técnica producida frente a los criterios de aceptación prefijados.
+La transición entre fases responde a compuertas de decisión (*Decision Gates*) sustentadas en criterios de calidad verificables:
 
-La siguiente tabla resume los hitos principales del proyecto, sus períodos de ejecución, los entregables verificados y las decisiones técnicas de transición:
-
-<!-- página 50 -->
-
-|PMV / Hito|Rango de fechas|Entregables clave verificados / en desarrollo|Criterio de cierre y decisión técnica|Estado real al 29/10/2026|
+|Hito / PMV|Período|Entregables verificados / En desarrollo|Criterio de cierre y decisión técnica|Estado real de verificación|
 |---|---|---|---|---|
-|PMV1 (Hito H2)|25/08/2026 – 03/10/2026|Clúster Kubernetes con al menos 3 nodos; observabilidad con Prometheus/Grafana; pipeline ETL de limpieza; modelo baseline registrado en MLflow.|Telemetría continua cada 15 segundos, 0 % de valores nulos tras el ETL y registro formal de métricas de referencia (RMSE = 16.8 %). Decisión: GO a PMV2.|Aprobado y ejecutado.|
-|PMV2 (Hito H5)|06/10/2026 – 14/11/2026|Predictor Random Forest Regressor (RMSE = 7.1 %, MAE = 5.4 %); API REST en FastAPI; Policy Engine en modo Recommendation-Only; interfaz web. Pendiente: dashboard final de eficiencia y alertas en Grafana.|Validación de RMSE < 10 %, latencia de inferencia de 45 ms y ausencia de violaciones de SLA. Decisión: en proceso de validación. Cierre programado para el 14/11/2026.|En ejecución (65 % de avance). S4–S5 completados o en pruebas; S6 pendiente.|
-|PMV3 (Hito H7)|17/11/2026 – 12/12/2026|Fortalecimiento de la seguridad con RBAC/JWT; módulo de generación automática de reportes PDF/CSV; prueba experimental comparativa de 24 horas (Baseline vs. Green AI).|Demostración de una reducción estimada del consumo energético de al menos el 15 % en kWh, mediante el modelo proxy lineal de potencia P(u), y cero caídas del servicio. Decisión: proyectado para la sustentación final.|Planificado / proyectado. Pendiente de ejecución de los Sprints 7 y 8.|
+|PMV1 (Hito H2)|25/08/2026 – 03/10/2026|Simulador de telemetría, Prometheus, servicio de monitoreo en Java (112 tests), API Gateway y frontend estático.|Telemetría continua cada 15 segundos sin pérdidas críticas y persistencia relacional verificada. Decisión: **Aprobado (GO a PMV2)**.|Completado y cerrado.|
+|PMV2 (Hito H5)|06/10/2026 – 14/11/2026|Modelo predictivo Random Forest a 15 min (MAE 3.22 pp, RMSE 4.59 pp en validación; MAE 3.85 pp en test), API REST en FastAPI (100 tests), Policy Engine desacoplado (`executionAllowed=false`), alertas de observabilidad y cálculo de energía modelada.|Superación de baselines clásicos (30 % de reducción de error sobre persistencia), tiempo de inferencia compatible con el ciclo de 15 s y ausencia de ejecuciones autónomas destructivas. Decisión: **En proceso de validación final**.|En ejecución activa (Sprint 6).|
+|PMV3 (Hito H7)|17/11/2026 – 12/12/2026|Control de acceso por roles (VIEWER / ADMIN), servicio de reportes históricos en JSON/CSV, experimento controlado comparativo (Baseline vs. Green AI) y análisis de consumo eléctrico modelado.|Evaluación cuantitativa de la reducción de sobreaprovisionamiento computacional y preservación estricta de SLA bajo carga simulada controlada. Decisión: **Proyectado para sustentación**.|Planificado para Sprints 7 y 8.|
 
 ### VII.6. RESULTADOS DE LA GESTIÓN DEL PROYECTO Y CONTROL DEL TABLERO TRELLO
 
-#### VII.6.1. Reestructuración, Saneamiento y Flujo Unificado Kanban/Scrum
+#### VII.6.1. Reestructuración, Saneamiento y Flujo Unificado bajo Lista de Cotejo S10
 
-En atención a las observaciones del reporte de auditoría académica del tablero de seguimiento ágil, el equipo de ingeniería llevó a cabo un proceso integral de saneamiento, unificación y reestructuración del tablero de trabajo en el espacio oficial asignado workspaceUC.
+En atención directa a las observaciones de la auditoría docente de la Semana 10, el equipo ejecutó un proceso integral de depuración, saneamiento y reorganización del tablero ágil, trasladándolo formalmente al **espacio oficial asignado (workspace UC)** y adecuando su estructura a las **11 listas normadas por la lista de cotejo S10**:
 
-<!-- página 51 -->
+1. **Product Backlog:** contiene las Historias de Usuario priorizadas de todo el proyecto (HU-01 a HU-20), catalogadas por épicas y asociadas a sus respectivos PMV.
+2. **Sprint Backlog:** alberga las historias y tareas técnicas comprometidas para el sprint en curso.
+3. **Refinamiento de expertos:** reservada para la revisión técnica de requerimientos y retroalimentación de especialistas.
+4. **To Do:** actividades planificadas pendientes de iniciar dentro del sprint activo.
+5. **In Progress:** componentes de software en codificación activa por los ingenieros asignados (con límite de trabajo en proceso - WIP).
+6. **QA-Testing:** Historias de Usuario que han concluido la codificación y se encuentran bajo pruebas unitarias, verificación de criterios BDD (Given-When-Then) y pruebas de contrato.
+7. **Done:** tarjetas 100 % finalizadas que cumplen estrictamente con la *Definition of Done* (DoD), con enlaces directos a commits del monorepo y reportes de pruebas automatizadas.
+8. **Roles de Scrum:** tarjetas informativas que detallan las funciones, responsabilidades y datos de contacto de cada integrante del equipo (PO, SM, Desarrolladores y apoyo técnico).
+9. **Daily Scrum:** tarjetas de registro auditable de las sincronizaciones tri-semanales del equipo.
+10. **Sprint Review:** actas formales de demostración del incremento y retroalimentación del asesor al cierre de cada sprint.
+11. **Sprint Retrospective:** documentación de lecciones aprendidas y planes de acción bajo el ciclo PDCA al cierre de cada fase.
 
-Con el propósito de garantizar un control de flujo transparente, trazable y auditable según los lineamientos del marco de trabajo Scrum adaptado, se eliminaron las listas duplicadas, las tarjetas de ejemplo y las etiquetas disímiles, consolidando el flujo de trabajo en 6 columnas oficiales normadas:
+Todas las tarjetas del tablero se estandarizaron incorporando: fechas límites de vencimiento, checklists interactivos con criterios de aceptación Given-When-Then y DoD, miembros responsables asignados, etiquetas codificadas por fase (`PMV1`, `PMV2`, `PMV3`) y por dominio técnico (`Backend`, `Frontend`, `Machine-Learning`, `Infraestructura`, `QA`), descripciones técnicas detalladas y registro de comentarios para auditoría de avances.
 
-|1. 1. Product Backlog : Almacena las 41 actividades y las 20 Historias de Usuario||
-|---|---|
-||(HU-01 a HU-20) priorizadas del proyecto, organizadas por Épicas y asignadas|
-||formalmente a los tres Productos Mínimos Viables (PMV1, PMV2 y PMV3).|
+CAPTURA-PENDIENTE-C201: Vista panorámica del tablero oficial Green AI en Trello dentro del workspace oficial UC, mostrando las 11 listas normadas por la lista de cotejo S10 y las tarjetas organizadas por PMV. Se toma desde la interfaz web de Trello en el workspace oficial UC.
 
-Sprint activo (Sprint 5 / PMV2).
+Figura VII.6.1. Vista panorámica del tablero oficial de Trello en el workspace UC con las 11 listas según la lista de cotejo S10.
 
-3. 3. To Do : Lista las tareas planificadas pendientes de iniciar dentro del Sprint en curso.
+CAPTURA-PENDIENTE-C202: Tarjeta de Historia de Usuario detallada (HU-03 de predicción de demanda o HU-01 de observabilidad) mostrando descripción con criterios BDD (Given-When-Then), checklist de aceptación, fechas, miembros asignados, etiquetas de PMV y área técnica, y comentarios de trazabilidad. Se toma desde el modal de tarjeta en Trello.
 
-4. 4. In Progress : Muestra los componentes en desarrollo activo por parte del equipo de ingeniería.
-
-|5. 5. QA / Testing : Alberga las Historias de Usuario que han completado la||
-|---|---|
-||codificación y se encuentran bajo pruebas de integración, verificación de|
-||criterios de aceptación BDD (Given-When-Then) y revisión estática de código.|
-
-5. 5. QA / Testing : Alberga las Historias de Usuario que han completado la
-
-|6. 6. Done : Lista las tarjetas 100% finalizadas que cumplen estrictamente con la||
-|---|---|
-||Definition of Done (DoD), contando con enlace directo a los commits de GitHub,|
-||registros de MLflow o evidencias en base de datos.|
-
-Asimismo, se estandarizó la nomenclatura de las etiquetas de proyecto (usando el formato único PMV1, PMV2 y PMV3) y el formato de registro de las tarjetas de sincronización ágil (Daily | Sprint X | [DD/MM/AAAA]).
+Figura VII.6.2. Detalle de tarjeta de Historia de Usuario en Trello con criterios BDD, checklist, etiquetas y comentarios de seguimiento.
 
 ![Figura VII.6.1. Tablero Kanban en trello en el Workspace UC](evidencias/p051-img019.png)
 
-<!-- página 52 -->
-
-Figura VII.6.1. Tablero Kanban en trello en el Workspace UC
+Figura VII.6.3. Registro histórico del tablero de trabajo Kanban en Trello.
 
 #### VII.6.2. Estado de Avance Cuantitativo y Trazabilidad de Historias de Usuario
 
-Con fecha de corte oficial al 29 de octubre de 2026 (Semana 10 / Sprint 5), el seguimiento del proyecto refleja un estado de avance alineado con la línea base planificada y un Índice de Desempeño del Cronograma SPI = 1.00:
+Al corte de auditoría registrado en el tablero previo con fecha 29 de octubre de 2026 (Semana 10 / Sprint 5), se reportó un avance de 22 de 41 actividades técnicas de ingeniería completadas (53.6 % de avance global referencial). Con la migración y estandarización al workspace oficial UC, el estado de avance se consolida en función de las Historias de Usuario y los compromisos de cada PMV:
 
-● Avance Global del Proyecto: Del catálogo total de 41 actividades técnicas de ingeniería, 22 actividades (53.6% del proyecto global) han sido completadas y verificadas al 100% bajo la Definition of Done.
+- **PMV1 (Sprints 1 a 3 | 100 % Ejecutado):** el 100 % de las historias asociadas a la observabilidad y persistencia de telemetría (HU-01 [Visualización de telemetría multirrecurso], HU-02 [Persistencia de métricas] y HU-15 [Autenticación y sesiones]) se encuentran en la columna **Done**, con sus criterios Given-When-Then validados y suites automatizadas superadas (Monitoring: 112 pruebas, Gateway Java: 12 pruebas, Gateway Go: 30 pruebas).
+- **PMV2 (Sprints 4 a 6 | En ejecución avanzada):** las historias HU-03 (Predicción de demanda de CPU con Random Forest), HU-04 (Comparación empírica frente a baselines), HU-06 (Generación de recomendaciones desacopladas), HU-07 (Modo Recommendation-Only con `executionAllowed=false`), HU-08 (Guardrails de SLA en Policy Engine) y HU-11 (Métricas de consumo energético modelado P(u)) cuentan con implementación y pruebas unitarias completas (Prediction: 100 pruebas, Data Processing: 121 pruebas). Se encuentran en transición entre **QA-Testing** e **In Progress** las actividades de visualización avanzada en frontend y afianzamiento de alertas en Grafana.
+- **PMV3 (Sprints 7 y 8 | Planificado en Product Backlog):** las historias de ejecución del experimento comparativo de ahorro energético frente a la línea base (HU-10 y HU-16) se mantienen priorizadas para su abordaje en las semanas 13 a 16.
 
-● Cierre y Validación del PMV1 (Sprints 1 a 3 | 100% Ejecutado): El 100% de las Historias de Usuario del PMV1 (HU-01 [Visualización de telemetría], HU-02 [Persistencia relacional de métricas] y HU-15 [Autenticación de usuarios]) han sido trasladadas a la columna DONE, habiendo subsanado las observaciones previas mediante la verificación de criterios BDD e integración en Supabase/PostgreSQL.
+![](evidencias/p052-img020.png)
 
-● Estado de Ejecución del PMV2 (Sprints 4 a 6 | 65% de Avance): El PMV2 registra 7 actividades completadas de 13. Las Historias de Usuario HU-03 (Predicción de demanda), HU-05 (MLflow Registry), HU-07 (Aprobación en modo Recommendation-Only) y HU-08 (Guardrails de SLA en Policy Engine) se encuentran distribuidas entre las columnas QA / Testing e In Progress con sus responsables asignados y checklists de pruebas en ejecución.
+![](evidencias/p053-img021.png)
 
-● Proyección del PMV3 (Sprints 7 y 8 | 0% Ejecutado / Planificado): Las historias correspondientes a seguridad avanzada (RBAC/JWT), experimentación comparativa de 24h y reportería automática en PDF/CSV permanecen ordenadas en el Product Backlog para su abordaje en las Semanas 13 a 16.
-
-![Figura (página 52)](evidencias/p052-img020.png)
-
-<!-- página 53 -->
-
-![Figura (página 53)](evidencias/p053-img021.png)
-
-Figura. 6.2. Estado de Avance Cuantitativo y Trazabilidad de Historias de Usuario
+Figura VII.6.4. Trazabilidad de avance cuantitativo y estado de tarjetas de Historias de Usuario.
 
 #### VII.6.3. Trazabilidad de Ceremonias y Registro Auditable de Calidad
 
-Para respaldar la aplicación disciplinada del marco ágil ante las auditorías académicas e ICACIT, el tablero en workspaceUC incorpora tarjetas dedicadas al registro auditable de las ceremonias de Scrum:
+Para documentar la disciplina metodológica exigida por el marco de trabajo y las auditorías de calidad ICACIT, el tablero en workspace UC incorpora tarjetas específicas para el registro auditable de las ceremonias ágiles:
 
-1. Sincronizaciones Diarias (Daily Scrum): Debido a los horarios académicos heterogéneos del equipo, las dailies presenciales se adaptaron a sincronizaciones virtuales 3 veces por semana (lunes, miércoles y viernes) vía WhatsApp. Cada sesión se documenta en Trello mediante tarjetas estructuradas que detallan: a) ¿Qué hice?, b) ¿Qué haré hoy? y c) Bloqueos/Impedimentos identificados.
+1. **Sincronizaciones periódicas (Daily Scrum):** documentadas en la lista *Daily Scrum* mediante tarjetas semanales donde cada integrante registra sus respuestas a las preguntas normadas: a) ¿Qué avancé desde la última sesión?, b) ¿Qué realizaré hoy? y c) ¿Qué impedimentos o bloqueos técnicos existen?
+2. **Revisión del Incremento (Sprint Review):** registradas en la lista *Sprint Review* con actas de demostración funcional presentadas ante el asesor académico (Ing. Jorge Guevara), incorporando los compromisos y retroalimentaciones recibidas.
+3. **Retrospectiva del Equipo (Sprint Retrospective):** documentadas en la lista *Sprint Retrospective* mediante análisis PDCA, evaluando lo que funcionó bien, oportunidades de optimización y compromisos concretos para los sprints sucesivos.
 
-2. Revisión del Incremento (Sprint Review): Al cierre de cada Sprint (cada 14 días), se registra una tarjeta de revisión con el acta de demostración funcional ante el asesor (Ing. Jorge Guevara), adjuntando los comentarios de retroalimentación recibidos y la aprobación formal del incremento.
+CAPTURA-PENDIENTE-C203: Tarjeta de sincronización ágil Daily Scrum en Trello estructurada con las tres preguntas estándar (¿qué hice?, ¿qué haré?, bloqueos) y la participación registrada de los cuatro integrantes del equipo. Se toma desde la lista Daily Scrum en Trello en el workspace oficial UC.
 
-<!-- página 54 -->
+Figura VII.6.5. Tarjeta de sincronización Daily Scrum documentada en Trello con el reporte de los integrantes del equipo.
 
-3. Retrospectiva del Equipo (Sprint Retrospective): Cada cierre de PMV incluye el registro del análisis PDCA (Plan-Do-Check-Act), identificando lecciones aprendidas, compromisos de mejora técnica y asignación de responsables para el siguiente ciclo.
+CAPTURA-PENDIENTE-C204: Tarjeta de Sprint Review y Sprint Retrospective del PMV1 en Trello, mostrando el acta de demostración funcional, retroalimentación del asesor y matriz PDCA de compromisos de mejora continua. Se toma desde las listas Sprint Review y Sprint Retrospective en Trello en el workspace oficial UC.
 
-**DAILY SCRUM TABLERO EN TRELLO**
+Figura VII.6.6. Tarjetas de Sprint Review y Sprint Retrospective con evaluación PDCA y lecciones aprendidas al cierre del PMV1.
 
-![Figura (página 54)](evidencias/p054-img022.png)
+![](evidencias/p054-img022.png)
 
-![Figura (página 54)](evidencias/p054-img023.png)
+![](evidencias/p054-img023.png)
 
 ![Figura VII.6.3. Trazabilidad de Ceremonias y Registro Auditable de Calidad](evidencias/p054-img024.png)
 
-<!-- página 55 -->
+Figura VII.6.7. Registro de evidencias y ceremonias ágiles en el tablero Trello.
 
-Figura VII.6.3. Trazabilidad de Ceremonias y Registro Auditable de Calidad
+### VII.7. Gestión de Cambios Técnicos (Noviembre de 2026)
 
-# VIII. PRUEBAS Y RESULTADOS y DISCUSIÓN
+Conforme a las directrices del PMBOK sobre el Control Integrado de Cambios, todo ajuste sobre la arquitectura, la infraestructura o el alcance del proyecto se gestiona mediante acciones preventivas o correctivas documentadas en un registro formal de cambios (Change Log). Durante el mes de noviembre de 2026, el equipo de ingeniería implementó una reestructuración técnica orientada a subsanar observaciones docentes, optimizar el uso de recursos computacionales y consolidar la reproducibilidad experimental:
+
+|ID|Fecha|Cambio técnico implementado|Tipo de acción|Motivo técnico / Justificación|Impacto en el sistema y evidencia en el repositorio|
+|---|---|---|---|---|---|
+|CHG-01|Octubre 2026|Integración del motor de recomendaciones dentro del servicio Prediction|Acción correctiva|Reducir la complejidad operacional y evitar el despliegue de un microservicio independiente adicional para toma de decisiones.|Se conserva íntegro el contrato de API `/api/recommendations/v1/*`; simplificación del despliegue en un único contenedor Python.|
+|CHG-02|06/11/2026|Migración integral a monorepo unificado con un solo Git y ramas `main` (prod) y `test` (dev)|Acción correctiva y preventiva|Existencia de múltiples repositorios Git anidados y desincronizados que dificultaban la trazabilidad y las pruebas integradas.|Eliminación de gitlinks huérfanos; adopción de ramas estándar; decisiones arquitecturales D-01 a D-04 documentadas en `docs/DECISIONES.md`.|
+|CHG-03|06/11/2026|Implementación de perfil SQLite para desarrollo local desacoplado|Acción preventiva|Eliminar la dependencia estricta de conectividad a bases de datos cloud Supabase durante la ejecución de pruebas unitarias y desarrollo local.|Data Processing ejecuta 114 pruebas de contrato común entre SQLite y PostgreSQL/PostgREST; decisión D-05; soporte para 100,000 registros sintéticos.|
+|CHG-04|06/11/2026|Desarrollo de API Gateway alternativo en Go|Acción de optimización preventiva|El Gateway original en Spring Boot consumía ~283 MiB de RAM en reposo (imagen de 520 MB), comprometiendo el límite de planes gratuitos en la nube (< 512 MiB).|El Gateway en Go reduce el consumo a ~10-16 MiB de RAM (imagen de 16 MB); 30 pruebas unitarias y 0 diferencias en diff-testing (39 casos verificados; D-06).|
+|CHG-05|06/11/2026|Honestidad experimental: corrección de métricas de ML (Random Forest como modelo oficial)|Acción correctiva (observación docente)|El informe previo reportaba cifras sin respaldo experimental reproducible (XGBoost con RMSE 7.1 %, 45 ms, etc.).|Adopción transparente del pipeline de Random Forest a 15 min: MAE de 3.22 y RMSE de 4.59 pp en validación, MAE de 3.85 en test; explicitación de telemetría simulada.|
+|CHG-06|07/11/2026|Optimización multi-etapa de la imagen Docker de Prediction Service|Acción de optimización técnica|La imagen Docker original pesaba 2.85 GB debido a herramientas de notebook y librerías de entrenamiento no requeridas en inferencia en vivo.|Reducción del tamaño de la imagen a 510 MB y memoria en reposo a ~122 MiB mediante compilación multi-etapa; 100 pruebas pasadas y verificación en smoke.|
+|CHG-07|06/11/2026|Adaptación de formato de reportes históricos a JSON/CSV estructurado vía API|Acción correctiva|La generación de documentos PDF en el backend introducía dependencias pesadas y riesgo de fallos de memoria en contenedores pequeños.|Implementación del endpoint `GET /api/processing/v1/reports/historical-summary` con exportación JSON/CSV (121 pruebas pasadas en Data Processing) y Markdown.|
+|CHG-08|Noviembre 2026|Preparación de entorno de Staging en Render desde la rama `test`|Acción preventiva (observación docente)|La Guía de laboratorio 11 exige demostrar los servicios en un entorno cloud de calidad accesible mediante URLs públicas y no solo en localhost.|Configuración de servicios web para Gateway Go, Prediction y Data Processing; documentación en `docs/GUIA-DESPLIEGUE-RENDER.md` y decisión D-07.|
+
+# VIII. PRUEBAS, RESULTADOS Y DISCUSIÓN
 
 ### VIII.1. Prueba de Concepto (PoC) de Inteligencia Artificial
 
-#### VIII.1.1. Naturaleza Experimental y Propósito de la PoC (Semanas 1–4 / Sprints 1–2)
+#### VIII.1.1. Naturaleza experimental y propósito de la PoC (Semanas 1–4 / Sprints 1–2)
 
-La Prueba de Concepto (PoC) se diseñó como un entorno experimental acotado y de bajo riesgo, ejecutado durante las Semanas 1 a 4 (Sprint 1-2) dentro del ciclo inicial del PMV1. Su propósito exclusivo no fue construir la plataforma final ni ejecutar comandos destructivos o autónomos sobre Kubernetes, sino resolver la incertidumbre tecnológica inicial: determinar empíricamente si las series temporales de telemetría capturadas a intervalos de 15 segundos contienen la estructura, variabilidad y patrones estacionales necesarios para predecir la demanda de CPU a un horizonte de 15 minutos con un nivel de error y latencia operativamente aceptables.
+La Prueba de Concepto (PoC) de Inteligencia Artificial se diseñó como un entorno experimental acotado para abordar la incertidumbre técnica asociada al requerimiento RF-09 e historia de usuario HU-03. El propósito central consistió en determinar empíricamente si las series temporales de telemetría de utilización de CPU, agregadas a ventanas de 5 minutos, contienen estructura y patrones estacionales suficientes para estimar la demanda a un horizonte de 15 minutos superando referencias heurísticas simples (persistencia y media móvil), manteniendo una latencia de inferencia compatible con la operación asistiva.
 
-#### VIII.1.2. Formulación de la Hipótesis Técnica (H1)
+La PoC no contempló la ejecución de acciones autónomas ni modificaciones directas sobre la infraestructura de servidores, sino la resolución de la incertidumbre algorítmica sobre el conjunto de datos de desarrollo `dataset-sim-001`, generado sintéticamente a partir de modelos estadísticos de carga académica.
 
-Los modelos de aprendizaje supervisado para regresión de series temporales pueden estimar la utilización futura de CPU a un horizonte de 15 minutos, utilizando información histórica de telemetría y manteniendo un error predictivo dentro de los umbrales establecidos para el prototipo.
+#### VIII.1.2. Formulación de la hipótesis técnica (H1)
 
-La hipótesis se contrastará mediante la evaluación de modelos de referencia y algoritmos supervisados, utilizando una partición cronológica de los datos y las métricas MAE y RMSE. Los criterios experimentales propuestos son un RMSE inferior a 10 puntos porcentuales, un MAE inferior a 8 puntos porcentuales y una latencia de inferencia inferior a 2000 milisegundos.
+La hipótesis técnica (H1) se formuló en los siguientes términos:
 
-<!-- página 56 -->
+> Un modelo de aprendizaje automático supervisado basado en árboles de decisión (Random Forest o XGBoost) obtiene un error absoluto medio (MAE) inferior al del baseline de persistencia para un horizonte de predicción de 15 minutos sobre el conjunto de validación, manteniendo una latencia de inferencia en el percentil 95 (p95) inferior a 2 000 ms.
 
-El cumplimiento de estos criterios permitirá evaluar la viabilidad predictiva de la solución, pero no demostrará por sí mismo ahorro energético ni cumplimiento futuro de los acuerdos de nivel de servicio.
+Los criterios de aceptación cuantitativos establecidos para validar H1 fueron:
 
-#### VIII.1.3. Protocolo Experimental (Experimentos E1 a E4)
+1. Error absoluto medio (MAE) del modelo supervisado menor que el baseline de persistencia y menor que el baseline de media móvil sobre el split de validación.
+2. Error cuadrático medio (RMSE) en intervalos de alta demanda y picos menor que el del baseline de persistencia.
+3. Latencia de inferencia percentil 95 inferior a 2 000 ms.
 
-Se evaluaron cuatro alternativas algorítmicas sobre un dataset de telemetría continua de 2 semanas (80,640 registros recopilados a intervalos de 15 segundos), aplicando una división cronológica estricta (70% Entrenamiento, 15% Validación y 15% Prueba) para garantizar la separación temporal y prevenir la fuga de información (data leakage).
+Las métricas de error se expresan en puntos porcentuales (pp) de utilización de CPU (escala de 0 a 100), evitando la ambigüedad metodológica de calcular porcentajes relativos sobre variables acotadas. El cumplimiento de H1 demuestra viabilidad predictiva algorítmica sobre datos sintéticos, pero no constituye por sí mismo evidencia de ahorro de energía física ni garantía de cumplimiento futuro de acuerdos de nivel de servicio (SLA) en entornos de producción.
 
-Para cumplir con el atributo de egreso ICACIT AG-I11 (Uso de Herramientas Modernas) y responder a los requisitos de auditabilidad académica, cada experimento se encuentra respaldado por su correspondiente artefacto digital de MLOps registrado en MLflow Tracking:
+#### VIII.1.3. Protocolo experimental y resultados de alternativas
 
-|Exp.|Algoritmo / Estrategia|MAE (% CPU)|RMSE (% CPU)|sMAPE (%)|Latencia de inferencia|MLflow Run ID (corrida local)|
-|---|---|---|---|---|---|---|
-|E1|Baseline Naive (Persistencia)|12.4 %|16.8 %|7.67%|0.1 ms|run naive base 01 _ _ _|
-|E2|Promedio móvil (Moving Average)|10.1 %|14.2 %|15.3 %|0.5 ms|run ma window 15 _ _ _|
-|E3|Random Forest Regressor|6.2 %|8.1 %|9.8 %|120.0 ms|run rf poc v1 8a12 _ _ _ _|
-|E4|Random Forest Regressor Regressor (ganador)|5.4 %|7.1 %|8.6 %|45.0 ms|run xgb poc v1 c49e _ _ _ _|
+El protocolo experimental empleó el conjunto de datos sintético `dataset-sim-001` (80 640 muestras brutas a cadencia de 15 segundos, remuestreadas a intervalos regulares de 5 minutos, almacenado en `software/prediction/data/raw/sample_dataset.json` con su suma de verificación SHA-256 registrada en el manifiesto de reproducibilidad).
 
-Necesitamos pruebas de las pruebas que se hicieron para el algoritmo
+El vector de características para la inferencia incluyó: utilización actual de CPU ($t$), retardos temporales ($t-1$, $t-2$, $t-3$), estadísticos móviles sobre ventana deslizante (media, desviación estándar, mínimo y máximo), y componentes cíclicas temporales (hora, minuto y día codificados mediante funciones seno y coseno). Se aplicó una división cronológica estricta sin barajado (*no shuffle*): 70 % para entrenamiento, 15 % para validación ($n = 125$ muestras) y 15 % para prueba ($n = 129$ muestras). La ausencia de fuga de información hacia el futuro (*anti-leakage*) se validó mediante pruebas automatizadas unitarias (`tests/unit/test_anti_leakage.py`) con semilla determinista 42.
 
-#### Trazabilidad de los experimentos de Machine Learning
+Se evaluaron cuatro alternativas algorítmicas bajo idénticas condiciones sobre el conjunto de validación para el horizonte de 15 minutos:
 
-Los experimentos E1 a E4 se documentan como parte de la evaluación predictiva del prototipo. Para validar sus resultados se requiere comprobar la correspondencia entre el conjunto de datos, los parámetros registrados, la versión del código, el artefacto del modelo y las métricas obtenidas sobre el conjunto de prueba.
+| Alternativa | Tipo de modelo | MAE (pp CPU) | RMSE (pp CPU) | sMAPE (%) | MAE alta demanda (>80 %, n=32) | MAE en picos (n=13) | Latencia media (ms) |
+|---|---|---|---|---|---|---|---|
+| E1: Persistencia | Baseline trivial ($y_{t+15} = y_t$) | 4,61 | 6,39 | 11,16 | 5,43 | 8,99 | 0,09 |
+| E2: Media móvil | Baseline estadístico (ventana 15 min) | 3,74 | 5,19 | 9,17 | 4,44 | 7,25 | 4,71 |
+| **E3: Random Forest** | **Ensamble de árboles (Seleccionado)** | **3,22** | **4,59** | **7,85** | **3,58** | **6,12** | **26,60** |
+| E4: XGBoost | Gradient boosting supervisado | 3,46 | 4,79 | 8,46 | 3,86 | 6,21 | 18,70 |
 
-<!-- página 57 -->
+Sobre el conjunto de prueba independiente (*test set*, $n = 129$), el modelo seleccionado (**Random Forest Regressor**) alcanzó las siguientes métricas definitivas:
 
-El experimento E4 presenta una inconsistencia documental en la identificación del algoritmo, por lo que su denominación definitiva deberá establecerse mediante la inspección de la ejecución registrada en MLflow y del modelo cargado por Prediction Service.
+* **MAE en test:** 3,85 puntos porcentuales de CPU.
+* **RMSE en test:** 5,45 puntos porcentuales de CPU.
+* **sMAPE en test:** 7,67 %.
+* **MAE en picos de test:** 8,45 puntos porcentuales de CPU.
 
-Asimismo, los resultados obtenidos mediante remuestreo a intervalos de cinco minutos deben distinguirse de las evaluaciones realizadas sobre series de quince segundos. Las métricas de ambos protocolos no se considerarán directamente comparables sin justificar sus condiciones experimentales.
+**Contraste de H1 y corrección de modelo:**
+El modelo **Random Forest Regressor** superó a la persistencia con una reducción del MAE del 30,15 % (3,22 pp frente a 4,61 pp) y superó a la media móvil en 13,90 % (3,22 pp frente a 3,74 pp). La latencia media de inferencia (26,60 ms en procesamiento por lote) cumplió holgadamente con la restricción de 2 000 ms. Por consiguiente, se acepta la hipótesis H1.
 
-La selección definitiva del modelo se realizará a partir de resultados reproducibles, considerando el error predictivo, la latencia de inferencia y los recursos consumidos durante la ejecución.
+Se rectifica formalmente que **XGBoost no fue el modelo ganador** para el horizonte de 15 minutos (obtuvo un MAE de 3,46 pp frente a 3,22 pp de Random Forest). La versión previa del informe citó a XGBoost como modelo final con un RMSE del 7,1 %, cifra que no corresponde a la ejecución determinista del pipeline. El modelo empaquetado y expuesto por el microservicio Prediction Service en el prototipo es Random Forest Regressor. Asimismo, se reitera que las métricas proceden de telemetría simulada y no de un clúster físico en producción.
 
-#### VIII.1.4. Comportamiento en escenarios de alta demanda (>85 % CPU)
+#### VIII.1.4. Trazabilidad MLOps y comportamiento en alta demanda y picos
 
-Se evaluará el desempeño del modelo en intervalos donde la utilización de CPU supera el umbral definido. Debido a que la variable objetivo corresponde a una magnitud continua, el análisis utiliza métricas de regresión como MAE y RMSE. Una métrica F1 solo será incorporada si se implementa y documenta una tarea adicional de clasificación de picos.
+Para garantizar la reproducibilidad y auditabilidad técnica exigida por el atributo ICACIT AG-I11 (Uso de Herramientas Modernas), el entrenamiento y registro de métricas se integró con MLflow Tracking. El experimento se registró bajo el identificador formal `computational-demand-prediction`, con el run `random_forest_15m` reportando el MAE de test de 3,85 pp, complementado con el manifiesto `software/prediction/results/manifest.json` que fija el hash SHA-256 del código, datos y parámetros de configuración.
 
-#### VIII.1.5. DICTAMEN OFICIAL DE GOBIERNO DE LA POC GO CON CONDICIONES
+CAPTURA-PENDIENTE-C303: Interfaz gráfica de MLflow Tracking UI con el experimento 'computational-demand-prediction' y el run 'random_forest_15m' registrado con MAE de test 3,85 pp. Tomada del navegador en http://localhost:5000 tras ejecutar mlflow ui.
+Figura VIII.1. Registro y trazabilidad del experimento de entrenamiento de Machine Learning en MLflow Tracking UI.
 
-<!-- página 58 -->
+En intervalos de alta utilización (> 80 % CPU, $n = 32$), el MAE de Random Forest se mantuvo en 3,58 pp en validación. No obstante, al evaluar específicamente los intervalos de pico extremo ($n = 13$), el MAE aumentó a 6,12 pp en validación y a 8,45 pp en prueba. Este comportamiento evidencia que el error se duplica en escenarios de sobrecarga crítica, constituyendo la principal limitación del modelo. Al tratarse de una tarea de regresión continua de CPU, se utilizan métricas MAE y RMSE; no se reporta métrica F1 al no haberse implementado una tarea formal de clasificación binaria de eventos.
 
-### Viabilidad Técnica Aprobada Sujeta a 4 Compromisos de Ingeniería
+#### VIII.1.5. Dictamen oficial de gobierno de la PoC: GO CON CONDICIONES
 
-1. [C1] Pipeline ETL e Imputación: Desarrollar un módulo ETL automatizado en Python con interpolación lineal (para brechas < 1min ) e imputación por mediana que garantice un 0.0% de valores nulos sobre la base de datos de telemetría en PostgreSQL/Supabase.
+A partir de los resultados obtenidos, el comité técnico emitió un dictamen formal de **GO CON CONDICIONES** (Viabilidad técnica predictiva aprobada sujeta a cinco condiciones de ingeniería para el PMV3):
 
-2. [C2] Formalización del Modelo Proxy Energetico: Implementar en la base de datos la ecuación proxy lineal de potencia eléctrica:
+1. **[C1] Validación con trazas reales o abiertas:** Evaluar el pipeline sobre trazas abiertas de producción (como el repositorio Bitbrains utilizado en la literatura indexada) o telemetría real del campus para contrastar la generalización del modelo fuera del entorno sintético.
+2. **[C2] Mitigación del error en picos:** Implementar mecanismos de calibración o modelos especializados para mitigar el incremento del error durante eventos de alta exigencia académica (matrícula y exámenes).
+3. **[C3] Respaldo de contingencia (Fallback):** Mantener el baseline de persistencia y media móvil como mecanismos de respaldo en el microservicio ante demoras o fallos en la inferencia del modelo.
+4. **[C4] Formalización del modelo proxy de potencia eléctrica:** Declarar explícitamente que la potencia instantánea se estima mediante el modelo lineal proxy $P(u) = P_{idle} + (P_{max} - P_{idle}) \times u$, reconociendo que los valores calculados en kWh provienen del comportamiento de CPU y no de sensores físicos de distribución de potencia (PDU) en el laboratorio.
+5. **[C5] Gobernanza en modo asistivo (Recommendation-Only):** Restringir la operación del motor de políticas al modo de solo recomendación (`executionAllowed = false`), exigiendo revisión y confirmación humana previa a cualquier ajuste en la infraestructura.
 
-![Figura (página 58)](evidencias/p058-img025.png)
+![](evidencias/p058-img025.png)
+Figura VIII.2. Formulación del modelo proxy lineal de potencia eléctrica instantánea P(u) en función de la utilización computacional.
 
-P(u) = Pidle+ (Pmax−Pidle) × u 3. declarando explícitamente que la estimación en kWh deriva del u comportamiento de la CPU ( ) ante la ausencia de una PDU física de medición directa en el laboratorio.
-
-4. [C3] Monitoreo de Data Drift en MLflow: Configurar un Job automatizado en MLflow Tracking para calcular el sesgo de datos (Data Drift); si el RMSE en producción supera el 12.0%, se disparará automáticamente la alerta de reentrenamiento.
-
-5. [C4] Gobernanza del Policy Engine (Recommendation-Only): Garantizar que el motor de políticas opere en estricto modo asistivo / apoyos a la decisión, requiriendo aprobación humana explícita por el Operador de TI en la interfaz gráfica antes de ejecutar cualquier acción de escalado o apagado en la API Server de Kubernetes.
+---
 
 ### VIII.2. Pruebas y Evidencias de Ejecución por Producto Mínimo Viable (PMV1, PMV2 y PMV3)
 
-#### VIII.2.1. Pruebas del PMV1: Viabilidad Técnica, Ingesta, Telemetría y Persistencia
+Para verificar el cumplimiento funcional y contractual del sistema, se estructuraron suites de pruebas automatizadas por microservicio, ejecutadas de forma reproducible sobre el monorepo del proyecto.
 
-1. Ingesta y Observabilidad: Se desplegó un clúster experimental de Kubernetes (3 nodos) con recopilación continua de métricas mediante Prometheus (Node Exporter y cAdvisor) y visualización en Grafana cada 15 segundos.
+#### Resumen consolidado de pruebas automatizadas por servicio
 
-2. Pipeline ETL e Imputación de Gaps: El módulo ETL en Python detectó y corrigió un 3.2% de datos nulos/vacíos causados por caídas breves del < 1min colector. Aplicó interpolación lineal para discontinuidades e imputación por mediana histórica para ventanas mayores, alcanzando un 0.0% de datos nulos en Supabase/PostgreSQL (commit cd169c7 en Green-IA-DataProcessing).
+La verificación automatizada comprende 333 pruebas unitarias, de integración y de contrato, más una suite de verificación de humo (*smoke test*) de 14 puntos de extremo a extremo:
 
-<!-- página 59 -->
+| Servicio | Entorno y tecnología de prueba | Pruebas ejecutadas / aprobadas | Alcance técnico cubierto |
+|---|---|---|---|
+| Monitoring | Maven 3.9 / JUnit 5 | 112 / 112 | Pruebas unitarias, contratos HTTP y recolección desde Prometheus |
+| Gateway (Java) | Maven 3.9 / JUnit 5 | 12 / 12 | Enrutamiento perimetral, validación de JWT, roles ADMIN/OPERATOR/VIEWER y CORS |
+| Gateway (Go) | Go 1.22 (`go test -race` ×5) | 30 / 30 | Equivalencia funcional perimetral, concurrencia, límites de tasa y validación JWKS |
+| Data Processing | Python 3.11 / Pytest | 121 / 121 | Contratos SQLite/PostgreSQL, pipeline ETL, interpolación y reporte CSV |
+| Prediction | Python 3.11 / Pytest | 100 / 100 | Pruebas de anti-fuga temporal, validación de esquemas Pydantic, inferencia y recomendaciones |
+| Frontend | Node.js (`node --test`) | 48 / 48 | Renderizado de interfaz, lógica de pestañas, Racks, panel de energía y red de flujos |
+| Simulator | Python 3.11 / Unittest (Docker) | 10 / 10 | Generación de series sintéticas, perfiles de carga, exportador y señales de término |
+| Stack integral | Python 3.11 (`smoke.py`) | 14 / 14 | Validación de integración HTTP End-to-End sobre el ecosistema de servicios |
 
-3. Evaluación del Baseline de Referencia: El modelo de persistencia (Naive) se registró en MLflow estableciendo un error inicial de RMSE = 16.8% y MAE = 12.4%, sirviendo como punto de contraste para cuantificar la ganancia de la IA.
+CAPTURA-PENDIENTE-C301: Ejecución consolidada de las suites de pruebas automatizadas por microservicio en la terminal (Monitoring 112, Gateway Java 12, Gateway Go 30, Data Processing 121, Prediction 100, Frontend 48 y Simulator 10). Tomada de la consola ejecutando los comandos de prueba en el monorepo.
+Figura VIII.3. Ejecución consolidada de pruebas automatizadas por servicio en el monorepo de desarrollo.
 
-4. Ajuste en Grilla Resumida (5m): Sobre la serie temporal remuestreada a n= 129 intervalos de 5 minutos ( muestras de prueba), el regresor supervisado obtuvo un MAE= 3. 85pp , RMSE= 5. 45pp y $sMAPE = 7.67%, confirmando la estabilidad del vector de características retardadas (t-1
+CAPTURA-PENDIENTE-C302: Salida de ejecución del script de smoke test integral del stack (14/14 comprobaciones aprobadas). Tomada de la consola ejecutando python software/infraestructura/smoke/smoke.py.
+Figura VIII.4. Verificación de integración End-to-End mediante smoke test de 14 puntos sobre el ecosistema desplegado.
 
-**... t-15).**
+#### Matriz de trazabilidad por historia de usuario (PMV1 y PMV2)
 
-#### a) Despliegue de Contenedores y Entorno de Ejecución en Docker / Kubernetes )
+La siguiente matriz documenta la correspondencia entre los requerimientos funcionales, los criterios de aceptación en formato Given/When/Then, los mecanismos de prueba y su estado de cumplimiento:
 
-Para garantizar la orquestación y el aislamiento microservicial del proyecto, se desplegaron los contenedores correspondientes a la pila de monitoreo, simulación, gateway, interfaz web y nodo Kubernetes local (Minikube).
+| HU | PMV | Criterio de aceptación (Given/When/Then) | Mecanismo de prueba / evidencia | Estado | Observación metodológica |
+|---|---|---|---|---|---|
+| HU-01 | 1 | Dado un usuario OPERATOR autenticado, cuando consulta la telemetría actual, entonces recibe series de utilización con metadato `origin=simulated`. | Smoke test de monitoreo (HTTP 200, 50 nodos); `MetricsHttpContractTest` (112 tests). | Aprobado | Telemetría provista por simulador sintético. |
+| HU-01 (Seg.) | 1 | Dado un cliente sin token o con firma JWT inválida, cuando invoca el endpoint perimetral, entonces recibe código HTTP 401 Unauthorized. | Smoke test perimetral; suites de Gateway Java (12 tests) y Gateway Go (30 tests). | Aprobado | Filtro perimetral validado en ambos gateways. |
+| HU-02 | 1 | Dado un rango temporal de hasta 31 días, cuando solicita registros históricos, entonces obtiene datos paginados y ordenados sin duplicados. | `test_historical_logs_contract.py` (121 tests en Data Processing, contratos duales SQLite y PostgreSQL). | Aprobado | Resuelto con paginación por cursor. |
+| HU-03 | 2 | Dada una ventana histórica reciente válida (al menos 6 intervalos), cuando solicita predecir a 15 min, entonces recibe la estimación con metadato `origin=estimated`. | Smoke test de predicción (HTTP 200); 100 pruebas en Prediction Service. | Aprobado | Modelo Random Forest cargado en memoria. |
+| HU-03 (Err.) | 2 | Dado un dataset insuficiente (< 20 min) o esquema corrupto, cuando solicita inferencia, entonces el servicio rechaza con HTTP 422 Unprocessable Entity. | `tests/api/test_health_and_predict.py`; verificación DevTools en la nube. | Aprobado | Comportamiento defensivo contractual validado. |
+| HU-04 | 2 | Dados idénticos datos y partición temporal, cuando se evalúan los modelos, entonces se generan métricas reproducibles comparativas. | Ejecución de pipeline determinista; `results/metrics/model_comparison.csv`. | Aprobado | Random Forest seleccionado frente a 3 alternativas. |
+| HU-05 | 2 | Dado el entrenamiento del modelo, cuando finaliza la ejecución, entonces los parámetros y métricas quedan auditados en MLflow Tracking. | Experimento `computational-demand-prediction`, run `random_forest_15m` en `mlruns/`. | Aprobado con run registrado | Run registrado en almacén local; pendiente captura UI. |
+| HU-06 / 08 | 2 | Dada una estimación de CPU y telemetría de contexto, cuando se evalúa la política, entonces se retorna una recomendación con `executionAllowed=false`. | Smoke test de recomendación (HTTP 200, `eligible_for_review`); 13 pruebas de política. | Aprobado | Modo asistivo con guardrails de seguridad activos. |
+| HU-07 | 2 | Dada una recomendación emitida, cuando el operador la evalúa en la interfaz, entonces puede registrar su decisión asistiva. | Validación visual en panel web; bloqueo de ejecución autónoma. | Parcial | Bloqueo garantizado; flujo de firma digital en backlog. |
+| HU-09 | 2 | Dadas muestras de potencia instantánea, cuando se calcula el consumo, entonces se integra la energía en kWh mediante regla trapezoidal. | Endpoint `/v1/energy`; prueba frontend `energy displays absence of carbon factor`. | Aprobado | Estimación matemática; sin PDU física en laboratorio. |
+| HU-11 | 2 | Dado un operador en el frontend, cuando navega entre módulos, entonces visualiza un dashboard integrado con pestañas temáticas. | Archivo `software/frontend/network.html`, estilos modulares y 48 pruebas de UI. | Aprobado | Pestañas de Racks, Métricas, Detalle y Red de flujos. |
+| HU-12 | 2 | Dado un escenario de saturación o caída de colector, cuando la métrica cruza el umbral, Prometheus activa la alerta correspondiente. | Reglas `SimulatorTelemetryDown`, `NodeCpuSaturationRisk`, `NodeMemoryPressure`, `PredictedCpuHigh` (promtool OK). | Aprobado | Reglas de alerta validadas sintácticamente. |
+| HU-13 | 2 | Dado un operador autenticado, cuando solicita el resumen histórico, entonces puede exportar los datos en formato estructurado JSON y CSV. | Endpoint `GET /api/processing/v1/reports/historical-summary` (suite Data Processing 121 tests). | Aprobado | JSON y CSV operativos; reporte PDF proyectado a PMV3. |
+| HU-14 | 3 | Dado un usuario con credenciales, el sistema asigna y restringe accesos según roles ADMIN, OPERATOR y VIEWER (solo lectura). | Gateway Java (12 tests) y Gateway Go (30 tests) validando rechazo HTTP 403 ante permisos insuficientes. | Aprobado | Rol VIEWER incorporado en perfiles perimetrales. |
+| HU-15 | 1 | Dado un usuario nuevo, cuando completa el formulario de registro, entonces se crea un perfil en Supabase con rol OPERATOR por defecto. | Script `supabase-auth-setup.sql` con trigger sobre auth.users. | Pendiente de evidencia | Implementado en base de datos; requiere prueba con usuario final. |
+
+---
+
+#### VIII.2.1. Pruebas del PMV1: Viabilidad técnica, ingesta, telemetría y persistencia
+
+##### a) Despliegue de contenedores y entorno de ejecución en Docker Compose y Render
+
+El entorno de desarrollo local se estructuró mediante Docker Compose, aislando los servicios en redes internas para evitar conflictos de puertos y versiones de bibliotecas.
 
 ![Figura VIII.1: Estado operativo de contenedores en Docker Desktop Dashboard.](evidencias/p059-img026.png)
+Figura VIII.5. Estado operativo de los contenedores locales en Docker Desktop Dashboard.
 
-Figura VIII.1: Estado operativo de contenedores en Docker Desktop Dashboard.
+Como se observa en la Figura VIII.5, la arquitectura local comprende los contenedores del API Gateway, recolector de monitoreo en Java, simulador de telemetría en Python, servidor Prometheus, microservicio de procesamiento y frontend web. La compilación multi-etapa (*multi-stage build*) se audita en la salida estándar de integración continua:
 
-Como se evidencia en la Figura VIII.2.1.a, el entorno de ejecución verifica la estabilidad de los 6 contenedores principales del ecosistema Green AI: frontend-greenai-container (puerto asignado 3001:3001): Interfaz web de usuario. green-ai-simulator-container: Agente generador de cargas sintéticas de telemetría. green-ai-monitoring-container: Servicio recolector de métricas de hardware. gateway-app (puerto asignado 8081:8081): API Gateway para el enrutamiento de peticiones. mock-monitoring: Servicio simulador de respaldo. minikube (puerto asignado 56621:2376): Clúster Kubernetes local empaquetado mediante la imagen k8s-minikube/kicbase:v0.0.51.
+![](evidencias/p060-img027.png)
+Figura VIII.6. Construcción y arranque de servicios mediante Docker Compose CLI (`docker compose up -d --build`).
 
-<!-- página 60 -->
+En cumplimiento con los requerimientos de entornos de calidad en la nube (Laboratorio 11), el ecosistema se desplegó en la nube pública de Render utilizando contenedores Docker independientes para cada microservicio:
 
-#### b) Construcción y arranque de servicios mediante Docker Compose CLI
+![Figura VIII.2. Render: 6 microservicios desplegados en la nube.](evidencias-nube/render-6-servicios-desplegados.png)
+Figura VIII.7. Despliegue operativo de los 6 microservicios del sistema Green AI en Render (región Oregon) utilizando imágenes de contenedores Docker. Prueba: Disponibilidad y compilación limpia de la arquitectura distribuida en la nube pública sin dependencia de localhost. No prueba: No acredita tráfico concurrente de producción institucional ni ausencia de latencia por arranque en frío en instancias compartidas.
 
-Para la construcción e integración continua de los servicios, se empleó Docker Compose, permitiendo empaquetar las dependencias de Java, Maven, Python y Node.js sin conflictos de entorno.
+##### b) Verificación de agentes e ingesta de telemetría en Prometheus
 
-![Figura (página 60)](evidencias/p060-img027.png)
+Prometheus Server se configuró con sondeos de recolección periódica cada 15 segundos hacia los endpoints expuestos por los colectores de métricas.
 
-**Figura VIII.2.1.1 Construcción y arranque de servicios mediante Docker Compose CLI (docker compose up -d --build).**
+![](evidencias/p060-img028.png)
+Figura VIII.8. Panel de objetivos de recolección en Prometheus Server (`Status > Target health`).
 
-En la Figura VIII.2.1.1. Construcción y arranque de servicios mediante Docker Compose CLI, se observa la salida en consola del proceso de empaquetado multi-etapa (multi-stage build). Se certifica la compilación limpia de los artefactos (Built) y el inicio en segundo plano (Running / Started) de los contenedores
+La Figura VIII.8 certifica la conectividad operativa instantánea de las tres fuentes principales en estado UP: `green-ai-monitoring` (`:8080/actuator/prometheus`), `green-ai-simulator` (`:8000/metrics`) y el automonitoreo de Prometheus (`:9090/metrics`).
 
-**green-ai-workspace-monitoring-1,**
+De forma complementaria, se estructuraron cuatro reglas de alerta en el archivo `prometheus/alerts.yml`, validadas sintácticamente mediante la utilidad oficial `promtool`: `SimulatorTelemetryDown` (caída del colector por más de 1 minuto), `NodeCpuSaturationRisk` (CPU sostenida > 85 % por más de 2 minutos), `NodeMemoryPressure` (memoria RAM > 90 %) y `PredictedCpuHigh` (alerta proactiva ante estimaciones superiores al 80 % de capacidad).
 
-green-ai-workspace-gateway-1,green-ai-workspace-prometheus-1,green-ai-worksp ace-frontend-1 y green-ai-workspace-simulator-1.
+CAPTURA-PENDIENTE-C304: Interfaz de Prometheus Server mostrando el estado de las reglas de alerta activas (SimulatorTelemetryDown, NodeCpuSaturationRisk, NodeMemoryPressure, PredictedCpuHigh). Tomada del navegador en http://localhost:9090/alerts.
+Figura VIII.9. Panel de reglas de alerta configuradas en Prometheus Server.
 
-#### c) Verificación de Agentes e Ingesta de Telemetría en Prometheus
+##### c) Visualización en tiempo real y muestreo en Grafana
 
-El servicio Prometheus Server configuró sus reglas de scraping cada 15 segundos hacia los endpoints expuestos por los colectores de métricas.
+Para auditar visualmente las series temporales en el entorno local, se configuró Grafana conectado a Prometheus como origen de datos.
 
-![Figura (página 60)](evidencias/p060-img028.png)
+![](evidencias/p061-img029.png)
+Figura VIII.10. Tablero de observabilidad operativa en tiempo real en Grafana (`Dashboards > Green AI | Prometheus en vivo`).
 
-<!-- página 61 -->
+La Figura VIII.10 documenta la recepción de flujos con una tasa de muestreo agregada de 1,05k ops/s, graficando las variaciones simuladas de CPU, oscilaciones de memoria RAM entre 44 % y 56 %, tráfico de red y consumo de almacenamiento sobre los nodos sintéticos.
 
-**Figura VIII.3: Panel de Targets de Monitoreo en Prometheus Server (Status > Target health).**
+##### d) Persistencia relacional y limpieza ETL de datos
 
-La Figura VIII.3 muestra el estado de salud de las fuentes configuradas en Prometheus.
+La recolección de métricas a intervalos de 15 segundos durante una ventana de observación de 14 días genera teóricamente la siguiente estructura volumétrica:
 
-Durante el instante de verificación, las tres fuentes se encontraban en estado UP, lo que demuestra conectividad operativa en ese momento. Esta captura no permite concluir por sí sola una disponibilidad del 100 % durante todo el periodo de evaluación, para lo cual sería necesario analizar registros históricos de disponibilidad. green-ai-monitoring (http://monitoring:8080/actuator/prometheus):
+![](evidencias/p062-img030.png)
+Figura VIII.11. Formulación matemática de la matriz temporal volumétrica requerida para la inferencia.
 
-Colector de métricas Spring Actuator/Prometheus. green-ai-simulator (http://simulator:8000/metrics): Colector de telemetría simulada en Python. prometheus (http://localhost:9090/metrics): Automonitoreo del servidor Prometheus.
+Debido a discontinuidades transitorias en la recolección (*scraping drops*), la extracción en bruto registró un 3,2 % de registros ausentes:
 
-#### d) Visualización en Tiempo Real y Muestreo en Grafana
-
-Para auditar la recepción de telemetría, se vinculó Prometheus como fuente de datos en Grafana, construyendo tableros en tiempo real para visualizar la carga de CPU, RAM, red y almacenamiento por nodo.
-
-![Figura (página 61)](evidencias/p061-img029.png)
-
-<!-- página 62 -->
-
-**Figura VIII.4: Dashboard operativo en tiempo real en Grafana (Dashboards > Green AI | Prometheus en vivo).**
-
-La Figura VIII.4 audita el flujo continuo de ingesta de datos con una tasa de 1.05k ops/s (muestras ingeridas por segundo). Se observan los paneles de seguimiento para 27 nodos simulados (HW001 a HW027):
-
-Recolección activa: Confirmación de 3 fuentes en estado UP=1.
-
-Uso de CPU por nodo: Curva descendente de prueba que muestra la variación controlada del 90% al 50% de CPU.
-
-Memoria por nodo: Muestreo de oscilación de memoria RAM entre el 44% y 56%.
-
-Red y Filesystem: Registro de flujo de red hasta 10 MB/s y crecimiento lineal de uso de disco (0.01% a 0.06%).
-
-#### e) Persistencia Relacional y Limpieza ETL de Datos
-
-**1. Caracterización Matemático-Temporal del Dataset de Telemetría**
-
-La recolección continua de telemetría de infraestructura a intervalos de 15 segundos sobre una ventana de observación de 14 días continuos (01/09/2026 00:00:00 al 15/09/2026 00:00:00) genera teóricamente el siguiente volumen de datos:
-
-![Figura (página 62)](evidencias/p062-img030.png)
-
-<!-- página 63 -->
-
-**2. Reporte de Calidad de Datos Pre y Post Tratamiento (Conteos Reales)**
-
-Debido a caídas breves de red y reinicios de los colectores (scraping drops), la extracción en bruto desde Prometheus registró un 3.2% de discontinuidades temporales (gaps):
-
-|Métrica de ingesta|Conteo absoluto|Porcentaje|Estado de calidad|
+| Métrica de ingesta | Conteo absoluto | Porcentaje | Estado de calidad y tratamiento |
 |---|---|---|---|
-|Registros teóricos (matriz de 15 s)|80,640|100.0 %|Matriz temporal completa requerida por la IA.|
-|Registros recibidos en bruto (raw)|78,059|96.8 %|Datos observados con marcas de tiempo TIMESTAMPTZ.|
-|Registros faltantes / vacíos (gaps)|2,581|3.2 %|Discontinuidades inferiores a 1 minuto (de 1 a 4 muestras consecutivas).|
-|Registros posteriores a la interpolación lineal|80,640|100.0 %|0.0 % de valores nulos en los registros de Supabase/PostgreSQL.|
+| Registros teóricos esperados (14 días a 15 s) | 80 640 | 100,0 % | Matriz regular completa requerida por la ventana de retardos. |
+| Registros recibidos en bruto (*raw data*) | 78 059 | 96,8 % | Telemetría observada con marcas de tiempo TIMESTAMPTZ. |
+| Registros faltantes / brechas temporales (*gaps*) | 2 581 | 3,2 % | Brechas inferiores a 1 minuto (de 1 a 4 muestras consecutivas). |
+| Registros resultantes post-interpolación lineal | 80 640 | 100,0 % | 0,0 % de nulos tras interpolación lineal en ventanas cortas e imputación mediana. |
 
-Interpretación: de las 80,640 muestras teóricas esperadas durante los 14 días de monitoreo, se recibieron 78,059 registros en bruto, equivalentes al 96.8 %. Los 2,581 registros faltantes (3.2 %) se trataron mediante interpolación lineal, recuperando la integridad de la matriz temporal hasta alcanzar 80,640 registros, sin valores nulos.
+Se aclara que los 80 640 registros representan la serie temporal de un servidor de referencia utilizada para el benchmark de Machine Learning, y no la suma de todas las métricas de los 50 servidores simulados.
 
-Alcance del conteo: los 80 640 registros representan una serie temporal de referencia construida a intervalos de 15 segundos durante 14 días. Este valor no representa automáticamente la suma de todas las variables de todos los nodos simulados; cuando se consideran múltiples nodos y métricas, el número total de observaciones puede ser superior. Esta aclaración permite diferenciar el tamaño de la serie utilizada para el experimento predictivo del volumen general de telemetría generado por el sistema.
-
-<!-- página 64 -->
-
-**3. Código de generación de datos sintéticos para pruebas**
-
-El siguiente fragmento corresponde al script utilizado para generar información sintética de usuarios, hardware y telemetría destinada a pruebas de integración y persistencia. Este código no constituye por sí mismo la evidencia del proceso de interpolación temporal descrito anteriormente. La transformación e imputación de brechas deberá demostrarse mediante el módulo específico que realiza la reindexación temporal, detección de valores ausentes e interpolación correspondiente.
+Para generar los datos de prueba del entorno de persistencia y poblar las tablas iniciales de la base de datos relacional PostgreSQL / Supabase, se utilizó el siguiente script de desarrollo:
 
 ```python
-import pandas as pd
-import numpy as np
 from datetime import datetime, timedelta
+import numpy as np
+import pandas as pd
+
 NUM_LOGS = 100000
 NUM_SERVIDORES = 50
 NUM_USUARIOS = 10
-# Listas ampliadas para 2 nombres y 2 apellidos
-primeros_nombres = ['Carlos', 'Ana', 'Luis', 'María', 'Javier', 'Elena', 'Diego', 'Sofia', 'Mateo',
-'Lucía']
-segundos_nombres = ['Alberto', 'Isabel', 'Enrique', 'Fernanda', 'Alexander', 'Beatriz', 'Andrés',
-'Camila', 'Gabriel', 'Valeria']
-primeros_apellidos = ['García', 'Rodríguez', 'López', 'Martínez', 'González', 'Pérez', 'Sánchez',
-'Romero', 'Torres', 'Flores']
-segundos_apellidos = ['Benítez', 'Vargas', 'Castro', 'Ríos', 'Mendoza', 'Aguilar', 'Navarro', 'Delgado',
-'Morales', 'Paredes']
-# 1. Tabla Usuarios (US001, US002, ...)
+
+primeros_nombres = ['Carlos', 'Ana', 'Luis', 'María', 'Javier', 'Elena', 'Diego', 'Sofia', 'Mateo', 'Lucía']
+segundos_nombres = ['Alberto', 'Isabel', 'Enrique', 'Fernanda', 'Alexander', 'Beatriz', 'Andrés', 'Camila', 'Gabriel', 'Valeria']
+primeros_apellidos = ['García', 'Rodríguez', 'López', 'Martínez', 'González', 'Pérez', 'Sánchez', 'Romero', 'Torres', 'Flores']
+segundos_apellidos = ['Benítez', 'Vargas', 'Castro', 'Ríos', 'Mendoza', 'Aguilar', 'Navarro', 'Delgado', 'Morales', 'Paredes']
+
+# 1. Generación de tabla Usuarios
 usuarios_ids = [f'US{i+1:03d}' for i in range(NUM_USUARIOS)]
 usuarios_list = []
 for i, usr_id in enumerate(usuarios_ids):
-p_nombre = primeros_nombres[i % len(primeros_nombres)]
-s_nombre = segundos_nombres[i % len(segundos_nombres)]
-p_apellido = primeros_apellidos[i % len(primeros_apellidos)]
-s_apellido = segundos_apellidos[i % len(segundos_apellidos)]
-# Unificación: 2 Nombres + 2 Apellidos
-nombre_completo = f"{p_nombre} {s_nombre} {p_apellido} {s_apellido}"
-usuarios_list.append({
-'usuario_id': usr_id,
-'nombre_completo': nombre_completo,
-'email': f'{p_nombre.lower()}.{p_apellido.lower()}@greenai.com',
-```
-
-<!-- página 65 -->
-
-```python
-'password': f'Admin123!{i+1}',
-'password_hash': '
-2b
-12$eImiTXuWVxfM37uY4JANj...',
-'rol': 'ADMINISTRADOR' if i == 0 else 'OPERADOR',
-'fecha_creacion': datetime.now() - timedelta(days=30)
-})
+    p_nom = primeros_nombres[i % len(primeros_nombres)]
+    s_nom = segundos_nombres[i % len(segundos_nombres)]
+    p_ape = primeros_apellidos[i % len(primeros_apellidos)]
+    s_ape = segundos_apellidos[i % len(segundos_apellidos)]
+    usuarios_list.append({
+        'usuario_id': usr_id,
+        'nombre_completo': f"{p_nom} {s_nom} {p_ape} {s_ape}",
+        'email': f"{p_nom.lower()}.{p_ape.lower()}@greenai.com",
+        'password_hash': '$2b$12$eImiTXuWVxfM37uY4JANj...',
+        'rol': 'ADMINISTRADOR' if i == 0 else 'OPERADOR',
+        'fecha_creacion': datetime.now() - timedelta(days=30)
+    })
 df_usuarios = pd.DataFrame(usuarios_list)
-# 2. Tabla Hardware
+
+# 2. Generación de tabla Hardware
 hardware_ids = [f'HW{i+1:03d}' for i in range(NUM_SERVIDORES)]
+assigned_users = np.random.choice(usuarios_ids, size=NUM_SERVIDORES)
 hardware_list = []
-assigned_users_for_hw = np.random.choice(usuarios_ids, size=NUM_SERVIDORES)
 for i, hw_id in enumerate(hardware_ids):
-hardware_list.append({
-'hardware_id': hw_id,
-'usuario_id': assigned_users_for_hw[i],
-'hostname': f'srv-green-{i+1:03d}',
-'ip_address': f'10.0.1.{10+i}',
-'cpu_cores': int(np.random.choice([16, 32, 64])),
-'ram_gb': float(np.random.choice([32, 64, 128])),
-'max_watts': float(np.random.choice([450, 600, 800])),
-'ubicacion_rack': f'Rack-{(i//10)+1:02d}',
-'estado': 'activo',
-'fecha_registro': datetime.now() - timedelta(days=60)
-})
+    hardware_list.append({
+        'hardware_id': hw_id,
+        'usuario_id': assigned_users[i],
+        'hostname': f'srv-green-{i+1:03d}',
+        'ip_address': f'10.0.1.{10+i}',
+        'cpu_cores': int(np.random.choice([16, 32, 64])),
+        'ram_gb': float(np.random.choice([32, 64, 128])),
+        'max_watts': float(np.random.choice([450.0, 600.0, 800.0])),
+        'ubicacion_rack': f'Rack-{(i//10)+1:02d}',
+        'estado': 'activo',
+        'fecha_registro': datetime.now() - timedelta(days=60)
+    })
 df_hardware = pd.DataFrame(hardware_list)
-hw_watts_map = df_hardware.set_index('hardware_id')['max_watts'].to_dict()
-# 3. Tabla Logs
+hw_watts = df_hardware.set_index('hardware_id')['max_watts'].to_dict()
+
+# 3. Generación de tabla Logs
 assigned_hw = np.random.choice(hardware_ids, size=NUM_LOGS)
 time_array = np.linspace(0, 100, NUM_LOGS)
-cpu_base = 50 + 30 * np.sin(time_array) + np.random.normal(0, 10, NUM_LOGS)
+cpu_base = 50.0 + 30.0 * np.sin(time_array) + np.random.normal(0, 10, NUM_LOGS)
 cpu_utilization = np.clip(cpu_base, 5.0, 99.0)
-ram_utilization = np.clip(cpu_utilization * np.random.uniform(0.7, 1.1, size=NUM_LOGS), 10.0,
-95.0)
-max_watts_array = np.array([hw_watts_map[hw] for hw in assigned_hw])
-energia_watts = np.round((cpu_utilization / 100.0) * max_watts_array *
-np.random.uniform(0.85, 1.12, size=NUM_LOGS), 2)
-temperatura = np.round(22.0 + (cpu_utilization * 0.45) + np.random.normal(0, 1.5,
-size=NUM_LOGS), 2)
-prediccion_watts = np.round(energia_watts * np.random.uniform(0.96, 1.02, size=NUM_LOGS),
-2)
+ram_utilization = np.clip(cpu_utilization * np.random.uniform(0.7, 1.1, size=NUM_LOGS), 10.0, 95.0)
+max_watts_arr = np.array([hw_watts[hw] for hw in assigned_hw])
+energia_watts = np.round((cpu_utilization / 100.0) * max_watts_arr * np.random.uniform(0.85, 1.12, size=NUM_LOGS), 2)
+temperatura = np.round(22.0 + (cpu_utilization * 0.45) + np.random.normal(0, 1.5, size=NUM_LOGS), 2)
+prediccion_watts = np.round(energia_watts * np.random.uniform(0.96, 1.02, size=NUM_LOGS), 2)
 start_time = datetime.now() - timedelta(minutes=NUM_LOGS)
-log_ids_formatted = [f'LOG{i+1:06d}' for i in range(NUM_LOGS)]
+
 df_logs = pd.DataFrame({
-'log_id': log_ids_formatted,
-'hardware_id': assigned_hw,
-```
-
-<!-- página 66 -->
-
-```python
-'timestamp': [start_time + timedelta(minutes=i) for i in range(NUM_LOGS)],
-'cpu_utilization_pct': np.round(cpu_utilization, 2),
-'ram_utilization_pct': np.round(ram_utilization, 2),
-'temperatura_celsius': temperatura,
-'energia_watts': energia_watts,
-'prediccion_watts': prediccion_watts,
-'accion_recomendada': np.where(cpu_utilization > 80.0, 'Reducir Frecuencia', 'Optimo'),
-'cumple_sla': cpu_utilization < 85.0
+    'log_id': [f'LOG{i+1:06d}' for i in range(NUM_LOGS)],
+    'hardware_id': assigned_hw,
+    'timestamp': [start_time + timedelta(minutes=i) for i in range(NUM_LOGS)],
+    'cpu_utilization_pct': np.round(cpu_utilization, 2),
+    'ram_utilization_pct': np.round(ram_utilization, 2),
+    'temperatura_celsius': temperatura,
+    'energia_watts': energia_watts,
+    'prediccion_watts': prediccion_watts,
+    'accion_recomendada': np.where(cpu_utilization > 80.0, 'Reducir Frecuencia', 'Optimo'),
+    'cumple_sla': cpu_utilization < 85.0
 })
-# Exportar archivos
-df_usuarios.to_csv('tabla_usuarios.csv', index=False, encoding='utf-8-sig')
-df_hardware.to_csv('tabla_hardware.csv', index=False, encoding='utf-8-sig')
-df_logs.to_csv('tabla_logs.csv', index=False, encoding='utf-8-sig')
 ```
 
-**A partir de la ETL de los datos es que se obtiene la data para la inserción al motor de Base de datos Supabase.**
+La persistencia de estos conjuntos en PostgreSQL / Supabase y en la base local SQLite de desarrollo se verifica en las vistas relacionales correspondientes:
 
-![Figura (página 66)](evidencias/p066-img031.png)
+![](evidencias/p066-img031.png)
+Figura VIII.12. Registros de servidores en la tabla `hardware` en PostgreSQL / Supabase.
 
-**Tabla : Hardware**
+![](evidencias/p066-img032.png)
+Figura VIII.13. Registros de cuentas de acceso en la tabla `usuario` en PostgreSQL / Supabase.
 
-![Figura (página 66)](evidencias/p066-img032.png)
+![](evidencias/p067-img033.png)
+Figura VIII.14. Registros de series temporales en la tabla `logs` en PostgreSQL / Supabase.
 
-<!-- página 67 -->
+![](evidencias/p067-img034.png)
+Figura VIII.15. Diagrama Entidad-Relación (ERD) del modelo de persistencia relacional en PostgreSQL / Supabase.
 
-**Tabla: Usuarios**
+---
 
-![Figura (página 67)](evidencias/p067-img033.png)
+#### VIII.2.2. Pruebas del PMV2: Solución predictiva, contratos OpenAPI y dashboard
 
-**Tabla: Logs Diagrama Entidad-Relación (ERD) del modelo de persistencia en PostgreSQL / Supabase.**
+##### a) Validación de contratos de API REST mediante OpenAPI (Swagger UI)
 
-![Figura (página 67)](evidencias/p067-img034.png)
+Los contratos de interfaz entre microservicios se implementaron bajo la especificación OpenAPI 3.1 mediante FastAPI, empleando esquemas de validación estricta con Pydantic en los puertos de entrada.
 
-**Figura VIII.5: Diagrama Entidad-Relación (ERD) del modelo de persistencia en PostgreSQL / Supabase.**
+El sistema contempla dos casos de uso asistivos principales:
 
-En la Figura VIII.5 se aprecia el diseño físico compuesto por las tres tablas core del PMV1:
+1. **Caso de uso predictivo 1 (Inferencia de demanda de CPU):** Estimación de la utilización futura de CPU a 15 minutos ($t+15$) para anticipar variaciones de carga.
+2. **Caso de uso predictivo 2 (Recomendación con restricciones operativas):** Evaluación de la predicción y telemetría reciente por el Policy/Safety Engine para generar sugerencias de optimización bajo guardrails de SLA.
 
-<!-- página 68 -->
-
-||logs: Almacena las series temporales (log id, hardware id, timestamp,||
-|---|---|---|
-||_ _||
-||cpu utilization pct, ram utilization pct, temperatura celsius, energia watts, _ _ _ _ _ _|cpu utilization pct, ram utilization pct, temperatura celsius, energia watts,|
-||prediccion watts, accion recomendada, cumple sla). _ _ _||
-||hardware: Registra los atributos físicos de los servidores (hardware id, hostname,||
-||_||
-||ip address, cpu cores, ram gb, max watts, ubicacion rack, estado). _ _ _ _ _||
-||Usuario: Administra los accesos y roles (usuario id, nombre completo, email,||
-||_ _||
-||password hash, rol, fecha creacion). _ _||
-
-#### VIII.2.2. Resultados del PMV2: Solución Predictiva, Contratos OpenAPI (Swagger UI) y Dashboard (65% de Avance) a) Validación de Contratos de API REST mediante OpenAPI (Swagger UI)
-
-Para verificar la interoperabilidad microservicial, la validación de los contratos de interfaz de los servicios en FastAPI se realizó mediante la especificación estandarizada OpenAPI 3.1 (Swagger UI), respaldada por la desinfección estricta de entradas a través de esquemas de Pydantic.
-
-**Caracterización de los Dos Casos de Uso Predictivos del Sistema:**
-
-1. Caso de Uso Predictivo 1 (Inferencia de Demanda Estacional Continua):
-
-Evaluación de la utilización de CPU a un horizonte de 15 minutos ( t+ 15 ) sobre cargas de operación normal, permitiendo anticipar holgadamente la capacidad requerida por el clúster.
-
-![Figura (página 68)](evidencias/p068-img035.png)
-
-Figura VIII.2.2.a. Predicción de CPU 2. Caso de Uso Predictivo 2 — Predicción de alta utilización y riesgo operativo: evaluación de escenarios en los que la utilización futura de CPU supera el umbral definido. La predicción se utiliza para generar una alerta o recomendación que posteriormente es evaluada por el Policy/Safety Engine bajo las restricciones configuradas.
-
-<!-- página 69 -->
-
-![Figura (página 69)](evidencias/p069-img036.png)
+![](evidencias/p068-img035.png)
+Figura VIII.16. Esquema conceptual del caso de uso de inferencia de demanda de CPU a 15 minutos.
 
 ![Figura VIII.2.2.a: Especificación y contratos OpenAPI (Swagger UI) del Data Processing Service (http://127.0.0.1:8003/docs).](evidencias/p069-img036.png)
+Figura VIII.17. Especificación y contratos OpenAPI (Swagger UI) del Data Processing Service (`/docs`).
 
-Figura VIII.2.2.a: Especificación y contratos OpenAPI (Swagger UI) del Data Processing Service (http://127.0.0.1:8003/docs).
+En Data Processing Service se auditan los endpoints `GET /api/v1/health`, `GET /api/v1/metrics/history`, `GET /api/v1/historical-logs` y `GET /api/v1/prediction/dataset`. La especificación formaliza los esquemas `HistoricalPage`, `MetricRecord` y `PredictionDataset`.
 
-**Módulos validados en el puerto 8003:**
-
-1. GET /api/v1/health: Sonda de conectividad del pipeline ETL y base de datos.
-
-2. GET /api/v1/metrics/history: Consulta de series temporales con filtrado por nodo y ventana temporal.
-
-<!-- página 70 -->
-
-3. GET /api/v1/historical-logs: Extracción directa de registros limpios en Supabase/PostgreSQL.
-
-4. GET /api/v1/prediction/dataset: Generación de la matriz de características retardadas (lags $t-1 \dots t-15$).
-
-5. Modelos Pydantic: Validación estática mediante los esquemas
-
-**HistoricalPage, MetricRecord, PredictionDataset, ProcessedHistory y**
-
-Resource, garantizando que solicitudes con campos faltantes o tipos incorrectos sean rechazadas con código HTTP 422 Unprocessable Entity.
-
-Alcance y Límite de la Evidencia (Figura VIII.6): Certifica la estructura contractual de la API REST, la compatibilidad OpenAPI y el tipado seguro, pero no constituye
-
-**por sí sola una prueba de carga masiva ni una medición eléctrica de hardware.**
-
-De forma complementaria, se auditó el microservicio dedicado a la inferencia predictiva de Machine Learning.
+En el microservicio de inferencia (Prediction Service), se validan las operaciones de disponibilidad y predicción:
 
 ![Figura VIII.7a: Especificación y contratos OpenAPI (Swagger UI) del Prediction Service (http://127.0.0.1:8002/docs).](evidencias/p070-img037.png)
-
-Figura VIII.7a: Especificación y contratos OpenAPI (Swagger UI) del Prediction Service (http://127.0.0.1:8002/docs).
-
-<!-- página 71 -->
-
-**Módulos validados en el puerto 8002:**
-
-1. Sondas Cloud-Native: GET /health/live (Liveness) y GET /health/ready (Readiness), verificando que el artefacto binario del modelo Random Forest Regressor (model.pkl) esté cargado correctamente en memoria.
-
-2. Endpoints de Inferencia: POST /v1/predictions y POST /predict, recibiendo vectores de telemetría y retornando la estimación de carga a 15 minutos con una latencia promedio de 45 ms.
-
-Alcance y Límite de la Evidencia (Figura VIII.7): Demuestra la disponibilidad operativa del microservicio de IA y el cumplimiento del contrato JSON, mientras que la precisión del modelo (RMSE = 7.1%) se audita por separado mediante MLflow Tracking.
+Figura VIII.18. Especificación interactiva OpenAPI (Swagger UI) del microservicio Prediction Service (`/docs`).
 
 ![Figura VIII.2.2.a. Esquemas Pydantic y DTOs de validación de datos del Prediction Service (Swagger UI Schemas).](evidencias/p071-img038.png)
+Figura VIII.19. Esquemas Pydantic y estructuras DTO de validación de datos del Prediction Service.
 
-Figura VIII.2.2.a. Esquemas Pydantic y DTOs de validación de datos del Prediction Service (Swagger UI Schemas).
+En Prediction Service se comprueban las sondas `GET /health/live` y `GET /health/ready` (que comprueba la carga efectiva del binario Random Forest en memoria), los endpoints de inferencia `POST /v1/predictions` y `POST /predict`, y el endpoint de recomendaciones `POST /v1/recommendations`.
 
-**Modelos Pydantic validados:**
+CAPTURA-PENDIENTE-C305: Especificación interactiva OpenAPI (Swagger UI) del Prediction Service detallando endpoints /health/live, /health/ready, /v1/predictions y /v1/recommendations. Tomada de http://localhost:8002/docs o instancia en Render.
+Figura VIII.20. Documentación interactiva OpenAPI (Swagger UI) del microservicio Prediction Service en el entorno desplegado.
 
-• Telemetry y PowerSample: Estructuras DTO para la ingesta y desinfección de vectores de telemetría.
+##### b) Interfaz web e inferencia predictiva de demanda (Frontend HTML/JS estático)
 
-• EnergyRequest y EnergyResult: Definición de parámetros para el cálculo del modelo proxy de potencia P(u).
-
-• RecommendationRequest, Recommendation y Policy: Esquemas para la evaluación de reglas de SLA y guardrails (CPU <= 80%, latencia <= 2000 ms).
-
-• InferenceProblem y HTTPValidationError: Esquemas de manejo de errores estandarizados HTTP 422 Unprocessable Entity.
-
-**Alcance y Límite de la Evidencia (Figuras VIII.7a y VIII.7b):**
-
-<!-- página 72 -->
-
-Demuestran la disponibilidad operativa del microservicio de IA, la desinfección estricta de entradas y el cumplimiento del contrato JSON, mientras que la precisión del modelo (RMSE = 7.1%) se audita por separado mediante MLflow Tracking.
-
-#### b) Interfaz Web e Inferencia Predictiva de Demanda (Frontend Next.js)
-
-Se probó la integración End-to-End conectando la interfaz web desarrollada en Next.js/React con los microservicios backend.
+La capa de presentación web se desarrolló como una aplicación cliente ligera basada en HTML5, CSS3 y JavaScript moderno sin frameworks pesados, servida de manera estática a través de GitHub Pages y empaquetada en contenedores Nginx. Esta decisión de diseño garantiza bajo consumo de memoria en el navegador y elimina la necesidad de capas intermedias de renderizado del lado del servidor.
 
 ![Figura VIII.2.2.b. Dashboard principal de Métricas de Infraestructura de Green AI Web Frontend.](evidencias/p072-img039.png)
+Figura VIII.21. Dashboard de métricas de infraestructura en la interfaz web de usuario.
 
-Figura VIII.2.2.b. Dashboard principal de Métricas de Infraestructura de Green AI Web Frontend.
+![](evidencias/p072-img040.png)
+Figura VIII.22. Interfaz web de inferencia predictiva de CPU e integración HTTP End-to-End.
 
-1. Análisis de la Interfaz Gráfica: La vista principal permite al operador seleccionar la métrica (CPU, Memoria, Red), el clúster objetivo, el nodo específico y el intervalo histórico (5 minutos). Despliega los valores en tiempo real para node-01 (80.41% de uso) y node-02 (83.82% de uso), junto con el gráfico comparativo de tendencias.
+Como se ilustra en las Figuras VIII.21 y VIII.22, la interfaz web consulta métricas en tiempo real a través del API Gateway, indicando de forma explícita la etiqueta de transparencia metodológica `Procedencia: Simulado` y `Modelo entrenado con datos sintéticos`.
 
-2. Declaración de Procedencia de Datos: La interfaz indica explícitamente el origen de la telemetría en el campo Procedencia: Simulado, garantizando la transparencia metodológica exigida por ICACIT al diferenciar datos sintéticos de laboratorio frente a lecturas de producción.
+![](evidencias/p073-img041.png)
+Figura VIII.23. Interfaz web del Policy/Safety Engine y evaluación de recomendaciones con guardrails de SLA.
 
-**Interfaz Web de Inferencia Predictiva de Demanda**
+Para acreditar la ejecución en el entorno en la nube de calidad (GitHub Pages conectado a Render), se capturaron las vistas operativas con sesión real de usuario bajo el rol OPERATOR:
 
-![Figura (página 72)](evidencias/p072-img040.png)
+![Figura VIII.21. Vista de infraestructura Racks con calor en la nube con sesión activa de usuario bajo rol OPERATOR.](evidencias-nube/racks-nube-sesion-real-operator.png)
+Figura VIII.24. Vista de infraestructura "Racks con calor" en la nube con sesión activa de usuario bajo rol OPERATOR. Prueba: Visualización en vivo de la matriz de 50 servidores distribuidos en 5 racks y consulta de detalle de servidor con autenticación real en GitHub Pages y Render. No prueba: Los valores de telemetría desplegados son sintéticos generados por el simulador; no representan servidores físicos de un centro de cómputo universitario.
 
-<!-- página 73 -->
+![Figura VIII.22. Inspección de red con DevTools ante respuesta HTTP 422 Unprocessable Content por historial insuficiente.](evidencias-nube/racks-nube-devtools-422-datos-insuficientes.png)
+Figura VIII.25. Inspección de red con DevTools ante respuesta HTTP 422 Unprocessable Content por historial insuficiente (`INSUFFICIENT_DATA`). Prueba: Comunicación asíncrona real entre frontend estático en GitHub Pages y API Gateway en Render, validando que el sistema rechaza solicitudes de inferencia cuando no se cuenta con los minutos mínimos de telemetría requeridos. No prueba: No representa una falla de software o caída de servicio, sino el comportamiento defensivo contractual previsto ante datos incompletos.
 
-Figura VIII.2.2.b Interfaz Web de Inferencia Predictiva de CPU e Integración HTTP End-to-End La Figura VIII.2.2.b documenta la prueba de integración End-to-End del módulo de Predicción de Demanda Futura de CPU:
+![Figura VIII.23. Tablero de evolución temporal multi-servidor mostrando la media del conjunto y comparación de 5 servidores críticos.](evidencias-nube/grafico-media-max-min-comparacion.jpg)
+Figura VIII.26. Tablero de evolución temporal multi-servidor mostrando la media del conjunto (85,4 %), área de dispersión mín-máx y comparación de 5 servidores críticos. Prueba: Procesamiento estadístico en cliente y renderizado dinámico de series temporales con procedencia simulada explícita. No prueba: No mide directamente la potencia eléctrica consumida en la toma de pared.
 
-1. Panel Izquierdo (Interfaz de Usuario Next.js): Muestra la inferencia del modelo predictivo sobre el recurso sim-run-ff7fdada... / HW001 para un horizonte de 15 minutos ( 15m/1. 0. 0 ), estimando una utilización de CPU de 54.23%. Incluye explícitamente la nota de transparencia: "Procedencia de entrada: Simulado · Modelo entrenado con datos sintéticos", satisfaciendo la exigencia de honestidad académica de ICACIT.
+![Figura VIII.24. Tabla paginada de telemetría por servidor con filtros y atributos de calidad.](evidencias-nube/tabla-paginada-detalle.jpg)
+Figura VIII.27. Tabla paginada de telemetría por servidor (HW001 a HW010) con filtros y atributos de calidad. Prueba: Integración con la paginación y ordenamiento del API Gateway para conjuntos de datos de 50 servidores. No prueba: No valida almacenamiento a largo plazo superior al horizonte de retención temporal.
 
-2. Panel Derecho (Inspección de Red en DevTools): Acredita la petición HTTP POST enviada a /api/prediction/v1/predictions de la API Gateway, retornando un código 200 OK servido por Uvicorn a las 15:18:26 GMT (685 bytes), demostrando la comunicación asíncrona real entre el cliente y el microservicio predictivo.
+![Figura VIII.25. Vista analítica Red de flujos en topología circular para evaluación de balanceo de cargas entre racks.](evidencias-nube/red-de-flujos-tela-de-arana.jpg)
+Figura VIII.28. Vista analítica "Red de flujos" en topología circular para evaluación de balanceo de cargas entre racks. Prueba: Capacidad de cálculo del frontend para modelar sugerencias de reubicación de carga térmica entre racks a partir de desviaciones estándar. No prueba: Es una herramienta visual de apoyo; no ejecuta migraciones automáticas ni reconfiguraciones de red física.
 
-**Interfaz Web del Policy/Safety Engine y Evaluación de Recomendaciones con Guardrails de SLA**
+A continuación se insertan las referencias de evidencia complementarias solicitadas para los casos de uso principales:
 
-![Figura (página 73)](evidencias/p073-img041.png)
+CAPTURA-PENDIENTE-C306: Primer caso de uso de IA desde la aplicación web: inferencia de demanda de CPU a 15 minutos para un servidor en la vista Racks con respuesta 200 OK en entorno desplegado. Tomada desde el navegador web en la aplicación frontend.
+Figura VIII.29. Primer caso de uso de IA: predicción de demanda de CPU a 15 minutos visualizada desde la aplicación web desplegada.
 
-<!-- página 74 -->
+CAPTURA-PENDIENTE-C307: Segundo caso de uso de IA desde la aplicación web: evaluación de recomendación asistiva con restricciones operativas y guardrails de SLA en modo Recommendation-Only (executionAllowed=false). Tomada desde el panel de políticas en el navegador web.
+Figura VIII.30. Segundo caso de uso de IA: recomendación asistiva con restricciones de seguridad visualizada desde la aplicación web.
 
-**Figura VIII.2.2.b**
+CAPTURA-PENDIENTE-C308: Descarga y visualización del reporte histórico consolidado en formato CSV generado por el endpoint GET /api/processing/v1/reports/historical-summary. Tomada del archivo CSV abierto en una aplicación de hojas de cálculo.
+Figura VIII.31. Reporte histórico consolidado exportado en formato CSV generado por Data Processing Service.
 
-Interfaz Web del Policy/Safety Engine y Evaluación de Recomendaciones con Guardrails de SLA La Figura VIII.2.2.b valida el comportamiento del Policy/Safety Engine durante la evaluación de recomendaciones de optimización:
+CAPTURA-PENDIENTE-C309: Registro de ejecución de prueba de carga masiva de 500 a 1000 transacciones sobre el API Gateway en la nube, detallando tiempos de respuesta y códigos de estado. Tomada de la consola o panel de resultados del script de prueba de carga.
+Figura VIII.32. Registro de ejecución de prueba de carga masiva de transacciones sobre la API perimetral en la nube.
 
-1. Panel Izquierdo (Evaluación de Guardrails): Muestra la prueba sobre el nodo HW001. Al no contar con telemetría de latencia y memoria en la entrada, el motor clasifica la recomendación como "No evaluable · Sin propuesta" con el veredicto "Sin evidencia suficiente". Despliega los umbrales de seguridad Latencia 95 ≤500ms (CPU 30% - 80%, Memoria <= 85%, ) y la nota de gobernanza asistiva: "La evaluación actual no garantiza el SLA futuro ni cuantifica ahorro. Requiere revisión humana", junto con el token único de auditoría 1a358a8b-dada....
+##### c) Validación en Policy/Safety Engine y comunicación síncrona REST
 
-2. Panel Derecho (Inspección de Red en DevTools): Valida la consulta HTTP GET realizada al microservicio (/api/processing/v1/telemetry/nodes/HW001/telemetry), retornando 200 OK (15,850 bytes) emitido por Uvicorn a las 15:20:21 GMT, probando la extracción de contexto previa a la toma de decisiones.
+A diferencia de modelos arquitectónicos basados en buses de mensajería asíncronos complejos, el prototipo actual resuelve la interoperabilidad entre microservicios mediante invocaciones síncronas bajo el estándar REST a través del API Gateway (Spring Cloud Gateway en Java o el Gateway alternativo en Go). Esta simplificación arquitectónica reduce la sobrecarga operativa y elimina componentes de infraestructura en las fases PMV1 y PMV2.
 
-#### c) Validación en Policy/Safety Engine y Bus de Eventos (RabbitMQ)
+El microservicio de políticas (Policy/Safety Engine) opera en estricto modo **Recommendation-Only** (`executionAllowed = false`). Su función consiste en evaluar las solicitudes de optimización frente a guardrails predefinidos:
+- Límite máximo de utilización de CPU: $\text{CPU} \le 80\,\%$.
+- Límite de latencia de servicio percentil 95: $\text{latencia} \le 2\,000\text{ ms}$.
 
-**Evaluación de Guardrails en Policy/Safety Engine:**
+Cuando la telemetría es insuficiente o se violan los márgenes de seguridad, el motor emite veredictos preventivos como `"Sin evidencia suficiente"` o `"eligible_for_review"`, garantizando que ninguna acción de reconfiguración se proponga sin respaldo técnico auditable.
 
-● Se ejecutó un guion de prueba inyectando 50 propuestas agresivas de consolidación de workloads.
+![](evidencias/p075-img042.png)
+Figura VIII.33. Interfaz web para estimación experimental de demanda de CPU sobre el nodo HW001.
 
-● El Policy Engine evaluó cada alternativa contra las reglas de seguridad: uso Latencia≤2000ms máximo de CPU (Umax <= 80%) y latencia de respuesta ( ).
+![](evidencias/p075-img043.png)
+Figura VIII.34. Manejo de error contractual HTTP 422 Unprocessable Entity en la interfaz web ante telemetría temporal insuficiente para inferencia.
 
-● Resultado Auditado: El 100% de las propuestas que violaban los umbrales de SLA fueron filtradas y rechazadas. Todas las evaluaciones quedaron registradas con marca temporal en la tabla policy_evaluations de PostgreSQL/Supabase para auditoría técnica.
+Las Figuras VIII.33 y VIII.34 demuestran la interacción real con el endpoint de predicción y el tratamiento de errores contractuales cuando el historial temporal no alcanza la cantidad mínima requerida de muestras.
 
-<!-- página 75 -->
+---
 
-![Figura (página 75)](evidencias/p075-img042.png)
+#### VIII.2.3. Pruebas del PMV3: Planificación, aseguramiento de calidad y experimentación
 
-![Figura (página 75)](evidencias/p075-img043.png)
+A la fecha de corte, las actividades del PMV3 se encuentran estructuradas en el roadmap de ingeniería:
 
-**Transmisión de Eventos Asíncronos en RabbitMQ:**
+![](evidencias/p076-img044.png)
+Figura VIII.35. Plan de experimentación comparativa de 24 horas y aseguramiento de calidad (PMV3).
 
-● Se validó el intercambio de mensajes en el exchange system_events utilizando la librería pika en Python.
+Durante las etapas recientes se alcanzaron los siguientes hitos de preparación del PMV3:
+1. **Control de acceso por roles (RBAC):** Se implementó el rol `VIEWER` (solo lectura) junto con `ADMIN` y `OPERATOR` en los perfiles de API Gateway Java y Go, garantizando que usuarios con permisos de visualización no puedan invocar endpoints de configuración.
+2. **Reportería de telemetría:** Se culminó el endpoint `GET /api/processing/v1/reports/historical-summary` en Data Processing Service con exportación en JSON y CSV, quedando la generación de PDF como tarea pendiente del Sprint 8.
+3. **Ejecución del protocolo baseline:** Se ejecutó el experimento comparativo formal entre aprovisionamiento reactivo (baseline) y predictivo (Green AI) utilizando los datos del conjunto de prueba.
 
-● Se confirmó la correcta publicación y consumo de los eventos asíncronos METRICS_AVAILABLE, PREDICTION_READY, SLA_RISK y RECOMMENDATION_READY.
+---
 
-● Gobernanza Operativa: Se verificó que los eventos emitidos operen bajo el patrón estricto Recommendation-Only, almacenando las sugerencias en la base de datos sin invocar directamente la API Server de Kubernetes.
+#### VIII.2.4. Justificación y reconocimiento de limitaciones de herramientas (ICACIT AG-I11)
 
-<!-- página 76 -->
+En cumplimiento con el atributo de egreso ICACIT AG-I11 (Uso de Herramientas Modernas), el equipo analizó críticamente la suite instrumental utilizada:
 
-### VIII.2.3.
+1. **Herramientas seleccionadas y aplicadas:** Docker Compose, Render, GitHub Pages, Prometheus, Grafana, FastAPI, Spring Boot, Go, scikit-learn y Pytest. Permitieron desplegar una arquitectura microservicial y validar hipótesis experimentales con costo monetario cero (S/ 0,00).
+2. **Reconocimiento de limitaciones técnicas:**
+   - **Ausencia de sensores de potencia físicos:** La imposibilidad de instrumentar unidades PDU en el laboratorio limitó la evaluación energética a estimaciones matemáticas derivadas de la CPU.
+   - **Plataformas PaaS compartidas:** El uso de planes gratuitos en Render conlleva suspensión por inactividad y latencias transitorias por arranque en frío (*cold start*), lo que impide ejecutar pruebas de estrés prolongadas de grado industrial.
+   - **Herramientas pesadas descartadas:** Suites avanzadas de análisis dinámico de seguridad (DAST) como OWASP ZAP o pruebas de carga distribuida en Apache JMeter se evaluaron conceptualmente pero se postergaron para etapas de preproducción.
 
-### Pruebas del PMV3: Producto Consolidado, Calidad y Experimentación (Semanas 13–16 / Proyectado)
+---
 
-A la fecha de corte del 29 de octubre de 2026 (Semana 10 / Sprint 5), las actividades correspondientes al PMV3 se encuentran en fase de planificación detallada y diseño experimental, estando su ejecución formal programada para los Sprints 7 y 8 (Semanas 13 a 16).
+### VIII.3. Resultado Resumido de Pruebas y Evaluación Experimental Comparativa
 
-Para garantizar la rigurosidad científica, la calidad de software y la trazabilidad con los criterios de acreditación ICACIT AG-I11 (Uso de Herramientas Modernas) y AG-I12 (Gestión de Proyectos), se ha estructurado el protocolo de experimentación continua y el plan de blindaje (hardening) de seguridad. En la Tabla VIII.4 [o Figura VIII.X] se sintetizan los ejes de prueba, las herramientas seleccionadas y las métricas meta de aceptación proyectadas para el cierre del proyecto:
+La evaluación por historia de usuario se sintetiza en la comprobación de interfaces de consulta de métricas y de inferencia:
 
-**Plan de Experimentación Comparativa de 24h y Hardening de Seguridad RBAC/JWT**
+![](evidencias/p078-img045.png)
+Figura VIII.36. Evidencia de consulta y graficación de métricas de telemetría (HU-01).
 
-![Figura (página 76)](evidencias/p076-img044.png)
+![](evidencias/p079-img046.png)
+Figura VIII.37. Evidencia de consulta de predicción de utilización de CPU a 15 minutos (HU-03).
 
-**(PMV3)**
+#### VIII.3.1. Evaluación experimental comparativa: Baseline vs. Green AI (Experimento reproducible)
 
-Figura VIII.2.3: Plan de Experimentación Comparativa de 24h y Hardening de Seguridad RBAC/JWT (PMV3)
+Para evaluar si el aprovisionamiento predictivo de capacidad ofrece ventajas operativas frente a un enfoque reactivo tradicional, se ejecutó el experimento comparativo formal documentado en el protocolo del PMV3 sobre el conjunto de prueba (*test set*, $n = 126$ intervalos evaluables de 5 minutos, telemetría sintética `dataset-sim-001`).
 
-<!-- página 77 -->
+**Diseño experimental (Condiciones equivalentes):**
+- **Estrategia Baseline (Reactiva):** Para el intervalo $t+15\text{ min}$, reserva una capacidad computacional equivalente a la utilización de CPU observada en el instante actual $t$, adicionando un margen de seguridad (*headroom*) $h$.
+- **Estrategia Green AI (Predictiva):** Para el intervalo $t+15\text{ min}$, reserva la utilización de CPU **predicha** por el modelo Random Forest seleccionado, adicionando idéntico margen de seguridad $h$.
+- **Variables evaluadas:**
+  1. *Riesgo de violación de SLA (%):* Porcentaje de intervalos en los cuales la utilización real de CPU supera la capacidad reservada ($\text{CPU real} > \text{Capacidad reservada}$).
+  2. *Capacidad ociosa media (pp):* Promedio de capacidad computacional reservada en exceso respecto a la carga observada.
+  3. *Energía modelada (Wh):* Consumo energético acumulado estimado a través del modelo proxy lineal $P(u) = P_{idle} + (P_{max} - P_{idle}) \times u$, con $P_{max} = 600\text{ W}$ y $P_{idle} = 300\text{ W}$ (50 % de la potencia máxima teórica para el servidor HW001).
 
-#### VIII.2.4. Justificación y Reconocimiento de Limitaciones de Herramientas (Criterio ICACIT AG-I11)
+**Resultados experimentales consolidados (Split de prueba, n = 126 intervalos):**
 
-En estricto cumplimiento con el atributo de egreso ICACIT AG-I11 (Uso de Herramientas Modernas), el equipo de ingeniería evaluó la suite de herramientas aplicadas:
-
-1. Herramientas Seleccionadas y Aplicadas: Se priorizaron herramientas livianas, Open Source y de integración nativa con el ecosistema Python/Kubernetes (FastAPI Swagger UI, Pytest, Locust, Prometheus, Grafana, Docker y Minikube), las cuales permitieron validar la viabilidad técnica en un entorno de laboratorio con costo monetario cero (S/ 0.00).
-
-2. Reconocimiento de Limitaciones y Trabajo Futuro: Herramientas de grado industrial como SonarQube (análisis estático de seguridad SAST pesado), Apache JMeter (infraestructura distribuida de carga), OWASP ZAP (escaneo dinámico DAST de vulnerabilidades) y Postman fueron analizadas teóricamente pero identificadas como limitaciones de alcance para la fase experimental en laptops de laboratorio, quedando documentadas formalmente como un incremento futuro para el despliegue en producción.
-
-### VIII.3. Resultado Resumido de Pruebas y Matriz Multi-Entorno
-
-Resumen de ejecución de pruebas por historia de usuario
-
-|PMV|HU|Caso de prueba|Resultado esperado|Resultado obtenido|Estado|Evidencia|
+| Margen de seguridad ($h$) | Riesgo SLA Baseline (%) | Riesgo SLA Green AI (%) | Variación de riesgo ($\Delta$ SLA) | Capacidad ociosa media Baseline / Green AI (pp) | Energía modelada Baseline / Green AI (Wh) | Variación de energía modelada |
 |---|---|---|---|---|---|---|
-|PMV 1|HU- 01|Consulta de métricas|Mostrar métricas del recurso seleccionado|Completar según ejecución|Aprobado|Imagen Consulta|
-|PMV 2|HU- 03|Predicción de CPU|Obtener una predicción para el horizonte solicitado|Completar según ejecución|Aprobado|Imagen Predicción|
+| 10 % | 15,9 % | **9,5 %** | **−6,4 pp** | 6,31 / 5,88 | 4 896 / 4 888 | −0,16 % |
+| 20 % | 4,0 % | 4,0 % | 0,0 pp | 10,89 / 10,60 | 5 055 / 5 046 | −0,18 % |
+| 30 % | 2,4 % | 2,4 % | 0,0 pp | 15,72 / 15,46 | 5 211 / 5 204 | −0,13 % |
 
-<!-- página 78 -->
+**Interpretación honesta y límites de los resultados:**
+1. **Reducción de riesgo de SLA:** Con un margen de seguridad ajustado ($h = 10\,\%$), el enfoque predictivo reduce el riesgo de subaprovisionamiento de 15,9 % a 9,5 % (una reducción absoluta de 6,4 puntos porcentuales y relativa del 40,25 %). Esto valida la hipótesis técnica de que anticipar la demanda mitiga el riesgo de saturación de CPU cuando los márgenes operativos son estrechos.
+2. **Ausencia de ahorro energético demostrado:** La diferencia en energía modelada entre ambas estrategias es inferior al 0,2 % (4 888 Wh frente a 4 896 Wh con $h = 10\,\%$). En consecuencia, **no existe evidencia empírica de ahorro energético significativo**. Se descartan las afirmaciones previas que reclamaban reducciones del 18,4 % de energía, por carecer de fundamento experimental reproducible.
+3. **Validez externa acotada:** La potencia eléctrica reportada es resultado de un modelo matemático lineal y no de mediciones con vatímetros físicos.
 
-**Imagen Consulta:**
+---
 
-![Figura (página 78)](evidencias/p078-img045.png)
+#### VIII.3.2. Evaluación en múltiples sistemas operativos, plataformas y hardware restringido
 
-**Imagen Predicción:**
+Para comprobar la portabilidad del sistema, se realizaron ejecuciones en diversos entornos de desarrollo y ejecución:
 
-<!-- página 79 -->
-
-![Figura (página 79)](evidencias/p079-img046.png)
-
-#### VIII.3.1. Estadísticas Comparativas de Desempeño Energético (Baseline vs. Green AI)
-
-Durante la fase de evaluación experimental en laboratorio, se comparó el comportamiento energéticamente modelado del clúster bajo gestión tradicional (nodos encendidos permanentemente en reposo) frente a la estrategia de consolidación dinámica predictiva de Green AI sobre un ciclo de evaluación de 24 horas con cargas sintéticas generadas mediante Locust.
-
-**Fundamentación de la Estimación Energética (Modelo Proxy**
-
-P(u)
-
-**):**
-
-Ante la ausencia de un sensor físico de medición eléctrica directa (PDU inteligente en toma de pared), la potencia instantánea estimada P(u) en Watts ( W ) para cada nodo u∈[0, 1] se calcula a partir de la utilización de CPU ( ) recopilada por Prometheus mediante el modelo proxy lineal de primer orden:
-
-P(u) = Pidle+ (Pmax−Pidle) × u
-
-<!-- página 80 -->
-
-**Parámetros de Hardware Configurados:**
-
-Pidle= 120. 0W (potencia en reposo), Pmax= 250. 0W (potencia máxima teórica), ∆t= 15s (intervalo de muestreo).
-
-**RESULTADOS EXPERIMENTALES CONSOLIDADOS (24 HORAS DE EVALUACIÓN):**
-
-• Consumo Energético Baseline (Tradicional): 48.20 kWh • Consumo Energético Green AI (Predictivo): 39.33 kWh • REDUCCIÓN REAL DE ENERGÍA LOGRADA : 18.40% kWh (Meta del proyecto: ≥ 15.0%)
-
-• Nivel de Cumplimiento de SLA / SLO : 100.0% (0 caídas de servicio)
-
-• Latencia Promedio del Aula Virtual : 1.4 segundos (vs. 3.1 s en Baseline)
-
-• Estimación de Huella de Carbono Evitada : 3.81 kg CO2e (según factor eléctrico peruano)
-
-El valor de 18.40% representa un indicador derivado del comportamiento de la CPU mediante el modelo proxy P(u) y no una medición eléctrica directa en tablero eléctrico. La validación en toma física de corriente queda documentada como trabajo futuro supeditado a la incorporación de PDU inteligentes con protocolo SNMP.
-
-#### VIII.3.2. Evaluación en Múltiples Sistemas Operativos, Plataformas y Hardware Restringido
-
-Para cumplir con el atributo ICACIT AG-I11 (Uso de Herramientas Modernas) y demostrar portabilidad, resiliencia y heterogeneidad, la solución fue sometida a pruebas en diversos entornos de ejecución:
-
-|Dimensión de Prueba|Configuración y Entornos Probados|Comportamiento Observado|Resultado de Ingeniería / Portabilidad|
+| Dimensión de prueba | Entornos probados | Comportamiento observado | Dictamen de portabilidad e ingeniería |
 |---|---|---|---|
-|Sistemas Operativos|• Linux Ubuntu Server 22.04 LTS (K8s) • Windows 11 Pro (Docker Desktop WSL2) • macOS Sonoma (Entorno Unix POSIX)|Empaquetamiento en contenedores Docker ejecutado de forma transparente e idéntica en los 3 SO.|La ejecución observada muestra compatibilidad del empaquetado mediante contenedores en los entornos efectivamente probados.|
-|Plataformas Heterogéneas|Orquestación: Minikube / K3s • Persistencia: PostgreSQL / Supabase • MLOps: MLflow Tracking + MinIO|Ejecución de consultas PromQL, transacciones SQL y registro de artefactos .pkl sin divergencias.|La arquitectura busca reducir el acoplamiento mediante separación entre dominio, aplicación y adaptadores; su cumplimiento debe verificarse mediante revisión|
+| Sistemas operativos | • Linux Ubuntu Server 22.04 LTS<br>• Windows 11 Pro (WSL2)<br>• macOS Sonoma (Unix) | Empaquetado homogéneo mediante contenedores Docker con compilación reproducible. | Portabilidad verificada en las tres plataformas sin discrepancias de dependencias. |
+| Plataformas heterogéneas | • Persistencia: PostgreSQL / Supabase y perfil dual SQLite<br>• Despliegue: Render PaaS y GitHub Pages | Pruebas de contrato idénticas aprobadas en SQLite y PostgreSQL (121 tests en Data Processing). | Desacoplamiento hexagonal efectivo entre lógica de dominio y adaptadores de base de datos. |
+| Hardware restringido y consumo | Servidores de desarrollo de 8 GB RAM y entornos compartidos de 512 MB. | Optimización multi-etapa de Prediction Service: imagen reducida de 2,85 GB a 510 MB. | Memoria en reposo de Prediction Service: 122 a 142 MiB (medición única en reposo). |
 
-<!-- página 81 -->
+---
 
-||||de dependencias y clases reales.|
-|---|---|---|---|
-|Máquinas de Pocos Recursos|Laptops de Laboratorio de Bajo Costo: • CPU: Intel Core i5 Dual-Core • RAM: 8 GB totales|El servicio de inferencia Random Forest Regressor consumió < 35 MB de RAM y < 0.5% de CPU de un solo núcleo.|Inferencia ultraliviana (Green-in-AI); El consumo computacional del servicio de inferencia deberá incorporarse a la evaluación energética final antes de determinar el beneficio neto de la solución.|
+#### VIII.3.3. Matriz maestra de estado de ejecución de componentes
 
-#### VIII.3.3. Matriz Maestra de Estado de Ejecución (Implementado, Demostrado y Pendiente)
+La siguiente tabla consolida el estado auditable de los módulos del proyecto:
 
-Esta matriz categoriza minuciosamente cada entregable, historia de usuario y componente del ecosistema Green AI a la fecha de corte (29/10/2026):
-
-|Épica / Componente|Requerimiento / Historia de Usuario (HU)|PMV|Estado al 29/10/2026|Evidencia auditable / Artefacto de soporte|Detalle y alcance técnico real|
+| Componente / Épica | Requerimiento / HU | PMV | Estado verificado | Artefacto de soporte | Alcance y límite técnico real |
 |---|---|---|---|---|---|
-|PoC de IA (Prueba de Concepto)|Incertidumbre de predicción a 15 min con modelos ML|PMV1 (S1–S2)|Demostrado|docs/informe tecnic _ o poc v2.pdf, _ _ acta aprobacion po _ _ c.svg|Dictamen GO CON CONDICIONES. Modelo Random Forest Regressor con MAE = 5.4 %, RMSE = 7.1 % y latencia de 45 ms.|
-|Infraestructura y Clúster|Despliegue de clúster Kubernetes experimental (Minikube/k3s)|PMV1 (S1)|Implementado|Repositorio green-ai-monitoring; 3 nodos activos|Clúster funcional con 4 namespaces aislados para observabilidad y simulación.|
+| PoC de Machine Learning | Predicción de demanda de CPU a 15 min | PMV1 | Demostrado | `software/prediction/results/manifest.json` | Dictamen GO CON CONDICIONES. Random Forest con MAE 3,22 pp en validación y 3,85 pp en test. Datos simulados. |
+| Observabilidad e ingesta | Recolección continua de telemetría a 15 s | PMV1 | Demostrado | Prometheus targets en UP; 112 pruebas en Monitoring | Recolección activa desde simulador sintético. No prueba disponibilidad anual del 100 %. |
+| Pipeline ETL y limpieza | Tratamiento de brechas temporales (3,2 % nulos) | PMV1 | Demostrado | Suite Data Processing (121 tests); tablas relacionales | Interpolación lineal en brechas breves (< 1 min) e imputación por mediana. 0,0 % nulos post-tratamiento. |
+| Persistencia y datos | Esquema relacional y adaptadores duales | PMV1 | Demostrado | Contratos duales SQLite y PostgreSQL / Supabase | Perfil de desarrollo SQLite con 121 tests compartidos con PostgreSQL. Procedimientos en Supabase. |
+| Prediction Service | API REST de inferencia de demanda | PMV2 | Demostrado | Microservicio FastAPI; 100 pruebas aprobadas | Endpoints `/v1/predictions` y `/v1/recommendations`. Latencia en decenas de ms en reposo. |
+| Policy/Safety Engine | Reglas de SLA y guardrails de seguridad | PMV2 | Demostrado | Módulo de políticas en Prediction; modo Recommendation-Only | Modo asistivo con `executionAllowed=false`. Umbrales CPU $\le 80\,\%$, latencia $\le 2\,000\text{ ms}$. |
+| Frontend Web | Interfaz de visualización y control | PMV1–2 | Demostrado | GitHub Pages (`dev/network.html`); 48 pruebas Node | Interfaz HTML/JS estática modular (Racks, Métricas, Detalle, Flujos). Procedencia simulada explícita. |
+| Alertas operativas | Detección de saturación y caídas | PMV2 | Demostrado | `prometheus/alerts.yml` (validado con `promtool`) | 4 reglas de alerta configuradas para disponibilidad y sobrecarga. |
+| Reportes estructurados | Resumen histórico descargable | PMV2 | Demostrado | Endpoint `/reports/historical-summary` (JSON/CSV) | Reporte CSV operativo. Exportación PDF proyectada para Sprint 8. |
+| Control perimetral (RBAC) | Roles de seguridad en API Gateway | PMV2–3 | Demostrado | Gateway Java (12 tests) y Gateway Go (30 tests) | Roles ADMIN, OPERATOR y VIEWER implementados perimetralmente con validación JWT. |
+| Experimento comparativo | Aprovisionamiento reactivo vs predictivo | PMV3 | Demostrado | Manifiesto de experimento en test set ($n = 126$) | Margen 10 % reduce riesgo de SLA de 15,9 % a 9,5 % (−6,4 pp). Energía modelada −0,16 % (sin ahorro probado). |
 
-<!-- página 82 -->
+---
 
-|Observabilidad y Monitoreo|Captura continua de telemetría cada 15 s (CPU, RAM, Watts)|PMV1 (S2)|Demostrado|Grafana.png, prometheus-targets. png, grafana-en-vivo.png|Exporters de Prometheus (Node Exporter y cAdvisor) recolectando métricas sin caídas.|
+### VIII.4. Resalte de los Resultados de la Inteligencia Artificial en PMV1 y PMV2
+
+#### VIII.4.1. Ganancia predictiva de la IA en PMV2 frente a los baselines
+
+La incorporación de modelos de aprendizaje automático en el ecosistema Green AI se justificó por la necesidad de superar las limitaciones inherentes a las políticas estáticas y heurísticas reactivas:
+
+1. **PMV1 (Sin componentes de IA):** El primer incremento se delimitó intencionalmente a la ingesta, normalización, observabilidad y persistencia de telemetría, operando sin algoritmos de Machine Learning. El baseline de persistencia estableció un error de referencia de $\text{MAE} = 4,61\text{ pp}$ y $\text{RMSE} = 6,39\text{ pp}$ de CPU en validación.
+2. **PMV2 (Incorporación de IA supervisada):** Se integró el modelo **Random Forest Regressor** operando sobre una ventana de retardos históricos ($t-1 \dots t-15$) y variables estacionales cíclicas.
+3. **Cuantificación de la ganancia predictiva:**
+   - En el conjunto de validación ($n = 125$), Random Forest redujo el MAE a **3,22 puntos porcentuales de CPU**, representando una **ganancia del 30,15 % de reducción de error absoluto** respecto a la persistencia (4,61 pp) y del **13,90 % respecto a la media móvil** (3,74 pp).
+   - En el conjunto de prueba independiente ($n = 129$), el modelo mantuvo un MAE de **3,85 pp** y un RMSE de **5,45 pp**.
+   - En situaciones de picos de carga, el error MAE se elevó a 6,12 pp en validación y 8,45 pp en prueba. Esta variación se documenta de forma explícita como una restricción técnica que exige salvaguardas operativas.
+
+Quedan formalmente eliminadas las referencias a mejoras del 57,7 %, valores de RMSE del 7,1 % atribuidos a XGBoost y puntajes F1 de 0,89, por carecer de base experimental en el repositorio.
+
+#### VIII.4.2. Evaluación del costo computacional del servicio de inferencia (*Green-in-AI*)
+
+Para asegurar que el overhead computacional del microservicio predictivo no degrade el desempeño de la infraestructura, se auditó el consumo de recursos de Prediction Service:
+
+- **Optimización de empaquetado Docker:** Mediante un Dockerfile multi-etapa y separación de dependencias de desarrollo, la imagen de contenedor se redujo de **2,85 GB a 510 MB**.
+- **Consumo de memoria RAM:** En mediciones de laboratorio en reposo, el microservicio instanciado registró un consumo de memoria de **122 MiB** (con `PYTHONOPTIMIZE=2`) y entre **133 y 142 MiB** bajo configuración estándar de ejecución.
+- **Latencia de servicio:** En pruebas de lote locales, el tiempo de procesamiento se ubicó en el rango de decenas de milisegundos, operando por debajo del umbral de 2 000 ms.
+
+Se rectifican las afirmaciones de consumos de RAM inferiores a 35 MB y latencias fijas de 45 ms, sustituyéndolas por las mediciones reproducibles documentadas.
+
+---
+
+### VIII.5. Discusión Académica Comparativa con los Antecedentes (Indicador 6)
+
+Para evaluar el rigor metodológico y el aporte de Green AI en relación con el estado del arte indexado, los resultados obtenidos se contrastaron cuantitativamente con tres investigaciones científicas recientes de alto impacto:
+
+| Dimensión / Criterio | Prototipo Green AI | Antecedente 1: Khan et al. (2022) [1] | Antecedente 2: Ji et al. (2021) [2] | Antecedente 3: Sharma y Garg (2020) [3] | Análisis crítico y lectura honesta |
 |---|---|---|---|---|---|
-|Pipeline ETL e Imputación|Limpieza e interpolación de brechas (3.2 % de nulos)|PMV1 (S3)|Demostrado|Commit cd169c7 en Green-IA-DataProces sing; tabla de logs en Supabase|Módulo ETL en Python con interpolación lineal (menos de 1 min) e imputación por mediana.|
-|Estimación Energética Proxy|Formalización del modelo lineal proxy: P(u) = P + (P idle|PMV1 (S2) m|Demostrado|Script Exporter en Python; campo energy watts en _ PostgreSQL|Estimación matemática respaldada ante la ausencia de una PDU física en el laboratorio.|
-|Modelo Baseline de Referencia|Evaluación de línea base (Persistencia / Media Móvil)|PMV1 (S3)|Demostrado|Registro de ejecuciones (runs) en MLflow Tracking UI|RMSE = 16.8 % registrado en MLflow para servir de contraste frente al modelo de IA.|
-|Entrenamiento ML de Candidatos|Evaluación comparativa Random Forest vs. Random Forest Regressor Regressor|PMV2 (S4)|Demostrado|Repositorio green-ai-project-doc s (commit 1016ea0); MLflow|Experimentos completados sobre el conjunto de datos estático. Random Forest Regressor seleccionado por presentar menor error.|
-|Prediction Service (API REST)|Exposición del modelo mediante FastAPI (/v1/predictions)|PMV2 (S5)|Implementado|Repositorio green-ai-gateway; Swagger UI (/docs)|Microservicio operativo en Python con tiempo de respuesta inferior a 50 ms por inferencia.|
+| **Datos y entorno evaluado** | Telemetría sintética (`dataset-sim-001`), cadencia base 15 s remuestreada a 5 min (80 640 muestras brutas). | Trazas reales de producción de centros de datos Bitbrains (fastStorage: 1 250 VM, 30 días; Rnd: 500 VM, 90 días, a 5 min). | Trazas de centros de datos heterogéneos reales con variables combinadas de servidores y refrigeración. | Simulación sintética mediante CloudSim (~18 millones de instancias generadas mediante algoritmos genéticos). | Green AI coincide en la cadencia de agregación (5 min) con [1], pero adolece de validación en trazas reales de producción. Los estudios [1] y [2] evalúan distribuciones de carga realistas con perturbaciones estocásticas complejas. |
+| **Arquitectura de Machine Learning** | Ensamble de árboles Random Forest Regressor con retardos temporales ($t-1 \dots t-15$) y codificación cíclica. | Redes neuronales recurrentes GRU y clustering TSSAP para estimación de estados energéticos (E-states). | Red neuronal profunda multivariable y multipaso MM-GRU coordinada con scheduling de tareas. | Red neuronal artificial (ANN) de dos niveles denominada AGEN (Artificial Genetic Energy-aware Network). | Green AI prioriza modelos de bajo costo computacional (*Green-in-AI* [6], [7]), evitando el overhead de entrenamiento e inferencia de arquitecturas recurrentes profundas (GRU/BiLSTM) en hardware restringido. |
+| **Desempeño predictivo obtenido** | MAE de 3,22 pp en validación y 3,85 pp en test a 15 min (−30,15 % vs persistencia). En picos, MAE sube a 6,12–8,45 pp. | GRU logró el menor RMSE frente a modelos lineales. El 87,48 % citado en la literatura corresponde a la mejora de clustering TSSAP sobre AP (§8.2 de [1]). | MM-GRU demostró capturar interacciones no lineales multivariables superando a baselines ARIMA y lineales. | Reducción de error cuadrático medio frente a heurísticas tradicionales de umbral estático. | Coincidencia en la tendencia general: el aprendizaje supervisado supera a las referencias heurísticas. No obstante, las magnitudes numéricas no son directamente comparables debido a diferencias en los datos y a que las métricas de [1] se evalúan en escalas multivariables normalizadas. |
+| **Impacto energético evaluado** | Estimación matemática mediante modelo proxy lineal $P(u)$. En el experimento comparativo la diferencia energética fue de −0,16 % (sin ahorro demostrado). | La predicción de carga permite identificar ventanas para transición entre estados energéticos (E-states) y consolidación. | Optimización conjunta de servidores IT y sistemas de refrigeración (cooling), mejorando el factor PUE. | Reportan reducciones modeladas de consumo de −45 % bajo carga pesada y −71 % bajo carga ligera en simulación CloudSim. | Los ahorros energéticos elevados reportados en la literatura ([3] con hasta −71 %) provienen de simulaciones teóricas que asumen apagados instantáneos de servidores sin latencias de reactivación. La revisión sistemática [6] documenta que los ahorros reportados varían entre 13 % y 115 % por disparidades metodológicas. Green AI no reclama ahorro energético hasta contar con medición física. |
+| **Gobernanza operativa y decisión** | Modo estricto **Recommendation-Only** (`executionAllowed = false`) con guardrails de SLA (CPU $\le 80\,\%$, latencia $\le 2\,000\text{ ms}$) y validación humana obligatoria. | Consolidación dinámica automatizada de máquinas virtuales en clúster. | Planificación y asignación autónoma de recursos combinada con control térmico. | Algoritmo autónomo de asignación y migración de tareas en tiempo real. | A diferencia de los enfoques autónomos ([1], [2], [3]), Green AI adopta una gobernanza asistiva. En el entorno universitario, salvaguardar la estabilidad de las plataformas académicas tiene prioridad sobre la optimización autónoma agresiva, evitando degradaciones de servicio por falsos positivos en picos de demanda. |
 
-<!-- página 83 -->
+**Análisis discursivo de implicancias técnicas y de ingeniería:**
 
-|Policy / Safety Engine|Validación de reglas de SLA (CPU < 80 %, latencia < 2000 ms)|PMV2 (S5)|Implementado|Módulo policy evaluations _ en FastAPI; modo Recommendation-O nly|Sistema de filtrado de recomendaciones activado. No ejecuta acciones autónomas en Kubernetes.|
-|---|---|---|---|---|---|
-|Autenticación y Registro UI|Registro e inicio de sesión de usuarios con rol OPERADOR|PMV1– PMV2|Implementado|Repositorio Frontend-GreenAi; vistas login.html y register.html|Interfaz en Next.js/HTML5 con tema oscuro/claro e ícono institucional de la hoja verde.|
-|Dashboard de Eficiencia (Grafana)|Paneles visuales de ahorro energético (kWh), CO2e y alertas|PMV2 (S6)|Pendiente|Programado para S6 (03 nov – 14 nov 2026)|Mapeo de métricas dinámicas de ahorro y estimación de la huella de carbono en tiempo real.|
-|Seguridad Endurecida (RBAC/JWT)|Control de acceso por roles y gestión de secretos|PMV3 (S7)|Proyectado|Programado para S7 (17 nov – 28 nov 2026)|Implementación de tokens JWT y roles Administrador y Observador en Kubernetes.|
-|Reportes Automáticos PDF/CSV|Exportación periódica de resúmenes de consumo y SLA|PMV3 (S7)|Proyectado|Programado para S7 (23 nov – 26 nov 2026)|Módulo de generación de informes técnicos descargables para auditoría universitaria.|
-|Experimentación Comparativa 24 h|Evaluación experimental masiva (Baseline vs. Green AI)|PMV3 (S8)|Proyectado|Programado para S8 (01 dic – 12 dic 2026)|Medición experimental final de la meta de ahorro energético (≥ 15 % en kWh).|
+1. **Eficiencia algorítmica y principio *Green-in-AI*:** Las investigaciones de Khan et al. (2022) [1] y Ji et al. (2021) [2] demuestran que las redes neuronales recurrentes (GRU y MM-GRU) destacan en la modelización de series temporales no lineales. No obstante, estas redes imponen un footprint de memoria y un costo de cálculo apreciable. Para el contexto de laboratorios universitarios con servidores de capacidad acotada, Green AI evidenció que un ensamble de árboles como Random Forest Regressor, combinado con ingeniería de retardos temporales, provee un compromiso adecuado: reduce el error predictivo en un 30,15 % respecto a la persistencia con una latencia de inferencia contenida en decenas de milisegundos y un footprint de memoria de 122–142 MiB en reposo.
+2. **Gobernanza operacional frente a control autónomo:** Frente a las propuestas de orquestación autónoma directa predominantes en la literatura ([1], [3]), Green AI formaliza un desacoplamiento estricto mediante el Policy/Safety Engine. Dado que la indisponibilidad de plataformas universitarias durante jornadas de evaluación representa un impacto crítico, el prototipo opera exclusivamente bajo la modalidad de recomendación asistiva con aprobación humana, incorporando guardrails defensivos que bloquean propuestas riesgosas o se abstienen cuando la ventana temporal es insuficiente (`INSUFFICIENT_DATA`).
+3. **Modelo proxy energético lineal:** Ante la carencia de sensores físicos de distribución de potencia (PDU) instrumentados en el laboratorio, Green AI adopta transparentemente el modelo proxy lineal $P(u) = P_{idle} + (P_{max} - P_{idle}) \times u$. A diferencia de los centros de datos industriales analizados por Ji et al. [2], se reconoce explícitamente que los consumos modelados en Wh e indicadores derivados constituyen estimaciones matemáticas de primer orden y no mediciones de campo.
 
-<!-- página 84 -->
+---
 
-El proyecto Green AI reporta su avance con fecha de corte oficial al 29 de octubre de 2026 (Semana 10 / Sprint 5). A la fecha, se ha completado en su totalidad el PMV1 (Viabilidad Técnica y Pipeline de Datos), contando con un clúster experimental en Kubernetes, observabilidad en tiempo real con Prometheus y Grafana (muestreo cada 15s) y un pipeline ETL que corrige el 3.2% de datos nulos mediante interpolación lineal.
+# IX. LECCIONES APRENDIDAS
 
-Asimismo, se encuentra implementado el núcleo del PMV2 (Solución Predictiva y Recomendaciones), el cual incluye el modelo Random Forest Regressor Regressor (RMSE = 7.1%, MAE = 5.4%), la API REST en FastAPI y el Policy/Safety Engine operando estrictamente bajo la modalidad Recommendation-Only (con aprobación humana). Los componentes de seguridad avanzante (RBAC/JWT), la reportería PDF/CSV y la prueba experimental comparativa de 24 horas para validar la meta del 15% de ahorro energético corresponden a la fase final del PMV3 (Sprints 7 y 8, Noviembre–Diciembre 2026) y se presentan como entregables proyectados en el roadmap del proyecto.
+### IX.1. Tratamiento temporal estricto en series de tiempo y prevención de fuga de información (*Data Leakage*)
+La aplicación de particiones aleatorias (*random split*) convencionales invalida la evaluación de modelos de infraestructura temporal. Se aprendió que la partición cronológica estricta (70 % Entrenamiento, 15 % Validación, 15 % Prueba) y la construcción de ventanas deslizantes sin consultar información futura son requisitos indispensables para obtener estimaciones de error reproducibles y representativas de la operación real.
 
-### VIII.4. RESALTE DE LOS RESULTADOS DE LA INTELIGENCIA ARTIFICIAL EN PMV1 Y PMV2
+### IX.2. Gobernanza operacional mediante desacoplamiento y modo Recommendation-Only
+Delegar acciones autónomas de escalado o apagado de servidores a modelos de aprendizaje automático en etapas tempranas introduce riesgos inaceptables de interrupción de servicio. El enfoque de recomendación asistiva con supervisión humana y guardrails de seguridad demostró ser la estrategia adecuada para conciliar la experimentación tecnológica con la estabilidad operativa.
 
-#### VIII.4.1. Ganancia Estructural sobre los Baselines (57.7% de Reducción de Error RMSE)
+### IX.3. Evaluación del costo computacional de la propia solución (*Green-in-AI*)
+La optimización energética de sistemas de software debe considerar el consumo de recursos de la propia solución de monitoreo e inferencia. El empaquetado multi-etapa y la selección de arquitecturas ligeras evitaron que el gasto computacional del agente predictivo contrarreste los potenciales beneficios de gestión de la infraestructura.
 
-El propósito central de incorporar aprendizaje automático en la solución Green AI es superar las limitaciones de las estrategias de gestión reactivas y de los baselines estadísticos convencionales. En la evaluación sobre el conjunto de prueba (Test Set) con partición cronológica estricta (70% Entrenamiento, 15% Validación y 15% Prueba), se registraron los siguientes hallazgos cuantitativos:
-
-1. Desempeño del Baseline Naive / Persistencia (PMV1): El modelo de referencia simple estableció un error cuadrático medio de RMSE = 16.8% y un error absoluto medio de MAE = 12.4% en la utilización de CPU a t+ 15 minutos. Este comportamiento evidenció la incapacidad de las heurísticas estáticas para reaccionar ante fluctuaciones bruscas de carga académica.
-
-2. Desempeño del Regresor XGBoost (PMV2): La selección del modelo XGBoost Regressor redujo el error cuadrático medio a RMSE = 7.1% y el error absoluto a MAE = 5.4%, logrando un sMAPE de 8.6%.
-
-3. Cuantificación de la Ganancia Predictiva: La aplicación de la Inteligencia Artificial supervisada sobre la ventana de retardos históricos (t-1 ... t-15) representó una reducción relativa del error RMSE del 57.7% en comparación con el Baseline Naive.
-
-Asimismo, durante los escenarios de carga pico (>85% de utilización de CPU), el modelo XGBoost mantuvo un RMSE = 9.8% y un F1-score = 0.89 en la clasificación de eventos críticos, demostrando que no subestima las sobrecargas de infraestructura durante períodos de exámenes o inicios de laboratorios virtuales.
-
-<!-- página 85 -->
-
-#### VIII.4.2. Garantía del Principio Green-in-AI (Footprint Ultraliviano: < 35 MB RAM, 45 ms Latencia)
-
-En proyectos de optimización energética mediante software, existe el riesgo de que el propio consumo computacional del microservicio de Inteligencia Artificial (overhead) anule el ahorro energético neto del clúster (principio Green-in-AI vs. Green-by-AI). Para garantizar la viabilidad técnica del prototipo, se midió el impacto operacional del microservicio de inferencia en FastAPI sobre el nodo ejecutor:
-
-● Latencia de Inferencia: Se registró un tiempo medio de respuesta de 45 ms por cada petición de predicción a 15 minutos, operando holgadamente por debajo del límite 2000ms máximo permitido de SLA ( ).
-
-● Consumo de Memoria RAM: La instanciación del modelo y el pipeline de validación < 35MB Pydantic en memoria requirió un footprint ultraliviano de de RAM.
-
-● Utilización de Procesador: El overhead computacional durante la inferencia demandó menos del 0.5% de un núcleo de CPU.
-
-Estos indicadores confirman que la huella de carbono y el consumo eléctrico derivados del motor de Inteligencia Artificial son insignificantes frente a los ahorros energéticos logrados por la consolidación preventiva de cargas en los nodos físicos.
-
-### VIII.5. DISCUSIÓN ACADÉMICA COMPARATIVA CON LOS
-
-## ANTECEDENTES
-
-#### VIII.5.1. Matriz de Cuantificación Comparativa frente a la Literatura Indexada
-
-Con el objetivo de validar el rigor metodológico y el aporte técnico de Green AI frente al estado del arte, los resultados obtenidos en el prototipo se contrastaron cuantitativamente con cinco investigaciones científicas indexadas de alto impacto.
-
-|Estudio de Referencia|Algoritmo / Enfoque|Dataset / Entorno|Métricas de Error Obtenidas|Estrategia de Control|Contraste y Aporte de Green AI|
-|---|---|---|---|---|---|
-
-<!-- página 86 -->
-
-|Khan et al. (2022) (FGCS / Elsevier)|Redes recurrentes GRU + algoritmo TSSAP|Trazas reales de VMs en Bitbrains|Precisión ≈ 87.48 % (RMSE ≈ 12.5 %)|Consolidació n y redistribució n de cargas|Green AI logra RMSE = 7.1 % con XGBoost ultraliviano (45 ms, menos de 35 MB de RAM), evitando la alta carga computacional de las redes GRU en horizontes de 15 min.|
-|---|---|---|---|---|---|
-|Ullah et al. (2023) (Computer Networks)|BiLSTM multivariabl e|Trazas Bitbrains (fastStorage y Rnd)|MAE ≈ 6.8 %; RMSE ≈ 9.2 %; MAPE no especificad o|Pronóstico multivariable de recursos|Green AI aplica sMAPE = 8.6 % y MAE = 5.4 % sobre una matriz de retardos (t−1, ..., t−15), evitando la fuga temporal sin recurrir a una arquitectura de Deep Learning sobredimensionada.|
-|Rao & Li (2025) (Computers & Electrical Engineering)|Algoritmo ISSA + scheduling en Kubernetes|Microservicio s en Kubernetes|Reducción energética ≥ 5.0 %|Asignación y escalado autónomo directo|Green AI prioriza la gobernanza operacional mediante el Policy Engine en modo Recommendation-Only, evitando reasignaciones autónomas potencialmente destructivas sobre Kubernetes.|
-|Beloglazov et al. (2012) (FGCS / Elsevier)|Heurísticas estáticas de umbral de CPU|Simulador CloudSim|SLA\( {deg} _ \) < 0.05 %; ahorro ≈ 15 %|Consolidació n dinámica reactiva|Green AI supera las heurísticas reactivas mediante predicción proactiva a 15 min, reduciendo el error en un 57.7 % respecto a los modelos de referencia reactivos.|
-
-<!-- página 87 -->
-
-|Ji et al. (2021) (SUSCOM / Elsevier)|Predicción + costo marginal|Centro de datos industrial heterogéneo|Optimizació n conjunta de IT y cooling|Scheduling y gestión de recursos|Green AI adapta el desacoplamiento entre predicción y decisión para entornos universitarios, operando bajo un modelo proxy lineal: P(u) = P + (P − P idle max .|
-|---|---|---|---|---|---|
-
-### VIII.5.2.
-
-### Análisis Discursivo de Implicancias Técnicas, Gobernanza Recommendation-Only y Modelo Proxy P(u)
-
-**a.**
-
-Complejidad Algorítmica y Eficiencia Computacional (Green-in-AI): La comparación directa con los trabajos de Khan et al. (2022) y Ullah et al. (2023) demuestra que las redes neuronales profundas (GRU y BiLSTM) son altamente efectivas para modelar series de tiempo no lineales, pero imponen requerimientos elevados de memoria y capacidad de cómputo. En el contexto de laboratorios universitarios con restricciones de hardware, Green AI demuestra que el algoritmo XGBoost Regressor, combinado con ingeniería de características mediante retardos temporales (lags t−1, ..., t−15), logra métricas de error competitivas (RMSE = 7.1 % y MAE = 5.4 %), operando con una latencia de apenas 45 ms. Esto respalda la selección de modelos livianos para horizontes cortos de predicción.
-
-**2.**
-
-Gobernanza Operacional y Priorización de la Estabilidad (Recommendation-Only): En contraste con la literatura sobre orquestadores autónomos (Rao & Li, 2025; Beloglazov et al., 2012), donde los algoritmos pueden modificar directamente la asignación de recursos y las cargas de trabajo en Kubernetes, Green AI implementa un desacoplamiento estricto mediante el Policy/Safety Engine. Dado que la disponibilidad de los servicios académicos (aula virtual y plataformas de examen) es prioritaria, el sistema funciona exclusivamente bajo el modo Recommendation-Only (executionAllowed = false). Las recomendaciones emitidas se evalúan frente a umbrales de seguridad (guardrails) definidos para el SLA: CPU ≤ 80 % y latencia ≤ 2000 ms. Durante las pruebas de estrés se registraron cero violaciones de SLA.
-
-**3.**
-
-Modelo Proxy Energético y Aislamiento de la Incertidumbre (P(u)): A diferencia de los entornos industriales dotados de unidades de distribución de potencia inteligentes (PDU físicas), como los analizados por Ji et al. (2021), la infraestructura de laboratorio de la Universidad Continental carece de sensores de medición eléctrica directa en los puntos de alimentación. Para evitar afirmaciones no verificables, Green AI formaliza la estimación energética mediante el siguiente modelo proxy lineal:
-
-<!-- página 88 -->
-
-P(u) = Pidle+ (Pmax−Pidle) × u donde u representa la utilización de CPU. Esta caracterización reconoce transparentemente que los valores reportados de kWh e intensidad de carbono ( gCO2e ) son estimaciones derivadas del comportamiento computacional, satisfaciendo el estándar de veracidad exigido por ICACIT.
-
-# IX. LECCIONES APRENDIDAS.
-
-### IX.1. Tratamiento Temporal Estricto en Series de Tiempo y Prevención de Fuga de Información (Data Leakage):
-
-La división aleatoria de datos (random split) convencional en Machine Learning invalida la evaluación predictiva de infraestructura. Se aprendió que la división cronológica estricta (70% Train, 15% Validation, 15% Test) y la creación purgada de ventanas de retardos (sliding windows $t-1 \dots t-15$) son indispensables para evitar que el modelo consulte datos del futuro, garantizando métricas de error (MAE y RMSE) reales, transparentes y comparables.
-
-### IX.2.Gobernanza Operacional mediante Desacoplamiento y Modo Recommendation-Only:
-
-Durante el desarrollo se identificó que otorgar control autónomo a un modelo de Machine Learning sobre la infraestructura incrementaría innecesariamente el riesgo operacional.
-
-<!-- página 89 -->
-
-Por ello, Green AI adopta un enfoque Recommendation-Only, donde la predicción sirve como insumo para el análisis y las decisiones permanecen sujetas a validación humana. Asimismo, el Policy/Safety Engine incorpora la posibilidad de rechazar o abstenerse de generar propuestas cuando las restricciones o la información disponible no permiten una decisión segura.
-
-### IX.3 Importancia de evaluar el costo computacional de la propia IA
-
-El desarrollo permitió reconocer que la eficiencia de un sistema Green AI no depende únicamente de los recursos que potencialmente pueda optimizar, sino también del costo computacional de monitoreo, procesamiento e inferencia.
-
-Por ello, la selección del modelo debe considerar conjuntamente error predictivo, latencia, memoria y costo de ejecución. La evaluación del beneficio energético neto deberá realizarse posteriormente incluyendo el overhead de la propia solución.
+---
 
 # X. CONCLUSIONES
 
 ### X.1. Conclusiones por objetivo
 
 #### Conclusión del objetivo general
+Se diseñó e integró un prototipo experimental para la gestión eficiente de recursos computacionales que articula componentes de simulación, monitoreo en tiempo real, procesamiento relacional y servicios predictivos de Machine Learning. El prototipo resolvió la incertidumbre técnica inicial en un entorno controlado, demostrando viabilidad predictiva algorítmica sobre series de telemetría simulada. Se concluye que la solución provee una base arquitectónica funcional para la asistencia operativa; no obstante, la cuantificación de ahorro energético real queda sujeta a la instrumentación de mediciones físicas en etapas posteriores.
 
-A la fecha de corte del 29 de octubre de 2026, Green AI dispone de un prototipo experimental que integra componentes de simulación, observabilidad, procesamiento de datos, interfaz web y servicios de predicción. La solución permite estudiar la relación entre monitoreo, predicción y apoyo a decisiones dentro de un entorno controlado, manteniendo la diferenciación entre datos simulados, resultados experimentales y funcionalidades pendientes. La evaluación energética comparativa definitiva corresponde al PMV3 y, por tanto, no se declara todavía un porcentaje de ahorro energético real alcanzado.
+#### Conclusión del objetivo específico 1 — Monitoreo y telemetría (PMV1)
+Se implementó la recolección y visualización continua de telemetría de infraestructura mediante la integración de Simulator, Monitoring Service, Prometheus Server, Grafana y la aplicación web, capturando métricas de CPU, memoria RAM y red a intervalos de 15 segundos sobre una matriz de 50 servidores sintéticos distribuidos en 5 racks. Se concluye que la arquitectura de observabilidad satisface la granularidad requerida para el entrenamiento supervisado; no obstante, se reconoce que la disponibilidad histórica prolongada debe ser sustentada mediante registros cronológicos acumulados y no a partir de estados instantáneos de sondeo.
 
-#### Conclusión del objetivo específico 1 — Monitoreo y telemetría
+#### Conclusión del objetivo específico 2 — Preparación y trazabilidad de datos (PMV1)
+Se estructuró el pipeline de procesamiento y persistencia relacional con PostgreSQL / Supabase y perfil de desarrollo en SQLite, validando contratos de API idénticos en ambos motores. El tratamiento de brechas temporales breves mediante interpolación lineal e imputación por mediana permitió recuperar la regularidad de la matriz de características temporales alcanzando un 0,0 % de valores nulos post-tratamiento. Se concluye que el esquema asegura la reproducibilidad de los conjuntos de entrenamiento, manteniendo la debida transparencia metodológica al identificar la procedencia como sintética.
 
-<!-- página 90 -->
+#### Conclusión del objetivo específico 3 — Predicción de demanda computacional (PMV2)
+Se integró el microservicio Prediction Service exponiendo contratos OpenAPI para inferencia a 15 minutos. El modelo supervisado Random Forest Regressor demostró el mejor desempeño en validación ($n = 125$), obteniendo un MAE de 3,22 pp y RMSE de 4,59 pp de utilización de CPU, lo que representó una reducción de error absoluto del 30,15 % respecto al baseline de persistencia y del 13,90 % respecto a la media móvil, alcanzando un MAE de 3,85 pp en el conjunto de prueba independiente ($n = 129$). Se concluye que el modelo aporta ventaja predictiva con latencias contenidas en decenas de milisegundos; no obstante, la duplicación del error observada durante picos extremos (MAE de 6,12 a 8,45 pp) confirma la necesidad de mantener mecanismos de respaldo heurísticos.
 
-Se integraron Simulator, Monitoring, Prometheus y Grafana para recolectar y visualizar métricas del entorno experimental. Las capturas disponibles demuestran que las fuentes configuradas se encontraban operativas durante las ejecuciones observadas y que el sistema permite consultar información de CPU, memoria y red. No obstante, una afirmación de disponibilidad porcentual durante un periodo prolongado requiere registros temporales específicos y no puede determinarse únicamente a partir de una captura de targets en estado UP.
+#### Conclusión del objetivo específico 4 — Recomendaciones y restricciones operativas (PMV2)
+Se implementó el Policy/Safety Engine operando bajo el estándar Recommendation-Only, asegurando que las propuestas de optimización no ejecuten comandos directos sobre la infraestructura. Se concluye que la incorporación de guardrails operacionales (utilización máxima de CPU $\le 80\,\%$ y latencia $\le 2\,000\text{ ms}$) protege la continuidad del servicio al clasificar solicitudes con información incompleta como no evaluables (`INSUFFICIENT_DATA`), garantizando la primacía del criterio humano en la gestión de capacidad.
 
-#### Conclusión del objetivo específico 2 — Preparación y trazabilidad de datos
+#### Conclusión del objetivo específico 5 — Evaluación de eficiencia y experimentación comparativa (PMV2 y proyección a PMV3)
+Se ejecutó la prueba comparativa formal entre la estrategia baseline reactiva y el aprovisionamiento predictivo de Green AI sobre el conjunto de prueba ($n = 126$ intervalos). Con un margen de seguridad del 10 %, Green AI redujo el riesgo de violación de SLA de 15,9 % a 9,5 % (una reducción absoluta de 6,4 pp), demostrando la utilidad de la anticipación de carga para evitar saturaciones. En contraste, la variación en energía modelada fue de −0,16 %, concluyendo que bajo las condiciones de prueba actuales no existe ahorro energético demostrable y que el beneficio operativo reside en la mitigación del riesgo de servicio con márgenes de reserva más ajustados.
 
-El proyecto incorpora mecanismos de procesamiento y persistencia de información temporal destinados a preparar datos para los componentes predictivos. La procedencia de los datos se identifica como simulada cuando corresponde, evitando presentarlos como mediciones institucionales reales. Los conteos de registros, tratamiento de brechas y procedimientos de interpolación deberán conservar trazabilidad mediante dataset, código ejecutado y resultados antes y después del procesamiento.
-
-#### Conclusión del objetivo específico 3 — Predicción de demanda computacional
-
-Se implementó la integración del Prediction Service mediante una API FastAPI y una interfaz web capaz de mostrar una predicción de utilización futura de CPU. La evidencia End-to-End disponible demuestra la comunicación entre frontend, Gateway y servicio predictivo. Las métricas de desempeño de los modelos solo deben considerarse resultados experimentales validados cuando estén asociadas con su dataset, partición cronológica, versión de código y artefactos reproducibles de ejecución.
-
-#### Conclusión del objetivo específico 4 — Recomendaciones y restricciones operativas
-
-El sistema incorpora un enfoque Recommendation-Only que mantiene la decisión final bajo supervisión humana. La interfaz del Policy/Safety Engine evidencia la capacidad del sistema para abstenerse de generar una propuesta cuando la información disponible resulta insuficiente, reduciendo el riesgo de ejecutar decisiones con evidencia incompleta. Los porcentajes de aceptación o rechazo de recomendaciones deberán establecerse únicamente mediante un conjunto de pruebas reproducibles.
-
-#### Conclusión del objetivo específico 5 — Evaluación de eficiencia
-
-La comparación experimental entre una estrategia baseline y Green AI pertenece al PMV3 y permanece pendiente a la fecha de corte. El proyecto dispone de una formulación inicial para estimar potencia mediante un modelo proxy basado en utilización de CPU; sin embargo, cualquier resultado derivado debe identificarse como estimación y no como medición eléctrica física. La evaluación final deberá mantener condiciones equivalentes de carga y servicio, documentar sus parámetros y considerar el overhead de la propia solución.
-
-<!-- página 91 -->
+---
 
 ### X.2. Aportes, limitaciones y trabajo futuro
 
-#### Aportes
+#### Aportes principales
+- Desacoplamiento modular mediante arquitectura hexagonal, permitiendo adaptadores intercambiables de persistencia (SQLite y PostgreSQL) y perimetrales (Java y Go).
+- Trazabilidad y transparencia metodológica explícita mediante etiquetado de datos (`Procedencia: Simulado` y `Estimado`).
+- Gobernanza asistiva mediante Policy/Safety Engine en modo Recommendation-Only con guardrails de SLA.
+- Optimización de empaquetado multi-etapa que redujo la imagen de inferencia a 510 MB con un consumo en reposo de 122–142 MiB.
 
-● Integración modular de observabilidad, procesamiento de datos, interfaz web y servicios predictivos.
-
-● Aplicación de principios de Arquitectura Hexagonal y separación de responsabilidades.
-
-● Incorporación del enfoque Recommendation-Only para mantener supervisión humana.
-
-● Diferenciación explícita entre datos simulados, métricas observadas y estimaciones energéticas.
-
-● Diseño de una base experimental para evaluar posteriormente eficiencia computacional y energética.
-
-#### Limitaciones
-
-● El entorno evaluado es principalmente experimental y utiliza información simulada.
-
-● No se dispone de medición eléctrica física mediante una PDU.
-
-● Algunas métricas predictivas requieren consolidar su trazabilidad experimental.
-
-● Las pruebas finales de PMV3 no habían sido ejecutadas a la fecha de corte.
-
-● La evaluación sobre infraestructura institucional de producción se encuentra fuera del alcance actual.
+#### Limitaciones identificadas
+- Evaluación sustentada exclusivamente en datos y cargas sintéticas.
+- Carencia de instrumentación eléctrica de medición directa (PDU inteligentes).
+- Incremento del error de predicción durante eventos de pico extremo de demanda.
+- Despliegue en capa gratuita de nube pública sujeto a latencias por arranques en frío.
 
 #### Trabajo futuro
+- Validar el pipeline con trazas de centros de datos abiertos (Bitbrains) o mediciones reales del campus universitario.
+- Instrumentar medidores de energía física mediante protocolos SNMP o IPMI para contrastar la precisión del modelo proxy $P(u)$.
+- Culminar la exportación automatizada de reportes consolidados en formato PDF para auditorías técnicas.
+- Explorar algoritmos de calibración y análisis de iso-SLA mediante barridos finos del margen de seguridad.
 
-● Ejecutar la prueba experimental comparativa de 24 horas (Baseline vs. Green AI) para validar la meta del 15% de ahorro energético en kWh.
+---
 
-● Implementar los mecanismos de seguridad avanzada con Kubernetes RBAC y autenticación JWT por roles (Administrador y Observador).
+# REFERENCIAS BIBLIOGRÁFICAS (ISO 690-2 NUMÉRICO)
 
-● Desarrollar el módulo de generación automática de reportes exportables en PDF y CSV.
+[1] KHAN, T., TIAN, W., ILAGER, S. y BUYYA, R. Workload forecasting and energy state estimation in cloud data centres: ML-centric approach. *Future Generation Computer Systems*. 2022, vol. 128, pp. 320–332. ISSN 0167-739X. DOI: 10.1016/j.future.2021.10.019.
 
-● Instrumentar medidores físicos PDU/IPMI para validar experimentalmente la precisión del modelo proxy de potencia P(u)
+[2] JI, K., ZHANG, F., CHI, C., SONG, P., ZHOU, B., MARAHATTA, A. y LIU, Z. A joint energy efficiency optimization scheme in data centers. *Sustainable Computing: Informatics and Systems*. 2021, vol. 32, art. 100596. ISSN 2210-5379. DOI: 10.1016/j.suscom.2021.100596.
 
-.
+[3] SHARMA, M. y GARG, R. AGEN: ANN based energy-efficient scheduler for cloud data centers. *Sustainable Computing: Informatics and Systems*. 2020, vol. 26, art. 100373. ISSN 2210-5379. DOI: 10.1016/j.suscom.2020.100373.
 
-<!-- página 92 -->
+[4] MALEKLOO, M.-H., KARA, N. y EL BARACHI, M. An energy efficient and SLA compliant approach for resource allocation and consolidation in cloud computing environments. *Sustainable Computing: Informatics and Systems*. 2018, vol. 17, pp. 9–24. ISSN 2210-5379. DOI: 10.1016/j.suscom.2018.02.001.
 
-**REFERENCIAS BIBLIOGRÁFICAS (ISO 690-2 NUMÉRICO)**
+[5] ALI, Q. I. Intelligent energy governance in solar-powered data centers: a multi-stage framework for sustainable operation and AI-driven optimization. *Discover Artificial Intelligence*. 2026, vol. 6, art. 124. DOI: 10.1007/s44163-025-00823-7.
 
-1. SCHWABER, Ken y SUTHERLAND, Jeff. The Scrum Guide: The Definitive Guide to Scrum:
+[6] VERDECCHIA, R., SALLOU, J. y CRUZ, L. A systematic review of Green AI. *WIREs Data Mining and Knowledge Discovery*. 2023, vol. 13, art. e1507. DOI: 10.1002/widm.1507.
 
-The Rules of the Game [en línea]. November 2020 [consulta: 15 septiembre 2026].
+[7] BOLÓN-CANEDO, V., MORÁN-FERNÁNDEZ, L., CANCELA, B. y ALONSO-BETANZOS, A. A review on green artificial intelligence. *Neurocomputing*. 2024, vol. 599, art. 128096. ISSN 0925-2312. DOI: 10.1016/j.neucom.2024.128096.
 
-Disponible en: https://scrumguides.org/scrum-guide.html 2. KHAN, Tahseen, TIAN, Wenhong, ILAGER, Shashikant y BUYYA, Rajkumar. Workload forecasting and energy state estimation in cloud data centres: ML-centric approach.
+[8] D'ORGEVAL, A., SHEEHAN, S., AVENAS, Q., ASSOUMOU, E. y SESSA, V. Life cycle assessment of artificial intelligence in data centers: comparative study of generative AI models, cloud architectures, and mitigation strategies. *Applied Energy*. 2026, vol. 406, art. 127288. ISSN 0306-2619. DOI: 10.1016/j.apenergy.2025.127288.
 
-Future Generation Computer Systems [en línea]. 2022, vol. 128, pp. 320-332 [consulta:
+[9] CRUZES, S. Data centers in the age of AI: a tutorial survey on infrastructure, sustainability, and emerging challenges [preprint]. *TechRxiv*. 2025. DOI: 10.36227/techrxiv.176158592.23065552/v1.
 
-10 septiembre 2026]. ISSN 0167-739X. DOI: 10.1016/j.future.2021.10.019.
+[10] INTERNATIONAL ENERGY AGENCY (IEA). *Energy and AI* [en línea]. París: IEA, 2025 [consulta: 25 octubre 2026]. Disponible en: https://www.iea.org/reports/energy-and-ai
 
-3. JI, Kai, ZHANG, Fa, CHI, Ce, SONG, Penglei, et al. A joint energy efficiency optimization scheme based on marginal cost and workload prediction in data centers. Sustainable Computing: Informatics and Systems [en línea]. 2021, vol. 32, art. 100596 [consulta: 12 septiembre 2026]. ISSN 2210-5379. DOI: 10.1016/j.suscom.2021.100596.
+[11] INTERNATIONAL ORGANIZATION FOR STANDARDIZATION (ISO). *ISO/IEC 21031:2024 Information technology — Software Carbon Intensity (SCI) specification*. Ginebra: ISO, 2024.
 
-4. BELOGLAZOV, Anton, ABAWAJY, Jemal y BUYYA, Rajkumar. Energy-aware resource allocation heuristics for efficient management of data centers for Cloud computing.
+[12] SCHWABER, Ken y SUTHERLAND, Jeff. *The Scrum Guide: The Definitive Guide to Scrum: The Rules of the Game* [en línea]. Noviembre 2020 [consulta: 15 septiembre 2026]. Disponible en: https://scrumguides.org/scrum-guide.html
 
-<!-- página 93 -->
+[13] KREUZBERGER, Dominik, KÜHL, Niklas y HIRSCHL, Sebastian. Machine Learning Operations (MLOps): Overview, Definition, and Architecture. *IEEE Access*. 2023, vol. 11, pp. 31866–31879. ISSN 2169-3536. DOI: 10.1109/ACCESS.2023.3262138.
 
-Future Generation Computer Systems [en línea]. 2012, vol. 28, n.o 5, pp. 755-768 [consulta: 14 septiembre 2026]. ISSN 0167-739X. DOI: 10.1016/j.future.2011.04.017.
+[14] ARIAS CHÁVEZ, Dennis. *Manual para citar y referenciar fuentes en textos de ingeniería según la norma ISO 690-2*. 1.a ed. Huancayo: Universidad Continental, Fondo Editorial, 2019. 83 p. ISBN 978-612-4443-04-6.
 
-5. KREUZBERGER, Dominik, KÜHL, Niklas y HIRSCHL, Sebastian. Machine Learning Operations (MLOps): Overview, Definition, and Architecture. IEEE Access [en línea].
+---
 
-2023, vol. 11, pp. 31866-31879 [consulta: 18 septiembre 2026]. ISSN 2169-3536. DOI:
+# ANEXOS
 
-10.1109/ACCESS.2023.3262138.
+### Anexo A. Enlaces oficiales, repositorios y servicios desplegados en la nube
 
-6. ISO. ISO/IEC 21031:2024. Information technology — Software Carbon Intensity (SCI) specification. Ginebra: International Organization for Standardization, 2024.
+* **Repositorio oficial monorepo del proyecto:** https://github.com/woshtsu/green-ai-workspace-cld
+* **Frontend web de desarrollo desplegado (GitHub Pages):** https://woshtsu.github.io/green-ai-workspace-cld/dev/
+* **API Gateway perimetral desplegado (Render):** https://green-ai-gateway-dev.onrender.com
+* Video: VIDEO-URL-PENDIENTE
 
-7. INTERNATIONAL ENERGY AGENCY (IEA). Energy and AI [en línea]. Paris: IEA, 2025 [consulta: septiembre 2026].
+* **Formulario de consulta con el experto temático:**
+  https://drive.google.com/file/d/1bRDtlPNSknHKYgtX5wHdiWbGDrtZlgeG/view?usp=drive_link
 
-Disponible en: https://www.iea.org/reports/energy-and-ai 8. ARIAS CHÁVEZ, Dennis. Manual para citar y referenciar fuentes en textos de ingeniería según la norma ISO 690-2. 1.a ed. Huancayo: Universidad Continental, Fondo Editorial, 2019. 83 p. ISBN 978-612-4443-04-6.
+![](evidencias/p094-img047.png)
+Figura A.1. Formulario de entrevista de requerimientos con el experto temático de infraestructura.
 
-9. MARWAN, Ali, AIT TEMGHART, Hicham y LAZAAR, Mohamed. Workload prediction in next-generation data centers using signal processing and deep learning. Journal of Cloud Computing [en línea]. 2026, vol. 15, n.o 1, pp. 45-62 [consulta: 20 septiembre 2026]. DOI: 10.1186/s13677-025-00612-x.
+* **Repositorios de componentes de software del monorepo:**
 
-10.REDDY, V. Krishna, RAO, S. Viswanadha y AIELLO, Marco. Imitation-based optimization for dynamic virtual machine placement in cloud data centers. IEEE Transactions on Cloud Computing [en línea]. 2024, vol. 12, n.o 3, pp. 880-894 [consulta: 22 septiembre 2026]. DOI: 10.1109/TCC.2024.3351201.
+● Microservicio Prediction Service e Inteligencia Artificial:
+https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/prediction
 
-<!-- página 94 -->
+![](evidencias/p095-img048.png)
+Figura A.2. Repositorio de código fuente del microservicio Prediction Service.
 
-**ANEXOS:**
+● Microservicio Data Processing Service:
+https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/data-processing
 
-- Formulario con el experto temático: https://drive.google.com/file/d/1bRDtlPNSknHKYgtX5wHdiWbGDrtZlgeG/view?usp=drive_link
+![](evidencias/p095-img049.png)
+Figura A.3. Repositorio de código fuente del microservicio Data Processing Service.
 
-![Figura (página 94)](evidencias/p094-img047.png)
+● Microservicio Monitoring Service:
+https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/monitoring
 
--
+![](evidencias/p096-img050.png)
+Figura A.4. Repositorio de código fuente del microservicio Monitoring Service.
 
-**Video Demostrativo del Funcionamiento (PMV1 y PMV2)**
+● Microservicio API Gateway:
+https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/gateway
 
-https://drive.google.com/file/d/13YlwdlCD-STSFMg3FYOLi3utOjX-Agf-/view?usp=drive_link
+![](evidencias/p096-img051.png)
+Figura A.5. Repositorio de código fuente del microservicio API Gateway.
 
-#### Repositorios de Código Fuente en GitHub
+● Frontend Web Application:
+https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/frontend
 
-● Microservicio de Predicción e IA: Repositorio woshtsu / green-ai-project-docs (rama Criss) woshtsu/green-ai-project-docs at Criss
+![](evidencias/p097-img052.png)
+Figura A.6. Repositorio de código fuente de la aplicación frontend web.
 
-<!-- página 95 -->
+● Simulador de Workloads de Telemetría:
+https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/simulator
 
-![Figura (página 95)](evidencias/p095-img048.png)
+![](evidencias/p097-img053.png)
+Figura A.7. Repositorio de código fuente del simulador de infraestructura.
 
-● Microservicio Data Processing: Repositorio GDianaBarrera / Green-IA-DataProcessing https://github.com/GDianaBarrera/Green-IA-DataProcessing
+* **Microservicios publicados en la nube pública de Render:**
+  - Data Processing Service: `https://green-ai-data-processing-dev.onrender.com`
+  - API Gateway perimetral: `https://green-ai-gateway-dev.onrender.com`
+  - Monitoring Service: `https://green-ai-monitoring-dev.onrender.com`
+  - Simulator Service: `https://green-ai-simulator-dev.onrender.com`
+  - Prediction Service: `https://green-ai-prediction-dev-zxly.onrender.com`
 
-![Figura (página 95)](evidencias/p095-img049.png)
+![](evidencias/p098-img054.png)
+Figura A.8. Panel de servicios activos en la plataforma en la nube Render.
 
-● Microservicio Monitoring: Repositorio woshtsu / green-ai-monitoring https://github.com/woshtsu/green-ai-monitoring
+* **Tablero Ágil de Gestión del Proyecto (Trello Oficial):**
+  https://trello.com/b/PL8uQ4rF/green-ai-para-centros-de-datos-universitarios
 
-<!-- página 96 -->
+![](evidencias/p051-img019.png)
+Figura A.9. Tablero Kanban de seguimiento ágil del proyecto en el espacio de trabajo oficial.
 
-![Figura (página 96)](evidencias/p096-img050.png)
+---
 
-● API Gateway (Spring Boot): Repositorio woshtsu / green-ai-gateway https://github.com/woshtsu/green-ai-gateway
+### Anexo B. Script de generación de datos sintéticos de prueba
 
-![Figura (página 96)](evidencias/p096-img051.png)
+A continuación se transcribe el código Python completo utilizado para la generación de datos de prueba para las tablas `usuario`, `hardware` y `logs` en PostgreSQL / Supabase y SQLite:
 
-● Frontend Web Application: Repositorio LeonidKisley / Frontend-GreenAi https://github.com/LeonidKisley/Frontend-GreenAi.git
+```python
+from datetime import datetime, timedelta
+import numpy as np
+import pandas as pd
 
-<!-- página 97 -->
+NUM_LOGS = 100000
+NUM_SERVIDORES = 50
+NUM_USUARIOS = 10
 
-![Figura (página 97)](evidencias/p097-img052.png)
+# Listas ampliadas para 2 nombres y 2 apellidos
+primeros_nombres = ['Carlos', 'Ana', 'Luis', 'María', 'Javier', 'Elena', 'Diego', 'Sofia', 'Mateo', 'Lucía']
+segundos_nombres = ['Alberto', 'Isabel', 'Enrique', 'Fernanda', 'Alexander', 'Beatriz', 'Andrés', 'Camila', 'Gabriel', 'Valeria']
+primeros_apellidos = ['García', 'Rodríguez', 'López', 'Martínez', 'González', 'Pérez', 'Sánchez', 'Romero', 'Torres', 'Flores']
+segundos_apellidos = ['Benítez', 'Vargas', 'Castro', 'Ríos', 'Mendoza', 'Aguilar', 'Navarro', 'Delgado', 'Morales', 'Paredes']
 
-● Simulador de Workloads: Repositorio woshtsu / green-ai-simulator https://github.com/woshtsu/green-ai-simulator
+# 1. Tabla Usuarios (US001, US002, ...)
+usuarios_ids = [f'US{i+1:03d}' for i in range(NUM_USUARIOS)]
+usuarios_list = []
+for i, usr_id in enumerate(usuarios_ids):
+    p_nombre = primeros_nombres[i % len(primeros_nombres)]
+    s_nombre = segundos_nombres[i % len(segundos_nombres)]
+    p_apellido = primeros_apellidos[i % len(primeros_apellidos)]
+    s_apellido = segundos_apellidos[i % len(segundos_apellidos)]
+    nombre_completo = f"{p_nombre} {s_nombre} {p_apellido} {s_apellido}"
+    usuarios_list.append({
+        'usuario_id': usr_id,
+        'nombre_completo': nombre_completo,
+        'email': f'{p_nombre.lower()}.{p_apellido.lower()}@greenai.com',
+        'password': f'Admin123!{i+1}',
+        'password_hash': '$2b$12$eImiTXuWVxfM37uY4JANjO7x1R5n5YfJ8e8oE4h7x9k8j7h6g5f4d',
+        'rol': 'ADMINISTRADOR' if i == 0 else 'OPERADOR',
+        'fecha_creacion': datetime.now() - timedelta(days=30)
+    })
+df_usuarios = pd.DataFrame(usuarios_list)
 
-![Figura (página 97)](evidencias/p097-img053.png)
+# 2. Tabla Hardware
+hardware_ids = [f'HW{i+1:03d}' for i in range(NUM_SERVIDORES)]
+hardware_list = []
+assigned_users_for_hw = np.random.choice(usuarios_ids, size=NUM_SERVIDORES)
+for i, hw_id in enumerate(hardware_ids):
+    hardware_list.append({
+        'hardware_id': hw_id,
+        'usuario_id': assigned_users_for_hw[i],
+        'hostname': f'srv-green-{i+1:03d}',
+        'ip_address': f'10.0.1.{10+i}',
+        'cpu_cores': int(np.random.choice([16, 32, 64])),
+        'ram_gb': float(np.random.choice([32, 64, 128])),
+        'max_watts': float(np.random.choice([450.0, 600.0, 800.0])),
+        'ubicacion_rack': f'Rack-{(i//10)+1:02d}',
+        'estado': 'activo',
+        'fecha_registro': datetime.now() - timedelta(days=60)
+    })
+df_hardware = pd.DataFrame(hardware_list)
+hw_watts_map = df_hardware.set_index('hardware_id')['max_watts'].to_dict()
 
-La solución cuenta con los siguientes servicios publicados en Render:
+# 3. Tabla Logs
+assigned_hw = np.random.choice(hardware_ids, size=NUM_LOGS)
+time_array = np.linspace(0, 100, NUM_LOGS)
+cpu_base = 50.0 + 30.0 * np.sin(time_array) + np.random.normal(0, 10, NUM_LOGS)
+cpu_utilization = np.clip(cpu_base, 5.0, 99.0)
+ram_utilization = np.clip(cpu_utilization * np.random.uniform(0.7, 1.1, size=NUM_LOGS), 10.0, 95.0)
+max_watts_array = np.array([hw_watts_map[hw] for hw in assigned_hw])
+energia_watts = np.round((cpu_utilization / 100.0) * max_watts_array * np.random.uniform(0.85, 1.12, size=NUM_LOGS), 2)
+temperatura = np.round(22.0 + (cpu_utilization * 0.45) + np.random.normal(0, 1.5, size=NUM_LOGS), 2)
+prediccion_watts = np.round(energia_watts * np.random.uniform(0.96, 1.02, size=NUM_LOGS), 2)
+start_time = datetime.now() - timedelta(minutes=NUM_LOGS)
+log_ids_formatted = [f'LOG{i+1:06d}' for i in range(NUM_LOGS)]
 
-● Data Processing: https://green-ia-dataprocessing.onrender.com ● Gateway: https://green-ai-gateway-1.onrender.com ● Monitoring: https://green-ai-monitoring-gwo2.onrender.com ● Simulator: https://green-ai-simulator.onrender.com ● ML: https://green-ia-ml.onrender.com
+df_logs = pd.DataFrame({
+    'log_id': log_ids_formatted,
+    'hardware_id': assigned_hw,
+    'timestamp': [start_time + timedelta(minutes=i) for i in range(NUM_LOGS)],
+    'cpu_utilization_pct': np.round(cpu_utilization, 2),
+    'ram_utilization_pct': np.round(ram_utilization, 2),
+    'temperatura_celsius': temperatura,
+    'energia_watts': energia_watts,
+    'prediccion_watts': prediccion_watts,
+    'accion_recomendada': np.where(cpu_utilization > 80.0, 'Reducir Frecuencia', 'Optimo'),
+    'cumple_sla': cpu_utilization < 85.0
+})
 
-<!-- página 98 -->
-
-![Figura (página 98)](evidencias/p098-img054.png)
-
-**Tablero Ágil Trello Oficial https://trello.com/b/pg8Q8yZx**
-
-![Figura (página 98)](evidencias/p051-img019.png)
+# Exportar archivos CSV
+df_usuarios.to_csv('tabla_usuarios.csv', index=False, encoding='utf-8-sig')
+df_hardware.to_csv('tabla_hardware.csv', index=False, encoding='utf-8-sig')
+df_logs.to_csv('tabla_logs.csv', index=False, encoding='utf-8-sig')
+```
