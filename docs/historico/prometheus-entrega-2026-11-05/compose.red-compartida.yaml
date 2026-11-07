@@ -1,0 +1,10 @@
+services:
+  prometheus:
+    networks:
+      green-ai:
+        aliases:
+          - green-ai-prometheus
+networks:
+  green-ai:
+    external: true
+    name: ${GREEN_AI_NETWORK:-green-ai-workspace_default}

@@ -1,0 +1,6 @@
+# Complemento documental para docker-compose.yml de la raíz.
+# Mantiene la identidad de cada nodo modelado en el exporter compartido.
+services:
+  monitoring:
+    environment:
+      MONITORING_PROMETHEUS_INSTANCE_LABEL: node

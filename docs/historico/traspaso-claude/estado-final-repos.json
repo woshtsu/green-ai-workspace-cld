@@ -1,0 +1,72 @@
+[
+  {
+    "path": "C:\\Practicas\\202620\\TallerProyectos\\green-ai-workspace",
+    "branch": "main",
+    "sha": "b644980fff4e92c2090406162e144349b9c12aea",
+    "status": "M GreenAi_TPI\n M green-ai-data-processing/Green-IA\n M green-ai-front-end/Frontend-GreenAi\n M project-docs",
+    "origin_main": "b644980fff4e92c2090406162e144349b9c12aea"
+  },
+  {
+    "path": "C:\\Practicas\\202620\\TallerProyectos\\green-ai-workspace\\green-ai-data-processing\\Green-IA",
+    "branch": "main",
+    "sha": "9d24e3e96f8894fe2105b7d862d01028afae2ffa",
+    "status": "",
+    "origin_main": "a545f37c0d593e9a3e1921f4ed02d61f6f279769"
+  },
+  {
+    "path": "C:\\Practicas\\202620\\TallerProyectos\\green-ai-workspace\\green-ai-front-end\\Frontend-GreenAi",
+    "branch": "main",
+    "sha": "2b3419209595cc595bee33240edca165d7d06a93",
+    "status": "",
+    "origin_main": "2b3419209595cc595bee33240edca165d7d06a93"
+  },
+  {
+    "path": "C:\\Practicas\\202620\\TallerProyectos\\green-ai-workspace\\green-ai-gateway",
+    "branch": "main",
+    "sha": "9d043fa2d3924e8fe0ae03610a81f0da2981d06f",
+    "status": "",
+    "origin_main": "9d043fa2d3924e8fe0ae03610a81f0da2981d06f"
+  },
+  {
+    "path": "C:\\Practicas\\202620\\TallerProyectos\\green-ai-workspace\\green-ai-monitoring",
+    "branch": "main",
+    "sha": "d476c32d1dea2f79b6a4032bd8703d37a234fa21",
+    "status": "",
+    "origin_main": "d476c32d1dea2f79b6a4032bd8703d37a234fa21"
+  },
+  {
+    "path": "C:\\Practicas\\202620\\TallerProyectos\\green-ai-workspace\\green-ai-prediction\\green-ai-project-docs",
+    "branch": "Criss",
+    "sha": "8585d6b08c397b80bc21132d6b4db18d870f2bed",
+    "status": "",
+    "origin_main": "origin/main"
+  },
+  {
+    "path": "C:\\Practicas\\202620\\TallerProyectos\\green-ai-workspace\\green-ai-simulator",
+    "branch": "main",
+    "sha": "47536d78bdaa4639f459f0334c0a99fe2457669b",
+    "status": "",
+    "origin_main": "47536d78bdaa4639f459f0334c0a99fe2457669b"
+  },
+  {
+    "path": "C:\\Practicas\\202620\\TallerProyectos\\green-ai-workspace\\GreenAi_TPI",
+    "branch": "",
+    "sha": "7f839f8a2adbf39d89d49199ed2f28695e6a1c6f",
+    "status": "",
+    "origin_main": "7f839f8a2adbf39d89d49199ed2f28695e6a1c6f"
+  },
+  {
+    "path": "C:\\Practicas\\202620\\TallerProyectos\\green-ai-workspace\\guia-exposicion",
+    "branch": "main",
+    "sha": "f90280abbcf3ce08047daab1ff4a722296e79789",
+    "status": "",
+    "origin_main": "f90280abbcf3ce08047daab1ff4a722296e79789"
+  },
+  {
+    "path": "C:\\Practicas\\202620\\TallerProyectos\\green-ai-workspace\\project-docs",
+    "branch": "main",
+    "sha": "bc27654c1f6415a172f09c4628f9c8b23197cebd",
+    "status": "?? \"Consigna-Taller1-Actualizado-Icacit v2.pdf\"\n?? Semana12/",
+    "origin_main": "bc27654c1f6415a172f09c4628f9c8b23197cebd"
+  }
+]

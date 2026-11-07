@@ -1,0 +1,16 @@
+groups:
+  - name: green-ai-pmv2-demo
+    rules:
+      - alert: RecommendationsUnavailable
+        expr: up{job="green-ai-prediction"} == 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Prediction y sus recomendaciones no responden al scrape durante 2 minutos"
+      - alert: DemoPolicyBlocked
+        expr: increase(green_ai_recommendations_total{status="blocked"}[5m]) > 0
+        labels:
+          severity: warning
+        annotations:
+          summary: "Una evaluación excedió límites de demostración; requiere revisión, no prueba una violación de SLA aprobado"
