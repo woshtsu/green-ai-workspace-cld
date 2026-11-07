@@ -195,6 +195,56 @@ let currentGroupedRacks = {};
 let selectedNodeId = null;
 let autoRefreshTimer = null;
 let isRefreshing = false;
+let lastPrediction = null;
+
+function resolveApiError(err, status = null) {
+  if (typeof mapApiError === 'function') {
+    return mapApiError(err, status);
+  }
+  if (typeof window !== 'undefined' && window.GreenPMV2?.mapApiError) {
+    return window.GreenPMV2.mapApiError(err, status);
+  }
+  try {
+    const pmv2 = require('./pmv2.js');
+    if (typeof pmv2.mapApiError === 'function') {
+      return pmv2.mapApiError(err, status);
+    }
+  } catch (_e) {}
+
+  if (!err && !status) return 'Error desconocido';
+  const statusCode = status || (typeof err === 'object' && err !== null ? (err.status || err.statusCode) : null);
+  if (statusCode === 403 || statusCode === '403') return 'Tu rol solo permite lectura';
+
+  let code = '';
+  let msg = '';
+  let detail = '';
+  if (typeof err === 'string') {
+    msg = err;
+  } else if (err && typeof err === 'object') {
+    code = err.code != null ? String(err.code) : '';
+    msg = err.message != null ? String(err.message) : '';
+    if (typeof err.detail === 'string') {
+      detail = err.detail;
+    } else if (err.detail && typeof err.detail === 'object') {
+      detail = Array.isArray(err.detail)
+        ? err.detail.map(d => d.msg || JSON.stringify(d)).join('; ')
+        : (err.detail.message || JSON.stringify(err.detail));
+    }
+  }
+  const comb = `${code} ${msg} ${detail}`.trim();
+  if (code === '403' || comb.includes('403') || comb.toLowerCase().includes('permiso')) {
+    return 'Tu rol solo permite lectura';
+  }
+  if (
+    code === 'INSUFFICIENT_DATA' || code === 'INVALID_DATASET' ||
+    detail === 'INSUFFICIENT_DATA' || detail === 'INVALID_DATASET' ||
+    msg === 'INSUFFICIENT_DATA' || msg === 'INVALID_DATASET' ||
+    /INSUFFICIENT_DATA|INVALID_DATASET/i.test(comb) || comb.includes('ventana de CPU')
+  ) {
+    return 'Datos insuficientes: el simulador necesita ~20 min de historial';
+  }
+  return detail || msg || code || 'Error al procesar la solicitud';
+}
 
 async function loadRacksInventory() {
   if (cachedRacksData) return cachedRacksData;
@@ -242,6 +292,7 @@ function renderSummaryCards(summary) {
 }
 
 function selectNode(node) {
+  const isDifferentNode = selectedNodeId !== node.id;
   selectedNodeId = node.id;
 
   // Actualizar estado activo en los botones de celda
@@ -263,6 +314,8 @@ function selectNode(node) {
   const wattsEl = document.getElementById('detail-watts');
   const predictStatusEl = document.getElementById('predict-status');
   const predictResultEl = document.getElementById('predict-result');
+  const valEl = document.getElementById('predict-val');
+  const timeEl = document.getElementById('predict-time');
 
   if (idEl) idEl.textContent = node.id;
   if (rackEl) rackEl.textContent = node.rack;
@@ -277,11 +330,26 @@ function selectNode(node) {
   if (coresEl) coresEl.textContent = `${node.cpuCores} cores`;
   if (wattsEl) wattsEl.textContent = `${node.maxWatts} W`;
 
-  if (predictStatusEl) {
-    predictStatusEl.textContent = '';
-    predictStatusEl.className = 'detail-status';
+  // Si cambia de nodo, reiniciar estado de predicción.
+  // Si sigue siendo el mismo y existe una predicción previa, conservarla.
+  if (isDifferentNode) {
+    lastPrediction = null;
+    if (predictStatusEl) {
+      predictStatusEl.textContent = '';
+      predictStatusEl.className = 'detail-status';
+    }
+    if (predictResultEl) predictResultEl.hidden = true;
+  } else if (lastPrediction && lastPrediction.nodeId === node.id) {
+    if (predictStatusEl && lastPrediction.status) {
+      predictStatusEl.textContent = lastPrediction.status;
+      predictStatusEl.className = lastPrediction.statusClass || 'detail-status';
+    }
+    if (predictResultEl && lastPrediction.val) {
+      if (valEl) valEl.textContent = lastPrediction.val;
+      if (timeEl) timeEl.textContent = lastPrediction.time;
+      predictResultEl.hidden = false;
+    }
   }
-  if (predictResultEl) predictResultEl.hidden = true;
 
   const predictBtn = document.getElementById('predict-15m-btn');
   if (predictBtn) {
@@ -307,6 +375,13 @@ async function runNodePrediction(node) {
       statusEl.textContent = 'Tu rol solo permite lectura';
       statusEl.className = 'detail-status status-warning';
     }
+    lastPrediction = {
+      nodeId: node.id,
+      val: null,
+      time: '',
+      status: 'Tu rol solo permite lectura',
+      statusClass: 'detail-status status-warning'
+    };
     return;
   }
 
@@ -325,32 +400,46 @@ async function runNodePrediction(node) {
 
     const { result } = await predictionFn(cluster, node.id);
 
+    const formattedVal = `${new Intl.NumberFormat('es-PE', { maximumFractionDigits: 1 }).format(result.value)} % · Estimado`;
+    const formattedTime = `Horizonte: ${result.horizon || '15m'} · Para: ${new Date(result.predictedFor).toLocaleTimeString()}`;
+
     if (valEl) {
-      const formatted = new Intl.NumberFormat('es-PE', { maximumFractionDigits: 1 }).format(result.value);
-      valEl.textContent = `${formatted} % · Estimado`;
+      valEl.textContent = formattedVal;
     }
     if (timeEl) {
-      timeEl.textContent = `Horizonte: ${result.horizon || '15m'} · Para: ${new Date(result.predictedFor).toLocaleTimeString()}`;
+      timeEl.textContent = formattedTime;
     }
     if (resultBox) resultBox.hidden = false;
     if (statusEl) {
       statusEl.textContent = 'Estimación completada con éxito';
       statusEl.className = 'detail-status status-success';
     }
+
+    lastPrediction = {
+      nodeId: node.id,
+      val: formattedVal,
+      time: formattedTime,
+      status: 'Estimación completada con éxito',
+      statusClass: 'detail-status status-success'
+    };
   } catch (error) {
-    const isForbidden = error.message?.includes('403')
-      || error.message?.includes('permiso')
-      || (error.status === 403);
+    const errorMsg = resolveApiError(error);
+    const isForbidden = errorMsg.includes('solo permite lectura')
+      || error.status === 403
+      || error.message?.includes('403');
 
     if (statusEl) {
-      if (isForbidden) {
-        statusEl.textContent = 'Tu rol solo permite lectura';
-        statusEl.className = 'detail-status status-warning';
-      } else {
-        statusEl.textContent = error.message || 'No se pudo generar la predicción.';
-        statusEl.className = 'detail-status status-error';
-      }
+      statusEl.textContent = errorMsg;
+      statusEl.className = isForbidden ? 'detail-status status-warning' : 'detail-status status-error';
     }
+
+    lastPrediction = {
+      nodeId: node.id,
+      val: null,
+      time: '',
+      status: errorMsg,
+      statusClass: isForbidden ? 'detail-status status-warning' : 'detail-status status-error'
+    };
   } finally {
     if (predictBtn) predictBtn.disabled = false;
   }
@@ -439,10 +528,22 @@ async function refreshRacks() {
     renderSummaryCards(summary);
     renderRacksView(currentGroupedRacks);
 
-    // Si había un nodo seleccionado, refrescar sus datos en el panel
+    // Conservar el nodo seleccionado y el último resultado de predicción entre refrescos de 15 s
+    // (no re-renderizar el panel si el nodo sigue seleccionado)
     if (selectedNodeId) {
       const updatedNode = allEnrichedNodes.find(n => n.id === selectedNodeId);
-      if (updatedNode) selectNode(updatedNode);
+      if (updatedNode) {
+        const cpuEl = document.getElementById('detail-cpu');
+        if (cpuEl) {
+          const category = getCpuCategory(updatedNode.cpu);
+          cpuEl.textContent = formatCpu(updatedNode.cpu);
+          cpuEl.className = `detail-cpu-val cpu-${category}`;
+        }
+        const predictBtn = document.getElementById('predict-15m-btn');
+        if (predictBtn && !predictBtn.disabled) {
+          predictBtn.onclick = () => runNodePrediction(updatedNode);
+        }
+      }
     }
 
     if (lastUpdateEl) {
@@ -486,6 +587,8 @@ if (typeof window !== 'undefined') {
     groupByRack,
     computeSummary,
     parseMetricsResponse,
+    resolveApiError,
+    mapApiError: resolveApiError,
     refreshRacks,
     initRacksView
   };
@@ -500,6 +603,8 @@ if (typeof module !== 'undefined' && module.exports) {
     buildAriaLabel,
     groupByRack,
     computeSummary,
-    parseMetricsResponse
+    parseMetricsResponse,
+    resolveApiError,
+    mapApiError: resolveApiError
   };
 }
