@@ -30,30 +30,42 @@ function validatePrediction(result, dataset) {
   }
 }
 
+async function requestNodePrediction(cluster, resourceId) {
+  const end = new Date(Date.now() - 30000);
+  const params = new URLSearchParams({
+    cluster,
+    resourceId,
+    stepSeconds: '15',
+    start: GreenMetrics.rfc3339Seconds(new Date(end.getTime() - 2 * 3600000)),
+    end: GreenMetrics.rfc3339Seconds(end)
+  });
+  const dataset = await predictionRequest(`/api/processing/v1/prediction/dataset?${params}`);
+  if (!dataset.features?.length) throw new Error('Data Processing no devolvió muestras utilizables.');
+  const result = await predictionRequest('/api/prediction/v1/predictions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dataset)
+  });
+  validatePrediction(result, dataset);
+  return { dataset, result };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.getElementById('predict-button');
   if (!button) return;
   let busy = false;
   button.addEventListener('click', async () => {
     if (busy) return;
-    const cluster = document.getElementById('cluster').value;
-    const resourceId = document.getElementById('node').value;
+    const cluster = document.getElementById('cluster')?.value;
+    const resourceId = document.getElementById('node')?.value;
     const resultBox = document.getElementById('prediction-result');
-    resultBox.hidden = true;
+    if (resultBox) resultBox.hidden = true;
     if (!cluster || !resourceId) { put('prediction-status', 'Elige un clúster y un nodo concretos en los filtros superiores.'); return; }
     busy = true; button.disabled = true;
     try {
       put('prediction-status', 'Preparando el histórico de CPU…');
-      const end = new Date(Date.now() - 30000);
-      const params = new URLSearchParams({cluster, resourceId, stepSeconds:'15',
-        start:GreenMetrics.rfc3339Seconds(new Date(end.getTime() - 2 * 3600000)), end:GreenMetrics.rfc3339Seconds(end)});
-      const dataset = await predictionRequest(`/api/processing/v1/prediction/dataset?${params}`);
-      if (!dataset.features?.length) throw new Error('Data Processing no devolvió muestras utilizables.');
       put('prediction-status', 'Ejecutando el modelo de predicción…');
-      const result = await predictionRequest('/api/prediction/v1/predictions', {
-        method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(dataset)
-      });
-      validatePrediction(result, dataset);
+      const { dataset, result } = await requestNodePrediction(cluster, resourceId);
       put('prediction-value', `${new Intl.NumberFormat('es-PE', {maximumFractionDigits:2}).format(result.value)} % · Estimado`);
       put('prediction-resource', `${result.resource.cluster} / ${result.resource.id}`);
       put('prediction-time', new Date(result.predictedFor).toLocaleString());
@@ -61,10 +73,17 @@ document.addEventListener('DOMContentLoaded', () => {
       put('prediction-origin', (dataset.origins || []).map(GreenMetrics.origin).join(' · ') || 'Desconocido');
       put('prediction-dataset', result.inputDatasetId);
       put('prediction-warnings', [...(dataset.warnings || []), ...(result.warnings || [])].join(' · '));
-      resultBox.hidden = false;
+      if (resultBox) resultBox.hidden = false;
       put('prediction-status', `Estimación generada ${new Date(result.generatedAt).toLocaleString()}. Corresponde al recurso indicado; no se actualiza automáticamente.`);
     } catch (error) {
       put('prediction-status', error.name === 'TimeoutError' ? 'La operación tardó demasiado. Puedes volver a intentarlo.' : error.message);
     } finally { busy = false; button.disabled = false; }
   });
 });
+
+if (typeof window !== 'undefined') {
+  window.requestNodePrediction = requestNodePrediction;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { predictionRequest, validatePrediction, requestNodePrediction };
+}

@@ -1,35 +1,133 @@
 <!doctype html>
 <html lang="es">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Green AI | Arquitectura y evolución</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="monitoring.css">  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Green AI | Racks con calor</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="monitoring.css">
+  <link rel="stylesheet" href="racks.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
 <body class="page-shell">
-<header class="topbar glass-panel"><div class="brand-name">Green AI <span>Arquitectura</span></div>
-<div class="topbar-actions"><span id="user-name-display"></span><span id="user-role-badge" class="role-pill"></span>
-<button id="theme-toggle" class="btn btn-secondary" type="button" role="switch" aria-checked="false" aria-label="Modo claro">Modo oscuro</button>
-<a href="dashboard.html" class="btn btn-secondary">Volver a métricas</a><button id="logout-btn" class="btn btn-secondary">Cerrar sesión</button></div></header>
-<main class="dashboard-shell">
-<section class="glass-panel monitor-panel"><span class="brand-badge">MVP 1 · Arquitectura de la demostración</span>
-<h1>Cómo llegan los datos al panel</h1>
-<p>Esquema explicativo de los servicios. No es un mapa de red descubierto ni un indicador de disponibilidad en tiempo real.</p>
-<div class="architecture-flow" aria-label="Recorrido de las métricas">
-<article class="architecture-step"><span class="eyebrow">01 · Generación</span><strong>Simulator</strong><p>Produce CPU, memoria, tráfico y filesystem sintéticos con una semilla reproducible.</p></article>
-<article class="architecture-step"><span class="eyebrow">02 · Recolección</span><strong>Prometheus</strong><p>Consulta el exporter y conserva las series temporales.</p></article>
-<article class="architecture-step"><span class="eyebrow">03 · Consulta</span><strong>Monitoring</strong><p>Consulta Prometheus y entrega valores, unidades, calidad y procedencia.</p></article>
-<article class="architecture-step"><span class="eyebrow">04 · Acceso</span><strong>Gateway → Frontend</strong><p>El usuario consulta mediante Gateway con su sesión de Supabase Auth.</p></article>
-</div><p>Las métricas sintéticas se identifican como <strong>Simulado</strong>. Una muestra ausente aparece como «Sin dato» y no como cero.</p>
-<p id="request-status" role="status"></p></section>
-<section class="glass-panel monitor-panel"><span class="brand-badge">MVP 1 · Inferencia experimental</span>
-<h2>Preparación e inferencia</h2><p>Al solicitar una estimación en el panel, Data Processing consulta Monitoring y prepara el histórico de un nodo. El panel envía ese dataset a Prediction por Gateway y presenta la CPU estimada, su horizonte y modelo. La demostración utiliza un modelo entrenado con datos sintéticos; no representa ahorro energético validado.</p>
-<p>La lectura histórica de Supabase requiere un acceso de servidor autorizado. No se confunde con las series sintéticas almacenadas en Prometheus.</p></section>
-<section class="glass-panel monitor-panel"><span class="pending">MVP 2 · Propuesta de avance</span>
-<h2>Vista lógica y física de infraestructura</h2><p>La idea de racks y conexiones del prototipo se reserva para una vista basada en inventario real. Primero se necesitan identificadores estables, ubicaciones y enlaces verificables.</p>
-<div class="pending-grid">
-<article class="architecture-step"><strong>Inventario trazable</strong><p>Relacionar cada equipo con sus métricas y su ubicación sin inventar nodos.</p></article>
-<article class="architecture-step"><strong>Decisiones explicables</strong><p>Mostrar recomendaciones, restricciones de SLA y el motivo de cada propuesta.</p></article>
-<article class="architecture-step"><strong>Impacto energético</strong><p>Incorporar medición de potencia y comparar periodos antes de afirmar ahorro.</p></article>
-</div><p>Estos elementos describen la siguiente etapa propuesta; todavía no son funciones operativas ni compromisos de alcance aprobados.</p></section>
-</main>
-<script src="appearance.js"></script><script src="config.local.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1"></script><script src="app.js"></script>
-</body></html>
+  <header class="topbar glass-panel">
+    <div class="brand-group">
+      <div class="brand-name">Green AI <span>Racks</span></div>
+      <span class="brand-badge">Datos simulados</span>
+    </div>
+    <div class="topbar-actions">
+      <span id="user-name-display"></span>
+      <span id="user-role-badge" class="role-pill"></span>
+      <button id="theme-toggle" class="btn btn-secondary" type="button" role="switch" aria-checked="false" aria-label="Modo claro">Modo oscuro</button>
+      <a href="dashboard.html" class="btn btn-secondary">Métricas</a>
+      <button id="logout-btn" class="btn btn-secondary">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="dashboard-shell racks-shell">
+    <!-- Panel superior con resumen y leyenda -->
+    <section class="glass-panel monitor-panel racks-header-panel">
+      <div class="racks-title-bar">
+        <div>
+          <div class="eyebrow"><span class="status-dot"></span> Topología de infraestructura</div>
+          <h1>Racks con calor</h1>
+          <p>50 servidores distribuidos en 5 racks. Celdas cuadradas coloreadas por utilización de CPU.</p>
+        </div>
+        <div class="racks-refresh-bar">
+          <span id="last-update" role="status" aria-live="polite">Conectando…</span>
+          <button id="refresh-racks-btn" class="btn btn-secondary" type="button">Actualizar</button>
+        </div>
+      </div>
+
+      <!-- Resumen superior en 3 tarjetas -->
+      <section class="kpi-grid racks-kpi-grid" aria-label="Resumen de racks">
+        <article class="kpi-card glass-panel">
+          <span class="kpi-label">Nodos &gt; 80 % CPU</span>
+          <strong class="summary-value" id="kpi-high-cpu">—</strong>
+          <span class="summary-note">Servidores en rango crítico</span>
+        </article>
+        <article class="kpi-card glass-panel">
+          <span class="kpi-label">CPU media</span>
+          <strong class="summary-value" id="kpi-avg-cpu">—</strong>
+          <span class="summary-note">Promedio de nodos con dato</span>
+        </article>
+        <article class="kpi-card glass-panel">
+          <span class="kpi-label">Rack más cargado</span>
+          <strong class="summary-value summary-text" id="kpi-busiest-rack">—</strong>
+          <span class="summary-note" id="kpi-busiest-note">Mayor consumo medio</span>
+        </article>
+      </section>
+
+      <!-- Leyenda compacta de color -->
+      <div class="racks-legend" aria-label="Leyenda de utilización">
+        <span class="legend-title">CPU:</span>
+        <span class="legend-item"><span class="legend-color legend-green"></span> &lt; 40 % Normal</span>
+        <span class="legend-item"><span class="legend-color legend-amber"></span> 40–80 % Moderado</span>
+        <span class="legend-item"><span class="legend-color legend-red"></span> &gt; 80 % Crítico</span>
+        <span class="legend-item"><span class="legend-color legend-nodata"></span> Sin dato</span>
+      </div>
+    </section>
+
+    <!-- Disposición principal: 5 columnas de racks + panel lateral de detalle -->
+    <div class="racks-layout">
+      <!-- 5 columnas de racks -->
+      <section class="racks-grid" id="racks-container" aria-label="Columnas de racks">
+        <!-- Generado dinámicamente por racks.js -->
+      </section>
+
+      <!-- Panel lateral con detalle del nodo seleccionado -->
+      <aside class="glass-panel rack-detail-panel" id="rack-detail-panel" aria-label="Detalle del servidor">
+        <div class="detail-placeholder" id="detail-placeholder">
+          <p>Haz clic en cualquier servidor para ver sus especificaciones y estimar su CPU futura.</p>
+        </div>
+
+        <div class="detail-content" id="detail-content" hidden>
+          <div class="detail-header">
+            <span class="detail-rack-badge" id="detail-rack">—</span>
+            <h2 id="detail-id">—</h2>
+            <span class="detail-hostname" id="detail-hostname">—</span>
+          </div>
+
+          <dl class="detail-specs">
+            <div>
+              <dt>CPU actual</dt>
+              <dd id="detail-cpu" class="detail-cpu-val">—</dd>
+            </div>
+            <div>
+              <dt>Núcleos</dt>
+              <dd id="detail-cores">—</dd>
+            </div>
+            <div>
+              <dt>Potencia máx.</dt>
+              <dd id="detail-watts">—</dd>
+            </div>
+            <div>
+              <dt>Procedencia</dt>
+              <dd id="detail-origin">Simulado</dd>
+            </div>
+          </dl>
+
+          <div class="detail-actions">
+            <button id="predict-15m-btn" class="btn btn-primary" type="button">Predecir 15 min</button>
+            <p id="predict-status" role="status" aria-live="polite" class="detail-status"></p>
+
+            <div id="predict-result" class="predict-result-box" hidden>
+              <span class="predict-label">Estimación futura de CPU:</span>
+              <strong id="predict-val" class="predict-val">—</strong>
+              <span id="predict-time" class="summary-note"></span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="appearance.js"></script>
+  <script src="config.local.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1"></script>
+  <script src="metrics.js"></script>
+  <script src="app.js"></script>
+  <script src="prediction.js"></script>
+  <script src="racks.js"></script>
+</body>
+</html>
