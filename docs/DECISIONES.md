@@ -13,7 +13,7 @@ Formato breve: contexto → decisión → consecuencias. Estado: **Aceptada**, *
 - `BD_GreenAi.xlsx` (7,3 MB) **sí** se versiona una vez: es la entrada original, y las pruebas del ETL lo necesitan.
 - El modelo de Prediction no se versiona: lo genera `scripts/run_pipeline.py --skip-mlflow` (lo hace el Dockerfile; en local, antes de `pytest`).
 
-## D-03 GreenAi_TPI no se migra como servicio — Aceptada
+## D-03 GreenAi_TPI (solo en el respaldo del workspace antiguo) no se migra como servicio — Aceptada
 - Contiene un frontend alternativo, un backend Node con `node_modules` versionado (1192 archivos), un mock de monitoring, un exporter, manifiestos K8s y `kubectl.exe` (50 MB).
 - **Riesgo detectado:** `Backend/.env` está versionado en el repositorio remoto LeonidKisley/GreenAi_TPI (contiene `SUPABASE_URL` y una clave de tipo *publishable*, no *secret*). No se copió. Rotarla o retirarla del historial es decisión del usuario/propietario.
 - Los manifiestos K8s se revisarán al definir el despliegue (D-07). Hasta entonces quedan en el workspace antiguo.
@@ -108,7 +108,7 @@ y sí la da a `nbf` (60 s). La suposición inicial era de 60 s para ambos. Se co
 
 **Decisión.** Java sigue siendo el Gateway por defecto. El Go queda como alternativa validada, activable con
 `compose.gateway-go.yml`. Motivos para no cambiar todavía:
-1. La guía de exposición del equipo (`guia-exposicion/01`, `05`) defiende Spring Cloud Gateway.
+1. La guía de exposición del equipo (`docs/exposicion/01`, `05`) defiende Spring Cloud Gateway.
 2. `software/gateway/AGENTS.md` fija Java 21/Spring.
 3. El beneficio depende del hosting (D-07).
 

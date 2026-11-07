@@ -5,7 +5,7 @@ y preparación de CPU para Prediction. Conserva el ETL Excel existente.
 
 ## Ejecutar y verificar
 
-Desde `data-processing-service`, con Python 3.14 y un entorno virtual:
+Desde `software/data-processing`, con Python 3.14 y un entorno virtual:
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -124,7 +124,7 @@ entre fuentes ni reintentos implícitos; un fallo no se presenta como datos vac�
 
 ### Arranque local sin Supabase
 
-Con Docker Desktop iniciado, ejecutar desde `data-processing-service`:
+Con Docker Desktop iniciado, ejecutar desde `software/data-processing`:
 
 ```powershell
 docker compose -f compose.local.yaml up -d --build --wait

@@ -1,7 +1,7 @@
 # HANDOFF — migración a green-ai-monorepo
 
-Actualizado por Claude Code el 2026-11-06. Encargo original: `../output/traspaso-claude/PROMPT_CLAUDE.md`.
-Hechos históricos previos: `../output/semana10/HANDOFF.md` (el estado y las pruebas actuales prevalecen).
+Actualizado por Claude Code el 2026-11-06. Encargo original: `docs/historico/traspaso-claude/PROMPT_CLAUDE.md`.
+Hechos históricos previos: `docs/historico/semana10/HANDOFF.md` (el estado y las pruebas actuales prevalecen).
 
 ## Estado en una línea
 Monorepo creado, fuentes copiadas sin Git anidados; las 6 suites de pruebas reproducen la línea base; el stack
@@ -141,7 +141,7 @@ plan experimental + baseline, reportes CSV/PDF, rol observador → (4) documento
   `entregables/semana09-12/informe-unidad-III.md` con 54 imágenes y 41 tablas, mediante
   `herramientas_IA/exportacion/pdf_a_markdown.py`. Se revisaron a mano la portada y varias páginas (22, 47); el
   código del anexo perdió la sangría.
-- Semanas 1–2, 4 (por confirmar) y 6 importadas desde `project-docs` con las imágenes separadas.
+- Semanas 1–2, 4 (por confirmar) y 6 importadas desde `project-docs` (solo en el respaldo del workspace antiguo) con las imágenes separadas.
 - **Faltan las guías del docente de las semanas 1–7 (y 10–11, si existen)**: el usuario ofreció enviarlas.
 - No exportar DOCX/PDF salvo pedido expreso del usuario (instrucción del 2026-11-06).
 - El informe entregado contiene cifras sin respaldo (XGBoost RMSE 7,1 %, 57,7 %, 45 ms, menos de 35 MB, 18,4 %):
@@ -156,7 +156,7 @@ plan experimental + baseline, reportes CSV/PDF, rol observador → (4) documento
 - `BD_GreenAi.xlsx` (versionado aquí y en el repo original) contiene en la hoja `Usuarios` contraseñas en texto
   plano de usuarios sintéticos (`Admin123!N`). No son credenciales reales conocidas, pero no deben reutilizarse; si
   se usaron para crear usuarios reales en Supabase, cambiarlas. La semilla SQLite no carga esa hoja.
-- `GreenAi_TPI/Backend/.env` versionado en GitHub (clave Supabase *publishable* + URL). Decide el propietario.
+- `GreenAi_TPI/Backend/.env` (solo en el respaldo del workspace antiguo) versionado en GitHub (clave Supabase *publishable* + URL). Decide el propietario.
 - `.gitignore` del workspace antiguo está envuelto literalmente en un here-string de PowerShell (`@' ... '@ | Set-Content`): sus reglas pueden no aplicarse como se espera. No se modificó.
 
 ## Pendientes (en orden propuesto)
@@ -170,7 +170,7 @@ plan experimental + baseline, reportes CSV/PDF, rol observador → (4) documento
 5. ~~SQLite (D-05)~~ — hecho. Pendiente: ejecutar `tests/test_historical_logs_contract.py` contra un proyecto
    **Supabase de pruebas** (requiere su URL, API key y JWT de lectura, aportados por el usuario) antes de promover a `main`.6. ~~Evaluación Go (D-06)~~ — Gateway Go validado (30 pruebas, 0 diferencias en 39 casos frente a Java, smoke 14/14,
    16 MB / ~10 MiB / 0,5 s frente a 520 MB / ~290 MiB / 6–8 s). **No es el predeterminado**; activarlo es decisión del
-   usuario/equipo (afecta a `guia-exposicion` y a `software/gateway/AGENTS.md`). Monitoring en Go: solo si D-07 lo
+   usuario/equipo (afecta a `docs/exposicion` y a `software/gateway/AGENTS.md`). Monitoring en Go: solo si D-07 lo
    justifica. Comandos: `software/gateway-go/README.md`. El contenedor `gateway-go` (puerto 18082) queda en marcha.
 7. DOCX: instalar Pandoc de forma reproducible (o `pypandoc-binary` en `.tools/`) y exportar `entregables/semana12/`; revisar tablas e imágenes visualmente.
 8. Perfiles de Agency Agents (máx. 3) tras verificar nombres en el repositorio oficial.

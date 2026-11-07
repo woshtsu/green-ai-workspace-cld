@@ -27,7 +27,7 @@ developers.google.com/gemini-code-assist/docs/deprecations/code-assist-individua
 ## Prueba inicial (registro)
 | # | Encargo | Permisos | Resultado | Tokens (total) |
 |---|---|---|---|---|
-| 01 | Revisión solo lectura de green-ai-simulator (workspace antiguo) | deny escritura/comandos/URL/MCP | 1.er turno: `SUCCESS`, respuesta "Wait for subagent response." tras agotar `--print-timeout` 480 s → **sin informe**. 2.º turno (`--conversation`): 6 hallazgos con archivo:línea; Claude verificó los n.º 1, 3 y 6 en `application/runner.py` (imports de adaptadores L5-L10, señales L77-83, `REGISTRY` global L58). No pudo listar `tests/` por falta de comandos. | 143 924 + 181 287 |
+| 01 | Revisión solo lectura de software/simulator (workspace antiguo) | deny escritura/comandos/URL/MCP | 1.er turno: `SUCCESS`, respuesta "Wait for subagent response." tras agotar `--print-timeout` 480 s → **sin informe**. 2.º turno (`--conversation`): 6 hallazgos con archivo:línea; Claude verificó los n.º 1, 3 y 6 en `application/runner.py` (imports de adaptadores L5-L10, señales L77-83, `REGISTRY` global L58). No pudo listar `tests/` por falta de comandos. | 143 924 + 181 287 |
 | 02a | Cambio RunLogger (cwd = raíz del worktree) | allow write 2 archivos + regex anclada | Comando denegado (`cd ...;` no coincide); respuesta vacía, `SUCCESS`. Sin cambios. | 57 146 |
 | — | Sondas de permisos | `command(uv)`, `command(uv --version)` denegados; `command(*)` permitido; regex anclada con cwd del servicio permitido | — | ~8 000 c/u |
 | 02b | Cambio RunLogger (cwd = software/simulator) | ídem | Diff limitado a los 2 archivos, 4 pruebas nuevas; Claude reejecutó: 10 tests, 1 fallo previo de Windows. Integrado. | 135 385 |

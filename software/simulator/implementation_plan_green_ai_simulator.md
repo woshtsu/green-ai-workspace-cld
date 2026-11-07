@@ -1,4 +1,4 @@
-# Plan de implementación de green-ai-simulator
+# Plan de implementación de software/simulator
 
 Fecha: 2026-09-21. Estado: plan para traspaso; implementación pendiente.
 
@@ -8,7 +8,7 @@ Este documento permite continuar en otro agente sin reconstruir la conversación
 
 El usuario solicitó detener las pruebas adicionales y preparar un plan paso a paso. En esta sesión no implementar código ni ejecutar pruebas. El siguiente agente deberá recibir la instrucción de implementar este plan antes de comenzar la implementación. Las verificaciones descritas aquí son trabajo futuro, no resultados obtenidos.
 
-Trabajar exclusivamente en `green-ai-simulator`. Cada servicio será un repositorio Git independiente: no inicializar un repositorio padre, no crear Gateway ni Deployment, no realizar commits o publicaciones por iniciativa propia. Preservar los cambios existentes de Monitoring. No reejecutar sus pruebas ni su smoke pendiente por iniciativa propia.
+Trabajar exclusivamente en `software/simulator`. Cada servicio será un repositorio Git independiente: no inicializar un repositorio padre, no crear Gateway ni Deployment, no realizar commits o publicaciones por iniciativa propia. Preservar los cambios existentes de Monitoring. No reejecutar sus pruebas ni su smoke pendiente por iniciativa propia.
 
 El primer incremento será un simulador lógico Python, ejecutable mediante CLI, con persistencia local y un adaptador Prometheus. No generar carga real, actuar sobre Kubernetes, acceder a Supabase ni definir contratos de servicios de otros integrantes en este incremento.
 
@@ -17,10 +17,10 @@ El primer incremento será un simulador lógico Python, ejecutable mediante CLI,
 Desde la carpeta del simulador, leer en este orden:
 
 1. Instrucciones `AGENTS.md` que sean aplicables a su ruta. El de Monitoring no se hereda por ser un directorio hermano.
-2. `../project-docs/2. Conocimiento de Ingenieria.md` y `../project-docs/4. Gestión de Proyecto.md`. Evitar volcar imágenes base64 al contexto.
-3. `../green-ai-monitoring/docs/integracion-simulator.md`: referencia principal de integración ya acordada.
-4. `../green-ai-monitoring/docs/contrato-monitoring-v0.1.md` y `../green-ai-monitoring/src/main/resources/static/openapi/monitoring-v0.1.json`.
-5. `../green-ai-monitoring/docs/validacion-incremento-1.md`: evidencia y limitaciones, sin ejecutar sus comandos.
+2. `guias/TrabajosDesarrollados/2. Conocimiento de Ingenieria.md` y `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md`. Evitar volcar imágenes base64 al contexto.
+3. `software/monitoring/docs/integracion-simulator.md`: referencia principal de integración ya acordada.
+4. `software/monitoring/docs/contrato-monitoring-v0.1.md` y `software/monitoring/src/main/resources/static/openapi/monitoring-v0.1.json`.
+5. `software/monitoring/docs/validacion-incremento-1.md`: evidencia y limitaciones, sin ejecutar sus comandos.
 6. Este plan completo. Si los contratos actuales difieren de lo aquí resumido, registrar la diferencia antes de conectar servicios; no cambiar silenciosamente Monitoring.
 
 ## 3. Punto de partida confirmado
@@ -67,7 +67,7 @@ Estas decisiones concretan el plan y pueden ajustarse por una razón documentada
 Estructura orientativa:
 
 ```text
-green-ai-simulator/
+software/simulator/
   pyproject.toml
   <archivo de lock>
   README.md
@@ -241,7 +241,7 @@ Entregar rutas y comandos concretos, ejemplo de un run cuando esté autorizado e
 
 ### Mensaje sugerido para iniciar al siguiente agente
 
-> Implementa el primer incremento de green-ai-simulator siguiendo este plan y los documentos de referencia. Empieza revisando el estado actual de la carpeta y las instrucciones aplicables. Trabaja solo en este repositorio, conserva el núcleo Python independiente y usa fixtures explícitamente sintéticos. Respeta la separación entre reloj lógico offline y exportación realtime 1x, persiste cada run y publica origin=simulated con identidad propia por ejecución. No accedas a Supabase ni generes carga real o acciones Kubernetes. No repitas pruebas ni el smoke de Monitoring. La instrucción previa de detener pruebas debe respetarse: si no se autoriza verificarlas en esta nueva implementación, deja las verificaciones del simulador preparadas y reportadas como pendientes. Avanza por los pasos del plan, registra decisiones y entrega un estado honesto de lo implementado y lo validado.
+> Implementa el primer incremento de software/simulator siguiendo este plan y los documentos de referencia. Empieza revisando el estado actual de la carpeta y las instrucciones aplicables. Trabaja solo en este repositorio, conserva el núcleo Python independiente y usa fixtures explícitamente sintéticos. Respeta la separación entre reloj lógico offline y exportación realtime 1x, persiste cada run y publica origin=simulated con identidad propia por ejecución. No accedas a Supabase ni generes carga real o acciones Kubernetes. No repitas pruebas ni el smoke de Monitoring. La instrucción previa de detener pruebas debe respetarse: si no se autoriza verificarlas en esta nueva implementación, deja las verificaciones del simulador preparadas y reportadas como pendientes. Avanza por los pasos del plan, registra decisiones y entrega un estado honesto de lo implementado y lo validado.
 
 ## Referencia de BD actualizada — 2026-09-22
 

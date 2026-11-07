@@ -1,4 +1,4 @@
-# Punto de integración para green-ai-simulator
+# Punto de integración para software/simulator
 
 Monitoring Grupo A queda como consumidor de Prometheus; el simulador será un servicio y repositorio independientes. Este documento fija lo que el contrato actual puede consumir, no implementa el simulador ni define contratos de otros compañeros.
 
