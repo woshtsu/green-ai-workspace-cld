@@ -334,6 +334,7 @@ function selectNode(node) {
   // Si sigue siendo el mismo y existe una predicción previa, conservarla.
   if (isDifferentNode) {
     lastPrediction = null;
+    if (typeof GreenUI !== 'undefined') GreenUI.clearProblem(document.getElementById('predict-problem'));
     if (predictStatusEl) {
       predictStatusEl.textContent = '';
       predictStatusEl.className = 'detail-status';
@@ -366,6 +367,7 @@ async function runNodePrediction(node) {
   const timeEl = document.getElementById('predict-time');
 
   if (resultBox) resultBox.hidden = true;
+  if (typeof GreenUI !== 'undefined') GreenUI.clearProblem(document.getElementById('predict-problem'));
 
   // Comprobar rol del usuario (si es VIEWER, bloquear antes de llamar)
   const roleBadge = document.getElementById('user-role-badge');
@@ -423,6 +425,14 @@ async function runNodePrediction(node) {
       statusClass: 'detail-status status-success'
     };
   } catch (error) {
+    const friendly = error.friendly || (typeof GreenErrors !== 'undefined' && ['TimeoutError', 'AbortError', 'TypeError'].includes(error.name) ? GreenErrors.fromException(error, 'prediccion') : null);
+    const problemBox = document.getElementById('predict-problem');
+    if (friendly && friendly.tipo !== 'permisos' && typeof GreenUI !== 'undefined' && problemBox) {
+      if (statusEl) { statusEl.textContent = ''; statusEl.className = 'detail-status'; }
+      GreenUI.renderProblem(problemBox, friendly, { onRetry: () => predictBtn && predictBtn.click() });
+      lastPrediction = { nodeId: node.id, val: null, time: '', status: '', statusClass: 'detail-status' };
+      return;
+    }
     const errorMsg = resolveApiError(error);
     const isForbidden = errorMsg.includes('solo permite lectura')
       || error.status === 403

@@ -6,6 +6,7 @@
   <title>Green AI | Observatorio</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="monitoring.css?v=pmv2">
+  <link rel="stylesheet" href="ui.css?v=1">
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
 <body class="dashboard-page page-shell">
@@ -14,17 +15,21 @@
       <div class="brand-name">Green AI <span>Observatorio</span></div>
       <span class="brand-badge">PMV 2 · Demostración</span>
     </div>
+    <nav class="main-nav" aria-label="Secciones">
+      <a href="dashboard.html" aria-current="page">Resumen</a>
+      <a href="network.html">Racks</a>
+      <a href="flows.html">Red de flujos</a>
+    </nav>
     <div class="topbar-actions">
       <span id="user-name-display"></span>
       <span id="user-role-badge" class="role-pill"></span>
       <button id="theme-toggle" class="btn btn-secondary" type="button" role="switch" aria-checked="false" aria-label="Modo claro">Modo oscuro</button>
-      <a href="network.html" class="btn btn-secondary">Topología</a>
       <button id="logout-btn" class="btn btn-secondary">Cerrar sesión</button>
     </div>
   </header>
 
   <main class="dashboard-shell">
-    <!-- Centro de operación -->
+    <!-- Centro de operación: filtros compartidos por todas las pestañas -->
     <section class="glass-panel monitor-panel">
       <div class="eyebrow">Centro de operación</div>
       <h1>Tu infraestructura, en contexto</h1>
@@ -32,7 +37,7 @@
       <div class="filters">
         <label>Métrica<select id="metric"></select></label>
         <label>Clúster<select id="cluster"><option value="">Todos los clústeres</option></select></label>
-        <label>Nodo<select id="node"><option value="">Todos los nodos</option></select></label>
+        <label>Servidor<select id="node"><option value="">Todos los servidores</option></select></label>
         <label>Histórico
           <select id="period">
             <option value="5">5 minutos</option>
@@ -46,212 +51,246 @@
       <p id="metric-description"></p>
     </section>
 
-    <!-- Resumen superior KPI -->
-    <section class="kpi-grid monitoring-summary" aria-label="Resumen de la consulta actual">
-      <article class="kpi-card glass-panel">
-        <span class="kpi-label">Nodos en respuesta</span>
-        <strong class="summary-value" id="summary-nodes">—</strong>
-        <span class="summary-note">Identificados por clúster y nodo.</span>
-      </article>
-      <article class="kpi-card glass-panel">
-        <span class="kpi-label">Series válidas</span>
-        <strong class="summary-value" id="summary-valid">—</strong>
-        <span class="summary-note">Última muestra utilizable.</span>
-      </article>
-      <article class="kpi-card glass-panel">
-        <span class="kpi-label">Procedencia</span>
-        <strong class="summary-value summary-text" id="summary-origin">Sin consultar</strong>
-        <span class="summary-note">Simulado, observado o estimado.</span>
-      </article>
-      <article class="kpi-card glass-panel">
-        <span class="kpi-label">Cobertura</span>
-        <strong class="summary-value summary-text" id="summary-quality">Sin consultar</strong>
-        <span class="summary-note">Completitud de telemetría recibida.</span>
-      </article>
-    </section>
+    <div class="tabs" role="tablist" aria-label="Secciones del observatorio" data-tabs>
+      <button role="tab" id="tab-resumen" data-tab="resumen" aria-controls="panel-resumen" aria-selected="true">Resumen</button>
+      <button role="tab" id="tab-detalle" data-tab="detalle" aria-controls="panel-detalle" aria-selected="false">Detalle por servidor</button>
+      <button role="tab" id="tab-prediccion" data-tab="prediccion" aria-controls="panel-prediccion" aria-selected="false">Predicción y recomendación</button>
+      <button role="tab" id="tab-reportes" data-tab="reportes" aria-controls="panel-reportes" aria-selected="false">Reportes y experimento</button>
+      <button role="tab" id="tab-energia" data-tab="energia" aria-controls="panel-energia" aria-selected="false">Energía y CO₂e</button>
+    </div>
 
-    <!-- Gráfico histórico -->
-    <section class="chart-card glass-panel">
-      <div class="chart-header">
-        <h2>Evolución de la métrica</h2>
-        <span class="chart-sub">Histórico por serie temporal</span>
+    <!-- ============ RESUMEN ============ -->
+    <section id="panel-resumen" class="tab-panel" role="tabpanel" aria-labelledby="tab-resumen">
+      <div class="stat-strip" aria-label="Resumen de la consulta actual">
+        <article class="stat"><span class="stat-label help-host" data-help="summary">Media del conjunto</span><strong class="stat-value" id="stat-mean">—</strong><span class="stat-note" id="stat-mean-note">Calculada en pantalla</span></article>
+        <article class="stat"><span class="stat-label">Más cargado</span><strong class="stat-value" id="stat-max">—</strong><span class="stat-note" id="stat-max-note">&nbsp;</span></article>
+        <article class="stat"><span class="stat-label">Menos cargado</span><strong class="stat-value" id="stat-min">—</strong><span class="stat-note" id="stat-min-note">&nbsp;</span></article>
+        <article class="stat" id="stat-above-card"><span class="stat-label">Por encima del 80 %</span><strong class="stat-value" id="stat-above">—</strong><span class="stat-note" id="stat-above-note">Solo aplica a porcentajes</span></article>
       </div>
-      <p id="history-status"></p>
-      <div class="monitor-chart"><canvas id="history-chart"></canvas></div>
-    </section>
-
-    <!-- Detalle por nodo (tabla) -->
-    <section class="table-card glass-panel">
-      <h2>Detalle por nodo</h2>
-      <p id="current-status"></p>
-      <p id="warnings"></p>
-      <div class="table-wrapper">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Clúster</th>
-              <th>Nodo</th>
-              <th>Interfaz / filesystem</th>
-              <th>Valor</th>
-              <th>Procedencia</th>
-              <th>Calidad</th>
-              <th>Instante</th>
-            </tr>
-          </thead>
-          <tbody id="metric-rows"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Estimación de CPU -->
-    <section class="glass-panel monitor-panel" aria-labelledby="prediction-title">
-      <span class="brand-badge">Predicción experimental</span>
-      <h2 id="prediction-title">Demanda futura de CPU</h2>
-      <p class="section-desc">Horizonte de 15 min con Random Forest sobre ventana histórica de 2 h (datos sintéticos).</p>
-      <button id="predict-button" class="btn btn-primary" type="button">Estimar CPU del nodo seleccionado</button>
-      <p id="prediction-status" role="status" aria-live="polite">Selecciona un nodo para comenzar.</p>
-      <div id="prediction-result" hidden>
-        <dl class="prediction-details">
-          <div><dt>CPU estimada</dt><dd id="prediction-value">—</dd></div>
-          <div><dt>Recurso consultado</dt><dd id="prediction-resource">—</dd></div>
-          <div><dt>Instante estimado</dt><dd id="prediction-time">—</dd></div>
-          <div><dt>Horizonte / modelo</dt><dd id="prediction-model">—</dd></div>
-          <div><dt>Procedencia de entrada</dt><dd id="prediction-origin">—</dd></div>
-          <div><dt>Dataset utilizado</dt><dd id="prediction-dataset">—</dd></div>
-        </dl>
-        <p id="prediction-warnings"></p>
-      </div>
-    </section>
-
-    <!-- SECCIÓN PMV2 COMPLETA EN 3 TARJETAS -->
-    <section class="glass-panel monitor-panel pmv2-section" id="pmv2-section" aria-labelledby="pmv2-heading">
-      <div class="pmv2-header">
-        <div class="eyebrow"><span class="status-dot"></span> Demostración PMV 2</div>
-        <h2 id="pmv2-heading">Capacidades PMV2</h2>
-        <p class="section-desc">Recomendaciones con restricciones, reportes históricos y comparación baseline vs Green AI.</p>
+      <div class="stat-strip">
+        <article class="stat"><span class="stat-label">Servidores en respuesta</span><strong class="stat-value" id="summary-nodes">—</strong><span class="stat-note">Series válidas: <span id="summary-valid">—</span></span></article>
+        <article class="stat"><span class="stat-label">Procedencia</span><strong class="stat-value" style="font-size:1.1rem" id="summary-origin">Sin consultar</strong><span class="stat-note">Simulado, observado o estimado.</span></article>
+        <article class="stat"><span class="stat-label">Cobertura</span><strong class="stat-value" style="font-size:1.1rem" id="summary-quality">Sin consultar</strong><span class="stat-note">Completitud de telemetría recibida.</span></article>
       </div>
 
-      <div class="pmv2-cards-grid">
-        <!-- Tarjeta a: Recomendación (reutiliza recommendations.js) -->
-        <article class="pmv2-card glass-panel" id="pmv2-card-recommendation">
+      <section class="chart-card glass-panel">
+        <div class="chart-header help-host" data-help="metrics-chart">
+          <h2>Evolución de la métrica</h2>
+          <span class="chart-sub" id="chart-sub">Media, máximo y mínimo del conjunto</span>
+        </div>
+        <div class="compare-bar" id="compare-bar" hidden>
+          <label class="sr-only" for="compare-input">Añadir servidor a la comparación</label>
+          <input id="compare-input" type="search" list="compare-options" placeholder="Añadir servidor (ej. HW045)" autocomplete="off">
+          <datalist id="compare-options"></datalist>
+          <button class="btn btn-secondary btn-sm" id="compare-top" type="button">5 más cargados</button>
+          <button class="btn btn-secondary btn-sm" id="compare-bottom" type="button">5 menos cargados</button>
+          <button class="btn btn-secondary btn-sm" id="compare-clear" type="button">Limpiar</button>
+          <span id="compare-chips" style="display:contents"></span>
+        </div>
+        <p id="history-status"></p>
+        <div class="monitor-chart"><canvas id="history-chart"></canvas></div>
+        <p class="legend-note" id="legend-note"></p>
+      </section>
+    </section>
+
+    <!-- ============ DETALLE ============ -->
+    <section id="panel-detalle" class="tab-panel" role="tabpanel" aria-labelledby="tab-detalle" hidden>
+      <section class="table-card glass-panel">
+        <div class="help-host" data-help="node-table"><h2>Detalle por servidor</h2></div>
+        <p id="current-status"></p>
+        <p id="warnings"></p>
+        <div class="table-tools">
+          <label class="sr-only" for="table-search">Buscar servidor</label>
+          <input id="table-search" type="search" placeholder="Buscar servidor (ej. HW045)" autocomplete="off">
+          <span class="summary-note" id="table-count"></span>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-sort="cluster" scope="col">Clúster</th>
+                <th data-sort="node" scope="col" aria-sort="ascending">Servidor</th>
+                <th scope="col">Interfaz / filesystem</th>
+                <th data-sort="value" scope="col">Valor</th>
+                <th scope="col">Procedencia</th>
+                <th scope="col">Calidad</th>
+                <th scope="col">Instante</th>
+              </tr>
+            </thead>
+            <tbody id="metric-rows"></tbody>
+          </table>
+        </div>
+        <div class="pager">
+          <span id="pager-info"></span>
+          <div class="pager-buttons">
+            <button class="btn btn-secondary btn-sm" id="pager-prev" type="button">‹ Anterior</button>
+            <span id="pager-page"></span>
+            <button class="btn btn-secondary btn-sm" id="pager-next" type="button">Siguiente ›</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ============ PREDICCIÓN Y RECOMENDACIÓN ============ -->
+    <section id="panel-prediccion" class="tab-panel" role="tabpanel" aria-labelledby="tab-prediccion" hidden>
+      <section class="glass-panel monitor-panel" aria-labelledby="prediction-title">
+        <span class="brand-badge">Predicción experimental</span>
+        <div class="help-host" data-help="prediction"><h2 id="prediction-title">Demanda futura de CPU</h2></div>
+        <p class="section-desc">Horizonte de 15 min con Random Forest sobre ventana histórica de 2 h (datos sintéticos). Elige un clúster y un servidor arriba.</p>
+        <button id="predict-button" class="btn btn-primary" type="button">Estimar CPU del servidor seleccionado</button>
+        <p id="prediction-status" role="status" aria-live="polite">Selecciona un servidor para comenzar.</p>
+        <div id="prediction-problem" hidden></div>
+        <div id="prediction-result" hidden>
+          <dl class="prediction-details">
+            <div><dt>CPU estimada</dt><dd id="prediction-value">—</dd></div>
+            <div><dt>Recurso consultado</dt><dd id="prediction-resource">—</dd></div>
+            <div><dt>Instante estimado</dt><dd id="prediction-time">—</dd></div>
+            <div><dt>Horizonte / modelo</dt><dd id="prediction-model">—</dd></div>
+            <div><dt>Procedencia de entrada</dt><dd id="prediction-origin">—</dd></div>
+            <div><dt>Dataset utilizado</dt><dd id="prediction-dataset">—</dd></div>
+          </dl>
+          <p id="prediction-warnings"></p>
+        </div>
+      </section>
+
+      <section class="glass-panel monitor-panel">
+        <article class="pmv2-card glass-panel" id="pmv2-card-recommendation" style="max-width:640px">
           <div class="pmv2-card-header">
             <span class="card-badge">Política</span>
-            <h3 id="recommendation-title">Recomendación con restricciones</h3>
-            <p class="section-desc">Propuesta para revisión humana sobre el nodo seleccionado.</p>
+            <div class="help-host" data-help="recommendation"><h3 id="recommendation-title">Recomendación con restricciones</h3></div>
+            <p class="section-desc">Propuesta para revisión humana sobre el servidor seleccionado. No se ejecuta ningún cambio.</p>
           </div>
           <form id="recommendation-form">
             <div class="pmv2-form-grid">
-              <label>Memoria (%)<input id="policy-memory" type="number" min="0" max="100" step="any" placeholder="Ej. 65"></label>
-              <label>Latencia p95 (ms)<input id="policy-latency" type="number" min="0" step="any" placeholder="Ej. 120"></label>
-              <label>Errores (%)<input id="policy-errors" type="number" min="0" max="100" step="any" placeholder="Ej. 0.5"></label>
-              <label>Instante telemetría<input id="policy-time" type="datetime-local" step="1"></label>
-              <label>Procedencia declarada
+              <label><span>Memoria (%)<button type="button" class="help-btn help-btn--sm" data-help-inline="rec-memory" aria-label="Ayuda: Memoria">?</button></span><input id="policy-memory" type="number" min="0" max="100" step="any" placeholder="Ej. 65"></label>
+              <label><span>Latencia p95 (ms)<button type="button" class="help-btn help-btn--sm" data-help-inline="rec-latency" aria-label="Ayuda: Latencia">?</button></span><input id="policy-latency" type="number" min="0" step="any" placeholder="Ej. 120"></label>
+              <label><span>Errores (%)<button type="button" class="help-btn help-btn--sm" data-help-inline="rec-errors" aria-label="Ayuda: Errores">?</button></span><input id="policy-errors" type="number" min="0" max="100" step="any" placeholder="Ej. 0.5"></label>
+              <label><span>Instante de telemetría<button type="button" class="help-btn help-btn--sm" data-help-inline="rec-time" aria-label="Ayuda: Instante">?</button></span>
+                <span style="display:flex;gap:8px"><input id="policy-time" type="datetime-local" step="1" style="flex:1"><button id="policy-now" class="btn btn-secondary btn-sm" type="button">Usar ahora</button></span></label>
+              <label><span>Procedencia declarada<button type="button" class="help-btn help-btn--sm" data-help-inline="rec-origin" aria-label="Ayuda: Procedencia">?</button></span>
                 <select id="policy-origin">
                   <option value="simulated">Simulada</option>
                   <option value="observed">Observada</option>
                 </select>
               </label>
             </div>
-            <button id="recommend-button" class="btn btn-primary" type="submit">Evaluar recomendación</button>
+            <div class="pmv2-actions-row">
+              <button id="recommend-button" class="btn btn-primary" type="submit">Evaluar recomendación</button>
+              <button id="policy-example" class="btn btn-secondary" type="button">Usar valores de ejemplo</button>
+            </div>
           </form>
           <p id="recommendation-status" role="status" aria-live="polite" class="pmv2-status">No se ejecutan cambios de infraestructura.</p>
+          <div id="recommendation-problem" hidden></div>
           <p id="recommendation-result" class="pmv2-result-box" style="white-space:pre-line"></p>
         </article>
-
-        <!-- Tarjeta b: Reporte de históricos -->
-        <article class="pmv2-card glass-panel" id="pmv2-card-reports">
-          <div class="pmv2-card-header">
-            <span class="card-badge">Telemetría</span>
-            <h3>Reporte de históricos</h3>
-            <p class="section-desc">Consulta agregada y exportación en CSV del historial de telemetría.</p>
-          </div>
-          <form id="historical-report-form" onsubmit="event.preventDefault();">
-            <div class="pmv2-form-grid">
-              <label>Hardware ID
-                <input id="report-hardware-id" type="text" value="HW045" required placeholder="HW045">
-              </label>
-              <label>Desde
-                <input id="report-start" type="date" value="2026-07-10" required>
-              </label>
-              <label>Hasta
-                <input id="report-end" type="date" value="2026-07-11" required>
-              </label>
-            </div>
-            <div class="pmv2-actions-row">
-              <button id="report-summary-btn" class="btn btn-primary" type="button">Ver resumen</button>
-              <button id="report-csv-btn" class="btn btn-secondary" type="button">Descargar CSV</button>
-            </div>
-          </form>
-          <p id="report-status" role="status" aria-live="polite" class="pmv2-status">Listo para consultar.</p>
-          <div id="report-summary-container" class="pmv2-result-box" hidden></div>
-        </article>
-
-        <!-- Tarjeta c: Experimento baseline vs Green AI -->
-        <article class="pmv2-card glass-panel" id="pmv2-card-experiment">
-          <div class="pmv2-card-header">
-            <span class="card-badge">Simulación</span>
-            <h3>Baseline vs Green AI</h3>
-            <p class="section-desc">Comparación del modelo predictivo frente a la heurística reactiva.</p>
-          </div>
-          <div class="experiment-kpis">
-            <div class="exp-kpi-group">
-              <span class="exp-kpi-title">Riesgo de SLA</span>
-              <div class="exp-kpi-row">
-                <div>
-                  <span class="exp-label">Baseline reactivo</span>
-                  <strong id="exp-sla-baseline" class="exp-val">—</strong>
-                </div>
-                <div>
-                  <span class="exp-label">Green AI</span>
-                  <strong id="exp-sla-green" class="exp-val">—</strong>
-                </div>
-              </div>
-              <div class="exp-delta-row">
-                <span class="exp-delta-label">Diferencia de riesgo:</span>
-                <span id="exp-sla-delta" class="exp-delta-val">—</span>
-              </div>
-            </div>
-
-            <div class="exp-kpi-group">
-              <span class="exp-kpi-title">Energía modelada</span>
-              <div class="exp-kpi-row">
-                <div>
-                  <span class="exp-label">Baseline reactivo</span>
-                  <strong id="exp-energy-baseline" class="exp-val">—</strong>
-                </div>
-                <div>
-                  <span class="exp-label">Green AI</span>
-                  <strong id="exp-energy-green" class="exp-val">—</strong>
-                </div>
-              </div>
-              <div class="exp-delta-row">
-                <span class="exp-delta-label">Diferencia de energía (Green AI − baseline):</span>
-                <span id="exp-energy-delta" class="exp-delta-val">—</span>
-              </div>
-            </div>
-          </div>
-          <p id="experiment-disclaimer" class="experiment-badge">Datos simulados · energía modelada, no medida</p>
-          <p id="experiment-status" role="status" aria-live="polite" class="pmv2-status"></p>
-        </article>
-      </div>
+      </section>
     </section>
 
-    <!-- Energía y CO2e del periodo -->
-    <section class="glass-panel monitor-panel" aria-labelledby="energy-title">
-      <h2 id="energy-title">Energía y CO₂e del periodo</h2>
-      <p class="section-desc">Cálculo de energía (kWh) y CO₂e a partir de series de potencia en vatios.</p>
-      <details>
-        <summary>Formato JSON del archivo</summary>
-        <pre style="white-space:pre-wrap">{"origin":"simulated","samples":[{"timestamp":"2026-10-28T00:00:00Z","watts":100},{"timestamp":"2026-10-28T00:05:00Z","watts":200}]}</pre>
-        <p class="summary-note">Opcionales: emissionFactorKgPerKwh y emissionFactorSource. Sin factor, CO₂e queda no evaluable.</p>
-      </details>
-      <form id="energy-form">
-        <label>Archivo de potencia (JSON, máx. 1,5 MB)
-          <input id="energy-file" type="file" accept="application/json,.json" required>
-        </label>
-        <button id="energy-button" class="btn btn-primary" type="submit">Calcular energía</button>
-      </form>
-      <p id="energy-status" role="status" aria-live="polite" style="white-space:pre-line">Sin muestras importadas.</p>
+    <!-- ============ REPORTES Y EXPERIMENTO ============ -->
+    <section id="panel-reportes" class="tab-panel" role="tabpanel" aria-labelledby="tab-reportes" hidden>
+      <section class="glass-panel monitor-panel pmv2-section" id="pmv2-section" aria-labelledby="pmv2-heading">
+        <div class="pmv2-header">
+          <div class="eyebrow"><span class="status-dot"></span> Demostración PMV 2</div>
+          <h2 id="pmv2-heading">Reportes y comparación</h2>
+          <p class="section-desc">Reportes históricos y comparación baseline vs Green AI.</p>
+        </div>
+        <div class="pmv2-cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+          <article class="pmv2-card glass-panel" id="pmv2-card-reports">
+            <div class="pmv2-card-header">
+              <span class="card-badge">Telemetría</span>
+              <div class="help-host" data-help="report"><h3>Reporte de históricos</h3></div>
+              <p class="section-desc">Consulta agregada y exportación en CSV del historial de telemetría.</p>
+            </div>
+            <form id="historical-report-form" onsubmit="event.preventDefault();">
+              <div class="pmv2-form-grid">
+                <label>Código de hardware
+                  <input id="report-hardware-id" type="text" value="HW045" required placeholder="HW045">
+                </label>
+                <label>Desde
+                  <input id="report-start" type="date" value="2026-07-10" required>
+                </label>
+                <label>Hasta
+                  <input id="report-end" type="date" value="2026-07-11" required>
+                </label>
+              </div>
+              <div class="pmv2-actions-row">
+                <button id="report-summary-btn" class="btn btn-primary" type="button">Ver resumen</button>
+                <button id="report-csv-btn" class="btn btn-secondary" type="button">Descargar CSV</button>
+              </div>
+            </form>
+            <p id="report-status" role="status" aria-live="polite" class="pmv2-status">Listo para consultar.</p>
+            <div id="report-summary-container" class="pmv2-result-box" hidden></div>
+          </article>
+
+          <article class="pmv2-card glass-panel" id="pmv2-card-experiment">
+            <div class="pmv2-card-header">
+              <span class="card-badge">Simulación</span>
+              <div class="help-host" data-help="experiment"><h3>Baseline vs Green AI</h3></div>
+              <p class="section-desc">Comparación del modelo predictivo frente a la heurística reactiva.</p>
+            </div>
+            <div class="experiment-kpis">
+              <div class="exp-kpi-group">
+                <span class="exp-kpi-title">Riesgo de SLA</span>
+                <div class="exp-kpi-row">
+                  <div><span class="exp-label">Baseline reactivo</span><strong id="exp-sla-baseline" class="exp-val">—</strong></div>
+                  <div><span class="exp-label">Green AI</span><strong id="exp-sla-green" class="exp-val">—</strong></div>
+                </div>
+                <div class="exp-delta-row"><span class="exp-delta-label">Diferencia de riesgo:</span><span id="exp-sla-delta" class="exp-delta-val">—</span></div>
+              </div>
+              <div class="exp-kpi-group">
+                <span class="exp-kpi-title">Energía modelada</span>
+                <div class="exp-kpi-row">
+                  <div><span class="exp-label">Baseline reactivo</span><strong id="exp-energy-baseline" class="exp-val">—</strong></div>
+                  <div><span class="exp-label">Green AI</span><strong id="exp-energy-green" class="exp-val">—</strong></div>
+                </div>
+                <div class="exp-delta-row"><span class="exp-delta-label">Diferencia de energía (Green AI − baseline):</span><span id="exp-energy-delta" class="exp-delta-val">—</span></div>
+              </div>
+            </div>
+            <p id="experiment-disclaimer" class="experiment-badge">Datos simulados · energía modelada, no medida</p>
+            <p id="experiment-status" role="status" aria-live="polite" class="pmv2-status"></p>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <!-- ============ ENERGÍA Y CO2e ============ -->
+    <section id="panel-energia" class="tab-panel" role="tabpanel" aria-labelledby="tab-energia" hidden>
+      <section class="glass-panel monitor-panel" aria-labelledby="energy-title">
+        <div class="help-host" data-help="energy"><h2 id="energy-title">Energía y CO₂e del periodo</h2></div>
+        <p class="section-desc">Cálculo de energía (kWh) y CO₂e a partir de series de potencia en vatios. <span class="honest-tag">Con datos simulados la potencia es modelada, no medida</span></p>
+        <div class="energy-grid">
+          <div class="energy-box">
+            <h3>1 · Con datos del simulador</h3>
+            <p class="field-help">Convierte la CPU del periodo elegido arriba en potencia modelada: P = P_idle + (P_max − P_idle) × CPU, con P_max de cada servidor y P_idle = <span id="idle-pct">40</span> % de P_max. Suma todos los servidores del clúster seleccionado.</p>
+            <button id="energy-sim" class="btn btn-primary inline-btn" type="button">Calcular con el simulador</button>
+          </div>
+          <div class="energy-box">
+            <h3>2 · Con un ejemplo</h3>
+            <p class="field-help">Doce muestras de potencia cada 5 minutos para ver cómo funciona el cálculo.</p>
+            <div class="energy-actions" style="margin:0">
+              <button id="energy-example" class="btn btn-secondary inline-btn" type="button">Calcular con el ejemplo</button>
+              <button id="energy-download" class="btn btn-secondary inline-btn" type="button">Descargar ejemplo</button>
+            </div>
+          </div>
+          <form class="energy-box" id="energy-form">
+            <h3>3 · Con tu archivo</h3>
+            <label>Archivo de potencia (JSON, máx. 1,5 MB)
+              <input id="energy-file" type="file" accept="application/json,.json">
+            </label>
+            <p class="field-help">Formato: <code>{"origin":"simulated","samples":[{"timestamp":"2026-10-28T00:00:00Z","watts":100},…]}</code></p>
+            <button id="energy-button" class="btn btn-secondary inline-btn" type="submit">Calcular energía</button>
+          </form>
+          <div class="energy-box">
+            <h3 class="help-host" data-help="energy-factor">Factor de emisión (opcional)</h3>
+            <label>kg CO₂e por kWh<input id="energy-factor" type="number" min="0" max="100" step="any" placeholder="Ej. el de tu país y año"></label>
+            <label>Fuente del factor<input id="energy-factor-source" type="text" maxlength="500" placeholder="Ej. Operador eléctrico, informe 2025"></label>
+            <p class="field-help">Sin factor, el CO₂e queda «no evaluable». No ponemos uno por defecto.</p>
+          </div>
+        </div>
+        <p id="energy-status" role="status" aria-live="polite" style="white-space:pre-line">Elige una de las tres vías para calcular.</p>
+        <div id="energy-problem" hidden></div>
+        <div class="energy-results" id="energy-results" hidden></div>
+      </section>
     </section>
   </main>
 
@@ -260,10 +299,16 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
   <script src="appearance.js"></script>
   <script src="metrics.js"></script>
+  <script src="friendly-errors.js"></script>
+  <script src="aggregate.js"></script>
+  <script src="energy.js"></script>
+  <script src="help-content.js"></script>
+  <script src="ui-kit.js"></script>
   <script src="monitoring.js"></script>
   <script src="app.js"></script>
   <script src="prediction.js"></script>
   <script src="recommendations.js"></script>
   <script src="pmv2.js"></script>
+  <script src="dashboard-ui.js"></script>
 </body>
 </html>

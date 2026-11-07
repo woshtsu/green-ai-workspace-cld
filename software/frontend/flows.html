@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Green AI | Red de flujos</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="monitoring.css">
+  <link rel="stylesheet" href="racks.css">
+  <link rel="stylesheet" href="ui.css?v=1">
+  <link rel="stylesheet" href="flows.css?v=1">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+</head>
+<body class="page-shell">
+  <header class="topbar glass-panel">
+    <div class="brand-group">
+      <div class="brand-name">Green AI <span>Red de flujos</span></div>
+      <span class="brand-badge">Datos simulados</span>
+    </div>
+    <nav class="main-nav" aria-label="Secciones">
+      <a href="dashboard.html">Resumen</a>
+      <a href="network.html">Racks</a>
+      <a href="flows.html" aria-current="page">Red de flujos</a>
+    </nav>
+    <div class="topbar-actions">
+      <span id="user-name-display"></span>
+      <span id="user-role-badge" class="role-pill"></span>
+      <button id="theme-toggle" class="btn btn-secondary" type="button" role="switch" aria-checked="false" aria-label="Modo claro">Modo oscuro</button>
+      <button id="logout-btn" class="btn btn-secondary">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="dashboard-shell flows-shell">
+    <section class="glass-panel monitor-panel">
+      <div class="eyebrow"><span class="status-dot"></span> Propuesta de rebalanceo</div>
+      <div class="help-host" data-help="flows"><h1>Red de flujos</h1></div>
+      <p class="section-desc">Cada hilo une un servidor sobrecargado con otro que tiene holgura y muestra cuánta carga se podría mover. Las partículas viajan de origen a destino.</p>
+      <p class="honest-banner" role="note">Propuesta ilustrativa sobre datos simulados. No se ejecuta ninguna acción (<code>executionAllowed=false</code>).</p>
+      <div class="stat-strip" id="flows-stats">
+        <article class="stat"><span class="stat-label">Flujos propuestos</span><strong class="stat-value" id="fs-flows">—</strong><span class="stat-note" id="fs-note">&nbsp;</span></article>
+        <article class="stat"><span class="stat-label">Carga total movida</span><strong class="stat-value" id="fs-moved">—</strong><span class="stat-note">Suma de puntos porcentuales de CPU</span></article>
+        <article class="stat"><span class="stat-label">Servidores origen</span><strong class="stat-value" id="fs-sources">—</strong><span class="stat-note">Por encima del umbral relativo</span></article>
+        <article class="stat"><span class="stat-label">Servidores destino</span><strong class="stat-value" id="fs-sinks">—</strong><span class="stat-note">Con holgura disponible</span></article>
+      </div>
+    </section>
+
+    <div id="flows-problem" hidden></div>
+
+    <section class="flows-layout">
+      <div class="glass-panel flows-stage">
+        <div class="flows-controls">
+          <label>Rack
+            <select id="fc-rack"><option value="">Todos</option></select>
+          </label>
+          <label>Sensibilidad <output id="fc-k-out">0.5</output>
+            <input id="fc-k" type="range" min="0" max="1.5" step="0.1" value="0.5">
+          </label>
+          <label>Máx. flujos <output id="fc-max-out">20</output>
+            <input id="fc-max" type="range" min="5" max="40" step="1" value="20">
+          </label>
+          <button id="fc-play" class="btn btn-secondary" type="button" aria-pressed="true">Pausar</button>
+          <button id="fc-refresh" class="btn btn-secondary" type="button">Actualizar</button>
+        </div>
+        <p class="flows-criterion" id="fs-criterion" role="status" aria-live="polite">Conectando…</p>
+        <svg id="flows-svg" viewBox="0 0 900 900" role="img" aria-labelledby="flows-title flows-desc" preserveAspectRatio="xMidYMid meet">
+          <title id="flows-title">Grafo radial de flujos de carga entre servidores</title>
+          <desc id="flows-desc">Cincuenta servidores agrupados en cinco racks. Las líneas muestran cargas que se podrían mover desde servidores sobrecargados hacia servidores con holgura.</desc>
+        </svg>
+        <div class="racks-legend" aria-label="Leyenda">
+          <span class="legend-title">CPU:</span>
+          <span class="legend-item"><span class="legend-color legend-green"></span> &lt; 40 %</span>
+          <span class="legend-item"><span class="legend-color legend-amber"></span> 40–80 %</span>
+          <span class="legend-item"><span class="legend-color legend-red"></span> &gt; 80 %</span>
+          <span class="legend-item"><span class="legend-color legend-nodata"></span> Sin dato</span>
+          <span class="legend-item">Hilo grueso = más carga movida</span>
+        </div>
+      </div>
+
+      <aside class="glass-panel flows-detail" aria-label="Detalle del servidor">
+        <div id="fd-empty"><p>Pulsa un servidor para ver cuánta carga saldría de él o llegaría a él en la propuesta.</p>
+          <p class="summary-note" id="fd-updated"></p></div>
+        <div id="fd-content" hidden>
+          <span class="detail-rack-badge" id="fd-rack">—</span>
+          <h2 id="fd-id">—</h2>
+          <dl class="detail-specs">
+            <div><dt>CPU actual</dt><dd id="fd-cpu">—</dd></div>
+            <div><dt>Rol en la propuesta</dt><dd id="fd-role">—</dd></div>
+          </dl>
+          <ul class="flow-list" id="fd-flows"></ul>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="appearance.js"></script>
+  <script src="config.local.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1"></script>
+  <script src="metrics.js"></script>
+  <script src="friendly-errors.js"></script>
+  <script src="help-content.js"></script>
+  <script src="ui-kit.js"></script>
+  <script src="app.js"></script>
+  <script src="racks.js"></script>
+  <script src="flows-logic.js"></script>
+  <script src="flows.js"></script>
+</body>
+</html>

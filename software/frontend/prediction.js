@@ -6,10 +6,12 @@ async function predictionRequest(path, options = {}) {
   const body = await response.json().catch(() => ({}));
   if (!response.ok) {
     const reference = response.headers.get('X-Request-Id');
+    const context = path.startsWith('/api/recommendations/') ? 'recomendacion' : 'prediccion';
+    if (typeof GreenErrors !== 'undefined') throw GreenErrors.toError({ status: response.status, body, reference, context });
     const hints = {
       401: 'Tu sesión venció. Inicia sesión de nuevo antes de repetir la operación.',
       403: 'Tu cuenta no tiene permiso para esta operación.',
-      422: path.startsWith('/api/recommendations/')
+      422: context === 'recomendacion'
         ? (typeof body.detail === 'string' ? body.detail : 'Revisa los valores, fechas y formato de los datos enviados.')
         : 'No hay una ventana de CPU utilizable. Espera más muestras o selecciona otro nodo.',
       503: 'El servicio o su modelo no están disponibles.',
@@ -50,6 +52,11 @@ async function requestNodePrediction(cluster, resourceId) {
   return { dataset, result };
 }
 
+function clearPredictionProblem() {
+  const box = document.getElementById('prediction-problem');
+  if (typeof GreenUI !== 'undefined' && box && typeof box.append === 'function') GreenUI.clearProblem(box);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.getElementById('predict-button');
   if (!button) return;
@@ -60,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resourceId = document.getElementById('node')?.value;
     const resultBox = document.getElementById('prediction-result');
     if (resultBox) resultBox.hidden = true;
+    clearPredictionProblem();
     if (!cluster || !resourceId) { put('prediction-status', 'Elige un clúster y un nodo concretos en los filtros superiores.'); return; }
     busy = true; button.disabled = true;
     try {
@@ -76,7 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (resultBox) resultBox.hidden = false;
       put('prediction-status', `Estimación generada ${new Date(result.generatedAt).toLocaleString()}. Corresponde al recurso indicado; no se actualiza automáticamente.`);
     } catch (error) {
-      put('prediction-status', error.name === 'TimeoutError' ? 'La operación tardó demasiado. Puedes volver a intentarlo.' : error.message);
+      const friendly = error.friendly || (typeof GreenErrors !== 'undefined' && ['TimeoutError', 'AbortError', 'TypeError'].includes(error.name) ? GreenErrors.fromException(error, 'prediccion') : null);
+      const box = document.getElementById('prediction-problem');
+      if (friendly && typeof GreenUI !== 'undefined' && box && typeof box.append === 'function') {
+        put('prediction-status', '');
+        GreenUI.renderProblem(box, friendly, { onRetry: () => button.click() });
+      } else put('prediction-status', error.name === 'TimeoutError' ? 'La operación tardó demasiado. Puedes volver a intentarlo.' : error.message);
     } finally { busy = false; button.disabled = false; }
   });
 });
