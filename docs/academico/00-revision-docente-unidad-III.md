@@ -1,7 +1,7 @@
 # Revisión docente del informe de la Unidad III (semanas 9–12) y plan de levantamiento
 
 Informe evaluado: `exportados/semana12/Porras-Huaman-Barrera-Quintana-informe-unidad-III.pdf` (solo en el respaldo del workspace antiguo)
-(texto en `entregables/semana09-12/informe-unidad-III.md`). Guía seguida: `guias/semana12/consigna-taller1-icacit.md`.
+(texto en `entregables/informe-corregido/informe-unidad-III.md`). Guía seguida: `guias/semana12/consigna-taller1-icacit.md`.
 Instrumento: `guias/semana12/lista-cotejo-unidad3.md`.
 
 ## 1. Primera revisión (comentarios del docente, literal resumido)

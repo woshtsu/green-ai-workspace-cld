@@ -12,7 +12,7 @@ casillas marcadas.
 ## B. El monorepo es autosuficiente
 - [x] Código de los 6 servicios + infraestructura (`software/`), con pruebas en verde (ver HANDOFF).
 - [x] Material importado: `docs/exposicion` (guía de exposición), `docs/historico/` (project-docs, semana10,
-  traspaso, entrega Prometheus), `entregables/evidencias-historicas/` (capturas y Supabase), guías,
+  traspaso, entrega Prometheus), `entregables/trabajos-previos/evidencias-del-sistema/` (capturas y Supabase), guías,
   trabajos y artículos.
 - [ ] Rutas a `../` actualizadas en la documentación vigente (encargo 08 de Antigravity, en revisión).
 - [ ] Graphify instalado en el propio monorepo: `.\herramientas_IA\instalar-graphify.ps1` (hoy usa `..\.tools`).
