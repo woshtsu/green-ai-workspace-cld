@@ -136,9 +136,9 @@ plan experimental + baseline, reportes CSV/PDF, rol observador → (4) documento
 
 ## Documentación académica (2026-11-06)
 - Índice por semana: `entregables/README.md`; guías: `guias/README.md`; cambios técnicos que deben reflejarse en
-  las semanas 13–16: `entregables/notas/reestructuracion-monorepo.md`.
+  las semanas 13–16: `entregables/informe-corregido/cambios-tecnicos-a-reflejar.md`.
 - Semanas 9–12: el **informe entregado** (PDF del usuario en `exportados/semana12/`, no versionado) se convirtió a
-  `entregables/semana09-12/informe-unidad-III.md` con 54 imágenes y 41 tablas, mediante
+  `entregables/informe-corregido/informe-unidad-III.md` con 54 imágenes y 41 tablas, mediante
   `herramientas_IA/exportacion/pdf_a_markdown.py`. Se revisaron a mano la portada y varias páginas (22, 47); el
   código del anexo perdió la sangría.
 - Semanas 1–2, 4 (por confirmar) y 6 importadas desde `project-docs` (solo en el respaldo del workspace antiguo) con las imágenes separadas.
@@ -196,3 +196,10 @@ No borrar el workspace antiguo ni cambiar producción: requiere autorización ex
 - Racks: muestra errores de la API (INSUFFICIENT_DATA, 403) y conserva la selección entre refrescos.
 - Corrección de Claude: las fechas del reporte se envían con zona horaria (UTC). Etiqueta «Diferencia de energía». Frontend 31/31 pruebas.
 - Pendiente: verificar en el panel «Ver resumen» y «Descargar CSV» tras la corrección; capturas para la semana 13; panel de Grafana con predicciones.
+
+## Prediction ligera (2026-11-07)
+- Dockerfile multi-etapa + `requirements.serve.txt` + importación diferida de xgboost: imagen 2,85 GB → 510 MB; RAM en reposo 174 → 133–142 MiB; con `PYTHONOPTIMIZE=2` y sin pip, 122 MiB (una medición). Suite 100 pruebas OK; stack reconstruido, smoke 14/14. Detalle: `docs/evidencias/prediction-imagen-ligera-20261107.md`. Sin commitear. Pendiente: desplegar en Render (`docs/GUIA-DESPLIEGUE-RENDER.md`). Los contenedores `green-ai-mono` siguen en marcha.
+- `entregables/` reorganizado: `informe-corregido/` (lo que se entrega) y `trabajos-previos/`.
+
+## CI/CD (2026-11-07)
+- Añadidos `.github/workflows/ci.yml` y `pages.yml` (main = producción en la raíz de Pages, test = desarrollo en `/dev/`). Guía: `docs/GUIA-GITHUB-PAGES-Y-CI.md`. Solo validados como YAML; sin ejecutar en GitHub. Retirado `software/frontend/.github/workflows/deploy.yml`.

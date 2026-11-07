@@ -51,7 +51,9 @@ D-07 compara hosting.
 |---|---|---|
 | Local / desarrollo | Docker Compose `green-ai-mono`: Simulator, Prometheus, Monitoring, Data Processing, Prediction, Gateway (Java o Go), Frontend (nginx); Supabase externo | Funciona: smoke 14/14 (`docs/evidencias/smoke-20261106.json`) |
 | Producción actual (informe 9–12) | Servicios en Render (`*.onrender.com`): Data Processing, Gateway, Monitoring, Simulator…; frontend en GitHub Pages | Vigente; **no modificado** |
-| Staging propuesto (Lab. 11: no localhost) | Por decidir (D-07): Gateway Go (16 MB, ~10 MiB) + servicios Python en un PaaS gratuito; frontend estático; Supabase de pruebas | Pendiente: requiere investigación de proveedores y autorización |
+| Staging propuesto (Lab. 11: no localhost) | Render (plan gratuito, cuenta de un integrante), rama `test`: Gateway Go + Prediction + Data Processing en Docker; frontend en GitHub Pages; Supabase Auth. Simulator, Prometheus y Monitoring quedan locales (sin red privada ni RAM suficiente en el plan gratuito) | **Guía escrita** (`docs/GUIA-DESPLIEGUE-RENDER.md`, 2026-11-07); **aún no desplegado ni probado**: sin URL pública ni capturas |
+
+**Optimización previa al despliegue (análisis, sin medir).** La imagen de Prediction pesa 2,85 GB aunque el modelo ocupa 1,2 MB: `requirements.lock.txt` instala jupyter, mlflow, matplotlib, seaborn, statsmodels y pytest en la imagen de inferencia. Plan: dependencias solo de servicio y Dockerfile multi-etapa (entrenar en la etapa de build). Portar Prediction a Go se descartó por ahora: exige reescribir ~670 líneas de ingeniería de características con pandas y exportar el bosque, con riesgo de divergencia numérica. **Resultado (2026-11-07, `docs/evidencias/prediction-imagen-ligera-20261107.md`):** imagen de 2,85 GB a 510 MB; RAM en reposo de 174 a 122 MiB (133–142 MiB sin `PYTHONOPTIMIZE=2`) (una medición, sin carga); suite de Prediction completa sin fallos (100 pruebas) y smoke del stack 14/14 con datos simulados. Pendiente: probar en Render real.
 Requisitos del Lab. 11 por cubrir:
 1. CI/CD desde GitHub.
 2. URL pública HTTPS del frontend y del backend.
