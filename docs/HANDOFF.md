@@ -185,3 +185,8 @@ git worktree list                                  # worktrees de agentes
 ```
 
 No borrar el workspace antiguo ni cambiar producción: requiere autorización expresa tras la lista de aceptación.
+
+## Verificación visual de Racks (2026-11-06, con sesión real del usuario en el panel)
+- OK: 50 nodos en 5 racks con CPU real del stack, resumen (CPU media 49,9 %), rol OPERATOR visible, panel de detalle de HW001.
+- Fallo: «Predecir 15 min» → 422 INSUFFICIENT_DATA (2 registros). Causa: el simulador se reiniciaba cada hora y perdía el historial. Corregido: duración por defecto 86400 s en docker-compose.yml.
+- Errores de la UI para el próximo encargo de frontend: el panel no muestra los errores de la API y el refresco de 15 s borra el resultado de la predicción. Con la escena «normal» todos los nodos quedan en ~50 %; para la demo usar SIMULATOR_SCENARIO=configs/scenarios/high.json o variar la carga.

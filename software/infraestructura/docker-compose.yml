@@ -1,9 +1,9 @@
-# Green AI — ejecución local del monorepo.
-# Uso (desde la raíz del monorepo):
+﻿# Green AI â€” ejecuciÃ³n local del monorepo.
+# Uso (desde la raÃ­z del monorepo):
 #   docker compose -f software/infraestructura/docker-compose.yml config   # validar
 #   docker compose -f software/infraestructura/docker-compose.yml up -d --build
 # Proyecto y puertos distintos del workspace antiguo (que usa 8000/8080/8081/9090/3001),
-# para poder ejecutar ambos a la vez durante la transición.
+# para poder ejecutar ambos a la vez durante la transiciÃ³n.
 name: green-ai-mono
 
 services:
@@ -17,7 +17,7 @@ services:
       --inventory ${SIMULATOR_INVENTORY:-configs/inventory.hardware.json}
       --scenario ${SIMULATOR_SCENARIO:-configs/scenarios/normal.json}
       --seed 42
-      --duration-seconds ${SIMULATOR_DURATION_SECONDS:-3600}
+      --duration-seconds ${SIMULATOR_DURATION_SECONDS:-86400}
       --tick-seconds 5
       --mode realtime
       --output-dir runs
@@ -85,7 +85,7 @@ services:
       - GATEWAY_MONITORING_BASE_URL=http://monitoring:8080
       - GATEWAY_DATA_PROCESSING_BASE_URL=http://data-processing:8000
       - GATEWAY_PREDICTION_BASE_URL=http://prediction:8000
-      # Proyecto Supabase (datos públicos de emisor/JWKS, no secretos). Sobrescribir por entorno.
+      # Proyecto Supabase (datos pÃºblicos de emisor/JWKS, no secretos). Sobrescribir por entorno.
       - GATEWAY_AUTH_ISSUER_URI=${GATEWAY_AUTH_ISSUER_URI:-https://jpfugpsdhuucmilgysgg.supabase.co/auth/v1}
       - GATEWAY_AUTH_JWK_SET_URI=${GATEWAY_AUTH_JWK_SET_URI:-https://jpfugpsdhuucmilgysgg.supabase.co/auth/v1/.well-known/jwks.json}
       # Debe coincidir exactamente con la URL usada para abrir el Frontend.
