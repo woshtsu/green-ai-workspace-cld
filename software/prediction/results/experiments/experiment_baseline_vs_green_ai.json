@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-11-06T23:48:28.143067+00:00",
+  "dataOrigin": "simulated",
+  "source": "results\\predictions\\test_predictions.csv",
+  "model": "random_forest",
+  "horizon": "15m",
+  "period": {
+    "start": "2026-09-03T13:15:00+00:00",
+    "end": "2026-09-03T23:40:00+00:00"
+  },
+  "parameters": {
+    "headroom": 0.2,
+    "pmax_w": 600.0,
+    "idle_ratio": 0.5
+  },
+  "baseline_reactive": {
+    "intervals": 126,
+    "sla_risk_pct": 3.9682539682539684,
+    "mean_idle_capacity_pp": 10.89469365079365,
+    "mean_reserved_pp": 60.46335746031748,
+    "modeled_energy_wh": 5054.595759999999
+  },
+  "green_ai_predictive": {
+    "intervals": 126,
+    "sla_risk_pct": 3.9682539682539684,
+    "mean_idle_capacity_pp": 10.597641882007473,
+    "mean_reserved_pp": 60.20016277116111,
+    "modeled_energy_wh": 5046.305127291578
+  },
+  "delta_green_minus_baseline": {
+    "sla_risk_pct": 0.0,
+    "mean_idle_capacity_pp": -0.29705176878617756,
+    "modeled_energy_wh": -8.290632708421072,
+    "modeled_energy_pct": -0.1640216765508677
+  },
+  "limitations": [
+    "Datos simulados (dataset-sim-001).",
+    "Energ\u00eda modelada, no medida.",
+    "Capacidad reservada como proxy de recursos activos.",
+    "Un solo nodo de referencia."
+  ]
+}
