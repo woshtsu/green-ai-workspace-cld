@@ -10,7 +10,7 @@ Rama de trabajo: **`test`**. Fecha: 2026-11-07. Sin secretos en este documento: 
 
 | Servicio | Carpeta (Root Directory) | Puerto | Healthcheck | Subir |
 |---|---|---|---|---|
-| Gateway (Go, recomendado: 16 MB, arranque 0,5 s) | `software/gateway-go` | 8081 | binario `-healthcheck` | **Sí** |
+| Gateway (Go, recomendado: 16 MB, arranque 0,5 s) | `software` (Dockerfile Path `./gateway-go/Dockerfile`) | 8081 | binario `-healthcheck` | **Sí** |
 | Prediction (incluye recomendaciones) | `software/prediction` | 8000 | `/health/ready` | **Sí** |
 | Data Processing | `software/data-processing` | 8000 | `/api/v1/health` | **Sí** |
 | Monitoring (Java) | `software/monitoring` | 8080 | `/actuator/health` (sin verificar) | Opcional (necesita Prometheus) |
@@ -40,7 +40,7 @@ En Render: **New → Web Service → Build and deploy from a Git repository** �
 - **Branch:** `test` para desarrollo; para producción repetir los servicios con **Branch** `main` (nombres `green-ai-*-prod`). Ver [GUIA-GITHUB-PAGES-Y-CI.md](GUIA-GITHUB-PAGES-Y-CI.md)
 - **Runtime/Language:** `Docker`
 - **Instance Type:** `Free`
-- **Dockerfile Path:** `./Dockerfile` (relativo al Root Directory)
+- **Dockerfile Path:** `./Dockerfile` (relativo al Root Directory). **Instance Type: Free** (el formulario propone Starter, $7/mes: cambiarlo antes de crear)
 - **Auto-Deploy:** *Off* (evita despliegues no revisados; se despliega a mano con *Manual Deploy*)
 
 ### 4.1 Prediction
@@ -65,7 +65,7 @@ En Render: **New → Web Service → Build and deploy from a Git repository** �
 - Variable: `MONITORING_PROMETHEUS_URL` = URL pública de un Prometheus (no existe en Render; sin él devuelve error). Por eso se deja local por ahora.
 
 ### 4.4 Gateway (al final: necesita las URLs anteriores)
-- Name: `green-ai-gateway` · Root Directory: `software/gateway-go`
+- Name: `green-ai-gateway` · Root Directory: `software` · **Dockerfile Path: `./gateway-go/Dockerfile`** (el Dockerfile copia `gateway-go/` y los OpenAPI de `gateway/`, por eso el contexto es `software`)
 - Variables:
   - `GATEWAY_PORT=8081`
   - `GATEWAY_PREDICTION_BASE_URL=<PREDICTION_URL>`

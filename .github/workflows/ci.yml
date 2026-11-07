@@ -73,5 +73,5 @@ jobs:
       - run: touch software/frontend/config.local.js
       - run: docker compose -f software/infraestructura/docker-compose.yml config --quiet
       - run: docker build -t gai-prediction software/prediction
-      - run: docker build -t gai-gateway-go software/gateway-go
+      - run: docker build -t gai-gateway-go -f software/gateway-go/Dockerfile software
       - run: docker build -t gai-data-processing software/data-processing
