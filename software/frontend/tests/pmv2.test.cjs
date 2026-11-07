@@ -172,3 +172,11 @@ test('buildReportUrl: maneja alias desde y hasta y elimina barras finales de bas
     'http://127.0.0.1:8081/api/processing/v1/reports/historical-summary?hardwareId=HW045&start=2026-07-10&end=2026-07-11&format=json'
   );
 });
+
+test('withTimezone adds UTC to date inputs (API requires timezone)', () => {
+  const { withTimezone } = require('../pmv2.js');
+  assert.equal(withTimezone('2026-07-10', false), '2026-07-10T00:00:00Z');
+  assert.equal(withTimezone('2026-07-11', true), '2026-07-11T23:59:59Z');
+  assert.equal(withTimezone('2026-07-10T08:30', false), '2026-07-10T08:30:00Z');
+  assert.equal(withTimezone('2026-07-10T08:30:00Z', false), '2026-07-10T08:30:00Z');
+});

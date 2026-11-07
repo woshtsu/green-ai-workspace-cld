@@ -211,6 +211,13 @@ async function downloadReportCsv(baseUrl, params) {
   return blob;
 }
 
+// La API exige zona horaria: los <input type="date"> no la incluyen. Se interpretan en UTC.
+function withTimezone(value, endOfDay) {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return `${value}T${endOfDay ? '23:59:59' : '00:00:00'}Z`;
+  if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?$/.test(value)) return `${value.length === 16 ? value + ':00' : value}Z`;
+  return value;
+}
+
 function renderExperimentCard(data) {
   const formatted = formatExperiment(data);
 
@@ -257,8 +264,8 @@ function initHistoricalReportForm() {
 
   const getFormValues = () => {
     const hardwareId = document.getElementById('report-hardware-id')?.value?.trim() || 'HW045';
-    const start = document.getElementById('report-start')?.value || '2026-07-10';
-    const end = document.getElementById('report-end')?.value || '2026-07-11';
+    const start = withTimezone(document.getElementById('report-start')?.value || '2026-07-10', false);
+    const end = withTimezone(document.getElementById('report-end')?.value || '2026-07-11', true);
     return { hardwareId, start, end };
   };
 
@@ -349,6 +356,7 @@ if (typeof window !== 'undefined') {
     fetchHistoricalSummary,
     downloadReportCsv,
     renderExperimentCard,
+    withTimezone,
     initPmv2Section
   };
 
@@ -373,6 +381,7 @@ if (typeof module !== 'undefined' && module.exports) {
     fetchHistoricalSummary,
     downloadReportCsv,
     renderExperimentCard,
+    withTimezone,
     initPmv2Section
   };
 }
