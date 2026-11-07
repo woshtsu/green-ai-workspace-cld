@@ -24,10 +24,10 @@ Los DOCX/PDF se generan solo a pedido en `exportados/` (no versionados).
 | 13–16 | Próximas entregas (PMV3) | Pendiente | Ver [notas/reestructuracion-monorepo.md](notas/reestructuracion-monorepo.md) |
 
 ## Orígenes y versiones descartadas
-- Semanas 1–2, 4 y 6: `entregables/semana01-02/lineamientos-y-requisitos.md` (importado de `0.Lineamientos al proyecto.md`), `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md` y
-  `guias/TrabajosDesarrollados/2. Conocimiento de Ingenieria.md`. Las imágenes base64 se separaron con
+- Semanas 1–2, 4 y 6: copias de `project-docs/0.Lineamientos al proyecto.md`, `4. Gestión de Proyecto.md` y
+  `2. Conocimiento de Ingenieria.md` del workspace antiguo, en `semana01-02/`, `semana-por-confirmar/` y `semana06/`. Las imágenes base64 se separaron con
   `herramientas_IA/exportacion/extraer_imagenes_base64.py`; el texto no se modificó.
-- Semanas 9–12: `exportados/semana12/Porras-Huaman-Barrera-Quintana-informe-unidad-III.pdf` (solo en el respaldo del workspace antiguo), convertido con
+- Semanas 9–12: `exportados/semana12/Porras-Huaman-Barrera-Quintana-informe-unidad-III.pdf` (local, no versionado), convertido con
   `herramientas_IA/exportacion/pdf_a_markdown.py`. Versiones intermedias **no** importadas para no duplicar:
   `project-docs/Consigna-Taller1-Actualizado-Icacit_semana9.md` (solo en el respaldo del workspace antiguo) (versión de la semana 9) y
   `project-docs/Semana12/Consigna-Taller1-ActualizadoDesarollado.docx.md` (solo en el respaldo del workspace antiguo) (borrador anterior, retirado de este repo).
