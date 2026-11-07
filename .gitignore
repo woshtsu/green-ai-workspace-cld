@@ -70,3 +70,18 @@ software/frontend/config.local.js
 
 # Bases SQLite locales de desarrollo
 software/data-processing/.local/
+
+# --- Repositorio público (revisión docente) ---
+# Texto completo de artículos con derechos de editorial: solo local. El índice sí se publica.
+guias/articulos/*
+!guias/articulos/README.md
+# Binarios y exportaciones (Markdown es la fuente de verdad)
+*.pdf
+*.docx
+*.pptx
+*.zip
+# Artefactos locales de ML y experimentos
+**/mlruns/
+**/.local/
+# Worktrees temporales de agentes
+green-ai-monorepo-wt-*/
