@@ -4,7 +4,7 @@ El borrado es **irreversible**. Lo ejecuta el usuario, o Claude con confirmació
 casillas marcadas.
 
 ## A. Respaldo (antes de nada)
-- [ ] **Zip completo** de `green-ai-workspace` fuera de esa carpeta. Incluye los `.git` de los 9 repos hijos,
+- [x] **Zip completo** (hecho por el usuario) de `green-ai-workspace` fuera de esa carpeta. Incluye los `.git` de los 9 repos hijos,
   `output/` (docx, pdf, `git-backup/*.bundle`, `green-ai-portable` de 3,3 GB), `GreenAi_TPI`,
   `Consigna-Taller1-Actualizado-Icacit-English.docx` y `project-docs/*.pdf`.
 - [ ] Commits locales sin publicar de los repos hijos (Data Processing, Frontend, Gateway, Monitoring,
@@ -21,9 +21,8 @@ casillas marcadas.
   (están ignorados por Git).
 
 ## C. Copia remota del monorepo
-- [ ] Repositorio **privado** creado por el usuario (destino y visibilidad decididos por él).
-- [ ] `git push` de `main` y `test`. Si se hace público: excluir antes `guias/articulos/` (texto completo de
-  artículos con derechos de editorial).
+- [x] Repositorio **público** (requisito del docente): https://github.com/woshtsu/green-ai-workspace-cld. Antes del primer push se eliminaron del historial `guias/articulos/` (solo queda el índice) y los grafos antiguos; respaldo previo en `../green-ai-monorepo-antes-de-limpiar.bundle`.
+- [x] `git push` de `main` y `test` (2026-11-06).
 
 ## D. Mover y limpiar
 - [ ] Mover `green-ai-monorepo` fuera, p. ej. a `C:\Practicas\202620\TallerProyectos\green-ai` (no hay rutas
