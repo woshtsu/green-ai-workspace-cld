@@ -203,3 +203,6 @@ No borrar el workspace antiguo ni cambiar producción: requiere autorización ex
 
 ## CI/CD (2026-11-07)
 - Añadidos `.github/workflows/ci.yml` y `pages.yml` (main = producción en la raíz de Pages, test = desarrollo en `/dev/`). Guía: `docs/GUIA-GITHUB-PAGES-Y-CI.md`. Solo validados como YAML; sin ejecutar en GitHub. Retirado `software/frontend/.github/workflows/deploy.yml`.
+
+## Estado al 2026-11-07 (noche)
+Resumen para continuar en un chat nuevo: `docs/CONTINUAR-EN-NUEVO-CHAT.md`. Frontend nuevo (pestañas, ayuda, avisos de espera, energía, red de flujos) en `test` con 48 pruebas; mejora del modelo: solo plan (`docs/MEJORA-MODELO-PREDICCION.md`); Antigravity falló en headless por permisos de `command` (sin cambios), el frontend lo implementó Claude.
