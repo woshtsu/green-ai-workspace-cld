@@ -190,3 +190,9 @@ No borrar el workspace antiguo ni cambiar producción: requiere autorización ex
 - OK: 50 nodos en 5 racks con CPU real del stack, resumen (CPU media 49,9 %), rol OPERATOR visible, panel de detalle de HW001.
 - Fallo: «Predecir 15 min» → 422 INSUFFICIENT_DATA (2 registros). Causa: el simulador se reiniciaba cada hora y perdía el historial. Corregido: duración por defecto 86400 s en docker-compose.yml.
 - Errores de la UI para el próximo encargo de frontend: el panel no muestra los errores de la API y el refresco de 15 s borra el resultado de la predicción. Con la escena «normal» todos los nodos quedan en ~50 %; para la demo usar SIMULATOR_SCENARIO=configs/scenarios/high.json o variar la carga.
+
+## Frontend PMV2 (2026-11-06, encargo 07 de Antigravity + correcciones de Claude)
+- Dashboard con menos texto y sección «Capacidades PMV2»: recomendación con restricciones, reporte de históricos (resumen + CSV) y experimento baseline vs Green AI (riesgo SLA 3,97 % / 3,97 %; energía modelada −0,16 %; etiqueta «datos simulados, energía modelada»). Verificado en el panel con sesión real.
+- Racks: muestra errores de la API (INSUFFICIENT_DATA, 403) y conserva la selección entre refrescos.
+- Corrección de Claude: las fechas del reporte se envían con zona horaria (UTC). Etiqueta «Diferencia de energía». Frontend 31/31 pruebas.
+- Pendiente: verificar en el panel «Ver resumen» y «Descargar CSV» tras la corrección; capturas para la semana 13; panel de Grafana con predicciones.
