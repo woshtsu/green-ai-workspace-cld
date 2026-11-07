@@ -1,0 +1,356 @@
+{
+ "source": "BD_GreenAi.xlsx (hoja Hardware, dataset sintético del proyecto)",
+ "origin": "simulated",
+ "nodes": [
+  {
+   "id": "HW001",
+   "rack": "Rack-01",
+   "hostname": "srv-green-001",
+   "cpuCores": 32,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW002",
+   "rack": "Rack-01",
+   "hostname": "srv-green-002",
+   "cpuCores": 64,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW003",
+   "rack": "Rack-01",
+   "hostname": "srv-green-003",
+   "cpuCores": 64,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW004",
+   "rack": "Rack-01",
+   "hostname": "srv-green-004",
+   "cpuCores": 64,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW005",
+   "rack": "Rack-01",
+   "hostname": "srv-green-005",
+   "cpuCores": 16,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW006",
+   "rack": "Rack-01",
+   "hostname": "srv-green-006",
+   "cpuCores": 16,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW007",
+   "rack": "Rack-01",
+   "hostname": "srv-green-007",
+   "cpuCores": 32,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW008",
+   "rack": "Rack-01",
+   "hostname": "srv-green-008",
+   "cpuCores": 32,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW009",
+   "rack": "Rack-01",
+   "hostname": "srv-green-009",
+   "cpuCores": 64,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW010",
+   "rack": "Rack-01",
+   "hostname": "srv-green-010",
+   "cpuCores": 64,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW011",
+   "rack": "Rack-02",
+   "hostname": "srv-green-011",
+   "cpuCores": 64,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW012",
+   "rack": "Rack-02",
+   "hostname": "srv-green-012",
+   "cpuCores": 16,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW013",
+   "rack": "Rack-02",
+   "hostname": "srv-green-013",
+   "cpuCores": 64,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW014",
+   "rack": "Rack-02",
+   "hostname": "srv-green-014",
+   "cpuCores": 64,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW015",
+   "rack": "Rack-02",
+   "hostname": "srv-green-015",
+   "cpuCores": 64,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW016",
+   "rack": "Rack-02",
+   "hostname": "srv-green-016",
+   "cpuCores": 16,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW017",
+   "rack": "Rack-02",
+   "hostname": "srv-green-017",
+   "cpuCores": 32,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW018",
+   "rack": "Rack-02",
+   "hostname": "srv-green-018",
+   "cpuCores": 64,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW019",
+   "rack": "Rack-02",
+   "hostname": "srv-green-019",
+   "cpuCores": 16,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW020",
+   "rack": "Rack-02",
+   "hostname": "srv-green-020",
+   "cpuCores": 32,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW021",
+   "rack": "Rack-03",
+   "hostname": "srv-green-021",
+   "cpuCores": 16,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW022",
+   "rack": "Rack-03",
+   "hostname": "srv-green-022",
+   "cpuCores": 32,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW023",
+   "rack": "Rack-03",
+   "hostname": "srv-green-023",
+   "cpuCores": 32,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW024",
+   "rack": "Rack-03",
+   "hostname": "srv-green-024",
+   "cpuCores": 32,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW025",
+   "rack": "Rack-03",
+   "hostname": "srv-green-025",
+   "cpuCores": 32,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW026",
+   "rack": "Rack-03",
+   "hostname": "srv-green-026",
+   "cpuCores": 16,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW027",
+   "rack": "Rack-03",
+   "hostname": "srv-green-027",
+   "cpuCores": 32,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW028",
+   "rack": "Rack-03",
+   "hostname": "srv-green-028",
+   "cpuCores": 64,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW029",
+   "rack": "Rack-03",
+   "hostname": "srv-green-029",
+   "cpuCores": 32,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW030",
+   "rack": "Rack-03",
+   "hostname": "srv-green-030",
+   "cpuCores": 16,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW031",
+   "rack": "Rack-04",
+   "hostname": "srv-green-031",
+   "cpuCores": 64,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW032",
+   "rack": "Rack-04",
+   "hostname": "srv-green-032",
+   "cpuCores": 16,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW033",
+   "rack": "Rack-04",
+   "hostname": "srv-green-033",
+   "cpuCores": 32,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW034",
+   "rack": "Rack-04",
+   "hostname": "srv-green-034",
+   "cpuCores": 32,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW035",
+   "rack": "Rack-04",
+   "hostname": "srv-green-035",
+   "cpuCores": 16,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW036",
+   "rack": "Rack-04",
+   "hostname": "srv-green-036",
+   "cpuCores": 32,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW037",
+   "rack": "Rack-04",
+   "hostname": "srv-green-037",
+   "cpuCores": 16,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW038",
+   "rack": "Rack-04",
+   "hostname": "srv-green-038",
+   "cpuCores": 32,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW039",
+   "rack": "Rack-04",
+   "hostname": "srv-green-039",
+   "cpuCores": 32,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW040",
+   "rack": "Rack-04",
+   "hostname": "srv-green-040",
+   "cpuCores": 64,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW041",
+   "rack": "Rack-05",
+   "hostname": "srv-green-041",
+   "cpuCores": 16,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW042",
+   "rack": "Rack-05",
+   "hostname": "srv-green-042",
+   "cpuCores": 16,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW043",
+   "rack": "Rack-05",
+   "hostname": "srv-green-043",
+   "cpuCores": 16,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW044",
+   "rack": "Rack-05",
+   "hostname": "srv-green-044",
+   "cpuCores": 16,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW045",
+   "rack": "Rack-05",
+   "hostname": "srv-green-045",
+   "cpuCores": 64,
+   "maxWatts": 600.0
+  },
+  {
+   "id": "HW046",
+   "rack": "Rack-05",
+   "hostname": "srv-green-046",
+   "cpuCores": 16,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW047",
+   "rack": "Rack-05",
+   "hostname": "srv-green-047",
+   "cpuCores": 32,
+   "maxWatts": 450.0
+  },
+  {
+   "id": "HW048",
+   "rack": "Rack-05",
+   "hostname": "srv-green-048",
+   "cpuCores": 16,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW049",
+   "rack": "Rack-05",
+   "hostname": "srv-green-049",
+   "cpuCores": 64,
+   "maxWatts": 800.0
+  },
+  {
+   "id": "HW050",
+   "rack": "Rack-05",
+   "hostname": "srv-green-050",
+   "cpuCores": 32,
+   "maxWatts": 800.0
+  }
+ ]
+}
