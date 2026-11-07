@@ -1,0 +1,83 @@
+# Frontend en GitHub Pages: UN solo sitio con dos entornos.
+#   rama main  -> producción:  https://<usuario>.github.io/<repo>/
+#   rama test  -> desarrollo:  https://<usuario>.github.io/<repo>/dev/
+# Cada ejecución reconstruye ambos desde la punta de su rama, así un push a una no borra la otra.
+# Requiere (Settings -> Secrets and variables -> Actions -> Variables):
+#   SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY   (la clave publishable es pública; NUNCA service_role)
+#   GATEWAY_URL_PROD, GATEWAY_URL_DEV        (URLs https del Gateway en Render, sin "/" final)
+# y Settings -> Pages -> Source: "GitHub Actions".
+name: Frontend (GitHub Pages)
+
+on:
+  push:
+    branches: [main, test]
+    paths: ['software/frontend/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+      SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+      GATEWAY_URL_PROD: ${{ vars.GATEWAY_URL_PROD }}
+      GATEWAY_URL_DEV: ${{ vars.GATEWAY_URL_DEV }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main, path: src-main }
+      - uses: actions/checkout@v4
+        with: { ref: test, path: src-test }
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+
+      - name: Pruebas del frontend (rama que disparó el flujo)
+        run: |
+          d=src-${GITHUB_REF_NAME}; [ -d "$d" ] || d=src-test
+          cd "$d/software/frontend" && node --test tests/*.test.cjs
+
+      - name: Validar variables
+        run: |
+          for v in SUPABASE_URL SUPABASE_PUBLISHABLE_KEY GATEWAY_URL_PROD GATEWAY_URL_DEV; do
+            [ -n "${!v}" ] || { echo "::error::Falta la variable de Actions $v"; exit 1; }
+          done
+
+      - name: Construir sitio (main en la raíz, test en /dev)
+        run: |
+          python3 - <<'PY'
+          import json, os, shutil
+          from pathlib import Path
+
+          def build(src, dst, gateway):
+              f = Path(src) / "software/frontend"
+              dst = Path(dst); dst.mkdir(parents=True, exist_ok=True)
+              for pat in ("*.html", "*.css", "*.js", "*.json", "favicon.svg"):
+                  for p in f.glob(pat):
+                      shutil.copy(p, dst / p.name)
+              (dst / "config.local.js").unlink(missing_ok=True)
+              cfg = {"supabaseUrl": os.environ["SUPABASE_URL"],
+                     "supabasePublishableKey": os.environ["SUPABASE_PUBLISHABLE_KEY"],
+                     "gatewayBaseUrl": gateway.rstrip("/")}
+              (dst / "config.local.js").write_text(
+                  "window.GREEN_AI_CONFIG = Object.freeze(" + json.dumps(cfg) + ");\n", encoding="utf-8")
+
+          build("src-main", "dist", os.environ["GATEWAY_URL_PROD"])
+          build("src-test", "dist/dev", os.environ["GATEWAY_URL_DEV"])
+          PY
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with: { path: dist }
+      - id: deployment
+        uses: actions/deploy-pages@v4
