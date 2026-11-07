@@ -94,9 +94,9 @@ Plan base: `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md` §4.8 (8 spr
 | Sprint | Comprometido | Estado real |
 |---|---|---|
 | 5 (S9–10) | Modelo seleccionado «≥ 90 %», Policy Engine, API | Hecho (RF, política, `/v1/predictions`, `/v1/recommendations`). El criterio «≥ 90 %» no aplica a una regresión: reformular como MAE frente al baseline. MLflow no evidenciado |
-| 6 (S11–12) | Grafana con predicciones y eficiencia, alertas, indicadores de kWh y CO₂e | Parcial: el dashboard `pmv2.json` existe; solo hay alerta de disponibilidad; `/v1/energy` calcula kWh, pero no hay datos de potencia reales y el CO₂e exige un factor con fuente |
+| 6 (S11–12) | Grafana con predicciones y eficiencia, alertas, indicadores de kWh y CO₂e | Alertas **hechas el 2026-11-06** (SimulatorTelemetryDown, NodeCpuSaturationRisk, NodeMemoryPressure, PredictedCpuHigh; promtool OK). Resto parcial: el dashboard `pmv2.json` existe; solo hay alerta de disponibilidad; `/v1/energy` calcula kWh, pero no hay datos de potencia reales y el CO₂e exige un factor con fuente |
 | Lab. 11 (S11) | **Despliegue en la nube (no localhost)**, BD remota con *seeding*, pruebas G/W/T con URL pública | **Atrasado**: solo hay servicios antiguos en Render; el monorepo no está desplegado. Bloquea el video (ind. 9–10) |
-| **7 (S13–14)** | **RBAC, reportes PDF/CSV, diseño del plan experimental y ejecución del baseline** | RBAC casi hecho (ADMIN/OPERATOR en el Gateway; falta el rol «observador»). Reportes PDF/CSV, plan experimental y baseline **no iniciados** |
+| **7 (S13–14)** | **RBAC, reportes PDF/CSV, diseño del plan experimental y ejecución del baseline** | **Hecho el 2026-11-06 (salvo PDF):** rol VIEWER de solo lectura en Java y Go (Java 12/12; Go con pruebas nuevas; enum de Supabase ampliado, falta aplicarlo en Supabase); reporte JSON/CSV `GET /api/processing/v1/reports/historical-summary` (Data Processing 121 passed; encargo 05 de Antigravity con Gemini Flash, revisado); experimento baseline frente a Green AI (`docs/academico/10-plan-experimental.md`): con margen del 10 %, riesgo de SLA 15,9 % → 9,5 %; energía modelada −0,2 % (no hay ahorro demostrado). **PDF pendiente** |
 | 8 (S15–16) | Experimento Green AI, análisis comparativo, informe y sustentación | Pendiente |
 
 Criterio del PMV3 por corregir: «ahorro energético ≥ 15 %» no tiene sustento. Reformular como «medir la
