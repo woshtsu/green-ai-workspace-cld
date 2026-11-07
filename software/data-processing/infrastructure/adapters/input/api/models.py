@@ -96,3 +96,28 @@ class PredictionDataset(BaseModel):
     dataStatus: Status
     excludedSampleCount: int
     warnings: list[str]
+
+
+class CpuSummary(BaseModel):
+    mean: float | None = None
+    p95: float | None = None
+    max: float | None = None
+
+
+class RamSummary(BaseModel):
+    mean: float | None = None
+    p95: float | None = None
+
+
+class HistoricalSummary(BaseModel):
+    hardwareId: str
+    period: Period
+    recordCount: int
+    cpu_utilization_pct: CpuSummary | None = None
+    ram_utilization_pct: RamSummary | None = None
+    highLoadPct: float | None = None
+    energyWh: float | None = None
+    gapsIgnored: int = 0
+    source: Literal["supabase", "sqlite"]
+    origin: Literal["unknown"] = "unknown"
+    warnings: list[str]

@@ -1,15 +1,16 @@
 from datetime import datetime
 from typing import Literal
-from fastapi import APIRouter, Query, Request
+from fastapi import APIRouter, Query, Request, Response
 
 from application.use_cases.process_metrics import ProcessMetricsUseCase
 from application.use_cases.prepare_prediction_dataset import PreparePredictionDatasetUseCase
 from application.use_cases.read_historical_logs import ReadHistoricalLogsUseCase
+from application.use_cases.historical_report import HistoricalReportUseCase
 from domain.errors import InvalidQuery, SourceNotConfigured
 from domain.monitoring_contract import Metric
 from infrastructure.adapters.input.monitoring_http_adapter import MonitoringHttpAdapter
 from infrastructure.historical_sources import historical_source
-from infrastructure.adapters.input.api.models import HistoricalPage, PredictionDataset, ProcessedHistory, Problem
+from infrastructure.adapters.input.api.models import HistoricalPage, HistoricalSummary, PredictionDataset, ProcessedHistory, Problem
 
 ERRORS = {status: {"description": description,
     "content": {"application/problem+json": {"schema": Problem.model_json_schema()}},
@@ -86,3 +87,38 @@ def get_prediction_dataset(
         return PreparePredictionDatasetUseCase().execute(frame)
     except ValueError as exc:
         raise InvalidQuery(str(exc)) from exc
+
+
+@router.get(
+    "/reports/historical-summary",
+    response_model=HistoricalSummary,
+    responses={
+        200: {
+            "description": "Reporte resumen en JSON o CSV",
+            "content": {
+                "application/json": {"schema": HistoricalSummary.model_json_schema()},
+                "text/csv": {"schema": {"type": "string"}},
+            },
+        },
+        **ERRORS,
+    },
+    tags=["Reports"],
+)
+def get_historical_summary(
+    request: Request,
+    start: datetime,
+    end: datetime,
+    hardware_id: str = Query(..., alias="hardwareId", min_length=1, max_length=20),
+    format: Literal["json", "csv"] = Query("json"),
+):
+    """Reporte resumen de históricos: métricas CPU/RAM, energía trapezoidal y carga alta.
+
+    hardwareId es un filtro, no autorización por usuario. Publicar únicamente detrás del Gateway autorizado.
+    """
+    settings = request.app.state.settings
+    adapter = historical_source(settings, request.state.request_id)
+    use_case = HistoricalReportUseCase(adapter, page_size=settings.historical_page_size)
+    summary = use_case.execute(hardware_id, start, end, format=format)
+    if format == "csv":
+        return Response(content=summary, media_type="text/csv")
+    return summary
