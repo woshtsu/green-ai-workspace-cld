@@ -42,6 +42,44 @@ Motivo: Render (plan gratuito) responde a veces **429** a las llamadas entre ser
 
 ---
 
+## 0.5 GRABACIÓN POR PARTES (modalidad acordada por el equipo)
+
+Cada integrante graba **su** parte en su PC y **Jhonny Cristhian Quintana Carhuaricra** las une en la edición. La rúbrica exige que «participan de la exposición todos los integrantes del grupo con cámara y nombre completo»: cada clip lleva la cámara del presentador en la esquina inferior derecha y su nombre en un rótulo.
+
+### Quién graba qué
+| Clip | Episodio (minutos) | Graba | Necesita | Desde |
+|---|---|---|---|---|
+| 00 | Carátula: cada uno dice su nombre completo a cámara (5–10 s por persona) | **Los 4** (cada uno su clip) | Solo cámara | Cualquier PC |
+| 01 | Introducción (00:00–01:30) | Jhonny + Gina (cada uno su tramo) | Diapositiva de portada | Cualquier PC |
+| 02 | Ep. 1 PMV1 (01:30–04:30) | Leonid | Navegador + cuenta propia en producción | Cualquier PC |
+| 03 | Ep. 2 PMV2 (04:30–08:00) | Leonid (racks, flujos) y Jhonny (CSV, energía) | Navegador + cuenta propia | Cualquier PC |
+| 04 | Ep. 3 Data masiva (08:00–11:30) | **Ricardo** | Repo clonado + Python + `carga_transacciones.py` | PC de Ricardo |
+| 05 | Ep. 4 Métricas (11:30–15:00) | Gina (ML) y Jhonny (pruebas) | **Solo navegador** (GitHub Actions y GitHub) | Cualquier PC |
+| 06 | Ep. 5 Predicción ML (15:00–18:30) | Gina | Navegador + cuenta propia; simulador despierto ≥ 30 min | Cualquier PC, **dentro de la franja** |
+| 07 | Ep. 6 Trello (18:30–21:00) | Gina y Jhonny | Tablero ya actualizado según `guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md` | Cualquier PC |
+| 08 | Ep. 7 Hexagonal y SQL (21:00–24:00) | **Ricardo** | Navegador (GitHub) | Cualquier PC |
+| 09 | Cierre (24:00–25:00) | **Los 4** (cada uno su frase, 10–15 s, mirando a cámara) | Cámara | Cualquier PC |
+
+### Franja común de grabación (obligatoria para los clips con la app: 02, 03, 04, 06)
+1. Acordar una franja de 2 h (p. ej., 19:00–21:00).
+2. **Ricardo**, 30 min antes de la franja: `python herramientas_IA/video/mantener_despierto.py --minutos 150` en una terminal que no se graba. Avisa por el grupo cuando dos ciclos seguidos muestren los 6 servicios en `OK`.
+3. Gina graba el Ep. 5 a partir del minuto 30 de la franja (el simulador necesita historial; si sale «datos insuficientes», esperar 10 min y repetir).
+4. Los clips 00, 01, 05, 07, 08 y 09 no usan la app en vivo: se pueden grabar en cualquier momento.
+
+### Ajustes comunes (para que el montaje no se note)
+- Pantalla completa a **1920×1080**, navegador **Chrome** o **Edge** con zoom al 100 %, tema claro, sin barra de marcadores ni pestañas personales, notificaciones del sistema desactivadas.
+- **OBS Studio**: lienzo y salida a 1920×1080, 30 fps, grabación en **MP4**. Escena: captura de pantalla completa + cámara de 320×180 px en la esquina inferior derecha + rótulo de texto (Arial 28, blanco sobre franja verde) con el **nombre completo**.
+- Audio: micrófono o audífonos con micrófono; grabar en un lugar silencioso; probar 10 s antes.
+- Cada uno inicia sesión con **su propia cuenta** (`register.html` si no tiene). Nunca compartir contraseñas ni mostrar tokens (no abrir F12 → Application).
+- Respetar la duración de su tramo (± 15 s); dejar 2 s de silencio al inicio y al final del clip para los cortes.
+
+### Entrega de los clips
+- Nombre del archivo: `clip-NN-apellido.mp4` (p. ej., `clip-04-porras.mp4`), subido a la carpeta compartida del grupo el día acordado.
+- Jhonny Cristhian une los clips en orden (DaVinci Resolve, CapCut o Clipchamp), añade la portada y el cierre con los 4 rostros, revisa que dure 22–26 min y comprueba la lista de rúbrica de la sección «Cierre».
+- Si un clip muestra un error real (429, 504, «datos insuficientes»), **no se corta para ocultarlo**: el presentador lo explica, como indica la sección 0.
+
+---
+
 ## 1. CÓMO USAR ESTE GUION
 
 Este documento es la partitura técnica y organizativa para la grabación del video de sustentación de la Unidad III. Para asegurar fluidez, profesionalismo y cumplimiento estricto de la rúbrica, el equipo debe seguir estas directrices operativas:
@@ -121,10 +159,10 @@ El despliegue en la nube utiliza el plan gratuito de Render. Dado que las instan
 ### 3.2 Preparación del Entorno de Navegación (T-15 a T-5)
 
 1. **Pestañas del navegador (orden estricto de izquierda a derecha en una ventana dedicada):**
-   - Pestaña 1: Frontend Green AI — Inicio / Login (`https://woshtsu.github.io/green-ai-workspace-cld/dev/login.html`)
-   - Pestaña 2: Frontend Green AI — Dashboard (`https://woshtsu.github.io/green-ai-workspace-cld/dev/dashboard.html`)
-   - Pestaña 3: Frontend Green AI — Racks con calor (`https://woshtsu.github.io/green-ai-workspace-cld/dev/network.html`)
-   - Pestaña 4: Frontend Green AI — Red de flujos (`https://woshtsu.github.io/green-ai-workspace-cld/dev/flows.html`)
+   - Pestaña 1: Frontend Green AI — Inicio / Login (`https://woshtsu.github.io/green-ai-workspace-cld/login.html`)
+   - Pestaña 2: Frontend Green AI — Dashboard (`https://woshtsu.github.io/green-ai-workspace-cld/dashboard.html`)
+   - Pestaña 3: Frontend Green AI — Racks con calor (`https://woshtsu.github.io/green-ai-workspace-cld/network.html`)
+   - Pestaña 4: Frontend Green AI — Red de flujos (`https://woshtsu.github.io/green-ai-workspace-cld/flows.html`)
    - Pestaña 5: Prometheus UI (`https://green-ai-prometheus-dev.onrender.com/targets`) (*verificar antes de grabar*)
    - Pestaña 6: Tablero Trello oficial del proyecto Green AI
    - Pestaña 7: Repositorio GitHub (`https://github.com/woshtsu/green-ai-workspace-cld`) abierto en la rama `test`
@@ -211,7 +249,7 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
 #### Datos de la Escena
 - **Minuto inicio:** 00:00 | **Minuto fin:** 01:30 | **Duración:** 1 minuto 30 segundos
 - **Presentadores:** Jhonny Cristhian Quintana Carhuaricra (Product Owner) y Gina Diana Barrera Peña (Scrum Master)
-- **Cámaras:** 4 cámaras activas en recuadro; Jhonny y Gina en foco.
+- **Cámaras:** en la edición se abre con los clips 00 (los 4 integrantes, cada uno diciendo su nombre completo a cámara con su rótulo) y luego Jhonny y Gina graban cada uno su tramo de introducción.
 - **Criterio de rúbrica:** Guion del video de software — Carátula con nombre de proyecto e integrantes.
 
 #### Acción en Pantalla
@@ -222,11 +260,11 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
    - Título del proyecto: Green AI — Plataforma Inteligente de Observabilidad y Optimización Energética Predictiva en Centros de Datos.
    - Nombres completos de los 4 integrantes con sus roles.
    - Entorno tecnológico: Despliegue en la Nube (GitHub Pages, Render, Supabase).
-2. Transicionar suavemente a la pestaña del navegador con la página de inicio del frontend (`https://woshtsu.github.io/green-ai-workspace-cld/dev/index.html`).
+2. Transicionar suavemente a la pestaña del navegador con la página de inicio del frontend (`https://woshtsu.github.io/green-ai-workspace-cld/index.html`).
 
 #### Diálogo del Presentador
 - **Jhonny Quintana (00:00 – 00:50):**
-  > "Estimado profesor Jorge Guevara y compañeros, un cordial saludo. Mi nombre es Jhonny Cristhian Quintana Carhuaricra, Product Owner del proyecto Green AI. En este video de sustentación de la Unidad III, nuestro equipo presentará la demostración funcional completa del software desarrollado para el Primer y Segundo Mínimo Viable. Cumpliendo rigurosamente con los lineamientos de la asignatura y la lista de cotejo de la Semana 12, esta grabación se realiza a pantalla completa sobre nuestro entorno de calidad desplegado en la nube pública, sin recurrir a localhost. Participamos los cuatro integrantes del equipo con cámara activa y nombre completo en pantalla. A continuación, mi compañera Gina Barrera presentará el alcance de los integrantes."
+  > "Estimado profesor Jorge Guevara y compañeros, un cordial saludo. Mi nombre es Jhonny Cristhian Quintana Carhuaricra, Product Owner del proyecto Green AI. En este video de sustentación de la Unidad III, nuestro equipo presentará la demostración funcional completa del software desarrollado para el Primer y Segundo Mínimo Viable. Cumpliendo rigurosamente con los lineamientos de la asignatura y la lista de cotejo de la Semana 12, esta grabación se realiza a pantalla completa sobre nuestro entorno de calidad desplegado en la nube pública, sin recurrir a localhost. Participamos los cuatro integrantes del equipo, cada uno con su cámara y su nombre completo en pantalla. A continuación, mi compañera Gina Barrera presentará el alcance de los integrantes."
 
 - **Gina Barrera (00:50 – 01:30):**
   > "Buenas tardes, profesor. Mi nombre es Gina Diana Barrera Peña, Scrum Master del equipo y responsable del área de datos y modelos. Me acompañan en esta presentación Ricardo Porras Veli, encargado de backend, integración y despliegue; y Leonid Kisley Orlando Huamán Collazos, a cargo de infraestructura, observabilidad y frontend. A lo largo de esta sesión cubriremos siete episodios técnicos: desde las pruebas funcionales de observabilidad del PMV1, las capacidades avanzadas del PMV2, una prueba transaccional masiva con más de 600 peticiones en vivo, la sustentación de métricas de calidad y Machine Learning, los dos casos de uso predictivos, nuestro tablero de gestión ágil en Trello y la auditoría de arquitectura hexagonal y procedimientos almacenados en GitHub. Doy pase a Leonid para iniciar con el Episodio 1."
@@ -245,7 +283,7 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
 - **Criterio de rúbrica:** Guion del video de software — Episodio 1: Pruebas funcionales del PMV1 (HU-01, HU-02, HU-15).
 
 #### Acción en Pantalla
-1. Navegar a `https://woshtsu.github.io/green-ai-workspace-cld/dev/login.html`.
+1. Navegar a `https://woshtsu.github.io/green-ai-workspace-cld/login.html`.
 2. Mostrar el formulario de inicio de sesión con Supabase. Escribir credenciales de un usuario autenticado con rol `OPERATOR` (por ejemplo, `operador@greenai.continental.edu.pe`).
 3. Hacer clic en «Iniciar sesión». Mostrar la redirección instantánea hacia `dashboard.html`.
 4. Señalar en la barra superior (topbar):
@@ -273,7 +311,7 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
 #### Diálogo del Presentador
 - **Leonid Huamán (01:30 – 04:30):**
   > "Gracias, Gina. Saludos, profesor. Mi nombre es Leonid Huamán. Iniciamos el Episodio 1 con la validación funcional del Primer Mínimo Viable, cuyo objetivo central es dotar a los operadores de centros de datos de una observabilidad integral y en tiempo real.
-  > Como se aprecia en pantalla, nos encontramos en la URL pública de GitHub Pages bajo la ruta `/dev/`. El acceso está protegido por Supabase Authentication. Inicio sesión con una cuenta de operador. Al ingresar, el API Gateway valida el token JWT emitido por Supabase mediante su conjunto de llaves públicas JWKS. En la cabecera superior confirmamos mi identidad y el rol `OPERATOR` inyectado dinámicamente en los claims del token.
+  > Como se aprecia en pantalla, nos encontramos en la URL pública de producción en GitHub Pages. El acceso está protegido por Supabase Authentication. Inicio sesión con una cuenta de operador. Al ingresar, el API Gateway valida el token JWT emitido por Supabase mediante su conjunto de llaves públicas JWKS. En la cabecera superior confirmamos mi identidad y el rol `OPERATOR` inyectado dinámicamente en los claims del token.
   > En el Centro de Operación, consulto la métrica de utilización de CPU para los 50 servidores del centro de datos simulado. Al pulsar 'Actualizar', el frontend invoca al Gateway en Render, el cual consulta al microservicio de Monitoring en Java y a Prometheus.
   > Observen los indicadores clave: se procesan exactamente 50 servidores. [Mirar la pantalla y leer en vivo]: la media global se sitúa en [leer el valor de stat-mean en pantalla, ej. 85 %], con el servidor [leer el nombre de stat-max] como el más cargado. Destaco un principio de diseño fundamental de nuestro equipo: la procedencia declarada. La plataforma indica explícitamente que el origen es 'Simulado', cumpliendo con la exigencia académica de honestidad técnica.
   > En el gráfico central de Chart.js visualizamos la evolución temporal de los últimos 15 minutos con agregación de media, máximo y mínimo. Mediante la barra de comparación rápida, podemos filtrar instantáneamente los cinco servidores más cargados para diagnosticar puntos calientes.
@@ -385,32 +423,19 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
 - **Minuto inicio:** 11:30 | **Minuto fin:** 15:00 | **Duración:** 3 minutos 30 segundos
 - **Presentadores:** Gina Diana Barrera Peña y Jhonny Cristhian Quintana Carhuaricra
 - **Criterio de rúbrica:** Guion del video de software — Episodio 4: Pruebas con métricas / Indicador 5.
+- **Grabación por partes:** todo se muestra desde el **navegador** (GitHub); no requiere instalar Java, Go, Python ni Docker.
 
 #### Acción en Pantalla
-1. Mostrar en pantalla una diapositiva técnica o el documento Markdown de resultados (`results/metrics/model_comparison.csv` y reporte de pruebas):
-   - Tabla comparativa de modelos de Machine Learning para el horizonte de 15 minutos:
-     * Baseline Persistencia: MAE = 4,60 pp CPU | RMSE = 6,10 pp CPU
-     * Media Móvil: MAE = 3,75 pp CPU | RMSE = 5,12 pp CPU
-     * Random Forest (Modelo en producción): MAE = 3,22 pp CPU | RMSE = 4,59 pp CPU (Validación)
-     * Random Forest en partición Test independiente: MAE = 3,85 pp CPU
-     * Ganancia de precisión: 30,0 % de mejora sobre la persistencia; 14,1 % sobre la media móvil.
-   - Declaración de limitaciones honestas: En picos repentinos de utilización, el error absoluto se eleva a rangos entre 6,1 y 8,4 puntos porcentuales.
-2. Cambiar a la terminal y mostrar la consolidación de pruebas automatizadas del proyecto:
-   - Mostrar la matriz de suites aprobadas en el monorepo:
-     * Monitoring Service (Java / JUnit): 112 pruebas aprobadas
-     * Gateway Java (Spring Cloud): 12 pruebas aprobadas
-     * Gateway Go (`go test -race`): 30 pruebas aprobadas (concurrencia y detección de carreras limpias)
-     * Data Processing Service (pytest): 121 pruebas aprobadas (contratos de datos, SQLite y PostgreSQL)
-     * Prediction Service (pytest): 100 pruebas aprobadas (integridad de pipeline, anti-fuga y contratos API)
-     * Frontend (`node --test`): 48 pruebas unitarias aprobadas (lógica UI, agregación y transformaciones)
-     * Simulator (unittest): 10 pruebas aprobadas
-     * **Suma exacta por componentes:** $112 + 12 + 30 + 121 + 100 + 48 + 10 = 433$ pruebas automatizadas.
-     * Suite de integración Smoke (`smoke.py`): 14 de 14 pruebas de extremo a extremo aprobadas.
-     * **Total acumulado de verificaciones del proyecto:** $433 + 14 = 447$ comprobaciones exitosas.
-3. Mostrar las métricas de optimización de recursos en Docker:
-   - Comparativa de la imagen de Prediction: reducción de 2,85 GB a 510 MB mediante construcción multi-etapa.
-   - Consumo de memoria RAM en reposo: reducción de 174 MiB a 122–142 MiB con `PYTHONOPTIMIZE=2` y eliminación de dependencias innecesarias de entrenamiento (Jupyter, Matplotlib, Seaborn).
-4. Pasar brevemente por la interfaz web de Prometheus (`/-/targets`) y mostrar el estado de los targets activos.
+1. **(Gina)** Abrir en GitHub, rama `main`: `software/prediction/results/metrics/model_comparison.csv` (GitHub lo muestra como tabla). Filtrar mentalmente las filas `horizon = 15m` y señalar (validación, puntos porcentuales de CPU):
+   * Persistencia: MAE 4,61 | RMSE 6,39
+   * Media móvil: MAE 3,74 | RMSE 5,19
+   * XGBoost: MAE 3,46 | RMSE 4,79
+   * **Random Forest (modelo desplegado): MAE 3,22 | RMSE 4,59** → 30 % mejor que la persistencia y 14 % mejor que la media móvil. En test: MAE 3,85.
+   * Limitación honesta: en picos el error sube a 6,1–8,4 pp.
+2. **(Jhonny)** Abrir GitHub → pestaña **Actions** → workflow **CI** → la última ejecución en `main` con check verde. Mostrar la lista de trabajos aprobados (prediction, data-processing, gateway-go, frontend, monitoring, imagenes-docker) y entrar a uno (p. ej., `prediction`) para enseñar la línea final de pytest con las pruebas aprobadas.
+3. **(Jhonny)** Abrir `docs/academico/08-pruebas-resultados-discusion.md` en GitHub y mostrar la tabla de suites por servicio; luego `docs/evidencias/smoke-20261106.json` para el smoke 14/14.
+4. **(Jhonny)** Abrir `docs/evidencias/prediction-imagen-ligera-20261107.md`: imagen de Prediction 2,85 GB → 510 MB; RAM en reposo 174 → 122–142 MiB (una medición).
+5. **(Gina, opcional, dentro de la franja)** Abrir Prometheus en Render (URL del servicio `green-ai-prometheus-dev` + `/targets`): `green-ai-simulator` UP cada 15 s y `green-ai-prediction` cada 1 min.
 
 #### Diálogo del Presentador
 - **Gina Barrera (11:30 – 13:15):**
@@ -420,12 +445,12 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
 
 - **Jhonny Quintana (13:15 – 15:00):**
   > "En cuanto a la calidad de la ingeniería de software, Green AI no se sustenta en afirmaciones vacías, sino en una cobertura de pruebas automatizadas masiva e integral.
-  > Como documentamos en pantalla, la suma exacta de nuestras suites por componente alcanza 433 pruebas automatizadas: 112 pruebas en el microservicio de Monitoring con JUnit; 12 en el Gateway Java; 30 en el Gateway Go verificadas con `-race` para garantizar la ausencia de colisiones de memoria; 121 en Data Processing; 100 en Prediction; 48 en Frontend y 10 en Simulator. Al sumar las 14 pruebas de contrato de nuestra suite de humo de integración de extremo a extremo, alcanzamos un gran total de 447 comprobaciones automatizadas completamente aprobadas.
+  > Como se ve en GitHub Actions, cada cambio ejecuta automáticamente las pruebas de todos los servicios; la suma de nuestras suites por componente alcanza 433 pruebas automatizadas: 112 pruebas en el microservicio de Monitoring con JUnit; 12 en el Gateway Java; 30 en el Gateway Go verificadas con `-race` para garantizar la ausencia de colisiones de memoria; 121 en Data Processing; 100 en Prediction; 48 en Frontend y 10 en Simulator. Al sumar las 14 pruebas de contrato de nuestra suite de humo de integración de extremo a extremo, alcanzamos un gran total de 447 comprobaciones automatizadas completamente aprobadas.
   > Finalmente, en términos de eficiencia de nube, rediseñamos el contenedor de Prediction: redujimos el tamaño de la imagen Docker de 2,85 gigabytes a solo 510 megabytes, y recortamos el uso de memoria RAM en reposo de 174 a 122 megabytes. Esto permitió que el servicio opere de manera estable en los entornos gratuitos de 512 megabytes de Render, con sus targets en estado UP en Prometheus."
 
 #### Resultado Esperado y Plan B
 - **Resultado esperado:** Tablas claras y legibles, desglose de las 433 pruebas por componente más las 14 de smoke (447 totales) sin confusiones matemáticas.
-- **Plan B si falla:** Si la terminal tarda en ejecutar una suite pesada en vivo, mostrar los reportes persistidos en `docs/academico/08-pruebas-resultados-discusion.md` y `docs/evidencias/smoke-20261106.json`.
+- **Plan B si falla:** si GitHub Actions no carga, mostrar `docs/academico/08-pruebas-resultados-discusion.md` y `docs/evidencias/smoke-20261106.json`. No ejecutar suites en vivo.
 
 ---
 
@@ -574,7 +599,7 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
 #### Datos de la Escena
 - **Minuto inicio:** 24:00 | **Minuto fin:** 25:00 | **Duración:** 1 minuto 00 segundos
 - **Presentadores:** Los 4 integrantes (Jhonny Quintana, Gina Barrera, Leonid Huamán, Ricardo Porras)
-- **Cámaras:** 4 cámaras activas en pantalla compartida.
+- **Cámaras:** cada integrante graba su frase en un clip propio (clip 09); en la edición se muestran los 4 rostros en mosaico 2×2 durante los últimos 10 s.
 - **Criterio de rúbrica:** Guion del video de software — Cierre, participación de todos los integrantes con cámara y duración reglamentaria (25 minutos).
 
 #### Acción en Pantalla
@@ -582,7 +607,7 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
    - Tabla que mapea los 11 indicadores de la guía de Semana 12 contra las evidencias demostradas en el video.
    - Enlace y código QR de acceso al repositorio público en GitHub.
    - Enlace y código QR de acceso a la aplicación desplegada en GitHub Pages.
-2. Los 4 integrantes se despiden cordialmente mirando a cámara.
+2. Mosaico 2×2 con los 4 integrantes despidiéndose a cámara (montado en la edición a partir de los clips 09).
 
 #### Diálogo del Presentador
 - **Jhonny Quintana (24:00 – 24:20):**
