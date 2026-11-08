@@ -229,3 +229,5 @@ Incidencias: Antigravity intentó ejecutar un comando en el encargo 17 (denegado
 Una exportación de Excel por COM se colgó (instancia oculta cerrada a mano). `exportados/` sigue sin versionar.
 
 Push a `origin/test` (autorizado por el usuario, 2026-11-07): commits d24d86f..900d173. GitHub Actions run 42403467382 (CI): prediction, data-processing, gateway-go, frontend, monitoring e imágenes Docker **success**; Pages (run 42403467377) **success** con las acciones fijadas por SHA.
+
+**PR #1 fusionado en `main`** (2026-11-08 00:15 UTC, commit e129b93, fusión con bypass del administrador a pedido del usuario; ruleset de `main` con 1 aprobación). CI de main (run 42428931873) y Pages (run 42428931843) **success**. Producción https://woshtsu.github.io/green-ai-workspace-cld/ ya sirve el frontend nuevo (`flows.html` 200, SRI presente); `/dev/` sigue en pie. Producción y desarrollo comparten el Gateway de Render.

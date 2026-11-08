@@ -13,6 +13,8 @@ Lee primero `AGENTS.md`, `docs/HANDOFF.md` y este archivo. Rama de trabajo: **`t
 | Video | `docs/exposicion/GUION-VIDEO-UNIDAD-III.md` + `herramientas_IA/video/carga_transacciones.py` | Guion listo; script sin ejecutar |
 | Exportar a Word | `herramientas_IA/README.md` § Exportación DOCX | `md_a_docx.py` + `actualizar_word.ps1` |
 
+**Producción actualizada (PR #1 fusionado el 08/11):** https://woshtsu.github.io/green-ai-workspace-cld/ — `main` está protegida (ruleset: PR + 1 aprobación; el dueño tiene bypass). Trabajar en `test` y abrir PR.
+
 URL real de Prediction en Render: `https://green-ai-prediction-dev-zxly.onrender.com` (las de Monitoring, Simulator y Prometheus: copiarlas del panel).
 
 ## Qué quedó hecho la noche anterior
