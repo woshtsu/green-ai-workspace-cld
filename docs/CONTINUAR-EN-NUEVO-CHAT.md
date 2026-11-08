@@ -28,7 +28,7 @@ URL real de Prediction en Render: `https://green-ai-prediction-dev-zxly.onrender
 | Evidencias | Capturas en `entregables/informe-corregido/evidencias-nube/` | |
 | Mejora del modelo | Solo investigación y plan | `docs/MEJORA-MODELO-PREDICCION.md` |
 
-URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend `https://woshtsu.github.io/green-ai-workspace-cld/dev/` (producción: raíz del mismo sitio, hoy usa el mismo Gateway). Los servicios gratuitos se duermen a los 15 min y pierden el historial (Simulator/Prometheus): **despertarlos ≥ 25 min antes de grabar el video**.
+URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend `https://woshtsu.github.io/green-ai-workspace-cld/dev/` (producción: raíz del mismo sitio; desde el 08/11 `GATEWAY_URL_PROD` = Gateway de desarrollo, antes estaba vacía). Los servicios gratuitos se duermen a los 15 min y pierden el historial (Simulator/Prometheus): **despertarlos ≥ 25 min antes de grabar el video**.
 
 ## Pendiente (en orden)
 1. **Supabase (lo hace el dueño del proyecto):** añadir a *Authentication → URL Configuration* las URLs `https://woshtsu.github.io/green-ai-workspace-cld/` y `.../dev/`; aplicar el enum `VIEWER`; revisar RLS «Permitir todo» y la columna `password` en texto plano (ver «Riesgos» en `docs/HANDOFF.md`).
