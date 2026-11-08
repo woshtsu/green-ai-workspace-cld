@@ -1,0 +1,39 @@
+@startuml
+!pragma layout smetana
+title Green AI - Despliegue (desarrollo, nov. 2026)
+node "GitHub" {
+  artifact "Repositorio monorepo\nramas main / test" as REPO
+  node "GitHub Actions" as CI
+  node "GitHub Pages" {
+    artifact "Frontend\n/ (main) y /dev/ (test)" as PAGES
+  }
+}
+node "Render (plan gratuito, rama test)" {
+  node "green-ai-gateway-dev\n(Gateway Go)" as RGW
+  node "green-ai-monitoring-dev" as RMON
+  node "green-ai-data-processing-dev" as RDP
+  node "green-ai-prediction-dev\n(imagen 510 MB)" as RPRED
+  node "green-ai-simulator-dev" as RSIM
+  node "green-ai-prometheus-dev" as RPROM
+}
+cloud "Supabase" {
+  node "Auth" as SAUTH
+  database "PostgreSQL" as SPG
+}
+node "PC del equipo (local)" {
+  node "Docker Compose green-ai-mono\n(7 contenedores, perfil SQLite opcional)" as DC
+}
+REPO --> CI : push
+CI --> PAGES : pages.yml
+REPO --> RGW : despliegue manual (render.yaml)
+PAGES --> SAUTH : HTTPS
+PAGES --> RGW : HTTPS + JWT
+RGW --> RMON
+RGW --> RDP
+RGW --> RPRED
+RMON --> RPROM
+RPROM --> RSIM
+RPROM --> RPRED
+RDP --> SPG
+RGW ..> SAUTH : JWKS
+@enduml

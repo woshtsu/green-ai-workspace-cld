@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="monitoring.css">
   <link rel="stylesheet" href="racks.css">
+  <link rel="stylesheet" href="ui.css?v=1">
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
 <body class="page-shell">
@@ -15,11 +16,15 @@
       <div class="brand-name">Green AI <span>Racks</span></div>
       <span class="brand-badge">Datos simulados</span>
     </div>
+    <nav class="main-nav" aria-label="Secciones">
+      <a href="dashboard.html">Resumen</a>
+      <a href="network.html" aria-current="page">Racks</a>
+      <a href="flows.html">Red de flujos</a>
+    </nav>
     <div class="topbar-actions">
       <span id="user-name-display"></span>
       <span id="user-role-badge" class="role-pill"></span>
       <button id="theme-toggle" class="btn btn-secondary" type="button" role="switch" aria-checked="false" aria-label="Modo claro">Modo oscuro</button>
-      <a href="dashboard.html" class="btn btn-secondary">Métricas</a>
       <button id="logout-btn" class="btn btn-secondary">Cerrar sesión</button>
     </div>
   </header>
@@ -30,7 +35,7 @@
       <div class="racks-title-bar">
         <div>
           <div class="eyebrow"><span class="status-dot"></span> Topología de infraestructura</div>
-          <h1>Racks con calor</h1>
+          <div class="help-host" data-help="racks"><h1>Racks con calor</h1></div>
           <p>50 servidores distribuidos en 5 racks. Celdas cuadradas coloreadas por utilización de CPU.</p>
         </div>
         <div class="racks-refresh-bar">
@@ -110,6 +115,7 @@
           <div class="detail-actions">
             <button id="predict-15m-btn" class="btn btn-primary" type="button">Predecir 15 min</button>
             <p id="predict-status" role="status" aria-live="polite" class="detail-status"></p>
+            <div id="predict-problem" hidden></div>
 
             <div id="predict-result" class="predict-result-box" hidden>
               <span class="predict-label">Estimación futura de CPU:</span>
@@ -124,8 +130,11 @@
 
   <script src="appearance.js"></script>
   <script src="config.local.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1" integrity="sha384-q36VSR1ktH2hgqgm+0LDeyqPW8CyZHSxfDSttSPm5ReOJzB+sYThmh7D4fE+jWTs" crossorigin="anonymous"></script>
   <script src="metrics.js"></script>
+  <script src="friendly-errors.js"></script>
+  <script src="help-content.js"></script>
+  <script src="ui-kit.js"></script>
   <script src="app.js"></script>
   <script src="prediction.js"></script>
   <script src="pmv2.js"></script>

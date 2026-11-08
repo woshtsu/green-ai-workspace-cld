@@ -1,0 +1,53 @@
+@startuml
+!pragma layout smetana
+title Green AI - Componentes (hexagonal por servicio, PMV1-PMV2, nov. 2026)
+skinparam componentStyle rectangle
+actor "Administrador TI / Operador" as U
+package "Frontend (HTML/JS estático)" {
+  [dashboard, racks, red de flujos] as FE
+}
+cloud "Supabase" {
+  [Auth (JWT, JWKS)] as AUTH
+  database "PostgreSQL\n(hardware, logs, usuario)" as PG
+}
+package "API Gateway (Java Spring Cloud Gateway / alternativa Go)" {
+  [Validación JWT + RBAC\nADMIN / OPERATOR / VIEWER] as GW
+}
+package "Monitoring (Java)" {
+  [API REST] as MAPI
+  [Dominio: catálogo y series] as MDOM
+  [Adaptador Prometheus] as MPROM
+}
+package "Data Processing (FastAPI)" {
+  [Adaptador de entrada: API] as DAPI
+  [Casos de uso: históricos,\ndataset, reporte CSV] as DUC
+  [Puertos de dominio] as DDOM
+  [Adaptadores: PostgREST / SQLite] as DREPO
+}
+package "Prediction (FastAPI)" {
+  [API /v1/predictions,\n/v1/recommendations, /v1/energy] as PAPI
+  [Modelo Random Forest 15 min] as PML
+  [Política de recomendación\n(executionAllowed=false)] as PPOL
+}
+[Simulator (Python)\n50 nodos, /metrics] as SIM
+[Prometheus + alertas] as PROM
+
+U --> FE
+FE --> AUTH : inicio de sesión
+FE --> GW : HTTPS + Bearer JWT
+GW ..> AUTH : JWKS
+GW --> MAPI
+GW --> DAPI
+GW --> PAPI
+MAPI --> MDOM
+MDOM --> MPROM
+MPROM --> PROM
+DAPI --> DUC
+DUC --> DDOM
+DREPO ..|> DDOM
+DREPO --> PG
+PAPI --> PML
+PAPI --> PPOL
+PROM --> SIM : scrape
+PROM --> PAPI : scrape /metrics
+@enduml
