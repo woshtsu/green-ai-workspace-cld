@@ -112,7 +112,7 @@
       title: 'Racks con calor',
       what: 'Un mapa de los 50 servidores agrupados en 5 racks, coloreados por uso de CPU.',
       use: 'Encontrar zonas calientes de un vistazo.',
-      how: 'Verde < 40 %, ámbar 40–80 %, rojo > 80 % con la CPU actual (se actualiza cada 15 s).',
+      how: 'Verde < 40 %, ámbar 40–80 %, rojo > 80 % con la CPU actual (se actualiza cada 30 s).',
       input: 'Haz clic en un servidor para ver su detalle y predecir su CPU.',
       limits: `${SIM} Con el escenario «high» casi todos quedan en rojo; es normal.`
     },

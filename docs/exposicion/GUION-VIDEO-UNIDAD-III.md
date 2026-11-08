@@ -10,6 +10,35 @@
 
 
 > **Antes de grabar:** verificadas el 07/11/2026 solo las URLs de Gateway, Data Processing y Prediction (`https://green-ai-prediction-dev-zxly.onrender.com`). Copia las de Monitoring, Simulator y Prometheus desde el panel de Render: pueden tener un sufijo aleatorio.
+>
+> **Mantener despiertos los servicios:** 25 min antes de grabar ejecuta `python herramientas_IA/video/mantener_despierto.py` en una terminal que no se grabe (consulta los 6 servicios cada 4 min y se detiene sola a las 2 h). Un 429 o un 504 aislado es un límite del plan gratuito de Render entre servicios: espera al siguiente refresco (30 s) y explícalo con honestidad si sale en cámara.
+
+---
+
+## 0. CAMBIOS RECIENTES Y HERRAMIENTAS DE APOYO (leer antes de ensayar)
+
+**URL que se graba (producción):** https://woshtsu.github.io/green-ai-workspace-cld/ (no `/dev/`). Abrirla con **Ctrl + F5** la primera vez.
+El backend son los servicios de Render `green-ai-*-dev` (los únicos desplegados); en las escenas de terminal, Swagger o Prometheus se verá ese nombre: es el entorno en la nube que usa producción.
+
+**Cambios del 08/11/2026 para que el video salga estable**
+| Cambio | Antes | Ahora | Qué se nota en cámara |
+|---|---|---|---|
+| Refresco del dashboard, Racks y Red de flujos | 15 s | **30 s** | Los gráficos cambian cada 30 s: tras pulsar «Actualizar» o entrar a una vista, esperar hasta medio minuto para mostrar un cambio. El texto «Actualizado … · cada 30 s» lo confirma. |
+| Prometheus → métricas internas de Prediction | 15 s | **60 s** | Nada en la app: la CPU de los 50 nodos sigue llegando del simulador cada 15 s. En Prometheus, el objetivo `green-ai-prediction` se actualiza cada minuto. |
+Motivo: Render (plan gratuito) responde a veces **429** a las llamadas entre servicios por URL pública y **504** cuando un servicio arranca en frío. Menos llamadas = menos avisos en pantalla. No es un problema de rendimiento del código (Monitoring responde en ~0,5 s).
+
+**Herramienta 1: mantener despiertos los servicios** (`herramientas_IA/video/mantener_despierto.py`)
+1. 25 min antes de grabar, en una terminal que **no** se graba: `python herramientas_IA/video/mantener_despierto.py`
+2. Cada 4 min imprime una línea como `12:01:10 gateway OK 0.8s | monitoring OK 0.4s | …`. El primer ciclo puede tardar 20–60 s por servicio (están despertando).
+3. Empezar a grabar cuando 2 ciclos seguidos muestren los 6 en `OK` con menos de 2 s.
+4. Se detiene sola a las 2 h (`--minutos 120`) para no gastar el cupo gratuito; Ctrl + C la detiene antes.
+
+**Herramienta 2: carga masiva para el episodio 3** (`herramientas_IA/video/carga_transacciones.py`)
+- `python herramientas_IA/video/carga_transacciones.py --login --iteraciones 200 --concurrencia 3` (601 transacciones reales: dataset + predicción + recomendación por iteración). Pide correo y contraseña sin mostrarlos.
+- **Ensayarla antes** con `--iteraciones 5`. Durante la carga, la app puede mostrar algún aviso de espera: es normal.
+- Si aparecen 429 o 504 en la tabla final, leerlos tal cual en cámara y explicarlos (límite de la capa gratuita); no repetir hasta «maquillar» el resultado.
+
+**Si en cámara aparece un aviso de espera o error 429/504:** esperar el siguiente refresco (30 s); la app se recupera sola. Si persiste más de 2 min, revisar la terminal de la herramienta 1.
 
 ---
 
@@ -270,7 +299,7 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
    - Mostrar la cuadrícula de 50 servidores agrupados en 5 racks físicos (Rack A a Rack E, 10 servidores por rack).
    - Explicar la escala térmica de colores: celdas verdes (< 50 %), amarillas (50–70 %), naranjas (70–80 %) y rojas (> 80 %).
    - Pasar el cursor sobre un servidor crítico (ej. `HW012` o `HW045` en rojo): mostrar el tooltip con ID de nodo, utilización exacta, memoria y procedencia de datos.
-   - Presionar el botón «Actualizar» para evidenciar la sincronización en vivo cada 15 segundos.
+   - Presionar el botón «Actualizar» para evidenciar la sincronización en vivo cada 30 segundos.
 3. En la barra superior, hacer clic en «Red de flujos» (`flows.html`):
    - Mostrar el lienzo con líneas interconectadas y partículas en movimiento simulando rebalanceo de carga.
    - Señalar la franja de advertencia técnica: «Propuesta ilustrativa sobre datos simulados. No se ejecuta ninguna acción (`executionAllowed=false`)».

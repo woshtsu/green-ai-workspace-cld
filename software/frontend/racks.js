@@ -538,7 +538,7 @@ async function refreshRacks() {
     renderSummaryCards(summary);
     renderRacksView(currentGroupedRacks);
 
-    // Conservar el nodo seleccionado y el último resultado de predicción entre refrescos de 15 s
+    // Conservar el nodo seleccionado y el último resultado de predicción entre refrescos de 30 s
     // (no re-renderizar el panel si el nodo sigue seleccionado)
     if (selectedNodeId) {
       const updatedNode = allEnrichedNodes.find(n => n.id === selectedNodeId);
@@ -560,7 +560,7 @@ async function refreshRacks() {
       const timeStr = new Date().toLocaleTimeString();
       lastUpdateEl.textContent = metricsError
         ? `Inventario cargado · Métricas pendientes (${metricsError.message})`
-        : `Actualizado ${timeStr} · cada 15 s`;
+        : `Actualizado ${timeStr} · cada 30 s`;
     }
   } catch (error) {
     if (lastUpdateEl) {
@@ -569,7 +569,7 @@ async function refreshRacks() {
   } finally {
     isRefreshing = false;
     if (refreshBtn) refreshBtn.disabled = false;
-    autoRefreshTimer = setTimeout(refreshRacks, 15000);
+    autoRefreshTimer = setTimeout(refreshRacks, 30000);
   }
 }
 

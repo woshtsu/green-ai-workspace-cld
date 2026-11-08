@@ -229,3 +229,11 @@ Incidencias: Antigravity intentó ejecutar un comando en el encargo 17 (denegado
 Una exportación de Excel por COM se colgó (instancia oculta cerrada a mano). `exportados/` sigue sin versionar.
 
 Push a `origin/test` (autorizado por el usuario, 2026-11-07): commits d24d86f..900d173. GitHub Actions run 42403467382 (CI): prediction, data-processing, gateway-go, frontend, monitoring e imágenes Docker **success**; Pages (run 42403467377) **success** con las acciones fijadas por SHA.
+
+**PR #1 fusionado en `main`** (2026-11-08 00:15 UTC, commit e129b93, fusión con bypass del administrador a pedido del usuario; ruleset de `main` con 1 aprobación). CI de main (run 42428931873) y Pages (run 42428931843) **success**. Producción https://woshtsu.github.io/green-ai-workspace-cld/ ya sirve el frontend nuevo (`flows.html` 200, SRI presente); `/dev/` sigue en pie. Producción y desarrollo comparten el Gateway de Render.
+
+Corrección 2026-11-08 00:45 UTC: la variable de repositorio `GATEWAY_URL_PROD` valía `https://` (incompleta desde el 07/11), por lo que producción servía `gatewayBaseUrl: "https:"`. Se fijó a `https://green-ai-gateway-dev.onrender.com` (autorizado por el usuario) y se relanzó Pages (run 42431158995, success). Verificado: config de producción correcta, `/dev/` 200 y preflight CORS desde github.io 200.
+
+Diagnóstico 2026-11-08: 429 intermitente de Render/Cloudflare entre servicios por URL pública (Prometheus→Prediction /metrics marcado down; desde fuera, 200) y 504 por arranque en frío. No es rendimiento del código (Monitoring 0,5 s). Red privada no disponible: los servicios gratuitos no reciben tráfico privado (https://render.com/docs/free). Añadido `herramientas_IA/video/mantener_despierto.py` (probado: 6/6 en 200). Pendiente opcional: Prometheus→Prediction cada 60 s y refresco del frontend a 30 s.
+
+Ajuste 2026-11-08 (pedido del usuario, opción B: grabar con la URL de producción y backend *-dev): refresco del frontend 15 → 30 s (monitoring.js, racks.js, flows.js, textos de ayuda e index) y Prometheus→Prediction 60 s (`prometheus.render.yml`, timeout 20 s; alertas con ventanas ≥ 2 min). Frontend 48/48; YAML válido (promtool no ejecutado: Docker apagado). Guion: sección 0 con los cambios y las herramientas.

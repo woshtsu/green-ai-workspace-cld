@@ -240,7 +240,7 @@ async function refreshMetrics() {
     refreshing = false;
     $('refresh').disabled = false;
     for (const id of ['metric','cluster','node','period']) $(id).disabled = false;
-    refreshTimer = setTimeout(refreshMetrics, 15000);
+    refreshTimer = setTimeout(refreshMetrics, 30000);
   }
 }
 async function startMonitoring() {
