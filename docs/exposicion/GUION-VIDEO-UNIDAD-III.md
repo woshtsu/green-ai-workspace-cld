@@ -10,6 +10,8 @@
 
 
 > **Antes de grabar:** verificadas el 07/11/2026 solo las URLs de Gateway, Data Processing y Prediction (`https://green-ai-prediction-dev-zxly.onrender.com`). Copia las de Monitoring, Simulator y Prometheus desde el panel de Render: pueden tener un sufijo aleatorio.
+>
+> **Mantener despiertos los servicios:** 25 min antes de grabar ejecuta `python herramientas_IA/video/mantener_despierto.py` en una terminal que no se grabe (consulta los 6 servicios cada 4 min y se detiene sola a las 2 h). Un 429 o un 504 aislado es un límite del plan gratuito de Render entre servicios: espera al siguiente refresco (15 s) y explícalo con honestidad si sale en cámara.
 
 ---
 
