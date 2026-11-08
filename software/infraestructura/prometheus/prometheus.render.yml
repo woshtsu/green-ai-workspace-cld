@@ -8,6 +8,10 @@ rule_files:
 
 scrape_configs:
   - job_name: 'green-ai-prediction'
+    # 60 s: Render limita (HTTP 429) las llamadas entre servicios por URL pública; la CPU de los nodos
+    # viene del simulador (15 s). Las alertas sobre Prediction usan ventanas >= 2 min.
+    scrape_interval: 60s
+    scrape_timeout: 20s
     scheme: https
     static_configs:
       - targets: ['green-ai-prediction-dev-zxly.onrender.com:443']

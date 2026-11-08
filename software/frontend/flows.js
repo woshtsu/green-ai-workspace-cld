@@ -114,7 +114,7 @@
       const sel = $('fc-rack');
       if (sel.options.length <= 1) racks.forEach(r => sel.append(new Option(r, r)));
       GreenUI.clearProblem(box);
-      $('fd-updated').textContent = `Actualizado ${new Date().toLocaleTimeString()} · cada 15 s`;
+      $('fd-updated').textContent = `Actualizado ${new Date().toLocaleTimeString()} · cada 30 s`;
       render();
     } catch (error) {
       const friendly = GreenErrors.fromException(error, 'metricas');
@@ -122,7 +122,7 @@
       $('fs-criterion').textContent = 'Sin datos por el momento.';
     } finally {
       state.busy = false;
-      state.timer = setTimeout(load, 15000);
+      state.timer = setTimeout(load, 30000);
     }
   }
 
