@@ -241,3 +241,5 @@ Ajuste 2026-11-08 (pedido del usuario, opción B: grabar con la URL de producci�
 **PR #2 fusionado en `main`** (2026-11-08, commit b5975b0, bypass del administrador a pedido del usuario). Pages y CI de main **success**; producción sirve el refresco de 30 s y `gatewayBaseUrl` correcto. Prometheus-dev redesplegado en Render (deploy dep-dbnupobl550s73890k7g, commit af903e4): Prediction 1m **up**, Simulator 15s **up**.
 
 Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (quién graba qué, franja común con `mantener_despierto.py` a cargo de Ricardo, ajustes OBS, entrega de clips; edita Jhonny Cristhian), episodio 4 solo con navegador (GitHub Actions y archivos de resultados; métricas base corregidas según `model_comparison.csv`: persistencia 4,61/6,39, media móvil 3,74/5,19, XGBoost 3,46/4,79), carátula y cierre con clips individuales y URLs de producción en lugar de `/dev/`.
+
+2026-11-09: PR #4 fusionado: `entregables/word/` con los .docx y el .xlsx (excepción en .gitignore). Reexportar y volver a subir si cambian los .md.
