@@ -85,3 +85,6 @@ guias/articulos/*
 **/.local/
 # Worktrees temporales de agentes
 green-ai-monorepo-wt-*/
+
+# Entregables Word para revisión del equipo (excepción explícita)
+!entregables/word/*.docx
