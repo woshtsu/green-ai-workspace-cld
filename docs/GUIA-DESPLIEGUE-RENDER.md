@@ -53,10 +53,11 @@ En Render: **New → Web Service → Build and deploy from a Git repository** �
 - Name: `green-ai-data-processing` · Root Directory: `software/data-processing`
 - Variables:
   - `APP_ENV=production`
-  - `HISTORICAL_SOURCE=none` (históricos reales requieren Supabase con JWT de solo lectura; hasta tenerlo, dejar `none`)
+  - `HISTORICAL_SOURCE=supabase` (activo en `green-ai-data-processing-dev` desde el 2026-11-09; antes `none` → el reporte de históricos respondía 503)
   - `MONITORING_BASE_URL=` URL pública de Monitoring si se despliega; si no, dejar la URL de relleno `https://example.invalid` (los endpoints de Monitoring responderán error controlado)
   - `REQUEST_TIMEOUT_SECONDS=10`
-  - Si se activa Supabase: `HISTORICAL_SOURCE=supabase`, `SUPABASE_ENABLED=true`, `SUPABASE_URL`, `SUPABASE_API_KEY`, `SUPABASE_READ_TOKEN` (pegar solo en Render, marcar como secretos)
+  - Supabase: `SUPABASE_ENABLED=true`, `SUPABASE_URL`, `SUPABASE_API_KEY` (la `sb_publishable_…` del frontend) y `SUPABASE_READ_TOKEN` (un JWT, no una `sb_…`; hoy la clave legacy `anon`, que puede leer `logs` porque la RLS es permisiva; si se endurece la RLS, hará falta un JWT de lectura dedicado). Pegar solo en Render.
+  - Verificación (2026-11-09): `GET /api/v1/reports/historical-summary?hardwareId=HW045&start=2026-07-10T00:00:00Z&end=2026-07-11T23:59:59Z` → 200, `source=supabase`, 40 registros.
 - Health Check Path: `/api/v1/health` · anotar URL → `DATA_URL`.
 - **No usar** `HISTORICAL_SOURCE=sqlite` (solo desarrollo).
 

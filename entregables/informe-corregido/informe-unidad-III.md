@@ -1378,8 +1378,7 @@ Figura VIII.30. Segundo caso de uso de IA: recomendación asistiva con restricci
 CAPTURA-PENDIENTE-C308: Descarga y visualización del reporte histórico consolidado en formato CSV generado por el endpoint GET /api/processing/v1/reports/historical-summary. Tomada del archivo CSV abierto en una aplicación de hojas de cálculo.
 Figura VIII.31. Reporte histórico consolidado exportado en formato CSV generado por Data Processing Service.
 
-CAPTURA-PENDIENTE-C309: Registro de ejecución de prueba de carga masiva de 500 a 1000 transacciones sobre el API Gateway en la nube, detallando tiempos de respuesta y códigos de estado. Tomada de la consola o panel de resultados del script de prueba de carga.
-Figura VIII.32. Registro de ejecución de prueba de carga masiva de transacciones sobre la API perimetral en la nube.
+![Figura VIII.32. Prueba de carga masiva sobre el API Gateway en Render (10/11/2026, 01:49–01:56): 601 transacciones autenticadas (1 descubrimiento + 200 × dataset, predicción y recomendación), 601 con HTTP 200; p95 de 1,5 s (dataset) y 3,5 s (predicción y recomendación). Telemetría simulada. Fotograma del episodio 3 del video; datos en docs/evidencias/carga-video.csv.](evidencias-nube/carga-601-transacciones-render.png)
 
 ##### c) Validación en Policy/Safety Engine y comunicación síncrona REST
 

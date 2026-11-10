@@ -32,7 +32,12 @@ services:
     envVars:
       - { key: PORT, value: "8000" }
       - { key: APP_ENV, value: production }
-      - { key: HISTORICAL_SOURCE, value: none }
+      # Históricos desde Supabase (activado el 2026-11-09). Los 3 valores de Supabase se pegan a mano en Render.
+      - { key: HISTORICAL_SOURCE, value: supabase }
+      - { key: SUPABASE_ENABLED, value: "true" }
+      - { key: SUPABASE_URL, sync: false }
+      - { key: SUPABASE_API_KEY, sync: false }
+      - { key: SUPABASE_READ_TOKEN, sync: false }
       - { key: REQUEST_TIMEOUT_SECONDS, value: "10" }
       # Monitoring no se despliega en el plan gratuito: URL de relleno (esas rutas responderán error controlado).
       - { key: MONITORING_BASE_URL, value: "https://example.invalid" }

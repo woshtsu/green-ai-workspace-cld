@@ -10,7 +10,7 @@ Lee primero `AGENTS.md`, `docs/HANDOFF.md` y este archivo. Rama de trabajo: **`t
 | Auditorías FURPS+/OWASP 01–07 | `docs/calidad/` | Ola 1 implementada (commit `d24d86f`); olas 2–3 planificadas (17/11–12/12) |
 | Capturas por integrante | `entregables/CAPTURAS-PENDIENTES.md` | Por hacer (equipo) |
 | Trello | `guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md` + `herramientas_IA/trello/validar_trello.py` | Días 1–4 (07/11–13/11) por hacer, cada uno con su cuenta; luego exportar JSON y validar |
-| Video | `docs/exposicion/GUION-VIDEO-UNIDAD-III.md` + `herramientas_IA/video/carga_transacciones.py` | Guion listo; script sin ejecutar |
+| Video | `docs/exposicion/GUION-VIDEO-UNIDAD-III.md` + `herramientas_IA/video/grabar_episodios.py` | **Video completo sin voz** `exportados/video/green-ai-unidad-III.mp4` (24:28; carátula + 7 episodios + cierre; no versionado) + `descripcion-youtube.txt`. Falta: voces y cámaras de los 4 encima, subir no listado y poner la URL |
 | Exportar a Word | `herramientas_IA/README.md` § Exportación DOCX | `md_a_docx.py` + `actualizar_word.ps1` |
 
 **Producción actualizada (PR #1 fusionado el 08/11):** https://woshtsu.github.io/green-ai-workspace-cld/ — `main` está protegida (ruleset: PR + 1 aprobación; el dueño tiene bypass). Trabajar en `test` y abrir PR.
@@ -34,7 +34,7 @@ URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend
 1. **Supabase (lo hace el dueño del proyecto):** añadir a *Authentication → URL Configuration* las URLs `https://woshtsu.github.io/green-ai-workspace-cld/` y `.../dev/`; aplicar el enum `VIEWER`; revisar RLS «Permitir todo» y la columna `password` en texto plano (ver «Riesgos» en `docs/HANDOFF.md`).
 2. Fijar el *Health Check Path* en cada servicio de Render (Prediction `/health/ready`, Data Processing `/api/v1/health`, Gateway/Monitoring `/actuator/health`, Simulator `/health`, Prometheus `/-/healthy`).
 3. Verificar con sesión real el frontend nuevo en `/dev/` (cada pestaña, «Predecir 15 min», energía con el simulador, `flows.html`) y tomar capturas para el informe. Lo verificado hasta ahora fue con un arnés local (`herramientas_IA/arnes_frontend/`) que simula la sesión y usa datos reales de Render.
-4. Video: seguir `docs/exposicion/GUION-VIDEO-UNIDAD-III.md`; ensayar y ejecutar `carga_transacciones.py` contra Render (verificar que funciona antes de grabar).
+4. Video: montado sin voz (`green-ai-unidad-III.mp4`, 24:28); la pantalla ya está grabada (ver «Video Unidad III» al final de este archivo). Pendiente del equipo: locución y cámara encima de cada clip con su `-pasos.md`, montaje (Jhonny), subir no listado y reemplazar `VIDEO-URL-PENDIENTE` en el informe; reexportar el Word (C309 ya insertada).
 5. Informe y semana 13: insertar capturas (`entregables/CAPTURAS-PENDIENTES.md`), NRC y URL del video; reexportar si se edita el .md. Olas 2–3 del plan de calidad: `docs/calidad/02_plan_furps.md` y `05_plan_owasp.md` (HU-07 aprobación humana, PDF HU-13, rate limiting, registro de 401/403, RLS).
 6. Mejora del modelo según `docs/MEJORA-MODELO-PREDICCION.md` (empezar por la evaluación walk-forward vs persistencia).
 7. Producción real: crear servicios `*-prod` con rama `main`, y poner `GATEWAY_URL_PROD` distinto (hoy es igual a `GATEWAY_URL_DEV`). Cuidado con las 750 h/mes gratuitas compartidas (también las gasta `SoftwareAnemia`).
@@ -54,3 +54,10 @@ URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend
 - Regla permanente nueva en `AGENTS.md`: documentar en HANDOFF y en este archivo al cierre de cada sesión.
 
 - Graphify: instalado el extra `graphifyy[sql]==0.9.96` en `.tools/graphify` (indexa los .sql); grafo regenerado (4347 nodos).
+
+## Video Unidad III (2026-11-10) — estado para continuar
+- **Clips grabados** (pantalla completa 1920×1080, sin voz, tema oscuro, rótulos): `exportados/video/ep1…ep7-20261110-*.mp4` + `-pasos.md` (minuto de cada paso para la locución). Duraciones: Ep1 1:48, Ep2 2:23, Ep3 7:58, Ep4 2:49, Ep5 1:48, Ep6 2:11, Ep7 3:54 (≈ 22,5 min; con carátula, intro y cierre ≈ 25 min). `DESCARTADO-ep3-…0127.mp4`: letra ilegible. `exportados/` no se versiona: **compartir los MP4 con el equipo por la carpeta del grupo**.
+- **Ep. 3 (Ind. 9):** 601/601 HTTP 200 (01:49–01:56); p95 dataset 1,5 s, predicción/recomendación 3,5 s; 200 `eligible_for_review`. CSV `docs/evidencias/carga-video.csv` (y la 1.ª corrida, también 601/601, en `carga-video-20261110-0127.csv`).
+- **Regrabar un episodio:** `python herramientas_IA/video/mantener_despierto.py` ≥ 25 min antes (el Ep. 5 necesita historial del simulador; antes da 422), luego `.tools/video/Scripts/python herramientas_IA/video/grabar_episodios.py --ritmo 1.6 <N>`; ensayar antes con `--ensayo`. El perfil de Edge (`.tools/video/perfil-edge`) guarda las sesiones de la app y de Trello (Google). Edge se lanza normal y se controla por CDP (puerto 9333): cerrar cualquier Edge abierto con ese perfil antes.
+- **Históricos en la nube:** Data Processing en Render lee Supabase (`HISTORICAL_SOURCE=supabase`; clave `anon` como token de lectura, funciona por la RLS permisiva).
+- **Carátula y cierre:** `herramientas_IA/video/portada_cierre.py caratula|cierre|unir` (el cierre calcula los minutos reales; `unir` recorta blancos iniciales y recodifica). Logo UC y NRC no incluidos (pendientes).

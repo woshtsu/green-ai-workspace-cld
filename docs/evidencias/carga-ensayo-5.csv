@@ -1,0 +1,17 @@
+iteracion,operacion,http,latencia_ms,nodo,detalle,hora
+0,descubrir_nodos,200,1017.5,-,intento 1,19:12:35
+1,dataset,200,3011.2,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW001,95 muestras,19:12:38
+1,prediccion,200,2908.7,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW001,59.53 %,19:12:41
+1,recomendacion,200,2706.8,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW001,eligible_for_review,19:12:44
+2,dataset,200,3005.3,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW002,95 muestras,19:12:38
+2,prediccion,200,2918.0,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW002,59.52 %,19:12:41
+2,recomendacion,200,2219.8,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW002,eligible_for_review,19:12:43
+3,dataset,200,2403.5,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW003,95 muestras,19:12:38
+3,prediccion,200,3516.9,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW003,59.44 %,19:12:41
+3,recomendacion,200,2808.2,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW003,eligible_for_review,19:12:44
+4,dataset,200,970.5,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW004,95 muestras,19:12:44
+4,prediccion,200,1530.6,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW004,59.61 %,19:12:46
+4,recomendacion,200,1485.9,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW004,eligible_for_review,19:12:47
+5,dataset,200,1292.3,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW005,95 muestras,19:12:45
+5,prediccion,200,1812.0,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW005,59.44 %,19:12:47
+5,recomendacion,200,1198.3,sim-run-368cd423-14c0-4020-a433-b627ba82fb10/HW005,eligible_for_review,19:12:48

@@ -540,9 +540,9 @@
     "semantic_hash": ""
   },
   "software/frontend/monitoring.js": {
-    "mtime": 1794041634.3628912,
-    "seen": 1794070932.1545324,
-    "ast_hash": "cd831cc0057969584fbe1132f0cddf4a",
+    "mtime": 1794108560.4389825,
+    "seen": 1794293936.222474,
+    "ast_hash": "c65262b169301aeb8584dc86229329eb",
     "semantic_hash": ""
   },
   "software/frontend/pmv2.js": {
@@ -558,9 +558,9 @@
     "semantic_hash": ""
   },
   "software/frontend/racks.js": {
-    "mtime": 1794041634.3668978,
-    "seen": 1794070932.1547024,
-    "ast_hash": "9d1864e0d3b92e19edb3fde4cf656a76",
+    "mtime": 1794108560.4595041,
+    "seen": 1794293936.222479,
+    "ast_hash": "5e33b8d6cd19b4b92bd467d1e3d69603",
     "semantic_hash": ""
   },
   "software/frontend/racks.json": {
@@ -1710,9 +1710,9 @@
     "semantic_hash": ""
   },
   "docs/HANDOFF.md": {
-    "mtime": 1794076192.5763826,
-    "seen": 1794076258.3828797,
-    "ast_hash": "691c866c78426ec397befd61a1dc9d5e",
+    "mtime": 1794295574.4945,
+    "seen": 1794295587.6349359,
+    "ast_hash": "774525df60f98e3e2abeae94c539d18b",
     "semantic_hash": ""
   },
   "docs/RETIRO-WORKSPACE.md": {
@@ -2316,9 +2316,9 @@
     "semantic_hash": ""
   },
   "software/frontend/index.html": {
-    "mtime": 1794073898.0614223,
-    "seen": 1794076258.383135,
-    "ast_hash": "f017efa5866d08f0b24c0fde7d49ba2c",
+    "mtime": 1794108560.5118327,
+    "seen": 1794293936.223023,
+    "ast_hash": "9ef60decf5c995ac1df9b6dd799c2051",
     "semantic_hash": ""
   },
   "software/frontend/login.html": {
@@ -2814,9 +2814,9 @@
     "semantic_hash": ""
   },
   "render.yaml": {
-    "mtime": 1794038508.6153748,
-    "seen": 1794070932.143866,
-    "ast_hash": "4d8d8f2c2161613b342bb4d28aa772b1",
+    "mtime": 1794271803.663716,
+    "seen": 1794293936.2223485,
+    "ast_hash": "34fa3aca4ad08accecbeed047d0375ca",
     "semantic_hash": ""
   },
   "software/frontend/aggregate.js": {
@@ -2844,9 +2844,9 @@
     "semantic_hash": ""
   },
   "software/frontend/flows.js": {
-    "mtime": 1794041634.3598368,
-    "seen": 1794070932.1543698,
-    "ast_hash": "5b7215a4c40386b427e4fdec66cb72f3",
+    "mtime": 1794108560.4790144,
+    "seen": 1794293936.2224674,
+    "ast_hash": "2a5f84a6eedaf23290e3667b70578032",
     "semantic_hash": ""
   },
   "software/frontend/friendly-errors.js": {
@@ -2856,9 +2856,9 @@
     "semantic_hash": ""
   },
   "software/frontend/help-content.js": {
-    "mtime": 1794041634.3623507,
-    "seen": 1794070932.1543736,
-    "ast_hash": "21d553b75b4a288145d1e4c0ace43d61",
+    "mtime": 1794108560.4930172,
+    "seen": 1794293936.222471,
+    "ast_hash": "09fef389b8e3f1d17c47466eee3dbe33",
     "semantic_hash": ""
   },
   "software/frontend/tests/aggregate.test.cjs": {
@@ -2886,21 +2886,21 @@
     "semantic_hash": ""
   },
   "software/infraestructura/prometheus/prometheus.render.yml": {
-    "mtime": 1794039342.4734304,
-    "seen": 1794070932.1606784,
-    "ast_hash": "68a97d931fdcf28000441ff14b98a866",
+    "mtime": 1794108560.4149785,
+    "seen": 1794293936.22255,
+    "ast_hash": "fcb90648ae9c3cb7559bff658b065127",
     "semantic_hash": ""
   },
   "docs/CONTINUAR-EN-NUEVO-CHAT.md": {
-    "mtime": 1794076206.7744284,
-    "seen": 1794076258.3828704,
-    "ast_hash": "f93e62c7080968687802c5b8b8dccf71",
+    "mtime": 1794295574.6028357,
+    "seen": 1794295587.6349268,
+    "ast_hash": "84313c8f46bd7747347b857f370c1134",
     "semantic_hash": ""
   },
   "docs/GUIA-DESPLIEGUE-RENDER.md": {
-    "mtime": 1794038508.8724718,
-    "seen": 1794070932.1914968,
-    "ast_hash": "9e8f8e45d0e59187d5766488ac3de55d",
+    "mtime": 1794271803.8603182,
+    "seen": 1794293936.222801,
+    "ast_hash": "6a1268d8828dee161465cfa4206443dd",
     "semantic_hash": ""
   },
   "docs/GUIA-GITHUB-PAGES-Y-CI.md": {
@@ -2928,9 +2928,9 @@
     "semantic_hash": ""
   },
   "entregables/informe-corregido/informe-unidad-III.md": {
-    "mtime": 1794076104.810421,
-    "seen": 1794076258.3829947,
-    "ast_hash": "0dc0b879dea157be3ae5ed1d19ba04d8",
+    "mtime": 1794293876.776475,
+    "seen": 1794293936.2229233,
+    "ast_hash": "59ce46629fb71fdedfe7e4b2ac77f044",
     "semantic_hash": ""
   },
   "entregables/trabajos-previos/conocimientos-de-ingenieria/conocimientos-de-ingenieria.md": {
@@ -3126,9 +3126,9 @@
     "semantic_hash": ""
   },
   "herramientas_IA/video/carga_transacciones.py": {
-    "mtime": 1794073754.9444013,
-    "seen": 1794076258.382303,
-    "ast_hash": "0e6620914862acf2580d71452e7ed4bb",
+    "mtime": 1794269482.341765,
+    "seen": 1794293936.2223406,
+    "ast_hash": "a5455118aa52187b645c73a26c5b8dbe",
     "semantic_hash": ""
   },
   "skills-lock.json": {
@@ -3198,15 +3198,15 @@
     "semantic_hash": ""
   },
   "docs/exposicion/GUION-VIDEO-UNIDAD-III.md": {
-    "mtime": 1794076115.8890102,
-    "seen": 1794076258.3829453,
-    "ast_hash": "b045129ed773a955bf69bc9e1fe8c09c",
+    "mtime": 1794291533.5032926,
+    "seen": 1794293936.2228787,
+    "ast_hash": "875438c9d13aa8c797589fb2a30285a1",
     "semantic_hash": ""
   },
   "entregables/CAPTURAS-PENDIENTES.md": {
-    "mtime": 1794076104.804844,
-    "seen": 1794076258.3829892,
-    "ast_hash": "8714c81180a25ea509667f5052db289f",
+    "mtime": 1794293903.9273005,
+    "seen": 1794293936.2229185,
+    "ast_hash": "88616f3d2b5eafdf9fbecc194943d116",
     "semantic_hash": ""
   },
   "entregables/semana13/semana13-calidad-furps-owasp.md": {
@@ -3216,9 +3216,9 @@
     "semantic_hash": ""
   },
   "guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md": {
-    "mtime": 1794076104.819971,
-    "seen": 1794076258.3831134,
-    "ast_hash": "9ceaf5576685e77a7c827c9b9a67ac3f",
+    "mtime": 1794275301.1212287,
+    "seen": 1794293936.2230024,
+    "ast_hash": "1294eeffa01a9fddc6a1ef2ac7b2a3d6",
     "semantic_hash": ""
   },
   "guias/trello/pront evaluacion mediante json.txt": {
@@ -3249,6 +3249,54 @@
     "mtime": 1794072484.4973164,
     "seen": 1794076258.383294,
     "ast_hash": "af70a9a54746e59a2e172c4651425228",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/video/ep3_terminal.ps1": {
+    "mtime": 1794293192.7237477,
+    "seen": 1794293936.2223434,
+    "ast_hash": "290080a4b09ee33e2d67af6fa6ba09b4",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/video/grabar_episodios.py": {
+    "mtime": 1794294767.9712791,
+    "seen": 1794295587.6344435,
+    "ast_hash": "3162eb681a2f72e6a08ff78b8ac82fb4",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/video/mantener_despierto.py": {
+    "mtime": 1794108209.1957288,
+    "seen": 1794293936.2223468,
+    "ast_hash": "999351d660247d9771bd1db963ad3faa",
+    "semantic_hash": ""
+  },
+  ".claude/GUIA_VIDEO_DEMO_PARA_OTRA_IA.md": {
+    "mtime": 1794267608.6125753,
+    "seen": 1794293936.222791,
+    "ast_hash": "2fba50befa427d8c19480ea234932082",
+    "semantic_hash": ""
+  },
+  "entregables/word/README.md": {
+    "mtime": 1794263518.5346243,
+    "seen": 1794293936.2229316,
+    "ast_hash": "2f118472c3309f085eea1d006d1fdf3c",
+    "semantic_hash": ""
+  },
+  "guias/trello/REVISION-TRELLO-2026-11-09.md": {
+    "mtime": 1794272453.5684824,
+    "seen": 1794293936.2230039,
+    "ast_hash": "a1dd36353a51cf9d81d77bbba9662fb2",
+    "semantic_hash": ""
+  },
+  "entregables/informe-corregido/evidencias-nube/carga-601-transacciones-render.png": {
+    "mtime": 1794293876.334152,
+    "seen": 1794293936.2231352,
+    "ast_hash": "bc3db126bed56e67c46062ad9d4798f4",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/video/portada_cierre.py": {
+    "mtime": 1794294961.736179,
+    "seen": 1794295587.634448,
+    "ast_hash": "c8b729c35be08b192e2e1c275e24b4db",
     "semantic_hash": ""
   }
 }
