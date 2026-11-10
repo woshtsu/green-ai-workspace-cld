@@ -86,7 +86,8 @@ def supabase_login() -> str:
     status, p, _ = http("POST", f"{url}/auth/v1/token?grant_type=password", body={"email": email, "password": password},
                         headers={"apikey": key})
     if status != 200 or not p or "access_token" not in p:
-        sys.exit(f"Inicio de sesión rechazado (HTTP {status}).")
+        motivo = (p or {}).get("error_code") or (p or {}).get("msg") or (p or {}).get("error_description") or ""
+        sys.exit(f"Inicio de sesión rechazado (HTTP {status} {motivo}).")
     return p["access_token"]
 
 
@@ -132,8 +133,13 @@ def main() -> int:
     if not token:
         sys.exit("Define GREENAI_JWT o usa --login.")
 
-    s, cur, ms = http("GET", f"{gw}/api/monitoring/v1/metrics/current?metric=node.cpu.utilization", token)
-    record(0, "descubrir_nodos", s, ms, "-")
+    for intento in range(1, 4):  # un 504 pasajero de Render no debe abortar la prueba; cada intento queda en el CSV
+        s, cur, ms = http("GET", f"{gw}/api/monitoring/v1/metrics/current?metric=node.cpu.utilization", token)
+        record(0, "descubrir_nodos", s, ms, "-", f"intento {intento}")
+        if s == 200:
+            break
+        print(f"Descubrir nodos: HTTP {s} (intento {intento}/3); reintento en 10 s")
+        time.sleep(10)
     series = (cur or {}).get("series") or (cur or {}).get("data") or []
     nodes = [{"cluster": x["resource"]["cluster"], "id": x["resource"]["id"]} for x in series
              if isinstance(x, dict) and x.get("resource", {}).get("id")]

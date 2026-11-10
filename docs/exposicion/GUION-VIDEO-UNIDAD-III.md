@@ -632,10 +632,12 @@ Para respaldar las explicaciones del Episodio 4, se consolidan aquí los valores
 
 | Modelo Evaluado | MAE Validación (pp CPU) | RMSE Validación (pp CPU) | MAE Test (pp CPU) | Ganancia vs Persistencia | Estado en el Proyecto |
 |---|---|---|---|---|---|
-| Persistencia (Baseline Heurístico) | 4,60 | 6,10 | 4,82 | 0,0 % (Referencia) | Descartado (Línea base) |
-| Media Móvil (Ventana deslizante) | 3,75 | 5,12 | 4,10 | + 14,1 % | Descartado (Referencia) |
-| Random Forest (Pipeline ligero) | **3,22** | **4,59** | **3,85** | **+ 30,0 %** | **Seleccionado en Producción** |
-| XGBoost (Evaluación experimental) | 3,18 | 4,52 | 3,80 | + 30,8 % | Descartado (Mayor peso de dependencias) |
+| Persistencia (Baseline Heurístico) | 4,61 | 6,39 | — | 0,0 % (Referencia) | Descartado (Línea base) |
+| Media Móvil (Ventana deslizante) | 3,74 | 5,19 | — | + 18,9 % | Descartado (Referencia) |
+| Random Forest (Pipeline ligero) | **3,22** | **4,59** | **3,85** | **+ 30,2 %** | **Seleccionado en Producción** |
+| XGBoost (Evaluación experimental) | 3,46 | 4,79 | — | + 25,1 % | Descartado (peor MAE que RF) |
+
+*Fuente:* `software/prediction/results/metrics/model_comparison.csv` (filas `15m`, `validation`) y `docs/academico/06-prueba-de-concepto.md` (test del modelo seleccionado, n = 129). Revisado el 09/11/2026: la versión anterior de esta tabla tenía cifras que no estaban en el CSV.
 
 *Nota técnica de limitación:* Durante regímenes de carga dinámica no estacionaria (picos de utilización repentinos simulados), el error puntual MAE asciende a rangos de entre 6,1 y 8,4 puntos porcentuales de CPU. Este margen es asumido y mitigado por los umbrales de seguridad de la política de recomendación.
 
@@ -660,8 +662,8 @@ Para respaldar las explicaciones del Episodio 4, se consolidan aquí los valores
 |---|---|---|---|
 | Tamaño imagen Docker Prediction | 2,85 GB (con stack de entrenamiento) | **510 MB** (imagen slim de inferencia) | **Reducción del 82,1 % de peso** |
 | Consumo de RAM en reposo (Prediction) | 174 MiB | **122 MiB** (con `PYTHONOPTIMIZE=2`) | **Ahorro del 29,8 % de memoria** |
-| Tiempo de arranque en frío (Cold Start) | 140 segundos | **45 segundos** en Render Free Tier | **Reducción del 67,8 % en latencia de arranque** |
-| Tiempo de inferencia unitaria | 85 ms | **28 ms** (Random Forest optimizado) | **3× más rápido** |
+
+*Retirado el 09/11/2026:* las filas de arranque en frío (140 → 45 s) e inferencia (85 → 28 ms) no tenían medición en `docs/evidencias/`; no mencionarlas en el video. La latencia de inferencia del RF en validación es ~6,5 ms (`latency_mean_ms` en `model_comparison.csv`).
 
 ---
 
