@@ -1710,9 +1710,9 @@
     "semantic_hash": ""
   },
   "docs/HANDOFF.md": {
-    "mtime": 1794293916.5105088,
-    "seen": 1794293936.222806,
-    "ast_hash": "1d6b565b1295ddf7be07b07efc3eebb5",
+    "mtime": 1794295574.4945,
+    "seen": 1794295587.6349359,
+    "ast_hash": "774525df60f98e3e2abeae94c539d18b",
     "semantic_hash": ""
   },
   "docs/RETIRO-WORKSPACE.md": {
@@ -2892,9 +2892,9 @@
     "semantic_hash": ""
   },
   "docs/CONTINUAR-EN-NUEVO-CHAT.md": {
-    "mtime": 1794293903.9363353,
-    "seen": 1794293936.2227979,
-    "ast_hash": "ebf24b10688c986c061abd05ff20bf4f",
+    "mtime": 1794295574.6028357,
+    "seen": 1794295587.6349268,
+    "ast_hash": "84313c8f46bd7747347b857f370c1134",
     "semantic_hash": ""
   },
   "docs/GUIA-DESPLIEGUE-RENDER.md": {
@@ -3258,9 +3258,9 @@
     "semantic_hash": ""
   },
   "herramientas_IA/video/grabar_episodios.py": {
-    "mtime": 1794293205.3552132,
-    "seen": 1794293936.222345,
-    "ast_hash": "a9dc4cf9c3e4cf42f5ccdaa5088ad52b",
+    "mtime": 1794294767.9712791,
+    "seen": 1794295587.6344435,
+    "ast_hash": "3162eb681a2f72e6a08ff78b8ac82fb4",
     "semantic_hash": ""
   },
   "herramientas_IA/video/mantener_despierto.py": {
@@ -3291,6 +3291,12 @@
     "mtime": 1794293876.334152,
     "seen": 1794293936.2231352,
     "ast_hash": "bc3db126bed56e67c46062ad9d4798f4",
+    "semantic_hash": ""
+  },
+  "herramientas_IA/video/portada_cierre.py": {
+    "mtime": 1794294961.736179,
+    "seen": 1794295587.634448,
+    "ast_hash": "c8b729c35be08b192e2e1c275e24b4db",
     "semantic_hash": ""
   }
 }

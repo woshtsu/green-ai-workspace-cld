@@ -40,7 +40,21 @@ PROMETHEUS = "https://green-ai-prometheus-dev.onrender.com/targets"
 PERFIL = ROOT / ".tools/video/perfil-edge"
 SENAL_EP3 = ROOT / ".tools/video/ep3-terminado.txt"
 RITMO = 1.0  # lo fija --ritmo
+OSCURO = "data:text/html,<title>-</title><body style='background:%230b1020'></body>"  # espera sin destello blanco
 PUERTO_CDP = 9333
+
+
+def cerrar_edge(browser, edge) -> None:
+    """Cierre limpio por CDP: si se mata el proceso, Edge restaura las pestañas al abrir y la grabación
+    puede quedar en una pestaña de fondo."""
+    try:
+        browser.new_browser_cdp_session().send("Browser.close")
+    except Exception:
+        pass
+    try:
+        edge.wait(timeout=15)
+    except subprocess.TimeoutExpired:
+        edge.terminate()
 
 
 def edge_exe() -> str:
@@ -538,7 +552,7 @@ def main() -> int:
                     print(">> Episodio 6 OMITIDO: no hay sesión de Trello en el perfil de Edge.", flush=True)
                     resumen.append((n, "00:00", "omitido"))
                     continue
-            pg.goto("about:blank")
+            pg.goto(OSCURO)
             g = Grabacion(pg, titulo, a.ensayo, mp4)
             try:
                 g.iniciar()
@@ -551,8 +565,7 @@ def main() -> int:
             g.guardar_pasos(a.out / f"ep{n}-{sello}-pasos.md")
             fallos = sum(1 for _, _, e in g.pasos if e == "FALLO")
             resumen.append((n, g.marca(), fallos))
-        browser.close()
-        edge.terminate()
+        cerrar_edge(browser, edge)
     print("\nResumen:")
     for n, dur, fallos in resumen:
         print(f"  Episodio {n}: {dur} · {'OK' if not fallos else f'{fallos} FALLO(S)'}")
