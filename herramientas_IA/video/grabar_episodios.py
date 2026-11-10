@@ -40,6 +40,15 @@ PROMETHEUS = "https://green-ai-prometheus-dev.onrender.com/targets"
 PERFIL = ROOT / ".tools/video/perfil-edge"
 SENAL_EP3 = ROOT / ".tools/video/ep3-terminado.txt"
 RITMO = 1.0  # lo fija --ritmo
+PUERTO_CDP = 9333
+
+
+def edge_exe() -> str:
+    for p in (Path(r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"),
+              Path(r"C:\Program Files\Microsoft\Edge\Application\msedge.exe")):
+        if p.exists():
+            return str(p)
+    sys.exit("No encuentro msedge.exe.")
 
 ROTULO_JS = """([arriba, abajo]) => {
   const mk = (id, css) => { let e = document.getElementById(id);
@@ -48,7 +57,7 @@ ROTULO_JS = """([arriba, abajo]) => {
   const base = {position:'fixed', left:'0', right:'0', zIndex:'2147483647', pointerEvents:'none',
     fontFamily:'Segoe UI, Arial, sans-serif', textAlign:'center', color:'#fff'};
   mk('__rot_top', {...base, top:'0', padding:'6px 12px', fontSize:'18px', fontWeight:'600',
-    background:'rgba(21,128,61,.92)'}).textContent = arriba;
+    background:'rgba(21,128,61,.92)', display: arriba ? 'block' : 'none'}).textContent = arriba;
   const b = mk('__rot_bot', {...base, bottom:'18px', left:'50%', right:'auto', transform:'translateX(-50%)',
     maxWidth:'80vw', padding:'8px 18px', fontSize:'20px', borderRadius:'8px', background:'rgba(15,23,42,.85)'});
   b.textContent = abajo; b.style.display = abajo ? 'block' : 'none';
@@ -106,7 +115,8 @@ class Grabacion:
         if texto is not None:
             self.texto = texto
         try:
-            self.pg.evaluate(ROTULO_JS, [self.titulo, self.texto])
+            arriba = "" if "github.com" in self.pg.url else self.titulo  # sin banda verde sobre GitHub
+            self.pg.evaluate(ROTULO_JS, [arriba, self.texto])
         except Exception:
             pass
 
@@ -125,6 +135,8 @@ class Grabacion:
                 self.pg.wait_for_selector(esperar, state="visible", timeout=timeout)
             except PWTimeout:
                 self.fallo(f"No apareció {esperar} en {url}")
+        if "github.com" in url and self.pg.get_by_text("404 - page not found").count():
+            self.fallo(f"GitHub 404: {url}")
         self.rotulo()
 
     def leer(self, segundos: float) -> None:
@@ -282,7 +294,7 @@ def ep3(g: Grabacion, base: str) -> None:
         g.paso("Prometheus: estado de los objetivos")
         return
     g.paso("Carga masiva: 200 iteraciones × 3 + 1 = 601 transacciones reales contra el Gateway en Render")
-    subprocess.Popen(["wt.exe", "-w", "new", "--maximized", "powershell.exe", "-NoExit", "-ExecutionPolicy",
+    subprocess.Popen(["wt.exe", "-w", "new", "--maximized", "powershell.exe", "-ExecutionPolicy",
                       "Bypass", "-File", str(ROOT / "herramientas_IA/video/ep3_terminal.ps1")], cwd=ROOT)
     print(">> En Windows Terminal: pulsa Enter, escribe correo y contraseña. Espero a que termine.", flush=True)
     while not SENAL_EP3.exists():
@@ -290,9 +302,12 @@ def ep3(g: Grabacion, base: str) -> None:
     estado = SENAL_EP3.read_text(encoding="utf-8-sig").strip()  # PowerShell 5.1 escribe BOM
     g.paso(f"Carga terminada ({estado}); tabla final y primeras líneas del CSV en la terminal",
            "OK" if estado == "codigo 0" else "FALLO")
-    time.sleep(12)  # la terminal sigue en primer plano para leer la tabla
+    g.ir(PROMETHEUS, "body")  # se carga detrás mientras la terminal enseña la tabla 15 s y se cierra sola
+    time.sleep(17)
     pg.bring_to_front()
-    g.ir(PROMETHEUS, "body")
+    subprocess.run(["powershell", "-NoProfile", "-Command",  # traer la ventana de Edge al frente del escritorio
+                    "(New-Object -ComObject WScript.Shell).AppActivate('Prometheus') | Out-Null"], check=False)
+    g.rotulo()
     g.paso("Prometheus: estado de los objetivos después de la carga")
     g.leer(12)
     g.paso("Fin del episodio 3")
@@ -300,7 +315,12 @@ def ep3(g: Grabacion, base: str) -> None:
 
 
 def ep4(g: Grabacion, base: str) -> None:
-    g.ir(f"{REPO}/blob/main/software/prediction/results/metrics/model_comparison.csv", "body")
+    # model_comparison.csv no está versionado (results/metrics/* en .gitignore): se muestra la PoC, que lo resume.
+    g.ir(f"{REPO}/blob/main/docs/academico/06-prueba-de-concepto.md", "body")
+    try:
+        g.pg.get_by_role("heading", name="3. Resultados").first.scroll_into_view_if_needed(timeout=15_000)
+    except PWTimeout:
+        g.fallo("No encontré la sección «3. Resultados» de la PoC")
     g.paso("Métricas a 15 min (validación): Random Forest MAE 3,22 · RMSE 4,59 frente a persistencia 4,61 · 6,39")
     g.leer(20)
     g.ir(f"{REPO}/actions/workflows/ci.yml?query=branch%3Amain", "body")
@@ -382,7 +402,7 @@ def ep6(g: Grabacion, base: str) -> None:
         pg.mouse.wheel(600, 0)
         g.leer(3)
     for hu in ("HU-03", "HU-06"):
-        tarjeta = pg.locator(f"[data-testid='trello-card']:has-text('{hu}')").first
+        tarjeta = pg.locator(f"[data-testid='card-name']:has-text('{hu}')").first
         try:
             tarjeta.scroll_into_view_if_needed(timeout=10_000)
             tarjeta.click(timeout=10_000)
@@ -465,11 +485,26 @@ def main() -> int:
     PERFIL.mkdir(parents=True, exist_ok=True)
     resumen = []
     with sync_playwright() as p:
-        ctx = p.chromium.launch_persistent_context(
-            str(PERFIL), channel="msedge", headless=False, no_viewport=True, accept_downloads=True,
-            bypass_csp=True, locale="es-PE", args=["--start-maximized", "--lang=es-PE"],
-            ignore_default_args=["--enable-automation", "--no-sandbox"])
+        # Edge normal + CDP: launch_persistent_context sale con código 0 en Edge 157 con este perfil (10/11/2026),
+        # y así Edge no queda marcado como automatizado (Google/Trello permiten iniciar sesión).
+        edge = subprocess.Popen([edge_exe(), f"--user-data-dir={PERFIL}", f"--remote-debugging-port={PUERTO_CDP}",
+                                 "--no-first-run", "--no-default-browser-check", "--start-maximized",
+                                 "--lang=es-PE", "--force-dark-mode", "about:blank"])
+        for _ in range(30):
+            try:
+                browser = p.chromium.connect_over_cdp(f"http://127.0.0.1:{PUERTO_CDP}")
+                break
+            except Exception:
+                time.sleep(1)
+        else:
+            sys.exit("No pude conectar con Edge (¿otra ventana de Edge usa el perfil del grabador?).")
+        ctx = browser.contexts[0]
         pg = ctx.pages[0] if ctx.pages else ctx.new_page()
+        # Tema oscuro fijo en todo el video: la app (greenai-theme) y los sitios que siguen al sistema
+        # (GitHub, Trello, Prometheus), aunque Windows esté en modo claro.
+        ctx.add_init_script("try { if (location.hostname.endsWith('github.io'))"
+                            " localStorage.setItem('greenai-theme', 'dark'); } catch (e) {}")
+        pg.emulate_media(color_scheme="dark")
         for n in a.episodios:
             titulo, fn = EPISODIOS[n]
             sello = dt.datetime.now().strftime("%Y%m%d-%H%M")
@@ -487,7 +522,18 @@ def main() -> int:
             elif n == 6:  # el tablero es privado: iniciar sesión en Trello una vez en este perfil
                 pg.goto(TRELLO, wait_until="domcontentloaded")
                 try:
-                    pg.wait_for_selector("[data-testid='trello-card']", state="visible", timeout=15_000)
+                    pg.get_by_role("button", name="Solo necesarias").click(timeout=5_000)
+                except PWTimeout:
+                    pass
+                try:
+                    pg.wait_for_selector("[data-testid='card-name']", state="visible", timeout=15_000)
+                except PWTimeout:
+                    print(">> Inicia sesión en Trello (Google sirve) en la ventana de Edge y abre el tablero."
+                          " Espero hasta 10 min.", flush=True)
+                try:
+                    pg.wait_for_selector("[data-testid='card-name']", state="visible", timeout=600_000)
+                    if "PL8uQ4rF" not in pg.url:
+                        pg.goto(TRELLO, wait_until="domcontentloaded")
                 except PWTimeout:  # sin acceso a Trello: se omite (no se graba un tablero vacío)
                     print(">> Episodio 6 OMITIDO: no hay sesión de Trello en el perfil de Edge.", flush=True)
                     resumen.append((n, "00:00", "omitido"))
@@ -505,7 +551,8 @@ def main() -> int:
             g.guardar_pasos(a.out / f"ep{n}-{sello}-pasos.md")
             fallos = sum(1 for _, _, e in g.pasos if e == "FALLO")
             resumen.append((n, g.marca(), fallos))
-        ctx.close()
+        browser.close()
+        edge.terminate()
     print("\nResumen:")
     for n, dur, fallos in resumen:
         print(f"  Episodio {n}: {dur} · {'OK' if not fallos else f'{fallos} FALLO(S)'}")

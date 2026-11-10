@@ -1,0 +1,602 @@
+iteracion,operacion,http,latencia_ms,nodo,detalle,hora
+0,descubrir_nodos,200,976.2,-,intento 1,01:49:38
+1,dataset,200,1536.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,230 muestras,01:49:40
+1,prediccion,200,2473.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,59.22 %,01:49:42
+1,recomendacion,200,2818.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,eligible_for_review,01:49:45
+2,dataset,200,1814.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,230 muestras,01:49:40
+2,prediccion,200,3105.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,59.22 %,01:49:43
+2,recomendacion,200,2995.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,eligible_for_review,01:49:46
+3,dataset,200,1913.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,230 muestras,01:49:40
+3,prediccion,200,3004.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,59.22 %,01:49:43
+3,recomendacion,200,2808.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,eligible_for_review,01:49:46
+4,dataset,200,794.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,230 muestras,01:49:46
+4,prediccion,200,1289.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,59.19 %,01:49:47
+4,recomendacion,200,3100.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,eligible_for_review,01:49:50
+5,dataset,200,694.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,231 muestras,01:49:46
+5,prediccion,200,1796.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,59.22 %,01:49:48
+5,recomendacion,200,2504.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,eligible_for_review,01:49:51
+6,dataset,200,1025.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,231 muestras,01:49:47
+6,prediccion,200,3466.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,59.19 %,01:49:50
+6,recomendacion,200,1208.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,eligible_for_review,01:49:52
+7,dataset,200,1129.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,231 muestras,01:49:51
+7,prediccion,200,2761.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,59.19 %,01:49:54
+7,recomendacion,200,3441.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,eligible_for_review,01:49:57
+8,dataset,200,898.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,231 muestras,01:49:52
+8,prediccion,200,2784.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,59.19 %,01:49:54
+8,recomendacion,200,3011.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,eligible_for_review,01:49:57
+9,dataset,200,1001.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,231 muestras,01:49:53
+9,prediccion,200,2097.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,59.19 %,01:49:55
+9,recomendacion,200,2909.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,eligible_for_review,01:49:58
+10,dataset,200,1023.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,231 muestras,01:49:58
+10,prediccion,200,1535.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,59.22 %,01:50:00
+10,recomendacion,200,2611.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,eligible_for_review,01:50:03
+11,dataset,200,1401.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,231 muestras,01:49:59
+11,prediccion,200,3317.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,59.22 %,01:50:02
+11,recomendacion,200,2400.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,eligible_for_review,01:50:05
+12,dataset,200,1500.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,231 muestras,01:49:59
+12,prediccion,200,3184.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,59.22 %,01:50:02
+12,recomendacion,200,2709.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,eligible_for_review,01:50:05
+13,dataset,200,812.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,232 muestras,01:50:03
+13,prediccion,200,2206.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,59.19 %,01:50:06
+13,recomendacion,200,2983.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,eligible_for_review,01:50:09
+14,dataset,200,999.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,232 muestras,01:50:06
+14,prediccion,200,2988.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,59.22 %,01:50:09
+14,recomendacion,200,2082.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,eligible_for_review,01:50:11
+15,dataset,200,1427.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,232 muestras,01:50:06
+15,prediccion,200,2387.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,59.22 %,01:50:09
+15,recomendacion,200,2868.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,eligible_for_review,01:50:12
+16,dataset,200,896.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,232 muestras,01:50:09
+16,prediccion,200,2486.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,59.17 %,01:50:12
+16,recomendacion,200,3212.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,eligible_for_review,01:50:15
+17,dataset,200,716.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,232 muestras,01:50:11
+17,prediccion,200,1578.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,59.22 %,01:50:13
+17,recomendacion,200,2724.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,eligible_for_review,01:50:16
+18,dataset,200,816.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,232 muestras,01:50:13
+18,prediccion,200,2992.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,59.17 %,01:50:16
+18,recomendacion,200,1294.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,eligible_for_review,01:50:17
+19,dataset,200,699.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,232 muestras,01:50:16
+19,prediccion,200,1797.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,59.34 %,01:50:18
+19,recomendacion,200,2703.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,eligible_for_review,01:50:20
+20,dataset,200,1007.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,233 muestras,01:50:17
+20,prediccion,200,2902.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,59.22 %,01:50:20
+20,recomendacion,200,2190.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,eligible_for_review,01:50:22
+21,dataset,200,924.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,233 muestras,01:50:18
+21,prediccion,200,3287.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,59.19 %,01:50:21
+21,recomendacion,200,2909.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,eligible_for_review,01:50:24
+22,dataset,200,697.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,233 muestras,01:50:21
+22,prediccion,200,2701.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,59.19 %,01:50:24
+22,recomendacion,200,1788.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,eligible_for_review,01:50:26
+23,dataset,200,694.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,233 muestras,01:50:22
+23,prediccion,200,2798.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,59.19 %,01:50:25
+23,recomendacion,200,2285.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,eligible_for_review,01:50:28
+24,dataset,200,884.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,233 muestras,01:50:25
+24,prediccion,200,2395.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,59.22 %,01:50:27
+24,recomendacion,200,3391.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,eligible_for_review,01:50:31
+25,dataset,200,798.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,233 muestras,01:50:26
+25,prediccion,200,2101.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,59.22 %,01:50:28
+25,recomendacion,200,3195.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,eligible_for_review,01:50:32
+26,dataset,200,811.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,233 muestras,01:50:28
+26,prediccion,200,3382.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,59.17 %,01:50:32
+26,recomendacion,200,3322.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,eligible_for_review,01:50:35
+27,dataset,200,725.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,234 muestras,01:50:31
+27,prediccion,200,1174.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,59.16 %,01:50:33
+27,recomendacion,200,3005.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,eligible_for_review,01:50:36
+28,dataset,200,809.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,234 muestras,01:50:32
+28,prediccion,200,3094.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,59.21 %,01:50:36
+28,recomendacion,200,2492.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,eligible_for_review,01:50:38
+29,dataset,200,881.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,234 muestras,01:50:36
+29,prediccion,200,2701.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,59.21 %,01:50:39
+29,recomendacion,200,2894.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,eligible_for_review,01:50:42
+30,dataset,200,929.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,234 muestras,01:50:36
+30,prediccion,200,2474.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,59.21 %,01:50:39
+30,recomendacion,200,2891.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,eligible_for_review,01:50:42
+31,dataset,200,818.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,234 muestras,01:50:39
+31,prediccion,200,3084.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,59.28 %,01:50:42
+31,recomendacion,200,2105.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,eligible_for_review,01:50:44
+32,dataset,200,811.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,234 muestras,01:50:42
+32,prediccion,200,2087.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,59.28 %,01:50:44
+32,recomendacion,200,2896.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,eligible_for_review,01:50:47
+33,dataset,200,1114.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,234 muestras,01:50:43
+33,prediccion,200,2889.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,59.28 %,01:50:46
+33,recomendacion,200,2296.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,eligible_for_review,01:50:48
+34,dataset,200,710.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,234 muestras,01:50:45
+34,prediccion,200,2783.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,59.28 %,01:50:48
+34,recomendacion,200,1497.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,eligible_for_review,01:50:49
+35,dataset,200,953.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,235 muestras,01:50:48
+35,prediccion,200,2248.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,59.21 %,01:50:51
+35,recomendacion,200,3521.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,eligible_for_review,01:50:54
+36,dataset,200,916.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,235 muestras,01:50:49
+36,prediccion,200,2097.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,59.17 %,01:50:51
+36,recomendacion,200,3296.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,eligible_for_review,01:50:54
+37,dataset,200,722.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,235 muestras,01:50:50
+37,prediccion,200,2576.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,59.17 %,01:50:52
+37,recomendacion,200,2510.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,eligible_for_review,01:50:55
+38,dataset,200,808.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,235 muestras,01:50:55
+38,prediccion,200,1168.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,59.17 %,01:50:56
+38,recomendacion,200,2709.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,eligible_for_review,01:50:59
+39,dataset,200,1115.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,235 muestras,01:50:56
+39,prediccion,200,2691.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,59.16 %,01:50:58
+39,recomendacion,200,2109.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,eligible_for_review,01:51:00
+40,dataset,200,1106.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,235 muestras,01:50:56
+40,prediccion,200,2683.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,59.28 %,01:50:59
+40,recomendacion,200,2605.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,eligible_for_review,01:51:01
+41,dataset,200,803.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,235 muestras,01:51:00
+41,prediccion,200,1982.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,59.16 %,01:51:02
+41,recomendacion,200,2702.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,eligible_for_review,01:51:04
+42,dataset,200,882.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,235 muestras,01:51:01
+42,prediccion,200,2087.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,59.21 %,01:51:03
+42,recomendacion,200,2806.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,eligible_for_review,01:51:06
+43,dataset,200,905.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,236 muestras,01:51:02
+43,prediccion,200,2484.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,59.21 %,01:51:05
+43,recomendacion,200,2600.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,eligible_for_review,01:51:07
+44,dataset,200,815.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,236 muestras,01:51:05
+44,prediccion,200,2286.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,59.21 %,01:51:07
+44,recomendacion,200,3007.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,eligible_for_review,01:51:10
+45,dataset,200,895.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,236 muestras,01:51:07
+45,prediccion,200,2731.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,59.17 %,01:51:10
+45,recomendacion,200,1961.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,eligible_for_review,01:51:12
+46,dataset,200,809.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,236 muestras,01:51:08
+46,prediccion,200,2898.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,59.21 %,01:51:11
+46,recomendacion,200,3198.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,eligible_for_review,01:51:14
+47,dataset,200,792.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,236 muestras,01:51:11
+47,prediccion,200,2089.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,59.21 %,01:51:13
+47,recomendacion,200,1906.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,eligible_for_review,01:51:15
+48,dataset,200,824.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,236 muestras,01:51:13
+48,prediccion,200,2274.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,59.21 %,01:51:15
+48,recomendacion,200,2923.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,eligible_for_review,01:51:18
+49,dataset,200,712.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,236 muestras,01:51:15
+49,prediccion,200,2378.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,59.16 %,01:51:17
+49,recomendacion,200,1704.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,eligible_for_review,01:51:19
+50,dataset,200,730.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,236 muestras,01:51:16
+50,prediccion,200,2568.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,59.21 %,01:51:18
+50,recomendacion,200,2594.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,eligible_for_review,01:51:21
+51,dataset,200,981.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,237 muestras,01:51:19
+51,prediccion,200,2805.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,59.21 %,01:51:22
+51,recomendacion,200,2989.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,eligible_for_review,01:51:25
+52,dataset,200,852.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,237 muestras,01:51:20
+52,prediccion,200,2043.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,59.16 %,01:51:22
+52,recomendacion,200,3097.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,eligible_for_review,01:51:25
+53,dataset,200,720.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,237 muestras,01:51:22
+53,prediccion,200,3182.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,59.21 %,01:51:25
+53,recomendacion,200,1295.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,eligible_for_review,01:51:26
+54,dataset,200,1023.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,237 muestras,01:51:26
+54,prediccion,200,2193.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,59.17 %,01:51:28
+54,recomendacion,200,3485.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,eligible_for_review,01:51:31
+55,dataset,200,1204.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,237 muestras,01:51:26
+55,prediccion,200,3096.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,59.16 %,01:51:29
+55,recomendacion,200,2604.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,eligible_for_review,01:51:32
+56,dataset,200,815.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,237 muestras,01:51:27
+56,prediccion,200,3283.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,59.16 %,01:51:30
+56,recomendacion,200,2009.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,eligible_for_review,01:51:32
+57,dataset,200,946.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,238 muestras,01:51:32
+57,prediccion,200,1856.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,59.16 %,01:51:34
+57,recomendacion,200,3598.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,eligible_for_review,01:51:38
+58,dataset,200,900.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,238 muestras,01:51:33
+58,prediccion,200,2700.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,59.17 %,01:51:35
+58,recomendacion,200,3612.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,eligible_for_review,01:51:39
+59,dataset,200,828.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,238 muestras,01:51:33
+59,prediccion,200,2829.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,59.21 %,01:51:36
+59,recomendacion,200,3435.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,eligible_for_review,01:51:39
+60,dataset,200,816.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,238 muestras,01:51:38
+60,prediccion,200,1586.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,59.21 %,01:51:40
+60,recomendacion,200,2922.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,eligible_for_review,01:51:43
+61,dataset,200,693.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,238 muestras,01:51:40
+61,prediccion,200,1978.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,59.28 %,01:51:42
+61,recomendacion,200,2315.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,eligible_for_review,01:51:44
+62,dataset,200,912.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,238 muestras,01:51:40
+62,prediccion,200,2899.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,59.17 %,01:51:43
+62,recomendacion,200,2011.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,eligible_for_review,01:51:45
+63,dataset,200,896.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,238 muestras,01:51:44
+63,prediccion,200,2573.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,59.28 %,01:51:46
+63,recomendacion,200,3300.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,eligible_for_review,01:51:50
+64,dataset,200,803.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,238 muestras,01:51:45
+64,prediccion,200,1884.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,59.21 %,01:51:47
+64,recomendacion,200,3207.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,eligible_for_review,01:51:50
+65,dataset,200,885.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,238 muestras,01:51:46
+65,prediccion,200,2989.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,59.16 %,01:51:49
+65,recomendacion,200,1501.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,eligible_for_review,01:51:51
+66,dataset,200,917.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,239 muestras,01:51:51
+66,prediccion,200,2774.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,59.21 %,01:51:53
+66,recomendacion,200,2502.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,eligible_for_review,01:51:56
+67,dataset,200,1301.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,239 muestras,01:51:51
+67,prediccion,200,2386.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,59.21 %,01:51:54
+67,recomendacion,200,2840.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,eligible_for_review,01:51:56
+68,dataset,200,1216.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,239 muestras,01:51:52
+68,prediccion,200,1978.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,59.16 %,01:51:54
+68,recomendacion,200,2707.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,eligible_for_review,01:51:57
+69,dataset,200,910.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,239 muestras,01:51:57
+69,prediccion,200,1093.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,59.33 %,01:51:58
+69,recomendacion,200,3400.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,eligible_for_review,01:52:01
+70,dataset,200,1379.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,239 muestras,01:51:58
+70,prediccion,200,3090.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,59.16 %,01:52:01
+70,recomendacion,200,1401.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,eligible_for_review,01:52:02
+71,dataset,200,1497.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,239 muestras,01:51:58
+71,prediccion,200,3298.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,59.21 %,01:52:01
+71,recomendacion,200,2719.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,eligible_for_review,01:52:04
+72,dataset,200,713.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,240 muestras,01:52:02
+72,prediccion,200,2987.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,59.17 %,01:52:05
+72,recomendacion,200,3511.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,eligible_for_review,01:52:09
+73,dataset,200,908.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,240 muestras,01:52:03
+73,prediccion,200,2410.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,59.17 %,01:52:06
+73,recomendacion,200,3070.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,eligible_for_review,01:52:09
+74,dataset,200,782.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,240 muestras,01:52:05
+74,prediccion,200,3003.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,59.21 %,01:52:08
+74,recomendacion,200,1584.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,eligible_for_review,01:52:09
+75,dataset,200,1093.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,240 muestras,01:52:10
+75,prediccion,200,1181.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,59.21 %,01:52:11
+75,recomendacion,200,3328.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,eligible_for_review,01:52:14
+76,dataset,200,1520.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,240 muestras,01:52:10
+76,prediccion,200,2396.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,59.16 %,01:52:13
+76,recomendacion,200,2783.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,eligible_for_review,01:52:15
+77,dataset,200,1213.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,240 muestras,01:52:11
+77,prediccion,200,3309.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,59.17 %,01:52:14
+77,recomendacion,200,2380.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,eligible_for_review,01:52:16
+78,dataset,200,880.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,240 muestras,01:52:15
+78,prediccion,200,1503.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,59.21 %,01:52:17
+78,recomendacion,200,2487.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,eligible_for_review,01:52:19
+79,dataset,200,716.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,240 muestras,01:52:16
+79,prediccion,200,2079.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,59.21 %,01:52:18
+79,recomendacion,200,2310.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,eligible_for_review,01:52:21
+80,dataset,200,711.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,241 muestras,01:52:17
+80,prediccion,200,2689.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,59.16 %,01:52:20
+80,recomendacion,200,2713.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,eligible_for_review,01:52:22
+81,dataset,200,815.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,241 muestras,01:52:20
+81,prediccion,200,2982.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,59.28 %,01:52:23
+81,recomendacion,200,2598.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,eligible_for_review,01:52:25
+82,dataset,200,900.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,241 muestras,01:52:21
+82,prediccion,200,1890.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,59.21 %,01:52:23
+82,recomendacion,200,2705.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,eligible_for_review,01:52:26
+83,dataset,200,915.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,241 muestras,01:52:23
+83,prediccion,200,2669.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,59.28 %,01:52:26
+83,recomendacion,200,2210.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,eligible_for_review,01:52:28
+84,dataset,200,723.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,241 muestras,01:52:26
+84,prediccion,200,2675.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,59.21 %,01:52:29
+84,recomendacion,200,3505.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,eligible_for_review,01:52:32
+85,dataset,200,813.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,241 muestras,01:52:27
+85,prediccion,200,2611.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,59.17 %,01:52:29
+85,recomendacion,200,2874.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,eligible_for_review,01:52:32
+86,dataset,200,707.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,241 muestras,01:52:29
+86,prediccion,200,2980.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,59.17 %,01:52:32
+86,recomendacion,200,1106.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,eligible_for_review,01:52:33
+87,dataset,200,1511.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,242 muestras,01:52:34
+87,prediccion,200,4093.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,59.21 %,01:52:38
+87,recomendacion,200,1805.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,eligible_for_review,01:52:40
+88,dataset,200,1420.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,242 muestras,01:52:34
+88,prediccion,200,1596.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,59.21 %,01:52:35
+88,recomendacion,200,2771.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,eligible_for_review,01:52:38
+89,dataset,200,1305.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,242 muestras,01:52:34
+89,prediccion,200,2892.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,59.21 %,01:52:37
+89,recomendacion,200,2295.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,eligible_for_review,01:52:40
+90,dataset,200,1357.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,242 muestras,01:52:39
+90,prediccion,200,1054.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,59.17 %,01:52:41
+90,recomendacion,200,2187.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,eligible_for_review,01:52:43
+91,dataset,200,1206.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,242 muestras,01:52:41
+91,prediccion,200,2789.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,59.16 %,01:52:44
+91,recomendacion,200,2635.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,eligible_for_review,01:52:46
+92,dataset,200,1417.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,242 muestras,01:52:41
+92,prediccion,200,2471.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,59.21 %,01:52:44
+92,recomendacion,200,2931.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,eligible_for_review,01:52:47
+93,dataset,200,1014.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,242 muestras,01:52:44
+93,prediccion,200,2889.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,59.21 %,01:52:47
+93,recomendacion,200,2326.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,eligible_for_review,01:52:49
+94,dataset,200,888.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,243 muestras,01:52:47
+94,prediccion,200,2884.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,59.21 %,01:52:50
+94,recomendacion,200,3890.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,eligible_for_review,01:52:54
+95,dataset,200,1072.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,243 muestras,01:52:48
+95,prediccion,200,2393.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,59.16 %,01:52:50
+95,recomendacion,200,3821.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,eligible_for_review,01:52:54
+96,dataset,200,881.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,243 muestras,01:52:50
+96,prediccion,200,3895.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,59.16 %,01:52:54
+96,recomendacion,200,1100.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,eligible_for_review,01:52:55
+97,dataset,200,1317.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,243 muestras,01:52:55
+97,prediccion,200,2087.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,59.21 %,01:52:57
+97,recomendacion,200,2990.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,eligible_for_review,01:53:00
+98,dataset,200,1489.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,243 muestras,01:52:55
+98,prediccion,200,2897.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,59.21 %,01:52:58
+98,recomendacion,200,2689.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,eligible_for_review,01:53:01
+99,dataset,200,1092.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,243 muestras,01:52:56
+99,prediccion,200,3198.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,59.21 %,01:52:59
+99,recomendacion,200,2010.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,eligible_for_review,01:53:01
+100,dataset,200,811.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,243 muestras,01:53:01
+100,prediccion,200,1117.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,59.21 %,01:53:02
+100,recomendacion,200,3380.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,eligible_for_review,01:53:06
+101,dataset,200,1009.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,244 muestras,01:53:02
+101,prediccion,200,2191.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,59.21 %,01:53:04
+101,recomendacion,200,2400.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,eligible_for_review,01:53:07
+102,dataset,200,1309.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,244 muestras,01:53:02
+102,prediccion,200,3086.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,59.21 %,01:53:06
+102,recomendacion,200,1897.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,eligible_for_review,01:53:07
+103,dataset,200,807.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,244 muestras,01:53:06
+103,prediccion,200,2781.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,59.21 %,01:53:09
+103,recomendacion,200,3403.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,eligible_for_review,01:53:13
+104,dataset,200,816.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,244 muestras,01:53:07
+104,prediccion,200,2199.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,59.21 %,01:53:10
+104,recomendacion,200,2901.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,eligible_for_review,01:53:12
+105,dataset,200,900.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,244 muestras,01:53:08
+105,prediccion,200,3585.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,59.17 %,01:53:12
+105,recomendacion,200,1304.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,eligible_for_review,01:53:13
+106,dataset,200,1196.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,244 muestras,01:53:14
+106,prediccion,200,3298.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,59.17 %,01:53:17
+106,recomendacion,200,3001.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,eligible_for_review,01:53:20
+107,dataset,200,1543.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,244 muestras,01:53:14
+107,prediccion,200,2949.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,59.16 %,01:53:17
+107,recomendacion,200,2920.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,eligible_for_review,01:53:20
+108,dataset,200,1322.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,244 muestras,01:53:15
+108,prediccion,200,2676.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,59.17 %,01:53:17
+108,recomendacion,200,2919.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,eligible_for_review,01:53:20
+109,dataset,200,1396.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,245 muestras,01:53:21
+109,prediccion,200,3381.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,59.17 %,01:53:25
+109,recomendacion,200,2603.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,eligible_for_review,01:53:27
+110,dataset,200,1393.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,245 muestras,01:53:21
+110,prediccion,200,3010.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,59.21 %,01:53:24
+110,recomendacion,200,2084.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,eligible_for_review,01:53:26
+111,dataset,200,1698.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,245 muestras,01:53:22
+111,prediccion,200,2881.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,59.21 %,01:53:25
+111,recomendacion,200,2805.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,eligible_for_review,01:53:28
+112,dataset,200,896.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,245 muestras,01:53:27
+112,prediccion,200,1191.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,59.21 %,01:53:29
+112,recomendacion,200,3094.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,eligible_for_review,01:53:32
+113,dataset,200,910.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,245 muestras,01:53:28
+113,prediccion,200,3105.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,59.16 %,01:53:31
+113,recomendacion,200,1802.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,eligible_for_review,01:53:33
+114,dataset,200,1200.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,245 muestras,01:53:29
+114,prediccion,200,2904.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,59.17 %,01:53:32
+114,recomendacion,200,3104.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,eligible_for_review,01:53:35
+115,dataset,200,819.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,246 muestras,01:53:32
+115,prediccion,200,2811.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,59.21 %,01:53:35
+115,recomendacion,200,3475.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,eligible_for_review,01:53:39
+116,dataset,200,785.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,246 muestras,01:53:34
+116,prediccion,200,1991.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,59.21 %,01:53:36
+116,recomendacion,200,3096.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,eligible_for_review,01:53:39
+117,dataset,200,906.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,246 muestras,01:53:36
+117,prediccion,200,3382.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,59.21 %,01:53:39
+117,recomendacion,200,1594.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,eligible_for_review,01:53:41
+118,dataset,200,911.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,246 muestras,01:53:40
+118,prediccion,200,2794.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,59.16 %,01:53:42
+118,recomendacion,200,2698.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,eligible_for_review,01:53:45
+119,dataset,200,1015.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,246 muestras,01:53:40
+119,prediccion,200,2687.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,59.33 %,01:53:43
+119,recomendacion,200,2602.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,eligible_for_review,01:53:45
+120,dataset,200,725.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,246 muestras,01:53:41
+120,prediccion,200,3574.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,59.28 %,01:53:45
+120,recomendacion,200,1313.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,eligible_for_review,01:53:46
+121,dataset,200,1026.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,246 muestras,01:53:46
+121,prediccion,200,1375.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,59.17 %,01:53:48
+121,recomendacion,200,2826.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,eligible_for_review,01:53:50
+122,dataset,200,1311.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,246 muestras,01:53:47
+122,prediccion,200,3478.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,59.17 %,01:53:50
+122,recomendacion,200,2716.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,eligible_for_review,01:53:53
+123,dataset,200,993.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,247 muestras,01:53:47
+123,prediccion,200,2918.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,59.17 %,01:53:50
+123,recomendacion,200,3081.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,eligible_for_review,01:53:53
+124,dataset,200,777.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,247 muestras,01:53:51
+124,prediccion,200,3521.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,59.21 %,01:53:55
+124,recomendacion,200,2760.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,eligible_for_review,01:53:57
+125,dataset,200,794.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,247 muestras,01:53:54
+125,prediccion,200,3292.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,59.21 %,01:53:57
+125,recomendacion,200,2192.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,eligible_for_review,01:53:59
+126,dataset,200,900.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,247 muestras,01:53:54
+126,prediccion,200,3387.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,59.16 %,01:53:58
+126,recomendacion,200,2515.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,eligible_for_review,01:54:00
+127,dataset,200,917.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,247 muestras,01:53:58
+127,prediccion,200,2099.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,59.17 %,01:54:00
+127,recomendacion,200,2992.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,eligible_for_review,01:54:03
+128,dataset,200,833.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,247 muestras,01:54:00
+128,prediccion,200,1877.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,59.21 %,01:54:02
+128,recomendacion,200,2592.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,eligible_for_review,01:54:04
+129,dataset,200,991.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,247 muestras,01:54:01
+129,prediccion,200,3197.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,59.21 %,01:54:04
+129,recomendacion,200,2591.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,eligible_for_review,01:54:07
+130,dataset,200,809.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,248 muestras,01:54:04
+130,prediccion,200,2583.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,59.21 %,01:54:07
+130,recomendacion,200,2432.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,eligible_for_review,01:54:09
+131,dataset,200,914.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,248 muestras,01:54:05
+131,prediccion,200,2305.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,59.21 %,01:54:08
+131,recomendacion,200,2987.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,eligible_for_review,01:54:11
+132,dataset,200,810.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,248 muestras,01:54:08
+132,prediccion,200,2897.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,59.21 %,01:54:11
+132,recomendacion,200,2401.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,eligible_for_review,01:54:13
+133,dataset,200,682.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,248 muestras,01:54:10
+133,prediccion,200,1887.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,59.16 %,01:54:12
+133,recomendacion,200,2319.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,eligible_for_review,01:54:14
+134,dataset,200,804.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,248 muestras,01:54:11
+134,prediccion,200,2582.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,59.21 %,01:54:14
+134,recomendacion,200,2406.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,eligible_for_review,01:54:16
+135,dataset,200,810.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,248 muestras,01:54:14
+135,prediccion,200,2284.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,59.17 %,01:54:16
+135,recomendacion,200,2822.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,eligible_for_review,01:54:19
+136,dataset,200,988.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,248 muestras,01:54:15
+136,prediccion,200,2087.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,59.21 %,01:54:17
+136,recomendacion,200,2404.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,eligible_for_review,01:54:20
+137,dataset,200,828.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,249 muestras,01:54:17
+137,prediccion,200,2661.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,59.16 %,01:54:20
+137,recomendacion,200,3003.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,eligible_for_review,01:54:23
+138,dataset,200,776.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,249 muestras,01:54:20
+138,prediccion,200,1594.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,59.17 %,01:54:21
+138,recomendacion,200,2605.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,eligible_for_review,01:54:24
+139,dataset,200,797.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,249 muestras,01:54:20
+139,prediccion,200,3396.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,59.21 %,01:54:24
+139,recomendacion,200,3792.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,eligible_for_review,01:54:28
+140,dataset,200,829.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,249 muestras,01:54:24
+140,prediccion,200,1990.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,59.17 %,01:54:26
+140,recomendacion,200,2700.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,eligible_for_review,01:54:28
+141,dataset,200,801.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,249 muestras,01:54:25
+141,prediccion,200,3210.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,59.17 %,01:54:28
+141,recomendacion,200,1599.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,eligible_for_review,01:54:29
+142,dataset,200,820.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,249 muestras,01:54:28
+142,prediccion,200,2175.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,59.21 %,01:54:31
+142,recomendacion,200,2708.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,eligible_for_review,01:54:33
+143,dataset,200,888.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,249 muestras,01:54:29
+143,prediccion,200,2792.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,59.16 %,01:54:32
+143,recomendacion,200,2296.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,eligible_for_review,01:54:34
+144,dataset,200,813.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,249 muestras,01:54:30
+144,prediccion,200,3063.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,59.21 %,01:54:33
+144,recomendacion,200,1898.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,eligible_for_review,01:54:35
+145,dataset,200,814.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,250 muestras,01:54:34
+145,prediccion,200,1784.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,59.21 %,01:54:36
+145,recomendacion,200,3403.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,eligible_for_review,01:54:39
+146,dataset,200,811.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,250 muestras,01:54:35
+146,prediccion,200,2391.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,59.21 %,01:54:38
+146,recomendacion,200,2105.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,eligible_for_review,01:54:40
+147,dataset,200,750.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,250 muestras,01:54:36
+147,prediccion,200,3551.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,59.17 %,01:54:40
+147,recomendacion,200,1421.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,eligible_for_review,01:54:41
+148,dataset,200,709.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,250 muestras,01:54:40
+148,prediccion,200,2589.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,59.16 %,01:54:43
+148,recomendacion,200,3109.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,eligible_for_review,01:54:46
+149,dataset,200,811.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,250 muestras,01:54:41
+149,prediccion,200,2857.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,59.21 %,01:54:43
+149,recomendacion,200,2416.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,eligible_for_review,01:54:46
+150,dataset,200,897.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,250 muestras,01:54:42
+150,prediccion,200,3678.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,59.21 %,01:54:46
+150,recomendacion,200,1109.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,eligible_for_review,01:54:47
+151,dataset,200,1521.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,251 muestras,01:54:47
+151,prediccion,200,2087.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,59.21 %,01:54:49
+151,recomendacion,200,3172.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW001,eligible_for_review,01:54:53
+152,dataset,200,1525.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,251 muestras,01:54:47
+152,prediccion,200,2979.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,59.21 %,01:54:50
+152,recomendacion,200,3017.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW002,eligible_for_review,01:54:53
+153,dataset,200,1396.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,251 muestras,01:54:48
+153,prediccion,200,2993.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,59.21 %,01:54:51
+153,recomendacion,200,2408.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW003,eligible_for_review,01:54:53
+154,dataset,200,1402.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,251 muestras,01:54:54
+154,prediccion,200,1094.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,59.21 %,01:54:55
+154,recomendacion,200,2698.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW004,eligible_for_review,01:54:58
+155,dataset,200,1703.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,251 muestras,01:54:55
+155,prediccion,200,3271.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,59.17 %,01:54:58
+155,recomendacion,200,3901.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW005,eligible_for_review,01:55:02
+156,dataset,200,1599.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,251 muestras,01:54:55
+156,prediccion,200,3212.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,59.17 %,01:54:58
+156,recomendacion,200,2887.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW006,eligible_for_review,01:55:01
+157,dataset,200,815.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,251 muestras,01:54:59
+157,prediccion,200,3600.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,59.21 %,01:55:02
+157,recomendacion,200,3293.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW007,eligible_for_review,01:55:05
+158,dataset,200,809.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,252 muestras,01:55:02
+158,prediccion,200,2686.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,59.21 %,01:55:05
+158,recomendacion,200,2190.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW008,eligible_for_review,01:55:07
+159,dataset,200,832.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,252 muestras,01:55:03
+159,prediccion,200,2873.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,59.17 %,01:55:06
+159,recomendacion,200,2799.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW009,eligible_for_review,01:55:09
+160,dataset,200,706.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,252 muestras,01:55:06
+160,prediccion,200,2789.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,59.21 %,01:55:09
+160,recomendacion,200,2500.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW010,eligible_for_review,01:55:11
+161,dataset,200,812.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,252 muestras,01:55:08
+161,prediccion,200,1787.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,59.21 %,01:55:09
+161,recomendacion,200,2600.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW011,eligible_for_review,01:55:12
+162,dataset,200,902.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,252 muestras,01:55:10
+162,prediccion,200,2594.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,59.21 %,01:55:12
+162,recomendacion,200,2315.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW012,eligible_for_review,01:55:15
+163,dataset,200,805.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,252 muestras,01:55:12
+163,prediccion,200,2483.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,59.16 %,01:55:15
+163,recomendacion,200,2316.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW013,eligible_for_review,01:55:17
+164,dataset,200,714.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,252 muestras,01:55:13
+164,prediccion,200,2589.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,59.17 %,01:55:15
+164,recomendacion,200,2910.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW014,eligible_for_review,01:55:18
+165,dataset,200,890.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,252 muestras,01:55:15
+165,prediccion,200,2804.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,59.17 %,01:55:18
+165,recomendacion,200,2698.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW015,eligible_for_review,01:55:21
+166,dataset,200,910.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,253 muestras,01:55:18
+166,prediccion,200,2789.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,59.21 %,01:55:21
+166,recomendacion,200,2680.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW016,eligible_for_review,01:55:23
+167,dataset,200,802.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,253 muestras,01:55:19
+167,prediccion,200,2384.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,59.21 %,01:55:21
+167,recomendacion,200,2703.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW017,eligible_for_review,01:55:24
+168,dataset,200,716.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,253 muestras,01:55:22
+168,prediccion,200,2666.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,59.16 %,01:55:24
+168,recomendacion,200,2811.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW018,eligible_for_review,01:55:27
+169,dataset,200,817.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,253 muestras,01:55:24
+169,prediccion,200,2893.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,59.33 %,01:55:27
+169,recomendacion,200,2092.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW019,eligible_for_review,01:55:29
+170,dataset,200,1009.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,253 muestras,01:55:25
+170,prediccion,200,2280.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,59.16 %,01:55:27
+170,recomendacion,200,2801.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW020,eligible_for_review,01:55:30
+171,dataset,200,896.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,253 muestras,01:55:28
+171,prediccion,200,2297.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,59.21 %,01:55:30
+171,recomendacion,200,2508.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW021,eligible_for_review,01:55:33
+172,dataset,200,1329.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,253 muestras,01:55:31
+172,prediccion,200,3177.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,59.21 %,01:55:34
+172,recomendacion,200,3328.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW022,eligible_for_review,01:55:37
+173,dataset,200,925.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,253 muestras,01:55:31
+173,prediccion,200,2580.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,59.18 %,01:55:34
+173,recomendacion,200,3209.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW023,eligible_for_review,01:55:37
+174,dataset,200,802.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,254 muestras,01:55:34
+174,prediccion,200,2991.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,59.03 %,01:55:37
+174,recomendacion,200,1305.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW024,eligible_for_review,01:55:38
+175,dataset,200,895.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,254 muestras,01:55:38
+175,prediccion,200,1488.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,59.03 %,01:55:39
+175,recomendacion,200,2705.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW025,eligible_for_review,01:55:42
+176,dataset,200,1192.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,254 muestras,01:55:38
+176,prediccion,200,3172.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,59.06 %,01:55:41
+176,recomendacion,200,2101.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW026,eligible_for_review,01:55:44
+177,dataset,200,899.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,254 muestras,01:55:39
+177,prediccion,200,3384.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,59.18 %,01:55:42
+177,recomendacion,200,2405.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW027,eligible_for_review,01:55:45
+178,dataset,200,802.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,254 muestras,01:55:43
+178,prediccion,200,1995.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,59.03 %,01:55:45
+178,recomendacion,200,2822.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW028,eligible_for_review,01:55:48
+179,dataset,200,804.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,254 muestras,01:55:44
+179,prediccion,200,2297.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,59.06 %,01:55:47
+179,recomendacion,200,2636.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW029,eligible_for_review,01:55:49
+180,dataset,200,710.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,254 muestras,01:55:45
+180,prediccion,200,2788.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,59.06 %,01:55:48
+180,recomendacion,200,2697.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW030,eligible_for_review,01:55:51
+181,dataset,200,891.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,255 muestras,01:55:49
+181,prediccion,200,2706.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,59.03 %,01:55:51
+181,recomendacion,200,3174.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW031,eligible_for_review,01:55:54
+182,dataset,200,769.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,255 muestras,01:55:50
+182,prediccion,200,2595.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,59.06 %,01:55:53
+182,recomendacion,200,2685.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW032,eligible_for_review,01:55:55
+183,dataset,200,800.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,255 muestras,01:55:52
+183,prediccion,200,3009.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,59.23 %,01:55:55
+183,recomendacion,200,2580.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW033,eligible_for_review,01:55:57
+184,dataset,200,803.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,255 muestras,01:55:55
+184,prediccion,200,2300.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,59.06 %,01:55:58
+184,recomendacion,200,2993.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW034,eligible_for_review,01:56:01
+185,dataset,200,805.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,255 muestras,01:55:56
+185,prediccion,200,2103.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,59.03 %,01:55:58
+185,recomendacion,200,3422.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW035,eligible_for_review,01:56:02
+186,dataset,200,819.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,255 muestras,01:55:58
+186,prediccion,200,3490.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,59.18 %,01:56:02
+186,recomendacion,200,2211.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW036,eligible_for_review,01:56:04
+187,dataset,200,1023.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,256 muestras,01:56:02
+187,prediccion,200,2884.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,59.18 %,01:56:04
+187,recomendacion,200,3441.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW037,eligible_for_review,01:56:08
+188,dataset,200,882.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,256 muestras,01:56:03
+188,prediccion,200,2385.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,59.06 %,01:56:05
+188,recomendacion,200,3308.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW038,eligible_for_review,01:56:08
+189,dataset,200,1014.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,256 muestras,01:56:05
+189,prediccion,200,3471.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,59.03 %,01:56:08
+189,recomendacion,200,2504.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW039,eligible_for_review,01:56:11
+190,dataset,200,656.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,256 muestras,01:56:09
+190,prediccion,200,2785.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,59.06 %,01:56:11
+190,recomendacion,200,2596.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW040,eligible_for_review,01:56:14
+191,dataset,200,901.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,256 muestras,01:56:09
+191,prediccion,200,2497.2,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,59.18 %,01:56:12
+191,recomendacion,200,2692.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW041,eligible_for_review,01:56:14
+192,dataset,200,926.9,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,256 muestras,01:56:12
+192,prediccion,200,2789.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,59.06 %,01:56:14
+192,recomendacion,200,1970.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW042,eligible_for_review,01:56:16
+193,dataset,200,718.3,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,256 muestras,01:56:15
+193,prediccion,200,2783.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,59.06 %,01:56:17
+193,recomendacion,200,3105.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW043,eligible_for_review,01:56:21
+194,dataset,200,910.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,256 muestras,01:56:15
+194,prediccion,200,2292.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,59.06 %,01:56:18
+194,recomendacion,200,2993.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW044,eligible_for_review,01:56:21
+195,dataset,200,826.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,257 muestras,01:56:17
+195,prediccion,200,2889.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,59.06 %,01:56:20
+195,recomendacion,200,1389.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW045,eligible_for_review,01:56:22
+196,dataset,200,1317.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,257 muestras,01:56:22
+196,prediccion,200,3186.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,59.18 %,01:56:25
+196,recomendacion,200,2591.4,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW046,eligible_for_review,01:56:28
+197,dataset,200,1303.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,257 muestras,01:56:22
+197,prediccion,200,3206.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,59.06 %,01:56:25
+197,recomendacion,200,3277.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW047,eligible_for_review,01:56:28
+198,dataset,200,822.6,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,257 muestras,01:56:22
+198,prediccion,200,2966.8,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,59.18 %,01:56:25
+198,recomendacion,200,2828.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW048,eligible_for_review,01:56:28
+199,dataset,200,812.1,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,257 muestras,01:56:28
+199,prediccion,200,1188.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,59.03 %,01:56:30
+199,recomendacion,200,1898.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW049,eligible_for_review,01:56:32
+200,dataset,200,782.5,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,257 muestras,01:56:29
+200,prediccion,200,1800.7,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,59.06 %,01:56:31
+200,recomendacion,200,1489.0,sim-run-20442f4d-112f-4277-806a-36157daefbe3/HW050,eligible_for_review,01:56:32

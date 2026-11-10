@@ -426,7 +426,7 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
 - **Grabación por partes:** todo se muestra desde el **navegador** (GitHub); no requiere instalar Java, Go, Python ni Docker.
 
 #### Acción en Pantalla
-1. **(Gina)** Abrir en GitHub, rama `main`: `software/prediction/results/metrics/model_comparison.csv` (GitHub lo muestra como tabla). Filtrar mentalmente las filas `horizon = 15m` y señalar (validación, puntos porcentuales de CPU):
+1. **(Gina)** Abrir en GitHub, rama `main`: `docs/academico/06-prueba-de-concepto.md`, sección «3. Resultados» (`model_comparison.csv` no está en GitHub: `results/metrics/*` está en `.gitignore`). Señalar (validación, 15 min, puntos porcentuales de CPU):
    * Persistencia: MAE 4,61 | RMSE 6,39
    * Media móvil: MAE 3,74 | RMSE 5,19
    * XGBoost: MAE 3,46 | RMSE 4,79
@@ -663,7 +663,7 @@ Para respaldar las explicaciones del Episodio 4, se consolidan aquí los valores
 | Tamaño imagen Docker Prediction | 2,85 GB (con stack de entrenamiento) | **510 MB** (imagen slim de inferencia) | **Reducción del 82,1 % de peso** |
 | Consumo de RAM en reposo (Prediction) | 174 MiB | **122 MiB** (con `PYTHONOPTIMIZE=2`) | **Ahorro del 29,8 % de memoria** |
 
-*Retirado el 09/11/2026:* las filas de arranque en frío (140 → 45 s) e inferencia (85 → 28 ms) no tenían medición en `docs/evidencias/`; no mencionarlas en el video. La latencia de inferencia del RF en validación es ~6,5 ms (`latency_mean_ms` en `model_comparison.csv`).
+*Retirado el 09/11/2026:* las filas de arranque en frío (140 → 45 s) e inferencia (85 → 28 ms) no tenían medición en `docs/evidencias/`; no mencionarlas en el video. Las latencias de la PoC (sección 3 de `docs/academico/06-prueba-de-concepto.md`) son por lote y de una sola ejecución; no presentarlas como latencia por petición.
 
 ---
 

@@ -56,7 +56,7 @@ Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; v
 | 6 | `S07` | Semana 13 | Terminal: cabeceras de nginx (comandos en `docs/evidencias/semana13-ola1-verificacion.md`). |
 | 7 | `C301` | Informe | Terminal con las suites por servicio (una captura por suite o un mosaico; comandos en `docs/CONTINUAR-EN-NUEVO-CHAT.md`). |
 | 8 | `C302` | Informe | Terminal: stack local levantado y `python software/infraestructura/smoke/smoke.py`, que debe dar 14/14. |
-| 9 | `C309` | Informe | Terminal: `python herramientas_IA/video/carga_transacciones.py --login --iteraciones 200` contra Render. Captura la tabla final; el CSV queda en `docs/evidencias/carga-video.csv`. **Hazlo durante la grabación del episodio 3 del video** y usa ese fotograma. |
+| 9 | `C309` | Informe | **Hecha el 10/11/2026** (fotograma del episodio 3: 601/601 HTTP 200). Insertada en `informe-unidad-III.md` como `evidencias-nube/carga-601-transacciones-render.png`; falta reexportar el Word. |
 
 ## Datos que completa Ricardo en ambos documentos
 - `NRC-PENDIENTE` (Ctrl + B): número NRC de la sección.
