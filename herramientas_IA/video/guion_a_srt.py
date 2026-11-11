@@ -3,12 +3,13 @@
 Uso: python guion_a_srt.py GUION.md SALIDA.srt [--fin MM:SS]
 Cada fila de tabla con minuto «MM:SS» aporta su diálogo (última columna).
 El texto se trocea en frases de ≤ 2 líneas y se reparte desde el minuto de
-la fila a ~2,3 palabras/s; si no cabe antes de la fila siguiente, se comprime.
+la fila a ~2,3 palabras/s; se estira para cubrir el tramo hasta la fila siguiente o se comprime si no cabe.
 """
 import re
 import sys
 
 PPS = 2.3          # palabras por segundo
+KMAX = 1e9         # sin tope: cada fila cubre todo su tramo
 MAXC = 84          # caracteres por subtítulo (2 líneas de ~42)
 
 
@@ -71,8 +72,8 @@ def main():
     for i, (t0, txt) in enumerate(rows):
         t1 = rows[i + 1][0] if i + 1 < len(rows) else fin
         ch = trozos(txt)
-        durs = [max(1.2, len(c.split()) / PPS) for c in ch]
-        k = min(1.0, (t1 - t0 - 0.2) / sum(durs))
+        durs = [max(6, len(c.split())) / PPS for c in ch]  # mínimo ~2,6 s por fragmento
+        k = min(KMAX, (t1 - t0 - 0.2) / sum(durs))  # estira hasta llenar el tramo
         t = t0
         for c, d in zip(ch, durs):
             out.append(f"{n}\n{ts(t)} --> {ts(t + d * k)}\n{c}\n")
