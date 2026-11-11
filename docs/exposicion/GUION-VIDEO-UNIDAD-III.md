@@ -264,11 +264,10 @@ Cada bloque indica el minuto **del video montado** en que empieza la frase y lo 
 
 | Minuto | En pantalla | Diálogo |
 |---|---|---|
-| 00:44 | Formulario de inicio de sesión | «Episodio uno. Estamos en la URL pública de producción. El acceso está protegido con Supabase Auth: se inicia sesión y la contraseña nunca se muestra.» |
-| 00:54 | Dashboard con el nombre y el rol | «Al entrar, el API Gateway valida el token JWT con las llaves públicas de Supabase. Arriba se ve el usuario y su rol, [leer el rol, en el video «OPERATOR»].» |
-| 01:00 | Filtros: CPU, todos los clústeres, 15 minutos | «Consultamos la utilización de CPU de todos los servidores en los últimos quince minutos. El frontend llama al Gateway, que consulta al servicio Monitoring y a Prometheus.» |
-| 01:05 | KPI resaltados uno a uno | «La media del conjunto es «85 %»; el servidor más cargado llega a «89,4 %» y el menos cargado a «80,6 %».» |
-| 01:19 | Servidores en respuesta y procedencia | «Responden «50» servidores, y la procedencia se declara como «Simulado»: la telemetría viene del simulador, y así lo decimos.» |
+| 00:44 | Formulario de inicio de sesión | «Episodio uno, en la URL pública de producción. El acceso usa Supabase Auth y la contraseña nunca se muestra; al entrar, el Gateway valida el token JWT.» |
+| 00:56 | Dashboard con el nombre y el rol | «Arriba se ve el usuario y su rol, «OPERATOR». Consultamos la CPU de todos los servidores en los últimos quince minutos.» |
+| 01:06 | KPI resaltados uno a uno | «La media del conjunto es «85 %»; el servidor más cargado llega a «89,4 %» y el menos cargado a «80,6 %».» |
+| 01:21 | Servidores en respuesta y procedencia | «Responden «50» servidores, y la procedencia se declara como «Simulado»: la telemetría viene del simulador, y así lo decimos.» |
 | 01:30 | Gráfico de evolución | «El gráfico muestra la media en el tiempo con bandas de máximo y mínimo.» |
 | 01:40 | Comparación de 5 servidores | «Con un clic comparamos los cinco servidores más cargados, cada uno con su propia serie.» |
 | 01:53 | Tabla de detalle | «En «Detalle por servidor» está la tabla paginada con los cincuenta servidores, su valor, procedencia, calidad e instante.» |
