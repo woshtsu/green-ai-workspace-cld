@@ -11,7 +11,7 @@ import sys
 BASE = 135        # margen inferior del piso más bajo (px)
 LINEA = 50        # alto de una línea con caja (px)
 HUECO = 12        # separación entre pisos (px)
-CPL = 40          # caracteres por línea
+CPL = 46          # caracteres por línea
 
 CAB = """[Script Info]
 ScriptType: v4.00+
@@ -43,8 +43,10 @@ def ts(x):
 
 def partir(txt):
     lin, cur = [], ""
+    n = -(-len(txt) // CPL)                  # nº de líneas necesarias
+    ancho = -(-len(txt) // n) + 4            # líneas equilibradas
     for w in txt.split():
-        if cur and len(cur) + 1 + len(w) > CPL:
+        if cur and len(cur) + 1 + len(w) > ancho:
             lin.append(cur)
             cur = w
         else:
