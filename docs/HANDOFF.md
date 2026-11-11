@@ -266,3 +266,5 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Fallos corregidos por el camino: Edge restauraba la pestaña anterior al matarlo y las diapositivas se grabaron en una pestaña de fondo (ahora cierre limpio por CDP `Browser.close` y pestaña nueva); `--start-fullscreen` no se aplica al conectar por CDP (ahora `Browser.setWindowBounds` fullscreen); `about:blank` blanco al iniciar cada clip (ahora página oscura).
 
 **PR #5 fusionado en `main`** (2026-11-10 07:36 UTC, commit 27ef69f, bypass del administrador a pedido del usuario). CI del PR 12/12 en verde. El video (`exportados/video/green-ai-unidad-III.mp4`) queda solo en local y en el Drive del equipo, no en GitHub.
+
+**Guion sincronizado con el video (2026-11-10):** `GUION-VIDEO-UNIDAD-III.md` §0.5 (voz y cámara encima del video, tramos por integrante según su rol), §2.2, §5 (locución por minuto real, con las cifras que se ven), §8 y marcas de YouTube con los minutos de 24:28. Detectado: la tabla del doc 08 que sale en el Ep. 4 no coincide con §6.2 (433/447): pendiente actualizar el doc 08.

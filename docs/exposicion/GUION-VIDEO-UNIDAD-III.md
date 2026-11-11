@@ -3,10 +3,10 @@
 
 - **Asignatura:** Taller de Proyectos 1 — ISI (Universidad Continental)
 - **Docente:** Jorge A. Guevara Jiménez
-- **Duración objetivo:** 25 minutos exactos (rango reglamentario de 20 a 30 minutos)
+- **Duración del video montado:** 24:28 (rango reglamentario de 20 a 30 minutos); pantalla grabada el 10/11/2026
 - **Entorno de grabación:** Nube pública en producción/desarrollo (GitHub Pages + Render + Supabase; estrictamente sin localhost)
 - **Resolución de pantalla:** Full HD (1920×1080), 30 o 60 fotogramas por segundo
-- **Participación:** 100 % de los integrantes con cámara web activa y nombre completo visible en pantalla
+- **Participación:** los 4 integrantes ponen voz y cámara encima del video, con su nombre completo en un rótulo (sección 0.5)
 
 
 > **Antes de grabar:** verificadas el 07/11/2026 solo las URLs de Gateway, Data Processing y Prediction (`https://green-ai-prediction-dev-zxly.onrender.com`). Copia las de Monitoring, Simulator y Prometheus desde el panel de Render: pueden tener un sufijo aleatorio.
@@ -42,41 +42,42 @@ Motivo: Render (plan gratuito) responde a veces **429** a las llamadas entre ser
 
 ---
 
-## 0.5 GRABACIÓN POR PARTES (modalidad acordada por el equipo)
+## 0.5 VIDEO YA GRABADO: CADA INTEGRANTE PONE VOZ Y CÁMARA ENCIMA (actualizado 10/11/2026)
 
-Cada integrante graba **su** parte en su PC y **Jhonny Cristhian Quintana Carhuaricra** las une en la edición. La rúbrica exige que «participan de la exposición todos los integrantes del grupo con cámara y nombre completo»: cada clip lleva la cámara del presentador en la esquina inferior derecha y su nombre en un rótulo.
+La pantalla de todo el video **ya está grabada y montada**: `exportados/video/green-ai-unidad-III.mp4` (24:28, 1920×1080, sin audio; en el Drive del grupo, no en GitHub). Contiene la carátula, los 7 episodios y el cierre. **Nadie vuelve a operar la app.** Cada integrante:
+1. Reproduce el video en su PC desde el minuto de su tramo (tabla de abajo) y graba con OBS **solo cámara y micrófono** (cámara de 400×240 px; la esquina inferior derecha del video quedó libre para ella) leyendo su diálogo de la sección 5 al ritmo de la pantalla.
+2. Entrega `voz-NN-apellido.mp4` (NN = minuto de inicio, p. ej. `voz-0459-porras.mp4`) a Jhonny, que lo coloca sobre el video en el minuto indicado y añade el rótulo con el nombre completo.
+3. Las cifras ya salen en pantalla: se leen del video (en la sección 5 se anotan las que se ven); no se inventa ninguna.
 
-### Quién graba qué
-| Clip | Episodio (minutos) | Graba | Necesita | Desde |
-|---|---|---|---|---|
-| 00 | Carátula: cada uno dice su nombre completo a cámara (5–10 s por persona) | **Los 4** (cada uno su clip) | Solo cámara | Cualquier PC |
-| 01 | Introducción (00:00–01:30) | Jhonny + Gina (cada uno su tramo) | Diapositiva de portada | Cualquier PC |
-| 02 | Ep. 1 PMV1 (01:30–04:30) | Leonid | Navegador + cuenta propia en producción | Cualquier PC |
-| 03 | Ep. 2 PMV2 (04:30–08:00) | Leonid (racks, flujos) y Jhonny (CSV, energía) | Navegador + cuenta propia | Cualquier PC |
-| 04 | Ep. 3 Data masiva (08:00–11:30) | **Ricardo** | Repo clonado + Python + `carga_transacciones.py` | PC de Ricardo |
-| 05 | Ep. 4 Métricas (11:30–15:00) | Gina (ML) y Jhonny (pruebas) | **Solo navegador** (GitHub Actions y GitHub) | Cualquier PC |
-| 06 | Ep. 5 Predicción ML (15:00–18:30) | Gina | Navegador + cuenta propia; simulador despierto ≥ 30 min | Cualquier PC, **dentro de la franja** |
-| 07 | Ep. 6 Trello (18:30–21:00) | Gina y Jhonny | Tablero ya actualizado según `guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md` | Cualquier PC |
-| 08 | Ep. 7 Hexagonal y SQL (21:00–24:00) | **Ricardo** | Navegador (GitHub) | Cualquier PC |
-| 09 | Cierre (24:00–25:00) | **Los 4** (cada uno su frase, 10–15 s, mirando a cámara) | Cámara | Cualquier PC |
+### Quién habla en cada tramo (minutos del video montado)
+| Minuto | Tramo | Habla | Rol |
+|---|---|---|---|
+| 00:00–00:13 | Carátula: proyecto, docente, entorno | Jhonny | Product Owner |
+| 00:13–00:29 | Carátula: integrantes (cada uno dice su nombre completo y rol, ~4 s) | Los 4 | — |
+| 00:29–00:46 | Carátula: los 7 episodios | Gina | Scrum Master |
+| 00:46–02:35 | Ep. 1 PMV1 | Leonid | Infraestructura y Frontend |
+| 02:35–03:57 | Ep. 2 Racks y Red de flujos | Leonid | Infraestructura y Frontend |
+| 03:57–04:59 | Ep. 2 Históricos, CSV, experimento y energía | Jhonny | Product Owner |
+| 04:59–12:57 | Ep. 3 Data masiva (601 transacciones) | Ricardo | Backend y Arquitectura |
+| 12:57–13:32 | Ep. 4 Métricas de ML | Gina | Scrum Master (datos y ML) |
+| 13:32–15:46 | Ep. 4 CI, pruebas, imagen ligera y Prometheus | Jhonny | Product Owner |
+| 15:46–17:35 | Ep. 5 Predicción y recomendación | Gina | Scrum Master (datos y ML) |
+| 17:35–18:18 | Ep. 6 Tablero Trello | Gina | Scrum Master |
+| 18:18–19:46 | Ep. 6 Tarjetas HU-03 y HU-06 | Jhonny | Product Owner |
+| 19:46–23:41 | Ep. 7 Hexagonal, SQL y CI/CD | Ricardo | Backend y Arquitectura |
+| 23:41–23:57 | Cierre: indicadores | Jhonny | Product Owner |
+| 23:57–24:11 | Cierre: enlaces | Gina y Leonid | — |
+| 24:11–24:28 | Cierre: despedida (mosaico 2×2 con los 4 rostros) | Ricardo y los 4 | — |
 
-### Franja común de grabación (obligatoria para los clips con la app: 02, 03, 04, 06)
-1. Acordar una franja de 2 h (p. ej., 19:00–21:00).
-2. **Ricardo**, 30 min antes de la franja: `python herramientas_IA/video/mantener_despierto.py --minutos 150` en una terminal que no se graba. Avisa por el grupo cuando dos ciclos seguidos muestren los 6 servicios en `OK`.
-3. Gina graba el Ep. 5 a partir del minuto 30 de la franja (el simulador necesita historial; si sale «datos insuficientes», esperar 10 min y repetir).
-4. Los clips 00, 01, 05, 07, 08 y 09 no usan la app en vivo: se pueden grabar en cualquier momento.
+Carga por persona: Ricardo ≈ 11:55; Jhonny ≈ 5:05; Gina ≈ 3:45; Leonid ≈ 3:11 (+ carátula y cierre para todos).
 
-### Ajustes comunes (para que el montaje no se note)
-- Pantalla completa a **1920×1080**, navegador **Chrome** o **Edge** con zoom al 100 %, tema claro, sin barra de marcadores ni pestañas personales, notificaciones del sistema desactivadas.
-- **OBS Studio**: lienzo y salida a 1920×1080, 30 fps, grabación en **MP4**. Escena: captura de pantalla completa + cámara de 320×180 px en la esquina inferior derecha + rótulo de texto (Arial 28, blanco sobre franja verde) con el **nombre completo**.
-- Audio: micrófono o audífonos con micrófono; grabar en un lugar silencioso; probar 10 s antes.
-- Cada uno inicia sesión con **su propia cuenta** (`register.html` si no tiene). Nunca compartir contraseñas ni mostrar tokens (no abrir F12 → Application).
-- Respetar la duración de su tramo (± 15 s); dejar 2 s de silencio al inicio y al final del clip para los cortes.
+### Ajustes para la voz
+- Audio 48 kHz, lugar silencioso, prueba de 10 s; 2 s de silencio al inicio y al final.
+- El ritmo cómodo es ~2,3 palabras por segundo: los diálogos de la sección 5 ya están medidos para su tramo. Si sobra tiempo, callar mientras la pantalla avanza; no rellenar con cifras no vistas.
+- Si en pantalla se ve un aviso o error, se nombra tal cual (no se cortó nada del video).
 
-### Entrega de los clips
-- Nombre del archivo: `clip-NN-apellido.mp4` (p. ej., `clip-04-porras.mp4`), subido a la carpeta compartida del grupo el día acordado.
-- Jhonny Cristhian une los clips en orden (DaVinci Resolve, CapCut o Clipchamp), añade la portada y el cierre con los 4 rostros, revisa que dure 22–26 min y comprueba la lista de rúbrica de la sección «Cierre».
-- Si un clip muestra un error real (429, 504, «datos insuficientes»), **no se corta para ocultarlo**: el presentador lo explica, como indica la sección 0.
+### Regrabar un episodio (solo si hace falta)
+Ver `docs/CONTINUAR-EN-NUEVO-CHAT.md` § «Video Unidad III»: `mantener_despierto.py` ≥ 25 min antes, ensayo con `grabar_episodios.py --ensayo N`, grabación con `--ritmo 1.6 N` y montaje con `portada_cierre.py cierre` + `unir` (recalcula los minutos del cierre). Las secciones 1 y 3 de este guion solo aplican si se vuelve a grabar la pantalla.
 
 ---
 
@@ -116,15 +117,15 @@ Este documento es la partitura técnica y organizativa para la grabación del vi
 
 | Minuto | Episodio / Sección | Criterio de Rúbrica | Presentador | Descripción Sintética |
 |---|---|---|---|---|
-| 00:00 – 01:30 | Carátula e Introducción | Guion — Carátula | Jhonny Quintana / Gina Barrera | Presentación de integrantes, objetivos técnicos de la Unidad III y arquitectura general en la nube. |
-| 01:30 – 04:30 | Episodio 1: Pruebas funcionales PMV1 | Guion — Ep. 1 | Leonid Huamán | Autenticación Supabase, observabilidad de 50 nodos, telemetría CPU/memoria/red/disco con procedencia declarada. |
-| 04:30 – 08:00 | Episodio 2: Pruebas funcionales PMV2 | Guion — Ep. 2 / Ind. 9 | Leonid Huamán / Jhonny Quintana | Vista Racks con calor, Red de flujos con rebalanceo simulado, reporte histórico CSV y cálculo de energía/CO₂e. |
-| 08:00 – 11:30 | Episodio 3: Pruebas con data masiva | Guion — Ep. 3 / Ind. 9 | Ricardo Porras | Ejecución del script `carga_transacciones.py` (601 transacciones autenticadas), percentiles p50/p95, control de errores y CSV. |
-| 11:30 – 15:00 | Episodio 4: Pruebas con métricas | Guion — Ep. 4 / Ind. 5 | Gina Barrera / Jhonny Quintana | Métricas ML (MAE/RMSE/mejora vs persistencia), 433 pruebas por componente (+ 14 de smoke = 447), optimización Docker y Prometheus. |
-| 15:00 – 18:30 | Episodio 5: Predicciones con ML PMV1 y PMV2 | Guion — Ep. 5 / Ind. 10 | Gina Barrera | Caso 1: Demanda a 15 min con Random Forest. Caso 2: Recomendación con restricciones de memoria/latencia y bloqueo de ejecución. |
-| 18:30 – 21:00 | Episodio 6: Tablero Trello y contenidos | Guion — Ep. 6 / Ind. 4, 11 | Gina Barrera / Jhonny Quintana | Trazabilidad Scrum/Kanban, historias de usuario PMV1 y PMV2, criterios Given/When/Then y políticas de calidad. |
-| 21:00 – 24:00 | Episodio 7: Arquitectura hexagonal y SQL | Guion — Ep. 7 / Ind. 11 | Ricardo Porras | Inspección de repositorios en GitHub (Data Processing y Monitoring), triggers/funciones PL/pgSQL en Supabase y CI/CD. |
-| 24:00 – 25:00 | Cierre, créditos y matriz de rúbrica | Cierre y formalidad | Los 4 integrantes | Resumen de lecciones aprendidas, confirmación de requisitos y despedida formal del equipo. |
+| 00:00 – 00:46 | Carátula e integrantes | Guion — Carátula | Jhonny, los 4, Gina | Proyecto, docente, integrantes con rol y los 7 episodios. |
+| 00:46 – 02:35 | Episodio 1: Pruebas funcionales PMV1 | Guion — Ep. 1 / Ind. 9 | Leonid | Login Supabase, KPI de 50 servidores, gráfico, comparación y tabla. |
+| 02:35 – 04:59 | Episodio 2: Pruebas funcionales PMV2 | Guion — Ep. 2 / Ind. 9 | Leonid → Jhonny (03:57) | Racks, Red de flujos, históricos de Supabase con CSV, experimento y energía. |
+| 04:59 – 12:57 | Episodio 3: Data masiva | Guion — Ep. 3 / Ind. 9 | Ricardo | 601 transacciones reales contra Render, tabla p50/p95 y Prometheus. |
+| 12:57 – 15:46 | Episodio 4: Métricas | Guion — Ep. 4 / Ind. 5 | Gina → Jhonny (13:32) | PoC (RF vs baselines), CI, suites, smoke, imagen ligera, Prometheus. |
+| 15:46 – 17:35 | Episodio 5: Predicciones con ML | Guion — Ep. 5 / Ind. 10 | Gina | Predicción a 15 min (HU-03) y recomendación con restricciones (HU-06). |
+| 17:35 – 19:46 | Episodio 6: Trello | Guion — Ep. 6 / Ind. 4, 11 | Gina → Jhonny (18:18) | Columnas Scrum/Kanban y tarjetas HU-03 y HU-06. |
+| 19:46 – 23:41 | Episodio 7: Hexagonal y SQL | Guion — Ep. 7 / Ind. 11 | Ricardo | Puertos y adaptadores en Python y Java, funciones PL/pgSQL y CI/CD. |
+| 23:41 – 24:28 | Cierre | Cierre y formalidad | Los 4 | Indicadores con su minuto, QR y despedida. |
 
 ---
 
@@ -240,387 +241,145 @@ Durante la ejecución del script en vivo, el presentador debe destacar los sigui
 
 ---
 
-## 5. GUION PASO A PASO POR EPISODIO
+## 5. GUION DE LOCUCIÓN SINCRONIZADO CON EL VIDEO (24:28)
+
+Cada bloque indica el minuto **del video montado** en que empieza la frase y lo que se ve en ese momento. Los textos están medidos para su tramo (~2,3 palabras/s). Las cifras entre «» son las que **se ven en el video grabado el 10/11/2026**; si se regraba un episodio, se leen las nuevas.
 
 ---
 
-### CARÁTULA E INTRODUCCIÓN INSTITUCIONAL (00:00 – 01:30)
+### CARÁTULA (00:00 – 00:46)
 
-#### Datos de la Escena
-- **Minuto inicio:** 00:00 | **Minuto fin:** 01:30 | **Duración:** 1 minuto 30 segundos
-- **Presentadores:** Jhonny Cristhian Quintana Carhuaricra (Product Owner) y Gina Diana Barrera Peña (Scrum Master)
-- **Cámaras:** en la edición se abre con los clips 00 (los 4 integrantes, cada uno diciendo su nombre completo a cámara con su rótulo) y luego Jhonny y Gina graban cada uno su tramo de introducción.
-- **Criterio de rúbrica:** Guion del video de software — Carátula con nombre de proyecto e integrantes.
-
-#### Acción en Pantalla
-1. Mostrar la diapositiva o pantalla de carátula institucional conteniendo:
-   - Logotipo oficial de la Universidad Continental.
-   - Asignatura: Taller de Proyectos 1 — ISI (Semana 12 / Unidad III).
-   - Docente: Jorge A. Guevara Jiménez.
-   - Título del proyecto: Green AI — Plataforma Inteligente de Observabilidad y Optimización Energética Predictiva en Centros de Datos.
-   - Nombres completos de los 4 integrantes con sus roles.
-   - Entorno tecnológico: Despliegue en la Nube (GitHub Pages, Render, Supabase).
-2. Transicionar suavemente a la pestaña del navegador con la página de inicio del frontend (`https://woshtsu.github.io/green-ai-workspace-cld/index.html`).
-
-#### Diálogo del Presentador
-- **Jhonny Quintana (00:00 – 00:50):**
-  > "Estimado profesor Jorge Guevara y compañeros, un cordial saludo. Mi nombre es Jhonny Cristhian Quintana Carhuaricra, Product Owner del proyecto Green AI. En este video de sustentación de la Unidad III, nuestro equipo presentará la demostración funcional completa del software desarrollado para el Primer y Segundo Mínimo Viable. Cumpliendo rigurosamente con los lineamientos de la asignatura y la lista de cotejo de la Semana 12, esta grabación se realiza a pantalla completa sobre nuestro entorno de calidad desplegado en la nube pública, sin recurrir a localhost. Participamos los cuatro integrantes del equipo, cada uno con su cámara y su nombre completo en pantalla. A continuación, mi compañera Gina Barrera presentará el alcance de los integrantes."
-
-- **Gina Barrera (00:50 – 01:30):**
-  > "Buenas tardes, profesor. Mi nombre es Gina Diana Barrera Peña, Scrum Master del equipo y responsable del área de datos y modelos. Me acompañan en esta presentación Ricardo Porras Veli, encargado de backend, integración y despliegue; y Leonid Kisley Orlando Huamán Collazos, a cargo de infraestructura, observabilidad y frontend. A lo largo de esta sesión cubriremos siete episodios técnicos: desde las pruebas funcionales de observabilidad del PMV1, las capacidades avanzadas del PMV2, una prueba transaccional masiva con más de 600 peticiones en vivo, la sustentación de métricas de calidad y Machine Learning, los dos casos de uso predictivos, nuestro tablero de gestión ágil en Trello y la auditoría de arquitectura hexagonal y procedimientos almacenados en GitHub. Doy pase a Leonid para iniciar con el Episodio 1."
-
-#### Resultado Esperado y Plan B
-- **Resultado esperado:** Transición limpia de carátula a navegador, audio balanceado sin eco y nombres plenamente identificables.
-- **Plan B si falla:** Si la diapositiva no renderiza en OBS, presentar directamente la carátula integrada en el pie de página del `index.html` del frontend que contiene el copyright y los datos del proyecto.
+| Minuto | En pantalla | Habla | Diálogo |
+|---|---|---|---|
+| 00:00 | Título, docente, entorno en la nube | **Jhonny** | «Buenas tardes, profesor Jorge Guevara. Presentamos Green AI, nuestro sistema de monitoreo y predicción de demanda computacional, demostrado en la nube sobre GitHub Pages, Render y Supabase.» |
+| 00:13 | Tarjetas de los 4 integrantes | **Jhonny** | «Soy Jhonny Cristhian Quintana Carhuaricra, Product Owner.» |
+| 00:17 | | **Gina** | «Soy Gina Diana Barrera Peña, Scrum Master y responsable de datos y modelos.» |
+| 00:21 | | **Leonid** | «Soy Leonid Kisley Orlando Huamán Collazos, de infraestructura y frontend.» |
+| 00:25 | | **Ricardo** | «Soy Ricardo Porras Veli, de backend y arquitectura.» |
+| 00:29 | Lista de los 7 episodios | **Gina** | «En siete episodios mostraremos las pruebas funcionales del PMV1 y del PMV2, una carga de seiscientas una transacciones, las métricas, los dos casos de uso de Machine Learning, nuestro tablero Trello y la arquitectura hexagonal en GitHub.» |
 
 ---
 
-### EPISODIO 1: PRUEBAS FUNCIONALES DEL PMV1 (01:30 – 04:30)
+### EPISODIO 1: PRUEBAS FUNCIONALES DEL PMV1 (00:46 – 02:35) · Leonid
 
-#### Datos de la Escena
-- **Minuto inicio:** 01:30 | **Minuto fin:** 04:30 | **Duración:** 3 minutos 00 segundos
-- **Presentador:** Leonid Kisley Orlando Huamán Collazos
-- **Criterio de rúbrica:** Guion del video de software — Episodio 1: Pruebas funcionales del PMV1 (HU-01, HU-02, HU-15).
-
-#### Acción en Pantalla
-1. Navegar a `https://woshtsu.github.io/green-ai-workspace-cld/login.html`.
-2. Mostrar el formulario de inicio de sesión con Supabase. Escribir credenciales de un usuario autenticado con rol `OPERATOR` (por ejemplo, `operador@greenai.continental.edu.pe`).
-3. Hacer clic en «Iniciar sesión». Mostrar la redirección instantánea hacia `dashboard.html`.
-4. Señalar en la barra superior (topbar):
-   - El distintivo de perfil: Nombre del usuario y la etiqueta del rol `OPERATOR`.
-   - La etiqueta de la plataforma: «PMV 2 · Demostración».
-5. En la sección «Centro de operación», seleccionar:
-   - Métrica: «Utilización de CPU» (`node.cpu.utilization`).
-   - Clúster: «Todos los clústeres».
-   - Periodo histórico: «15 minutos».
-6. Clic en «Actualizar».
-7. Mostrar el panel de KPIs en la pestaña «Resumen»:
-   - Media del conjunto: Señalar el valor numérico en pantalla.
-   - Servidor más cargado y servidor menos cargado.
-   - Cantidad de servidores en respuesta: Confirmar 50 nodos detectados.
-   - Metadato crítico de honestidad: «Procedencia: Simulado» y «Cobertura: Completa».
-8. Desplazarse al gráfico interactivo Chart.js («Evolución de la métrica»):
-   - Mostrar la curva de la media temporal y las bandas de máximo y mínimo.
-   - Abrir la barra de comparación: presionar «5 más cargados» para observar las 5 series individuales superpuestas.
-9. Cambiar a la pestaña «Detalle por servidor»:
-   - Mostrar la tabla paginada con 50 servidores.
-   - Utilizar el buscador de servidor: escribir `HW045`.
-   - Mostrar columnas: Clúster, Servidor, Valor de CPU actual, Procedencia (`simulated`), Calidad (`ok`) e Instante de lectura.
-   - Probar la ordenación por columnas haciendo clic en la cabecera «Valor».
-
-#### Diálogo del Presentador
-- **Leonid Huamán (01:30 – 04:30):**
-  > "Gracias, Gina. Saludos, profesor. Mi nombre es Leonid Huamán. Iniciamos el Episodio 1 con la validación funcional del Primer Mínimo Viable, cuyo objetivo central es dotar a los operadores de centros de datos de una observabilidad integral y en tiempo real.
-  > Como se aprecia en pantalla, nos encontramos en la URL pública de producción en GitHub Pages. El acceso está protegido por Supabase Authentication. Inicio sesión con una cuenta de operador. Al ingresar, el API Gateway valida el token JWT emitido por Supabase mediante su conjunto de llaves públicas JWKS. En la cabecera superior confirmamos mi identidad y el rol `OPERATOR` inyectado dinámicamente en los claims del token.
-  > En el Centro de Operación, consulto la métrica de utilización de CPU para los 50 servidores del centro de datos simulado. Al pulsar 'Actualizar', el frontend invoca al Gateway en Render, el cual consulta al microservicio de Monitoring en Java y a Prometheus.
-  > Observen los indicadores clave: se procesan exactamente 50 servidores. [Mirar la pantalla y leer en vivo]: la media global se sitúa en [leer el valor de stat-mean en pantalla, ej. 85 %], con el servidor [leer el nombre de stat-max] como el más cargado. Destaco un principio de diseño fundamental de nuestro equipo: la procedencia declarada. La plataforma indica explícitamente que el origen es 'Simulado', cumpliendo con la exigencia académica de honestidad técnica.
-  > En el gráfico central de Chart.js visualizamos la evolución temporal de los últimos 15 minutos con agregación de media, máximo y mínimo. Mediante la barra de comparación rápida, podemos filtrar instantáneamente los cinco servidores más cargados para diagnosticar puntos calientes.
-  > Finalmente, en la pestaña 'Detalle por servidor', accedemos a la tabla paginada con búsqueda instantánea. Filtro el servidor HW045 y verificamos su carga actual, estado de calidad y marca de tiempo. Con esto demostramos la operatividad completa de las historias de usuario HU-01 y HU-02 del PMV1 sobre la nube."
-
-#### Resultado Esperado y Plan B
-- **Resultado esperado:** Carga de 50 servidores en menos de 2 segundos, procedencia `simulated`, gráfico Chart.js fluido y tabla paginada operativa.
-- **Plan B si falla:** Si el Gateway devuelve HTTP 504 Gateway Timeout por arranque en frío de Monitoring o Prometheus en Render, esperar 30 segundos, presionar «Actualizar» nuevamente y explicar en cámara que las instancias del plan gratuito se reaniman en la primera llamada de red.
+| Minuto | En pantalla | Diálogo |
+|---|---|---|
+| 00:46 | Formulario de inicio de sesión | «Episodio uno. Estamos en la URL pública de producción. El acceso está protegido con Supabase Auth: se inicia sesión y la contraseña nunca se muestra.» |
+| 00:56 | Dashboard con el nombre y el rol | «Al entrar, el API Gateway valida el token JWT con las llaves públicas de Supabase. Arriba se ve el usuario y su rol, [leer el rol, en el video «OPERATOR»].» |
+| 01:02 | Filtros: CPU, todos los clústeres, 15 minutos | «Consultamos la utilización de CPU de todos los servidores en los últimos quince minutos. El frontend llama al Gateway, que consulta al servicio Monitoring y a Prometheus.» |
+| 01:07 | KPI resaltados uno a uno | «La media del conjunto es «85 %»; el servidor más cargado llega a «89,4 %» y el menos cargado a «80,6 %».» |
+| 01:21 | Servidores en respuesta y procedencia | «Responden «50» servidores, y la procedencia se declara como «Simulado»: la telemetría viene del simulador, y así lo decimos.» |
+| 01:32 | Gráfico de evolución | «El gráfico muestra la media en el tiempo con bandas de máximo y mínimo.» |
+| 01:42 | Comparación de 5 servidores | «Con un clic comparamos los cinco servidores más cargados, cada uno con su propia serie.» |
+| 01:55 | Tabla de detalle | «En «Detalle por servidor» está la tabla paginada con los cincuenta servidores, su valor, procedencia, calidad e instante.» |
+| 02:03 | Búsqueda de HW045 | «Podemos buscar un servidor, por ejemplo HW045,» |
+| 02:13 | Orden por «Valor» | «y ordenar por valor. Así queda demostrado el monitoreo del PMV1, historias HU-01 y HU-02, en la nube.» |
 
 ---
 
-### EPISODIO 2: PRUEBAS FUNCIONALES DEL PMV2 (04:30 – 08:00)
+### EPISODIO 2: PRUEBAS FUNCIONALES DEL PMV2 (02:35 – 04:59)
 
-#### Datos de la Escena
-- **Minuto inicio:** 04:30 | **Minuto fin:** 08:00 | **Duración:** 3 minutos 30 segundos
-- **Presentadores:** Leonid Kisley Orlando Huamán Collazos y Jhonny Cristhian Quintana Carhuaricra
-- **Criterio de rúbrica:** Guion del video de software — Episodio 2: Pruebas funcionales del PMV2 / Indicador 9.
-
-#### Acción en Pantalla
-1. En la barra de navegación superior, hacer clic en «Racks» (`network.html`).
-2. Demostrar la vista «Racks con calor» (Topología física de infraestructura):
-   - Señalar las 3 tarjetas KPI superiores: Nodos > 80 % de CPU, CPU media del clúster y Rack más cargado.
-   - Mostrar la cuadrícula de 50 servidores agrupados en 5 racks físicos (Rack A a Rack E, 10 servidores por rack).
-   - Explicar la escala térmica de colores: celdas verdes (< 50 %), amarillas (50–70 %), naranjas (70–80 %) y rojas (> 80 %).
-   - Pasar el cursor sobre un servidor crítico (ej. `HW012` o `HW045` en rojo): mostrar el tooltip con ID de nodo, utilización exacta, memoria y procedencia de datos.
-   - Presionar el botón «Actualizar» para evidenciar la sincronización en vivo cada 30 segundos.
-3. En la barra superior, hacer clic en «Red de flujos» (`flows.html`):
-   - Mostrar el lienzo con líneas interconectadas y partículas en movimiento simulando rebalanceo de carga.
-   - Señalar la franja de advertencia técnica: «Propuesta ilustrativa sobre datos simulados. No se ejecuta ninguna acción (`executionAllowed=false`)».
-   - Ajustar los controles interactivos: slider de «Sensibilidad» a 0.8 y «Máx. flujos» a 15. Mostrar cómo se recalculan dinámicamente los flujos propuestos entre servidores sobrecargados y servidores con holgura.
-4. Volver a `dashboard.html` y abrir la pestaña «Reportes y experimento»:
-   - En la tarjeta «Reporte de históricos»: consultar `HW045`, fechas del 2026-07-10 al 2026-07-11.
-   - Clic en «Ver resumen»: mostrar la agregación de muestras procesadas por el Data Processing Service.
-   - Clic en «Descargar CSV»: evidenciar la descarga real del archivo tabular en el navegador.
-   - En la tarjeta «Baseline vs Green AI»: mostrar los KPIs comparativos de riesgo de SLA y energía modelada entre la heurística reactiva tradicional y la optimización Green AI.
-5. Cambiar a la pestaña «Energía y CO₂e»:
-   - Clic en «Calcular con el simulador» (opción 1): mostrar la conversión de series de CPU a potencia modelada según la fórmula física $P = P_{idle} + (P_{max} - P_{idle}) \times CPU$.
-   - Mostrar el cálculo resultante en kWh.
-   - Introducir en el campo «Factor de emisión»: `0.245` kg CO₂e/kWh y fuente «Sistema Eléctrico Interconectado Nacional — MINEM 2025». Mostrar el cálculo resultante de emisiones evitables.
-
-#### Diálogo del Presentador
-- **Leonid Huamán (04:30 – 06:15):**
-  > "Continuando con el Episodio 2, pasamos a las innovaciones funcionales del Segundo Mínimo Viable.
-  > Nos trasladamos a la vista 'Racks con calor'. En esta pantalla transformamos las series temporales en una representación topológica real de centros de datos. Los 50 servidores se distribuyen en cinco racks estándar de 10 unidades cada uno. La visualización utiliza un mapa de calor dinámico donde cada celda representa un nodo físico: los tonos naranjas y rojos advierten de cuellos de botella térmicos y de cómputo. [Leer en pantalla]: actualmente registramos [leer el valor de kpi-high-cpu] nodos por encima del 80 % de carga. Al interactuar con el servidor HW012, el sistema despliega telemetría granular en tiempo real.
-  > Pasamos ahora a la 'Red de flujos', una funcionalidad visual pionera de Green AI. Esta vista mapea un algoritmo heurístico de balanceo de cargas: identifica qué servidores están saturados y proyecta flujos de reasignación hacia nodos fríos con capacidad ociosa. Las partículas animadas representan la transferencia de carga computacional. Destaco fuertemente la leyenda inferior: se trata de una propuesta ilustrativa basada en telemetría simulada; nuestro sistema mantiene por diseño la política `executionAllowed=false`, garantizando que ninguna acción se ejecute automáticamente sin supervisión humana."
-
-- **Jhonny Quintana (06:15 – 08:00):**
-  > "Tomando la palabra, profesor, en la pestaña 'Reportes y experimento' del panel principal, demostramos la persistencia y recuperación histórica gestionada por el microservicio de Data Processing. Ejecutamos una consulta agregada para el servidor HW045 y descargamos el reporte en formato CSV, listo para auditorías operacionales. Asimismo, en el cuadro de experimentación exponemos la comparativa entre la política base reactiva y el enfoque preventivo de Green AI, destacando la reducción de riesgo de degradación de SLA.
-  > Finalmente, en la sección 'Energía y CO₂e', el sistema integra un modelo matemático de potencia lineal donde un servidor en reposo consume el 40 % de su potencia máxima. Al presionar 'Calcular con el simulador', se integran las áreas bajo la curva en kilovatios-hora mediante la regla trapezoidal. [Mirar la pantalla y leer]: obtenemos un consumo modelado de [leer el valor en kWh calculado]. Demostrando nuestra honestidad académica, el impacto de huella de carbono se mantiene como 'no evaluable' hasta que el usuario ingresa un factor de emisión validado con su respectiva fuente bibliográfica, como el factor oficial del SEIN de Perú. Con esto completamos el alcance funcional del PMV2."
-
-#### Resultado Esperado y Plan B
-- **Resultado esperado:** Renderizado sin errores de Racks, animación fluida en Red de flujos, descarga exitosa del CSV y cálculo numérico de kWh.
-- **Plan B si falla:** Si el cálculo de energía con el simulador tarda más de 5 segundos, hacer clic en «Calcular con el ejemplo» (opción 2) que procesa 12 muestras locales precargadas en el cliente y muestra exactamente el mismo flujo matemático.
+| Minuto | En pantalla | Habla | Diálogo |
+|---|---|---|---|
+| 02:36 | Racks con calor, KPI | **Leonid** | «Episodio dos, el PMV2. La vista Racks distribuye los cincuenta servidores en cinco racks. Arriba: «50» nodos sobre el ochenta por ciento y una CPU media de «85,1 %».» |
+| 02:50 | Cuadrícula de racks | **Leonid** | «Cada celda es un servidor y su color indica la carga: verde, amarillo, naranja y rojo por encima del ochenta por ciento.» |
+| 03:00 | Panel de detalle del servidor más cargado | **Leonid** | «Al seleccionar el servidor más cargado vemos su CPU, núcleos, potencia estimada y procedencia.» |
+| 03:13 | Botón «Actualizar» | **Leonid** | «La vista se refresca sola cada treinta segundos.» |
+| 03:20 | Red de flujos | **Leonid** | «La Red de flujos propone cómo mover carga de los servidores saturados a los que tienen holgura. Es una propuesta ilustrativa: el sistema no ejecuta ninguna acción, executionAllowed es falso.» |
+| 03:33 | Sensibilidad 0,8 y 15 flujos | **Leonid** | «Si cambiamos la sensibilidad y el máximo de flujos, la propuesta se recalcula al instante: ahora «15» flujos. Le paso la palabra a Jhonny.» |
+| 03:57 | Reporte de históricos HW045 | **Jhonny** | «Gracias. En Reportes consultamos el histórico del servidor HW045 del diez al once de julio. Data Processing lo lee de Supabase y devuelve el resumen;» |
+| 04:09 | Descarga del CSV | **Jhonny** | «el mismo reporte se descarga en CSV para auditoría.» |
+| 04:16 | Baseline vs Green AI | **Jhonny** | «Aquí comparamos la política reactiva con Green AI en riesgo de SLA y energía. Son datos simulados y energía modelada.» |
+| 04:29 | Energía y CO₂e | **Jhonny** | «En Energía, la potencia se modela como reposo más la parte proporcional a la CPU.» |
+| 04:36 | Resultado del cálculo | **Jhonny** | «Con el simulador obtenemos «7,34 kWh» modelados; con un factor de emisión y su fuente, el sistema calcula el CO₂e. Sin factor, no lo inventa.» |
 
 ---
 
-### EPISODIO 3: PRUEBAS CON DATA MASIVA (08:00 – 11:30)
+### EPISODIO 3: PRUEBAS CON DATA MASIVA (04:59 – 12:57) · Ricardo
 
-#### Datos de la Escena
-- **Minuto inicio:** 08:00 | **Minuto fin:** 11:30 | **Duración:** 3 minutos 30 segundos
-- **Presentador:** Ricardo Porras Veli
-- **Criterio de rúbrica:** Guion del video de software — Episodio 3: Pruebas con data masiva (500 a 1000 transacciones) / Indicador 9 (4 puntos).
+La carga real tarda ~7 min en pantalla: los bloques están repartidos; entre ellos se puede callar mientras avanza el contador.
 
-#### Acción en Pantalla
-1. Cambiar a una ventana de terminal (PowerShell o bash) con fuente grande (16 pt) y fondo oscuro de alto contraste.
-2. Mostrar el comando listo para ejecutar el script desarrollado para la prueba:
-   ```bash
-   python herramientas_IA/video/carga_transacciones.py --login \
-       --gateway https://green-ai-gateway-dev.onrender.com \
-       --iteraciones 200 --concurrencia 3 \
-       --out docs/evidencias/carga-video.csv
-   ```
-3. Explicar brevemente la arquitectura del script antes de presionar Enter:
-   - Señalar que el script utiliza `--login` para autenticarse interactivamente contra Supabase Auth mediante `getpass` sin imprimir credenciales ni exponer el JWT en pantalla.
-   - Explicar la matemática transaccional: 1 transacción inicial de descubrimiento de topología de nodos más 200 iteraciones compuestas cada una por 3 llamadas consecutivas (dataset histórico + predicción ML a 15 min + recomendación bajo políticas), totalizando exactamente **601 transacciones reales** contra el Gateway en Render.
-   - Destacar la concurrencia de 3 workers para respetar la memoria de 512 MB del tier gratuito.
-4. Presionar Enter, ingresar el correo y contraseña (oculta):
-   - Observar cómo se descubren los 50 nodos: `Gateway ... · 50 nodos · 200 iteraciones × 3 = 601 transacciones`.
-   - Mostrar el avance periódico de la consola cada 10 iteraciones.
-5. Finalizada la ejecución, enfocar la tabla final de resumen en la consola:
-   - Señalar las filas: `descubrir_nodos`, `dataset`, `prediccion`, `recomendacion`.
-   - Señalar las columnas: cantidad $n$, respuestas HTTP 200, otros códigos, latencia mediana p50 y percentil 95 (p95).
-   - Mostrar el diccionario de códigos HTTP resultantes y los estados de recomendación (`eligible_for_review`, etc.).
-6. Abrir o mostrar las primeras líneas del archivo generado mediante `head -n 5 docs/evidencias/carga-video.csv` para constatar la persistencia de las métricas.
-7. Alternar al navegador en la pestaña de Prometheus (`/-/targets`) y mostrar que los targets de los microservicios se mantuvieron en estado `UP` durante toda la prueba masiva.
-
-#### Diálogo del Presentador
-- **Ricardo Porras (08:00 – 11:30):**
-  > "Buenas tardes, profesor Jorge Guevara. Mi nombre es Ricardo Porras Veli. En este Episodio 3 abordamos el Indicador 9 de la lista de cotejo, el cual exige demostrar el funcionamiento del software con una carga transaccional masiva de 500 a 1000 transacciones sobre el entorno de calidad en la nube.
-  > Para cumplir con este criterio, ejecutamos el script oficial del proyecto `carga_transacciones.py`. Configuramos 200 iteraciones con concurrencia 3 hacia nuestro API Gateway en Render. Cada iteración ejecuta el flujo completo de la aplicación: solicita la ventana histórica al servicio de Data Processing, infiere la demanda futura a 15 minutos en Prediction y evalúa la política de recomendación. Sumando la consulta inicial de descubrimiento de nodos, la prueba genera exactamente 601 transacciones reales protegidas por token JWT.
-  > Inicio la ejecución con el parámetro `--login`. Ingreso mis credenciales de operador; como observan, la contraseña no se imprime en pantalla y el token permanece exclusivamente en memoria.
-  > Presiono Enter y vemos cómo se inicia el procesamiento concurrente. En la consola observamos el progreso continuo de las peticiones atravesando el Gateway en Go, el cual valida las firmas criptográficas JWKS y distribuye la carga.
-  > [Al finalizar la ejecución, mirar la consola y leer directamente de la tabla final]:
-  > La prueba ha concluido. Observamos en la tabla de la terminal un total de [leer el número total de transacciones registradas, ej. 601] transacciones ejecutadas.
-  > De ellas, [leer el número de respuestas HTTP 200 para predicción y recomendación] respondieron con código exitoso 200.
-  > En cuanto a tiempos de respuesta, la latencia mediana p50 se situó en [leer el valor de p50 ms de la tabla] milisegundos, mientras que el percentil 95 alcanzó [leer el valor de p95 ms de la tabla] milisegundos.
-  > [Si la tabla muestra peticiones con códigos 503 o 504 por latencia de Render o 422 por datos insuficientes, explicar con honestidad]: como podemos constatar, se registraron [leer número de otros códigos] peticiones con código [mencionar 503/504 o 422]. Esto responde fielmente a las condiciones de latencia internacional y límites de memoria del plan gratuito en Render, evidenciando que el software registra con transparencia cualquier eventualidad sin enmascarar los resultados.
-  > Todos los registros han quedado auditados en el archivo CSV `docs/evidencias/carga-video.csv` que muestro en pantalla, y al revisar Prometheus confirmamos que los microservicios se mantuvieron operativos con sus targets en estado UP. Doy paso a Gina Barrera para presentar el Episodio 4."
-
-#### Resultado Esperado y Plan B
-- **Resultado esperado:** 601 transacciones ejecutadas, tabla tabulada con desglose por operación, generación del archivo CSV y targets en Prometheus en estado `UP`.
-- **Plan B si falla:** Si la conexión a Render se interrumpe al inicio por expiración de sesión, verificar las credenciales, reintentar la ejecución y explicar que la prueba valida la tolerancia a fallos del cliente HTTP.
+| Minuto | En pantalla | Diálogo |
+|---|---|---|
+| 04:59 | Terminal con el comando | «Episodio tres: el indicador nueve pide demostrar el software con quinientas a mil transacciones. Ejecutamos el script carga_transacciones contra el Gateway en Render.» |
+| 05:10 | Se escribe correo y contraseña | «Inicio sesión con mi cuenta; la contraseña no se muestra y el token queda solo en memoria.» |
+| 05:25 | «50 nodos · 200 iteraciones × 3 = 601» | «El script descubre los cincuenta servidores y hace doscientas iteraciones. Cada una repite el flujo de la aplicación: pide a Data Processing la ventana de dos horas de CPU, pide a Prediction la estimación a quince minutos y evalúa la recomendación. Con el descubrimiento inicial son seiscientas una transacciones reales, todas con token.» |
+| 06:30 | Contador avanzando | «Usamos tres hilos en paralelo para no saturar los quinientos doce megas de los contenedores gratuitos de Render. Cada diez iteraciones se imprime el avance y cuántas respondieron con código doscientos.» |
+| 08:00 | Contador avanzando | «Cada petición atraviesa el Gateway en Go, que valida la firma del token antes de reenviarla. Todo queda registrado en un CSV con la operación, el código HTTP, la latencia y el servidor.» |
+| 10:00 | Contador avanzando | «Si apareciera un error por el plan gratuito, como un cuatrocientos veintinueve o un quinientos cuatro, quedaría en la tabla tal cual: no repetimos la prueba para maquillarla.» |
+| 12:13 | Tabla final | «Terminó: «601» transacciones en «414» segundos, y «601» con código doscientos. La mediana fue de «892» milisegundos en dataset y de unos «2,7» segundos en predicción y recomendación; el percentil noventa y cinco, «3,5» segundos. Las doscientas recomendaciones quedaron «elegibles para revisión».» |
+| 12:32 | Prometheus, objetivos | «Prometheus muestra los servicios en estado UP después de la carga. Recordamos que la telemetría es simulada: medimos capacidad y latencia, no ahorro de energía. Pasa Gina con las métricas.» |
 
 ---
 
-### EPISODIO 4: PRUEBAS CON MÉTRICAS (11:30 – 15:00)
+### EPISODIO 4: PRUEBAS CON MÉTRICAS (12:57 – 15:46)
 
-#### Datos de la Escena
-- **Minuto inicio:** 11:30 | **Minuto fin:** 15:00 | **Duración:** 3 minutos 30 segundos
-- **Presentadores:** Gina Diana Barrera Peña y Jhonny Cristhian Quintana Carhuaricra
-- **Criterio de rúbrica:** Guion del video de software — Episodio 4: Pruebas con métricas / Indicador 5.
-- **Grabación por partes:** todo se muestra desde el **navegador** (GitHub); no requiere instalar Java, Go, Python ni Docker.
-
-#### Acción en Pantalla
-1. **(Gina)** Abrir en GitHub, rama `main`: `docs/academico/06-prueba-de-concepto.md`, sección «3. Resultados» (`model_comparison.csv` no está en GitHub: `results/metrics/*` está en `.gitignore`). Señalar (validación, 15 min, puntos porcentuales de CPU):
-   * Persistencia: MAE 4,61 | RMSE 6,39
-   * Media móvil: MAE 3,74 | RMSE 5,19
-   * XGBoost: MAE 3,46 | RMSE 4,79
-   * **Random Forest (modelo desplegado): MAE 3,22 | RMSE 4,59** → 30 % mejor que la persistencia y 14 % mejor que la media móvil. En test: MAE 3,85.
-   * Limitación honesta: en picos el error sube a 6,1–8,4 pp.
-2. **(Jhonny)** Abrir GitHub → pestaña **Actions** → workflow **CI** → la última ejecución en `main` con check verde. Mostrar la lista de trabajos aprobados (prediction, data-processing, gateway-go, frontend, monitoring, imagenes-docker) y entrar a uno (p. ej., `prediction`) para enseñar la línea final de pytest con las pruebas aprobadas.
-3. **(Jhonny)** Abrir `docs/academico/08-pruebas-resultados-discusion.md` en GitHub y mostrar la tabla de suites por servicio; luego `docs/evidencias/smoke-20261106.json` para el smoke 14/14.
-4. **(Jhonny)** Abrir `docs/evidencias/prediction-imagen-ligera-20261107.md`: imagen de Prediction 2,85 GB → 510 MB; RAM en reposo 174 → 122–142 MiB (una medición).
-5. **(Gina, opcional, dentro de la franja)** Abrir Prometheus en Render (URL del servicio `green-ai-prometheus-dev` + `/targets`): `green-ai-simulator` UP cada 15 s y `green-ai-prediction` cada 1 min.
-
-#### Diálogo del Presentador
-- **Gina Barrera (11:30 – 13:15):**
-  > "Continuamos con el Episodio 4, enfocado en la sustentación rigurosa de métricas de Machine Learning, calidad de software y eficiencia de infraestructura, respondiendo al Indicador 5 de la rúbrica.
-  > En el ámbito de Inteligencia Artificial, nuestro objetivo fue predecir la demanda de cómputo a 15 minutos. En la tabla comparativa proyectada se evidencia el desempeño de los modelos evaluados. Nuestro modelo de producción, basado en Random Forest, obtuvo en validación un Error Absoluto Medio (MAE) de 3,22 puntos porcentuales de CPU y un RMSE de 4,59 puntos, mientras que en el conjunto de prueba independiente alcanzó un MAE de 3,85.
-  > Esto representa una mejora cuantificable del 30 % frente al modelo de referencia por persistencia y de un 14 % frente a la media móvil. Con total rigor científico, documentamos también la principal limitación del modelo: en escenarios de cambios abruptos o ráfagas inestables de carga, el error se incrementa a rangos de entre 6,1 y 8,4 puntos porcentuales, comportamiento esperado que nuestro motor de políticas compensa mediante márgenes de seguridad."
-
-- **Jhonny Quintana (13:15 – 15:00):**
-  > "En cuanto a la calidad de la ingeniería de software, Green AI no se sustenta en afirmaciones vacías, sino en una cobertura de pruebas automatizadas masiva e integral.
-  > Como se ve en GitHub Actions, cada cambio ejecuta automáticamente las pruebas de todos los servicios; la suma de nuestras suites por componente alcanza 433 pruebas automatizadas: 112 pruebas en el microservicio de Monitoring con JUnit; 12 en el Gateway Java; 30 en el Gateway Go verificadas con `-race` para garantizar la ausencia de colisiones de memoria; 121 en Data Processing; 100 en Prediction; 48 en Frontend y 10 en Simulator. Al sumar las 14 pruebas de contrato de nuestra suite de humo de integración de extremo a extremo, alcanzamos un gran total de 447 comprobaciones automatizadas completamente aprobadas.
-  > Finalmente, en términos de eficiencia de nube, rediseñamos el contenedor de Prediction: redujimos el tamaño de la imagen Docker de 2,85 gigabytes a solo 510 megabytes, y recortamos el uso de memoria RAM en reposo de 174 a 122 megabytes. Esto permitió que el servicio opere de manera estable en los entornos gratuitos de 512 megabytes de Render, con sus targets en estado UP en Prometheus."
-
-#### Resultado Esperado y Plan B
-- **Resultado esperado:** Tablas claras y legibles, desglose de las 433 pruebas por componente más las 14 de smoke (447 totales) sin confusiones matemáticas.
-- **Plan B si falla:** si GitHub Actions no carga, mostrar `docs/academico/08-pruebas-resultados-discusion.md` y `docs/evidencias/smoke-20261106.json`. No ejecutar suites en vivo.
+| Minuto | En pantalla | Habla | Diálogo |
+|---|---|---|---|
+| 12:58 | PoC, «3. Resultados» | **Gina** | «Episodio cuatro. Para predecir la CPU a quince minutos comparamos cuatro modelos. El Random Forest desplegado logra un error absoluto medio de «3,22» puntos y un RMSE de «4,59», frente a «4,61» y «6,39» de la persistencia: treinta por ciento mejor. En picos el error sube, y lo declaramos.» |
+| 13:32 | GitHub Actions, CI | **Jhonny** | «En calidad, cada cambio dispara GitHub Actions, que prueba todos los servicios y construye las imágenes Docker.» |
+| 13:46 | Última ejecución en verde | **Jhonny** | «Aquí la última ejecución en main, con todos los trabajos aprobados.» |
+| 14:06 | Tabla de suites por servicio | **Jhonny** | «Este documento resume las suites por servicio: [leer dos o tres filas de la tabla en pantalla, p. ej. «Monitoring 112 de 112», «Gateway en Go 30 de 30»]. Son pruebas unitarias, de contrato y de integración.» |
+| 14:44 | Smoke 14/14 | **Jhonny** | «La prueba de humo de extremo a extremo pasó «14 de 14» contratos entre microservicios.» |
+| 15:01 | Prediction ligera | **Jhonny** | «Además rediseñamos la imagen de Prediction: de «2,85 gigas» a «510 megas», y bajó su memoria en reposo, en una sola medición.» |
+| 15:25 | Prometheus en Render | **Jhonny** | «Y Prometheus en Render recoge el simulador cada quince segundos y Prediction cada minuto.» |
 
 ---
 
-### EPISODIO 5: PREDICCIONES CON ML DEL PMV1 Y PMV2 (15:00 – 18:30)
+### EPISODIO 5: PREDICCIONES CON ML DEL PMV1 Y PMV2 (15:46 – 17:35) · Gina
 
-#### Datos de la Escena
-- **Minuto inicio:** 15:00 | **Minuto fin:** 18:30 | **Duración:** 3 minutos 30 segundos
-- **Presentador:** Gina Diana Barrera Peña
-- **Criterio de rúbrica:** Guion del video de software — Episodio 5: Pruebas de predicciones con ML del PMV1 y PMV2 / Indicador 10 (3 puntos).
-
-#### Acción en Pantalla
-1. Regresar al navegador en `dashboard.html` y situarse en la pestaña «Predicción y recomendación».
-2. **Demostración del Primer Caso de Uso de ML: Predicción de demanda futura a 15 minutos:**
-   - En los filtros superiores del dashboard, seleccionar el clúster activo en Render y el servidor `HW045`.
-   - Mostrar el botón principal: «Estimar CPU del servidor seleccionado».
-   - Hacer clic en el botón. Observar el estado «Consultando predicción...».
-   - Al recibir la respuesta HTTP 200 desde el Prediction Service a través del Gateway, señalar los datos renderizados:
-     * CPU estimada: [Mirar la pantalla y leer el valor porcentual devuelto, ej. 78,4 %].
-     * Recurso consultado: `node / HW045`.
-     * Instante estimado: Marca de tiempo proyectada a +15 minutos exactos del presente UTC.
-     * Horizonte y modelo: `15m / Random Forest (versión ligera de inferencia)`.
-     * Procedencia de entrada: `simulated`.
-     * Dataset utilizado: Hash o identificador de ventana histórica de 2 horas.
-   - Explicar la lógica interna: El servicio Data Processing recolectó 960 muestras históricas (paso de 15 segundos), generó el vector de características (lags, medias móviles, desviaciones estándar) y el estimador infirió la carga esperada.
-3. **Demostración del Segundo Caso de Uso de ML: Recomendación prescriptiva con restricciones:**
-   - Desplazarse al panel inferior: «Recomendación con restricciones».
-   - Hacer clic en el botón «Usar valores de ejemplo» para poblar el formulario con telemetría fresca:
-     * Memoria: `65 %`
-     * Latencia p95: `120 ms`
-     * Errores: `0.2 %`
-     * Instante: presionar «Usar ahora» para garantizar marca de tiempo actual (menor a la ventana de expiración de 120 segundos).
-     * Procedencia: `Simulada`.
-   - Hacer clic en «Evaluar recomendación».
-   - Mostrar la respuesta generada por el motor de políticas puras (`src/recommendations/policy.py`):
-     * Estado: `eligible_for_review` (Elegible para revisión humana) o el estado que arroje.
-     * Acción propuesta: `review_capacity_increase`, `review_capacity_reduction` o `maintain`.
-     * Restricción de seguridad inviolable: `executionAllowed: false`.
-     * Desglose de verificaciones: Frescura de predicción (`pass`), frescura de telemetría (`pass`), límite de memoria (`pass`), límite de latencia (`pass`) y tasa de error (`pass`).
-4. **Demostración del Manejo de Restricciones y Errores (Resiliencia):**
-   - Modificar intencionalmente el valor de «Memoria» a `95 %` (superando el umbral de seguridad del 85 %) o seleccionar una fecha desfasada en 1 hora.
-   - Clic en «Evaluar recomendación».
-   - Observar cómo el estado cambia inmediatamente a `blocked` o `not_evaluable`, y la acción se fija en `none`.
-
-#### Diálogo del Presentador
-- **Gina Barrera (15:00 – 18:30):**
-  > "En el Episodio 5 presentamos la demostración práctica de los dos casos de uso de Machine Learning integrados en la aplicación web, respondiendo al Indicador 10 de la rúbrica.
-  > En primer lugar, abordamos la predicción de demanda futura de CPU a 15 minutos, correspondiente a la historia HU-03. Selecciono en el panel superior el servidor HW045 y presiono 'Estimar CPU'.
-  > La aplicación web contacta al Gateway, el cual orquesta la llamada al servicio de Data Processing para consolidar la ventana histórica reciente y la envía al microservicio de Prediction. En pantalla observamos el resultado: [leer en vivo el valor de CPU estimada en pantalla, ej. 78,4 % de utilización] proyectada exactamente para dentro de 15 minutos. Se especifican el modelo empleado, el conjunto de características y, crucialmente, la procedencia declarada 'simulated'. Esta capacidad anticipatoria permite al operador actuar antes de que un servidor entre en saturación térmica o computacional.
-  > Pasamos ahora al segundo caso de uso: la generación de recomendaciones operacionales bajo restricciones multidimensionales, según las historias HU-06 y HU-08. Un pronóstico aislado no es suficiente para operar infraestructura crítica; se requiere verificar la salud integral del nodo.
-  > Cargamos telemetría con valores de operación normales: 65 % de memoria, 120 milisegundos de latencia y 0.2 % de errores. Al presionar 'Evaluar recomendación', el motor de políticas ejecuta las compuertas de seguridad. Como todas las condiciones se cumplen, el estado resultante es [leer en pantalla el estado devuelto, ej. eligible_for_review] y se sugiere la acción [leer la acción propuesta]. Resalto el campo clave `executionAllowed=false`: por diseño de seguridad, Green AI nunca aplica cambios autónomos sin autorización.
-  > Si forzamos una violación de políticas —por ejemplo, elevando la memoria al 95 %—, observen cómo el sistema bloquea inmediatamente la recomendación, arrojando estado `blocked`. Con esto demostramos la madurez de la integración entre Machine Learning y gobernanza de software."
-
-#### Resultado Esperado y Plan B
-- **Resultado esperado:** Predicción numérica devuelta en tiempo real con procedencia `estimated`, recomendación evaluada con bloqueo `executionAllowed: false` y comportamiento correcto ante violación de políticas.
-- **Plan B si falla:** Si la llamada devuelve HTTP 422 `INSUFFICIENT_DATA` porque el simulador en Render se reinició recientemente y acumula menos de 20 minutos de historial, explicar al profesor en cámara que este es exactamente el comportamiento de protección diseñado: el modelo rehúsa inferir sobre ventanas incompletas para evitar alucinaciones numéricas. Luego, demostrar la recomendación utilizando telemetría de ejemplo.
+| Minuto | En pantalla | Diálogo |
+|---|---|---|
+| 15:46 | Pestaña «Predicción y recomendación», HW045 | «Episodio cinco, los dos casos de uso de Machine Learning. Primero, la predicción de CPU a quince minutos, historia HU-03, para el servidor HW045.» |
+| 15:55 | Resultado de la predicción | «El Gateway pide a Data Processing la ventana histórica y Prediction estima «59,44 %» para dentro de quince minutos. Se indica el modelo, el instante y la procedencia: datos simulados, valor estimado.» |
+| 16:25 | Formulario de recomendación | «Segundo caso, HU-06: una predicción sola no basta para operar.» |
+| 16:30 | Valores de ejemplo | «Cargamos memoria al sesenta y cinco por ciento, latencia de ciento veinte milisegundos y errores del cero coma dos.» |
+| 16:40 | Respuesta de la recomendación | «El motor de políticas revisa cada restricción y devuelve [leer el estado y la acción en pantalla]. Siempre con executionAllowed en falso: un humano decide.» |
+| 17:01 | Memoria 95 % | «Ahora forzamos una violación: memoria al noventa y cinco por ciento, por encima del umbral de ochenta y cinco.» |
+| 17:08 | Nueva respuesta | «La respuesta cambia a [leer el estado en pantalla]: el sistema no recomienda actuar si no se cumplen las restricciones.» |
 
 ---
 
-### EPISODIO 6: DEMOSTRACIÓN DEL TABLERO TRELLO Y CONTENIDOS (18:30 – 21:00)
+### EPISODIO 6: TABLERO TRELLO Y CONTENIDOS (17:35 – 19:46)
 
-#### Datos de la Escena
-- **Minuto inicio:** 18:30 | **Minuto fin:** 21:00 | **Duración:** 2 minutos 30 segundos
-- **Presentadores:** Gina Diana Barrera Peña (Scrum Master) y Jhonny Cristhian Quintana Carhuaricra (Product Owner)
-- **Criterio de rúbrica:** Guion del video de software — Episodio 6: Demostración del tablero Trello y contenidos / Indicadores 4 y 11.
-
-#### Acción en Pantalla
-1. Cambiar a la pestaña del navegador con el tablero oficial de Trello del proyecto Green AI.
-2. Mostrar la estructura completa del tablero Kanban / Scrum:
-   - Columnas visibles: Product Backlog, Sprint Planning (Sprint 3 / Unidad III), In Progress, Code Review / QA, Done (Completado) e Impediments / Retrospective.
-3. Señalar la organización de las Historias de Usuario:
-   - Etiquetas por épica y PMV: Etiquetas para PMV1 (HU-01 Visualizar métricas, HU-02 Históricos, HU-15 Registro), etiquetas para PMV2 (HU-03 Predicción, HU-06 Recomendaciones, HU-09 Energía, HU-11 Dashboard) y etiquetas de arquitectura (Hexagonal, Docker Slim, Supabase Auth).
-4. Abrir la tarjeta de una Historia de Usuario central, por ejemplo HU-03 («Predicción de demanda a 15 minutos»):
-   - Mostrar la descripción formal redactada bajo la estructura estándar: Como [rol], Quiero [funcionalidad], Para [beneficio de negocio].
-   - Mostrar los Criterios de Aceptación redactados en sintaxis Gherkin (Given / When / Then).
-   - Mostrar la lista de chequeo interna (Checklist) con tareas técnicas: desarrollo de puerto, implementación de adaptador, suite de pruebas unitarias y verificación de no fuga de datos.
-   - Mostrar los enlaces cruzados a los Pull Requests cerrados en GitHub y capturas de evidencia adjuntas.
-5. Abrir la tarjeta de HU-06 («Recomendación con restricciones») o HU-14 («Control de acceso basado en roles RBAC»):
-   - Mostrar la trazabilidad del criterio de aceptación contra la prueba automatizada que lo verifica.
-
-#### Diálogo del Presentador
-- **Gina Barrera (18:30 – 19:45):**
-  > "En el Episodio 6 sustentamos la gestión ágil de la ingeniería de producto a través de nuestro tablero oficial en Trello, cumpliendo con los lineamientos de la metodología Scrum y el flujo Kanban exigidos en la rúbrica.
-  > Como Scrum Master, he facilitado la planificación y seguimiento de los sprints. Nuestro tablero refleja la trazabilidad completa del ciclo de vida del software. En las columnas de la izquierda gestionamos el Product Backlog priorizado por valor de negocio y deuda técnica.
-  > Hacia la derecha documentamos el flujo de valor: tareas en curso, revisión de código entre pares y la columna 'Done', la cual solo admite historias que cumplan estrictamente nuestra Definición de Terminado (Definition of Done): código en la rama `test`, pruebas unitarias aprobadas, documentación actualizada y despliegue exitoso en la nube."
-
-- **Jhonny Quintana (19:45 – 21:00):**
-  > "Complementando desde la perspectiva de producto, abro la tarjeta de la historia HU-03, correspondiente a la predicción de demanda.
-  > Como se observa, cada historia cuenta con una definición formal del usuario y criterios de aceptación rigurosos en formato Given/When/Then. Por ejemplo: 'Dado un conjunto de telemetría reciente con ventana válida de 2 horas, cuando el operador solicita la estimación a 15 minutos, entonces el sistema retorna un valor con procedencia declarada estimated y código 200'.
-  > Cada criterio está directamente vinculado a una prueba de contrato automatizada en nuestro repositorio de GitHub. De igual modo, gestionamos historias de infraestructura como la reducción de las imágenes Docker y la implementación de roles en Supabase. Este nivel de trazabilidad asegura que ningún entregable del software carezca de sustento y validación funcional."
-
-#### Resultado Esperado y Plan B
-- **Resultado esperado:** Tablero Trello fluido, tarjetas bien documentadas con criterios Given/When/Then legibles y visualización de checklists completos.
-- **Plan B si falla:** Si Trello experimenta demoras de carga de red, mostrar la matriz completa de historias de usuario y criterios de aceptación documentada en la Sección 2 de `docs/academico/08-pruebas-resultados-discusion.md`.
+| Minuto | En pantalla | Habla | Diálogo |
+|---|---|---|---|
+| 17:40 | Tablero completo, desplazamiento lateral | **Gina** | «Episodio seis, la gestión ágil. Nuestro tablero tiene el Product Backlog, el Sprint Backlog, el refinamiento con expertos, To Do, In Progress, QA y Done, y además los roles de Scrum, los Daily, la Sprint Review y la retrospectiva. Las historias avanzan por columnas según nuestra definición de terminado.» |
+| 18:18 | Tarjeta HU-03 | **Jhonny** | «Abro la historia HU-03, la predicción de demanda. Tiene la historia de usuario, el alcance, los criterios de aceptación, los miembros, las etiquetas del PMV y los comentarios de avance de cada integrante.» |
+| 19:01 | Tarjeta HU-06 | **Jhonny** | «Y la HU-06, las recomendaciones con restricciones, con la misma estructura. Cada criterio se comprueba con pruebas automatizadas en el repositorio.» |
 
 ---
 
-### EPISODIO 7: CUMPLIMIENTO DE ARQUITECTURA HEXAGONAL Y PROCEDIMIENTOS ALMACENADOS (21:00 – 24:00)
+### EPISODIO 7: ARQUITECTURA HEXAGONAL Y PROCEDIMIENTOS ALMACENADOS (19:46 – 23:41) · Ricardo
 
-#### Datos de la Escena
-- **Minuto inicio:** 21:00 | **Minuto fin:** 24:00 | **Duración:** 3 minutos 00 segundos
-- **Presentador:** Ricardo Porras Veli
-- **Criterio de rúbrica:** Guion del video de software — Episodio 7: Cumplimiento de arquitectura hexagonal con código en GitHub y procedimientos almacenados / Indicador 11 (3 puntos).
-
-#### Acción en Pantalla
-1. Cambiar a la pestaña del navegador con el repositorio en GitHub: `https://github.com/woshtsu/green-ai-workspace-cld` en la rama `test`.
-2. **Demostración de Arquitectura Hexagonal en el Servicio 1: `software/data-processing`:**
-   - Navegar a `software/data-processing`:
-     * Mostrar la carpeta `domain/`: abrir `domain/ports/historical_logs_source.py`. Resaltar que es una clase abstracta pura (`HistoricalLogsSource`) sin dependencias de base de datos ni frameworks externos.
-     * Mostrar la carpeta `application/`: abrir `application/use_cases/read_historical_logs.py`. Mostrar cómo el caso de uso orquesta la lógica de negocio interactuando únicamente a través del puerto.
-     * Mostrar la carpeta `infrastructure/adapters/`: mostrar `infrastructure/historical_sources.py` (patrón Factory) y los dos adaptadores concretos: `sqlite_historical_logs_adapter.py` (para desarrollo local) y `supabase_historical_logs_adapter.py` (para producción en la nube).
-     * Destacar: El dominio jamás importa infraestructura; la infraestructura implementa los puertos del dominio (inversión de dependencias).
-3. **Demostración de Arquitectura Hexagonal en el Servicio 2: `software/monitoring` (Java 21):**
-   - Navegar a `software/monitoring/src/main/java/pe/edu/continental/greenai/monitoring`:
-     * Carpeta `domain/`: entidades `MetricDefinition` y `MetricData`.
-     * Carpeta `application/port/in/`: interfaz de caso de uso `QueryMetrics.java`.
-     * Carpeta `application/port/out/`: puerto de salida `MetricsSource.java`.
-     * Carpeta `adapter/in/web/`: controlador REST `MetricsController.java` (adaptador primario).
-     * Carpeta `adapter/out/prometheus/`: cliente HTTP de Prometheus (adaptador secundario).
-     * Carpeta `adapter/out/fixture/`: adaptador de fixture para pruebas desacopladas de red.
-4. **Demostración de Procedimientos Almacenados y Triggers en Supabase:**
-   - Abrir el archivo `software/frontend/supabase-auth-setup.sql` en GitHub:
-     * Líneas 45 a 66: Mostrar la función PL/pgSQL `public.handle_new_auth_user()` con directiva `security definer`. Explicar que se activa automáticamente mediante el trigger `on_auth_user_created_green_ai` tras cada inserción en `auth.users`, aprovisionando el perfil y asignando el rol predeterminado `OPERATOR`.
-     * Líneas 79 a 100: Mostrar la función almacenada de Auth Hook `public.custom_access_token_hook(event jsonb)` que extrae el rol de la tabla `user_roles` e inyecta dinámicamente el claim `{user_role}` en el token JWT que el Gateway valida vía JWKS.
-5. **Demostración de Integración Continua (CI/CD):**
-   - Navegar a la pestaña «Actions» de GitHub:
-     * Mostrar el pipeline `.github/workflows/ci.yml`: ejecución automatizada de las suites de pruebas ante cada push a la rama `test`.
-     * Mostrar el pipeline `.github/workflows/pages.yml`: despliegue continuo del frontend estático hacia GitHub Pages.
-
-#### Diálogo del Presentador
-- **Ricardo Porras (21:00 – 24:00):**
-  > "En el Episodio 7 auditamos el cumplimiento estricto del Indicador 11 de la rúbrica: arquitectura hexagonal por microservicio, uso de procedimientos almacenados en base de datos e integración continua en GitHub.
-  > Como se observa en nuestro repositorio en la rama `test`, la arquitectura hexagonal o de puertos y adaptadores es una realidad implementada en el código, no un diagrama teórico.
-  > En el servicio `data-processing`, en Python, exploramos la capa `domain/ports`: aquí reside la abstracción pura `HistoricalLogsSource`. La capa de aplicación utiliza este puerto sin conocer cómo se almacenan los datos. En `infrastructure/adapters` encontramos los adaptadores reales: uno para SQLite en desarrollo y otro para Supabase mediante API REST en la nube. Una factoría selecciona el adaptador en tiempo de arranque según las variables de entorno, sin alterar una sola línea de lógica de negocio.
-  > Lo mismo se replica en el servicio de `monitoring` desarrollado en Java 21 con Spring Boot: en `application/port/in` definimos la interfaz `QueryMetrics`, mientras que en `adapter/out` desacoplamos la recolección de métricas entre el cliente real de Prometheus y un adaptador de fixture para aislamiento de pruebas.
-  > Respecto al uso de procedimientos almacenados, mostramos en el archivo `supabase-auth-setup.sql` la función PL/pgSQL `handle_new_auth_user()`. Esta función opera como un trigger transaccional con privilegios `security definer`: cada vez que un usuario se registra en Supabase Auth, el trigger inicializa de forma atómica su perfil y le asigna el rol `OPERATOR` en la tabla `user_roles` protegida por políticas RLS. Asimismo, la función `custom_access_token_hook` intercepta la emisión de tokens para incrustar el rol en el JWT.
-  > Finalmente, en GitHub Actions evidenciamos nuestros flujos de CI/CD: cada cambio enviado a la rama `test` dispara la compilación y validación de las suites de prueba de todos los componentes antes de permitir cualquier despliegue. Doy pase a mis compañeros para el cierre."
-
-#### Resultado Esperado y Plan B
-- **Resultado esperado:** Navegación fluida por el árbol de archivos en GitHub, explicación precisa de puertos y adaptadores, visualización del código SQL y flujos de GitHub Actions en verde.
-- **Plan B si falla:** Si GitHub experimenta lentitud de carga, abrir los mismos archivos directamente en el entorno de desarrollo local (VS Code / terminal) que mantiene copia exacta sincronizada con la rama `test`.
+| Minuto | En pantalla | Diálogo |
+|---|---|---|
+| 19:47 | `data-processing` en GitHub | «Episodio siete, el indicador once. La arquitectura hexagonal está en el código. En Data Processing, en Python, las capas son dominio, aplicación e infraestructura.» |
+| 20:01 | `domain/ports/historical_logs_source.py` | «En el dominio está el puerto HistoricalLogsSource: una interfaz pura, sin base de datos ni frameworks.» |
+| 20:21 | `read_historical_logs.py` | «El caso de uso de la capa de aplicación solo conoce ese puerto; no sabe de dónde vienen los datos.» |
+| 20:42 | `historical_sources.py` | «Una factoría elige el adaptador al arrancar, según la variable HISTORICAL_SOURCE.» |
+| 20:59 | Carpeta de adaptadores | «Y aquí los adaptadores: SQLite para desarrollo y Supabase para la nube, que es el que usamos en el episodio dos.» |
+| 21:12 | `monitoring` en Java | «El servicio Monitoring, en Java 21, sigue el mismo patrón:» |
+| 21:26 | `QueryMetrics.java` | «QueryMetrics es el puerto de entrada,» |
+| 21:40 | `MetricsSource.java` | «MetricsSource el de salida,» |
+| 21:54 | `adapter/out` | «y en adapter out están el adaptador de Prometheus y uno de fixture para las pruebas.» |
+| 22:08 | SQL, líneas 45–66 | «Sobre procedimientos almacenados: en Supabase, la función PL/pgSQL handle_new_auth_user se dispara con un trigger cada vez que alguien se registra, y le crea el perfil y el rol OPERATOR.» |
+| 22:34 | SQL, líneas 79–104 | «Y custom_access_token_hook lee el rol de la base de datos y lo inyecta en el token JWT que luego valida el Gateway.» |
+| 23:00 | `ci.yml` | «Por último, la integración continua: este workflow prueba todos los servicios en cada cambio,» |
+| 23:19 | GitHub Actions | «y GitHub Actions despliega el frontend en GitHub Pages.» |
 
 ---
 
-### CIERRE, CRÉDITOS Y MATRIZ DE RÚBRICA (24:00 – 25:00)
+### CIERRE (23:41 – 24:28)
 
-#### Datos de la Escena
-- **Minuto inicio:** 24:00 | **Minuto fin:** 25:00 | **Duración:** 1 minuto 00 segundos
-- **Presentadores:** Los 4 integrantes (Jhonny Quintana, Gina Barrera, Leonid Huamán, Ricardo Porras)
-- **Cámaras:** cada integrante graba su frase en un clip propio (clip 09); en la edición se muestran los 4 rostros en mosaico 2×2 durante los últimos 10 s.
-- **Criterio de rúbrica:** Guion del video de software — Cierre, participación de todos los integrantes con cámara y duración reglamentaria (25 minutos).
-
-#### Acción en Pantalla
-1. Mostrar la diapositiva final o matriz resumen de cumplimiento de la rúbrica:
-   - Tabla que mapea los 11 indicadores de la guía de Semana 12 contra las evidencias demostradas en el video.
-   - Enlace y código QR de acceso al repositorio público en GitHub.
-   - Enlace y código QR de acceso a la aplicación desplegada en GitHub Pages.
-2. Mosaico 2×2 con los 4 integrantes despidiéndose a cámara (montado en la edición a partir de los clips 09).
-
-#### Diálogo del Presentador
-- **Jhonny Quintana (24:00 – 24:20):**
-  > "Para concluir, profesor Guevara, hemos demostrado el cumplimiento integral de los requerimientos funcionales, arquitecturales y experimentales de la Unidad III para el PMV1 y PMV2. En pantalla dejamos la matriz de trazabilidad con los minutos exactos de cada demostración."
-
-- **Gina Barrera (24:20 – 24:35):**
-  > "Validamos nuestros modelos de Machine Learning con métricas reales de MAE y RMSE, manteniendo siempre una postura de absoluta honestidad académica frente a los datos simulados de telemetría."
-
-- **Leonid Huamán (24:35 – 24:45):**
-  > "El frontend y la observabilidad operan de forma fluida sobre la nube en GitHub Pages y Render, brindando una experiencia moderna y resiliente."
-
-- **Ricardo Porras (24:45 – 25:00):**
-  > "Y el backend sostiene una arquitectura hexagonal estricta con alta capacidad transaccional y seguridad perimetral. Agradecemos su atención y quedamos a su disposición. Muchas gracias."
+| Minuto | En pantalla | Habla | Diálogo |
+|---|---|---|---|
+| 23:41 | Indicadores con su minuto | **Jhonny** | «Para cerrar, en pantalla queda el minuto exacto donde se demuestra cada indicador de la rúbrica.» |
+| 23:50 | | **Gina** | «Todo con datos simulados declarados y métricas reales del modelo.» |
+| 23:57 | QR del repositorio y de la app | **Leonid** | «Aquí están los enlaces al código y a la aplicación en la nube.» |
+| 24:04 | | **Gina** | «Pueden revisarlos con estos códigos QR.» |
+| 24:11 | Agradecimiento | **Ricardo** | «Gracias por su atención, profesor.» |
+| 24:15 | Mosaico 2×2 | **Los 4** | «¡Muchas gracias!» |
 
 ---
 
@@ -642,6 +401,8 @@ Para respaldar las explicaciones del Episodio 4, se consolidan aquí los valores
 *Nota técnica de limitación:* Durante regímenes de carga dinámica no estacionaria (picos de utilización repentinos simulados), el error puntual MAE asciende a rangos de entre 6,1 y 8,4 puntos porcentuales de CPU. Este margen es asumido y mitigado por los umbrales de seguridad de la política de recomendación.
 
 ### 6.2 Inventario y Suma Exacta de Pruebas Automatizadas
+
+> **Ojo (10/11/2026):** en el video (Ep. 4, 14:06) se ve la tabla de `docs/academico/08-pruebas-resultados-discusion.md`, con otras cifras (Gateway Java 11, Data Processing 114, Prediction 96, Frontend 13). Esta tabla 6.2 y ese documento no coinciden: no decir «433» ni «447» en la locución; leer solo lo que sale en pantalla. Pendiente: actualizar el documento 08 con los conteos actuales y verificarlos.
 
 | Componente del Sistema | Tecnología de Prueba | Casos Aprobados | Foco de Verificación |
 |---|---|---|---|
@@ -764,12 +525,12 @@ Esta tabla permite al docente y evaluadores contrastar de manera directa cada in
 
 | Indicador de la Rúbrica (Semana 12) | Puntaje | Episodio del Video | Minuto en Video | Evidencia Demostrada en Pantalla |
 |---|---|---|---|---|
-| **Indicador 9:** Demostración con datos (500 a 1000 transacciones) del PMV1 y PMV2 sobre entorno de calidad. | 4 pts | Episodio 1, 2 y 3 | 01:30 – 11:30 | Operación del frontend en GitHub Pages; ejecución en vivo de 601 transacciones con `carga_transacciones.py` contra Render, lectura en vivo de percentiles p50/p95 y auditoría en CSV. |
-| **Indicador 10:** Demostración con datos de integración con ML (1.er y 2.º caso de uso predictivo en calidad). | 3 pts | Episodio 5 | 15:00 – 18:30 | Caso 1: Estimación de demanda a 15 min con Random Forest sobre ventana histórica. Caso 2: Recomendación bajo políticas con `executionAllowed=false`. |
-| **Indicador 11:** Demostración de arquitectura hexagonal, procedimientos almacenados en GitHub y Kanban. | 3 pts | Episodio 6 y 7 | 18:30 – 24:00 | Tablero Trello completo; inspección en GitHub de capas domain/application/adapters de 2 servicios; triggers PL/pgSQL y CI/CD. |
-| **Guion de software:** Carátula con nombre del proyecto e integrantes completos. | Requisito | Introducción | 00:00 – 01:30 | Carátula formal con logo UC, nombre de asignatura, docente, proyecto y 4 integrantes con sus roles. |
-| **Guion de software:** Participación del 100 % de integrantes con cámara y nombre completo. | Requisito | Todo el video | 00:00 – 25:00 | Cámara web activa de los 4 estudiantes a lo largo de toda la exposición; rótulos identificadores en cada transición. |
-| **Guion de software:** Duración estimada del video entre 20 y 30 minutos. | Requisito | Video global | 25:00 exactos | Cronometraje ajustado a 25 minutos exactos, respetando los límites de la guía docente. |
+| **Indicador 9:** Demostración con datos (500 a 1000 transacciones) del PMV1 y PMV2 sobre entorno de calidad. | 4 pts | Episodio 1, 2 y 3 | 00:46 – 12:57 | Operación del frontend en GitHub Pages; ejecución en vivo de 601 transacciones con `carga_transacciones.py` contra Render, lectura en vivo de percentiles p50/p95 y auditoría en CSV. |
+| **Indicador 10:** Demostración con datos de integración con ML (1.er y 2.º caso de uso predictivo en calidad). | 3 pts | Episodio 5 | 15:46 – 17:35 | Caso 1: Estimación de demanda a 15 min con Random Forest sobre ventana histórica. Caso 2: Recomendación bajo políticas con `executionAllowed=false`. |
+| **Indicador 11:** Demostración de arquitectura hexagonal, procedimientos almacenados en GitHub y Kanban. | 3 pts | Episodio 6 y 7 | 17:35 – 23:41 | Tablero Trello completo; inspección en GitHub de capas domain/application/adapters de 2 servicios; triggers PL/pgSQL y CI/CD. |
+| **Guion de software:** Carátula con nombre del proyecto e integrantes completos. | Requisito | Carátula | 00:00 – 00:46 | Carátula con universidad, asignatura, docente, proyecto y 4 integrantes con sus roles. |
+| **Guion de software:** Participación del 100 % de integrantes con cámara y nombre completo. | Requisito | Todo el video | 00:00 – 24:28 | Voz y cámara de los 4 encima del video, con rótulo de nombre completo en cada tramo (sección 0.5). |
+| **Guion de software:** Duración estimada del video entre 20 y 30 minutos. | Requisito | Video global | 24:28 | Video montado de 24:28, respetando los límites de la guía docente. |
 
 ---
 
@@ -808,15 +569,15 @@ Esta tabla permite al docente y evaluadores contrastar de manera directa cada in
    - En la descripción de YouTube:
      * Copiar la tabla de marcas de tiempo (Timestamps) para navegación automática:
        ```text
-       00:00 Carátula e Introducción Institucional
-       01:30 Episodio 1: Pruebas funcionales del PMV1
-       04:30 Episodio 2: Pruebas funcionales del PMV2
-       08:00 Episodio 3: Pruebas con data masiva (601 transacciones)
-       11:30 Episodio 4: Pruebas con métricas (ML, pruebas y Docker)
-       15:00 Episodio 5: Predicciones con ML del PMV1 y PMV2
-       18:30 Episodio 6: Tablero Trello y contenidos ágiles
-       21:00 Episodio 7: Arquitectura hexagonal y procedimientos SQL
-       24:00 Cierre y conclusiones
+       00:00 Carátula e integrantes
+       00:46 Episodio 1: Pruebas funcionales del PMV1
+       02:35 Episodio 2: Pruebas funcionales del PMV2
+       04:59 Episodio 3: Pruebas con data masiva (601 transacciones)
+       12:57 Episodio 4: Pruebas con métricas
+       15:46 Episodio 5: Predicciones con ML del PMV1 y PMV2
+       17:35 Episodio 6: Tablero Trello y contenidos
+       19:46 Episodio 7: Arquitectura hexagonal y procedimientos almacenados
+       23:41 Cierre
        ```
      * Incluir los enlaces al repositorio en GitHub y a la aplicación en GitHub Pages.
 2. **Generación del Código QR:**
