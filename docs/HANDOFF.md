@@ -375,3 +375,7 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - `git merge origin/test` (trae el PR #6) → 857c82c; push a `origin/test` autorizado por el usuario (con el token de woshtsu, sin cambiar la cuenta activa de gh). `origin/test` = `test`.
 - En el remoto están `exportados/semana13/` (informe corregido .docx, semana 13 .docx y modelo FURPS+ .xlsx) y el PDF de semana 12. `exportados/video/` sigue ignorado (el video va a Drive).
 - Worktree `../green-ai-s7` y rama local `sprint7/7.2-proceso-pr` eliminados (ya fusionada).
+
+## 12/11/2026 (13:00) — Enlace del video y PDF
+- Anexo A: enlace del video en Google Drive (carpeta) dado por el usuario; recuadro PENDIENTE-EQUIPO retirado; Anexo C 7.2 «Atendido».
+- Word reexportado (117 páginas) y PDF generado con Word (`ExportAsFixedFormat`, marcadores desde títulos): `exportados/semana13/Porras-Huaman-Barrera-Quintana-informe-unidad-III-CORREGIDO.pdf`, 117 páginas, enlace en la p. 108. Único pendiente en el texto: NRC-PENDIENTE (portada).

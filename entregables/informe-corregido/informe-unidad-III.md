@@ -1787,9 +1787,7 @@ El PMV3 se reenfocó en los procesos de ingeniería (desarrollo con PR revisados
 * **Repositorio oficial monorepo del proyecto:** https://github.com/woshtsu/green-ai-workspace-cld
 * **Frontend web de desarrollo desplegado (GitHub Pages):** https://woshtsu.github.io/green-ai-workspace-cld/dev/
 * **API Gateway perimetral desplegado (Render):** https://green-ai-gateway-dev.onrender.com
-* Video de sustentación: ver el recuadro siguiente.
-
-PENDIENTE-EQUIPO: enlace del video de sustentación de la Unidad III. El video está grabado y en edición; el equipo lo subirá a Google Drive y pegará aquí el enlace (con permiso de lectura para el docente) antes de la entrega.
+* **Video de sustentación de la Unidad III (Google Drive):** https://drive.google.com/drive/folders/16ttIT6vfV2NXIxz0k5bjwtlNyJETCkQj?usp=drive_link
 
 * **Formulario de consulta con el experto temático:**
   https://drive.google.com/file/d/1bRDtlPNSknHKYgtX5wHdiWbGDrtZlgeG/view?usp=drive_link
@@ -2037,5 +2035,5 @@ Tabla 35. Atención de las observaciones del docente
 | 5.1 a 5.3 Pruebas por PMV, vinculadas a HU y criterios de aceptación | §VIII.2, Tabla 28 (PMV1 y PMV2) y Tabla 30 (PMV3) | Atendida parcialmente: faltan las capturas de evidencia (C301 a C311) y la ejecución de las verificaciones del PMV3 |
 | 6. Discusión con el marco teórico y antecedentes | §VIII.5, Tabla 34 | Atendida |
 | 7.1 Citas y referencias ISO | Referencias bibliográficas (ISO 690-2 numérico) | Atendida |
-| 7.2 Video de sustentación | Anexo A | Pendiente: video grabado y en edición; el equipo agregará el enlace de Google Drive en el Anexo A |
+| 7.2 Video de sustentación | Anexo A | Atendido: video publicado en Google Drive (enlace en el Anexo A) |
 | 7.3 Tablero Trello (estado real, evidencias, PMVn-HUxx) | §VII.6 y guía de Trello | Atendida parcialmente: depende de que el equipo aplique la guía; faltan capturas (C201 a C204, C312, C313) |
