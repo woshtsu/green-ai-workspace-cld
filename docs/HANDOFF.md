@@ -399,4 +399,4 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Responsables OWASP iguales en el Word y el Excel (antes diferían): OW-A01 Ricardo (con el dueño de Supabase) 23/11; OW-A04 Gina (con el dueño de Supabase, por el Excel del dataset) 23/11; OW-A06 y OW-A09 Ricardo 23/11; OW-A07 Leonid 30/11; OW-A10 Ricardo 30/11. Los FURPS+ ya coincidían con 01_auditoria_furps.md.
 - Nuevo `entregables/semana13/REVISION-POR-INTEGRANTE.md`: qué secciones del Word, filas del Excel y documentos 01–08 revisa y confirma cada integrante, con una tabla de confirmación. El plazo lo fija Gina.
 - Reexportados: Excel (198 / 208 / 244 de 250, sin cambios) y Word (40 págs.). Revisada en el PDF la página de la tabla de roles.
-- Pendiente de decisión del usuario: mover `docs/calidad/01–08` a `docs/` (la guía pide `./docs`).
+- Decisión del usuario: `docs/calidad/01–08` se quedan en `docs/calidad/` (no se mueven a `docs/`).
