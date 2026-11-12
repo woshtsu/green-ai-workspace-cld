@@ -55,7 +55,7 @@ El plan se organiza en tres olas de trabajo sincronizadas con el calendario acad
                                          |
                                          v
 +-----------------------------------------------------------------------------------+
-| OLA 2: Sprint 7 (17/11/2026 - 28/11/2026)                                         |
+| OLA 2: Sprint 7 (17/11/2026 - 23/11/2026)                                         |
 | Funcionalidades Críticas, Seguridad, Despliegue y Mantenibilidad                  |
 | -> M-F07: Aprobación humana persistida HU-07 (Ricardo Porras Veli)                |
 | -> M-F11: Generación de reporte PDF formal HU-13 (Jhonny Quintana Carhuaricra)   |
@@ -69,7 +69,7 @@ El plan se organiza en tres olas de trabajo sincronizadas con el calendario acad
                                          |
                                          v
 +-----------------------------------------------------------------------------------+
-| OLA 3: Sprint 8 (01/12/2026 - 12/12/2026)                                         |
+| OLA 3: Sprint 8 (24/11/2026 - 30/11/2026)                                         |
 | Optimizaciones Finales, Ergonomía y Gestión de Hosting                            |
 | -> M-F08: Energía y CO2e con factores certificados (Gina Barrera Peña)            |
 | -> M-U08: Flujo de energía optimizado en <= 3 pasos (Leonid Huamán)               |

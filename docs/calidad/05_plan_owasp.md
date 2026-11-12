@@ -28,8 +28,8 @@ La remediación se organiza en tres olas de trabajo sucesivas, respetando la pri
 | Ola | Periodo | Alcance y Hallazgos | Responsable Principal |
 |---|---|---|---|
 | **Ola 1** | Semana 13 (07–09/11/2026) | Cabeceras HTTP Nginx (OW-06, OW-07), SRI en scripts externos (OW-08) y fijación de GitHub Actions por SHA (OW-10). CSP queda reservado para Ola 2. | Ricardo Porras Veli (con apoyo de Claude) |
-| **Ola 2** | Sprint 7 (17–28/11/2026) | Revisión de RLS y retiro de columna password en Supabase (OW-01, OW-03), rate limiting en Gateway (OW-05), registro y métricas 401/403 (OW-12), CSP por meta etiqueta. | Administrador de Supabase (BD) / Ricardo Porras Veli (Gateway y Frontend) |
-| **Ola 3** | Sprint 8 (01–12/12/2026) | Migración/mitigación de sesión en almacenamiento local (OW-09), digest SHA256 en Dockerfiles (OW-11), aislamiento de puertos locales (OW-02), retiro de contraseñas de dataset Excel (OW-04). | Ricardo Porras Veli / Equipo DevOps y Backend |
+| **Ola 2** | Sprint 7 (17–23/11/2026) | Revisión de RLS y retiro de columna password en Supabase (OW-01, OW-03), rate limiting en Gateway (OW-05), registro y métricas 401/403 (OW-12), CSP por meta etiqueta. | Administrador de Supabase (BD) / Ricardo Porras Veli (Gateway y Frontend) |
+| **Ola 3** | Sprint 8 (24–30/11/2026) | Migración/mitigación de sesión en almacenamiento local (OW-09), digest SHA256 en Dockerfiles (OW-11), aislamiento de puertos locales (OW-02), retiro de contraseñas de dataset Excel (OW-04). | Ricardo Porras Veli / Equipo DevOps y Backend |
 
 ---
 
@@ -50,7 +50,7 @@ La remediación se organiza en tres olas de trabajo sucesivas, respetando la pri
   Confirmar que ninguna directiva contenga `cmd = 'ALL'` combinado con `roles = '{public}'` y `qual = 'true'`.
 * **Estrategia de rollback:** Reaplicar el script de políticas previo mediante sentencia DDL `ALTER POLICY` o restaurar el respaldo de políticas almacenado en el repositorio de scripts de administración.
 * **Responsable:** Administrador / Dueño de base de datos Supabase.
-* **Fecha:** Sprint 7 (17–28/11/2026) — Ola 2.
+* **Fecha:** Sprint 7 (17–23/11/2026) — Ola 2.
 
 ---
 
@@ -63,7 +63,7 @@ La remediación se organiza en tres olas de trabajo sucesivas, respetando la pri
 * **Estrategia de validación:** Ejecutar `docker compose ps` y comprobar que las interfaces publicadas escuchen exclusivamente en `127.0.0.1:18080` y `127.0.0.1:18000`. Validar la denegación intentando una conexión HTTP desde una IP distinta a localhost.
 * **Estrategia de rollback:** Ejecutar `git revert <commit>` sobre `software/infraestructura/docker-compose.yml` para restablecer la configuración de puertos anterior.
 * **Responsable:** Ricardo Porras Veli / Equipo de Infraestructura.
-* **Fecha:** Sprint 8 (01–12/12/2026) — Ola 3.
+* **Fecha:** Sprint 8 (24–30/11/2026) — Ola 3.
 
 ---
 
@@ -82,7 +82,7 @@ La remediación se organiza en tres olas de trabajo sucesivas, respetando la pri
   Comprobar que retorne 0 registros. Posteriormente verificar que el inicio de sesión siga operando con normalidad.
 * **Estrategia de rollback:** En caso de contingencia con dependencias legadas no detectadas, restaurar temporalmente la columna con `ALTER TABLE usuario ADD COLUMN password varchar(255);`.
 * **Responsable:** Administrador / Dueño de base de datos Supabase.
-* **Fecha:** Sprint 7 (17–28/11/2026) — Ola 2.
+* **Fecha:** Sprint 7 (17–23/11/2026) — Ola 2.
 
 ---
 
@@ -95,7 +95,7 @@ La remediación se organiza en tres olas de trabajo sucesivas, respetando la pri
 * **Estrategia de validación:** Inspeccionar visualmente `BD_GreenAi.xlsx` para asegurar la ausencia de cadenas de texto plano de contraseñas y ejecutar la suite de pruebas de Data Processing (`pytest tests/`) para verificar que la carga de datos se complete sin fallos.
 * **Estrategia de rollback:** Ejecutar `git revert <commit>` sobre `software/data-processing/datasets/BD_GreenAi.xlsx`.
 * **Responsable:** Ricardo Porras Veli / Equipo Data Processing.
-* **Fecha:** Sprint 8 (01–12/12/2026) — Ola 3.
+* **Fecha:** Sprint 8 (24–30/11/2026) — Ola 3.
 
 ---
 
@@ -108,7 +108,7 @@ La remediación se organiza en tres olas de trabajo sucesivas, respetando la pri
 * **Estrategia de validación:** Ejecutar una prueba automatizada con cliente HTTP concurrente enviando 30 peticiones consecutivas al endpoint de inferencia y validar que las solicitudes excedentes reciban respuesta HTTP `429 Too Many Requests`. Correr las pruebas de integración del Gateway para confirmar que peticiones bajo la cota operen sin retraso.
 * **Estrategia de rollback:** Ejecutar `git revert <commit>` sobre los archivos de configuración y middleware del Gateway.
 * **Responsable:** Ricardo Porras Veli (con apoyo de Claude).
-* **Fecha:** Sprint 7 (17–28/11/2026) — Ola 2.
+* **Fecha:** Sprint 7 (17–23/11/2026) — Ola 2.
 
 ---
 
@@ -164,7 +164,7 @@ La remediación se organiza en tres olas de trabajo sucesivas, respetando la pri
 * **Estrategia de validación:** Validar los flujos de inicio de sesión, navegación protegida, expiración forzada y cierre de sesión en `app.js`. Ejecutar `node --test tests/*.test.cjs` para verificar que el comportamiento del cliente web no presente regresiones.
 * **Estrategia de rollback:** Ejecutar `git revert <commit>` sobre `software/frontend/app.js`.
 * **Responsable:** Ricardo Porras Veli / Equipo Frontend.
-* **Fecha:** Sprint 8 (01–12/12/2026) — Ola 3.
+* **Fecha:** Sprint 8 (24–30/11/2026) — Ola 3.
 
 ---
 
@@ -190,7 +190,7 @@ La remediación se organiza en tres olas de trabajo sucesivas, respetando la pri
 * **Estrategia de validación:** Ejecutar `docker compose build --no-cache` y validar que todos los contenedores construyan exitosamente sin fallos de capas. Ejecutar la prueba de integración `python software/infraestructura/smoke.py` (14/14 comprobaciones).
 * **Estrategia de rollback:** Ejecutar `git revert <commit>` sobre los Dockerfiles modificados.
 * **Responsable:** Ricardo Porras Veli / Equipo DevOps.
-* **Fecha:** Sprint 8 (01–12/12/2026) — Ola 3.
+* **Fecha:** Sprint 8 (24–30/11/2026) — Ola 3.
 
 ---
 
@@ -203,7 +203,7 @@ La remediación se organiza en tres olas de trabajo sucesivas, respetando la pri
 * **Estrategia de validación:** Emitir peticiones sin token hacia `/api/monitoring/v1/metrics/cluster-summary` esperando código 401 y con token de rol `VIEWER` hacia `POST /api/prediction/v1/predictions` esperando código 403. Constatar que se emita la traza estructurada en los logs del Gateway y que la métrica incremente en el endpoint `/actuator/prometheus` o `/metrics`. Ejecutar las suites de prueba de contrato del Gateway.
 * **Estrategia de rollback:** Ejecutar `git revert <commit>` sobre las clases y módulos de seguridad del Gateway.
 * **Responsable:** Ricardo Porras Veli / Equipo Backend.
-* **Fecha:** Sprint 7 (17–28/11/2026) — Ola 2.
+* **Fecha:** Sprint 7 (17–23/11/2026) — Ola 2.
 
 ---
 
@@ -218,7 +218,7 @@ Para minimizar riesgos de regresión y respetar las dependencias entre component
   3. OW-06 y OW-07: Configurar cabeceras en software/frontend/nginx.conf y replicar en /config.local.js
   --> Validar: node --test tests/*.test.cjs (48 tests) y CI en verde
 
-[Ola 2: Sprint 7 (17–28/11/2026)]
+[Ola 2: Sprint 7 (17–23/11/2026)]
   4. OW-01: Administrador revisa y restringe políticas RLS en Supabase
   5. OW-03: Administrador elimina columna password en tabla usuario de Supabase
   6. OW-06 (Fase CSP): Incorporar CSP restrictivo por meta etiqueta en index.html y login.html
@@ -226,7 +226,7 @@ Para minimizar riesgos de regresión y respetar las dependencias entre component
   8. OW-05: Implementar rate limiting en endpoints de inferencia del Gateway
   --> Validar: pg_policies, pruebas de contrato de Gateway Java y Go, smoke test 14/14
 
-[Ola 3: Sprint 8 (01–12/12/2026)]
+[Ola 3: Sprint 8 (24–30/11/2026)]
   9. OW-04: Remover contraseñas en claro de BD_GreenAi.xlsx
   10. OW-02: Restringir exposición de puertos en docker-compose.yml a 127.0.0.1
   11. OW-11: Fijar digests SHA256 en Dockerfiles de microservicios

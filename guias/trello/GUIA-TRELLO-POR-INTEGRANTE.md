@@ -73,6 +73,14 @@ Gina debe archivar las siguientes tarjetas que distorsionan el flujo y son detec
   3. `Ricardo Porras Veli` (Backend y DevOps)
   4. `Leonid Kisley Orlando Huamán Collazos` (Infraestructura y Frontend)
 
+### 2.4 Nomenclatura de tarjetas de historia de usuario
+
+Las 16 tarjetas HU deben titularse con el formato `PMVn-HUxx: <nombre>`, donde `n` es el PMV que la tabla maestra (sección 3) asigna a esa HU (debe coincidir con su etiqueta PMV) y `xx` su número. Ejemplos: `PMV1-HU01: Métricas de infraestructura`, `PMV2-HU03: Predicción de CPU a 15 min`.
+
+- Cada responsable renombra **su propia** tarjeta desde su cuenta personal, según la columna «Responsable de moverla» de la tabla maestra. No renombrar en bloque desde una sola cuenta: el JSON registraría una única autoría para todos los cambios.
+- Gina verifica al cierre de la preparación que las 16 HU siguen el formato, sin renombrarlas por los demás.
+- En el texto corrido (descripciones y comentarios) puede seguir usándose la referencia «HU-xx».
+
 ---
 
 ## 3. Tabla maestra de tarjetas
@@ -81,28 +89,28 @@ A continuación se detalla la asignación completa de las 39 tarjetas maestras q
 
 | Tarjeta | Lista destino | Etiquetas | Miembros asignados | Fecha vencimiento | Responsable de moverla |
 |---|---|---|---|---|---|
-| HU-01 Métricas de infraestructura | 7. DONE | PMV1, Infraestructura, Backend | Leonid Huamán, Ricardo Porras | 2026-09-05 | Leonid Huamán |
-| HU-02 Almacenamiento de históricos | 7. DONE | PMV1, Datos, Backend | Leonid Huamán, Gina Barrera, Ricardo Porras | 2026-09-19 | Ricardo Porras |
-| HU-15 Registro y autenticación | 7. DONE | PMV1, Seguridad, Frontend | Leonid Huamán, Ricardo Porras, Jhonny Quintana | 2026-10-03 | Leonid Huamán |
-| HU-03 Predicción de CPU a 15 min | 7. DONE | PMV2, Machine Learning, Backend | Gina Barrera, Ricardo Porras, Jhonny Quintana | 2026-10-17 | Gina Barrera |
-| HU-04 Comparación de modelos | 7. DONE | PMV2, Machine Learning, Datos | Gina Barrera, Jhonny Quintana | 2026-10-17 | Gina Barrera |
-| HU-06 Recomendaciones explicables | 7. DONE | PMV2, Backend, Machine Learning | Ricardo Porras, Leonid Huamán, Gina Barrera | 2026-10-31 | Ricardo Porras |
-| HU-08 Restricciones operativas | 7. DONE | PMV2, Backend, Seguridad | Gina Barrera, Ricardo Porras | 2026-10-31 | Gina Barrera |
-| HU-12 Alertas operativas | 7. DONE | PMV2, Infraestructura, Backend | Leonid Huamán, Ricardo Porras | 2026-11-14 | Leonid Huamán |
-| HU-14 Control de acceso con VIEWER | 7. DONE | PMV2, Seguridad, Backend | Ricardo Porras, Leonid Huamán, Jhonny Quintana | 2026-10-31 | Ricardo Porras |
-| HU-11 Dashboard con pestañas | 6. QA-TESTING | PMV2, Frontend, Infraestructura | Leonid Huamán, Jhonny Quintana, Ricardo Porras | 2026-11-14 | Leonid Huamán |
-| HU-05 Registro en MLflow | 6. QA-TESTING | PMV2, Machine Learning, Datos | Gina Barrera, Leonid Huamán | 2026-11-14 | Gina Barrera |
-| HU-07 Aprobación humana de decisiones | 5. IN PROGRESS | PMV2, Backend, Seguridad | Ricardo Porras, Jhonny Quintana | 2026-11-14 | Ricardo Porras |
-| HU-13 Reportes históricos CSV y PDF | 5. IN PROGRESS | PMV2, Backend, Datos | Ricardo Porras, Jhonny Quintana | 2026-11-14 | Ricardo Porras |
-| HU-09 Estimación de energía en kWh | 5. IN PROGRESS | PMV2, Backend, Machine Learning | Ricardo Porras, Gina Barrera, Leonid Huamán | 2026-11-14 | Ricardo Porras |
+| PMV1-HU01: Métricas de infraestructura | 7. DONE | PMV1, Infraestructura, Backend | Leonid Huamán, Ricardo Porras | 2026-09-05 | Leonid Huamán |
+| PMV1-HU02: Almacenamiento de históricos | 7. DONE | PMV1, Datos, Backend | Leonid Huamán, Gina Barrera, Ricardo Porras | 2026-09-19 | Ricardo Porras |
+| PMV1-HU15: Registro y autenticación | 7. DONE | PMV1, Seguridad, Frontend | Leonid Huamán, Ricardo Porras, Jhonny Quintana | 2026-10-03 | Leonid Huamán |
+| PMV2-HU03: Predicción de CPU a 15 min | 7. DONE | PMV2, Machine Learning, Backend | Gina Barrera, Ricardo Porras, Jhonny Quintana | 2026-10-17 | Gina Barrera |
+| PMV2-HU04: Comparación de modelos | 7. DONE | PMV2, Machine Learning, Datos | Gina Barrera, Jhonny Quintana | 2026-10-17 | Gina Barrera |
+| PMV2-HU06: Recomendaciones explicables | 7. DONE | PMV2, Backend, Machine Learning | Ricardo Porras, Leonid Huamán, Gina Barrera | 2026-10-31 | Ricardo Porras |
+| PMV2-HU08: Restricciones operativas | 7. DONE | PMV2, Backend, Seguridad | Gina Barrera, Ricardo Porras | 2026-10-31 | Ricardo Porras |
+| PMV2-HU12: Alertas operativas | 7. DONE | PMV2, Infraestructura, Backend | Leonid Huamán, Ricardo Porras | 2026-11-14 | Leonid Huamán |
+| PMV2-HU14: Control de acceso con VIEWER | 7. DONE | PMV2, Seguridad, Backend | Ricardo Porras, Leonid Huamán, Jhonny Quintana | 2026-10-31 | Ricardo Porras |
+| PMV2-HU11: Dashboard con pestañas | 6. QA-TESTING | PMV2, Frontend, Infraestructura | Leonid Huamán, Jhonny Quintana, Ricardo Porras | 2026-11-14 | Leonid Huamán |
+| PMV2-HU05: Registro en MLflow | 6. QA-TESTING | PMV2, Machine Learning, Datos | Gina Barrera, Leonid Huamán | 2026-11-14 | Gina Barrera |
+| PMV2-HU07: Aprobación humana de decisiones | 5. IN PROGRESS | PMV2, Backend, Seguridad | Ricardo Porras, Jhonny Quintana | 2026-11-14 | Ricardo Porras |
+| PMV2-HU13: Reportes históricos CSV y PDF | 5. IN PROGRESS | PMV2, Backend, Datos | Ricardo Porras, Jhonny Quintana | 2026-11-14 | Ricardo Porras |
+| PMV2-HU09: Estimación de energía en kWh | 5. IN PROGRESS | PMV2, Backend, Machine Learning | Ricardo Porras, Gina Barrera, Leonid Huamán | 2026-11-14 | Ricardo Porras |
 | Tarea: Fijar Health Check Path en Render | 4. TO DO | PMV2, Infraestructura | Leonid Huamán, Ricardo Porras | 2026-11-10 | Leonid Huamán |
 | Tarea: Revisar RLS Supabase y password | 4. TO DO | PMV2, Seguridad, Backend | Ricardo Porras, Jhonny Quintana | 2026-11-11 | Ricardo Porras |
 | Tarea: Evaluación walk-forward de CPU | 4. TO DO | PMV2, Machine Learning | Gina Barrera, Jhonny Quintana | 2026-11-13 | Gina Barrera |
 | Tarea: Grabar video de la Unidad III | 4. TO DO | PMV2, Documentación | Jhonny Quintana, Leonid Huamán, Gina Barrera, Ricardo Porras | 2026-11-14 | Jhonny Quintana |
-| HU-10 Estimación de emisiones CO2e | 1. PRODUCT BACKLOG | PMV3, Machine Learning, Datos | Gina Barrera, Jhonny Quintana | 2026-11-28 | Jhonny Quintana |
-| HU-16 Experimento comparativo | 1. PRODUCT BACKLOG | PMV3, Documentación, Machine Learning | Jhonny Quintana, Gina Barrera, Ricardo Porras, Leonid Huamán | 2026-12-12 | Jhonny Quintana |
+| PMV3-HU10: Estimación de emisiones CO2e | 1. PRODUCT BACKLOG | PMV3, Machine Learning, Datos | Gina Barrera, Jhonny Quintana | 2026-11-30 | Jhonny Quintana |
+| PMV3-HU16: Experimento comparativo | 1. PRODUCT BACKLOG | PMV3, Documentación, Machine Learning | Jhonny Quintana, Gina Barrera, Ricardo Porras, Leonid Huamán | 2026-11-30 | Jhonny Quintana |
 | Sprint 6 (03/11–14/11) | 2. SPRINT BACKLOG | PMV2, Documentación | Jhonny Quintana, Gina Barrera | 2026-11-14 | Gina Barrera |
-| Sprint 7 (17/11–28/11) | 2. SPRINT BACKLOG | PMV3, Documentación | Jhonny Quintana, Gina Barrera | 2026-11-28 | Gina Barrera |
+| Sprint 7 (17/11–23/11) | 2. SPRINT BACKLOG | PMV3, Documentación | Jhonny Quintana, Gina Barrera | 2026-11-23 | Gina Barrera |
 | RE-01 Delimitación de infraestructura | 3. REFINAMIENTO DE EXPERTOS | PMV1, Arquitectura | Gina Barrera, Jhonny Quintana | 2026-09-05 | Jhonny Quintana |
 | RE-02 Contratos y arquitectura híbrida | 3. REFINAMIENTO DE EXPERTOS | PMV1, Arquitectura, Backend | Gina Barrera, Jhonny Quintana | 2026-09-19 | Jhonny Quintana |
 | RE-03 Calidad y trazabilidad de datos | 3. REFINAMIENTO DE EXPERTOS | PMV1, Datos | Gina Barrera, Jhonny Quintana | 2026-10-03 | Jhonny Quintana |
@@ -117,9 +125,9 @@ A continuación se detalla la asignación completa de las 39 tarjetas maestras q
 | Sprint Review — Sprint 6 | 10. SPRINT REVIEW | PMV2, Documentación | Todos los integrantes | 2026-11-14 | Gina Barrera |
 | Retrospectiva — PMV1 (Sprints 1–3) | 11. SPRINT RETROSPECTIVE | PMV1, Documentación | Todos los integrantes | 2026-10-03 | Gina Barrera |
 | Retrospectiva — PMV2 (Sprints 4–6) | 11. SPRINT RETROSPECTIVE | PMV2, Documentación | Todos los integrantes | 2026-11-14 | Gina Barrera |
-| PRODUCT OWNER | 8. ROLES DE SCRUM | Documentación | Jhonny Quintana | 2026-12-12 | Jhonny Quintana |
-| SCRUM MASTER | 8. ROLES DE SCRUM | Documentación | Gina Barrera | 2026-12-12 | Gina Barrera |
-| SCRUM TEAM | 8. ROLES DE SCRUM | Documentación | Todos los integrantes | 2026-12-12 | Ricardo Porras |
+| PRODUCT OWNER | 8. ROLES DE SCRUM | Documentación | Jhonny Quintana | 2026-11-30 | Jhonny Quintana |
+| SCRUM MASTER | 8. ROLES DE SCRUM | Documentación | Gina Barrera | 2026-11-30 | Gina Barrera |
+| SCRUM TEAM | 8. ROLES DE SCRUM | Documentación | Todos los integrantes | 2026-11-30 | Ricardo Porras |
 
 ---
 
@@ -133,7 +141,7 @@ En esta sección se suministran los contenidos técnicos exactos para cada una d
 ================================================================================
 ```
 
-### Tarjeta HU-01: Visualización de métricas de infraestructura
+### Tarjeta PMV1-HU01: Visualización de métricas de infraestructura
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV1`, `Infraestructura`, `Backend`
 - **Miembros:** `Leonid Kisley Orlando Huamán Collazos`, `Ricardo Porras Veli`
@@ -184,7 +192,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-02: Almacenamiento y consulta de métricas históricas
+### Tarjeta PMV1-HU02: Almacenamiento y consulta de métricas históricas
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV1`, `Datos`, `Backend`
 - **Miembros:** `Leonid Kisley Orlando Huamán Collazos`, `Gina Diana Barrera Peña`, `Ricardo Porras Veli`
@@ -235,7 +243,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-15: Registro y autenticación de usuarios
+### Tarjeta PMV1-HU15: Registro y autenticación de usuarios
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV1`, `Seguridad`, `Frontend`
 - **Miembros:** `Leonid Kisley Orlando Huamán Collazos`, `Ricardo Porras Veli`, `Jhonny Cristhian Quintana Carhuaricra`
@@ -288,7 +296,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-03: Predicción de utilización de CPU a corto plazo
+### Tarjeta PMV2-HU03: Predicción de utilización de CPU a corto plazo
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Machine Learning`, `Backend`
 - **Miembros:** `Gina Diana Barrera Peña`, `Ricardo Porras Veli`, `Jhonny Cristhian Quintana Carhuaricra`
@@ -343,7 +351,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-04: Comparación reproducible de modelos de predicción
+### Tarjeta PMV2-HU04: Comparación reproducible de modelos de predicción
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Machine Learning`, `Datos`
 - **Miembros:** `Gina Diana Barrera Peña`, `Jhonny Cristhian Quintana Carhuaricra`
@@ -394,7 +402,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-06: Generación de recomendaciones operativas explicables
+### Tarjeta PMV2-HU06: Generación de recomendaciones operativas explicables
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Backend`, `Machine Learning`
 - **Miembros:** `Ricardo Porras Veli`, `Leonid Kisley Orlando Huamán Collazos`, `Gina Diana Barrera Peña`
@@ -447,7 +455,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-08: Configuración y evaluación de restricciones operativas
+### Tarjeta PMV2-HU08: Configuración y evaluación de restricciones operativas
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Backend`, `Seguridad`
 - **Miembros:** `Gina Diana Barrera Peña`, `Ricardo Porras Veli`
@@ -498,7 +506,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-12: Detección y gestión de alertas operativas
+### Tarjeta PMV2-HU12: Detección y gestión de alertas operativas
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Infraestructura`, `Backend`
 - **Miembros:** `Leonid Kisley Orlando Huamán Collazos`, `Ricardo Porras Veli`
@@ -549,7 +557,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-14: Control de acceso basado en roles con rol VIEWER
+### Tarjeta PMV2-HU14: Control de acceso basado en roles con rol VIEWER
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Seguridad`, `Backend`
 - **Miembros:** `Ricardo Porras Veli`, `Leonid Kisley Orlando Huamán Collazos`, `Jhonny Cristhian Quintana Carhuaricra`
@@ -602,7 +610,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-11: Dashboard integrado con pestañas y telemetría multirrecurso
+### Tarjeta PMV2-HU11: Dashboard integrado con pestañas y telemetría multirrecurso
 - **Lista destino:** `6. QA-TESTING`
 - **Etiquetas:** `PMV2`, `Frontend`, `Infraestructura`
 - **Miembros:** `Leonid Kisley Orlando Huamán Collazos`, `Jhonny Cristhian Quintana Carhuaricra`, `Ricardo Porras Veli`
@@ -657,7 +665,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-05: Registro y trazabilidad de experimentos en MLflow
+### Tarjeta PMV2-HU05: Registro y trazabilidad de experimentos en MLflow
 - **Lista destino:** `6. QA-TESTING`
 - **Etiquetas:** `PMV2`, `Machine Learning`, `Datos`
 - **Miembros:** `Gina Diana Barrera Peña`, `Leonid Kisley Orlando Huamán Collazos`
@@ -709,7 +717,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-07: Flujo de aprobación humana para recomendaciones
+### Tarjeta PMV2-HU07: Flujo de aprobación humana para recomendaciones
 - **Lista destino:** `5. IN PROGRESS`
 - **Etiquetas:** `PMV2`, `Backend`, `Seguridad`
 - **Miembros:** `Ricardo Porras Veli`, `Jhonny Cristhian Quintana Carhuaricra`
@@ -761,7 +769,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-13: Exportación de reportes históricos en CSV y PDF
+### Tarjeta PMV2-HU13: Exportación de reportes históricos en CSV y PDF
 - **Lista destino:** `5. IN PROGRESS`
 - **Etiquetas:** `PMV2`, `Backend`, `Datos`
 - **Miembros:** `Ricardo Porras Veli`, `Jhonny Cristhian Quintana Carhuaricra`
@@ -813,7 +821,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-09: Estimación de consumo energético en kWh
+### Tarjeta PMV2-HU09: Estimación de consumo energético en kWh
 - **Lista destino:** `5. IN PROGRESS`
 - **Etiquetas:** `PMV2`, `Backend`, `Machine Learning`
 - **Miembros:** `Ricardo Porras Veli`, `Gina Diana Barrera Peña`, `Leonid Kisley Orlando Huamán Collazos`
@@ -867,11 +875,11 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-10: Estimación de emisiones de CO2 equivalente
+### Tarjeta PMV3-HU10: Estimación de emisiones de CO2 equivalente
 - **Lista destino:** `1. PRODUCT BACKLOG`
 - **Etiquetas:** `PMV3`, `Machine Learning`, `Datos`
 - **Miembros:** `Gina Diana Barrera Peña`, `Jhonny Cristhian Quintana Carhuaricra`
-- **Fecha de vencimiento:** `2026-11-28`
+- **Fecha de vencimiento:** `2026-11-30`
 - **Descripción:**
 ```markdown
 HISTORIA DE USUARIO
@@ -917,11 +925,11 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-16: Protocolo y ejecución de experimento comparativo Green AI vs Baseline
+### Tarjeta PMV3-HU16: Protocolo y ejecución de experimento comparativo Green AI vs Baseline
 - **Lista destino:** `1. PRODUCT BACKLOG`
 - **Etiquetas:** `PMV3`, `Documentación`, `Machine Learning`
 - **Miembros:** `Jhonny Cristhian Quintana Carhuaricra`, `Gina Diana Barrera Peña`, `Ricardo Porras Veli`, `Leonid Kisley Orlando Huamán Collazos`
-- **Fecha de vencimiento:** `2026-12-12`
+- **Fecha de vencimiento:** `2026-11-30`
 - **Descripción:**
 ```markdown
 HISTORIA DE USUARIO
@@ -1200,17 +1208,17 @@ HISTORIAS Y TAREAS COMPROMETIDAS
 
 ---
 
-### Tarjeta: Sprint 7 (17/11–28/11)
+### Tarjeta: Sprint 7 (17/11–23/11)
 - **Lista destino:** `2. SPRINT BACKLOG`
 - **Etiquetas:** `PMV3`, `Documentación`
 - **Miembros:** `Jhonny Cristhian Quintana Carhuaricra`, `Gina Diana Barrera Peña`
-- **Fecha de vencimiento:** `2026-11-28`
+- **Fecha de vencimiento:** `2026-11-23`
 - **Descripción:**
 ```markdown
 PLANIFICACIÓN DE SPRINT
 
 Sprint futuro: Sprint 7 (Semanas 13 y 14 del calendario académico).
-Periodo: 17/11/2026 al 28/11/2026.
+Periodo: 17/11/2026 al 23/11/2026.
 Objetivo del Sprint:
 Iniciar la ejecución del PMV3 incorporando el cálculo de huella de carbono sustentado con el factor de emisión oficial, completar la generación de reportes en PDF y ejecutar el escenario de referencia (baseline) del protocolo experimental.
 
@@ -1753,7 +1761,7 @@ Mantener la transparencia académica, reportando los resultados exactos del mode
 - **Lista destino:** `8. ROLES DE SCRUM`
 - **Etiquetas:** `Documentación`
 - **Miembros:** `Jhonny Cristhian Quintana Carhuaricra`
-- **Fecha de vencimiento:** `2026-12-12`
+- **Fecha de vencimiento:** `2026-11-30`
 - **Descripción:**
 ```markdown
 ROL DE SCRUM: PRODUCT OWNER
@@ -1781,7 +1789,7 @@ RESPONSABILIDADES EN EL PROYECTO:
 - **Lista destino:** `8. ROLES DE SCRUM`
 - **Etiquetas:** `Documentación`
 - **Miembros:** `Gina Diana Barrera Peña`
-- **Fecha de vencimiento:** `2026-12-12`
+- **Fecha de vencimiento:** `2026-11-30`
 - **Descripción:**
 ```markdown
 ROL DE SCRUM: SCRUM MASTER
@@ -1809,7 +1817,7 @@ RESPONSABILIDADES EN EL PROYECTO:
 - **Lista destino:** `8. ROLES DE SCRUM`
 - **Etiquetas:** `Documentación`
 - **Miembros:** Todos los integrantes
-- **Fecha de vencimiento:** `2026-12-12`
+- **Fecha de vencimiento:** `2026-11-30`
 - **Descripción:**
 ```markdown
 ROL DE SCRUM: EQUIPO DE DESARROLLO (SCRUM TEAM)
@@ -1857,26 +1865,26 @@ Día 4: Viernes 13/11/2026 (Cierre de Sprint 6, Review, Retro PMV2 y exportació
 1. **Configuración de etiquetas:** Acceder a Menú -> Etiquetas. Renombrar `MVP-01` a `PMV1` (Verde), `MVP 02` a `PMV2` (Amarillo) y `MVP 03` a `PMV3` (Azul). Crear las 8 etiquetas de área técnica. Borrar la etiqueta naranja sin nombre.
 2. **Archivar tarjetas obsoletas:** Archivar `Sprint 1` de la lista `2. SPRINT BACKLOG`, archivar `Sprint 7` y `Sprint 8` de `10. SPRINT REVIEW`, y archivar las retrospectivas parciales de Sprint 4 y 5 en `11. SPRINT RETROSPECTIVE`.
 3. **Crear / Actualizar tarjeta `Sprint 6 (03/11–14/11)`:** Ubicar en `2. SPRINT BACKLOG`, pegar descripción, checklist, fecha `14/11/2026`, miembros Gina y Jhonny, etiquetas `PMV2`, `Documentación`. Publicar comentario.
-4. **Actualizar tarjeta `Sprint 7 (17/11–28/11)`:** Ubicar en `2. SPRINT BACKLOG`, pegar descripción, checklist, fecha `28/11/2026`, miembros Gina y Jhonny, etiquetas `PMV3`, `Documentación`. Publicar comentario.
+4. **Actualizar tarjeta `Sprint 7 (17/11–23/11)`:** Ubicar en `2. SPRINT BACKLOG`, pegar descripción, checklist, fecha `23/11/2026`, miembros Gina y Jhonny, etiquetas `PMV3`, `Documentación`. Publicar comentario.
 5. **Actualizar tarjetas RE-01, RE-02, RE-03:** En lista `3. REFINAMIENTO DE EXPERTOS`, verificar textos consolidados, marcar checklists y publicar comentario técnico.
 6. **Crear tarjeta `Retrospectiva — PMV1 (Sprints 1–3)`:** En lista `11. SPRINT RETROSPECTIVE`, pegar descripción consolidada, checklist [x], fecha `03/10/2026`, asignar los 4 miembros, etiquetas `PMV1`, `Documentación`. Publicar comentario.
 
 #### 2. Ricardo Porras Veli (Backend y DevOps)
-1. **Actualizar HU-02 (Históricos):** Ubicada en `6. QA-TESTING`, pegar descripción completa, checklist [x], fecha `19/09/2026`, etiquetas `PMV1`, `Datos`, `Backend`. Publicar comentario de pruebas (114 passed). Mover la tarjeta a `7. DONE`.
-2. **Actualizar HU-08 (Restricciones):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist, fecha `31/10/2026`, etiquetas `PMV2`, `Backend`, `Seguridad`. Publicar comentario.
-3. **Actualizar HU-14 (Roles con VIEWER):** Mover de `5. IN PROGRESS` a `6. QA-TESTING`. Pegar descripción, checklist [x], fecha `31/10/2026`, etiquetas `PMV2`, `Seguridad`, `Backend`. Publicar comentario técnico (30 passed en Go con race detector). Mover a `7. DONE`.
+1. **Actualizar PMV1-HU02 (Históricos):** Ubicada en `6. QA-TESTING`, pegar descripción completa, checklist [x], fecha `19/09/2026`, etiquetas `PMV1`, `Datos`, `Backend`. Publicar comentario de pruebas (114 passed). Mover la tarjeta a `7. DONE`.
+2. **Actualizar PMV2-HU08 (Restricciones):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist, fecha `31/10/2026`, etiquetas `PMV2`, `Backend`, `Seguridad`. Publicar comentario.
+3. **Actualizar PMV2-HU14 (Roles con VIEWER):** Mover de `5. IN PROGRESS` a `6. QA-TESTING`. Pegar descripción, checklist [x], fecha `31/10/2026`, etiquetas `PMV2`, `Seguridad`, `Backend`. Publicar comentario técnico (30 passed en Go con race detector). Mover a `7. DONE`.
 4. **Crear tarjeta en To Do: «Revisar RLS de Supabase y columna password»:** En lista `4. TO DO`, pegar descripción, checklist [ ], fecha `11/11/2026`, miembros Ricardo y Jhonny, etiquetas `PMV2`, `Seguridad`, `Backend`. Publicar comentario inicial.
 
 #### 3. Leonid Kisley Orlando Huamán Collazos (Infraestructura y Frontend)
-1. **Actualizar HU-01 (Métricas):** Ubicada en `7. DONE`, pegar descripción completa, checklist [x], fecha `05/09/2026`, miembros Leonid y Ricardo, etiquetas `PMV1`, `Infraestructura`, `Backend`. Publicar comentario técnico (112 passed de Monitoring, smoke 14/14).
-2. **Actualizar HU-15 (Registro y autenticación):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`, luego a `6. QA-TESTING`. Pegar descripción, checklist [x], fecha `03/10/2026`, miembros Leonid, Ricardo, Jhonny, etiquetas `PMV1`, `Seguridad`, `Frontend`. Publicar comentario. Mover a `7. DONE`.
-3. **Actualizar HU-12 (Alertas):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist, fecha `14/11/2026`, etiquetas `PMV2`, `Infraestructura`, `Backend`. Publicar comentario de validación promtool.
+1. **Actualizar PMV1-HU01 (Métricas):** Ubicada en `7. DONE`, pegar descripción completa, checklist [x], fecha `05/09/2026`, miembros Leonid y Ricardo, etiquetas `PMV1`, `Infraestructura`, `Backend`. Publicar comentario técnico (112 passed de Monitoring, smoke 14/14).
+2. **Actualizar PMV1-HU15 (Registro y autenticación):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`, luego a `6. QA-TESTING`. Pegar descripción, checklist [x], fecha `03/10/2026`, miembros Leonid, Ricardo, Jhonny, etiquetas `PMV1`, `Seguridad`, `Frontend`. Publicar comentario. Mover a `7. DONE`.
+3. **Actualizar PMV2-HU12 (Alertas):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist, fecha `14/11/2026`, etiquetas `PMV2`, `Infraestructura`, `Backend`. Publicar comentario de validación promtool.
 4. **Crear tarjeta en To Do: «Fijar Health Check Path en Render»:** En lista `4. TO DO`, pegar descripción, checklist [ ], fecha `10/11/2026`, miembros Leonid y Ricardo, etiquetas `PMV2`, `Infraestructura`. Publicar comentario inicial.
 
 #### 4. Jhonny Cristhian Quintana Carhuaricra (Product Owner)
-1. **Actualizar tarjeta PRODUCT OWNER:** En lista `8. ROLES DE SCRUM`, pegar descripción, checklist [x], fecha `12/12/2026`, miembro Jhonny, etiqueta `Documentación`. Publicar comentario.
-2. **Actualizar HU-10 (Emisiones CO2e):** En lista `1. PRODUCT BACKLOG`, pegar descripción completa, checklist [ ], fecha `28/11/2026`, miembros Gina y Jhonny, etiquetas `PMV3`, `Machine Learning`, `Datos`. Publicar comentario de justificación de backlog.
-3. **Actualizar HU-16 (Experimento comparativo):** En lista `1. PRODUCT BACKLOG`, pegar descripción, checklist, fecha `12/12/2026`, asignar los 4 miembros, etiquetas `PMV3`, `Documentación`, `Machine Learning`. Publicar comentario sobre protocolo experimental.
+1. **Actualizar tarjeta PRODUCT OWNER:** En lista `8. ROLES DE SCRUM`, pegar descripción, checklist [x], fecha `30/11/2026`, miembro Jhonny, etiqueta `Documentación`. Publicar comentario.
+2. **Actualizar PMV3-HU10 (Emisiones CO2e):** En lista `1. PRODUCT BACKLOG`, pegar descripción completa, checklist [ ], fecha `30/11/2026`, miembros Gina y Jhonny, etiquetas `PMV3`, `Machine Learning`, `Datos`. Publicar comentario de justificación de backlog.
+3. **Actualizar PMV3-HU16 (Experimento comparativo):** En lista `1. PRODUCT BACKLOG`, pegar descripción, checklist, fecha `30/11/2026`, asignar los 4 miembros, etiquetas `PMV3`, `Documentación`, `Machine Learning`. Publicar comentario sobre protocolo experimental.
 4. **Actualizar revisiones Sprint 1, 2 y 3:** En lista `10. SPRINT REVIEW`, revisar textos consolidados, marcar checklists [x], fechas correspondientes (`05/09`, `19/09`, `03/10`), asignar los 4 miembros y publicar comentarios de aceptación formal de PMV1.
 
 ---
@@ -1885,51 +1893,51 @@ Día 4: Viernes 13/11/2026 (Cierre de Sprint 6, Review, Retro PMV2 y exportació
 
 #### 1. Gina Diana Barrera Peña (Scrum Master)
 1. **Crear tarjeta de Daily Scrum:** A las 08:00, crear en lista `9. DAILY SCRUM` la tarjeta `Daily Scrum — 2026-11-09`. Pegar plantilla de descripción, fecha `09/11/2026`, asignar a los 4 miembros. Publicar su comentario respondiendo a las 3 preguntas.
-2. **Actualizar HU-03 (Predicción CPU):** Mover de `6. QA-TESTING` a `7. DONE`. Pegar descripción completa, checklist [x], fecha `17/10/2026`, etiquetas `PMV2`, `Machine Learning`, `Backend`. Publicar comentario de métricas (MAE 3.22, 100 passed).
-3. **Actualizar HU-04 (Comparación de modelos):** Mover de `5. IN PROGRESS` a `6. QA-TESTING`. Pegar descripción, checklist [x], fecha `17/10/2026`, etiquetas `PMV2`, `Machine Learning`, `Datos`. Publicar comentario de model_comparison.csv. Mover a `7. DONE`.
+2. **Actualizar PMV2-HU03 (Predicción CPU):** Mover de `6. QA-TESTING` a `7. DONE`. Pegar descripción completa, checklist [x], fecha `17/10/2026`, etiquetas `PMV2`, `Machine Learning`, `Backend`. Publicar comentario de métricas (MAE 3.22, 100 passed).
+3. **Actualizar PMV2-HU04 (Comparación de modelos):** Mover de `5. IN PROGRESS` a `6. QA-TESTING`. Pegar descripción, checklist [x], fecha `17/10/2026`, etiquetas `PMV2`, `Machine Learning`, `Datos`. Publicar comentario de model_comparison.csv. Mover a `7. DONE`.
 4. **Crear tarjeta en To Do: «Evaluación walk-forward del modelo frente a persistencia»:** En lista `4. TO DO`, pegar descripción, checklist [ ], fecha `13/11/2026`, miembros Gina y Jhonny, etiquetas `PMV2`, `Machine Learning`. Publicar comentario.
 
 #### 2. Ricardo Porras Veli (Backend y DevOps)
 1. **Daily Scrum:** Acceder a la tarjeta `Daily Scrum — 2026-11-09` en `9. DAILY SCRUM` y publicar su comentario respondiendo a las 3 preguntas.
-2. **Actualizar HU-06 (Recomendaciones explicables):** Mover de `4. TO DO` a `5. IN PROGRESS`, luego a `6. QA-TESTING`. Pegar descripción, checklist [x], fecha `31/10/2026`, etiquetas `PMV2`, `Backend`, `Machine Learning`. Publicar comentario técnico (executionAllowed=false, 13 pruebas). Mover a `7. DONE`.
-3. **Mover HU-08 a DONE:** Mover HU-08 de `5. IN PROGRESS` a `6. QA-TESTING`, luego a `7. DONE`. Marcar checklist al 100 % [x]. Publicar comentario de confirmación.
-4. **Actualizar HU-07 (Aprobación humana):** Mover de `2. SPRINT BACKLOG` a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist (marcar 2 ítems [x]), fecha `14/11/2026`, miembros Ricardo y Jhonny, etiquetas `PMV2`, `Backend`, `Seguridad`. Publicar comentario.
+2. **Actualizar PMV2-HU06 (Recomendaciones explicables):** Mover de `4. TO DO` a `5. IN PROGRESS`, luego a `6. QA-TESTING`. Pegar descripción, checklist [x], fecha `31/10/2026`, etiquetas `PMV2`, `Backend`, `Machine Learning`. Publicar comentario técnico (executionAllowed=false, 13 pruebas). Mover a `7. DONE`.
+3. **Mover PMV2-HU08 a DONE:** Mover PMV2-HU08 de `5. IN PROGRESS` a `6. QA-TESTING`, luego a `7. DONE`. Marcar checklist al 100 % [x]. Publicar comentario de confirmación.
+4. **Actualizar PMV2-HU07 (Aprobación humana):** Mover de `2. SPRINT BACKLOG` a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist (marcar 2 ítems [x]), fecha `14/11/2026`, miembros Ricardo y Jhonny, etiquetas `PMV2`, `Backend`, `Seguridad`. Publicar comentario.
 
 #### 3. Leonid Kisley Orlando Huamán Collazos (Infraestructura y Frontend)
 1. **Daily Scrum:** Acceder a la tarjeta `Daily Scrum — 2026-11-09` en `9. DAILY SCRUM` y publicar su comentario respondiendo a las 3 preguntas.
-2. **Actualizar HU-11 (Dashboard con pestañas):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist, fecha `14/11/2026`, miembros Leonid, Jhonny, Ricardo, etiquetas `PMV2`, `Frontend`, `Infraestructura`. Publicar comentario sobre suite de 48 pruebas en Node.js.
-3. **Avanzar HU-12 (Alertas):** Mover de `5. IN PROGRESS` a `6. QA-TESTING`. Marcar ítems del checklist al 100 % [x]. Publicar comentario sobre pruebas de desconexión. Mover a `7. DONE`.
-4. **Actualizar tarjeta SCRUM TEAM:** En lista `8. ROLES DE SCRUM`, pegar descripción, checklist [x], fecha `12/12/2026`, asignar los 4 miembros, etiqueta `Documentación`. Publicar comentario.
+2. **Actualizar PMV2-HU11 (Dashboard con pestañas):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist, fecha `14/11/2026`, miembros Leonid, Jhonny, Ricardo, etiquetas `PMV2`, `Frontend`, `Infraestructura`. Publicar comentario sobre suite de 48 pruebas en Node.js.
+3. **Avanzar PMV2-HU12 (Alertas):** Mover de `5. IN PROGRESS` a `6. QA-TESTING`. Marcar ítems del checklist al 100 % [x]. Publicar comentario sobre pruebas de desconexión. Mover a `7. DONE`.
+4. **Actualizar tarjeta SCRUM TEAM:** En lista `8. ROLES DE SCRUM`, pegar descripción, checklist [x], fecha `30/11/2026`, asignar los 4 miembros, etiqueta `Documentación`. Publicar comentario.
 
 #### 4. Jhonny Cristhian Quintana Carhuaricra (Product Owner)
 1. **Daily Scrum:** Acceder a la tarjeta `Daily Scrum — 2026-11-09` en `9. DAILY SCRUM` y publicar su comentario respondiendo a las 3 preguntas.
 2. **Crear tarjeta en To Do: «Grabar video de la Unidad III»:** En lista `4. TO DO`, pegar descripción, checklist [ ], fecha `14/11/2026`, asignar los 4 miembros, etiquetas `PMV2`, `Documentación`. Publicar comentario con el esquema de los 7 episodios.
 3. **Actualizar tarjetas RE-04, RE-05, RE-06:** En lista `3. REFINAMIENTO DE EXPERTOS`, verificar textos consolidados, marcar checklists y publicar comentarios de seguimiento como PO.
-4. **Comentar en HU-03 y HU-06:** Entrar a HU-03 en DONE y HU-06 en DONE y publicar su comentario de validación de criterios como Product Owner.
+4. **Comentar en PMV2-HU03 y PMV2-HU06:** Entrar a PMV2-HU03 en DONE y PMV2-HU06 en DONE y publicar su comentario de validación de criterios como Product Owner.
 
 ---
 
 ### DÍA 3: MIÉRCOLES 11/11/2026 — QA-Testing y evidencias de integración
 
 #### 1. Gina Diana Barrera Peña (Scrum Master)
-1. **Actualizar HU-05 (Registro en MLflow):** Mover de `4. TO DO` a `5. IN PROGRESS`, luego a `6. QA-TESTING`. Pegar descripción completa, checklist (4 ítems [x], 2 [ ]), fecha `14/11/2026`, miembros Gina y Leonid, etiquetas `PMV2`, `Machine Learning`, `Datos`. Publicar comentario técnico sobre experimento 394141087236111562.
+1. **Actualizar PMV2-HU05 (Registro en MLflow):** Mover de `4. TO DO` a `5. IN PROGRESS`, luego a `6. QA-TESTING`. Pegar descripción completa, checklist (4 ítems [x], 2 [ ]), fecha `14/11/2026`, miembros Gina y Leonid, etiquetas `PMV2`, `Machine Learning`, `Datos`. Publicar comentario técnico sobre experimento 394141087236111562.
 2. **Actualizar Sprint Review — Sprint 4:** En lista `10. SPRINT REVIEW`, pegar descripción consolidada, checklist [x], fecha `17/10/2026`, asignar los 4 miembros, etiquetas `PMV2`, `Documentación`. Publicar comentario.
-3. **Actualizar tarjeta SCRUM MASTER:** En lista `8. ROLES DE SCRUM`, pegar descripción, checklist [x], fecha `12/12/2026`, miembro Gina, etiqueta `Documentación`. Publicar comentario.
+3. **Actualizar tarjeta SCRUM MASTER:** En lista `8. ROLES DE SCRUM`, pegar descripción, checklist [x], fecha `30/11/2026`, miembro Gina, etiqueta `Documentación`. Publicar comentario.
 
 #### 2. Ricardo Porras Veli (Backend y DevOps)
-1. **Actualizar HU-13 (Reportes CSV y PDF):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist (3 ítems [x], 3 [ ]), fecha `14/11/2026`, miembros Ricardo y Jhonny, etiquetas `PMV2`, `Backend`, `Datos`. Publicar comentario de suite de 121 pruebas pasando.
-2. **Actualizar HU-09 (Energía en kWh):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist (3 ítems [x], 3 [ ]), fecha `14/11/2026`, miembros Ricardo, Gina, Leonid, etiquetas `PMV2`, `Backend`, `Machine Learning`. Publicar comentario técnico sobre regla del trapecio.
+1. **Actualizar PMV2-HU13 (Reportes CSV y PDF):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist (3 ítems [x], 3 [ ]), fecha `14/11/2026`, miembros Ricardo y Jhonny, etiquetas `PMV2`, `Backend`, `Datos`. Publicar comentario de suite de 121 pruebas pasando.
+2. **Actualizar PMV2-HU09 (Energía en kWh):** Mover de `1. PRODUCT BACKLOG` a `2. SPRINT BACKLOG`, luego a `4. TO DO`, luego a `5. IN PROGRESS`. Pegar descripción, checklist (3 ítems [x], 3 [ ]), fecha `14/11/2026`, miembros Ricardo, Gina, Leonid, etiquetas `PMV2`, `Backend`, `Machine Learning`. Publicar comentario técnico sobre regla del trapecio.
 3. **Actualizar Sprint Review — Sprint 5:** En lista `10. SPRINT REVIEW`, pegar descripción consolidada, checklist [x], fecha `31/10/2026`, asignar los 4 miembros, etiquetas `PMV2`, `Documentación`. Publicar comentario de acuerdos técnicos.
 
 #### 3. Leonid Kisley Orlando Huamán Collazos (Infraestructura y Frontend)
-1. **Mover HU-11 a QA-TESTING:** Mover tarjeta HU-11 de `5. IN PROGRESS` a `6. QA-TESTING`. Marcar 4 ítems de desarrollo del checklist [x] y dejar 2 pendientes de validación en vivo [ ]. Publicar comentario técnico sobre arnés local y pruebas de interfaz.
-2. **Comentar en HU-05 (MLflow):** Entrar a tarjeta HU-05 en `6. QA-TESTING` y publicar comentario sobre la captura pendiente con `mlflow ui`.
-3. **Comentar en HU-09 (Energía):** Entrar a tarjeta HU-09 en `5. IN PROGRESS` y publicar comentario sobre el panel de energía en el frontend.
+1. **Mover PMV2-HU11 a QA-TESTING:** Mover tarjeta PMV2-HU11 de `5. IN PROGRESS` a `6. QA-TESTING`. Marcar 4 ítems de desarrollo del checklist [x] y dejar 2 pendientes de validación en vivo [ ]. Publicar comentario técnico sobre arnés local y pruebas de interfaz.
+2. **Comentar en PMV2-HU05 (MLflow):** Entrar a tarjeta PMV2-HU05 en `6. QA-TESTING` y publicar comentario sobre la captura pendiente con `mlflow ui`.
+3. **Comentar en PMV2-HU09 (Energía):** Entrar a tarjeta PMV2-HU09 en `5. IN PROGRESS` y publicar comentario sobre el panel de energía en el frontend.
 
 #### 4. Jhonny Cristhian Quintana Carhuaricra (Product Owner)
-1. **Revisar y comentar en HU-11 (Dashboard):** Entrar a HU-11 en `6. QA-TESTING` y publicar comentario de revisión visual con el arnés local.
-2. **Revisar y comentar en HU-13 (Reportes):** Entrar a HU-13 en `5. IN PROGRESS` y publicar comentario de validación del CSV generado.
-3. **Revisar y comentar en HU-07 (Aprobación):** Entrar a HU-07 en `5. IN PROGRESS` y publicar comentario de exigencia del campo de justificación.
+1. **Revisar y comentar en PMV2-HU11 (Dashboard):** Entrar a PMV2-HU11 en `6. QA-TESTING` y publicar comentario de revisión visual con el arnés local.
+2. **Revisar y comentar en PMV2-HU13 (Reportes):** Entrar a PMV2-HU13 en `5. IN PROGRESS` y publicar comentario de validación del CSV generado.
+3. **Revisar y comentar en PMV2-HU07 (Aprobación):** Entrar a PMV2-HU07 en `5. IN PROGRESS` y publicar comentario de exigencia del campo de justificación.
 
 ---
 
