@@ -7,7 +7,7 @@ las próximas entregas sean coherentes. Reglas:
 - **Lo único que se exportará** será el documento de la semana 13 (revisión general y levantamiento de
   correcciones), construido a partir de estos archivos.
 - Las guías del docente están en `guias/exportados_docente/`; los trabajos previos del equipo, en
-  `guias/TrabajosDesarrollados/` (usados como base, no como verdad); los artículos, en `guias/articulos/`.
+  `docs/historico/trabajos-desarrollados/` (usados como base, no como verdad); los artículos, en `guias/articulos/`.
 
 | Archivo | Competencia / guía | Atributo ICACIT |
 |---|---|---|

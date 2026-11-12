@@ -21,7 +21,7 @@ MODEL = ROOT / "guias/semana13/MODELO-FURPSPLUS.xlsx"
 AUDIT = ROOT / "docs/calidad/01_auditoria_furps.md"
 
 # Mejoras implementadas en la ola 1 de la semana 13 (verificadas): id -> evidencia
-OLA1_FURPS = {"M-U07": "Implementado: docs/GUIA-RAPIDA-USUARIO.md (semana 13)"}
+OLA1_FURPS = {"M-U07": "Implementado: entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md (semana 13)"}
 # Filas que el plan no lleva a «Cumple» (restricciones aceptadas en 01_auditoria_furps.md §5)
 NO_MEJORAN = {"M-F08", "M-PL03"}
 

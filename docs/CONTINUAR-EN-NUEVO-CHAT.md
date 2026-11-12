@@ -9,8 +9,8 @@ Lee primero `AGENTS.md`, `docs/HANDOFF.md` y este archivo. Rama de trabajo: **`t
 | Documento semana 13 (Word) | `entregables/semana13/semana13-calidad-furps-owasp.md` → `exportados/semana13/…-semana13-calidad-FURPS-OWASP.docx` + `MODELO-FURPSPLUS-Green-AI.xlsx` | Listo para revisión; faltan 11 capturas y NRC |
 | Auditorías FURPS+/OWASP 01–07 | `docs/calidad/` | Ola 1 implementada (commit `d24d86f`); olas 2–3 planificadas (17/11–12/12) |
 | Capturas por integrante | `entregables/CAPTURAS-PENDIENTES.md` | Por hacer (equipo) |
-| Trello | `guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md` + `herramientas_IA/trello/validar_trello.py` | Días 1–4 (07/11–13/11) por hacer, cada uno con su cuenta; luego exportar JSON y validar |
-| Video | `docs/exposicion/GUION-VIDEO-UNIDAD-III.md` + `herramientas_IA/video/grabar_episodios.py` | **Video completo sin voz** `exportados/video/green-ai-unidad-III.mp4` (24:28; carátula + 7 episodios + cierre; no versionado) + `descripcion-youtube.txt`. Falta: voces y cámaras de los 4 encima, subir no listado y poner la URL |
+| Trello | `entregables/trello/GUIA-TRELLO-POR-INTEGRANTE.md` + `herramientas_IA/trello/validar_trello.py` | Días 1–4 (07/11–13/11) por hacer, cada uno con su cuenta; luego exportar JSON y validar |
+| Video | `entregables/video/GUION-VIDEO-UNIDAD-III.md` + `herramientas_IA/video/grabar_episodios.py` | **Video completo sin voz** `exportados/video/green-ai-unidad-III.mp4` (24:28; carátula + 7 episodios + cierre; no versionado) + `descripcion-youtube.txt`. Falta: voces y cámaras de los 4 encima, subir no listado y poner la URL |
 | Exportar a Word | `herramientas_IA/README.md` § Exportación DOCX | `md_a_docx.py` + `actualizar_word.ps1` |
 
 **Producción actualizada (PR #1 fusionado el 08/11):** https://woshtsu.github.io/green-ai-workspace-cld/ — `main` está protegida (ruleset: PR + 1 aprobación; el dueño tiene bypass). Trabajar en `test` y abrir PR.
@@ -67,5 +67,5 @@ URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend
 ### Edición 10/11 noche (subtítulos)
 - Corte 0:44,5–0:46,5 (se veía el chat) → `green-ai-unidad-III-cortado.mp4`; todos los minutos del guion −2 s desde 00:46.
 - Guion §5 ampliado (colores de racks, suites, nueva respuesta de Ep. 5, tarjetas HU-03/HU-06, Ep. 7).
-- Subtítulos: `python herramientas_IA/video/guion_a_srt.py docs/exposicion/GUION-VIDEO-UNIDAD-III.md exportados/video/green-ai-unidad-III.srt --fin 24:26`, luego `python herramientas_IA/video/srt_a_ass_apilado.py exportados/video/green-ai-unidad-III.srt exportados/video/sub.ass` (cada subtítulo dura al menos su tiempo de lectura, hasta 3 apilados con el más reciente abajo, caja semitransparente) e incrustado con ffmpeg `subtitles=sub.ass` sobre el cortado → `green-ai-unidad-III-subtitulado.mp4`. Si se cambia el guion, repetir ambos pasos.
+- Subtítulos: `python herramientas_IA/video/guion_a_srt.py entregables/video/GUION-VIDEO-UNIDAD-III.md exportados/video/green-ai-unidad-III.srt --fin 24:26`, luego `python herramientas_IA/video/srt_a_ass_apilado.py exportados/video/green-ai-unidad-III.srt exportados/video/sub.ass` (cada subtítulo dura al menos su tiempo de lectura, hasta 3 apilados con el más reciente abajo, caja semitransparente) e incrustado con ffmpeg `subtitles=sub.ass` sobre el cortado → `green-ai-unidad-III-subtitulado.mp4`. Si se cambia el guion, repetir ambos pasos.
 - Pendiente: la diapositiva de cierre muestra minutos de indicadores con 2 s de más (no regrabada); filas antiguas 00:17, 00:54 y 01:00 tienen más texto que tiempo (subtítulos rápidos).

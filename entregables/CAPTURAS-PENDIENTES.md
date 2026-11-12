@@ -17,7 +17,7 @@ Reglas: captura solo la ventana (Win + Shift + S), en modo claro y sin pestañas
 ## Orden de trabajo por integrante
 
 ### Jhonny Cristhian Quintana Carhuaricra (Product Owner): carátulas y Trello
-Hazlo **después** de completar los días 1 a 4 de `guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md`, para que el tablero tenga actividad real.
+Hazlo **después** de completar los días 1 a 4 de `entregables/trello/GUIA-TRELLO-POR-INTEGRANTE.md`, para que el tablero tenga actividad real.
 | # | ID | Documento | Qué capturar y dónde |
 |---|---|---|---|
 | 1 | `C100` | Informe | Logo oficial de la Universidad Continental (de la plantilla institucional o el portal UC). Pega la imagen del logo, no una captura de pantalla. |
@@ -26,12 +26,12 @@ Hazlo **después** de completar los días 1 a 4 de `guias/trello/GUIA-TRELLO-POR
 | 4 | `C202` | Informe | Trello: tarjeta HU-03 abierta, con descripción, checklist, miembros, etiquetas, fecha y comentarios visibles. |
 | 5 | `C203` | Informe | Trello: la tarjeta Daily Scrum del lunes 09/11 con los comentarios de los 4 integrantes. |
 | 6 | `C204` | Informe | Trello: tarjeta «Sprint Review — Sprint 3» o «Retrospectiva — PMV1» abierta. |
-| 7 | `S05` | Semana 13 | `docs/GUIA-RAPIDA-USUARIO.md` abierto en GitHub (rama `test`), con la tabla de roles y la tarea 1 visibles. |
+| 7 | `S05` | Semana 13 | `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` abierto en GitHub (rama `test`), con la tabla de roles y la tarea 1 visibles. |
 | 8 | `C312` | Informe | Trello: tablero con los títulos de tarjeta `PMVn-HUxx` (p. ej. `PMV2-HU03`) y las tarjetas repartidas por estado (To Do, In Progress, QA-Testing, Done). Hacerlo tras aplicar la guía de Trello. |
 | 9 | `C313` | Informe | Trello: una tarjeta abierta con el checklist de la Definition of Done completo, miembro y fecha visibles. |
 
 ### Leonid Kisley Orlando Huamán Collazos: aplicación web en la nube
-Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; ver `docs/exposicion/GUION-VIDEO-UNIDAD-III.md`, §2). Inicia sesión en https://woshtsu.github.io/green-ai-workspace-cld/dev/.
+Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; ver `entregables/video/GUION-VIDEO-UNIDAD-III.md`, §2). Inicia sesión en https://woshtsu.github.io/green-ai-workspace-cld/dev/.
 | # | ID | Documento | Qué capturar y dónde |
 |---|---|---|---|
 | 1 | `S01` | Semana 13 | `dashboard.html`: el tablero con las pestañas visibles y el gráfico con datos. |

@@ -1,6 +1,6 @@
 # C3 · El ingeniero y la sociedad (AG-I01 / AG-I02)
 
-Base: `guias/TrabajosDesarrollados/3. El Ingeniero y la sociedad.md` y la guía `3.El Ingeniero y la Sociedad.md`.
+Base: `docs/historico/trabajos-desarrollados/3. El Ingeniero y la sociedad.md` y la guía `3.El Ingeniero y la Sociedad.md`.
 **Correcciones al trabajo previo:**
 1. Se retira el «ahorro del 15 %» (sin experimento).
 2. Se retiran el apagado de servidores y Kubernetes, que no existen: el sistema **solo recomienda**.

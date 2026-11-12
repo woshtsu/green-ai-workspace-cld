@@ -186,7 +186,7 @@ El roadmap de mejora se programó en tres olas de trabajo:
 
 ## 5.3. Aplicación del Plan — Ola 1 (Semana 13)
 
-Durante la Ola 1, el equipo implementó con éxito la mejora M-U07 mediante la creación del documento docs/GUIA-RAPIDA-USUARIO.md.
+Durante la Ola 1, el equipo implementó con éxito la mejora M-U07 mediante la creación del documento entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md.
 
 La guía se redactó bajo los siguientes estándares de calidad:
 1. Orientación por roles de usuario: Define explícitamente los alcances operativos para Administradores de TI (ADMIN), Operadores de Infraestructura (OPERATOR) y Observadores/Auditores (VIEWER).
@@ -294,7 +294,7 @@ La siguiente tabla refleja la evaluación técnica individual sobre las 50 pregu
 | **U** | M-U04 | ¿El sistema provee ayuda contextual comprensible y textos explicativos (botones «?»)? | SOFTWARE | Cumple (5) | Módulo de ayuda contextual detallando qué es, uso, cálculo y límites experimentales en help-content.js. | — | — | 5 | 5 | 100.0 % |
 | **U** | M-U05 | ¿Se traducen los errores técnicos de la API a mensajes amigables para el usuario? | SOFTWARE | Cumple (5) | Clasificación de fallas en lenguaje humano con botones de acción sin códigos crípticos en friendly-errors.js. | — | — | 5 | 5 | 100.0 % |
 | **U** | M-U06 | ¿La interfaz respeta estándares de accesibilidad (semántica HTML, ARIA y contraste)? | SOFTWARE | Parcial (3) | Marcado semántico y atributos ARIA completos; pendiente escaneo formal WCAG 2.1 AA con Lighthouse y tabla para Chart.js. | Leonid Huamán Collazos | 15/11/2026 | 3 | 5 | 60.0 % |
-| **U** | M-U07 | ¿Se cuenta con una guía rápida de usuario para la operación del sistema? | GUÍA INST. | Cumple (5) | Subsanado en Ola 1: docs/GUIA-RAPIDA-USUARIO.md documenta 8 flujos en <= 3 pasos con textos reales de la interfaz. | Jhonny Quintana Carhuaricra | 07/11/2026 | 5 | 5 | 100.0 % |
+| **U** | M-U07 | ¿Se cuenta con una guía rápida de usuario para la operación del sistema? | GUÍA INST. | Cumple (5) | Subsanado en Ola 1: entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md documenta 8 flujos en <= 3 pasos con textos reales de la interfaz. | Jhonny Quintana Carhuaricra | 07/11/2026 | 5 | 5 | 100.0 % |
 | **U** | M-U08 | ¿Se completa cualquier operación principal en tres pasos o menos? | SOFTWARE | Parcial (3) | Operaciones comunes en <= 3 pasos; cálculo de energía con archivo y factor toma 4 pasos, e inferencia CPU usa pestañas separadas. | Leonid Huamán Collazos | 17/11/2026 | 3 | 5 | 60.0 % |
 | **R** | M-R01 | ¿Se manejan los errores de las APIs mediante el estándar RFC 7807 (problem+json)? | SOFTWARE | Cumple (5) | Respuestas application/problem+json uniformes con requestId en todos los microservicios. | — | — | 5 | 5 | 100.0 % |
 | **R** | M-R02 | ¿Todos los microservicios exponen sondas de salud (health checks / liveness / readiness)? | SOFTWARE | Cumple (5) | Sondas /health/ready, Actuator y binario -healthcheck en Go operando con normalidad. | — | — | 5 | 5 | 100.0 % |
@@ -413,7 +413,7 @@ software/frontend/network.html:Predecir 15 min
 software/frontend/register.html:Registrar operador
 ```
 
-CAPTURA-PENDIENTE-S05: Capturar el documento docs/GUIA-RAPIDA-USUARIO.md abierto y renderizado en el navegador o visor markdown, destacando los flujos estructurados en 3 pasos.
+CAPTURA-PENDIENTE-S05: Capturar el documento entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md abierto y renderizado en el navegador o visor markdown, destacando los flujos estructurados en 3 pasos.
 
 ## 9.6. Pregunta M-U03 (Visualización de Racks con Mapa de Calor)
 
@@ -598,6 +598,6 @@ Para fines de verificación, auditoría y trazabilidad académica, todos los art
 ## Documentos Técnicos Complementarios de Evidencia
 
 * docs/evidencias/semana13-ola1-verificacion.md: Registro de comandos y resultados de la verificación técnica de la Ola 1.
-* docs/GUIA-RAPIDA-USUARIO.md: Manual operativo en 8 flujos de <= 3 pasos para el usuario final (M-U07).
+* entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md: Manual operativo en 8 flujos de <= 3 pasos para el usuario final (M-U07).
 * docs/GUIA-DESPLIEGUE-RENDER.md: Procedimiento de despliegue contenerizado a costo cero en Render.
 * docs/HANDOFF.md: Bitácora de ingeniería, arquitectura hexagonal, inventario de pruebas y directrices de honestidad experimental.

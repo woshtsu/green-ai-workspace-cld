@@ -1,26 +1,26 @@
-# Entregables
+# Entregables (versiones editables del equipo)
 
-## `informe-corregido/` — lo que se entrega
-Única carpeta del informe de la Unidad III que se corrige y entrega.
-- [informe-unidad-III.md](informe-corregido/informe-unidad-III.md): texto del informe (convertido del PDF entregado; 98 páginas, 54 imágenes, 41 tablas). Aquí se hacen las correcciones.
-- `evidencias/`: imágenes que usa el informe (rutas relativas; mantener junto al `.md`).
-- [cambios-tecnicos-a-reflejar.md](informe-corregido/cambios-tecnicos-a-reflejar.md): qué cambió en el sistema (monorepo, SQLite, Gateway Go, despliegue en Render, Prediction ligera) y en qué sección del informe va cada cosa, con su evidencia y lo que falta.
+La documentación con la que trabaja el equipo está **solo** en tres carpetas:
 
-Guía de redacción corregida (sin imágenes, no se entrega): [../docs/academico/](../docs/academico/README.md).
-
-## `trabajos-previos/` — material de consulta, no se entrega
-Versiones entregadas de capítulos anteriores, organizadas por tema (no por semana: las guías del docente están numeradas por competencia).
-| Carpeta | Contenido |
+| Carpeta | Qué contiene |
 |---|---|
-| `lineamientos-y-requisitos/` | Kickoff, selección de idea, antecedentes, requisitos, HU, PMV (guía 0; semanas 1–2) |
-| `conocimientos-de-ingenieria/` | «Guía 6: Conocimientos de ingeniería y diseño de la solución» |
-| `gestion-del-proyecto/` | Capítulo «4. Gestión del Proyecto» (plan: 16 semanas, 8 sprints, PMV1 = 1–6, PMV2 = 7–12, PMV3 = 13–16) |
-| `evidencias-del-sistema/` | Capturas históricas: sistema, Swagger, Supabase, evidencias por HU |
+| `guias/` | Guías del docente, en Markdown. Solo se consultan. |
+| `entregables/` (esta) | Versiones editables (Markdown) de cada entregable. Aquí se corrige. |
+| `exportados/` | La versión exportada (Word/Excel/PDF) de cada entregable. Se vuelve a exportar después de cada revisión. |
 
-## Orígenes
-- Capítulos previos: copias de `project-docs` del workspace antiguo (solo en el zip del usuario). Las imágenes base64 se separaron con `herramientas_IA/exportacion/extraer_imagenes_base64.py`; el texto no se modificó.
-- Informe: `exportados/semana12/Porras-Huaman-Barrera-Quintana-informe-unidad-III.pdf` (local, no versionado), convertido con `herramientas_IA/exportacion/pdf_a_markdown.py`.
-- DOCX/PDF solo a pedido, en `exportados/` (no versionado).
+El resto del repositorio (`docs/`, `herramientas_IA/`, …) es documentación técnica y de contexto que gestiona Claude. Ahí están también los trabajos de entregas anteriores, ya vencidas (`docs/historico/`).
+
+## Contenido
+| Carpeta / archivo | Entregable | Exportado en |
+|---|---|---|
+| `informe-corregido/informe-unidad-III.md` (+ `evidencias/`, `fuentes/`) | Informe de la Unidad III corregido | `exportados/semana13/…-informe-unidad-III-CORREGIDO.docx` |
+| `semana13/semana13-calidad-furps-owasp.md` | Semana 13: calidad FURPS+ y OWASP | `exportados/semana13/…-semana13-calidad-FURPS-OWASP.docx` + `MODELO-FURPSPLUS-Green-AI.xlsx` |
+| `guia-de-uso/GUIA-RAPIDA-USUARIO.md` | Base de la guía de uso del documento final (PMV3) | Aún no se exporta |
+| `video/GUION-VIDEO-UNIDAD-III.md` | Guion del video de sustentación | Video en `exportados/video/` (no se versiona) |
+| `trello/GUIA-TRELLO-POR-INTEGRANTE.md`, `trello/REVISION-TRELLO-2026-11-09.md` | Guía y revisión del tablero Trello | — |
+| `CAPTURAS-PENDIENTES.md` | Capturas que faltan, por integrante y por ID | — |
+
+Para exportar, ver `herramientas_IA/README.md` § Exportación DOCX.
 
 ## Advertencia de honestidad
-El informe entregado incluye resultados sin respaldo experimental según `docs/HANDOFF.md`: XGBoost como modelo final con RMSE 7,1 %, MAE 5,4 % y sMAPE 8,6 %; mejora de 57,7 %; 45 ms; RAM menor de 35 MB; ahorro de 18,4 %; y afirmaciones sobre Kubernetes y RabbitMQ. **Corregir o retirar esas cifras** al editar `informe-corregido/`, salvo que haya un experimento reproducible que las sustente.
+No reintroducir cifras sin respaldo experimental (ver `docs/HANDOFF.md`, «Honestidad experimental»).

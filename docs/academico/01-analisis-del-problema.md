@@ -1,6 +1,6 @@
 # C1 · Análisis del problema (AG-T08 / AG-C08)
 
-Base: `guias/TrabajosDesarrollados/1. Analisis del Problema.md` (sólido y prudente; se conserva su enfoque) y
+Base: `docs/historico/trabajos-desarrollados/1. Analisis del Problema.md` (sólido y prudente; se conserva su enfoque) y
 la guía `guias/exportados_docente/1.Análisis del problema.md`.
 **Correcciones respecto al trabajo previo:**
 - Se añaden el **diagrama de Ishikawa** (6M) y los **ODS**, que exige `informeFinal.md`.

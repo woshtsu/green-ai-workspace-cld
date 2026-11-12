@@ -1050,7 +1050,7 @@ EVIDENCIA EN REPOSITORIO
 
 - Plan experimental detallado: docs/academico/10-plan-experimental.md
 - Guía metodológica: docs/academico/08-pruebas-resultados-discusion.md
-- Protocolo base: guias/TrabajosDesarrollados/4. Gestión de Proyecto.md
+- Protocolo base: docs/historico/trabajos-desarrollados/4. Gestión de Proyecto.md
 
 DEFINICIÓN DE TERMINADO (DoD)
 

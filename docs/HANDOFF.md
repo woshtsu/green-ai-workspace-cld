@@ -99,7 +99,7 @@ aleatorios en memoria y no se guardaron.
   verificar). Idea: repartir servicios entre dos proveedores, con llamadas HTTPS públicas entre ellos.
 
 ## Sprint actual frente al plan (revisado el 2026-11-06)
-Plan base: `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md` §4.8 (8 sprints de 2 semanas desde el
+Plan base: `docs/historico/trabajos-desarrollados/4. Gestión de Proyecto.md` §4.8 (8 sprints de 2 semanas desde el
 25/08/2026).
 - **Calendario:** el 06/11 corresponde al **Sprint 6** (03–14/11, semanas 11–12). La semana 13 empieza el **Sprint
   7** (17–28/11). El curso va una semana por delante del calendario del plan: el informe 9–12 ya se entregó el
@@ -120,7 +120,7 @@ plan experimental + baseline, reportes CSV/PDF, rol observador → (4) documento
 
 ## Documentación académica corregida (2026-11-06, segunda parte)
 - El usuario aportó las guías del docente (`guias/exportados_docente/`, leídas íntegras), los trabajos previos
-  (`guias/TrabajosDesarrollados/`) y 9 artículos (`guias/articulos/`).
+  (`docs/historico/trabajos-desarrollados/`) y 9 artículos (`guias/articulos/`).
 - Se creó `docs/academico/` (**sin imágenes; no se entrega**), con el índice C1–C6, la revisión docente con
   puntajes (8,5/20 según la captura) y el plan de la semana 13, más un documento por competencia.
 - Es la referencia para las próximas entregas. Lo único que se exportará será el documento de la semana 13.
@@ -218,10 +218,10 @@ Resumen para continuar en un chat nuevo: `docs/CONTINUAR-EN-NUEVO-CHAT.md`. Fron
 | Informe corregido (`entregables/informe-corregido/informe-unidad-III.md`) | 3 encargos en paralelo (partes I–VI, VII, VIII–anexos); cifras sin respaldo retiradas; RF real; discusión con 3 antecedentes; presupuesto PMBOK (S/ 24 872,40 cuadra); carátula con Claude declarado como asistente de IA | Verificado XGBoost 15 min MAE 3,457 vs RF 3,222 (`results/metrics/model_comparison.csv`) y energía 4 888/4 896 Wh; borrada imagen vieja del presupuesto (S/ 22 080 con K8s); enlace Trello corregido a PL8uQ4rF; URL de Prediction corregida (`-zxly`) |
 | Diagramas | `componentes-green-ai.puml`, `despliegue-green-ai.puml` y EDT renderizados con PlantUML local | Sustituyen las capturas C102/C103 |
 | Auditorías S13 (`docs/calidad/01..07`) | FURPS+ 85 % → 87 % tras ola 1 (esperado 98 %); OWASP 80,5 → 85,0/100; dictamen «Apto para producción con observaciones» | La 1.ª auditoría FURPS+ daba 96 % (sobrecalificada): se recalificó (HU-05/07/09/11/13/15, hexagonal del simulador, cold start). Rutas `file:///` sustituidas |
-| Ola 1 de mejoras (commit `d24d86f`) | nginx: X-Frame-Options, Permissions-Policy, COOP y cabeceras repetidas en `config.local.js`; SRI SHA-384 en CDN; Actions fijadas por SHA; `docs/GUIA-RAPIDA-USUARIO.md` | `node --test` 48/48; `nginx -t` OK; cabeceras comprobadas con curl en contenedor; SRI cargado en navegador sin errores. Evidencia: `docs/evidencias/semana13-ola1-verificacion.md`. Workflows **no ejecutados** en GitHub |
+| Ola 1 de mejoras (commit `d24d86f`) | nginx: X-Frame-Options, Permissions-Policy, COOP y cabeceras repetidas en `config.local.js`; SRI SHA-384 en CDN; Actions fijadas por SHA; `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` | `node --test` 48/48; `nginx -t` OK; cabeceras comprobadas con curl en contenedor; SRI cargado en navegador sin errores. Evidencia: `docs/evidencias/semana13-ola1-verificacion.md`. Workflows **no ejecutados** en GitHub |
 | Documento S13 (`entregables/semana13/semana13-calidad-furps-owasp.md`) | Redactado por Antigravity | Salidas de comandos **inventadas** (puerto 8080, grep, node --test) sustituidas por salidas reales; nombres de alertas corregidos |
-| Trello (`guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md`) | Tarjeta por tarjeta y plan por integrante en 4 días; sin dailies retroactivos inventados | 16 rutas de evidencia inventadas corregidas; checklist HU-07 sin falso «hecho». Validador `herramientas_IA/trello/validar_trello.py` (el JSON actual: 57 errores) |
-| Video (`docs/exposicion/GUION-VIDEO-UNIDAD-III.md`) | Guion de 25 min, 7 episodios, diálogos y planes B | Quitadas cifras anticipadas (600/600, p50 128 ms); marcadores `[leer …]`. Script `herramientas_IA/video/carga_transacciones.py` **no ejecutado** |
+| Trello (`entregables/trello/GUIA-TRELLO-POR-INTEGRANTE.md`) | Tarjeta por tarjeta y plan por integrante en 4 días; sin dailies retroactivos inventados | 16 rutas de evidencia inventadas corregidas; checklist HU-07 sin falso «hecho». Validador `herramientas_IA/trello/validar_trello.py` (el JSON actual: 57 errores) |
+| Video (`entregables/video/GUION-VIDEO-UNIDAD-III.md`) | Guion de 25 min, 7 episodios, diálogos y planes B | Quitadas cifras anticipadas (600/600, p50 128 ms); marcadores `[leer …]`. Script `herramientas_IA/video/carga_transacciones.py` **no ejecutado** |
 | Exportación | `md_a_docx.py` rediseñado (plantilla de estilos, carátula, encabezado/pie, tablas verdes, horizontal para ≥ 9 columnas), `actualizar_word.ps1` | Revisado en PDF por Word. El validador XSD de la skill docx falla en Windows por su instalación (falta un archivo de esquemas), no por el documento |
 | Skills | `find-skills` (vercel-labs/skills) instalado en `.claude/skills/`; elegida la skill `docx` de Anthropic (214 k instalaciones) | Las demás opciones tenían < 1 k instalaciones |
 
@@ -242,7 +242,7 @@ Ajuste 2026-11-08 (pedido del usuario, opción B: grabar con la URL de producci�
 
 Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (quién graba qué, franja común con `mantener_despierto.py` a cargo de Ricardo, ajustes OBS, entrega de clips; edita Jhonny Cristhian), episodio 4 solo con navegador (GitHub Actions y archivos de resultados; métricas base corregidas según `model_comparison.csv`: persistencia 4,61/6,39, media móvil 3,74/5,19, XGBoost 3,46/4,79), carátula y cierre con clips individuales y URLs de producción en lugar de `/dev/`.
 
-2026-11-09: PR #4 fusionado: `entregables/word/` con los .docx y el .xlsx (excepción en .gitignore). Reexportar y volver a subir si cambian los .md.
+2026-11-09: PR #4 fusionado: `exportados/semana13/` con los .docx y el .xlsx (excepción en .gitignore). Reexportar y volver a subir si cambian los .md.
 
 ## Video Unidad III: grabador y prueba de carga (2026-11-09, chat del video; sigue en curso)
 - `carga_transacciones.py` **probado contra Render por primera vez**: `--iteraciones 5` → 16/16 HTTP 200; p95 2,8–3,5 s; recomendaciones `eligible_for_review` 5/5 (`docs/evidencias/carga-ensayo-5.csv`). Un intento previo dio 504 al descubrir nodos (pasajero entre Gateway y Monitoring): ahora el descubrimiento reintenta hasta 3 veces y registra cada intento en el CSV. Si Supabase rechaza el login, el script muestra el motivo. Estimación para 200 iteraciones: ~8–9 min.
@@ -285,7 +285,7 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
   - Anexo A con una tabla que relaciona la lista de cotejo con el guion. Los ítems 1–3 y 6–8 quedan «No cubierto en el guion» porque son del informe escrito.
   - Las fechas de las tareas 7.1–8.6 son una propuesta y hay que revisarlas.
 - Fechas ≤ 30/11 (subagente Haiku) en `entregables/semana13/...md`, `docs/calidad/02, 05 y 06` y `llenar_modelo_furps.py`. `validar_trello.py` acepta títulos `PMVn-HUxx`.
-- Word y Excel reexportados en `entregables/word/`:
+- Word y Excel reexportados en `exportados/semana13/`:
   - informe: 102 páginas y 14 marcadores `CAPTURA-PENDIENTE`;
   - semana 13: 34 páginas y 11 marcadores.
 - Pendiente: los cambios de la guía de Trello (títulos `PMVn-HUxx`, HU-08 para Ricardo, fechas) están en la rama local `worktree-agent-a8e294441df89aac0`, commit `f281f55`, y no se integraron. El working copy tiene cambios ajenos sin commit en `GUIA-TRELLO-POR-INTEGRANTE.md` (sección 0, export del 09/11). Antes de integrar, el dueño de esos cambios debe confirmarlos.

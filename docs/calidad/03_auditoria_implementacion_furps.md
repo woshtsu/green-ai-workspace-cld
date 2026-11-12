@@ -26,7 +26,7 @@ Bajo el mandato de auditoria independiente:
 
 ### Resultado General
 - **Mejoras comprometidas para Ola 1 (Semana 13):** 1 (M-U07).
-- **Estado de implementacion de Ola 1:** Implementada al 100 % (M-U07 satisfecha mediante la publicacion de `docs/GUIA-RAPIDA-USUARIO.md:L1-L106`).
+- **Estado de implementacion de Ola 1:** Implementada al 100 % (M-U07 satisfecha mediante la publicacion de `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md:L1-L106`).
 - **Puntaje FURPS+ inicial (01_auditoria_furps.md):** 170 / 200 (85.00 %).
 - **Puntaje FURPS+ actual auditado (Post Ola 1):** 174 / 200 (87.00 %).
 - **Regresiones detectadas:** Cero (0). La suite de pruebas de frontend se mantiene en 48/48 pruebas satisfactorias y los microservicios de backend no sufrieron alteraciones en esta fase.
@@ -66,12 +66,12 @@ Se evaluan de forma exhaustiva las 12 mejoras formalizadas en `docs/calidad/02_p
 - **Factor:** Usabilidad (U).
 - **Estado Anterior:** No cumple (1 punto).
 - **Estado Actual:** **Implementada (Cumple - 5 puntos)**.
-- **Evidencia Observable:** Creacion y publicacion formal del archivo `docs/GUIA-RAPIDA-USUARIO.md:L1-L106`.
-  - Contiene requisitos tecnicos y URLs operativas para desarrollo (`/dev/`) y produccion (`docs/GUIA-RAPIDA-USUARIO.md:L7-L19`).
-  - Define roles de usuario RBAC (ADMIN, OPERATOR, VIEWER) coincidiendo exactamente con la logica perimetral de `software/gateway-go/internal/policy/routes.go:L72-L77` (`docs/GUIA-RAPIDA-USUARIO.md:L22-L29`).
-  - Documenta 8 tareas operativas completables en 3 pasos o menos, sustentadas en botones e identificadores reales de la interfaz web (`docs/GUIA-RAPIDA-USUARIO.md:L32-L83`).
-  - Incorpora catalogo de errores amigables alineado con `software/frontend/friendly-errors.js` (`docs/GUIA-RAPIDA-USUARIO.md:L86-L98`).
-  - Refuerza el principio de honestidad experimental respecto al origen de datos simulados y potencia modelada (`docs/GUIA-RAPIDA-USUARIO.md:L101-L106`).
+- **Evidencia Observable:** Creacion y publicacion formal del archivo `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md:L1-L106`.
+  - Contiene requisitos tecnicos y URLs operativas para desarrollo (`/dev/`) y produccion (`entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md:L7-L19`).
+  - Define roles de usuario RBAC (ADMIN, OPERATOR, VIEWER) coincidiendo exactamente con la logica perimetral de `software/gateway-go/internal/policy/routes.go:L72-L77` (`entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md:L22-L29`).
+  - Documenta 8 tareas operativas completables en 3 pasos o menos, sustentadas en botones e identificadores reales de la interfaz web (`entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md:L32-L83`).
+  - Incorpora catalogo de errores amigables alineado con `software/frontend/friendly-errors.js` (`entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md:L86-L98`).
+  - Refuerza el principio de honestidad experimental respecto al origen de datos simulados y potencia modelada (`entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md:L101-L106`).
 - **Responsable:** Jhonny Quintana Carhuaricra.
 - **Fecha de Compromiso:** 09/11/2026 (Semana 13) — Cumplida en plazo.
 
@@ -142,7 +142,7 @@ Se evaluan de forma exhaustiva las 12 mejoras formalizadas en `docs/calidad/02_p
 - **Factor:** Usabilidad (U).
 - **Estado Anterior:** Parcial (3 puntos).
 - **Estado Actual:** **No implementada a nivel de codigo UI (planificada para 17/11/2026, Sprint 8 - Ola 3)**.
-- **Evidencia Observable:** Si bien `docs/GUIA-RAPIDA-USUARIO.md:L32-L83` estandariza el procedimiento de 8 tareas en <= 3 pasos, la simplificacion ergonomica del formulario de carga de potencia en `software/frontend/dashboard.html:L275-L289` se abordara en el Sprint 8.
+- **Evidencia Observable:** Si bien `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md:L32-L83` estandariza el procedimiento de 8 tareas en <= 3 pasos, la simplificacion ergonomica del formulario de carga de potencia en `software/frontend/dashboard.html:L275-L289` se abordara en el Sprint 8.
 - **Responsable:** Leonid Huaman Collazos.
 
 ### Ficha M-PL03: Gestion y Optimizacion de Cuota de Hosting Gratuito en Render
@@ -161,12 +161,12 @@ Como auditor independiente, se inspeccionaron los posibles efectos colaterales d
 1. **Pruebas Automatizadas de Frontend:**
    - La suite modular en `software/frontend/tests/*.test.cjs` fue ejecutada antes y despues de la integracion documental y de seguridad.
    - **Resultado:** **48 de 48 pruebas exitosas (0 fallos)**, segun consta en `docs/evidencias/semana13-ola1-verificacion.md:L19`.
-   - Se verifico que la inclusion de `docs/GUIA-RAPIDA-USUARIO.md` y los atributos de seguridad en archivos HTML no rompieron los selectores del DOM, los parsers de configuracion, ni las rutinas de calculo de agregados y energia.
+   - Se verifico que la inclusion de `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` y los atributos de seguridad en archivos HTML no rompieron los selectores del DOM, los parsers de configuracion, ni las rutinas de calculo de agregados y energia.
 2. **Estabilidad de Microservicios Backend:**
    - Durante la Ola 1 no se modifico ningun archivo dentro de `software/monitoring/`, `software/data-processing/`, `software/prediction/`, `software/gateway/` ni `software/gateway-go/`.
    - La linea base de pruebas de backend reportada en `docs/HANDOFF.md:L36-L49` (112 en Monitoring, 121 en Data Processing, 100 en Prediction, 30 en Gateway Go y 10 en Simulator) permanece intacta sin riesgo de regresion funcional.
 3. **Consistencia de Textos e Interfaz:**
-   - Se comprobo que las cadenas citadas en `docs/GUIA-RAPIDA-USUARIO.md` correspondan con los elementos del DOM en `software/frontend/dashboard.html`, `network.html`, `login.html` y `register.html` (10 de 10 textos confirmados segun `docs/evidencias/semana13-ola1-verificacion.md:L25`).
+   - Se comprobo que las cadenas citadas en `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` correspondan con los elementos del DOM en `software/frontend/dashboard.html`, `network.html`, `login.html` y `register.html` (10 de 10 textos confirmados segun `docs/evidencias/semana13-ola1-verificacion.md:L25`).
    - No se detectaron enlaces rotos ni botones huerfanos.
 
 ---
@@ -184,6 +184,6 @@ Tras la culminacion de la Ola 1, persisten los siguientes riesgos tecnicos a ser
 
 ## 6. Conclusion de Cumplimiento
 
-1. **Cumplimiento del Plan:** El equipo ejecuto de forma impecable el 100 % de los compromisos adquiridos para la Ola 1 (Semana 13), entregando una guia de usuario de alto valor operativo (`docs/GUIA-RAPIDA-USUARIO.md`) sin introducir ninguna regresion en el software existente.
+1. **Cumplimiento del Plan:** El equipo ejecuto de forma impecable el 100 % de los compromisos adquiridos para la Ola 1 (Semana 13), entregando una guia de usuario de alto valor operativo (`entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md`) sin introducir ninguna regresion en el software existente.
 2. **Evolucion del Nivel de Calidad:** El puntaje global del modelo FURPS+ se eleva de **85.00 % a 87.00 %** (174 de 200 puntos brutos; ponderado de 85.95 % a 87.62 %), fortaleciendo especificamente el pilar de Usabilidad que paso de 80.00 % a 90.00 %.
 3. **Dictamen de Auditoria:** **APROBADO CONFORME PARA OLA 1.** Las 11 brechas restantes quedan correctamente identificadas y calendarizadas para el Sprint 7 (Ola 2) y Sprint 8 (Ola 3) segun la hoja de ruta establecida.

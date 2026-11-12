@@ -1,6 +1,6 @@
 """Graba la pantalla (sin voz) de los 7 episodios del video de la Unidad III para poner la locución encima.
 
-Sigue docs/exposicion/GUION-VIDEO-UNIDAD-III.md. Un MP4 por episodio (ffmpeg gdigrab, escritorio completo,
+Sigue entregables/video/GUION-VIDEO-UNIDAD-III.md. Un MP4 por episodio (ffmpeg gdigrab, escritorio completo,
 1920x1080) y un archivo «-pasos.md» con el minuto de cada paso, que sirve de guion de locución.
 
 Requisitos (una vez):

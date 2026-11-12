@@ -19,6 +19,8 @@ Contexto extenso y estado actual: [docs/HANDOFF.md](docs/HANDOFF.md). Léelo ant
 - No declarar terminado lo que no se probó; registrar comandos, resultados y fallos en docs/HANDOFF.md.
 - **Cierre de cada sesión (preferencia permanente del usuario, sin que lo pida):** antes de terminar, documentar lo hecho en `docs/HANDOFF.md` (cambios, pruebas con resultado, fallos) y actualizar `docs/CONTINUAR-EN-NUEVO-CHAT.md` (estado, URLs, pendientes en orden, cómo trabajar) para que otro chat pueda continuar sin contexto previo. Dejar evidencias (capturas, salidas) en `docs/evidencias/` y, si afectan al informe, en `entregables/informe-corregido/`. Commit local; el push solo con autorización.
 
+- **Carpetas de documentación del equipo (preferencia permanente del usuario):** `guias/` (solo guías del docente), `entregables/` (versiones editables .md de cada entregable) y `exportados/` (primera versión exportada y reexportaciones tras revisión). Nada de documentos para el equipo fuera de esas tres; el resto (`docs/`, etc.) es contexto técnico de los agentes. No crear entregables de semanas ya vencidas.
+
 ## Graphify (índice de código)
 - Grafo propio en `graphify-out/graph.json`. Antes de leer código, consulta: `graphify query "<pregunta>" --budget 1500`; usa `path` y `explain` para relaciones.
 - Runtime local: ver [herramientas_IA/README.md](herramientas_IA/README.md). No instalar globalmente ni cambiar PATH.

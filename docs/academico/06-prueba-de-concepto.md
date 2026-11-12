@@ -1,6 +1,6 @@
 # C6-A · Prueba de concepto (PoC) de IA
 
-Base: `guias/TrabajosDesarrollados/Guia_6_Prueba_de_Concepto_Completa_Revisada.md` y la guía `6.Prueba de Concepto.md`.
+Base: `docs/historico/trabajos-desarrollados/Guia_6_Prueba_de_Concepto_Completa_Revisada.md` y la guía `6.Prueba de Concepto.md`.
 **Corrección crítica.** La tabla de resultados del trabajo previo (§7.1) no proviene de ningún experimento
 encontrado en el repositorio:
 - MAE: Naive 12,4 % · MA 10,1 % · RF 6,2 % · **XGBoost 5,4 %**.

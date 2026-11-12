@@ -50,7 +50,7 @@ El plan se organiza en tres olas de trabajo sincronizadas con el calendario acad
 +-----------------------------------------------------------------------------------+
 | OLA 1: Semana 13 (07/11/2026 - 09/11/2026)                                        |
 | Implementación Inmediata (Documental / Usabilidad)                               |
-| -> M-U07: Guía rápida de usuario (docs/GUIA-RAPIDA-USUARIO.md)                    |
+| -> M-U07: Guía rápida de usuario (entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md)                    |
 +-----------------------------------------------------------------------------------+
                                          |
                                          v
@@ -91,12 +91,12 @@ A continuación se define la especificación técnica de intervención para cada
 * **Requisito / ID Matriz:** M-U07
 * **Estado Inicial:** No cumple (1 punto)
 * **Estado Esperado:** Cumple (5 puntos)
-* **Objetivo:** Redactar y publicar en `docs/GUIA-RAPIDA-USUARIO.md` un manual conciso (máximo 2 páginas) orientado al usuario final (administrador de TI, operador de centro de datos y auditor observador), detallando requisitos, accesos, roles y tareas cotidianas en 3 pasos o menos, sin inventar botones y sustentado en los componentes reales de la interfaz.
+* **Objetivo:** Redactar y publicar en `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` un manual conciso (máximo 2 páginas) orientado al usuario final (administrador de TI, operador de centro de datos y auditor observador), detallando requisitos, accesos, roles y tareas cotidianas en 3 pasos o menos, sin inventar botones y sustentado en los componentes reales de la interfaz.
 * **Justificación:** ¿Cómo puede operar el clúster un usuario sin asistencia técnica? Actualmente carece de una síntesis operativa para ejecutar flujos críticos de telemetría, inferencia y reportes sin tener que inspeccionar el código fuente.
 * **Prioridad:** Alta (Ola 1, implementación inmediata).
 * **Nivel de Riesgo:** Mínimo (cambio documental, no altera lógica de ejecución ni contratos de API).
 * **Dependencias:** Interfaz web desplegada en `software/frontend/`.
-* **Estrategia de Validación:** Verificación documental de existencia del archivo `docs/GUIA-RAPIDA-USUARIO.md`, contraste directo contra las cadenas reales de texto de `software/frontend/dashboard.html`, `network.html`, `flows.html`, `login.html`, `register.html`, `help-content.js` y `friendly-errors.js`.
+* **Estrategia de Validación:** Verificación documental de existencia del archivo `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md`, contraste directo contra las cadenas reales de texto de `software/frontend/dashboard.html`, `network.html`, `flows.html`, `login.html`, `register.html`, `help-content.js` y `friendly-errors.js`.
 * **Estrategia de Rollback:** `git revert <commit_guia_usuario>` (eliminación limpia del archivo markdown).
 * **Responsable:** Jhonny Quintana Carhuaricra.
 * **Fecha de Compromiso:** 09/11/2026 (Semana 13).
@@ -343,7 +343,7 @@ A continuación se presenta la secuencia lógica de ejecución recomendada, cons
 
 | Orden | ID Brecha | Acción Principal de Mejora | Prioridad | Responsable | Fecha Límite | Suite de Validación Requerida |
 |:---:|:---:|---|:---:|---|:---:|---|
-| **1** | **M-U07** | Redacción y publicación de Guía Rápida de Usuario (`docs/GUIA-RAPIDA-USUARIO.md`) | Alta | Jhonny Quintana Carhuaricra | 09/11/2026 | Revisión documental contra interfaz real |
+| **1** | **M-U07** | Redacción y publicación de Guía Rápida de Usuario (`entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md`) | Alta | Jhonny Quintana Carhuaricra | 09/11/2026 | Revisión documental contra interfaz real |
 | **2** | **M-F13 / M-R05** | Endurecimiento de RLS y verificación de políticas en base de datos Supabase | Crítica | Ricardo Porras / Dueño Supabase | 11/11/2026 | Pruebas de contrato Data Processing (114) |
 | **3** | **M-F09** | Validación de observatorio en entorno `/dev/` de Pages con sesión real | Alta | Leonid Huamán Collazos | 12/11/2026 | Suite Frontend node:test (48) |
 | **4** | **M-F05** | Levantamiento y captura estandarizada de MLflow UI para modelos entrenados | Media | Gina Barrera Peña | 14/11/2026 | Verificación HTTP MLflow + capturas |
