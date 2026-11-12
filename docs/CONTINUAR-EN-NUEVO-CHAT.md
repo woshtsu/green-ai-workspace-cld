@@ -37,6 +37,7 @@ Solo `guias/` (docente), `entregables/` (fuentes .md) y `exportados/` (Word/Exce
 
 ## 2026-11-12 (noche): semana 13 migrada a OWASP Top 10:2025
 Entregable de semana 13 (.md, .docx y .xlsx) reclasificado a OWASP Top 10:2025; clasificación vigente y puntajes en `docs/calidad/08_reclasificacion_owasp_2025.md` (04–07 quedan como histórico 2021). Nuevo hallazgo OW-13 (A10:2025, ola 3). El informe corregido de la Unidad III no se tocó. Ver HANDOFF.
+Roles del §4.3 alineados con el acta; responsables OWASP iguales en Word y Excel; reparto de revisión en `entregables/semana13/REVISION-POR-INTEGRANTE.md` (falta que cada integrante confirme). Pendiente decidir si `docs/calidad/01–08` se mueve a `docs/` como pide la guía.
 
 ## Pendiente (en orden)
 0. **OW-13 (A10:2025, ola 3, hasta 30/11):** recover con problem+json en gateway-go, manejador global en el Gateway Spring, pruebas de cuerpos 500 genéricos y timeouts uniformes en el frontend (`docs/calidad/08_reclasificacion_owasp_2025.md` §4.3).

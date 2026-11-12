@@ -18,6 +18,7 @@ El resto del repositorio (`docs/`, `herramientas_IA/`, …) es documentación t�
 | `guia-de-uso/GUIA-RAPIDA-USUARIO.md` | Base de la guía de uso del documento final (PMV3) | Aún no se exporta |
 | `video/GUION-VIDEO-UNIDAD-III.md` | Guion del video de sustentación | Video en `exportados/video/` (no se versiona) |
 | `trello/GUIA-TRELLO-POR-INTEGRANTE.md`, `trello/REVISION-TRELLO-2026-11-09.md` | Guía y revisión del tablero Trello | — |
+| `semana13/REVISION-POR-INTEGRANTE.md` | Qué parte del Word, del Excel y de `docs/calidad/` revisa y confirma cada integrante | — |
 | `CAPTURAS-PENDIENTES.md` | Capturas que faltan, por integrante y por ID | — |
 
 Para exportar, ver `herramientas_IA/README.md` § Exportación DOCX.

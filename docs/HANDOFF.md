@@ -393,3 +393,10 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Archivos: `entregables/semana13/semana13-calidad-furps-owasp.md`; nuevo `docs/calidad/08_reclasificacion_owasp_2025.md` (clasificación vigente); nota al inicio de `docs/calidad/04–07` (se conservan como registro histórico 2021); `herramientas_IA/calidad/llenar_modelo_furps.py` (lista 2025).
 - Exportados: `MODELO-FURPSPLUS-Green-AI.xlsx` (salida: Inicial 198, Actual 208, Esperado 244 de 250) y `…-semana13-calidad-FURPS-OWASP.docx` (39 págs., 0 capturas pendientes; `md_a_docx.py --encabezado "Green AI · Semana 13: calidad FURPS+ y OWASP"` + `actualizar_word.ps1`; el primer `actualizar_word.ps1` dio COMException, al reintentar terminó OK). También se añadieron líneas en blanco antes de 4 listas que pandoc unía al párrafo (§5, §6.2, §6.4).
 - Entorno `.tools/docx` recreado en esta máquina (ignorado por Git).
+
+## 12/11/2026 (noche, 2) — Semana 13: roles alineados y reparto de revisión
+- Tabla de roles (§4.3) alineada con el acta de constitución y la gestión del proyecto: Jhonny PO (documentación, pruebas, gobernanza); Gina Scrum Master y ML Lead; Ricardo backend, contratos e integración (Lead Backend & MLOps); Leonid infraestructura, Docker y observabilidad, con UI/UX. Se retiraron etiquetas que no figuraban antes («Especialista en Ciberseguridad», «Ingeniero de Frontend y UX»). Los factores asignados no cambian.
+- Responsables OWASP iguales en el Word y el Excel (antes diferían): OW-A01 Ricardo (con el dueño de Supabase) 23/11; OW-A04 Gina (con el dueño de Supabase, por el Excel del dataset) 23/11; OW-A06 y OW-A09 Ricardo 23/11; OW-A07 Leonid 30/11; OW-A10 Ricardo 30/11. Los FURPS+ ya coincidían con 01_auditoria_furps.md.
+- Nuevo `entregables/semana13/REVISION-POR-INTEGRANTE.md`: qué secciones del Word, filas del Excel y documentos 01–08 revisa y confirma cada integrante, con una tabla de confirmación. El plazo lo fija Gina.
+- Reexportados: Excel (198 / 208 / 244 de 250, sin cambios) y Word (40 págs.). Revisada en el PDF la página de la tabla de roles.
+- Pendiente de decisión del usuario: mover `docs/calidad/01–08` a `docs/` (la guía pide `./docs`).
