@@ -32,6 +32,9 @@ URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend
 
 ## 2026-11-11: revisión de Dina aplicada al informe (ver HANDOFF). Pendiente integrar la rama `worktree-agent-a8e294441df89aac0` (guía Trello PMVn-HUxx) tras confirmar los cambios sin commit de la guía.
 
+## 2026-11-11 (noche): carpetas del equipo
+Solo `guias/` (docente), `entregables/` (fuentes .md) y `exportados/` (Word/Excel versionados). Informe: PMV3 = procesos de software (17/11–30/11); faltan capturas C100–C313, NRC y URL del video. Ver HANDOFF.
+
 ## Pendiente (en orden)
 1. **Supabase (lo hace el dueño del proyecto):** añadir a *Authentication → URL Configuration* las URLs `https://woshtsu.github.io/green-ai-workspace-cld/` y `.../dev/`; aplicar el enum `VIEWER`; revisar RLS «Permitir todo» y la columna `password` en texto plano (ver «Riesgos» en `docs/HANDOFF.md`).
 2. Fijar el *Health Check Path* en cada servicio de Render (Prediction `/health/ready`, Data Processing `/api/v1/health`, Gateway/Monitoring `/actuator/health`, Simulator `/health`, Prometheus `/-/healthy`).

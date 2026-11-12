@@ -289,3 +289,22 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
   - informe: 102 páginas y 14 marcadores `CAPTURA-PENDIENTE`;
   - semana 13: 34 páginas y 11 marcadores.
 - Pendiente: los cambios de la guía de Trello (títulos `PMVn-HUxx`, HU-08 para Ricardo, fechas) están en la rama local `worktree-agent-a8e294441df89aac0`, commit `f281f55`, y no se integraron. El working copy tiene cambios ajenos sin commit en `GUIA-TRELLO-POR-INTEGRANTE.md` (sección 0, export del 09/11). Antes de integrar, el dueño de esos cambios debe confirmarlos.
+
+## 2026-11-11 (noche): PMV3 orientado a procesos, árbol de Dina y reorganización de carpetas
+- La guía de Trello del usuario (miembro único por tarjeta) se combinó con la rama del subagente: títulos `PMVn-HUxx`, sección 2.4 y fechas ≤ 30/11 (`1ad36c8`). HU-08 queda como miembro único de Gina, como dice la versión del usuario.
+- PMV3 reorientado a procesos de software (subagente Sonnet):
+  - Sprint 7: proceso de desarrollo, calidad ola 2, CI/CD documentado, Trello/DoD.
+  - Sprint 8: ola 3 y nueva medición, métricas del proceso, documento final con guía de uso, video, cierre el 30/11.
+  - CO2e (HU-10), PDF y la ampliación de HU-16 pasan a trabajo futuro.
+  - Gantt regenerados con `entregables/informe-corregido/fuentes/gantt_render.py`; EDT regenerada (`herramientas_IA/diagramas/edt-green-ai.puml`).
+  - Capturas nuevas de proceso: C310–C313.
+  - Anexo C con las observaciones del docente y una tabla de atención. El guion del Anexo A se quitó, a pedido del usuario.
+- Ediciones de Dina incorporadas: el árbol de problemas en §1.1 (Figura 1; las demás figuras se corrieron +1) y las mayúsculas de la portada. No se aplicaron dos: su «multirecurso» (lo correcto es «multirrecurso») y su RMSE, que en su Word quedó roto.
+- Reorganización por preferencia del usuario, registrada en `AGENTS.md`. La documentación del equipo va solo en `guias/` (guías del docente), `entregables/` (fuentes .md) y `exportados/` (Word/Excel versionados; video no). Movimientos:
+  - `entregables/word/` → `exportados/semana13/`
+  - `entregables/trabajos-previos/` y `guias/TrabajosDesarrollados/` → `docs/historico/`
+  - guía y revisión de Trello → `entregables/trello/`
+  - guion → `entregables/video/`
+  - guía rápida → `entregables/guia-de-uso/`
+  - Commit `7b6f600`. Rutas actualizadas con sed y verificadas solo con grep.
+- Word reexportado: `exportados/semana13/…-CORREGIDO.docx`, 109 páginas, 35 tablas, 18 marcadores `CAPTURA-PENDIENTE` (14 + C310–C313). Las exportaciones viejas de `exportados/semana13` se guardaron en el scratchpad antes de sobrescribirlas.

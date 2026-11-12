@@ -1,7 +1,7 @@
 CAPTURA-PENDIENTE-C100: Insertar aquí el logo oficial de la Universidad Continental (portal institucional o plantilla UC) y borrar este recuadro.
 
 ::: {custom-style="Portada Institucion"}
-Universidad Continental
+UNIVERSIDAD CONTINENTAL
 :::
 
 ::: {custom-style="Portada Escuela"}
@@ -23,7 +23,7 @@ Versión corregida tras la revisión docente – noviembre de 2026
 :::
 
 ::: {custom-style="Portada Etiqueta"}
-Integrantes
+INTEGRANTES
 :::
 
 ::: {custom-style="Portada Texto"}
@@ -47,7 +47,7 @@ Claude (Anthropic, modelo Opus 5.5) – asistente de IA para coordinación técn
 :::
 
 ::: {custom-style="Portada Etiqueta"}
-Docente
+DOCENTE
 :::
 
 ::: {custom-style="Portada Texto"}
@@ -737,7 +737,7 @@ Tabla 15. Adaptación de ceremonias y prácticas Scrum (tailoring)
 |Duración de los Sprints|Ocho Sprints en total dentro del ciclo académico: los Sprints 1 a 6 son de 14 días calendario (2 semanas); por el calendario lectivo, que concluye el 30/11/2026, los Sprints 7 y 8 se reducen a una semana cada uno (17/11–23/11 y 24/11–30/11), adaptación (*tailoring*) propia de este proyecto.|
 |Daily Scrum adaptado|Sincronizaciones virtuales asíncronas tres veces por semana (lunes, miércoles y viernes) mediante grupo de mensajería (WhatsApp) y registro auditable en tarjetas de Trello, adecuándose a los horarios heterogéneos del equipo.|
 |Refinamiento y Planificación|Sesiones integradas de planificación al inicio de cada sprint para priorizar historias, estimar esfuerzo y revisar criterios de aceptación técnicos sin sobrecarga administrativa.|
-|Enfoque de procesos en el PMV3|En los Sprints 7 y 8 el trabajo se centra en procesos: flujo Git `test`→`main` con *pull request* revisado, aseguramiento de calidad FURPS+/OWASP por olas, CI/CD documentado, convención `PMVn-HUxx` y DoD por tarjeta en Trello, y métricas del proceso. El producto final del PMV3 es el documento final con guía de uso (base: `docs/GUIA-RAPIDA-USUARIO.md`).|
+|Enfoque de procesos en el PMV3|En los Sprints 7 y 8 el trabajo se centra en procesos: flujo Git `test`→`main` con *pull request* revisado, aseguramiento de calidad FURPS+/OWASP por olas, CI/CD documentado, convención `PMVn-HUxx` y DoD por tarjeta en Trello, y métricas del proceso. El producto final del PMV3 es el documento final con guía de uso (base: `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md`).|
 |Sprint Review y Retrospectiva|Demostración técnica del incremento funcional ante el asesor académico al cierre de cada sprint, y ejecución de análisis retrospectivo formal bajo ciclo PDCA (Plan-Do-Check-Act) al término de cada PMV.|
 
 #### VII.2.3. Matriz de asignación de roles y responsabilidades (RACI)
@@ -1523,7 +1523,7 @@ Tabla 30. Verificaciones del proceso planificadas para el PMV3
 | Gestión en Trello | Checklist de DoD por tarjeta y nomenclatura `PMVn-HUxx` | Ninguna tarjeta pasa a *Done* sin DoD completo; todas las tarjetas con título `PMVn-HUxx` | Tablero y tarjeta (C312, C313) | 7 | J | Planificada |
 | Calidad (ola 3) | Re-medición FURPS+/OWASP frente a la auditoría inicial | Hallazgos abiertos, cerrados y justificados, comparados con `01_auditoria_furps.md` y `04_auditoria_owasp.md` | Auditoría final en `docs/calidad/` | 8 | G | Planificada |
 | Métricas del proceso | Cálculo de cumplimiento de DoD, HU terminadas por sprint y hallazgos cerrados | Valores reportados con su fuente (exportación de Trello y documentos de calidad), sea cual sea el resultado | Tabla de métricas en el informe final | 8 | J | Planificada |
-| Documento final | Prueba de la guía de uso por una persona ajena al desarrollo | Completa las tareas de `docs/GUIA-RAPIDA-USUARIO.md` y el manual de instalación sin ayuda del equipo | Registro de la prueba y observaciones | 8 | R/L | Planificada |
+| Documento final | Prueba de la guía de uso por una persona ajena al desarrollo | Completa las tareas de `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` y el manual de instalación sin ayuda del equipo | Registro de la prueba y observaciones | 8 | R/L | Planificada |
 | Video de sustentación | Cotejo del video contra la lista de cotejo | Cubre los ítems de la lista de cotejo aplicables al video | Video publicado (URL en el Anexo A) | 8 | Todos | Planificada |
 
 ![](evidencias/p076-img044.png)
