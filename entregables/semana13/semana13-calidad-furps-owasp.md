@@ -380,13 +380,13 @@ CAPTURA-PENDIENTE-S01: Capturar el tablero web completo con sus 5 pestañas tem�
 
 El entrenamiento y selección del modelo Random Forest para inferencia de CPU a 15 minutos se gestiona mediante MLflow, registrando parámetros de hiperparámetros, métricas de error (RMSE, MAE) y artefactos serializados.
 
-CAPTURA-PENDIENTE-S02: Capturar la interfaz web de MLflow UI mostrando el experimento de predicción de CPU, las corridas registradas y la comparación de métricas del modelo seleccionado.
+![Capturar la interfaz web de MLflow UI mostrando el experimento de predicción de CPU, las corridas registradas y la compa](evidencias/captura-C303-mlflow-run.png)
 
 ## 9.3. Pregunta M-F10 (Sistema de Reglas de Alerta - HU-12)
 
-Prometheus supervisa continuamente los umbrales de infraestructura mediante cuatro reglas declarativas validadas con la herramienta promtool.
+Prometheus supervisa continuamente los umbrales de infraestructura mediante cuatro reglas declarativas de operación (grupo `green-ai-pmv2-operacion`, más dos de demostración en `green-ai-pmv2-demo`) validadas con la herramienta promtool.
 
-CAPTURA-PENDIENTE-S03: Capturar la consola web de Prometheus en la sección /alerts mostrando las reglas cargadas (SimulatorTelemetryDown, NodeCpuSaturationRisk, NodeMemoryPressure, PredictedCpuHigh) en estado verde/activo.
+![Capturar la consola web de Prometheus en la sección /alerts mostrando las reglas cargadas (SimulatorTelemetryDown, NodeC](evidencias/captura-C304-prometheus-alerts.png)
 
 ## 9.4. Pregunta M-PL03 (Alojamiento en Hosting a Costo Cero)
 
@@ -413,7 +413,7 @@ software/frontend/network.html:Predecir 15 min
 software/frontend/register.html:Registrar operador
 ```
 
-CAPTURA-PENDIENTE-S05: Capturar el documento entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md abierto y renderizado en el navegador o visor markdown, destacando los flujos estructurados en 3 pasos.
+![Capturar el documento entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md abierto y renderizado en el navegador o visor markd](evidencias/captura-S05-guia-rapida.png)
 
 ## 9.6. Pregunta M-U03 (Visualización de Racks con Mapa de Calor)
 
@@ -499,7 +499,7 @@ Resultado obtenido:
 72:      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 ```
 
-CAPTURA-PENDIENTE-S09: Capturar el código del archivo .github/workflows/ci.yml en el editor o repositorio mostrando las acciones fijadas por commit SHA de 40 caracteres con su versión semántica en comentario inline.
+![Capturar el código del archivo .github/workflows/ci.yml en el editor o repositorio mostrando las acciones fijadas por co](evidencias/captura-S09-ci-sha.png)
 
 ## 9.10. Verificación de Regresiones en Frontend (M-R04)
 
@@ -521,7 +521,7 @@ Resultado obtenido:
 ℹ duration_ms 496.619
 ```
 
-CAPTURA-PENDIENTE-S10: Capturar la ventana de terminal con la salida exitosa del comando de pruebas de frontend mostrando los 48 tests pasados y 0 fallos.
+![Capturar la ventana de terminal con la salida exitosa del comando de pruebas de frontend mostrando los 48 tests pasados ](evidencias/captura-S10-frontend-tests.png)
 
 # 10. Auditoría final integral: dictamen y recomendaciones
 

@@ -4,6 +4,9 @@ Documentos (en `exportados/semana13/`, carpeta local no versionada; los comparte
 - **Informe corregido:** `Porras-Huaman-Barrera-Quintana-informe-unidad-III-CORREGIDO.docx` (IDs `C1xx`, `C2xx` y `C3xx`).
 - **Semana 13:** `Porras-Huaman-Barrera-Quintana-semana13-calidad-FURPS-OWASP.docx` (IDs `Sxx`).
 
+## Estado al 11/11/2026 (noche)
+Claude tomó en segundo plano (Chrome headless y salidas reales de las pruebas) e insertó: C101, C301, C303/S02, C304/S03, C305, C311, S05, S09, S10 (marcadas con ✅). Imágenes en `entregables/informe-corregido/evidencias-nube/captura-*.png`. Pendientes: las que requieren sesión iniciada (app web, Trello, Render) o Docker (C302, S07), el logo (C100/S00) y C310 (PR con revisión, planificado para el Sprint 7).
+
 ## Cómo insertar cada captura en Word (30 segundos por captura)
 1. Abre el .docx, pulsa **Ctrl + B** y busca el ID exacto, por ejemplo `CAPTURA-PENDIENTE-C306`. Cada ID aparece una sola vez, en un **recuadro amarillo**.
 2. Haz **triple clic** dentro del recuadro para seleccionar el párrafo completo.
@@ -26,7 +29,7 @@ Hazlo **después** de completar los días 1 a 4 de `entregables/trello/GUIA-TREL
 | 4 | `C202` | Informe | Trello: tarjeta HU-03 abierta, con descripción, checklist, miembros, etiquetas, fecha y comentarios visibles. |
 | 5 | `C203` | Informe | Trello: la tarjeta Daily Scrum del lunes 09/11 con los comentarios de los 4 integrantes. |
 | 6 | `C204` | Informe | Trello: tarjeta «Sprint Review — Sprint 3» o «Retrospectiva — PMV1» abierta. |
-| 7 | `S05` | Semana 13 | `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` abierto en GitHub (rama `test`), con la tabla de roles y la tarea 1 visibles. |
+| 7 | ✅ `S05` | Semana 13 | `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` abierto en GitHub (rama `test`), con la tabla de roles y la tarea 1 visibles. |
 | 8 | `C312` | Informe | Trello: tablero con los títulos de tarjeta `PMVn-HUxx` (p. ej. `PMV2-HU03`) y las tarjetas repartidas por estado (To Do, In Progress, QA-Testing, Done). Hacerlo tras aplicar la guía de Trello. |
 | 9 | `C313` | Informe | Trello: una tarjeta abierta con el checklist de la Definition of Done completo, miembro y fecha visibles. |
 
@@ -40,27 +43,27 @@ Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; v
 | 4 | `C307` | Informe | Caso de uso de IA 2: en el dashboard, pestaña «Predicción y recomendación» → «Usar valores de ejemplo» → «Evaluar recomendación». Captura el resultado, con las restricciones y `executionAllowed=false`. |
 | 5 | `C308` | Informe | Pestaña «Reportes y experimento» → «Descargar CSV». Abre el CSV en Excel y captura la hoja. |
 | 6 | `S08` | Semana 13 | F12 → pestaña **Console** en `login.html` y en `dashboard.html`, sin errores de *integrity* (SRI). Una captura que muestre la consola limpia. |
-| 7 | `C304` y `S03` | Ambos | Prometheus de Render: servicio `green-ai-prometheus-dev`: abre su URL desde el panel de Render y añade `/alerts`, con las 4 reglas. Usa la misma imagen en los dos documentos. |
+| 7 | ✅ `C304` y `S03` | Ambos | Prometheus de Render: servicio `green-ai-prometheus-dev`: abre su URL desde el panel de Render y añade `/alerts`, con las 4 reglas. Usa la misma imagen en los dos documentos. |
 
 ### Gina Diana Barrera Peña: modelo de ML
 | # | ID | Documento | Qué capturar y dónde |
 |---|---|---|---|
-| 1 | `C303` y `S02` | Ambos | MLflow UI con el experimento `computational-demand-prediction` y el run `random_forest_15m` (MAE de test 3,85). En `software/prediction`: ejecuta el pipeline sin `--skip-mlflow` (ver `software/prediction/README.md`) con `python scripts/run_pipeline.py` (README, línea 62) y luego `mlflow ui --backend-store-uri ./mlruns` → http://127.0.0.1:5000. Si no se puede en tu PC, lo hace Ricardo, que ya tiene `mlruns/`. Misma imagen en los dos documentos. |
+| 1 | ✅ `C303` y `S02` | Ambos | MLflow UI con el experimento `computational-demand-prediction` y el run `random_forest_15m` (MAE de test 3,85). En `software/prediction`: ejecuta el pipeline sin `--skip-mlflow` (ver `software/prediction/README.md`) con `python scripts/run_pipeline.py` (README, línea 62) y luego `mlflow ui --backend-store-uri ./mlruns` → http://127.0.0.1:5000. Si no se puede en tu PC, lo hace Ricardo, que ya tiene `mlruns/`. Misma imagen en los dos documentos. |
 
 ### Ricardo Porras Veli: repositorio, pruebas y nube
 | # | ID | Documento | Qué capturar y dónde |
 |---|---|---|---|
-| 1 | `C101` | Informe | GitHub, rama `test`: `software/frontend/supabase-auth-setup.sql` abierto (función PL/pgSQL y *trigger*). |
-| 2 | `S09` | Semana 13 | GitHub: `.github/workflows/ci.yml` con las acciones fijadas por SHA y su comentario `# v4`. |
+| 1 | ✅ `C101` | Informe | GitHub, rama `test`: `software/frontend/supabase-auth-setup.sql` abierto (función PL/pgSQL y *trigger*). |
+| 2 | ✅ `S09` | Semana 13 | GitHub: `.github/workflows/ci.yml` con las acciones fijadas por SHA y su comentario `# v4`. |
 | 3 | `S04` | Semana 13 | Panel de Render (workspace «My Workspace») con los 6 servicios `green-ai-*-dev`. No incluyas `SoftwareAnemia`. |
-| 4 | `C305` | Informe | Swagger de Prediction en Render: `https://green-ai-prediction-dev-zxly.onrender.com/docs`, con `/v1/predictions` y `/v1/recommendations`. |
-| 5 | `S10` | Semana 13 | Terminal: `cd software/frontend` y `node --test tests/*.test.cjs`, que debe terminar con `pass 48`. |
+| 4 | ✅ `C305` | Informe | Swagger de Prediction en Render: `https://green-ai-prediction-dev-zxly.onrender.com/docs`, con `/v1/predictions` y `/v1/recommendations`. |
+| 5 | ✅ `S10` | Semana 13 | Terminal: `cd software/frontend` y `node --test tests/*.test.cjs`, que debe terminar con `pass 48`. |
 | 6 | `S07` | Semana 13 | Terminal: cabeceras de nginx (comandos en `docs/evidencias/semana13-ola1-verificacion.md`). |
-| 7 | `C301` | Informe | Terminal con las suites por servicio (una captura por suite o un mosaico; comandos en `docs/CONTINUAR-EN-NUEVO-CHAT.md`). |
+| 7 | ✅ `C301` | Informe | Terminal con las suites por servicio (una captura por suite o un mosaico; comandos en `docs/CONTINUAR-EN-NUEVO-CHAT.md`). |
 | 8 | `C302` | Informe | Terminal: stack local levantado y `python software/infraestructura/smoke/smoke.py`, que debe dar 14/14. |
 | 9 | `C309` | Informe | **Hecha el 10/11/2026** (fotograma del episodio 3: 601/601 HTTP 200). Insertada en `informe-unidad-III.md` como `evidencias-nube/carga-601-transacciones-render.png`; falta reexportar el Word. |
 | 10 | `C310` | Informe | GitHub: un Pull Request real del Sprint 7 (rama de trabajo hacia `test`) con la revisión aprobada y los checks de CI en verde (pestaña Pull requests). Solo cuando exista el PR integrado; no se simula. |
-| 11 | `C311` | Informe | GitHub → pestaña Actions → workflow `ci.yml`: historial de ejecuciones recientes con su resultado real. |
+| 11 | ✅ `C311` | Informe | GitHub → pestaña Actions → workflow `ci.yml`: historial de ejecuciones recientes con su resultado real. |
 
 ## Datos que completa Ricardo en ambos documentos
 - `NRC-PENDIENTE` (Ctrl + B): número NRC de la sección.

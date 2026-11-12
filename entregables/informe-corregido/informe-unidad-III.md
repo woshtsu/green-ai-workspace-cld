@@ -631,7 +631,7 @@ En atención a las observaciones docentes respecto a la evidencia de lógica de 
 
 Esta función sincroniza de manera segura la creación de cuentas de usuario en el subsistema de autenticación con la tabla relacional `public.user_profiles`, asignando por defecto el rol de `OPERATOR` y configurando las políticas de aislamiento RLS (*Row Level Security*) correspondientes.
 
-CAPTURA-PENDIENTE-C101: Código y definición de la función PL/pgSQL y disparador en software/frontend/supabase-auth-setup.sql en el repositorio GitHub oficial  
+![Código y definición de la función PL/pgSQL y disparador en software/frontend/supabase-auth-setup.sql en el repositorio G](evidencias-nube/captura-C101-github-sql.png)
 *Figura 9. Procedimiento almacenado y disparador de sincronización de usuarios en Supabase (GitHub).*
 
 ---
@@ -1176,7 +1176,7 @@ Se rectifica formalmente que **XGBoost no fue el modelo ganador** para el horizo
 
 Para garantizar la reproducibilidad y auditabilidad técnica exigida por el atributo ICACIT AG-I11 (Uso de Herramientas Modernas), el entrenamiento y registro de métricas se integró con MLflow Tracking. El experimento se registró bajo el identificador formal `computational-demand-prediction`, con el run `random_forest_15m` reportando el MAE de test de 3,85 pp, complementado con el manifiesto `software/prediction/results/manifest.json` que fija el hash SHA-256 del código, datos y parámetros de configuración.
 
-CAPTURA-PENDIENTE-C303: Interfaz gráfica de MLflow Tracking UI con el experimento 'computational-demand-prediction' y el run 'random_forest_15m' registrado con MAE de test 3,85 pp. Tomada del navegador en http://localhost:5000 tras ejecutar mlflow ui.
+![Interfaz gráfica de MLflow Tracking UI con el experimento 'computational-demand-prediction' y el run 'random_forest_15m'](evidencias-nube/captura-C303-mlflow-run.png)
 Figura VIII.1. Registro y trazabilidad del experimento de entrenamiento de Machine Learning en MLflow Tracking UI.
 
 En intervalos de alta utilización (> 80 % CPU, $n = 32$), el MAE de Random Forest se mantuvo en 3,58 pp en validación. No obstante, al evaluar específicamente los intervalos de pico extremo ($n = 13$), el MAE aumentó a 6,12 pp en validación y a 8,45 pp en prueba. Este comportamiento evidencia que el error se duplica en escenarios de sobrecarga crítica, constituyendo la principal limitación del modelo. Al tratarse de una tarea de regresión continua de CPU, se utilizan métricas MAE y RMSE; no se reporta métrica F1 al no haberse implementado una tarea formal de clasificación binaria de eventos.
@@ -1217,7 +1217,7 @@ Tabla 27. Pruebas automatizadas por servicio
 | Simulator | Python 3.11 / Unittest (Docker) | 10 / 10 | Generación de series sintéticas, perfiles de carga, exportador y señales de término |
 | Stack integral | Python 3.11 (`smoke.py`) | 14 / 14 | Validación de integración HTTP End-to-End sobre el ecosistema de servicios |
 
-CAPTURA-PENDIENTE-C301: Ejecución consolidada de las suites de pruebas automatizadas por microservicio en la terminal (Monitoring 112, Gateway Java 12, Gateway Go 30, Data Processing 121, Prediction 100, Frontend 48 y Simulator 10). Tomada de la consola ejecutando los comandos de prueba en el monorepo.
+![Ejecución consolidada de las suites de pruebas automatizadas por microservicio en la terminal (Monitoring 112, Gateway J](evidencias-nube/captura-C301-suites.png)
 Figura VIII.3. Ejecución consolidada de pruebas automatizadas por servicio en el monorepo de desarrollo.
 
 CAPTURA-PENDIENTE-C302: Salida de ejecución del script de smoke test integral del stack (14/14 comprobaciones aprobadas). Tomada de la consola ejecutando python software/infraestructura/smoke/smoke.py.
@@ -1279,7 +1279,7 @@ La Figura VIII.8 certifica la conectividad operativa instantánea de las tres fu
 
 De forma complementaria, se estructuraron cuatro reglas de alerta en el archivo `prometheus/alerts.yml`, validadas sintácticamente mediante la utilidad oficial `promtool`: `SimulatorTelemetryDown` (caída del colector por más de 1 minuto), `NodeCpuSaturationRisk` (CPU sostenida > 85 % por más de 2 minutos), `NodeMemoryPressure` (memoria RAM > 90 %) y `PredictedCpuHigh` (alerta proactiva ante estimaciones superiores al 80 % de capacidad).
 
-CAPTURA-PENDIENTE-C304: Interfaz de Prometheus Server mostrando el estado de las reglas de alerta activas (SimulatorTelemetryDown, NodeCpuSaturationRisk, NodeMemoryPressure, PredictedCpuHigh). Tomada del navegador en http://localhost:9090/alerts.
+![Interfaz de Prometheus Server mostrando el estado de las reglas de alerta activas (SimulatorTelemetryDown, NodeCpuSatura](evidencias-nube/captura-C304-prometheus-alerts.png)
 Figura VIII.9. Panel de reglas de alerta configuradas en Prometheus Server.
 
 ##### c) Visualización en tiempo real y muestreo en Grafana
@@ -1436,7 +1436,7 @@ Figura VIII.19. Esquemas Pydantic y estructuras DTO de validación de datos del 
 
 En Prediction Service se comprueban las sondas `GET /health/live` y `GET /health/ready` (que comprueba la carga efectiva del binario Random Forest en memoria), los endpoints de inferencia `POST /v1/predictions` y `POST /predict`, y el endpoint de recomendaciones `POST /v1/recommendations`.
 
-CAPTURA-PENDIENTE-C305: Especificación interactiva OpenAPI (Swagger UI) del Prediction Service detallando endpoints /health/live, /health/ready, /v1/predictions y /v1/recommendations. Tomada de http://localhost:8002/docs o instancia en Render.
+![Especificación interactiva OpenAPI (Swagger UI) del Prediction Service detallando endpoints /health/live, /health/ready,](evidencias-nube/captura-C305-swagger-prediction.png)
 Figura VIII.20. Documentación interactiva OpenAPI (Swagger UI) del microservicio Prediction Service en el entorno desplegado.
 
 ##### b) Interfaz web e inferencia predictiva de demanda (Frontend HTML/JS estático)
@@ -1541,7 +1541,7 @@ Figura VIII.35. Plan de experimentación comparativa de 24 horas y aseguramiento
 CAPTURA-PENDIENTE-C310: Pull Request en GitHub (rama de trabajo hacia test) con la revisión aprobada y los checks de integración continua en verde. Se toma desde la pestaña Pull requests de GitHub, una vez integrado un PR real del Sprint 7.
 Figura VIII.36. Pull Request con revisión aprobada y checks de CI en verde.
 
-CAPTURA-PENDIENTE-C311: Historial de ejecuciones del workflow ci.yml en la pestaña Actions de GitHub, con las ejecuciones recientes y su resultado. Se toma desde GitHub Actions del repositorio oficial.
+![Historial de ejecuciones del workflow ci.yml en la pestaña Actions de GitHub, con las ejecuciones recientes y su resulta](evidencias-nube/captura-C311-actions.png)
 Figura VIII.37. Historial de ejecuciones de GitHub Actions (workflow ci.yml).
 
 ---

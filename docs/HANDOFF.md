@@ -316,3 +316,28 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
   - Sprint 8: ingeniería inversa (fases 5–7), ola 3 y nueva medición, pruebas con usuarios y acta, informe final con guía de uso, artículo en inglés con trazabilidad, póster y video con 7 operaciones, cierre el 30/11.
 - Cambios en el informe (Sonnet): Gantt planificado y ejecutado regenerados (`fuentes/gantt_render.py`); cronograma regenerado con PlantUML (`.tools/plantuml/plantuml.jar`); la Tabla 30 de VIII.2.3 detalla la evidencia prevista para los indicadores 8–10.
 - Aviso: el eje del Gantt sigue la línea base (Sprint 7 = «Sem 13»). El docente lo llama semana 14 porque el calendario se adelantó una semana, como explica VII.5.3.
+
+## 2026-11-11 (22:40): capturas automáticas
+- Herramientas nuevas en `herramientas_IA/capturas/`:
+  - `capturar_web.py`: Chrome headless con perfil temporal vacío, en modo claro y en segundo plano. Solo sirve para páginas públicas o locales; no usa sesiones.
+  - `terminal_a_png.py`: convierte en imagen la salida REAL de un comando, recortada sin modificarla.
+- Pruebas ejecutadas hoy, todas en verde:
+  - frontend: `node --test`, 48/48;
+  - Prediction: `pytest`, 100 passed;
+  - Data Processing: `pytest`, 121 passed y 8 skipped;
+  - Monitoring: `mvnw -B verify`, 112 tests y BUILD SUCCESS.
+  - Gateway Go no se ejecutó: no hay Go local y Docker Desktop estaba apagado.
+- Capturas insertadas en el informe:
+  - C101: SQL en GitHub;
+  - C301: suites de pruebas;
+  - C303: MLflow, run `random_forest_15m`, servido localmente con `mlflow ui` en el puerto 5055;
+  - C304: `/alerts` de Prometheus en Render, que tiene 6 reglas (4 de operación y 2 de demostración);
+  - C305: Swagger de Prediction en Render;
+  - C311: GitHub Actions.
+- Capturas insertadas en semana 13: S02, S03, S05, S09, S10. Las imágenes están copiadas en `entregables/semana13/evidencias/`. En S03 se aclaró el texto de las «cuatro reglas».
+- Faltan:
+  - por sesión iniciada: app web (S01, S06, C306–C308, S08), Trello (C201–C204, C312, C313) y Render (S04);
+  - por Docker: C302 (smoke) y S07 (cabeceras de nginx);
+  - el logo (C100/S00);
+  - C310: PR con revisión, planificado.
+- Word reexportados: el informe tiene 113 páginas y 12 marcadores pendientes; semana 13 tiene 36 páginas y 6 marcadores.
