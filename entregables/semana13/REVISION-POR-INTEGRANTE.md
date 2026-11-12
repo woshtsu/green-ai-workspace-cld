@@ -70,9 +70,69 @@ Cada uno marca su fila cuando termina. Las observaciones van a Ricardo (o como c
 
 | Integrante | Revisado (✅) | Fecha | Observaciones |
 |---|---|---|---|
-| Jhonny Quintana | | | |
-| Gina Barrera | | | |
-| Ricardo Porras | | | |
-| Leonid Huamán | | | |
+| Jhonny Quintana | Parcial | 12/11/2026 | Revisó 01 y 02: M-F11 (responsable) y M-U07 (fecha) no coinciden. Falta confirmar el resto de su bloque (ver «Pendiente»). |
+| Gina Barrera | ✅ (reconfirmar total) | 12/11/2026 | Aprobado con observaciones: pie de figura del §9.2, texto de M-F05, fechas de OW-A04 y M-S01, columna H de «3-Esperado». Revisó con 198/208; ahora son 196/206 (ver «Cambios después de la revisión»). |
+| Ricardo Porras | ✅ | 12/11/2026 | §3.2 conforme a top10.owasp.org/2025. §6: recálculo 79,0 → 83,5 bien realizado (podrá ajustarse levemente). §7.1: todas mis filas conformes; M-F07 (HU-07, 20/11) y M-F11 (HU-13, PDF, 18/11) se mantienen como pendientes de la Ola 2 según el plan aprobado. §9.8–§9.10: comandos y salidas verificados al ejecutarlos y capturarlos. 08 es la clasificación vigente; 04 a 07 llevan la nota de «histórico 2021». Excel: se adapta a la versión revisada del Word en la reexportación. |
+| Leonid Huamán | ✅ (con 1 pendiente) | 12/11/2026 | §7.1, §9.1, §9.3–9.7 y §10.3 conformes. Pide en §9.7 la salida del curl a /login.html y la ruta completa del docker run. |
 
 Plazo: lo fija Gina (Scrum Master), antes de la entrega de la semana 13.
+
+## Estado de la revisión al 12/11/2026 (noche)
+
+### Cambios después de la revisión (afectan a todos)
+- **M-R01 pasa a Parcial (3):** Prediction no responde errores en problem+json (usa `{code, message}`), los demás servicios sí. Evidencia: captura S28. Responsable Ricardo, 23/11 (Ola 2).
+- **Nuevas cifras:** FURPS+ 168 → 172 / 200 (84,0 % → 86,0 %; ponderado 84,78 → 86,28). **Global 196 → 206 → 244 de 250 (78,4 % → 82,4 % → 97,6 %).** OWASP sin cambios (28 / 34 / 48; 79,0 → 83,5 / 100).
+- El «85,00 ponderado» inicial no seguía las ponderaciones (era el bruto 170/200). Queda corregido.
+- Se añade un archivo **LICENSE (MIT)** al repositorio para respaldar M-PL05.
+- **Evidencias nuevas** S11–S37 en `entregables/semana13/evidencias/` (S11–S14 tomadas por el equipo). S11 y S12 confirman OW-01 (RLS «Permitir todo») y OW-03 (columna `password`). Ya no son «no verificados».
+- La sección 6 tiene captura para cada hallazgo OW-01 … OW-13. Matices: OW-02 solo escucha en `127.0.0.1`; OW-11 es parcial (gateway-go sí fija digest); M-PL04 = «APIs de datos por el gateway» (el login va directo a Supabase).
+
+### Decisiones pendientes del equipo (responde en este archivo o a Ricardo)
+La auditoría 01 y el plan 02 no coinciden en:
+
+| Fila | 01 auditoría | 02 plan | Propuesta | Decisión |
+|---|---|---|---|---|
+| M-F11 (reporte PDF) | Ricardo, 18/11 | Jhonny, 18/11 | Ricardo (backend) | |
+| M-U07 (guía rápida) | 16/11 | 09/11 | 09/11 (se hizo en la Ola 1) | |
+| M-R05 | 13/11 | 11/11 | Elegir una | |
+| M-P01 (arranque en frío) | Leonid | Ricardo | Leonid (infraestructura) | |
+| M-S01 (refactor Simulator) | Ricardo, 24/11 | Leonid, 24/11 | Ricardo, 23/11 (dentro de la Ola 2) | |
+| OW-A04 (contraseñas Excel/BD) | 23/11 | Ola 3 (hasta 30/11) | 30/11 | |
+
+### Pendiente por integrante
+**Jhonny**
+- [ ] Confirmar el resto de su bloque: portada, §1 a §4 (incluida la tabla de roles §4.3), filas M-F01 a M-F13 del §7.1, §11 y §12.
+- [ ] Decidir M-F11 y M-U07 (tabla de arriba).
+
+**Gina**
+- [ ] Reconfirmar con las cifras nuevas: 196 / 206 / 244 y FURPS+ 86,0 % (86,28 ponderado) en §7.2, §8 y §10.
+- [ ] Decidir la fecha de OW-A04 y M-S01 (tabla de arriba).
+
+**Leonid**
+- [ ] Pasar a Ricardo la **salida real** de `curl -sSI` a `/login.html` (y a `/config.local.js`) con el contenedor nginx de la Ola 1. Si no la guardó: `docker run --rm -d -p 8088:80 -v "$PWD/software/frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro" -v "$PWD/software/frontend:/usr/share/nginx/html:ro" nginx:1.28.0-alpine`, luego `curl -sSI http://127.0.0.1:8088/login.html`. En el documento la ruta irá relativa al repositorio (`software/frontend/nginx.conf`), sin rutas personales.
+- [ ] Decidir M-P01 (tabla de arriba).
+
+**Ricardo: capturas para las filas «Cumple» sin figura**
+Guardar en `entregables/semana13/evidencias/` con este nombre. Reglas: solo la ventana (Win + Shift + S), modo claro, sin tokens, claves ni DevTools; usar `https://woshtsu.github.io/green-ai-workspace-cld/dev/` con los servicios de Render despiertos (≥ 25 min antes).
+
+| Archivo | Fila(s) | Qué capturar exactamente |
+|---|---|---|
+| `captura-S40-f01-metricas.png` | M-F01 | Pestaña **Resumen** con las 7 tarjetas con valores (no «—») y el gráfico «Evolución de la métrica» con líneas. Esperar a que deje de decir «Conectando…». |
+| `captura-S41-f02-historico.png` | M-F02 | Pestaña **Detalle por servidor**: tabla del histórico con filas y el paginador («Siguiente» / número de página) visible. |
+| `captura-S42-f03-f06-prediccion.png` | M-F03, M-F06 | Pestaña **Predicción y recomendación** → «Predecir 15 min»: resultado de la predicción y la recomendación (con su estado y restricciones). |
+| `captura-S43-f04-experimento.png` | M-F04 | Pestaña **Reportes y experimento**: la comparación de modelos o estrategias. |
+| `captura-S44-f12-rbac.png` | M-F12 | Con una cuenta de rol **VIEWER**: el mensaje que impide predecir o aprobar. Si no hay cuenta VIEWER, avisar (se usará la prueba automática del Gateway). |
+| `captura-S45-u02-modo-claro.png` | M-U02 | La misma vista que S13, pulsando el botón de modo para que quede en **modo claro** (S13 ya muestra el oscuro). |
+| `captura-S46-u04-ayuda.png` | M-U04 | Un botón **«?»** abierto (por ejemplo, el de «Media del conjunto») con su texto de ayuda visible. |
+| `captura-S47-u05-error-amigable.png` | M-U05 | Un mensaje de error amigable, por ejemplo el aviso de «servicio despertando» al entrar con Render dormido (sin códigos técnicos). |
+| `captura-S48a-u08-paso1.png`, `S48b-…paso2`, `S48c-…paso3` | M-U08 | Una operación principal en tres pasos: (1) elegir servidor, (2) pulsar «Predecir 15 min», (3) ver la recomendación. |
+| `captura-S49-p02-render-ram.png` | M-P02 | Render → `green-ai-prediction-dev` → **Metrics**: gráfico de **Memory** por debajo de 512 MB (no abrir Environment). |
+| `captura-S50a-pruebas-prediction.png` | M-R04, M-F03, M-F06 | En tu equipo, terminal con el **resumen final** de `pytest` en `software/prediction` (línea «N passed»). |
+| `captura-S50b-pruebas-data-processing.png` | M-R04, M-F02, M-R06 | Igual, `pytest` en `software/data-processing`. |
+| `captura-S50c-pruebas-gateway-go.png` | M-R04, M-F12, OW-A10 | `go test ./...` en `software/gateway-go` (todas las líneas `ok`). |
+| `captura-S50d-pruebas-java.png` | M-R04 | `mvn test` en `software/monitoring` y `software/gateway` («BUILD SUCCESS» y «Tests run: …»). |
+
+Con S50a–S50d queda respaldada la cifra de 415+ pruebas.
+
+### Cierre (Ricardo, con Claude)
+Cuando estén las decisiones, las confirmaciones y las capturas: aplicar las observaciones en el `.md`, enlaces fijos a GitHub (commit `d24d86f` y etiqueta de la entrega), «Figura N» en cada fila de la matriz, LICENSE, y reexportar el Word y el Excel. Plazo (Gina): revisiones hasta el viernes 13/11, 18:00; reexportación el viernes 13/11, 21:00.
