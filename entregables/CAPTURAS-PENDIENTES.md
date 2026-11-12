@@ -23,11 +23,11 @@ Reglas: captura solo la ventana (Win + Shift + S), en modo claro y sin pestañas
 Hazlo **después** de completar los días 1 a 4 de `entregables/trello/GUIA-TRELLO-POR-INTEGRANTE.md`, para que el tablero tenga actividad real.
 | # | ID | Documento | Qué capturar y dónde |
 |---|---|---|---|
-| 1 | `C100` | Informe | Logo oficial de la Universidad Continental (de la plantilla institucional o el portal UC). Pega la imagen del logo, no una captura de pantalla. |
-| 2 | `S00` | Semana 13 | El mismo logo. |
+| 1 | ✅ `C100` | Informe | Logo oficial de la Universidad Continental (de la plantilla institucional o el portal UC). Pega la imagen del logo, no una captura de pantalla. |
+| 2 | ✅ `S00` | Semana 13 | El mismo logo. |
 | 3 | ✅ `C201` | Informe | Trello: vista completa del tablero con las 11 listas (aleja el zoom del navegador al 67 %). |
 | 4 | ✅ `C202` | Informe | Trello: tarjeta HU-03 abierta, con descripción, checklist, miembros, etiquetas, fecha y comentarios visibles. |
-| 5 | `C203` | Informe | Trello: la tarjeta Daily Scrum del lunes 09/11 con los comentarios de los 4 integrantes. |
+| 5 | `C203` | Informe | Trello: la tarjeta de un Daily Scrum **real** (13/11 o uno del Sprint 7 desde el 17/11) con los comentarios de los 4 integrantes publicados ese mismo día. El Daily del 09/11 no se completó: no se retrofecha. |
 | 6 | `C204` | Informe | Trello: tarjeta «Sprint Review — Sprint 3» o «Retrospectiva — PMV1» abierta. |
 | 7 | ✅ `S05` | Semana 13 | `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` abierto en GitHub (rama `test`), con la tabla de roles y la tarea 1 visibles. |
 | 8 | `C312` | Informe | Trello: tablero con los títulos de tarjeta `PMVn-HUxx` (p. ej. `PMV2-HU03`) y las tarjetas repartidas por estado (To Do, In Progress, QA-Testing, Done). Hacerlo tras aplicar la guía de Trello. |
@@ -58,11 +58,11 @@ Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; v
 | 3 | `S04` | Semana 13 | Panel de Render (workspace «My Workspace») con los 6 servicios `green-ai-*-dev`. No incluyas `SoftwareAnemia`. |
 | 4 | ✅ `C305` | Informe | Swagger de Prediction en Render: `https://green-ai-prediction-dev-zxly.onrender.com/docs`, con `/v1/predictions` y `/v1/recommendations`. |
 | 5 | ✅ `S10` | Semana 13 | Terminal: `cd software/frontend` y `node --test tests/*.test.cjs`, que debe terminar con `pass 48`. |
-| 6 | `S07` | Semana 13 | Terminal: cabeceras de nginx (comandos en `docs/evidencias/semana13-ola1-verificacion.md`). |
+| 6 | ✅ `S07` | Semana 13 | Terminal: cabeceras de nginx (comandos en `docs/evidencias/semana13-ola1-verificacion.md`). |
 | 7 | ✅ `C301` | Informe | Terminal con las suites por servicio (una captura por suite o un mosaico; comandos en `docs/CONTINUAR-EN-NUEVO-CHAT.md`). |
 | 8 | ✅ `C302` | Informe | Terminal: stack local levantado y `python software/infraestructura/smoke/smoke.py`, que debe dar 14/14. |
 | 9 | `C309` | Informe | **Hecha el 10/11/2026** (fotograma del episodio 3: 601/601 HTTP 200). Insertada en `informe-unidad-III.md` como `evidencias-nube/carga-601-transacciones-render.png`; falta reexportar el Word. |
-| 10 | `C310` | Informe | GitHub: un Pull Request real del Sprint 7 (rama de trabajo hacia `test`) con la revisión aprobada y los checks de CI en verde (pestaña Pull requests). Solo cuando exista el PR integrado; no se simula. |
+| 10 | 🟡 `C310` | Informe | GitHub: un Pull Request real del Sprint 7 (rama de trabajo hacia `test`) con la revisión aprobada y los checks de CI en verde (pestaña Pull requests). Solo cuando exista el PR integrado; no se simula. |
 | 11 | ✅ `C311` | Informe | GitHub → pestaña Actions → workflow `ci.yml`: historial de ejecuciones recientes con su resultado real. |
 
 ## Datos que completa Ricardo en ambos documentos
@@ -79,3 +79,10 @@ Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; v
 Claude extrajo fotogramas a 1920×1030 del video grabado el 10/11/2026 (`exportados/video/ep*.mp4`) y los insertó: S01 (ep1), S06 y C308 (ep2), C302 (ep4, el smoke 14/14 de `docs/evidencias/smoke-20261106.json`), C306 y C307 (ep5), C201 y C202 (ep6). No se usó ningún fotograma del inicio de sesión (muestra el correo). Notas de honestidad: C201 muestra 7 de las 11 listas; C308 muestra la descarga del CSV en la app, no el CSV abierto en Excel; C307 muestra «Lista para revisión humana», no el campo `executionAllowed`.
 
 Siguen pendientes: C100/S00 (logo), C203, C204, C312, C313 (Trello, posteriores al video), C310 (PR del Sprint 7), S04 (panel de Render), S07 (cabeceras nginx, requiere Docker) y S08 (consola sin errores SRI).
+
+## Estado al 12/11/2026 (00:40)
+- ✅ C100/S00: logo de la UC que pasó el usuario (fondo negro convertido a PNG transparente: `evidencias/logo-uc.png`).
+- ✅ S07: captura de `software/frontend/nginx.conf` en GitHub. Es evidencia de **configuración**; la de ejecución (`curl -sSI` contra nginx en Docker) sigue siendo opcional.
+- 🟡 C310: insertada la captura del PR #6 abierto (CI 6/6 en verde a las 00:40). Cuando otro integrante lo apruebe, reemplazar `evidencias-nube/captura-C310-pr-sprint7.png` por una captura con la revisión aprobada.
+- C203: el Daily del 09/11 no se completó; se capturará un Daily real posterior, sin retrofechar.
+- Pendientes: C203, C204, C312, C313 (Trello), S04 (Render), S08 (consola SRI).

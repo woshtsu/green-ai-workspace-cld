@@ -1,4 +1,4 @@
-CAPTURA-PENDIENTE-C100: Insertar aquí el logo oficial de la Universidad Continental (portal institucional o plantilla UC) y borrar este recuadro.
+![](evidencias/logo-uc.png){width=45%}
 
 ::: {custom-style="Portada Institucion"}
 UNIVERSIDAD CONTINENTAL
@@ -1538,8 +1538,8 @@ Evidencia que se generará para los indicadores 8, 9 y 10 de la lista de cotejo 
 ![](evidencias/p076-img044.png)
 Figura VIII.35. Plan de experimentación comparativa de 24 horas y aseguramiento de calidad (PMV3), referencia de los Sprints previos.
 
-CAPTURA-PENDIENTE-C310: Pull Request en GitHub (rama de trabajo hacia test) con la revisión aprobada y los checks de integración continua en verde. Se toma desde la pestaña Pull requests de GitHub, una vez integrado un PR real del Sprint 7.
-Figura VIII.36. Pull Request con revisión aprobada y checks de CI en verde.
+![Pull Request #6 del Sprint 7 (tarea 7.2, rama sprint7/7.2-proceso-pr hacia test) con la plantilla de PR y la Definición de Terminado; captura del 12/11/2026, con la revisión todavía pendiente](evidencias-nube/captura-C310-pr-sprint7.png)
+Figura VIII.36. Pull Request #6 del Sprint 7 hacia la rama test, con la plantilla de Definición de Terminado (revisión de otro integrante pendiente al 12/11/2026).
 
 ![Historial de ejecuciones del workflow ci.yml en la pestaña Actions de GitHub, con las ejecuciones recientes y su resulta](evidencias-nube/captura-C311-actions.png)
 Figura VIII.37. Historial de ejecuciones de GitHub Actions (workflow ci.yml).

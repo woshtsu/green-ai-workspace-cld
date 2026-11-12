@@ -353,3 +353,10 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Push de esa rama y PR https://github.com/woshtsu/green-ai-workspace-cld/pull/6 (`sprint7/7.2-proceso-pr` → `test`), autorizado por el usuario. La cuenta activa de `gh` (R772-cpu) no tiene permiso: se usó `GH_TOKEN=$(gh auth token --user woshtsu)` solo para el comando, sin cambiar la cuenta activa.
 - Falta para C310: CI en verde en el PR y la aprobación de otro integrante (el autor no puede aprobar su propio PR). Después, capturar la pestaña «Conversation» o «Files changed» con la revisión aprobada y fusionar.
 - Logo C100/S00: el usuario dice que lo agregó, pero no se encontró en el repo ni en Descargas/Escritorio/Imágenes; el informe estaba abierto en Word (archivo `~$…`), así que no se reexportó para no pisar cambios.
+
+## 12/11/2026 (00:40) — Logo, PR #6 y nginx
+- Logo UC del usuario (RGB con fondo negro, logo gris 34) convertido a PNG transparente con PIL → `logo-uc.png` en las carpetas `evidencias/` del informe y de semana 13; reemplaza C100 y S00.
+- C310: captura del usuario del PR #6 (abierto, sin revisión) insertada con pie honesto. CI del PR: 6/6 checks en verde (`gh pr checks 6`).
+- S07: captura del usuario de `nginx.conf` en GitHub insertada como evidencia de configuración.
+- C203: el Daily del 09/11 no se completó en Trello; la lista pide un Daily real posterior, sin retrofechar.
+- Reexportado solo semana 13 (38 páginas, 2 marcadores: S04, S08). El informe **no** se reexportó: estaba abierto en Word (PID con título del informe). Markdown del informe: 4 marcadores (C203, C204, C312, C313).

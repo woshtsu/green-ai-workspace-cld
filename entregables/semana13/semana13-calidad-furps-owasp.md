@@ -1,4 +1,4 @@
-CAPTURA-PENDIENTE-S00: Insertar el logo oficial de la Universidad Continental y borrar este recuadro.
+![](evidencias/logo-uc.png){width=45%}
 
 ::: {custom-style="Portada Institucion"}
 Universidad Continental
@@ -454,7 +454,7 @@ Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
 Cross-Origin-Opener-Policy: same-origin
 ```
 
-CAPTURA-PENDIENTE-S07: Capturar la terminal ejecutando el comando curl -sSI mostrando las cabeceras de seguridad devueltas por el servidor Nginx para /config.local.js y /login.html.
+![Archivo software/frontend/nginx.conf en GitHub (rama main) con las cabeceras de seguridad OW-06 y su repetición en location = /config.local.js (OW-07); evidencia de configuración, no de ejecución](evidencias/captura-S07-nginx-conf.png)
 
 ## 9.8. Pregunta OW-A06 (Subresource Integrity en CDN — OW-08)
 
