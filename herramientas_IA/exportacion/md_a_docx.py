@@ -33,6 +33,7 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
 MARK = "CAPTURA-PENDIENTE"
+MARK_EQUIPO = "PENDIENTE-EQUIPO"  # pendientes que completa el equipo (mismo recuadro amarillo)
 VERDE = "1F4E3D"     # primario
 ACENTO = "2E7D32"    # acento
 SUAVE = "EEF5F0"     # filas alternas / bloques
@@ -403,6 +404,8 @@ def postprocess(path: Path, encabezado: str, toc_before: str | None) -> int:
         txt = p.text.strip()
         if txt.startswith(MARK):
             marks += 1
+            mark_pending(p)
+        elif txt.startswith(MARK_EQUIPO):
             mark_pending(p)
         elif (txt.startswith(("Figura ", "Tabla ")) and len(txt) < 400
               and p.runs and all(r.italic for r in p.runs if r.text.strip())):

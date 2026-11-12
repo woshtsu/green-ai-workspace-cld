@@ -365,3 +365,8 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Insertadas C203, C204, C312 (2 imágenes), C313 y S04 con pies que describen lo que se ve (C203: solo comenta la Scrum Master; C313: sin checklist visible). Párrafo de Daily en VII.6 ajustado a lo que consta en Trello.
 - S08: navegador integrado en https://woshtsu.github.io/green-ai-workspace-cld/login.html → `window.supabase` = object, Font Awesome y supabase-js con `integrity` cargados, consola sin mensajes. `dashboard.html` sin sesión redirige a login; se cargaron sus scripts con el mismo `integrity` (supabase-js 2.117.1 y chart.js 4.4.8): ambos «integridad OK», `window.Chart` = function. Imagen con `terminal_a_png.py`.
 - Reexportados: informe 117 páginas, semana 13 38 páginas, **0 marcadores CAPTURA-PENDIENTE**. Siguen NRC-PENDIENTE y VIDEO-URL-PENDIENTE si aplican.
+
+## 12/11/2026 (tarde) — PR #6 fusionado y Word para revisión del equipo
+- PR #6 fusionado en `test` (02bb985) por woshtsu; `gh pr view 6` → 0 reviews: no hay aprobación formal registrada. C310 reemplazada por la captura del PR fusionado, con pie honesto.
+- `md_a_docx.py`: nuevo prefijo `PENDIENTE-EQUIPO` (mismo recuadro amarillo, no cuenta como captura). Anexo A: recuadro con el enlace del video pendiente (en edición, se subirá a Drive). Tabla del Anexo C (7.2) actualizada.
+- Informe reexportado: 118 páginas, 0 capturas pendientes; quedan el recuadro del video y NRC-PENDIENTE en la portada.

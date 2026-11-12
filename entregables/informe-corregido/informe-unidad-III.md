@@ -1540,8 +1540,8 @@ Evidencia que se generará para los indicadores 8, 9 y 10 de la lista de cotejo 
 ![](evidencias/p076-img044.png)
 Figura VIII.35. Plan de experimentación comparativa de 24 horas y aseguramiento de calidad (PMV3), referencia de los Sprints previos.
 
-![Pull Request #6 del Sprint 7 (tarea 7.2, rama sprint7/7.2-proceso-pr hacia test) con la plantilla de PR y la Definición de Terminado; captura del 12/11/2026, con la revisión todavía pendiente](evidencias-nube/captura-C310-pr-sprint7.png)
-Figura VIII.36. Pull Request #6 del Sprint 7 hacia la rama test, con la plantilla de Definición de Terminado (revisión de otro integrante pendiente al 12/11/2026).
+![Pull Request #6 del Sprint 7 (tarea 7.2) fusionado en test el 12/11/2026, con la plantilla de PR y la Definición de Terminado; 6 checks de CI en verde y sin revisión formal registrada en GitHub](evidencias-nube/captura-C310-pr-sprint7.png)
+Figura VIII.36. Pull Request #6 del Sprint 7 fusionado en la rama test (12/11/2026), con CI en verde. La aprobación de otro integrante no quedó registrada en GitHub; desde el siguiente PR se exigirá antes de fusionar.
 
 ![Historial de ejecuciones del workflow ci.yml en la pestaña Actions de GitHub, con las ejecuciones recientes y su resulta](evidencias-nube/captura-C311-actions.png)
 Figura VIII.37. Historial de ejecuciones de GitHub Actions (workflow ci.yml).
@@ -1787,7 +1787,9 @@ El PMV3 se reenfocó en los procesos de ingeniería (desarrollo con PR revisados
 * **Repositorio oficial monorepo del proyecto:** https://github.com/woshtsu/green-ai-workspace-cld
 * **Frontend web de desarrollo desplegado (GitHub Pages):** https://woshtsu.github.io/green-ai-workspace-cld/dev/
 * **API Gateway perimetral desplegado (Render):** https://green-ai-gateway-dev.onrender.com
-* Video: VIDEO-URL-PENDIENTE
+* Video de sustentación: ver el recuadro siguiente.
+
+PENDIENTE-EQUIPO: enlace del video de sustentación de la Unidad III. El video está grabado y en edición; el equipo lo subirá a Google Drive y pegará aquí el enlace (con permiso de lectura para el docente) antes de la entrega.
 
 * **Formulario de consulta con el experto temático:**
   https://drive.google.com/file/d/1bRDtlPNSknHKYgtX5wHdiWbGDrtZlgeG/view?usp=drive_link
@@ -2035,5 +2037,5 @@ Tabla 35. Atención de las observaciones del docente
 | 5.1 a 5.3 Pruebas por PMV, vinculadas a HU y criterios de aceptación | §VIII.2, Tabla 28 (PMV1 y PMV2) y Tabla 30 (PMV3) | Atendida parcialmente: faltan las capturas de evidencia (C301 a C311) y la ejecución de las verificaciones del PMV3 |
 | 6. Discusión con el marco teórico y antecedentes | §VIII.5, Tabla 34 | Atendida |
 | 7.1 Citas y referencias ISO | Referencias bibliográficas (ISO 690-2 numérico) | Atendida |
-| 7.2 Video de sustentación | Anexo A | Pendiente: grabación y URL |
+| 7.2 Video de sustentación | Anexo A | Pendiente: video grabado y en edición; el equipo agregará el enlace de Google Drive en el Anexo A |
 | 7.3 Tablero Trello (estado real, evidencias, PMVn-HUxx) | §VII.6 y guía de Trello | Atendida parcialmente: depende de que el equipo aplique la guía; faltan capturas (C201 a C204, C312, C313) |
