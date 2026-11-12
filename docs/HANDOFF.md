@@ -360,3 +360,8 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - S07: captura del usuario de `nginx.conf` en GitHub insertada como evidencia de configuración.
 - C203: el Daily del 09/11 no se completó en Trello; la lista pide un Daily real posterior, sin retrofechar.
 - Reexportados: semana 13 (38 páginas, 2 marcadores: S04, S08) e informe (116 páginas, 4 marcadores: C203, C204, C312, C313; portada con el logo revisada en PDF).
+
+## 12/11/2026 (mediodía) — Capturas del equipo y S08
+- Insertadas C203, C204, C312 (2 imágenes), C313 y S04 con pies que describen lo que se ve (C203: solo comenta la Scrum Master; C313: sin checklist visible). Párrafo de Daily en VII.6 ajustado a lo que consta en Trello.
+- S08: navegador integrado en https://woshtsu.github.io/green-ai-workspace-cld/login.html → `window.supabase` = object, Font Awesome y supabase-js con `integrity` cargados, consola sin mensajes. `dashboard.html` sin sesión redirige a login; se cargaron sus scripts con el mismo `integrity` (supabase-js 2.117.1 y chart.js 4.4.8): ambos «integridad OK», `window.Chart` = function. Imagen con `terminal_a_png.py`.
+- Reexportados: informe 117 páginas, semana 13 38 páginas, **0 marcadores CAPTURA-PENDIENTE**. Siguen NRC-PENDIENTE y VIDEO-URL-PENDIENTE si aplican.

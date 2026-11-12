@@ -1069,17 +1069,17 @@ Figura VII.6.4. Trazabilidad de avance cuantitativo y estado de tarjetas de Hist
 
 Para documentar la disciplina metodológica exigida por el marco de trabajo y las auditorías de calidad ICACIT, el tablero en workspace UC incorpora tarjetas específicas para el registro auditable de las ceremonias ágiles:
 
-1. **Sincronizaciones periódicas (Daily Scrum):** documentadas en la lista *Daily Scrum* mediante tarjetas semanales donde cada integrante registra sus respuestas a las preguntas normadas: a) ¿Qué avancé desde la última sesión?, b) ¿Qué realizaré hoy? y c) ¿Qué impedimentos o bloqueos técnicos existen?
+1. **Sincronizaciones periódicas (Daily Scrum):** documentadas en la lista *Daily Scrum* mediante tarjetas en las que cada integrante debe registrar sus respuestas a las preguntas normadas: a) ¿Qué avancé desde la última sesión?, b) ¿Qué realizaré hoy? y c) ¿Qué impedimentos o bloqueos técnicos existen? Al 12/11/2026 el tablero conserva una tarjeta de Daily (09/11) con el registro de la Scrum Master; el registro individual de los cuatro integrantes se exige desde el Sprint 7.
 2. **Revisión del Incremento (Sprint Review):** registradas en la lista *Sprint Review* con actas de demostración funcional presentadas ante el asesor académico (Ing. Jorge Guevara), incorporando los compromisos y retroalimentaciones recibidas.
 3. **Retrospectiva del Equipo (Sprint Retrospective):** documentadas en la lista *Sprint Retrospective* mediante análisis PDCA, evaluando lo que funcionó bien, oportunidades de optimización y compromisos concretos para los sprints sucesivos.
 
-CAPTURA-PENDIENTE-C203: Tarjeta de sincronización ágil Daily Scrum en Trello estructurada con las tres preguntas estándar (¿qué hice?, ¿qué haré?, bloqueos) y la participación registrada de los cuatro integrantes del equipo. Se toma desde la lista Daily Scrum en Trello en el workspace oficial UC.
+![Tarjeta Daily Scrum — 2026-11-09 en la lista 9. DAILY SCRUM: descripción con las tres preguntas y comentario de la Scrum Master del 09/11/2026 a las 10:48](evidencias-nube/captura-C203-trello-daily.png)
 
-Figura VII.6.5. Tarjeta de sincronización Daily Scrum documentada en Trello con el reporte de los integrantes del equipo.
+Figura VII.6.5. Tarjeta del Daily Scrum del 09/11/2026 con la estructura de tres preguntas; solo registró su comentario la Scrum Master (no se agregaron comentarios con fecha atrasada).
 
-CAPTURA-PENDIENTE-C204: Tarjeta de Sprint Review y Sprint Retrospective del PMV1 en Trello, mostrando el acta de demostración funcional, retroalimentación del asesor y matriz PDCA de compromisos de mejora continua. Se toma desde las listas Sprint Review y Sprint Retrospective en Trello en el workspace oficial UC.
+![Tarjeta Sprint Review — Sprint 3 (cierre del PMV1) con miembro, etiquetas PMV1 y Documentación, acta de la sesión y comentario de aceptación del Product Owner](evidencias-nube/captura-C204-trello-review-s3.png)
 
-Figura VII.6.6. Tarjetas de Sprint Review y Sprint Retrospective con evaluación PDCA y lecciones aprendidas al cierre del PMV1.
+Figura VII.6.6. Tarjeta de Sprint Review del Sprint 3 (cierre del PMV1) con el acta y la aceptación formal del Product Owner.
 
 ![](evidencias/p054-img022.png)
 
@@ -1093,13 +1093,15 @@ Figura VII.6.7. Registro de evidencias y ceremonias ágiles en el tablero Trello
 
 En el PMV3 la gestión del proceso se evidencia con la convención `PMVn-HUxx` en el título de cada tarjeta y con el checklist de la *Definition of Done* (§VII.3) completo antes de mover una tarjeta a *Done*. Las capturas siguientes se incorporarán cuando el equipo aplique la guía del tablero; hasta entonces permanecen como marcadores pendientes.
 
-CAPTURA-PENDIENTE-C312: Tablero de Trello con los títulos de las tarjetas en formato PMVn-HUxx (por ejemplo PMV2-HU03) y las tarjetas distribuidas por estado en las listas To Do, In Progress, QA-Testing y Done. Se toma desde la interfaz web de Trello en el workspace oficial UC.
+![Tablero de Trello, listas 1 a 6, con tarjetas tituladas PMVn-HU-xx](evidencias-nube/captura-C312-trello-tablero-1.png)
 
-Figura VII.6.8. Tablero de Trello con tarjetas tituladas PMVn-HUxx y distribuidas por estado.
+![Tablero de Trello, listas 6 a 11, con Done, roles de Scrum, Daily, Sprint Review y Retrospectiva](evidencias-nube/captura-C312-trello-tablero-2.png)
 
-CAPTURA-PENDIENTE-C313: Tarjeta de Trello abierta con el checklist de la Definition of Done completo (criterios BDD, pruebas automatizadas, Pull Request revisado, contratos OpenAPI, sin secretos, evidencia auditable), miembro responsable y fecha. Se toma desde el modal de la tarjeta en Trello.
+Figura VII.6.8. Tablero de Trello (dos vistas) con tarjetas tituladas PMVn-HU-xx y distribuidas por estado.
 
-Figura VII.6.9. Tarjeta de Trello con el checklist de la Definition of Done completo.
+![Tarjeta PMV2-HU-04 en Done con miembro, etiquetas, vencimiento cumplido y comentarios de verificación de dos integrantes](evidencias-nube/captura-C313-trello-pmv2-hu04.png)
+
+Figura VII.6.9. Tarjeta PMV2-HU-04 en Done con responsable, vencimiento cumplido y comentarios de verificación (el checklist de la DoD no aparece en esta vista).
 
 ### VII.7. Gestión de Cambios Técnicos (Noviembre de 2026)
 

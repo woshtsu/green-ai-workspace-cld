@@ -86,3 +86,8 @@ Siguen pendientes: C100/S00 (logo), C203, C204, C312, C313 (Trello, posteriores 
 - 🟡 C310: insertada la captura del PR #6 abierto (CI 6/6 en verde a las 00:40). Cuando otro integrante lo apruebe, reemplazar `evidencias-nube/captura-C310-pr-sprint7.png` por una captura con la revisión aprobada.
 - C203: el Daily del 09/11 no se completó; se capturará un Daily real posterior, sin retrofechar.
 - Pendientes: C203, C204, C312, C313 (Trello), S04 (Render), S08 (consola SRI).
+
+## Estado al 12/11/2026 (mediodía) — sin marcadores pendientes
+- Insertadas las capturas del equipo: C203 (Daily 09/11, solo con el comentario de la Scrum Master), C204 (Sprint Review — Sprint 3), C312 (tablero en dos vistas), C313 (PMV2-HU-04; en la vista no aparece el checklist de la DoD) y S04 (Render, 6 servicios Deployed).
+- S08: Claude la verificó en segundo plano en GitHub Pages (login.html y los recursos de dashboard.html cargan con `integrity`; consola sin mensajes) y generó la imagen; no depende del Gateway bloqueado por Cloudflare.
+- Mejora opcional: reemplazar C310 cuando el PR #6 tenga la aprobación, y C313 por una vista con el checklist de la DoD desplegado.

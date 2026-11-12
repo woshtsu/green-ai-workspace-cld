@@ -392,7 +392,7 @@ Prometheus supervisa continuamente los umbrales de infraestructura mediante cuat
 
 La infraestructura de servicios contenerizados opera sobre el plan gratuito de Render, coordinando el API Gateway y los microservicios de backend.
 
-CAPTURA-PENDIENTE-S04: Capturar el panel de control de Render mostrando los servicios desplegados del monorepo con los seis servicios green-ai-*-dev (prediction, data-processing, gateway, simulator, prometheus y monitoring) en estado activo.
+![Panel de Render, proyecto green-ai, entorno Production: los 6 servicios green-ai-*-dev en estado Deployed (Docker, Oregon)](evidencias/captura-S04-render.png)
 
 ## 9.5. Pregunta M-U07 (Guía Rápida de Usuario — Mejora Ola 1)
 
@@ -473,7 +473,7 @@ q36VSR1ktH2hgqgm+0LDeyqPW8CyZHSxfDSttSPm5ReOJzB+sYThmh7D4fE+jWTs
 
 Verificación en navegador sin errores de integridad:
 
-CAPTURA-PENDIENTE-S08: Capturar la consola del desarrollador (F12) del navegador en login.html y dashboard.html evidenciando la ausencia total de errores de integridad SRI y la disponibilidad de los objetos window.supabase y window.Chart.
+![Comprobación SRI del 12/11/2026 en GitHub Pages: login.html y los recursos de dashboard.html cargan con su atributo integrity, window.supabase y window.Chart definidos, consola sin errores](evidencias/captura-S08-sri-consola.png)
 
 ## 9.9. Pregunta OW-A08 / M-S03 (Anclaje Inmutable de GitHub Actions — OW-10)
 
