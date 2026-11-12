@@ -25,8 +25,8 @@ Hazlo **después** de completar los días 1 a 4 de `entregables/trello/GUIA-TREL
 |---|---|---|---|
 | 1 | `C100` | Informe | Logo oficial de la Universidad Continental (de la plantilla institucional o el portal UC). Pega la imagen del logo, no una captura de pantalla. |
 | 2 | `S00` | Semana 13 | El mismo logo. |
-| 3 | `C201` | Informe | Trello: vista completa del tablero con las 11 listas (aleja el zoom del navegador al 67 %). |
-| 4 | `C202` | Informe | Trello: tarjeta HU-03 abierta, con descripción, checklist, miembros, etiquetas, fecha y comentarios visibles. |
+| 3 | ✅ `C201` | Informe | Trello: vista completa del tablero con las 11 listas (aleja el zoom del navegador al 67 %). |
+| 4 | ✅ `C202` | Informe | Trello: tarjeta HU-03 abierta, con descripción, checklist, miembros, etiquetas, fecha y comentarios visibles. |
 | 5 | `C203` | Informe | Trello: la tarjeta Daily Scrum del lunes 09/11 con los comentarios de los 4 integrantes. |
 | 6 | `C204` | Informe | Trello: tarjeta «Sprint Review — Sprint 3» o «Retrospectiva — PMV1» abierta. |
 | 7 | ✅ `S05` | Semana 13 | `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` abierto en GitHub (rama `test`), con la tabla de roles y la tarea 1 visibles. |
@@ -37,11 +37,11 @@ Hazlo **después** de completar los días 1 a 4 de `entregables/trello/GUIA-TREL
 Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; ver `entregables/video/GUION-VIDEO-UNIDAD-III.md`, §2). Inicia sesión en https://woshtsu.github.io/green-ai-workspace-cld/dev/.
 | # | ID | Documento | Qué capturar y dónde |
 |---|---|---|---|
-| 1 | `S01` | Semana 13 | `dashboard.html`: el tablero con las pestañas visibles y el gráfico con datos. |
-| 2 | `S06` | Semana 13 | Racks (`network.html`): los 50 servidores con colores y el panel lateral de un servidor seleccionado. |
-| 3 | `C306` | Informe | Caso de uso de IA 1: en Racks, selecciona un servidor y pulsa «Predecir 15 min». Captura el resultado. Si sale «datos insuficientes», espera 20 minutos y repite. |
-| 4 | `C307` | Informe | Caso de uso de IA 2: en el dashboard, pestaña «Predicción y recomendación» → «Usar valores de ejemplo» → «Evaluar recomendación». Captura el resultado, con las restricciones y `executionAllowed=false`. |
-| 5 | `C308` | Informe | Pestaña «Reportes y experimento» → «Descargar CSV». Abre el CSV en Excel y captura la hoja. |
+| 1 | ✅ `S01` | Semana 13 | `dashboard.html`: el tablero con las pestañas visibles y el gráfico con datos. |
+| 2 | ✅ `S06` | Semana 13 | Racks (`network.html`): los 50 servidores con colores y el panel lateral de un servidor seleccionado. |
+| 3 | ✅ `C306` | Informe | Caso de uso de IA 1: en Racks, selecciona un servidor y pulsa «Predecir 15 min». Captura el resultado. Si sale «datos insuficientes», espera 20 minutos y repite. |
+| 4 | ✅ `C307` | Informe | Caso de uso de IA 2: en el dashboard, pestaña «Predicción y recomendación» → «Usar valores de ejemplo» → «Evaluar recomendación». Captura el resultado, con las restricciones y `executionAllowed=false`. |
+| 5 | ✅ `C308` | Informe | Pestaña «Reportes y experimento» → «Descargar CSV». Abre el CSV en Excel y captura la hoja. |
 | 6 | `S08` | Semana 13 | F12 → pestaña **Console** en `login.html` y en `dashboard.html`, sin errores de *integrity* (SRI). Una captura que muestre la consola limpia. |
 | 7 | ✅ `C304` y `S03` | Ambos | Prometheus de Render: servicio `green-ai-prometheus-dev`: abre su URL desde el panel de Render y añade `/alerts`, con las 4 reglas. Usa la misma imagen en los dos documentos. |
 
@@ -60,7 +60,7 @@ Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; v
 | 5 | ✅ `S10` | Semana 13 | Terminal: `cd software/frontend` y `node --test tests/*.test.cjs`, que debe terminar con `pass 48`. |
 | 6 | `S07` | Semana 13 | Terminal: cabeceras de nginx (comandos en `docs/evidencias/semana13-ola1-verificacion.md`). |
 | 7 | ✅ `C301` | Informe | Terminal con las suites por servicio (una captura por suite o un mosaico; comandos en `docs/CONTINUAR-EN-NUEVO-CHAT.md`). |
-| 8 | `C302` | Informe | Terminal: stack local levantado y `python software/infraestructura/smoke/smoke.py`, que debe dar 14/14. |
+| 8 | ✅ `C302` | Informe | Terminal: stack local levantado y `python software/infraestructura/smoke/smoke.py`, que debe dar 14/14. |
 | 9 | `C309` | Informe | **Hecha el 10/11/2026** (fotograma del episodio 3: 601/601 HTTP 200). Insertada en `informe-unidad-III.md` como `evidencias-nube/carga-601-transacciones-render.png`; falta reexportar el Word. |
 | 10 | `C310` | Informe | GitHub: un Pull Request real del Sprint 7 (rama de trabajo hacia `test`) con la revisión aprobada y los checks de CI en verde (pestaña Pull requests). Solo cuando exista el PR integrado; no se simula. |
 | 11 | ✅ `C311` | Informe | GitHub → pestaña Actions → workflow `ci.yml`: historial de ejecuciones recientes con su resultado real. |
@@ -73,3 +73,9 @@ Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; v
 - [ ] Buscar `CAPTURA-PENDIENTE`, `NRC-PENDIENTE` y `VIDEO-URL-PENDIENTE` → 0 resultados en ambos documentos.
 - [ ] Clic derecho en el índice → **Actualizar campo → Actualizar toda la tabla**.
 - [ ] Revisar que ninguna captura muestre tokens, contraseñas ni correos de terceros.
+
+## Estado al 12/11/2026 — capturas sacadas del video
+
+Claude extrajo fotogramas a 1920×1030 del video grabado el 10/11/2026 (`exportados/video/ep*.mp4`) y los insertó: S01 (ep1), S06 y C308 (ep2), C302 (ep4, el smoke 14/14 de `docs/evidencias/smoke-20261106.json`), C306 y C307 (ep5), C201 y C202 (ep6). No se usó ningún fotograma del inicio de sesión (muestra el correo). Notas de honestidad: C201 muestra 7 de las 11 listas; C308 muestra la descarga del CSV en la app, no el CSV abierto en Excel; C307 muestra «Lista para revisión humana», no el campo `executionAllowed`.
+
+Siguen pendientes: C100/S00 (logo), C203, C204, C312, C313 (Trello, posteriores al video), C310 (PR del Sprint 7), S04 (panel de Render), S07 (cabeceras nginx, requiere Docker) y S08 (consola sin errores SRI).

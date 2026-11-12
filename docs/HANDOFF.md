@@ -341,3 +341,9 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
   - el logo (C100/S00);
   - C310: PR con revisión, planificado.
 - Word reexportados: el informe tiene 113 páginas y 12 marcadores pendientes; semana 13 tiene 36 páginas y 6 marcadores.
+
+## 12/11/2026 — Capturas extraídas del video de la Unidad III
+- `ffmpeg -ss <t> -i exportados/video/epN-*.mp4 -frames:v 1 -vf crop=1920:1030:0:0` → 8 PNG en `entregables/informe-corregido/evidencias-nube/` (S01 y S06 copiadas también a `entregables/semana13/evidencias/`). Tiempos: ep1 21 s, ep2 37 s y 97 s, ep4 115 s, ep5 30 s y 70 s, ep6 10 s y 60 s.
+- Insertadas en el informe (C201, C202, C302, C306, C307, C308) y semana 13 (S01, S06). Pies de figura VII.6.1, VIII.4 y VIII.31 ajustados a lo que la imagen muestra realmente.
+- Reexportados: informe 116 páginas, 6 marcadores; semana 13 37 páginas, 4 marcadores.
+- Pendientes: C100/S00, C203, C204, C310, C312, C313, S04, S07, S08.

@@ -1039,11 +1039,11 @@ En atención directa a las observaciones de la auditoría docente de la Semana 1
 
 Todas las tarjetas del tablero se estandarizaron incorporando: fechas límites de vencimiento, checklists interactivos con criterios de aceptación Given-When-Then y DoD, miembros responsables asignados, etiquetas codificadas por fase (`PMV1`, `PMV2`, `PMV3`) y por dominio técnico (`Backend`, `Frontend`, `Machine-Learning`, `Infraestructura`, `QA`), descripciones técnicas detalladas y registro de comentarios para auditoría de avances.
 
-CAPTURA-PENDIENTE-C201: Vista panorámica del tablero oficial Green AI en Trello dentro del workspace oficial UC, mostrando las 11 listas normadas por la lista de cotejo S10 y las tarjetas organizadas por PMV. Se toma desde la interfaz web de Trello en el workspace oficial UC.
+![Tablero de Trello del proyecto con las listas del flujo Scrum/Kanban (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 6)](evidencias-nube/captura-C201-trello-tablero.png)
 
-Figura VII.6.1. Vista panorámica del tablero oficial de Trello en el workspace UC con las 11 listas según la lista de cotejo S10.
+Figura VII.6.1. Tablero oficial de Trello con las listas del flujo de trabajo (vista parcial; el tablero completo tiene 11 listas).
 
-CAPTURA-PENDIENTE-C202: Tarjeta de Historia de Usuario detallada (HU-03 de predicción de demanda o HU-01 de observabilidad) mostrando descripción con criterios BDD (Given-When-Then), checklist de aceptación, fechas, miembros asignados, etiquetas de PMV y área técnica, y comentarios de trazabilidad. Se toma desde el modal de tarjeta en Trello.
+![Tarjeta HU-03 abierta con miembros, etiquetas, vencimiento cumplido, descripción y comentarios (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 6)](evidencias-nube/captura-C202-trello-hu03.png)
 
 Figura VII.6.2. Detalle de tarjeta de Historia de Usuario en Trello con criterios BDD, checklist, etiquetas y comentarios de seguimiento.
 
@@ -1220,8 +1220,8 @@ Tabla 27. Pruebas automatizadas por servicio
 ![Ejecución consolidada de las suites de pruebas automatizadas por microservicio en la terminal (Monitoring 112, Gateway J](evidencias-nube/captura-C301-suites.png)
 Figura VIII.3. Ejecución consolidada de pruebas automatizadas por servicio en el monorepo de desarrollo.
 
-CAPTURA-PENDIENTE-C302: Salida de ejecución del script de smoke test integral del stack (14/14 comprobaciones aprobadas). Tomada de la consola ejecutando python software/infraestructura/smoke/smoke.py.
-Figura VIII.4. Verificación de integración End-to-End mediante smoke test de 14 puntos sobre el ecosistema desplegado.
+![Resultado del smoke test de integración 14/14 registrado en docs/evidencias/smoke-20261106.json (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 4)](evidencias-nube/captura-C302-smoke.png)
+Figura VIII.4. Verificación de integración de extremo a extremo: smoke test de 14 comprobaciones sobre el stack local (06/11/2026).
 
 #### Matriz de trazabilidad por historia de usuario (PMV1 y PMV2)
 
@@ -1473,14 +1473,14 @@ Figura VIII.28. Vista analítica "Red de flujos" en topología circular para eva
 
 A continuación se insertan las referencias de evidencia complementarias solicitadas para los casos de uso principales:
 
-CAPTURA-PENDIENTE-C306: Primer caso de uso de IA desde la aplicación web: inferencia de demanda de CPU a 15 minutos para un servidor en la vista Racks con respuesta 200 OK en entorno desplegado. Tomada desde el navegador web en la aplicación frontend.
+![Predicción de CPU a 15 minutos para HW045 desde la aplicación en GitHub Pages: 59,44 % estimado, modelo 1.0.0 (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 5)](evidencias-nube/captura-C306-prediccion.png)
 Figura VIII.29. Primer caso de uso de IA: predicción de demanda de CPU a 15 minutos visualizada desde la aplicación web desplegada.
 
-CAPTURA-PENDIENTE-C307: Segundo caso de uso de IA desde la aplicación web: evaluación de recomendación asistiva con restricciones operativas y guardrails de SLA en modo Recommendation-Only (executionAllowed=false). Tomada desde el panel de políticas en el navegador web.
+![Recomendación con restricciones: Mantener capacidad, lista para revisión humana, cada restricción evaluada (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 5)](evidencias-nube/captura-C307-recomendacion.png)
 Figura VIII.30. Segundo caso de uso de IA: recomendación asistiva con restricciones de seguridad visualizada desde la aplicación web.
 
-CAPTURA-PENDIENTE-C308: Descarga y visualización del reporte histórico consolidado en formato CSV generado por el endpoint GET /api/processing/v1/reports/historical-summary. Tomada del archivo CSV abierto en una aplicación de hojas de cálculo.
-Figura VIII.31. Reporte histórico consolidado exportado en formato CSV generado por Data Processing Service.
+![Reporte histórico de HW045 (10–11/07/2026) con el CSV descargado desde la aplicación (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 2)](evidencias-nube/captura-C308-csv.png)
+Figura VIII.31. Reporte histórico consolidado de HW045 y descarga en CSV desde la aplicación (Data Processing Service).
 
 ![Figura VIII.32. Prueba de carga masiva sobre el API Gateway en Render (10/11/2026, 01:49–01:56): 601 transacciones autenticadas (1 descubrimiento + 200 × dataset, predicción y recomendación), 601 con HTTP 200; p95 de 1,5 s (dataset) y 3,5 s (predicción y recomendación). Telemetría simulada. Fotograma del episodio 3 del video; datos en docs/evidencias/carga-video.csv.](evidencias-nube/carga-601-transacciones-render.png)
 

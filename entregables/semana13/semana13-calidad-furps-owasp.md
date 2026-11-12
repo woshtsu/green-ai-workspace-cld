@@ -374,7 +374,7 @@ Para fundamentar las calificaciones de la matriz docente y constatar la efectivi
 
 El Observatorio integra en una consola visual única el monitoreo de métricas en tiempo real, el detalle por servidor, la inferencia de demanda y la emisión de recomendaciones operativas.
 
-CAPTURA-PENDIENTE-S01: Capturar el tablero web completo con sus 5 pestañas temáticas operando en el entorno de desarrollo https://woshtsu.github.io/green-ai-workspace-cld/dev/ mostrando gráficos activos y tarjetas KPI.
+![Dashboard en producción con sesión de rol OPERATOR, las 5 pestañas y los KPI de CPU (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 1)](evidencias/captura-S01-dashboard.png)
 
 ## 9.2. Pregunta M-F05 (Registro y Visualización en MLflow - HU-05)
 
@@ -419,7 +419,7 @@ software/frontend/register.html:Registrar operador
 
 Consola topológica interactiva que distribuye los 50 servidores simulados en 5 racks con código semafórico de carga de CPU.
 
-CAPTURA-PENDIENTE-S06: Capturar la pantalla de Racks (network.html) mostrando la matriz de 50 servidores con colores verde, ámbar y rojo, y el panel lateral con datos específicos de un servidor seleccionado.
+![Racks con calor: 50 servidores en 5 racks y panel lateral del servidor HW048 seleccionado (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 2)](evidencias/captura-S06-racks.png)
 
 ## 9.7. Pregunta OW-A05 / M-U01 / M-PL04 (Cabeceras Defensivas HTTP en Nginx — OW-06 y OW-07)
 
