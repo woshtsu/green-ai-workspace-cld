@@ -1,5 +1,7 @@
 # Plan de Remediación OWASP Top 10 (2021) — Green AI Monorepo
 
+> **Nota (2026-11-12):** este plan usa OWASP Top 10:2021 y se conserva como registro histórico. La clasificación vigente (OWASP Top 10:2025), el nuevo hallazgo OW-13 (A10:2025) y los puntajes recalculados están en [08_reclasificacion_owasp_2025.md](08_reclasificacion_owasp_2025.md).
+
 **Documento:** `docs/calidad/05_plan_owasp.md`  
 **Fecha:** 2026-11-07  
 **Rol:** Arquitecto de Seguridad  

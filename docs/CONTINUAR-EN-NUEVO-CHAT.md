@@ -35,7 +35,11 @@ URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend
 ## 2026-11-11 (noche): carpetas del equipo
 Solo `guias/` (docente), `entregables/` (fuentes .md) y `exportados/` (Word/Excel versionados). Informe: PMV3 = procesos de software (17/11–30/11); faltan capturas C100–C313, NRC y URL del video. Ver HANDOFF.
 
+## 2026-11-12 (noche): semana 13 migrada a OWASP Top 10:2025
+Entregable de semana 13 (.md, .docx y .xlsx) reclasificado a OWASP Top 10:2025; clasificación vigente y puntajes en `docs/calidad/08_reclasificacion_owasp_2025.md` (04–07 quedan como histórico 2021). Nuevo hallazgo OW-13 (A10:2025, ola 3). El informe corregido de la Unidad III no se tocó. Ver HANDOFF.
+
 ## Pendiente (en orden)
+0. **OW-13 (A10:2025, ola 3, hasta 30/11):** recover con problem+json en gateway-go, manejador global en el Gateway Spring, pruebas de cuerpos 500 genéricos y timeouts uniformes en el frontend (`docs/calidad/08_reclasificacion_owasp_2025.md` §4.3).
 1. **Supabase (lo hace el dueño del proyecto):** añadir a *Authentication → URL Configuration* las URLs `https://woshtsu.github.io/green-ai-workspace-cld/` y `.../dev/`; aplicar el enum `VIEWER`; revisar RLS «Permitir todo» y la columna `password` en texto plano (ver «Riesgos» en `docs/HANDOFF.md`).
 2. Fijar el *Health Check Path* en cada servicio de Render (Prediction `/health/ready`, Data Processing `/api/v1/health`, Gateway/Monitoring `/actuator/health`, Simulator `/health`, Prometheus `/-/healthy`).
 3. Verificar con sesión real el frontend nuevo en `/dev/` (cada pestaña, «Predecir 15 min», energía con el simulador, `flows.html`) y tomar capturas para el informe. Lo verificado hasta ahora fue con un arnés local (`herramientas_IA/arnes_frontend/`) que simula la sesión y usa datos reales de Render.

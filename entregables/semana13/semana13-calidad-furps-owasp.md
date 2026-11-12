@@ -56,7 +56,7 @@ El desarrollo de soluciones de software contemporáneas para infraestructuras cr
 El logro de aprendizaje establecido para la Semana 13 estipula: «Al finalizar la sesión, el estudiante aplica criterios de calidad de software con claridad y propósito al proyecto». En concordancia con este objetivo, el equipo de ingeniería del proyecto Green AI ejecutó un proceso integral de evaluación, mejora sistemática y validación formal de calidad y seguridad, sustentado en dos de los marcos metodológicos más consolidados de la industria:
 
 1. El modelo de factores de calidad FURPS+ (Hewlett-Packard / Rational Software Corp.), adaptado a los lineamientos institucionales de la Universidad Continental.
-2. El estándar de seguridad de aplicaciones web y APIs OWASP Top 10 (edición 2021).
+2. El estándar de seguridad de aplicaciones web y APIs OWASP Top 10 (edición 2025, https://top10.owasp.org/2025/).
 
 El presente documento sistematiza los resultados obtenidos en las tres fases del proceso metodológico: el diagnóstico inicial de calidad y seguridad, la formulación de los planes de mejora por olas de trabajo, la implementación verificable de la primera ola de mitigación (Ola 1), la auditoría de implementación independiente y el dictamen final integral. Asimismo, se incorpora la matriz de calidad docente con 50 preguntas de control técnico y la justificación explícita de las brechas que separan el estado actual del sistema respecto a la meta esperada.
 
@@ -86,20 +86,22 @@ Propuesto originalmente por Robert Grady en Hewlett-Packard y adoptado formalmen
 * S - Soporte y Mantenibilidad (Supportability): Analiza la modularidad de la base de código, la observancia de patrones arquitectónicos desacoplados (arquitectura hexagonal), la estabilidad de los contratos de interfaz (OpenAPI), la mantenibilidad del repositorio y la integración continua (CI/CD).
 * «+» - Restricciones Adicionales: Incorpora restricciones de diseño (patrones arquitectónicos obligatorios), de implementación (lenguajes, bibliotecas compatibles y estándares de codificación), de interfaz (interacción segura con servicios externos como Supabase), físicas y de despliegue (orquestación mediante Docker Compose, viabilidad de hosting a costo cero en Render y GitHub Pages) y normativas legales (licencias Open Source y Ley N° 29733 de Protección de Datos Personales en el Perú).
 
-## 3.2. El Estándar OWASP Top 10 (2021)
+## 3.2. El Estándar OWASP Top 10 (2025)
 
-La iniciativa Open Web Application Security Project (OWASP) publica periódicamente el consenso global de las vulnerabilidades más críticas que amenazan a las aplicaciones web y APIs modernas. Su marco de referencia Top 10:2021 estructura la seguridad en diez categorías:
+La iniciativa Open Web Application Security Project (OWASP) publica periódicamente el consenso global de las vulnerabilidades más críticas que amenazan a las aplicaciones web y APIs modernas. Su marco de referencia Top 10:2025 (https://top10.owasp.org/2025/) estructura la seguridad en diez categorías:
 
-1. A01:2021 - Pérdida de Control de Acceso (Broken Access Control): Elusión de privilegios, acceso horizontal/vertical no autorizado y políticas de seguridad a nivel de fila (Row Level Security - RLS) insuficientes.
-2. A02:2021 - Fallos Criptográficos (Cryptographic Failures): Transmisión o almacenamiento de información sensible en texto claro, protocolos obsoletos y manejo inseguro de claves de cifrado.
-3. A03:2021 - Inyección (Injection): Fallos derivados de la interpolación de datos no confiables en intérpretes de comandos, consultas SQL/ORM o lenguajes de consulta de monitoreo (PromQL).
-4. A04:2021 - Diseño Inseguro (Insecure Design): Ausencia de patrones de defensa en profundidad, modelos de amenazas no atendidos y carencia de límites de consumo de recursos (rate limiting).
-5. A05:2021 - Configuración de Seguridad Incorrecta (Security Misconfiguration): Cabeceras HTTP de protección web ausentes, valores predeterminados inseguros y directivas de control de orígenes (CORS) excesivamente permisivas.
-6. A06:2021 - Componentes Vulnerables y Obsoletos (Vulnerable and Outdated Components): Inclusión de paquetes desactualizados y carga de scripts externos desde redes de distribución de contenido (CDN) sin comprobación criptográfica de integridad.
-7. A07:2021 - Fallos de Identificación y Autenticación (Identification and Authentication Failures): Debilidades en la verificación de tokens de sesión JWT, fijación de sesiones y almacenamiento indebido de credenciales en el cliente.
-8. A08:2021 - Fallos en la Integridad del Software y de los Datos (Software and Data Integrity Failures): Uso de dependencias y flujos de automatización CI/CD dependientes de etiquetas mutables sin anclaje criptográfico inmutable.
-9. A09:2021 - Fallos de Registro y Monitoreo de Seguridad (Security Logging and Monitoring Failures): Omisión de trazas de auditoría ante accesos no autorizados (errores HTTP 401/403) y ausencia de alertas automáticas ante incidentes.
-10. A10:2021 - Falsificación de Peticiones del Lado del Servidor (Server-Side Request Forgery - SSRF): Capacidad de inducir al servidor a emitir peticiones no autorizadas hacia recursos internos o redes privadas aisladas.
+1. A01:2025 - Pérdida de Control de Acceso (Broken Access Control): Elusión de privilegios, acceso horizontal/vertical no autorizado, políticas de seguridad a nivel de fila (Row Level Security - RLS) insuficientes y Falsificación de Peticiones del Lado del Servidor (SSRF), capacidad de inducir al servidor a emitir peticiones no autorizadas hacia recursos internos o redes privadas aisladas.
+2. A02:2025 - Configuración de Seguridad Incorrecta (Security Misconfiguration): Cabeceras HTTP de protección web ausentes, valores predeterminados inseguros y directivas de control de orígenes (CORS) excesivamente permisivas.
+3. A03:2025 - Fallos en la Cadena de Suministro de Software (Software Supply Chain Failures): Inclusión de paquetes desactualizados o comprometidos y carga de scripts externos desde redes de distribución de contenido (CDN) sin comprobación criptográfica de integridad.
+4. A04:2025 - Fallos Criptográficos (Cryptographic Failures): Transmisión o almacenamiento de información sensible en texto claro, protocolos obsoletos y manejo inseguro de claves de cifrado.
+5. A05:2025 - Inyección (Injection): Fallos derivados de la interpolación de datos no confiables en intérpretes de comandos, consultas SQL/ORM o lenguajes de consulta de monitoreo (PromQL).
+6. A06:2025 - Diseño Inseguro (Insecure Design): Ausencia de patrones de defensa en profundidad, modelos de amenazas no atendidos y carencia de límites de consumo de recursos (rate limiting).
+7. A07:2025 - Fallos de Autenticación (Authentication Failures): Debilidades en la verificación de tokens de sesión JWT, fijación de sesiones y almacenamiento indebido de credenciales en el cliente.
+8. A08:2025 - Fallos de Integridad del Software o de los Datos (Software or Data Integrity Failures): Uso de dependencias y flujos de automatización CI/CD dependientes de etiquetas mutables sin anclaje criptográfico inmutable.
+9. A09:2025 - Fallos de Registro y Alertas de Seguridad (Security Logging and Alerting Failures): Omisión de trazas de auditoría ante accesos no autorizados (errores HTTP 401/403) y ausencia de alertas automáticas ante incidentes.
+10. A10:2025 - Manejo Inadecuado de Condiciones Excepcionales (Mishandling of Exceptional Conditions): Errores no controlados que filtran detalles internos o dejan al sistema en estado inseguro (fail-open) ante fallos de dependencias, tiempos de espera o entradas anómalas.
+
+Respecto de la edición 2021, los cambios principales son: SSRF (antes A10:2021) fue absorbida por A01; A06:2021 (Componentes Vulnerables y Obsoletos) se amplió a A03:2025 (Cadena de Suministro de Software); se incorporó la categoría nueva A10:2025; y se renombraron A07 (antes «Identification and Authentication Failures») y A09 (antes «Logging and Monitoring»). La auditoría OWASP del proyecto, originalmente elaborada con la lista 2021, fue reclasificada a la edición 2025 según se documenta en docs/calidad/08_reclasificacion_owasp_2025.md.
 
 En el marco metodológico del curso, las diez categorías de OWASP se integran directamente como el factor técnico de seguridad dentro del componente «+» del modelo FURPS+, estableciendo un examen exhaustivo de la robustez del sistema.
 
@@ -146,7 +148,7 @@ Conforme a los requerimientos de la actividad colaborativa de la Semana 13, los 
 | **R** | Confiabilidad | Ricardo Porras Veli | Arquitecto de Backend y Seguridad | Estandarización de errores (RFC 7807), sondas de salud (health checks), timeouts escalonados, suites de pruebas automatizadas y contratos de persistencia. |
 | **P** | Rendimiento | Gina Diana Barrera Peña | Ingeniera de Datos y ML | Latencias de respuesta, optimización de consumo de memoria RAM, aligeramiento de imágenes Docker de inferencia y profiling de algoritmos. |
 | **S** | Soporte / Mantenibilidad | Gina Diana Barrera Peña y Jhonny Quintana Carhuaricra | Equipo de Datos y Documentación | Desacoplamiento de arquitectura hexagonal, especificaciones OpenAPI versionadas, pipelines de CI en GitHub Actions e higiene del monorepo. |
-| **+** | Restricciones Adicionales y OWASP | Ricardo Porras Veli (con apoyo de Claude Code) | Especialista en Ciberseguridad | Evaluación de las 10 categorías OWASP Top 10:2021, cabeceras HTTP, Subresource Integrity, anclaje inmutable de CI/CD y despliegue a costo cero. |
+| **+** | Restricciones Adicionales y OWASP | Ricardo Porras Veli (con apoyo de Claude Code) | Especialista en Ciberseguridad | Evaluación de las 10 categorías OWASP Top 10:2025, cabeceras HTTP, Subresource Integrity, anclaje inmutable de CI/CD y despliegue a costo cero. |
 
 # 5. Fase 1 — Calidad de Software (Modelo FURPS+)
 
@@ -180,6 +182,7 @@ El plan integral de mejora de calidad se estructuró en docs/calidad/02_plan_fur
    * Smoke Test Global: 14/14 comprobaciones HTTP sobre el stack en ejecución.
 
 El roadmap de mejora se programó en tres olas de trabajo:
+
 * Ola 1 - Semana 13 (07/11/2026): Implementación inmediata documental y de usabilidad: redacción y publicación de la Guía Rápida de Usuario (M-U07).
 * Ola 2 - Sprint 7 (17/11/2026 - 23/11/2026): Funcionalidades críticas y mantenibilidad: persistencia de aprobación de recomendaciones (HU-07 / M-F07), generación de reporte PDF institucional (HU-13 / M-F11), exposición y evidencia de MLflow UI (HU-05 / M-F05), verificación en Staging con sesión real (/dev/), refactorización hexagonal en Simulator (runner.py / M-S01), script keep-alive para precalentamiento en Render (M-P01) y tabla accesible para gráficos de Chart.js (M-U06).
 * Ola 3 - Sprint 8 (24/11/2026 - 30/11/2026): Optimización avanzada y cierre de brechas operativas: optimización del flujo de cálculo de energía a tres pasos (M-U08) y desacoplamiento de blueprints de despliegue en Render (M-PL03).
@@ -204,6 +207,7 @@ La guía se redactó bajo los siguientes estándares de calidad:
 ## 5.4. Auditoría de Implementación FURPS+ (Entregable 03)
 
 La auditoría independiente documentada en docs/calidad/03_auditoria_implementacion_furps.md verificó la efectividad de la Ola 1:
+
 * La pregunta M-U07 transitó de No cumple (1 punto) a Cumple (5 puntos).
 * El puntaje bruto del factor Usabilidad ascendió de 32 a 36 puntos (incrementando su nivel de apego del 80.00 % al 90.00 %).
 * El puntaje total bruto de FURPS+ se elevó de 170 / 200 (85.00 %) a 174 / 200 (87.00 %), lo que representa un valor ponderado del 87.62 %.
@@ -213,28 +217,29 @@ La auditoría independiente documentada en docs/calidad/03_auditoria_implementac
 
 ## 6.1. Auditoría Inicial de Seguridad OWASP (Entregable 04)
 
-La evaluación de seguridad estática registrada en docs/calidad/04_auditoria_owasp.md analizó el perímetro web, los servicios de backend y las canalizaciones de CI/CD. Se determinó un Score Global de Seguridad inicial de 80.5 / 100 puntos, caracterizado por una defensa perimetral sólida pero con debilidades identificadas en configuraciones web y riesgos de cadena de suministro.
+La evaluación de seguridad estática registrada en docs/calidad/04_auditoria_owasp.md analizó el perímetro web, los servicios de backend y las canalizaciones de CI/CD. Se determinó un Score Global de Seguridad inicial de 79.0 / 100 puntos, caracterizado por una defensa perimetral sólida pero con debilidades identificadas en configuraciones web y riesgos de cadena de suministro. La auditoría original (04) se elaboró con la lista OWASP Top 10:2021 (80.5 / 100) y fue reclasificada a la edición 2025 (79.0 / 100), según docs/calidad/08_reclasificacion_owasp_2025.md.
 
 | ID OWASP | Categoría de Riesgo | Estado Inicial | Severidad Máxima | Puntuación (0-10) | Principales Hallazgos Identificados |
 |---|---|---|---|:---:|---|
-| **A01:2021** | Broken Access Control | Requiere Atención | Alto (no verificado) | 7.0 / 10 | Puertos locales expuestos en Docker Compose (OW-02) y riesgo latente de RLS permisivo en Supabase (OW-01). |
-| **A02:2021** | Cryptographic Failures | Requiere Atención | Alto (no verificado) | 7.5 / 10 | Columna password en tabla usuario de snapshot (OW-03) y contraseñas sintéticas legibles en archivo Excel de datasets (OW-04). |
-| **A03:2021** | Injection | Conforme / Mitigado | Bajo | 9.5 / 10 | Consultas parametrizadas con SQLite, escape riguroso en PostgREST y listas blancas estrictas en PromQL. |
-| **A04:2021** | Insecure Design | Requiere Atención | Medio | 8.0 / 10 | Ausencia de Rate Limiting perimetral en Gateway para peticiones de inferencia pesadas (OW-05). |
-| **A05:2021** | Security Misconfiguration | Requiere Atención | Medio | 7.0 / 10 | Ausencia de cabeceras defensivas HTTP (CSP, X-Frame-Options) en Nginx (OW-06) y sobrescritura en location de configuración (OW-07). |
-| **A06:2021** | Vulnerable Components | Requiere Atención | Medio | 8.0 / 10 | Inclusión de scripts JS y hojas CSS externas desde CDN sin hash de integridad Subresource Integrity (OW-08). |
-| **A07:2021** | Identification Failures | Conforme con Observación | Medio | 8.5 / 10 | Verificación rigurosa de claims JWT en Gateway; token de sesión persistido en localStorage del navegador (OW-09). |
-| **A08:2021** | Software & Data Integrity | Requiere Atención | Bajo | 7.5 / 10 | Acciones de GitHub CI referenciadas con tags mutables v4/v5 (OW-10) e imágenes base de Docker sin fijación por digest SHA256 (OW-11). |
-| **A09:2021** | Security Logging | Requiere Atención | Medio | 8.0 / 10 | Correlación distribuida con X-Request-Id y 6 alertas Prometheus; sin registro estructurado de auditoría para eventos 401/403 en Gateway (OW-12). |
-| **A10:2021** | SSRF | Conforme / Mitigado | Bajo | 9.5 / 10 | Rutas upstream fijas, rechazo de redirecciones en cliente HTTP y validación de esquemas URL. |
-| **GLOBAL** | **OWASP Top 10:2021** | **Nivel Bueno / Robusto** | **Medio Global** | **80.5 / 100** | **Perímetro seguro con recomendaciones focalizadas de remediación.** |
+| **A01:2025** | Broken Access Control (incluye SSRF) | Requiere Atención | Alto (no verificado) | 7.0 / 10 | Puertos locales expuestos en Docker Compose (OW-02) y riesgo latente de RLS permisivo en Supabase (OW-01). SSRF (absorbida desde A10:2021) mitigada: rutas upstream fijas, rechazo de redirecciones en cliente HTTP y validación de esquemas URL. |
+| **A02:2025** | Security Misconfiguration | Requiere Atención | Medio | 7.0 / 10 | Ausencia de cabeceras defensivas HTTP (CSP, X-Frame-Options) en Nginx (OW-06) y sobrescritura en location de configuración (OW-07); corregidos en Ola 1. |
+| **A03:2025** | Software Supply Chain Failures | Requiere Atención | Medio | 8.0 / 10 | Inclusión de scripts JS y hojas CSS externas desde CDN sin hash de integridad Subresource Integrity (OW-08). Los hallazgos de CI/CD (OW-10, OW-11) se mantienen en A08 según el mapeo oficial, aunque A03:2025 también abarca la cadena CI/CD. |
+| **A04:2025** | Cryptographic Failures | Requiere Atención | Alto (no verificado) | 7.5 / 10 | Columna password en tabla usuario de snapshot (OW-03) y contraseñas sintéticas legibles en archivo Excel de datasets (OW-04). |
+| **A05:2025** | Injection | Conforme / Mitigado | Bajo | 9.5 / 10 | Consultas parametrizadas con SQLite, escape riguroso en PostgREST y listas blancas estrictas en PromQL. |
+| **A06:2025** | Insecure Design | Requiere Atención | Medio | 8.0 / 10 | Ausencia de Rate Limiting perimetral en Gateway para peticiones de inferencia pesadas (OW-05). |
+| **A07:2025** | Authentication Failures | Conforme con Observación | Medio | 8.5 / 10 | Verificación rigurosa de claims JWT en Gateway; token de sesión persistido en localStorage del navegador (OW-09). |
+| **A08:2025** | Software or Data Integrity Failures | Requiere Atención | Bajo | 7.5 / 10 | Acciones de GitHub CI referenciadas con tags mutables v4/v5 (OW-10) e imágenes base de Docker sin fijación por digest SHA256 (OW-11). |
+| **A09:2025** | Security Logging and Alerting Failures | Requiere Atención | Medio | 8.0 / 10 | Correlación distribuida con X-Request-Id y 6 alertas Prometheus; sin registro estructurado de auditoría para eventos 401/403 en Gateway (OW-12). |
+| **A10:2025** | Mishandling of Exceptional Conditions | Requiere Atención | Medio | 8.0 / 10 | Fortalezas fail-closed: manejadores globales con respuestas 500 genéricas sin traza (Prediction, Data Processing, Monitoring), JWKS no disponible rechaza el token con 503, timeouts por ruta (504) y mensajes amigables en frontend. Brechas (OW-13): gateways sin manejo explícito de fallos propios (recover en Go, manejador global en Spring Cloud Gateway) y falta de pruebas que garanticen que los catch-all no filtran detalles internos. |
+| **GLOBAL** | **OWASP Top 10:2025** | **Nivel Bueno / Robusto** | **Medio Global** | **79.0 / 100** | **Perímetro seguro con recomendaciones focalizadas de remediación.** |
 
 ## 6.2. Plan de Remediación OWASP (Entregable 05)
 
-El documento docs/calidad/05_plan_owasp.md definió la hoja de ruta técnica para subsanar los 12 hallazgos de seguridad (OW-01 a OW-12), agrupándolos estratégicamente en tres olas:
+El documento docs/calidad/05_plan_owasp.md definió la hoja de ruta técnica para subsanar los 13 hallazgos de seguridad (OW-01 a OW-13), agrupándolos estratégicamente en tres olas:
+
 * Ola 1 - Inmediata (Semana 13, 07–09/11/2026): Endurecimiento perimetral y cadena de suministro sin riesgo de regresión: incorporación de cabeceras HTTP de protección en Nginx (OW-06, OW-07), incorporación de hashes SRI en scripts y hojas de estilo de CDN (OW-08) y fijación inmutable de GitHub Actions mediante SHA (OW-10).
 * Ola 2 - Sprint 7 (17–23/11/2026): Seguridad en persistencia externa y Gateway: revisión y aplicación de políticas RLS restrictivas en Supabase (OW-01), retiro de la columna password en base de datos (OW-03), implementación de filtro de Rate Limiting por Token Bucket en Gateway (OW-05), registro estructurado de auditoría para eventos 401/403 (OW-12) y Content-Security-Policy mediante meta etiqueta HTML.
-* Ola 3 - Sprint 8 (24–30/11/2026): Endurecimiento avanzado de contenedores y sesión: fijación de imágenes Docker base por digest SHA256 (OW-11), retiro de puertos internos en compose (OW-02), depuración de contraseñas de archivo Excel (OW-04) y transición de almacenamiento de sesión de localStorage hacia cookies con atributos HttpOnly y SameSite (OW-09).
+* Ola 3 - Sprint 8 (24–30/11/2026): Endurecimiento avanzado de contenedores y sesión: fijación de imágenes Docker base por digest SHA256 (OW-11), retiro de puertos internos en compose (OW-02), depuración de contraseñas de archivo Excel (OW-04) y transición de almacenamiento de sesión de localStorage hacia cookies con atributos HttpOnly y SameSite (OW-09) y manejo explícito de condiciones excepcionales en los gateways, con pruebas de no filtración en los catch-all 500 (OW-13, A10:2025).
 
 ## 6.3. Aplicación del Plan — Ola 1 de Seguridad
 
@@ -260,12 +265,13 @@ La ejecución de la Ola 1 de seguridad fue concretada y verificada mediante el c
 ## 6.4. Auditoría de Implementación OWASP (Entregable 06)
 
 El informe docs/calidad/06_auditoria_implementacion_owasp.md constató la correcta aplicación de los cambios:
+
 * Ninguna regresión detectada: La suite de frontend ejecutó 48 de 48 pruebas satisfactoriamente y la sintaxis de Nginx fue validada formalmente con resultado exitoso.
-* Recálculo del Score Global de Seguridad: El puntaje ascendió de 80.5 / 100 a 85.0 / 100 (+4.5 puntos netos):
-  * A05 (Security Misconfiguration): Pasa de 7.0 a 9.0 (+2.0 puntos) por cabeceras HTTP y corrección en config.local.js.
-  * A06 (Vulnerable Components): Pasa de 8.0 a 9.5 (+1.5 puntos) gracias a la implementación integral de hashes SRI.
-  * A08 (Integrity Failures): Pasa de 7.5 a 8.5 (+1.0 punto) por la fijación inmutable de GitHub Actions.
-  * Las categorías A01, A02, A04, A07 y A09 permanecen estables según su programación para las Olas 2 y 3.
+* Recálculo del Score Global de Seguridad: El puntaje ascendió de 79.0 / 100 a 83.5 / 100 (+4.5 puntos netos):
+  * A02 (Security Misconfiguration): Pasa de 7.0 a 9.0 (+2.0 puntos) por cabeceras HTTP y corrección en config.local.js.
+  * A03 (Software Supply Chain Failures): Pasa de 8.0 a 9.5 (+1.5 puntos) gracias a la implementación integral de hashes SRI.
+  * A08 (Software or Data Integrity Failures): Pasa de 7.5 a 8.5 (+1.0 punto) por la fijación inmutable de GitHub Actions.
+  * Las categorías A01, A04, A06, A07, A09 y A10 permanecen estables según su programación para las Olas 2 y 3.
 
 # 7. Matriz de evaluación FURPS+ y OWASP aplicada al proyecto
 
@@ -315,16 +321,16 @@ La siguiente tabla refleja la evaluación técnica individual sobre las 50 pregu
 | **PLUS** | M-PL04 | ¿El sistema invoca a otros sistemas externos de manera desacoplada y segura? | SOFTWARE | Cumple (5) | Conexión segura a Supabase Auth por JWKS público; sin llaves service_role en frontend ni backend. | — | — | 5 | 5 | 100.0 % |
 | **PLUS** | M-PL05 | ¿El proyecto cumple con las restricciones de licencias de software y normativa legal? | SOFTWARE | Cumple (5) | Dependencias Open Source compatibles (Apache 2.0 / MIT); apego explícito a la Ley N° 29733 en el frontend. | — | — | 5 | 5 | 100.0 % |
 | **PLUS** | M-PL06 | ¿Se cuenta con una guía de inicio o arranque del sistema? | GUÍA INST. | Cumple (5) | Documentado en README.md:L22-L38 y docs/CONTINUAR-EN-NUEVO-CHAT.md para Docker Compose, puertos y ejecución de pruebas. | — | — | 5 | 5 | 100.0 % |
-| **OWASP** | OW-A01 | ¿Se tiene implementado el control de acceso contra A01: Broken Access Control? | SOFTWARE | Parcial (3) | RBAC sólido en Gateway (ADMIN/OPERATOR/VIEWER); pendiente verificar RLS en Supabase y aislar puertos locales. | Ricardo Porras Veli | 17/11/2026 | 3 | 5 | 60.0 % |
-| **OWASP** | OW-A02 | ¿Se tiene implementada la protección criptográfica contra A02: Cryptographic Failures? | SOFTWARE | Parcial (3) | TLS forzado y verificación JWT asimétrica; pendiente eliminar columna password en BD y contraseñas de dataset Excel. | Ricardo Porras Veli | 17/11/2026 | 3 | 5 | 60.0 % |
-| **OWASP** | OW-A03 | ¿Se tiene implementada la prevención contra A03: Injection? | SOFTWARE | Cumple (5) | Parámetros ligados en SQLite (?), escape en PostgREST, lista blanca PromQL y modelos Pydantic restrictivos. | — | — | 5 | 5 | 100.0 % |
-| **OWASP** | OW-A04 | ¿Se tiene implementado el diseño seguro contra A04: Insecure Design? | SOFTWARE | Parcial (3) | Arquitectura hexagonal y principio fail-secure en recomendaciones; pendiente Rate Limiting perimetral en Gateway. | Ricardo Porras Veli | 20/11/2026 | 3 | 5 | 60.0 % |
-| **OWASP** | OW-A05 | ¿Se tiene implementada la configuración segura contra A05: Security Misconfiguration? | SOFTWARE | Cumple (5) | Subsanado en Ola 1: cabeceras defensivas (X-Frame-Options, nosniff, COOP) en nginx.conf y corrección en config.local.js. | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
-| **OWASP** | OW-A06 | ¿Se tiene implementado el control contra A06: Vulnerable Components? | SOFTWARE | Cumple (5) | Subsanado en Ola 1: hashes Subresource Integrity (SRI) y crossorigin en todas las páginas HTML para scripts CDN. | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
-| **OWASP** | OW-A07 | ¿Se tiene implementada la autenticación robusta contra A07: Authentication Failures? | SOFTWARE | Parcial (3) | Validación exhaustiva de tokens JWT y claims en Gateway; observación por persistencia de token en localStorage. | Ricardo Porras Veli | 30/11/2026 | 3 | 5 | 60.0 % |
-| **OWASP** | OW-A08 | ¿Se tiene implementada la integridad de software contra A08: Integrity Failures? | HERRAMIENTA | Cumple (5) | Subsanado en Ola 1: anclaje inmutable del 100 % de GitHub Actions por commit SHA en ci.yml y pages.yml. | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
-| **OWASP** | OW-A09 | ¿Se tiene implementado el registro y monitoreo contra A09: Security Logging Failures? | SOFTWARE | Parcial (3) | Trazabilidad con X-Request-Id y alertas Prometheus; pendiente registro de auditoría estructurado para 401/403 en Gateway. | Ricardo Porras Veli | 20/11/2026 | 3 | 5 | 60.0 % |
-| **OWASP** | OW-A10 | ¿Se tiene implementada la protección contra A10: Server-Side Request Forgery (SSRF)? | SOFTWARE | Cumple (5) | Rutas upstream fijas en Gateway, validación estricta de esquemas URL y rechazo de redirecciones en cliente HTTP. | — | — | 5 | 5 | 100.0 % |
+| **OWASP** | OW-A01 | ¿Se tiene implementado el control de acceso contra A01:2025: Broken Access Control (incluye SSRF)? | SOFTWARE | No cumple (1) | RBAC sólido en Gateway (ADMIN/OPERATOR/VIEWER) y SSRF mitigado (rutas upstream fijas, validación de esquemas URL, rechazo de redirecciones); pendiente verificar RLS en Supabase y aislar puertos locales. | Ricardo Porras Veli | 17/11/2026 | 1 | 5 | 20.0 % |
+| **OWASP** | OW-A02 | ¿Se tiene implementada la configuración segura contra A02:2025: Security Misconfiguration? | SOFTWARE | Cumple (5) | Subsanado en Ola 1: cabeceras defensivas (X-Frame-Options, nosniff, COOP) en nginx.conf y corrección en config.local.js. | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
+| **OWASP** | OW-A03 | ¿Se tiene implementado el control contra A03:2025: Software Supply Chain Failures? | SOFTWARE | Cumple (5) | Subsanado en Ola 1: hashes Subresource Integrity (SRI) y crossorigin en todas las páginas HTML para scripts CDN. | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
+| **OWASP** | OW-A04 | ¿Se tiene implementada la protección criptográfica contra A04:2025: Cryptographic Failures? | SOFTWARE | No cumple (1) | TLS forzado y verificación JWT asimétrica; pendiente eliminar columna password en BD y contraseñas de dataset Excel. | Ricardo Porras Veli | 17/11/2026 | 1 | 5 | 20.0 % |
+| **OWASP** | OW-A05 | ¿Se tiene implementada la prevención contra A05:2025: Injection? | SOFTWARE | Cumple (5) | Parámetros ligados en SQLite (?), escape en PostgREST, lista blanca PromQL y modelos Pydantic restrictivos. | — | — | 5 | 5 | 100.0 % |
+| **OWASP** | OW-A06 | ¿Se tiene implementado el diseño seguro contra A06:2025: Insecure Design? | SOFTWARE | Parcial (3) | Arquitectura hexagonal y principio fail-secure en recomendaciones; pendiente Rate Limiting perimetral en Gateway. | Ricardo Porras Veli | 20/11/2026 | 3 | 5 | 60.0 % |
+| **OWASP** | OW-A07 | ¿Se tiene implementada la autenticación robusta contra A07:2025: Authentication Failures? | SOFTWARE | Parcial (3) | Validación exhaustiva de tokens JWT y claims en Gateway; observación por persistencia de token en localStorage. | Ricardo Porras Veli | 30/11/2026 | 3 | 5 | 60.0 % |
+| **OWASP** | OW-A08 | ¿Se tiene implementada la integridad de software contra A08:2025: Software or Data Integrity Failures? | HERRAMIENTA | Cumple (5) | Subsanado en Ola 1: anclaje inmutable del 100 % de GitHub Actions por commit SHA en ci.yml y pages.yml. | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
+| **OWASP** | OW-A09 | ¿Se tiene implementado el registro y las alertas contra A09:2025: Security Logging and Alerting Failures? | SOFTWARE | Parcial (3) | Trazabilidad con X-Request-Id y alertas Prometheus; pendiente registro de auditoría estructurado para 401/403 en Gateway. | Ricardo Porras Veli | 20/11/2026 | 3 | 5 | 60.0 % |
+| **OWASP** | OW-A10 | ¿Se tiene implementado el manejo seguro de condiciones excepcionales contra A10:2025: Mishandling of Exceptional Conditions? | SOFTWARE | Parcial (3) | Fortalezas fail-closed: catch-all 500 genéricos sin traza, JWKS no disponible rechaza el token (503), timeouts por ruta y mensajes amigables en frontend; pendiente OW-13: recover en gateway-go, manejador global en Spring Cloud Gateway y pruebas de no filtración. | Ricardo Porras Veli | 30/11/2026 | 3 | 5 | 60.0 % |
 
 ## 7.2. Tabla de Nivel de Apego por Factor (Inicial, Actual y Esperado)
 
@@ -339,17 +345,18 @@ Los puntajes consolidados del proyecto se resumen a continuación, reflejando el
 | **S — Soporte / Mantenibilidad** | 4 | 20 | 18 | 90.0 % | 18 | 90.0 % | 20 | 100.0 % | 0.0 % |
 | **+ — Restricciones Adicionales** | 6 | 30 | 28 | 93.3 % | 28 | 93.3 % | 28 | 93.3 % | 0.0 % |
 | **SUBTOTAL FURPS+ (01–03)** | **40** | **200** | **170** | **85.0 %** | **174** | **87.0 %** | **196** | **98.0 %** | **+2.0 %** |
-| **OWASP — Seguridad Web (04–06)** | 10 | 50 | 30 | 60.0 % | 36 | 72.0 % | 48 | 96.0 % | +12.0 % |
-| **TOTAL GENERAL CONSOLIDADO** | **50** | **250** | **200** | **80.0 %** | **210** | **84.0 %** | **244** | **97.6 %** | **+4.0 %** |
+| **OWASP — Seguridad Web (04–06)** | 10 | 50 | 28 | 56.0 % | 34 | 68.0 % | 48 | 96.0 % | +12.0 % |
+| **TOTAL GENERAL CONSOLIDADO** | **50** | **250** | **198** | **79.2 %** | **208** | **83.2 %** | **244** | **97.6 %** | **+4.0 %** |
 
 Nota metodológica sobre las métricas:
-1. El informe docs/calidad/01_auditoria_furps.md reportó inicialmente un nivel de apego del 85.00 %, el cual evalúa de forma estricta las 40 preguntas del estándar FURPS+ (170 / 200 puntos). Al integrar las 10 preguntas de seguridad OWASP Top 10 en la matriz consolidada docente de 50 ítems, el puntaje inicial total fue de 200 sobre 250 puntos, lo que arroja un nivel de calidad inicial global del 80.0 %.
-2. Tras la ejecución de la Ola 1, el puntaje global ascendió a 210 sobre 250 puntos (84.0 %), impulsado por la subsanación de M-U07 en Usabilidad (+4 puntos brutos) y las remediaciones de seguridad en cabeceras Nginx, SRI y anclaje SHA de GitHub Actions (+6 puntos brutos en los factores OW-A05, OW-A06 y OW-A08).
+1. El informe docs/calidad/01_auditoria_furps.md reportó inicialmente un nivel de apego del 85.00 %, el cual evalúa de forma estricta las 40 preguntas del estándar FURPS+ (170 / 200 puntos). Al integrar las 10 preguntas de seguridad OWASP Top 10 en la matriz consolidada docente de 50 ítems, el puntaje inicial total fue de 198 sobre 250 puntos, lo que arroja un nivel de calidad inicial global del 79.2 %.
+2. Tras la ejecución de la Ola 1, el puntaje global ascendió a 208 sobre 250 puntos (83.2 %), impulsado por la subsanación de M-U07 en Usabilidad (+4 puntos brutos) y las remediaciones de seguridad en cabeceras Nginx, SRI y anclaje SHA de GitHub Actions (+6 puntos brutos en los factores OW-A02, OW-A03 y OW-A08).
 3. El detalle exhaustivo fila por fila para cada uno de los tres escenarios se encuentra particionado en las hojas correspondientes («Inicial», «Actual» y «Esperado») dentro del libro de trabajo Excel adjunto MODELO-FURPSPLUS-Green-AI.xlsx.
+4. La parte OWASP de la matriz fue reclasificada a la edición Top 10:2025 (SSRF absorbida en A01 y nueva categoría A10:2025 valorada como Parcial). Las preguntas OW-A01 (A01:2025) y OW-A04 (A04:2025) figuran como No cumple (1), igual que en el Excel oficial; la versión previa de este documento las mostraba por error como Parcial (3), lo que era incoherente con sus propios totales. Con la lista 2021 los totales eran 200 / 80.0 % (inicial) y 210 / 84.0 % (actual).
 
 # 8. Nivel de calidad inicial y esperado: análisis de brechas
 
-La progresión desde un nivel de calidad inicial del 80.0 % hasta un nivel actual del 84.0 % y una meta proyectada del 97.6 % ilustra un avance metodológico sustentado en evidencias. Sin embargo, un principio central de la ingeniería de software es reconocer con honestidad técnica por qué el sistema no alcanza —ni debe pretender alcanzar en esta fase académica— un 100.0 % de cumplimiento perfecto.
+La progresión desde un nivel de calidad inicial del 79.2 % hasta un nivel actual del 83.2 % y una meta proyectada del 97.6 % ilustra un avance metodológico sustentado en evidencias. Sin embargo, un principio central de la ingeniería de software es reconocer con honestidad técnica por qué el sistema no alcanza —ni debe pretender alcanzar en esta fase académica— un 100.0 % de cumplimiento perfecto.
 
 El análisis de brechas identifica tres condicionantes estructurales que impiden alcanzar el puntaje ideal:
 
@@ -362,7 +369,7 @@ El análisis de brechas identifica tres condicionantes estructurales que impiden
    En la pregunta M-F08 (cálculo de energía y CO2e), el sistema aplica formalmente la regla del trapecio sobre valores de potencia en vatios. Sin embargo, la potencia no proviene de mediciones de hardware reales ni sensores IPMI/PDU físicos, sino de un modelo lineal aproximado P = P_idle + (P_max - P_idle) * CPU (software/frontend/energy.js).
    Simular que esta potencia es una medición de laboratorio real violaría las directrices de integridad científica de la universidad. Por ende, la pregunta M-F08 se califica en Parcial (3 puntos) y se mantendrá en ese estado hasta que el centro de datos cuente con instrumentación de hardware real conectada por protocolos SNMP o Redfish.
 3. Desacoplamiento de Persistencia Externa en la Nube:
-   En el factor de seguridad OWASP (OW-A01 y OW-A02), persisten observaciones sobre la base de datos externa en Supabase (riesgo de políticas RLS permisivas registradas en snapshots históricos y presencia de la columna password). Mientras el administrador de la base de datos no ejecute y certifique las consultas de catálogo en vivo, la calificación se mantiene prudencialmente en Parcial.
+   En el factor de seguridad OWASP (OW-A01 y OW-A04), persisten observaciones sobre la base de datos externa en Supabase (riesgo de políticas RLS permisivas registradas en snapshots históricos y presencia de la columna password). Mientras el administrador de la base de datos no ejecute y certifique las consultas de catálogo en vivo, la calificación se mantiene prudencialmente en No cumple (no en Parcial) hasta su verificación.
 
 Estas brechas no constituyen negligencia técnica, sino la delimitación consciente entre el alcance demostrativo de un prototipo de ingeniería riguroso y la operación corporativa a escala productiva.
 
@@ -421,7 +428,7 @@ Consola topológica interactiva que distribuye los 50 servidores simulados en 5 
 
 ![Racks con calor: 50 servidores en 5 racks y panel lateral del servidor HW048 seleccionado (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 2)](evidencias/captura-S06-racks.png)
 
-## 9.7. Pregunta OW-A05 / M-U01 / M-PL04 (Cabeceras Defensivas HTTP en Nginx — OW-06 y OW-07)
+## 9.7. Pregunta OW-A02 / M-U01 / M-PL04 (Cabeceras Defensivas HTTP en Nginx — OW-06 y OW-07)
 
 Verificación de la sintaxis y de las cabeceras servidas por el contenedor web Nginx:
 
@@ -456,7 +463,7 @@ Cross-Origin-Opener-Policy: same-origin
 
 ![Archivo software/frontend/nginx.conf en GitHub (rama main) con las cabeceras de seguridad OW-06 y su repetición en location = /config.local.js (OW-07); evidencia de configuración, no de ejecución](evidencias/captura-S07-nginx-conf.png)
 
-## 9.8. Pregunta OW-A06 (Subresource Integrity en CDN — OW-08)
+## 9.8. Pregunta OW-A03 (Subresource Integrity en CDN — OW-08)
 
 Comprobación de la estabilidad y consistencia de los hashes criptográficos generados:
 
@@ -475,7 +482,7 @@ Verificación en navegador sin errores de integridad:
 
 ![Comprobación SRI del 12/11/2026 en GitHub Pages: login.html y los recursos de dashboard.html cargan con su atributo integrity, window.supabase y window.Chart definidos, consola sin errores](evidencias/captura-S08-sri-consola.png)
 
-## 9.9. Pregunta OW-A08 / M-S03 (Anclaje Inmutable de GitHub Actions — OW-10)
+## 9.9. Pregunta OW-A08 (A08:2025) / M-S03 (Anclaje Inmutable de GitHub Actions — OW-10)
 
 Inspección de las canalizaciones automatizadas en .github/workflows/ci.yml y pages.yml:
 
@@ -536,7 +543,7 @@ El dictamen técnico emitido para el proyecto Green AI es:
 ## 10.2. Justificación Técnica del Dictamen
 
 1. Cumplimiento de Calidad (FURPS+): El sistema alcanzó un nivel de apego auditado del **87.00 %** (87.62 % ponderado) en FURPS+, superando con holgura los requerimientos exigidos para un Producto Mínimo Viable (PMV2) de demostración académica.
-2. Cumplimiento de Seguridad (OWASP Top 10): El Score de Seguridad auditado post Ola 1 se situó en **85.0 / 100**, evidenciando un perímetro protegido contra falsificación de orígenes (CORS), inyecciones y adulteración de dependencias.
+2. Cumplimiento de Seguridad (OWASP Top 10:2025): El Score de Seguridad auditado post Ola 1 se situó en **83.5 / 100 (OWASP Top 10:2025)**, evidenciando un perímetro protegido contra falsificación de orígenes (CORS), inyecciones y adulteración de dependencias.
 3. Preservación de Funcionalidad: Cero (0) regresiones técnicas. Las 7 suites de pruebas del monorepo mantienen operativas más de 415 pruebas automatizadas pasando de manera ininterrumpida.
 4. Nivel de Riesgo Operativo: Clasificado en **Riesgo Operativo Medio**, originado no por deficiencias de codificación, sino por las dependencias externas del entorno de demostración (cuotas de Render Free Tier, datos de potencia calculados sintéticamente y políticas RLS pendientes de certificación remota).
 
@@ -559,7 +566,7 @@ El desarrollo de la sesión y la aplicación de los marcos FURPS+ y OWASP Top 10
 3. Criterios de Calidad de Software y Evaluación Crítica:
    La aplicación del modelo FURPS+ enseñó a valorar las dimensiones no funcionales (Usabilidad, Confiabilidad, Rendimiento y Mantenibilidad) al mismo nivel de exigencia que las funcionalidades de negocio. Comprendimos que la honestidad experimental es un valor superior: reajustar una sobrecalificación inicial del 96 % al 85 % real refuerza la solidez técnica del proyecto ante cualquier auditoría externa.
 4. Herramientas de Evaluación y Seguridad Aplicada:
-   El análisis bajo OWASP Top 10 reveló que la seguridad debe concebirse en profundidad. Aprendimos a blindar la cadena de suministro en CI/CD mediante hashes SHA inmutables, a proteger a los usuarios frente a alteraciones de CDN con Subresource Integrity (SRI) y a configurar cabeceras defensivas en Nginx para mitigar vectores de explotación como Clickjacking y MIME-sniffing.
+   El análisis bajo OWASP Top 10:2025 reveló que la seguridad debe concebirse en profundidad, incluido el manejo de condiciones excepcionales (A10:2025) con comportamiento fail-closed. Aprendimos a blindar la cadena de suministro en CI/CD mediante hashes SHA inmutables, a proteger a los usuarios frente a alteraciones de CDN con Subresource Integrity (SRI) y a configurar cabeceras defensivas en Nginx para mitigar vectores de explotación como Clickjacking y MIME-sniffing.
 5. Colaboración Sinergica con Agentes de Inteligencia Artificial:
    La interacción entre Claude Code y Antigravity CLI demostró el potencial de los agentes autónomos en tareas complejas de auditoría, redacción documental y verificación técnica, siempre que exista una supervisión humana rigurosa que guíe los criterios de aceptación, examine los diffs de código y valide la ausencia de alucinaciones contra el repositorio real.
 
@@ -571,7 +578,7 @@ Para fines de verificación, auditoría y trazabilidad académica, todos los art
 * Rama base de desarrollo y calidad: test
 * Matriz de Calidad en formato Excel: exportados/semana13/MODELO-FURPSPLUS-Green-AI.xlsx
 
-## Relación de Entregables del Ciclo de Calidad y Seguridad (01–07)
+## Relación de Entregables del Ciclo de Calidad y Seguridad (01–08)
 
 1. docs/calidad/01_auditoria_furps.md  
    Auditoría Integral de Calidad de Software bajo el Modelo FURPS+ (Línea base inicial: 85.00 %).  
@@ -583,17 +590,20 @@ Para fines de verificación, auditoría y trazabilidad académica, todos los art
    Auditoría Independiente de Implementación FURPS+ (Puntaje verificado post Ola 1: 87.00 %).  
    Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/03_auditoria_implementacion_furps.md
 4. docs/calidad/04_auditoria_owasp.md  
-   Auditoría de Seguridad de Aplicaciones Web y APIs según OWASP Top 10:2021 (Score inicial: 80.5 / 100).  
+   Auditoría de Seguridad de Aplicaciones Web y APIs según OWASP Top 10:2021 (Score inicial: 80.5 / 100; reclasificado a 2025: 79.0 / 100).  
    Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/04_auditoria_owasp.md
 5. docs/calidad/05_plan_owasp.md  
    Plan de Remediación de Vulnerabilidades de Seguridad OWASP Top 10 (Roadmap en tres olas).  
    Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/05_plan_owasp.md
 6. docs/calidad/06_auditoria_implementacion_owasp.md  
-   Auditoría Independiente de Implementación de Seguridad OWASP (Score verificado post Ola 1: 85.0 / 100).  
+   Auditoría Independiente de Implementación de Seguridad OWASP (Score verificado post Ola 1: 85.0 / 100 bajo 2021; 83.5 / 100 bajo 2025).  
    Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/06_auditoria_implementacion_owasp.md
 7. docs/calidad/07_auditoria_final.md  
    Dictamen Final Integral de Calidad y Seguridad de Software («Apto para producción con observaciones»).  
    Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/07_auditoria_final.md
+8. docs/calidad/08_reclasificacion_owasp_2025.md  
+   Reclasificación de la auditoría OWASP a Top 10:2025 y evaluación de A10:2025.  
+   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/08_reclasificacion_owasp_2025.md
 
 ## Documentos Técnicos Complementarios de Evidencia
 

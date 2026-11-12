@@ -383,3 +383,13 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 ## 12/11/2026 (tarde) — NRC 30170 y nombre «Claudio»
 - NRC 30170 en las portadas del informe y de semana 13. El usuario pidió nombrar al asistente «Claudio»: portada «Claudio (Claude de Anthropic, …) – asistente/agente de IA…», se mantiene explícito que es IA.
 - Reexportados ambos Word y el PDF. El primer intento falló al guardar el informe (OSError: Word aún tenía el archivo) y se subió por error un .docx sin formato (153 p., commit 12d39ab); corregido en el commit siguiente: informe 117 p., PDF 117 p., NRC y «Claudio» en la p. 1, 0 «PENDIENTE».
+
+## 12/11/2026 (noche) — Semana 13: OWASP Top 10:2021 → 2025
+- Motivo: el entregable de semana 13 (no el informe corregido) usaba OWASP Top 10:2021; debe usar la edición vigente https://top10.owasp.org/2025/ (lista verificada en la web oficial).
+- Mapeo oficial: SSRF (A10:2021) absorbida en A01:2025; A05→A02 Security Misconfiguration; A06→A03 Software Supply Chain Failures; A02→A04; A03→A05; A04→A06; A07/A08/A09 renombradas; **A10:2025 Mishandling of Exceptional Conditions es nueva**.
+- A10:2025 evaluada por inspección estática del código (sin pruebas en ejecución): Parcial (3), 8,0/10. Nuevo hallazgo **OW-13** (ola 3, Ricardo Porras, 30/11/2026): `recover` en gateway-go, manejador global/`server.error.include-*=never` en el Gateway Spring, pruebas de cuerpos 500 genéricos y timeouts uniformes en el frontend.
+- Puntajes: seguridad 0–100 79,0 → 83,5 (antes 80,5 → 85,0); matriz OWASP 28/34/48 de 50; global 198/208/244 de 250 (79,2 % / 83,2 % / 97,6 %; antes 80,0 % / 84,0 %).
+- Corregida una incoherencia previa: el .md mostraba A01 y A02:2021 (ahora A01 y A04:2025) como «Parcial (3)», pero el Excel y los totales los contaban como «No cumple (1)». Se alineó el .md con el Excel.
+- Archivos: `entregables/semana13/semana13-calidad-furps-owasp.md`; nuevo `docs/calidad/08_reclasificacion_owasp_2025.md` (clasificación vigente); nota al inicio de `docs/calidad/04–07` (se conservan como registro histórico 2021); `herramientas_IA/calidad/llenar_modelo_furps.py` (lista 2025).
+- Exportados: `MODELO-FURPSPLUS-Green-AI.xlsx` (salida: Inicial 198, Actual 208, Esperado 244 de 250) y `…-semana13-calidad-FURPS-OWASP.docx` (39 págs., 0 capturas pendientes; `md_a_docx.py --encabezado "Green AI · Semana 13: calidad FURPS+ y OWASP"` + `actualizar_word.ps1`; el primer `actualizar_word.ps1` dio COMException, al reintentar terminó OK). También se añadieron líneas en blanco antes de 4 listas que pandoc unía al párrafo (§5, §6.2, §6.4).
+- Entorno `.tools/docx` recreado en esta máquina (ignorado por Git).

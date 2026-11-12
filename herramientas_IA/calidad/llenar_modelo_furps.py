@@ -25,18 +25,19 @@ OLA1_FURPS = {"M-U07": "Implementado: entregables/guia-de-uso/GUIA-RAPIDA-USUARI
 # Filas que el plan no lleva a «Cumple» (restricciones aceptadas en 01_auditoria_furps.md §5)
 NO_MEJORAN = {"M-F08", "M-PL03"}
 
+# OWASP Top 10:2025 (https://top10.owasp.org/2025/); reclasificación en docs/calidad/08_reclasificacion_owasp_2025.md
 # OWASP: (id, categoría, puntaje inicial, puntaje tras ola 1, esperado, evidencia/acción, responsable, fecha)
 OWASP = [
-    ("A01", "Broken Access Control", 1, 1, 5, "OW-01 RLS «Permitir todo» en Supabase (no verificado); OW-02 puertos locales. Revisar pg_policies", "Dueño de Supabase / Ricardo Porras", "23/11/2026"),
-    ("A02", "Cryptographic Failures", 1, 1, 5, "OW-03 columna password en esquema; OW-04 contraseñas sintéticas en Excel", "Dueño de Supabase / Gina Barrera", "23/11/2026"),
-    ("A03", "Injection", 5, 5, 5, "Consultas parametrizadas (PostgREST/SQLite) y validación Pydantic", "—", "—"),
-    ("A04", "Insecure Design", 3, 3, 5, "OW-05 sin rate limiting en el Gateway", "Ricardo Porras", "23/11/2026"),
-    ("A05", "Security Misconfiguration", 3, 5, 5, "OW-06/OW-07 corregidos: cabeceras en nginx.conf (commit d24d86f)", "Ricardo Porras", "07/11/2026"),
-    ("A06", "Vulnerable and Outdated Components", 3, 5, 5, "OW-08 corregido: SRI SHA-384 en scripts y estilos de CDN (commit d24d86f)", "Ricardo Porras", "07/11/2026"),
-    ("A07", "Identification and Authentication Failures", 3, 3, 3, "OW-09 sesión en localStorage (ola 3, riesgo aceptado temporalmente)", "Leonid Huamán", "30/11/2026"),
-    ("A08", "Software and Data Integrity Failures", 3, 5, 5, "OW-10 corregido: Actions fijadas por SHA; OW-11 digest de imágenes pendiente (bajo)", "Ricardo Porras", "07/11/2026"),
-    ("A09", "Security Logging and Monitoring Failures", 3, 3, 5, "OW-12 sin registro/métrica de 401/403 en Gateway", "Ricardo Porras", "23/11/2026"),
-    ("A10", "Server-Side Request Forgery (SSRF)", 5, 5, 5, "URLs de destino fijas por configuración", "—", "—"),
+    ("A01:2025", "Broken Access Control (incluye SSRF)", 1, 1, 5, "OW-01 RLS «Permitir todo» en Supabase (no verificado); OW-02 puertos locales. Revisar pg_policies. SSRF mitigado: URLs de destino fijas por configuración", "Dueño de Supabase / Ricardo Porras", "23/11/2026"),
+    ("A02:2025", "Security Misconfiguration", 3, 5, 5, "OW-06/OW-07 corregidos: cabeceras en nginx.conf (commit d24d86f)", "Ricardo Porras", "07/11/2026"),
+    ("A03:2025", "Software Supply Chain Failures", 3, 5, 5, "OW-08 corregido: SRI SHA-384 en scripts y estilos de CDN (commit d24d86f)", "Ricardo Porras", "07/11/2026"),
+    ("A04:2025", "Cryptographic Failures", 1, 1, 5, "OW-03 columna password en esquema; OW-04 contraseñas sintéticas en Excel", "Dueño de Supabase / Gina Barrera", "23/11/2026"),
+    ("A05:2025", "Injection", 5, 5, 5, "Consultas parametrizadas (PostgREST/SQLite) y validación Pydantic", "—", "—"),
+    ("A06:2025", "Insecure Design", 3, 3, 5, "OW-05 sin rate limiting en el Gateway", "Ricardo Porras", "23/11/2026"),
+    ("A07:2025", "Authentication Failures", 3, 3, 3, "OW-09 sesión en localStorage (ola 3, riesgo aceptado temporalmente)", "Leonid Huamán", "30/11/2026"),
+    ("A08:2025", "Software or Data Integrity Failures", 3, 5, 5, "OW-10 corregido: Actions fijadas por SHA; OW-11 digest de imágenes pendiente (bajo)", "Ricardo Porras", "07/11/2026"),
+    ("A09:2025", "Security Logging and Alerting Failures", 3, 3, 5, "OW-12 sin registro/métrica de 401/403 en Gateway", "Ricardo Porras", "23/11/2026"),
+    ("A10:2025", "Mishandling of Exceptional Conditions", 3, 3, 5, "Fail-closed y errores 500 genéricos en Prediction, Data Processing, Monitoring y Gateway Go (503/504 probados). OW-13: sin recover en gateway-go ni manejador global en el Gateway Spring; faltan pruebas de cuerpos 500 genéricos y timeouts uniformes en el frontend", "Ricardo Porras", "30/11/2026"),
 ]
 
 GREEN, YELLOW, RED = (PatternFill("solid", fgColor=c) for c in ("C6EFCE", "FFEB9C", "FFC7CE"))
