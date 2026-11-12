@@ -347,3 +347,9 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Insertadas en el informe (C201, C202, C302, C306, C307, C308) y semana 13 (S01, S06). Pies de figura VII.6.1, VIII.4 y VIII.31 ajustados a lo que la imagen muestra realmente.
 - Reexportados: informe 116 páginas, 6 marcadores; semana 13 37 páginas, 4 marcadores.
 - Pendientes: C100/S00, C203, C204, C310, C312, C313, S04, S07, S08.
+
+## 12/11/2026 — Sprint 7: rama de trabajo y PR #6 (para C310)
+- Worktree `../green-ai-s7`, rama `sprint7/7.2-proceso-pr` desde `origin/test` (no incluye los commits locales de `test` sin publicar). Commit 7de9a15: `.github/pull_request_template.md` con la DoD del equipo (tarea 7.2, proceso de desarrollo).
+- Push de esa rama y PR https://github.com/woshtsu/green-ai-workspace-cld/pull/6 (`sprint7/7.2-proceso-pr` → `test`), autorizado por el usuario. La cuenta activa de `gh` (R772-cpu) no tiene permiso: se usó `GH_TOKEN=$(gh auth token --user woshtsu)` solo para el comando, sin cambiar la cuenta activa.
+- Falta para C310: CI en verde en el PR y la aprobación de otro integrante (el autor no puede aprobar su propio PR). Después, capturar la pestaña «Conversation» o «Files changed» con la revisión aprobada y fusionar.
+- Logo C100/S00: el usuario dice que lo agregó, pero no se encontró en el repo ni en Descargas/Escritorio/Imágenes; el informe estaba abierto en Word (archivo `~$…`), así que no se reexportó para no pisar cambios.

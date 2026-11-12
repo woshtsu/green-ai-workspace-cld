@@ -72,3 +72,8 @@ Solo `guias/` (docente), `entregables/` (fuentes .md) y `exportados/` (Word/Exce
 - Guion §5 ampliado (colores de racks, suites, nueva respuesta de Ep. 5, tarjetas HU-03/HU-06, Ep. 7).
 - Subtítulos: `python herramientas_IA/video/guion_a_srt.py entregables/video/GUION-VIDEO-UNIDAD-III.md exportados/video/green-ai-unidad-III.srt --fin 24:26`, luego `python herramientas_IA/video/srt_a_ass_apilado.py exportados/video/green-ai-unidad-III.srt exportados/video/sub.ass` (cada subtítulo dura al menos su tiempo de lectura, hasta 3 apilados con el más reciente abajo, caja semitransparente) e incrustado con ffmpeg `subtitles=sub.ass` sobre el cortado → `green-ai-unidad-III-subtitulado.mp4`. Si se cambia el guion, repetir ambos pasos.
 - Pendiente: la diapositiva de cierre muestra minutos de indicadores con 2 s de más (no regrabada); filas antiguas 00:17, 00:54 y 01:00 tienen más texto que tiempo (subtítulos rápidos).
+
+### Estado 12/11/2026 (madrugada)
+- PR #6 abierto (Sprint 7, tarea 7.2, rama `sprint7/7.2-proceso-pr` → `test`) para la captura C310: falta CI verde y aprobación de otro integrante.
+- Logo C100/S00: confirmar con el usuario dónde lo dejó antes de reexportar (no reexportar con el Word abierto).
+- Marcadores pendientes: informe C100, C203, C204, C310, C312, C313; semana 13 S00, S04, S07, S08.
