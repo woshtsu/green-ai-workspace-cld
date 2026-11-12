@@ -382,4 +382,4 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 
 ## 12/11/2026 (tarde) — NRC 30170 y nombre «Claudio»
 - NRC 30170 en las portadas del informe y de semana 13. El usuario pidió nombrar al asistente «Claudio»: portada «Claudio (Claude de Anthropic, …) – asistente/agente de IA…», se mantiene explícito que es IA.
-- Reexportados ambos Word y el PDF del informe; verificado en el PDF: NRC y «Claudio» en la p. 1, 0 apariciones de «PENDIENTE».
+- Reexportados ambos Word y el PDF. El primer intento falló al guardar el informe (OSError: Word aún tenía el archivo) y se subió por error un .docx sin formato (153 p., commit 12d39ab); corregido en el commit siguiente: informe 117 p., PDF 117 p., NRC y «Claudio» en la p. 1, 0 «PENDIENTE».
