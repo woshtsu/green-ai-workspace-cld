@@ -1,0 +1,13 @@
+Analiza la aplicación ejecutándose.
+
+Identifica:
+
+1. Módulos funcionales.
+2. Menús.
+3. Formularios.
+4. Procesos de negocio.
+5. APIs consumidas.
+6. APIs expuestas.
+7. Flujos principales.
+
+Genera un inventario funcional del sistema.

@@ -1,0 +1,20 @@
+Actúa como Arquitecto Empresarial.
+
+Utiliza:
+
+- Código fuente
+- Dependencias
+- Configuración
+- Logs
+- Diagramas
+
+Reconstruye:
+
+1. Arquitectura general.
+2. Componentes.
+3. Relaciones.
+4. Dependencias.
+5. Integraciones.
+6. Flujo de datos.
+
+Genera una descripción completa de la arquitectura real encontrada.

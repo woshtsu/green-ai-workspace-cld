@@ -1,0 +1,131 @@
+PROMPT DE VALIDACIÓN SCRUM — MEDIANTE JSON EXPORTADO DE TRELLO
+
+Actúa como auditor académico experto en Scrum y gestión ágil de proyectos universitarios.
+
+Voy a compartir el archivo JSON exportado desde Trello de un proyecto universitario desarrollado bajo metodología Scrum.
+
+Necesito que realices una VALIDACIÓN COMPLETA DEL TABLERO utilizando únicamente la información contenida en el archivo JSON.
+
+========================================
+CONTEXTO DEL CURSO
+==================
+
+* Proyecto universitario desarrollado con Scrum.
+* Cada grupo tiene 5 integrantes.
+* El tablero debe representar avance REAL del proyecto.
+* Actualmente el estado esperado es:
+
+1. Todo el PMV1 debe estar terminado.
+
+2. El PMV1 debe reflejarse principalmente en:
+
+   * DONE
+   * Sprint Review
+   * Sprint Retrospective
+
+3. El PMV2 ya debe encontrarse en ejecución.
+
+4. El PMV2 debe tener actividades activas en:
+
+   * TODO
+   * IN PROGRESS
+   * QA-TESTING
+   * DONE (si existen tareas culminadas)
+
+========================================
+VALIDACIONES OBLIGATORIAS
+=========================
+
+Analiza:
+
+1. Organización Scrum del tablero.
+
+2. Flujo correcto entre listas.
+
+3. Coherencia entre backlog y desarrollo.
+
+4. Existencia de:
+
+   * Historias de usuario
+   * Sprint backlog
+   * QA/testing
+   * Sprint review
+   * Retrospective
+
+5. Detecta:
+
+   * Tarjetas vacías
+   * Tareas duplicadas
+   * Historias mal redactadas
+   * Ausencia de criterios de aceptación
+   * Falta de responsables
+   * PMV1 incompleto
+   * PMV2 no iniciado
+   * Flujo Scrum artificial o decorativo
+   * Actividades sin sentido técnico
+   * Columnas mal utilizadas
+   * Tarjetas abandonadas
+
+6. Verifica:
+
+   * Movimiento real entre estados
+   * Volumen coherente de trabajo
+   * Trabajo colaborativo
+   * Distribución adecuada de tareas
+
+7. Evalúa:
+
+   * Nivel de madurez Scrum
+   * Coherencia del sprint
+   * Evidencia de trabajo auténtico
+
+========================================
+FORMATO DE RESPUESTA
+====================
+
+# RESULTADO GENERAL
+
+(Aprobado / Observado / Deficiente)
+
+# NIVEL SCRUM DEL EQUIPO
+
+(Básico / Intermedio / Bueno / Avanzado)
+
+# PORCENTAJE ESTIMADO DE AVANCE
+
+(%)
+
+# VALIDACIÓN DEL PMV1
+
+(Estado y observaciones)
+
+# VALIDACIÓN DEL PMV2
+
+(Estado y observaciones)
+
+# ANÁLISIS DEL FLUJO SCRUM
+
+(Evaluación profesional)
+
+# OBSERVACIONES DETECTADAS
+
+(Lista)
+
+# ERRORES CRÍTICOS
+
+(Lista)
+
+# INDICADORES DE POSIBLE SIMULACIÓN O MAQUILLAJE
+
+(Lista)
+
+# RECOMENDACIONES
+
+(Lista)
+
+# CONCLUSIÓN FINAL
+
+(Como docente evaluador universitario)
+
+Sé estricto y objetivo.
+Evalúa como una auditoría académica profesional.

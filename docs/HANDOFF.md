@@ -308,3 +308,11 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
   - guía rápida → `entregables/guia-de-uso/`
   - Commit `7b6f600`. Rutas actualizadas con sed y verificadas solo con grep.
 - Word reexportado: `exportados/semana13/…-CORREGIDO.docx`, 109 páginas, 35 tablas, 18 marcadores `CAPTURA-PENDIENTE` (14 + C310–C313). Las exportaciones viejas de `exportados/semana13` se guardaron en el scratchpad antes de sobrescribirlas.
+
+## 2026-11-11 (cierre): guías de las semanas 14 y 15-16 y Gantt del PMV3
+- Guías nuevas en `guias/semana14/` y `guias/semana15-16/`, con su índice en `guias/README.md`. Los `.md` de «Cartel científico» y «Poster-ejemplo-1/2», que estaban vacíos, se reemplazaron por transcripciones de los PDF del docente, que solo traen imágenes. Las hizo un subagente Haiku; algunas cifras pequeñas del póster 2 son aproximadas.
+- PMV3 replanificado según la lista de cotejo de la Unidad IV:
+  - Sprint 7: ingeniería inversa (fases 1–4), proceso de desarrollo y CI/CD, ola 2 de FURPS+/OWASP, rendimiento y métricas de ML, Trello/DoD y preparación de pruebas con usuarios, borrador del informe final y del reporte ICACIT.
+  - Sprint 8: ingeniería inversa (fases 5–7), ola 3 y nueva medición, pruebas con usuarios y acta, informe final con guía de uso, artículo en inglés con trazabilidad, póster y video con 7 operaciones, cierre el 30/11.
+- Cambios en el informe (Sonnet): Gantt planificado y ejecutado regenerados (`fuentes/gantt_render.py`); cronograma regenerado con PlantUML (`.tools/plantuml/plantuml.jar`); la Tabla 30 de VIII.2.3 detalla la evidencia prevista para los indicadores 8–10.
+- Aviso: el eje del Gantt sigue la línea base (Sprint 7 = «Sem 13»). El docente lo llama semana 14 porque el calendario se adelantó una semana, como explica VII.5.3.

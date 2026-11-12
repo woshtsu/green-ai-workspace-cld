@@ -1,0 +1,160 @@
+Actúa como un comité revisor internacional especializado en publicaciones científicas de ingeniería de software, inteligencia artificial y arquitectura de software.
+
+Recibirás dos documentos:
+
+DOCUMENTO A:
+Artículo científico en inglés.
+
+DOCUMENTO B:
+Informe técnico del proyecto desarrollado.
+
+Tu tarea principal es evaluar exhaustivamente el DOCUMENTO A (Artículo en inglés).
+
+Debes verificar los siguientes aspectos:
+
+1. ESTRUCTURA DEL ARTÍCULO
+
+Valida si el artículo cumple con la siguiente estructura:
+
+* Title
+* Abstract
+* Keywords
+* Introduction
+* Related Work
+* Proposed Methodology / Solution
+* Implementation
+* Results and Discussion
+* Conclusions
+* References
+
+Para cada sección indica:
+
+* Cumple / No cumple
+* Observaciones
+* Nivel de calidad (Excelente, Bueno, Regular, Deficiente)
+
+2. CONSISTENCIA TEXTUAL EN INGLÉS
+
+Realiza una revisión lingüística como si fueras un revisor nativo de inglés académico.
+
+Evalúa:
+
+* Gramática
+* Ortografía
+* Academic writing style
+* Claridad de redacción
+* Cohesión entre párrafos
+* Coherencia entre secciones
+* Uso adecuado de terminología técnica
+* Fluidez del texto
+* Redundancias
+* Frases ambiguas
+* Traducciones literales desde español
+* Uso incorrecto de tiempos verbales
+* Uso de voz activa y pasiva
+
+Detecta y cita ejemplos concretos de errores.
+
+Para cada error proporciona:
+
+* Fragmento original
+* Problema detectado
+* Corrección sugerida
+* Justificación
+
+3. CUMPLIMIENTO DE LOS LINEAMIENTOS TÉCNICOS
+
+Verifica si el artículo evidencia adecuadamente:
+
+Arquitectura:
+
+* Hexagonal Architecture
+* Separation of Layers
+* Ports and Adapters
+* Decoupling
+* Scalability
+* Maintainability
+
+Inteligencia Artificial:
+
+* Machine Learning model
+* Training process
+* Dataset
+* Image Recognition
+* Classification or Detection
+* Experimental Validation
+* Performance Metrics
+
+Plataformas:
+
+* Web Platform
+* Mobile Platform
+* APIs
+* Frontend-Backend Integration
+* Client-Server Synchronization
+
+Metodologías Ágiles:
+
+* Scrum
+* Kanban
+* Product Backlog
+* Sprint Backlog
+* User Stories
+* Incremental Development
+* MVP Evolution
+
+Para cada elemento indica:
+
+* Evidencia encontrada
+* Sección donde aparece
+* Nivel de cumplimiento (Alto, Medio, Bajo, Ausente)
+
+4. CALIDAD CIENTÍFICA
+
+Evalúa:
+
+* Definición del problema
+* Objetivo de investigación
+* Metodología
+* Experimentación
+* Resultados cuantitativos
+* Discusión técnica
+* Conclusiones
+* Referencias científicas
+
+Indica fortalezas y debilidades.
+
+5. MÉTRICAS Y VALIDACIÓN
+
+Verifica si existen métricas reales para:
+
+* Machine Learning
+* Reconocimiento de imágenes
+* Rendimiento
+* Calidad de software
+* Arquitectura
+* Metodologías ágiles
+
+Indica cuáles faltan.
+
+6. EVALUACIÓN FINAL
+
+Genera una tabla con:
+
+| Criterio | Puntaje /10 | Observaciones |
+| -------- | ----------- | ------------- |
+
+Luego calcula:
+
+* Puntaje global (/100)
+* Nivel de madurez científica
+* Probabilidad de aceptación en conferencia internacional
+
+Clasifica el artículo como:
+
+* APROBADO
+* APROBADO CON OBSERVACIONES
+* REQUIERE CORRECCIONES IMPORTANTES
+* NO APROBADO
+
+Finalmente genera una lista priorizada de correcciones que deben realizarse antes de dar el visto bueno.

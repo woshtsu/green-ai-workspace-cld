@@ -1,0 +1,26 @@
+Actúa como especialista en Auditoría de Dependencias.
+
+Analiza todos los archivos de dependencias encontrados.
+
+Ejemplos:
+
+- requirements.txt
+- pyproject.toml
+- package.json
+- pom.xml
+- build.gradle
+- composer.json
+
+Genera:
+
+1. Inventario completo.
+2. Dependencias de producción.
+3. Dependencias de desarrollo.
+4. Dependencias críticas.
+5. Dependencias obsoletas.
+6. Vulnerabilidades potenciales.
+7. Dependencias relacionadas con seguridad.
+8. Dependencias relacionadas con persistencia.
+9. Dependencias relacionadas con APIs.
+
+Presenta el resultado en formato markdown.

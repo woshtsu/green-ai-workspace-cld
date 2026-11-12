@@ -71,19 +71,23 @@ act('PMV2', '6.2', 'Paneles de eficiencia energética (kWh, Wh/request)', 'G', '
 act('PMV2', '6.3', 'Sistema de alertas de anomalías y riesgo SLA', 'R', '09/11', '12/11')
 act('PMV2', '6.4', 'CO2e: diseño preliminar (implementación = trabajo futuro)', 'G', '12/11', '13/11')
 act('PMV2', '6.5', 'CIERRE PMV2: Sprint Review + Retrospectiva', 'T', '14/11', '14/11', True)
-pmv('PMV3', 'PMV3 — Proceso de software, calidad y documento final (Semanas 13–14)')
+pmv('PMV3', 'PMV3 — Ingeniería inversa, calidad y entregables finales (Semanas 13–14)')
 spr('PMV3', 'Sprint 7: 17 Nov – 23 Nov 2026')
-act('PMV3', '7.1', 'Proceso de desarrollo documentado (flujo Git test→main, PR)', 'R', '17/11', '19/11')
-act('PMV3', '7.2', 'Proceso de calidad: Ola 2 del plan FURPS+/OWASP', 'G', '17/11', '21/11')
-act('PMV3', '7.3', 'Proceso de CI/CD documentado (GitHub Actions + Render)', 'L/R', '18/11', '21/11')
-act('PMV3', '7.4', 'Gestión del proceso en Trello (PMVn-HUxx, dailies, DoD)', 'J', '17/11', '20/11')
-act('PMV3', '7.5', 'CIERRE SPRINT 7: Sprint Review + Retrospectiva', 'T', '23/11', '23/11', True)
+act('PMV3', '7.1', 'Ingeniería inversa: fases 1–4 (tecnología, funcional, arq., deps.)', 'R', '17/11', '20/11')
+act('PMV3', '7.2', 'Proceso de desarrollo y CI/CD documentado (Git, PR, Actions)', 'L/R', '17/11', '20/11')
+act('PMV3', '7.3', 'Calidad: Ola 2 del plan FURPS+/OWASP', 'G', '17/11', '21/11')
+act('PMV3', '7.4', 'Pruebas de rendimiento y métricas de ML (indicador 10)', 'G/L', '18/11', '22/11')
+act('PMV3', '7.5', 'Trello/DoD y preparación de pruebas con usuarios finales', 'J', '17/11', '21/11')
+act('PMV3', '7.6', 'Borrador del informe final y del reporte ICACIT', 'J', '20/11', '22/11')
+act('PMV3', '7.7', 'CIERRE SPRINT 7: Sprint Review + Retrospectiva', 'T', '23/11', '23/11', True)
 spr('PMV3', 'Sprint 8: 24 Nov – 30 Nov 2026')
-act('PMV3', '8.1', 'Ola 3 de calidad y re-medición FURPS+/OWASP', 'G', '24/11', '27/11')
-act('PMV3', '8.2', 'Métricas del proceso (DoD, HU por sprint, hallazgos)', 'J', '24/11', '26/11')
-act('PMV3', '8.3', 'Documento final: guía de uso y manual de instalación', 'R/L', '25/11', '28/11')
-act('PMV3', '8.4', 'Video de sustentación según lista de cotejo', 'T', '27/11', '29/11')
-act('PMV3', '8.5', 'CIERRE PMV3: Sprint Review + Retrospectiva + Sustentación', 'T', '30/11', '30/11', True)
+act('PMV3', '8.1', 'Ingeniería inversa: fases 5–7 y reporte final', 'R/L', '24/11', '26/11')
+act('PMV3', '8.2', 'Calidad: Ola 3 y re-medición FURPS+/OWASP', 'G', '24/11', '27/11')
+act('PMV3', '8.3', 'Pruebas con usuarios finales, retroalimentación y acta', 'J', '24/11', '26/11')
+act('PMV3', '8.4', 'Informe final, guía de uso, ICACIT y métricas del proceso', 'J/R', '25/11', '28/11')
+act('PMV3', '8.5', 'Artículo científico en inglés y trazabilidad con el informe', 'G', '25/11', '28/11')
+act('PMV3', '8.6', 'Póster científico y video con episodios (7 operaciones)', 'T', '27/11', '29/11')
+act('PMV3', '8.7', 'CIERRE PMV3: Sprint Review + Retrospectiva + Sustentación', 'T', '30/11', '30/11', True)
 
 START = date(2026, 8, 25)
 END = date(2026, 11, 30)
@@ -197,3 +201,62 @@ def render(path, executed):
 
 render(OUT + 'gantt-planificado-2026-11.png', False)
 render(OUT + 'gantt-ejecutado-2026-11.png', True)
+
+
+def render_resumen(path):
+    """Cronograma resumido por sprint (equivalente a cronograma-planificado.puml; PlantUML no disponible localmente)."""
+    rows = [
+        ('h', 'PMV1', 'PMV1 | Viabilidad técnica y pipeline de datos'),
+        ('b', 'PMV1', 'S1 - Charter, arquitectura y Kubernetes', '25/08', '05/09'),
+        ('b', 'PMV1', 'S2 - Monitoreo y workloads sintéticos', '08/09', '19/09'),
+        ('b', 'PMV1', 'S3 - ETL, dataset y modelo baseline', '22/09', '03/10'),
+        ('m', 'PMV1', 'Revisión prevista PMV1', '03/10'),
+        ('h', 'PMV2', 'PMV2 | Predicción y recomendaciones'),
+        ('b', 'PMV2', 'S4 - EDA y comparación de modelos', '06/10', '17/10'),
+        ('b', 'PMV2', 'S5 - Predictor, API y Policy Engine', '20/10', '31/10'),
+        ('b', 'PMV2', 'S6 - Dashboard, alertas y energía', '03/11', '14/11'),
+        ('m', 'PMV2', 'Revisión prevista PMV2', '14/11'),
+        ('h', 'PMV3', 'PMV3 | Ingeniería inversa, calidad y entregables finales'),
+        ('b', 'PMV3', 'S7 - Ing. inversa, calidad (ola 2), CI/CD y rendimiento', '17/11', '23/11'),
+        ('b', 'PMV3', 'S8 - Usuarios, informe, artículo, póster, video y sustentación', '24/11', '30/11'),
+        ('m', 'PMV3', 'Revisión prevista PMV3 y cierre', '30/11'),
+    ]
+    rowh, top, lw, pw = 26, 90, 470, 12 * 7 * 4 // 1
+    W = lw + 14 * 70 + 20
+    H = top + len(rows) * rowh + 90
+    im = Image.new('RGB', (W, H), 'white')
+    g = ImageDraw.Draw(im)
+    g.text((20, 14), 'Green AI | Cronograma planificado - 8 sprints / 3 PMV', font=font('arialbd.ttf', 20), fill='#0F172A')
+    x0 = lw
+    for wk in range(14):
+        ws = START + timedelta(days=7 * wk)
+        xx = x0 + wk * 70
+        g.line((xx, top - 30, xx, H - 90), fill='#CBD5E1')
+        g.text((xx + 4, top - 24), '%02d/%02d' % (ws.day, ws.month), font=fs, fill='#334155')
+    g.line((x0 + 14 * 70, top - 30, x0 + 14 * 70, H - 90), fill='#CBD5E1')
+    g.line((0, top - 4, W, top - 4), fill='#94A3B8')
+
+    def px(dt):
+        return x0 + (dt - START).days * 10
+
+    y = top
+    for r in rows:
+        if r[0] == 'h':
+            g.text((8, y + 5), r[2], font=fb, fill=COL[r[1]][0])
+        elif r[0] == 'b':
+            xa, xb = px(d(r[3])), px(d(r[4])) + 10
+            g.rectangle((xa, y + 4, xb, y + rowh - 4), fill=COL[r[1]][1], outline=COL[r[1]][0])
+            g.text((8, y + 5), r[2], font=fr, fill='#0F172A')
+        else:
+            cx = px(d(r[3])) + 5
+            g.polygon([(cx, y + 4), (cx + 9, y + 13), (cx, y + 22), (cx - 9, y + 13)], fill='black')
+            g.text((8, y + 5), r[2], font=fr, fill='#0F172A')
+        y += rowh
+    g.rectangle((10, H - 70, W - 10, H - 10), fill='#E2E8F0', outline='#94A3B8')
+    g.text((20, H - 64), 'Fuente: sección 4.8 del documento de gestión.', font=fs, fill='#0F172A')
+    g.text((20, H - 46), 'Fechas estimadas, ajustadas al cierre del periodo lectivo (30/11/2026); las barras no representan avance real ni esfuerzo en días laborables.', font=fs, fill='#0F172A')
+    g.text((20, H - 28), 'Los hitos representan las revisiones previstas al final de cada PMV.', font=fs, fill='#0F172A')
+    im.save(path)
+
+
+render_resumen(OUT + 'cronograma-pmv-2026-11.png')

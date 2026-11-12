@@ -1,0 +1,22 @@
+Actúa como Arquitecto de Software.
+
+Analiza la estructura de carpetas, módulos y dependencias.
+
+Determina si existe evidencia de:
+
+- Arquitectura Hexagonal
+- Clean Architecture
+- MVC
+- Arquitectura por Capas
+- Microservicios
+- Modular Monolith
+- Event Driven Architecture
+
+Para cada arquitectura encontrada:
+
+- Evidencias
+- Carpetas involucradas
+- Nivel de confianza
+- Justificación técnica
+
+Genera una conclusión final indicando cuál es la arquitectura predominante.

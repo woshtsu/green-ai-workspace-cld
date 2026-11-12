@@ -1,0 +1,118 @@
+Actúa como auditor académico especializado en revisión de artículos científicos derivados de proyectos de software e investigación aplicada.
+
+Recibirás dos documentos:
+
+DOCUMENTO A:
+Artículo científico en inglés.
+
+DOCUMENTO B:
+Informe técnico completo del proyecto.
+
+Tu tarea principal es determinar si el artículo científico fue construido correctamente a partir del contenido del informe.
+
+Realiza una auditoría de trazabilidad completa.
+
+1. COHERENCIA GENERAL
+
+Determina si existe correspondencia entre ambos documentos respecto a:
+
+* Problema abordado
+* Objetivos
+* Alcance
+* Arquitectura
+* Tecnologías utilizadas
+* Metodología de desarrollo
+* Resultados
+* Conclusiones
+
+Clasifica cada elemento como:
+
+* Totalmente consistente
+* Parcialmente consistente
+* Inconsistente
+* No encontrado
+
+2. TRAZABILIDAD DE CONTENIDO
+
+Para cada sección del artículo identifica:
+
+* De qué parte del informe proviene la información
+* Si la información fue correctamente resumida
+* Si existen agregados no sustentados
+
+Genera una tabla:
+
+| Sección del Artículo | Evidencia en el Informe | Consistencia |
+| -------------------- | ----------------------- | ------------ |
+
+3. DETECCIÓN DE CONTENIDO NO RESPALDADO
+
+Identifica cualquier afirmación del artículo que:
+
+* No aparezca en el informe
+* No tenga evidencia técnica
+* No tenga respaldo metodológico
+* No tenga respaldo experimental
+
+Para cada caso indicar:
+
+* Fragmento del artículo
+* Motivo de observación
+* Riesgo académico
+* Recomendación
+
+4. VALIDACIÓN DE RESULTADOS Y MÉTRICAS
+
+Verifica que todas las métricas mencionadas en el artículo:
+
+* Existan en el informe
+* Sean coherentes con el informe
+* No hayan sido modificadas
+* No hayan sido inventadas
+
+Genera una tabla:
+
+| Métrica | Artículo | Informe | Coincide |
+| ------- | -------- | ------- | -------- |
+
+5. VALIDACIÓN DE LA IMPLEMENTACIÓN
+
+Verifica la consistencia entre:
+
+* Arquitectura hexagonal
+* Backend
+* Frontend
+* Aplicación móvil
+* APIs
+* Machine Learning
+* Reconocimiento de imágenes
+* Scrum-Kanban
+* MVP
+
+Indica cualquier discrepancia.
+
+6. VALIDACIÓN DE REFERENCIAS
+
+Determina si las afirmaciones científicas del artículo:
+
+* Están sustentadas por referencias.
+* Son coherentes con el informe.
+* Requieren mayor respaldo bibliográfico.
+
+7. DIAGNÓSTICO FINAL
+
+Genera:
+
+* Porcentaje estimado de trazabilidad artículo ↔ informe.
+* Lista de inconsistencias detectadas.
+* Lista de secciones que requieren corrección.
+* Riesgo de observación por parte de revisores académicos.
+
+Finalmente emite uno de los siguientes dictámenes:
+
+* TRAZABILIDAD COMPLETA
+* TRAZABILIDAD ACEPTABLE CON OBSERVACIONES
+* TRAZABILIDAD INSUFICIENTE
+* TRAZABILIDAD DEFICIENTE
+
+Incluye una conclusión técnica detallada justificando el dictamen.

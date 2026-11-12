@@ -1,0 +1,61 @@
+Actúa como Auditor de Software Senior especializado en Ingeniería Inversa.
+
+Genera el archivo completo:
+
+docs/ingenieria_inversa.md
+
+Utiliza toda la evidencia recopilada durante:
+
+- Auditoría
+- Dependencias
+- Configuración
+- Ejecución
+- Análisis Arquitectónico
+- Reconstrucción del Dominio
+- Hallazgos
+
+Estructura obligatoria:
+
+# Reporte de Ingeniería Inversa
+
+## 1. Resumen Ejecutivo
+
+## 2. Objetivos
+
+## 3. Alcance
+
+## 4. Metodología
+
+### 4.1 Auditoría
+### 4.2 Instalación
+### 4.3 Configuración
+### 4.4 Ejecución
+### 4.5 Ingeniería Inversa
+
+## 5. Inventario Tecnológico
+
+## 6. Arquitectura Detectada
+
+## 7. Dependencias
+
+## 8. Configuración
+
+## 9. Ejecución
+
+## 10. Reconstrucción Arquitectónica
+
+## 11. Modelo de Dominio
+
+## 12. APIs e Integraciones
+
+## 13. Hallazgos
+
+## 14. Riesgos
+
+## 15. Recomendaciones
+
+## 16. Conclusiones
+
+El resultado debe ser markdown válido y listo para guardarse como:
+
+docs/ingenieria_inversa.md

@@ -1,0 +1,14 @@
+Evalúa el sistema utilizando:
+
+- Cohesión
+- Acoplamiento
+- Escalabilidad
+- Mantenibilidad
+- Testabilidad
+- Seguridad
+
+Asigna una calificación de 1 a 5.
+
+Justifica técnicamente cada valoración.
+
+Genera recomendaciones de mejora.

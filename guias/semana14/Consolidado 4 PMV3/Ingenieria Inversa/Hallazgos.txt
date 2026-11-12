@@ -1,0 +1,15 @@
+Actúa como Auditor de Software.
+
+Con toda la información recopilada:
+
+- Auditoría
+- Dependencias
+- Configuración
+- Ejecución
+- Ingeniería Inversa
+
+Genera una matriz de hallazgos.
+
+Columnas:
+
+| ID | Hallazgo | Evidencia | Impacto | Severidad | Recomendación | Prioridad |

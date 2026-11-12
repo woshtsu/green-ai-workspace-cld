@@ -1,0 +1,24 @@
+Actúa como un Auditor de Software Senior.
+
+Analiza la estructura completa del proyecto.
+
+Objetivo:
+Identificar todas las tecnologías utilizadas sin asumir previamente ningún lenguaje o framework.
+
+Determina:
+
+1. Lenguajes encontrados.
+2. Frameworks encontrados.
+3. Tecnologías Backend.
+4. Tecnologías Frontend.
+5. Bases de datos.
+6. Herramientas DevOps.
+7. Servicios externos.
+8. Sistemas de autenticación.
+9. Sistema de despliegue.
+
+Genera una tabla:
+
+| Categoría | Tecnología | Evidencia | Confianza |
+
+Finalmente genera una conclusión técnica.
