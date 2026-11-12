@@ -27,6 +27,8 @@ Hazlo **después** de completar los días 1 a 4 de `guias/trello/GUIA-TRELLO-POR
 | 5 | `C203` | Informe | Trello: la tarjeta Daily Scrum del lunes 09/11 con los comentarios de los 4 integrantes. |
 | 6 | `C204` | Informe | Trello: tarjeta «Sprint Review — Sprint 3» o «Retrospectiva — PMV1» abierta. |
 | 7 | `S05` | Semana 13 | `docs/GUIA-RAPIDA-USUARIO.md` abierto en GitHub (rama `test`), con la tabla de roles y la tarea 1 visibles. |
+| 8 | `C312` | Informe | Trello: tablero con los títulos de tarjeta `PMVn-HUxx` (p. ej. `PMV2-HU03`) y las tarjetas repartidas por estado (To Do, In Progress, QA-Testing, Done). Hacerlo tras aplicar la guía de Trello. |
+| 9 | `C313` | Informe | Trello: una tarjeta abierta con el checklist de la Definition of Done completo, miembro y fecha visibles. |
 
 ### Leonid Kisley Orlando Huamán Collazos: aplicación web en la nube
 Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; ver `docs/exposicion/GUION-VIDEO-UNIDAD-III.md`, §2). Inicia sesión en https://woshtsu.github.io/green-ai-workspace-cld/dev/.
@@ -57,6 +59,8 @@ Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; v
 | 7 | `C301` | Informe | Terminal con las suites por servicio (una captura por suite o un mosaico; comandos en `docs/CONTINUAR-EN-NUEVO-CHAT.md`). |
 | 8 | `C302` | Informe | Terminal: stack local levantado y `python software/infraestructura/smoke/smoke.py`, que debe dar 14/14. |
 | 9 | `C309` | Informe | **Hecha el 10/11/2026** (fotograma del episodio 3: 601/601 HTTP 200). Insertada en `informe-unidad-III.md` como `evidencias-nube/carga-601-transacciones-render.png`; falta reexportar el Word. |
+| 10 | `C310` | Informe | GitHub: un Pull Request real del Sprint 7 (rama de trabajo hacia `test`) con la revisión aprobada y los checks de CI en verde (pestaña Pull requests). Solo cuando exista el PR integrado; no se simula. |
+| 11 | `C311` | Informe | GitHub → pestaña Actions → workflow `ci.yml`: historial de ejecuciones recientes con su resultado real. |
 
 ## Datos que completa Ricardo en ambos documentos
 - `NRC-PENDIENTE` (Ctrl + B): número NRC de la sección.
