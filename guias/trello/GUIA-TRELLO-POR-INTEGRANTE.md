@@ -52,7 +52,7 @@ Creación y configuración de Sprint 6, Sprint 7, Sprint Reviews S1–S6, Retros
 3. HU-12 (DONE): pegar la ficha de §4; reemplazar el checklist actual (0/10) por el de la ficha al 100 % (marcar los 5 ítems [x]); publicar comentario propio (actualmente solo comentó Ricardo).
 4. HU-11 (QA-TESTING): pegar la ficha de §4; checklist de la ficha con avance real (marcar 4 [x] de desarrollo y dejar 2 [ ] de validación en vivo para el Día 3); publicar comentario propio.
 5. HU-01 (DONE): quitar a Ricardo como miembro (quedar Leonid como miembro único). HU-15 (DONE): cambiar la etiqueta `Backend` por `Frontend` (etiquetas finales: `PMV1`, `Seguridad`, `Frontend`; quitar a Ricardo y Jhonny como miembros).
-6. SCRUM TEAM: miembro único Leonid (quitar a los otros 3 compañeros como miembros), asignar etiqueta `Documentación`, marcar checklist de compromisos, ajustar fecha al 12/12 (hoy figura 13/12) y publicar comentario.
+6. SCRUM TEAM: miembro único Leonid (quitar a los otros 3 compañeros como miembros), asignar etiqueta `Documentación`, marcar checklist de compromisos, ajustar fecha al 30/11 (hoy figura 13/12) y publicar comentario.
 7. RE-01 (REFINAMIENTO DE EXPERTOS): miembro único Leonid (quitar a Gina y Jhonny), asignar etiquetas `PMV1`, `Arquitectura`, `Infraestructura`, marcar checklist y publicar comentario propio.
 
 **Más adelante (Día 3 — 11/11 / Día 4 — 13/11):**
@@ -65,10 +65,10 @@ HU-01, HU-02 y HU-15 completas y verificadas en DONE.
 ### Tareas pendientes de Jhonny →
 1. PRIORIDAD CRÍTICA: su participación actual es de solo el 2 % (13 acciones registradas). Todo lo siguiente debe realizarse obligatoriamente iniciando sesión con su propia cuenta de Trello.
 2. Crear la tarea técnica «Grabar video de la Unidad III» en la lista `4. TO DO` (no existe en el tablero); miembro único Jhonny, etiquetas `PMV2`, `Documentación`, fecha 14/11, checklist con los 5 pasos y comentario inicial con el desglose de los 7 episodios.
-3. PRODUCT OWNER (hoy vacía en `8. ROLES DE SCRUM`): asignar etiqueta `Documentación`, pegar descripción de §4, marcar checklist al 100 % [x], fecha 12/12 y publicar comentario de rol activo.
+3. PRODUCT OWNER (hoy vacía en `8. ROLES DE SCRUM`): asignar etiqueta `Documentación`, pegar descripción de §4, marcar checklist al 100 % [x], fecha 30/11 y publicar comentario de rol activo.
 4. Sprint Review S1 a S6: quedar como miembro único Jhonny en las 6 tarjetas de Sprint Review (quitar a los otros 3 integrantes como miembros) y publicar el comentario formal de aceptación del Product Owner en cada una (las revisiones de S2, S3 y S5 no tienen ningún comentario actualmente). En Sprint Review — Sprint 6: no aceptarla formalmente hasta el 13/11.
 5. HU-10 (PRODUCT BACKLOG): quitar a Gina como miembro (quedar Jhonny como miembro único); pegar la ficha de §4; ajustar fecha de vencimiento al 28/11 (hoy figura 29/11); publicar comentario de justificación de backlog para PMV3.
-6. HU-16 (PRODUCT BACKLOG): cambiar el miembro asignado Leonid → Jhonny (quedar Jhonny como miembro único); añadir las etiquetas `Documentación` y `Machine Learning` (etiquetas finales: `PMV3`, `Documentación`, `Machine Learning`); ajustar fecha al 12/12 (hoy figura 13/12); pegar la ficha de §4; sustituir el checklist actual (12 ítems vacíos) por el de la ficha (6 ítems: 1 [x] y 5 [ ]); publicar comentario sobre el protocolo experimental.
+6. HU-16 (PRODUCT BACKLOG): cambiar el miembro asignado Leonid → Jhonny (quedar Jhonny como miembro único); añadir las etiquetas `Documentación` y `Machine Learning` (etiquetas finales: `PMV3`, `Documentación`, `Machine Learning`); ajustar fecha al 30/11 (hoy figura 13/12); pegar la ficha de §4; sustituir el checklist actual (12 ítems vacíos) por el de la ficha (6 ítems: 1 [x] y 5 [ ]); publicar comentario sobre el protocolo experimental.
 7. RE-06 (REFINAMIENTO DE EXPERTOS): quedar como miembro único Jhonny (quitar a Gina), asignar etiqueta `Documentación` (etiquetas: `PMV2`, `Documentación`), marcar el checklist completo y publicar comentario propio.
 8. Comentarios de validación como Product Owner: ingresar a HU-03 (en DONE) y a HU-06 (en DONE) y publicar sus comentarios de validación funcional y de criterios de aceptación.
 
@@ -152,6 +152,15 @@ Gina debe archivar las siguientes tarjetas que distorsionan el flujo y son detec
 > [!IMPORTANT]
 > **Miembro único por tarjeta:** Aunque los 4 integrantes pertenecen al tablero, a nivel de tarjeta rige estrictamente la directiva del docente: **cada tarjeta tiene un único integrante asignado como miembro**. El trabajo colaborativo no se refleja sumando miembros a la tarjeta, sino a través de los comentarios técnicos registrados por cada estudiante con su propia cuenta.
 
+
+### 2.4 Nomenclatura de tarjetas de historia de usuario
+
+Las 16 tarjetas HU deben titularse con el formato `PMVn-HUxx: <nombre>`, donde `n` es el PMV que la tabla maestra (sección 3) asigna a esa HU (debe coincidir con su etiqueta PMV) y `xx` su número. Ejemplos: `PMV1-HU01: Métricas de infraestructura`, `PMV2-HU03: Predicción de CPU a 15 min`.
+
+- Cada responsable renombra **su propia** tarjeta desde su cuenta personal, según la columna «Responsable de moverla» de la tabla maestra. No renombrar en bloque desde una sola cuenta: el JSON registraría una única autoría para todos los cambios.
+- Gina verifica al cierre de la preparación que las 16 HU siguen el formato, sin renombrarlas por los demás.
+- En el texto corrido (descripciones y comentarios) puede seguir usándose la referencia «HU-xx».
+
 ---
 
 ## 3. Tabla maestra de tarjetas
@@ -160,28 +169,28 @@ A continuación se detalla la asignación completa de las 39 tarjetas maestras q
 
 | Tarjeta | Lista destino | Etiquetas | Miembro (único) | Fecha vencimiento |
 |---|---|---|---|---|
-| HU-01 Métricas de infraestructura | 7. DONE | PMV1, Infraestructura, Backend | Leonid Huamán | 2026-09-05 |
-| HU-02 Almacenamiento de históricos | 7. DONE | PMV1, Datos, Backend | Ricardo Porras | 2026-09-19 |
-| HU-15 Registro y autenticación | 7. DONE | PMV1, Seguridad, Frontend | Leonid Huamán | 2026-10-03 |
-| HU-03 Predicción de CPU a 15 min | 7. DONE | PMV2, Machine Learning, Backend | Gina Barrera | 2026-10-17 |
-| HU-04 Comparación de modelos | 7. DONE | PMV2, Machine Learning, Datos | Gina Barrera | 2026-10-17 |
-| HU-06 Recomendaciones explicables | 7. DONE | PMV2, Backend, Machine Learning | Ricardo Porras | 2026-10-31 |
-| HU-08 Restricciones operativas | 7. DONE | PMV2, Backend, Seguridad | Gina Barrera | 2026-10-31 |
-| HU-12 Alertas operativas | 7. DONE | PMV2, Infraestructura, Backend | Leonid Huamán | 2026-11-14 |
-| HU-14 Control de acceso con VIEWER | 7. DONE | PMV2, Seguridad, Backend | Ricardo Porras | 2026-10-31 |
-| HU-11 Dashboard con pestañas | 6. QA-TESTING | PMV2, Frontend, Infraestructura | Leonid Huamán | 2026-11-14 |
-| HU-05 Registro en MLflow | 6. QA-TESTING | PMV2, Machine Learning, Datos | Gina Barrera | 2026-11-14 |
-| HU-07 Aprobación humana de decisiones | 5. IN PROGRESS | PMV2, Backend, Seguridad | Ricardo Porras | 2026-11-14 |
-| HU-13 Reportes históricos CSV y PDF | 5. IN PROGRESS | PMV2, Backend, Datos | Ricardo Porras | 2026-11-14 |
-| HU-09 Estimación de energía en kWh | 5. IN PROGRESS | PMV2, Backend, Machine Learning | Ricardo Porras | 2026-11-14 |
+| PMV1-HU01: Métricas de infraestructura | 7. DONE | PMV1, Infraestructura, Backend | Leonid Huamán | 2026-09-05 |
+| PMV1-HU02: Almacenamiento de históricos | 7. DONE | PMV1, Datos, Backend | Ricardo Porras | 2026-09-19 |
+| PMV1-HU15: Registro y autenticación | 7. DONE | PMV1, Seguridad, Frontend | Leonid Huamán | 2026-10-03 |
+| PMV2-HU03: Predicción de CPU a 15 min | 7. DONE | PMV2, Machine Learning, Backend | Gina Barrera | 2026-10-17 |
+| PMV2-HU04: Comparación de modelos | 7. DONE | PMV2, Machine Learning, Datos | Gina Barrera | 2026-10-17 |
+| PMV2-HU06: Recomendaciones explicables | 7. DONE | PMV2, Backend, Machine Learning | Ricardo Porras | 2026-10-31 |
+| PMV2-HU08: Restricciones operativas | 7. DONE | PMV2, Backend, Seguridad | Gina Barrera | 2026-10-31 |
+| PMV2-HU12: Alertas operativas | 7. DONE | PMV2, Infraestructura, Backend | Leonid Huamán | 2026-11-14 |
+| PMV2-HU14: Control de acceso con VIEWER | 7. DONE | PMV2, Seguridad, Backend | Ricardo Porras | 2026-10-31 |
+| PMV2-HU11: Dashboard con pestañas | 6. QA-TESTING | PMV2, Frontend, Infraestructura | Leonid Huamán | 2026-11-14 |
+| PMV2-HU05: Registro en MLflow | 6. QA-TESTING | PMV2, Machine Learning, Datos | Gina Barrera | 2026-11-14 |
+| PMV2-HU07: Aprobación humana de decisiones | 5. IN PROGRESS | PMV2, Backend, Seguridad | Ricardo Porras | 2026-11-14 |
+| PMV2-HU13: Reportes históricos CSV y PDF | 5. IN PROGRESS | PMV2, Backend, Datos | Ricardo Porras | 2026-11-14 |
+| PMV2-HU09: Estimación de energía en kWh | 5. IN PROGRESS | PMV2, Backend, Machine Learning | Ricardo Porras | 2026-11-14 |
 | Tarea: Fijar Health Check Path en Render | 4. TO DO | PMV2, Infraestructura | Leonid Huamán | 2026-11-10 |
 | Tarea: Revisar RLS Supabase y password | 4. TO DO | PMV2, Seguridad, Backend | Ricardo Porras | 2026-11-11 |
 | Tarea: Evaluación walk-forward de CPU | 4. TO DO | PMV2, Machine Learning | Gina Barrera | 2026-11-13 |
 | Tarea: Grabar video de la Unidad III | 4. TO DO | PMV2, Documentación | Jhonny Quintana | 2026-11-14 |
-| HU-10 Estimación de emisiones CO2e | 1. PRODUCT BACKLOG | PMV3, Machine Learning, Datos | Jhonny Quintana | 2026-11-28 |
-| HU-16 Experimento comparativo | 1. PRODUCT BACKLOG | PMV3, Documentación, Machine Learning | Jhonny Quintana | 2026-12-12 |
+| PMV3-HU10: Estimación de emisiones CO2e | 1. PRODUCT BACKLOG | PMV3, Machine Learning, Datos | Jhonny Quintana | 2026-11-28 |
+| PMV3-HU16: Experimento comparativo | 1. PRODUCT BACKLOG | PMV3, Documentación, Machine Learning | Jhonny Quintana | 2026-11-30 |
 | Sprint 6 (03/11–14/11) | 2. SPRINT BACKLOG | PMV2, Documentación | Gina Barrera | 2026-11-14 |
-| Sprint 7 (17/11–28/11) | 2. SPRINT BACKLOG | PMV3, Documentación | Gina Barrera | 2026-11-28 |
+| Sprint 7 (17/11–23/11) | 2. SPRINT BACKLOG | PMV3, Documentación | Gina Barrera | 2026-11-23 |
 | RE-01 Delimitación de infraestructura | 3. REFINAMIENTO DE EXPERTOS | PMV1, Arquitectura, Infraestructura | Leonid Huamán | 2026-09-05 |
 | RE-02 Contratos y arquitectura híbrida | 3. REFINAMIENTO DE EXPERTOS | PMV1, Arquitectura, Backend | Ricardo Porras | 2026-09-19 |
 | RE-03 Calidad y trazabilidad de datos | 3. REFINAMIENTO DE EXPERTOS | PMV1, Datos | Gina Barrera | 2026-10-03 |
@@ -196,9 +205,9 @@ A continuación se detalla la asignación completa de las 39 tarjetas maestras q
 | Sprint Review — Sprint 6 | 10. SPRINT REVIEW | PMV2, Documentación | Jhonny Quintana | 2026-11-14 |
 | Retrospectiva — PMV1 (Sprints 1–3) | 11. SPRINT RETROSPECTIVE | PMV1, Documentación | Gina Barrera | 2026-10-03 |
 | Retrospectiva — PMV2 (Sprints 4–6) | 11. SPRINT RETROSPECTIVE | PMV2, Documentación | Gina Barrera | 2026-11-14 |
-| PRODUCT OWNER | 8. ROLES DE SCRUM | Documentación | Jhonny Quintana | 2026-12-12 |
-| SCRUM MASTER | 8. ROLES DE SCRUM | Documentación | Gina Barrera | 2026-12-12 |
-| SCRUM TEAM | 8. ROLES DE SCRUM | Documentación | Leonid Huamán | 2026-12-12 |
+| PRODUCT OWNER | 8. ROLES DE SCRUM | Documentación | Jhonny Quintana | 2026-11-30 |
+| SCRUM MASTER | 8. ROLES DE SCRUM | Documentación | Gina Barrera | 2026-11-30 |
+| SCRUM TEAM | 8. ROLES DE SCRUM | Documentación | Leonid Huamán | 2026-11-30 |
 
 ---
 
@@ -212,7 +221,7 @@ En esta sección se suministran los contenidos técnicos exactos para cada una d
 ================================================================================
 ```
 
-### Tarjeta HU-01: Visualización de métricas de infraestructura
+### Tarjeta PMV1-HU01: Visualización de métricas de infraestructura
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV1`, `Infraestructura`, `Backend`
 - **Miembro (único):** `Leonid Kisley Orlando Huamán Collazos`
@@ -264,7 +273,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-02: Almacenamiento y consulta de métricas históricas
+### Tarjeta PMV1-HU02: Almacenamiento y consulta de métricas históricas
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV1`, `Datos`, `Backend`
 - **Miembro (único):** `Ricardo Porras Veli`
@@ -316,7 +325,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-15: Registro y autenticación de usuarios
+### Tarjeta PMV1-HU15: Registro y autenticación de usuarios
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV1`, `Seguridad`, `Frontend`
 - **Miembro (único):** `Leonid Kisley Orlando Huamán Collazos`
@@ -370,7 +379,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-03: Predicción de utilización de CPU a corto plazo
+### Tarjeta PMV2-HU03: Predicción de utilización de CPU a corto plazo
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Machine Learning`, `Backend`
 - **Miembro (único):** `Gina Diana Barrera Peña`
@@ -426,7 +435,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-04: Comparación reproducible de modelos de predicción
+### Tarjeta PMV2-HU04: Comparación reproducible de modelos de predicción
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Machine Learning`, `Datos`
 - **Miembro (único):** `Gina Diana Barrera Peña`
@@ -478,7 +487,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-06: Generación de recomendaciones operativas explicables
+### Tarjeta PMV2-HU06: Generación de recomendaciones operativas explicables
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Backend`, `Machine Learning`
 - **Miembro (único):** `Ricardo Porras Veli`
@@ -532,7 +541,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-08: Configuración y evaluación de restricciones operativas
+### Tarjeta PMV2-HU08: Configuración y evaluación de restricciones operativas
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Backend`, `Seguridad`
 - **Miembro (único):** `Gina Diana Barrera Peña`
@@ -584,7 +593,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-12: Detección y gestión de alertas operativas
+### Tarjeta PMV2-HU12: Detección y gestión de alertas operativas
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Infraestructura`, `Backend`
 - **Miembro (único):** `Leonid Kisley Orlando Huamán Collazos`
@@ -636,7 +645,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-14: Control de acceso basado en roles con rol VIEWER
+### Tarjeta PMV2-HU14: Control de acceso basado en roles con rol VIEWER
 - **Lista destino:** `7. DONE`
 - **Etiquetas:** `PMV2`, `Seguridad`, `Backend`
 - **Miembro (único):** `Ricardo Porras Veli`
@@ -690,7 +699,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-11: Dashboard integrado con pestañas y telemetría multirrecurso
+### Tarjeta PMV2-HU11: Dashboard integrado con pestañas y telemetría multirrecurso
 - **Lista destino:** `6. QA-TESTING`
 - **Etiquetas:** `PMV2`, `Frontend`, `Infraestructura`
 - **Miembro (único):** `Leonid Kisley Orlando Huamán Collazos`
@@ -746,7 +755,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-05: Registro y trazabilidad de experimentos en MLflow
+### Tarjeta PMV2-HU05: Registro y trazabilidad de experimentos en MLflow
 - **Lista destino:** `6. QA-TESTING`
 - **Etiquetas:** `PMV2`, `Machine Learning`, `Datos`
 - **Miembro (único):** `Gina Diana Barrera Peña`
@@ -799,7 +808,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-07: Flujo de aprobación humana para recomendaciones
+### Tarjeta PMV2-HU07: Flujo de aprobación humana para recomendaciones
 - **Lista destino:** `5. IN PROGRESS`
 - **Etiquetas:** `PMV2`, `Backend`, `Seguridad`
 - **Miembro (único):** `Ricardo Porras Veli`
@@ -852,7 +861,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-13: Exportación de reportes históricos en CSV y PDF
+### Tarjeta PMV2-HU13: Exportación de reportes históricos en CSV y PDF
 - **Lista destino:** `5. IN PROGRESS`
 - **Etiquetas:** `PMV2`, `Backend`, `Datos`
 - **Miembro (único):** `Ricardo Porras Veli`
@@ -905,7 +914,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-09: Estimación de consumo energético en kWh
+### Tarjeta PMV2-HU09: Estimación de consumo energético en kWh
 - **Lista destino:** `5. IN PROGRESS`
 - **Etiquetas:** `PMV2`, `Backend`, `Machine Learning`
 - **Miembro (único):** `Ricardo Porras Veli`
@@ -960,7 +969,7 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-10: Estimación de emisiones de CO2 equivalente
+### Tarjeta PMV3-HU10: Estimación de emisiones de CO2 equivalente
 - **Lista destino:** `1. PRODUCT BACKLOG`
 - **Etiquetas:** `PMV3`, `Machine Learning`, `Datos`
 - **Miembro (único):** `Jhonny Cristhian Quintana Carhuaricra`
@@ -1011,12 +1020,12 @@ DEFINICIÓN DE TERMINADO (DoD)
 
 ---
 
-### Tarjeta HU-16: Protocolo y ejecución de experimento comparativo Green AI vs Baseline
+### Tarjeta PMV3-HU16: Protocolo y ejecución de experimento comparativo Green AI vs Baseline
 - **Lista destino:** `1. PRODUCT BACKLOG`
 - **Etiquetas:** `PMV3`, `Documentación`, `Machine Learning`
 - **Miembro (único):** `Jhonny Cristhian Quintana Carhuaricra`
 - **Colaboran con comentarios:** `Gina Diana Barrera Peña`, `Ricardo Porras Veli`, `Leonid Kisley Orlando Huamán Collazos`
-- **Fecha de vencimiento:** `2026-12-12`
+- **Fecha de vencimiento:** `2026-11-30`
 - **Descripción:**
 ```markdown
 HISTORIA DE USUARIO
@@ -1300,7 +1309,7 @@ HISTORIAS Y TAREAS COMPROMETIDAS
 
 ---
 
-### Tarjeta: Sprint 7 (17/11–28/11)
+### Tarjeta: Sprint 7 (17/11–23/11)
 - **Lista destino:** `2. SPRINT BACKLOG`
 - **Etiquetas:** `PMV3`, `Documentación`
 - **Miembro (único):** `Gina Diana Barrera Peña`
@@ -1311,7 +1320,7 @@ HISTORIAS Y TAREAS COMPROMETIDAS
 PLANIFICACIÓN DE SPRINT
 
 Sprint futuro: Sprint 7 (Semanas 13 y 14 del calendario académico).
-Periodo: 17/11/2026 al 28/11/2026.
+Periodo: 17/11/2026 al 23/11/2026.
 Objetivo del Sprint:
 Iniciar la ejecución del PMV3 incorporando el cálculo de huella de carbono sustentado con el factor de emisión oficial, completar la generación de reportes en PDF y ejecutar el escenario de referencia (baseline) del protocolo experimental.
 
@@ -1869,7 +1878,7 @@ Mantener la transparencia académica, reportando los resultados exactos del mode
 - **Etiquetas:** `Documentación`
 - **Miembro (único):** `Jhonny Cristhian Quintana Carhuaricra`
 - **Colaboran con comentarios:** Ninguno (rol individual)
-- **Fecha de vencimiento:** `2026-12-12`
+- **Fecha de vencimiento:** `2026-11-30`
 - **Descripción:**
 ```markdown
 ROL DE SCRUM: PRODUCT OWNER
@@ -1898,7 +1907,7 @@ RESPONSABILIDADES EN EL PROYECTO:
 - **Etiquetas:** `Documentación`
 - **Miembro (único):** `Gina Diana Barrera Peña`
 - **Colaboran con comentarios:** Ninguno (rol individual)
-- **Fecha de vencimiento:** `2026-12-12`
+- **Fecha de vencimiento:** `2026-11-30`
 - **Descripción:**
 ```markdown
 ROL DE SCRUM: SCRUM MASTER
@@ -1927,7 +1936,7 @@ RESPONSABILIDADES EN EL PROYECTO:
 - **Etiquetas:** `Documentación`
 - **Miembro (único):** `Leonid Kisley Orlando Huamán Collazos`
 - **Colaboran con comentarios:** `Ricardo Porras Veli`, `Gina Diana Barrera Peña`, `Jhonny Cristhian Quintana Carhuaricra`
-- **Fecha de vencimiento:** `2026-12-12`
+- **Fecha de vencimiento:** `2026-11-30`
 - **Descripción:**
 ```markdown
 ROL DE SCRUM: EQUIPO DE DESARROLLO (SCRUM TEAM)
@@ -1995,7 +2004,7 @@ Día 4: Viernes 13/11/2026 (Cierre de Sprint 6, Review, Retro PMV2 y exportació
 1. **Configuración de etiquetas:** Acceder a Menú -> Etiquetas. Renombrar `MVP-01` a `PMV1` (Verde), `MVP 02` a `PMV2` (Amarillo) y `MVP 03` a `PMV3` (Azul). Crear las 8 etiquetas de área técnica. Borrar la etiqueta naranja sin nombre y la etiqueta Infraestructura duplicada.
 2. **Archivar tarjetas obsoletas:** Archivar `Sprint 1` de `2. SPRINT BACKLOG`, `Sprint 7` y `Sprint 8` de `10. SPRINT REVIEW`, las retrospectivas parciales de Sprint 4 y 5 en `11. SPRINT RETROSPECTIVE`, los 23 dailies antiguos «Daily | Sprint [5]/[10]» y las 5 reviews antiguas «Sprint 1»…«Sprint 5».
 3. **Crear / Actualizar tarjeta `Sprint 6 (03/11–14/11)`:** Ubicar en `2. SPRINT BACKLOG`, pegar descripción, checklist, fecha `14/11/2026`, miembro único Gina (quitar a Jhonny como miembro; Jhonny colabora con comentario), etiquetas `PMV2`, `Documentación`. Publicar comentario.
-4. **Actualizar tarjeta `Sprint 7 (17/11–28/11)`:** Ubicar en `2. SPRINT BACKLOG`, pegar descripción, checklist, fecha `28/11/2026`, miembro único Gina (quitar a Jhonny como miembro; Jhonny colabora con comentario), etiquetas `PMV3`, `Documentación`. Publicar comentario.
+4. **Actualizar tarjeta `Sprint 7 (17/11–23/11)`:** Ubicar en `2. SPRINT BACKLOG`, pegar descripción, checklist, fecha `23/11/2026`, miembro único Gina (quitar a Jhonny como miembro; Jhonny colabora con comentario), etiquetas `PMV3`, `Documentación`. Publicar comentario.
 5. **Actualizar tarjetas RE-03 y RE-04:** En lista `3. REFINAMIENTO DE EXPERTOS`, miembro único Gina (quitar a Jhonny). RE-03: etiqueta `PMV1`, `Datos`. RE-04: `PMV2`, `Machine Learning`. Marcar checklists y publicar comentario técnico (ceder RE-01 a Leonid, RE-02 y RE-05 a Ricardo, RE-06 a Jhonny).
 6. **Crear tarjeta `Retrospectiva — PMV1 (Sprints 1–3)`:** En lista `11. SPRINT RETROSPECTIVE`, pegar descripción consolidada, checklist [x], fecha `03/10/2026`, miembro único Gina (quitar a los otros 3 miembros; colaboran con comentarios), etiquetas `PMV1`, `Documentación`. Publicar comentario.
 
@@ -2013,9 +2022,9 @@ Día 4: Viernes 13/11/2026 (Cierre de Sprint 6, Review, Retro PMV2 y exportació
 5. **Actualizar RE-01 (Delimitación de infraestructura):** En lista `3. REFINAMIENTO DE EXPERTOS`, miembro único Leonid (quitar a Gina y Jhonny), etiquetas `PMV1`, `Arquitectura`, `Infraestructura`, marcar checklist y publicar comentario propio.
 
 #### 4. Jhonny Cristhian Quintana Carhuaricra (Product Owner)
-1. **Actualizar tarjeta PRODUCT OWNER:** En lista `8. ROLES DE SCRUM`, pegar descripción, checklist [x], fecha `12/12/2026`, miembro único Jhonny, etiqueta `Documentación`. Publicar comentario de rol activo.
+1. **Actualizar tarjeta PRODUCT OWNER:** En lista `8. ROLES DE SCRUM`, pegar descripción, checklist [x], fecha `30/11/2026`, miembro único Jhonny, etiqueta `Documentación`. Publicar comentario de rol activo.
 2. **Actualizar HU-10 (Emisiones CO2e):** En lista `1. PRODUCT BACKLOG`, miembro único Jhonny (quitar a Gina), pegar descripción completa, checklist [ ], fecha `28/11/2026`, etiquetas `PMV3`, `Machine Learning`, `Datos`. Publicar comentario de justificación de backlog.
-3. **Actualizar HU-16 (Experimento comparativo):** En lista `1. PRODUCT BACKLOG`, cambiar miembro asignado Leonid → Jhonny (quedar Jhonny como miembro único), añadir etiquetas `Documentación` y `Machine Learning` (etiquetas: `PMV3`, `Documentación`, `Machine Learning`), ajustar fecha al 12/12/2026, pegar ficha de §4 con checklist de 6 ítems (1 [x] y 5 [ ]), publicar comentario sobre protocolo experimental.
+3. **Actualizar HU-16 (Experimento comparativo):** En lista `1. PRODUCT BACKLOG`, cambiar miembro asignado Leonid → Jhonny (quedar Jhonny como miembro único), añadir etiquetas `Documentación` y `Machine Learning` (etiquetas: `PMV3`, `Documentación`, `Machine Learning`), ajustar fecha al 30/11/2026, pegar ficha de §4 con checklist de 6 ítems (1 [x] y 5 [ ]), publicar comentario sobre protocolo experimental.
 4. **Actualizar revisiones Sprint 1, 2 y 3:** En lista `10. SPRINT REVIEW`, miembro único Jhonny en las 3 tarjetas (quitar a los demás; los demás colaboran con comentarios), verificar textos consolidados, marcar checklists [x], fechas correspondientes (`05/09`, `19/09`, `03/10`) y publicar comentarios de aceptación formal del PO de PMV1.
 5. **Actualizar RE-06:** En lista `3. REFINAMIENTO DE EXPERTOS`, miembro único Jhonny (quitar a Gina), etiqueta `Documentación` (etiquetas: `PMV2`, `Documentación`), marcar checklist y publicar comentario propio.
 
@@ -2040,7 +2049,7 @@ Día 4: Viernes 13/11/2026 (Cierre de Sprint 6, Review, Retro PMV2 y exportació
 1. **Daily Scrum:** Si aún es 09/11, acceder a la tarjeta `Daily Scrum — 2026-11-09` de Gina en `9. DAILY SCRUM` y publicar su comentario propio respondiendo a las 3 preguntas. Si no, no retrofechar: constará que no participó.
 2. **Actualizar HU-11 (Dashboard con pestañas):** En `6. QA-TESTING`, miembro único Leonid (quitar a Jhonny y Ricardo; colaboran con comentarios), pegar ficha de §4, checklist de la ficha (marcar 4 [x] y dejar 2 [ ]), fecha `14/11/2026`, etiquetas `PMV2`, `Frontend`, `Infraestructura`. Publicar comentario propio sobre la suite de 48 pruebas en Node.js.
 3. **Actualizar HU-12 (Alertas):** En `7. DONE`, reemplazar checklist actual (0/10) por el de la ficha al 100 % [x]. Publicar comentario propio de validación con `promtool` (actualmente solo figuraba el de Ricardo).
-4. **Actualizar tarjeta SCRUM TEAM:** En lista `8. ROLES DE SCRUM`, miembro único Leonid (quitar a los otros 3 compañeros; colaboran con comentarios), pegar descripción, checklist [x], fecha `12/12/2026` (corregir si figura 13/12), etiqueta `Documentación`. Publicar comentario.
+4. **Actualizar tarjeta SCRUM TEAM:** En lista `8. ROLES DE SCRUM`, miembro único Leonid (quitar a los otros 3 compañeros; colaboran con comentarios), pegar descripción, checklist [x], fecha `30/11/2026` (corregir si figura 13/12), etiqueta `Documentación`. Publicar comentario.
 
 #### 4. Jhonny Cristhian Quintana Carhuaricra (Product Owner)
 1. **Daily Scrum:** Acceder a la tarjeta `Daily Scrum — 2026-11-09` de Gina en `9. DAILY SCRUM` y verificar su comentario (ya publicado el 09/11).
@@ -2056,7 +2065,7 @@ Día 4: Viernes 13/11/2026 (Cierre de Sprint 6, Review, Retro PMV2 y exportació
 1. **Daily Scrum:** A las 08:00, crear en lista `9. DAILY SCRUM` la tarjeta única `Daily Scrum — 2026-11-11`, miembro único Gina (los 4 comentan en esa tarjeta). Publicar su comentario.
 2. **Actualizar HU-05 (Registro en MLflow):** En `6. QA-TESTING`, miembro único Gina (quitar a Leonid; Leonid colabora con comentario), pegar descripción completa, checklist (4 ítems [x], 2 [ ]), fecha `14/11/2026`, etiquetas `PMV2`, `Machine Learning`, `Datos`. Publicar comentario técnico sobre experimento 394141087236111562. Coordinar con el equipo la captura de pantalla con `mlflow ui`.
 3. **Comentar en Sprint Review — Sprint 4:** En lista `10. SPRINT REVIEW`, acceder a la tarjeta de Jhonny y publicar comentario de revisión como Scrum Master.
-4. **Actualizar tarjeta SCRUM MASTER:** En lista `8. ROLES DE SCRUM`, pegar descripción, checklist [x], fecha `12/12/2026`, miembro único Gina, etiqueta `Documentación`. Publicar comentario.
+4. **Actualizar tarjeta SCRUM MASTER:** En lista `8. ROLES DE SCRUM`, pegar descripción, checklist [x], fecha `30/11/2026`, miembro único Gina, etiqueta `Documentación`. Publicar comentario.
 
 #### 2. Ricardo Porras Veli (Backend y DevOps)
 1. **Daily Scrum:** Acceder a la tarjeta `Daily Scrum — 2026-11-11` en `9. DAILY SCRUM` y publicar su comentario respondiendo a las 3 preguntas.
