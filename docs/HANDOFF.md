@@ -379,3 +379,7 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 ## 12/11/2026 (13:00) — Enlace del video y PDF
 - Anexo A: enlace del video en Google Drive (carpeta) dado por el usuario; recuadro PENDIENTE-EQUIPO retirado; Anexo C 7.2 «Atendido».
 - Word reexportado (117 páginas) y PDF generado con Word (`ExportAsFixedFormat`, marcadores desde títulos): `exportados/semana13/Porras-Huaman-Barrera-Quintana-informe-unidad-III-CORREGIDO.pdf`, 117 páginas, enlace en la p. 108. Único pendiente en el texto: NRC-PENDIENTE (portada).
+
+## 12/11/2026 (tarde) — NRC 30170 y nombre «Claudio»
+- NRC 30170 en las portadas del informe y de semana 13. El usuario pidió nombrar al asistente «Claudio»: portada «Claudio (Claude de Anthropic, …) – asistente/agente de IA…», se mantiene explícito que es IA.
+- Reexportados ambos Word y el PDF del informe; verificado en el PDF: NRC y «Claudio» en la p. 1, 0 apariciones de «PENDIENTE».

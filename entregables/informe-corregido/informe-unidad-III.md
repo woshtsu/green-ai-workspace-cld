@@ -43,7 +43,7 @@ Jhonny Cristhian Quintana Carhuaricra
 :::
 
 ::: {custom-style="Portada Texto"}
-Claude (Anthropic, modelo Opus 5.5) – asistente de IA para coordinación técnica, revisión de código y redacción asistida, bajo supervisión del equipo
+Claudio (Claude de Anthropic, modelo Opus 5.5) – asistente de IA para coordinación técnica, revisión de código y redacción asistida, bajo supervisión del equipo
 :::
 
 ::: {custom-style="Portada Etiqueta"}
@@ -59,7 +59,7 @@ NRC
 :::
 
 ::: {custom-style="Portada Texto"}
-NRC-PENDIENTE
+30170
 :::
 
 ::: {custom-style="Portada Nota"}

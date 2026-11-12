@@ -66,7 +66,7 @@ Antes de empezar, Ricardo despierta los servicios de Render (25 minutos antes; v
 | 11 | ✅ `C311` | Informe | GitHub → pestaña Actions → workflow `ci.yml`: historial de ejecuciones recientes con su resultado real. |
 
 ## Datos que completa Ricardo en ambos documentos
-- `NRC-PENDIENTE` (Ctrl + B): número NRC de la sección.
+- ✅ NRC: 30170 (puesto el 12/11/2026).
 - `VIDEO-URL-PENDIENTE` (solo en el informe, en Anexos): enlace del video cuando esté subido.
 
 ## Control final antes de enviar

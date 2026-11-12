@@ -31,7 +31,7 @@ Gina Diana Barrera Peña
 Jhonny Cristhian Quintana Carhuaricra
 :::
 ::: {custom-style="Portada Texto"}
-Claude (Anthropic, Opus 5.5) – agente de IA que ejecutó las auditorías y la ola 1 bajo supervisión del equipo
+Claudio (Claude de Anthropic, Opus 5.5) – agente de IA que ejecutó las auditorías y la ola 1 bajo supervisión del equipo
 :::
 ::: {custom-style="Portada Etiqueta"}
 Docente
@@ -43,7 +43,7 @@ Jorge Alfredo Guevara Jiménez
 NRC
 :::
 ::: {custom-style="Portada Texto"}
-NRC-PENDIENTE
+30170
 :::
 ::: {custom-style="Portada Nota"}
 Huancayo, noviembre de 2026
