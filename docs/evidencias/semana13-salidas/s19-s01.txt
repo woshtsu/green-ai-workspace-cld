@@ -1,0 +1,33 @@
+--- Simulator (NO hexagonal puro): application/runner.py importa adaptadores
+5:from green_ai_simulator.adapters.configuration.json_parser import parse_inventory_json
+6:from green_ai_simulator.domain.inventory import validate_inventory
+7:from green_ai_simulator.adapters.configuration.scenario_parser import parse_scenario_json
+8:from green_ai_simulator.domain.scenario import validate_scenario
+9:from green_ai_simulator.domain.engine import create_initial_state, compute_next_state
+10:from green_ai_simulator.adapters.persistence.run_logger import RunLogger
+
+--- Data Processing (hexagonal): application/ importa adaptadores?
+grep exit=1 (1 = application no importa adaptadores)
+
+--- Data Processing: arbol de capas
+software/data-processing/application:
+__init__.py
+use_cases
+
+software/data-processing/domain:
+__init__.py
+entities
+errors.py
+monitoring_contract.py
+ports
+validation.py
+
+software/data-processing/infrastructure/adapters:
+__init__.py
+input
+output
+--- Simulator: arbol de capas
+__init__.py
+adapters
+application
+domain

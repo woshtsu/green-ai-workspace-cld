@@ -40,6 +40,7 @@ Entregable de semana 13 (.md, .docx y .xlsx) reclasificado a OWASP Top 10:2025; 
 Roles del §4.3 alineados con el acta; responsables OWASP iguales en Word y Excel; reparto de revisión en `entregables/semana13/REVISION-POR-INTEGRANTE.md` (falta que cada integrante confirme). Los documentos `docs/calidad/01–08` se quedan en `docs/calidad/` (decisión del usuario).
 
 ## Pendiente (en orden)
+- **Semana 13:** entregada el 12/11 (Word, PDF y Excel en `exportados/semana13/`, etiqueta `semana13-entrega`). Solo si el docente lo pide: capturas S44 (rol VIEWER) y S50a–S50d (pruebas de backend).
 0. **OW-13 (A10:2025, ola 3, hasta 30/11):** recover con problem+json en gateway-go, manejador global en el Gateway Spring, pruebas de cuerpos 500 genéricos y timeouts uniformes en el frontend (`docs/calidad/08_reclasificacion_owasp_2025.md` §4.3).
 1. **Supabase (lo hace el dueño del proyecto):** añadir a *Authentication → URL Configuration* las URLs `https://woshtsu.github.io/green-ai-workspace-cld/` y `.../dev/`; aplicar el enum `VIEWER`; revisar RLS «Permitir todo» y la columna `password` en texto plano (ver «Riesgos» en `docs/HANDOFF.md`).
 2. Fijar el *Health Check Path* en cada servicio de Render (Prediction `/health/ready`, Data Processing `/api/v1/health`, Gateway/Monitoring `/actuator/health`, Simulator `/health`, Prometheus `/-/healthy`).

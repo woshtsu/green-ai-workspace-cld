@@ -1,0 +1,25 @@
+docs/GUIA-DESPLIEGUE-RENDER.md
+docs/GUIA-GITHUB-PAGES-Y-CI.md
+
+entregables/guia-de-uso/:
+GUIA-RAPIDA-USUARIO.md
+
+## Pruebas por servicio (Windows/PowerShell, desde la raíz)
+```powershell
+cd software\monitoring; .\mvnw.cmd -B verify; cd ..\..
+cd software\gateway; .\mvnw.cmd -B verify; cd ..\..
+cd software\simulator; uv run --frozen python -m unittest discover -s tests; cd ..\..
+cd software\data-processing; uv venv .venv; uv pip install --python .venv\Scripts\python.exe -r requirements.t
+cd software\prediction; uv venv .venv --python 3.11.9; uv pip install --python .venv\Scripts\python.exe -r req
+cd software\frontend; node --test tests/frontend.test.cjs tests/prediction.test.cjs tests/recommendations.test
+```
+
+## Ejecución local con Docker
+```powershell
+Copy-Item software\frontend\config.example.js software\frontend\config.local.js   # editar; gatewayBaseUrl htt
+docker compose -f software/infraestructura/docker-compose.yml -f software/infraestructura/compose.swagger.yaml
+```
+Frontend http://127.0.0.1:13001 · Gateway :18081 · Prometheus :19090 · Swagger Prediction :18002/docs.
+Puertos distintos del workspace antiguo para que ambos puedan coexistir.
+
+docs/CONTINUAR-EN-NUEVO-CHAT.md

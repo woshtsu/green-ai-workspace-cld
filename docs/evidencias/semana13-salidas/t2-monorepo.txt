@@ -1,0 +1,9 @@
+$ git rev-parse --show-toplevel
+D:/Green-ai/green-ai-workspace-cld
+
+$ git ls-files -s | awk $1==160000 | wc -l   (gitlinks/submodulos)
+0
+
+$ git ls-files .gitmodules
+0
+(0 = sin .gitmodules)

@@ -1,0 +1,8 @@
+30:	Timeout     time.Duration
+34:	defaultTimeout = 6 * time.Second
+43:		routes = append(routes, Route{"GET", "/api/monitoring/v1/metrics/" + p, Monitoring, 3, "/api/v1", 0, defaultTimeout})
+42:	ConnectTimout time.Duration
+55:	if cfg.ConnectTimout == 0 {
+56:		cfg.ConnectTimout = time.Second
+59:		DialContext:         (&net.Dialer{Timeout: cfg.ConnectTimout}).DialContext,
+212:	ctx, cancel := context.WithTimeout(context.WithValue(r.Context(), ctxKey{}, route), route.Timeout)

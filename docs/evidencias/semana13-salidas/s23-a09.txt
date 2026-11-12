@@ -1,0 +1,17 @@
+--- puntos donde gateway-go responde 401/403:
+129:		problem(w, http.StatusForbidden, "Forbidden", "Tu cuenta no tiene permiso para esta operación.")
+142:		w.WriteHeader(http.StatusForbidden)
+154:		w.WriteHeader(http.StatusForbidden)
+160:			w.WriteHeader(http.StatusForbidden)
+234:	problem(w, http.StatusUnauthorized, "Unauthorized", "Inicia sesión con un token válido.")
+
+--- registro (log/slog/audit) en gateway-go, codigo no-test:
+software/gateway-go/cmd/gateway/main.go:9:	"log/slog"
+software/gateway-go/cmd/gateway/main.go:30:		slog.Error("arranque fallido", "error", err)
+software/gateway-go/cmd/gateway/main.go:66:	slog.Info("gateway escuchando", "port", port)
+
+--- cuerpo de la funcion unauthorized():
+func unauthorized(w http.ResponseWriter) {
+	w.Header().Set("WWW-Authenticate", "Bearer")
+	problem(w, http.StatusUnauthorized, "Unauthorized", "Inicia sesión con un token válido.")
+}

@@ -1,0 +1,15 @@
+servicios definidos en software/infraestructura/docker-compose.yml:
+  simulator:
+  prometheus:
+  monitoring:
+  data-processing:
+  prediction:
+  gateway:
+  frontend:
+
+overlays:
+software/infraestructura/compose.contract-postgres.yml
+software/infraestructura/compose.gateway-go.yml
+software/infraestructura/compose.observability.yml
+software/infraestructura/compose.sqlite-dev.yml
+software/infraestructura/compose.swagger.yaml

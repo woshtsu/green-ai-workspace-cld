@@ -1,0 +1,19 @@
+--- rate limit / throttle / limiter en gateway-go (codigo, sin pruebas):
+grep exit=1 (1 = sin coincidencias)
+
+--- idem en Spring Cloud Gateway (software/gateway):
+grep exit=1 (1 = sin coincidencias)
+
+--- filtros definidos en las rutas del gateway Spring:
+12:                - Path=/api/monitoring/v1/metrics/catalog,/api/monitoring/v1/metrics/current,/api/monitoring/v1/metri
+13:                - Method=GET
+14:              filters:
+15:                - StripPrefix=3
+16:                - PrefixPath=/api/v1
+20:                - Path=/api/processing/v1/metrics/history,/api/processing/v1/historical-logs,/api/processing/v1/predi
+21:                - Method=GET
+22:              filters:
+23:                - StripPrefix=3
+24:                - PrefixPath=/api/v1
+30:                - Path=/api/prediction/v1/predictions
+31:                - Method=POST

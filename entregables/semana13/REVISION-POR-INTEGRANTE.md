@@ -136,3 +136,7 @@ Con S50a–S50d queda respaldada la cifra de 415+ pruebas.
 
 ### Cierre (Ricardo, con Claude)
 Cuando estén las decisiones, las confirmaciones y las capturas: aplicar las observaciones en el `.md`, enlaces fijos a GitHub (commit `d24d86f` y etiqueta de la entrega), «Figura N» en cada fila de la matriz, LICENSE, y reexportar el Word y el Excel. Plazo (Gina): revisiones hasta el viernes 13/11, 18:00; reexportación el viernes 13/11, 21:00.
+
+
+## Cierre (12/11/2026, noche)
+Revisión cerrada y aplicada. Exportados: Word y su PDF (54 págs.) y Excel (196 / 206 / 244). Evidencias S11–S48c en el anexo §13. Versión del repositorio: etiqueta `semana13-entrega`. Pendientes, solo si el docente los pide: S44 (rol VIEWER) y S50a–S50d (resúmenes de pruebas).

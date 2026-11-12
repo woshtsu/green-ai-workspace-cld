@@ -1,5 +1,7 @@
 # 07_Auditoria_Final.md — Dictamen Final Integral de Calidad y Seguridad de Software
 
+> **Nota (2026-11-12):** tras la revisión del equipo, M-R01 pasó a Parcial (Prediction no usa problem+json); FURPS+ queda en 168 → 172 / 200 (84.0 % → 86.0 %; ponderado 84.78 → 86.28). Las cifras de este documento se conservan como registro histórico.
+
 > **Nota (2026-11-12):** este documento usa OWASP Top 10:2021 y se conserva como registro histórico. Bajo OWASP Top 10:2025 el score de seguridad es 83.5/100; la clasificación vigente y los puntajes recalculados están en [08_reclasificacion_owasp_2025.md](08_reclasificacion_owasp_2025.md).
 
 **Proyecto:** Green AI (Optimizacion Energetica y Capacidad en Data Centers con Machine Learning)  

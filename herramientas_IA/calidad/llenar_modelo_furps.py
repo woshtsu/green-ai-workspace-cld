@@ -19,6 +19,7 @@ from openpyxl.styles import Alignment, Font, PatternFill
 ROOT = Path(__file__).resolve().parents[2]
 MODEL = ROOT / "guias/semana13/MODELO-FURPSPLUS.xlsx"
 AUDIT = ROOT / "docs/calidad/01_auditoria_furps.md"
+DOC = ROOT / "entregables/semana13/semana13-calidad-furps-owasp.md"
 
 # Mejoras implementadas en la ola 1 de la semana 13 (verificadas): id -> evidencia
 OLA1_FURPS = {"M-U07": "Implementado: entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md (semana 13)"}
@@ -31,7 +32,7 @@ OWASP = [
     ("A01:2025", "Broken Access Control (incluye SSRF)", 1, 1, 5, "OW-01 RLS «Permitir todo» en Supabase (no verificado); OW-02 puertos locales. Revisar pg_policies. SSRF mitigado: URLs de destino fijas por configuración", "Ricardo Porras Veli (con el dueño de Supabase)", "23/11/2026"),
     ("A02:2025", "Security Misconfiguration", 3, 5, 5, "OW-06/OW-07 corregidos: cabeceras en nginx.conf (commit d24d86f)", "Ricardo Porras Veli", "07/11/2026"),
     ("A03:2025", "Software Supply Chain Failures", 3, 5, 5, "OW-08 corregido: SRI SHA-384 en scripts y estilos de CDN (commit d24d86f)", "Ricardo Porras Veli", "07/11/2026"),
-    ("A04:2025", "Cryptographic Failures", 1, 1, 5, "OW-03 columna password en esquema; OW-04 contraseñas sintéticas en Excel", "Gina Barrera Peña (con el dueño de Supabase)", "23/11/2026"),
+    ("A04:2025", "Cryptographic Failures", 1, 1, 5, "OW-03 columna password en esquema; OW-04 contraseñas sintéticas en Excel", "Gina Barrera Peña (con el dueño de Supabase)", "30/11/2026"),
     ("A05:2025", "Injection", 5, 5, 5, "Consultas parametrizadas (PostgREST/SQLite) y validación Pydantic", "—", "—"),
     ("A06:2025", "Insecure Design", 3, 3, 5, "OW-05 sin rate limiting en el Gateway", "Ricardo Porras Veli", "23/11/2026"),
     ("A07:2025", "Authentication Failures", 3, 3, 3, "OW-09 sesión en localStorage (ola 3, riesgo aceptado temporalmente)", "Leonid Huamán Collazos", "30/11/2026"),
@@ -58,7 +59,19 @@ def parse_audit() -> list[dict]:
     return rows
 
 
-def fill(ws, title: str, furps: list[dict], owasp_col: int) -> tuple[int, int]:
+def evidencias_doc() -> dict[str, str]:
+    """Referencias «Evidencia: Sxx» de la matriz §7.1 del documento (las mismas capturas del Word)."""
+    out = {}
+    for line in DOC.read_text(encoding="utf-8").splitlines():
+        m = re.match(r"\|\s*\*\*[A-Z+]+\*\*\s*\|\s*(M-[A-Z]+\d+|OW-A\d\d)\s*\|", line)
+        e = re.search(r"Evidencia:\s*([^|]+?)\s*\|", line)
+        if m and e:
+            iid = m.group(1)
+            out[f"A{iid[4:]}:2025" if iid.startswith("OW-") else iid] = e.group(1).rstrip(".")
+    return out
+
+
+def fill(ws, title: str, furps: list[dict], owasp_col: int, iniciales: dict | None = None) -> tuple[int, int]:
     ws["A1"] = f"MODELO DE EVALUACIÓN FURPS+ APLICADO AL PROYECTO GREEN AI — {title}"
     style_src = {c: copy.copy(ws.cell(3, c)._style) for c in range(1, 15)}
     for r in range(3, max(ws.max_row, 80) + 1):
@@ -71,6 +84,7 @@ def fill(ws, title: str, furps: list[dict], owasp_col: int) -> tuple[int, int]:
     totals = {}
     items = [(x["factor"], x["id"], x["q"], x["art"], x["po"], x["evid"], x["resp"], x["fecha"]) for x in furps]
     items += [("OWASP", o[0], f"¿Se tiene controlado el riesgo {o[0]} {o[1]}?", "SOFTWARE", o[owasp_col], o[5], o[6], o[7]) for o in OWASP]
+    ev = evidencias_doc()
     first_of = {}
     for factor, iid, q, art, po, evid, resp, fecha in items:
         for c in range(1, 15):
@@ -82,9 +96,13 @@ def fill(ws, title: str, furps: list[dict], owasp_col: int) -> tuple[int, int]:
         ws.cell(r, 4, art)
         col = {5: 5, 3: 6, 1: 7}[po]
         ws.cell(r, col, "X")
-        ws.cell(r, 8, evid)
-        ws.cell(r, 9, resp if po < 5 else None)
-        ws.cell(r, 10, fecha if po < 5 else None)
+        meta = iniciales is not None and po == 5 and iniciales.get(iid, 5) < 5
+        texto = f"Meta al {fecha}: subsanar la brecha. Estado de partida: {evid}" if meta else evid
+        if iid in ev:
+            texto = f"{texto} Evidencia: {ev[iid]}."
+        ws.cell(r, 8, texto)
+        ws.cell(r, 9, resp if po < 5 or meta else None)
+        ws.cell(r, 10, fecha if po < 5 or meta else None)
         ws.cell(r, 11, po)
         ws.cell(r, 12, 5)
         ws.cell(r, 13, f"=(K{r}/L{r})*100")
@@ -124,10 +142,11 @@ def main() -> int:
     sheets = [("1-Inicial", "NIVEL INICIAL AL 07/11/2026", furps, 2),
               ("2-Actual", "TRAS LA OLA 1 (SEMANA 13)", actual, 3),
               ("3-Esperado", "NIVEL ESPERADO TRAS EL PLAN (30/11/2026)", esperado, 4)]
+    iniciales = {x["id"]: x["po"] for x in actual} | {o[0]: o[3] for o in OWASP}
     for name, title, rows, col in sheets:
         ws = wb.copy_worksheet(base)
         ws.title = name
-        po, pd = fill(ws, title, rows, col)
+        po, pd = fill(ws, title, rows, col, iniciales if name == "3-Esperado" else None)
         print(f"{name}: PO {po} / PD {pd} = {po / pd * 100:.1f} %")
     wb.remove(base)
     if "Hoja2" in wb.sheetnames:

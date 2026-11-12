@@ -1,0 +1,8 @@
+6:  gatewayBaseUrl: 'http://127.0.0.1:8081'
+5:const GATEWAY_BASE_URL = String(GREEN_AI_CONFIG.gatewayBaseUrl || 'http://127.0.0.1:8081').replace(/\/$/, '');
+6:const API_URL = `${GATEWAY_BASE_URL}/api`;
+56:  const gateway = new URL(GATEWAY_BASE_URL, location.href);
+8:let supabaseClient = null;
+12:  if (supabaseClient) return supabaseClient;
+14:  if (!supabaseUrl || !supabasePublishableKey || !window.supabase?.createClient) {
+17:  supabaseClient = window.supabase.createClient(supabaseUrl, supabasePublishableKey, {

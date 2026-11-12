@@ -1,0 +1,3 @@
+16:        self.timeout_seconds = validate_timeout(timeout_seconds)
+31:            with httpx.Client(timeout=self.timeout_seconds) as client:
+51:        except httpx.TimeoutException as exc:

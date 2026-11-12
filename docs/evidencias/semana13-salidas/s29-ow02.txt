@@ -1,0 +1,25 @@
+$ grep -n -A3 "ports:" software/infraestructura/docker-compose.yml
+13:    ports:
+14-      - "127.0.0.1:${MONO_SIMULATOR_PORT:-18000}:8000"
+15-    command: >
+16-      run
+--
+30:    ports:
+31-      - "127.0.0.1:${MONO_PROMETHEUS_PORT:-19090}:9090"
+32-    volumes:
+33-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+--
+42:    ports:
+43-      - "127.0.0.1:${MONO_MONITORING_PORT:-18080}:8080"
+44-    environment:
+45-      - MONITORING_PROMETHEUS_URL=http://prometheus:9090
+--
+82:    ports:
+83-      - "127.0.0.1:${MONO_GATEWAY_PORT:-18081}:8081"
+84-    environment:
+85-      - GATEWAY_MONITORING_BASE_URL=http://monitoring:8080
+--
+100:    ports:
+101-      - "127.0.0.1:${MONO_FRONTEND_PORT:-13001}:3001"
+102-    volumes:
+103-      # Crear desde software/frontend/config.example.js (gatewayBaseUrl http://127.0.0.1:18081).

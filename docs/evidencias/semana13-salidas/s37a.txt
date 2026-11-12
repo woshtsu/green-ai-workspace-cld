@@ -1,0 +1,2 @@
+software/prediction/src/service/recommendations.py:17:    model_config = ConfigDict(extra='forbid', allow_inf_nan=False)
+software/data-processing/domain/monitoring_contract.py:17:    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)

@@ -1,0 +1,13 @@
+go test: 
+go NO instalado en esta maquina -> pruebas no ejecutadas (solo inspeccion estatica)
+
+--- pruebas A10 existentes (definicion):
+407:func TestUpstreamTimeoutIs504(t *testing.T) {
+419:func TestUpstreamDownIs503WithoutInternalDetails(t *testing.T) {
+433:func TestJWKSUnavailableIs503AndNeverAccepts(t *testing.T) {
+
+--- recover() en gateway-go (middleware de panics):
+grep exit=1 (1 = sin coincidencias)
+
+--- manejador global / error.include en Spring Cloud Gateway:
+grep exit=1 (1 = sin coincidencias)

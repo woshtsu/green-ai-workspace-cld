@@ -1,0 +1,12 @@
+✔ missing resource prevents network requests (3.2541ms)
+✔ unknown status fails closed (2.3987ms)
+✔ missing individual metric is not converted to zero (1.9321ms)
+✔ energy displays absence of carbon factor and rejects oversized file (1.6098ms)
+ℹ tests 48
+ℹ suites 0
+ℹ pass 48
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 339.3888

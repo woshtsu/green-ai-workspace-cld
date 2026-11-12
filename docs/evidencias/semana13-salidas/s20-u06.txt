@@ -1,0 +1,17 @@
+lighthouse: NO instalado (sin escaneo WCAG automatico)
+axe: NO instalado (sin escaneo WCAG automatico)
+pa11y: NO instalado (sin escaneo WCAG automatico)
+
+Conteo de atributos de accesibilidad en software/frontend/*.html:
+aria-      66
+role=      28
+<label     20
+lang=      6
+aria-live  11
+sr-only    2
+alt=       0
+
+<canvas> de Chart.js en HTML:
+dashboard.html:1
+canvas con aria-label:
+0

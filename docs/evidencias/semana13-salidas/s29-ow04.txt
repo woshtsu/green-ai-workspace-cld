@@ -1,0 +1,12 @@
+$ python (openpyxl) BD_GreenAi.xlsx: hojas, cabecera, conteo de celdas no vacias en columnas password
+archivo: software/data-processing/datasets/raw/synthetic_greenai/BD_GreenAi.xlsx
+hoja: Usuarios | cabecera: ['usuario_id', 'nombre_completo', 'email', 'password', 'password_hash', 'rol', 'fecha_creacion']
+  filas de datos: 10
+  columna 'password' -> celdas no vacias: 10 (valores NO impresos)
+  columna 'password_hash' -> celdas no vacias: 10 (valores NO impresos)
+hoja: Hardware | cabecera: ['hardware_id', 'usuario_id', 'hostname', 'ip_address', 'cpu_cores', 'ram_gb', 'max_watts', 'ubicacion_rack', 'estado', 'fecha_registro']
+  filas de datos: 50
+  sin columna tipo password
+hoja: Logs | cabecera: ['log_id', 'hardware_id', 'timestamp', 'cpu_utilization_pct', 'ram_utilization_pct', 'temperatura_celsius', 'energia_watts', 'prediccion_watts', 'accion_recomendada', 'cumple_sla']
+  filas de datos: 100000
+  sin columna tipo password

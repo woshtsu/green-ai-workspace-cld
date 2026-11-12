@@ -1,0 +1,7 @@
+2:   La potencia a partir de la CPU es un MODELO lineal (P = P_idle + (P_max − P_idle) × CPU), no una medición. */
+7:  const IDLE_FRACTION = 0.4;           // fracción de P_max consumida en reposo (supuesto visible en la interfaz)
+11:  function modelPower(cpuRatio, maxWatts, idleFraction = IDLE_FRACTION) {
+15:    return idle + (maxWatts - idle) * clamped;
+---
+lecturas de sensores/hardware real en energy.js:
+grep exit=1 (1 = sin coincidencias)

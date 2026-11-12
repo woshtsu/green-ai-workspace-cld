@@ -1,5 +1,7 @@
 # 03_Auditoria_Implementacion_FURPS.md — Auditoria de Implementacion de Calidad (FURPS+)
 
+> **Nota (2026-11-12):** tras la revisión del equipo, M-R01 pasó a Parcial (Prediction no usa problem+json); FURPS+ queda en 168 → 172 / 200 (84.0 % → 86.0 %; ponderado 84.78 → 86.28). Las cifras de este documento se conservan como registro histórico.
+
 **Proyecto:** Green AI (Optimizacion Energetica y Capacidad en Data Centers con Machine Learning)  
 **Institucion:** Universidad Continental — Taller de Proyectos 1 (2026-20)  
 **Rol:** Auditor Independiente de Calidad de Software  

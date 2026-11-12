@@ -135,7 +135,7 @@ Para garantizar la honestidad experimental, cada informe generado por un agente 
 * El consumo energético y la potencia se basaban en un modelo matemático sintético, no en lecturas de sensores de hardware físicos en tiempo real (HU-09).
 * La interfaz de MLflow operaba de forma local sin despliegue público en la nube (HU-05).
 
-Tras subsanar estas sobrecalificaciones y ceñir la evaluación a la evidencia técnica verificable, la calificación inicial formal de FURPS+ se reajustó de manera transparente a 85.00 % (170 / 200 puntos brutos), garantizando un punto de partida verosímil y defendible.
+Tras subsanar estas sobrecalificaciones y ceñir la evaluación a la evidencia técnica verificable, la calificación inicial formal de FURPS+ se reajustó de manera transparente a 84.0 % (168 / 200 puntos brutos; 84.78 / 100 ponderado), garantizando un punto de partida verosímil y defendible. En la revisión del equipo del 12/11/2026 se aplicó un último reajuste: M-R01 (errores RFC 7807) pasó de Cumple (5) a Parcial (3) porque el servicio Prediction usa su propio sobre {code, message} en lugar de problem+json, (la primera reducción había dejado 85.0 %, 170 / 200).
 
 ## 4.3. Distribución de Responsabilidades por Integrante
 
@@ -156,17 +156,17 @@ Conforme a los requerimientos de la actividad colaborativa de la Semana 13, los 
 
 La auditoría formal de calidad de software se documentó en el informe docs/calidad/01_auditoria_furps.md, evaluando los microservicios del monorepo (software/gateway, software/monitoring, software/data-processing, software/prediction, software/simulator, software/frontend y software/infraestructura).
 
-La calificación global inicial ponderada alcanzó 85.00 / 100 puntos (170 de 200 puntos brutos en la matriz de 40 preguntas), con el siguiente desglose por categoría:
+La calificación global inicial ponderada alcanzó 84.78 / 100 puntos (168 de 200 puntos brutos, 84.0 %, en la matriz de 40 preguntas), con el siguiente desglose por categoría. Nota de transparencia: el valor «85.00 / 100 ponderado» publicado antes no seguía la ponderación (era el bruto 170 / 200; con el R anterior habría sido 86.12), mientras que el 87.62 posterior sí era correcto con ese R; ambos se recalcularon tras reajustar M-R01 (84.78 inicial y 86.28 post Ola 1).
 
 | Factor FURPS+ | Ponderación | Puntaje Obtenido (0-100) | Nivel Cualitativo | Principales Brechas Identificadas |
 |---|:---:|:---:|:---:|---|
 | **Funcionalidad (F)** | 25 % | 78 / 100 | Aceptable | Aprobación humana de recomendaciones sin persistencia (HU-07), potencia eléctrica modelada sin sensores físicos (HU-09), MLflow UI sin exposición en nube (HU-05) y reporte histórico sin soporte PDF formal (HU-13). |
 | **Usabilidad (U)** | 15 % | 80 / 100 | Aceptable | Ausencia de una guía rápida de usuario para la operación del sistema (M-U07), falta de escaneo formal WCAG 2.1 AA con Lighthouse y flujo de cálculo de energía en más de 3 pasos (M-U08). |
-| **Confiabilidad (R)** | 20 % | 93 / 100 | Bueno | Excelente cobertura con 415+ pruebas y formato RFC 7807 problem+json. Brecha: riesgo de políticas permisivas en la base de datos externa de Supabase ante saturación. |
+| **Confiabilidad (R)** | 20 % | 87 / 100 | Bueno | Cobertura con 415+ pruebas y problem+json en Gateway, Data Processing y Monitoring; Prediction usa aún su propio sobre {code, message} (M-R01 Parcial, migración prevista el 23/11/2026). Brecha adicional: riesgo de políticas permisivas en la base de datos externa de Supabase ante saturación. |
 | **Rendimiento (P)** | 15 % | 87 / 100 | Bueno | Latencias locales inferiores a 30 ms en Java y 4 ms en Go. Brecha: retardo por arranque en frío (cold start de ~60 s) en Render Free Tier tras 15 minutos de inactividad (M-P01). |
 | **Soporte (S)** | 15 % | 90 / 100 | Bueno | Monorepo limpio sin gitlinks ni repositorios anidados, CI automatizado en GitHub Actions y contratos OpenAPI vigentes. Brecha: acoplamiento de adaptadores en runner.py del Simulator. |
 | **Restricciones (+)** | 10 % | 93 / 100 | Bueno | Punto único perimetral, orquestación unificada con Docker Compose, compatibilidad de licencias Open Source y apego estricto a la Ley N° 29733. Brecha: cuota compartida de 750 h/mes en Render. |
-| **TOTAL PONDERADO** | **100 %** | **85.00 / 100** | **Satisfactorio** | **El sistema cumple las condiciones funcionales requeridas, requiriendo un plan de mejora por fases.** |
+| **TOTAL PONDERADO** | **100 %** | **84.78 / 100** | **Satisfactorio** | **El sistema cumple las condiciones funcionales requeridas, requiriendo un plan de mejora por fases.** |
 
 ## 5.2. Plan de Mejora FURPS+ (Entregable 02)
 
@@ -210,7 +210,7 @@ La auditoría independiente documentada en docs/calidad/03_auditoria_implementac
 
 * La pregunta M-U07 transitó de No cumple (1 punto) a Cumple (5 puntos).
 * El puntaje bruto del factor Usabilidad ascendió de 32 a 36 puntos (incrementando su nivel de apego del 80.00 % al 90.00 %).
-* El puntaje total bruto de FURPS+ se elevó de 170 / 200 (85.00 %) a 174 / 200 (87.00 %), lo que representa un valor ponderado del 87.62 %.
+* El puntaje total bruto de FURPS+ se elevó de 168 / 200 (84.0 %) a 172 / 200 (86.0 %), lo que representa un valor ponderado de 84.78 a 86.28 / 100. Estas cifras incorporan el reajuste de M-R01 a Parcial (3) de la revisión del 12/11/2026; el documento 03 conserva los valores históricos 170 → 174.
 * Se verificó la total ausencia de regresiones: la suite de pruebas del frontend ratificó 48 de 48 pruebas exitosas.
 
 # 6. Fase 2 — Seguridad de Software (OWASP Top 10)
@@ -221,29 +221,29 @@ La evaluación de seguridad estática registrada en docs/calidad/04_auditoria_ow
 
 | ID OWASP | Categoría de Riesgo | Estado Inicial | Severidad Máxima | Puntuación (0-10) | Principales Hallazgos Identificados |
 |---|---|---|---|:---:|---|
-| **A01:2025** | Broken Access Control (incluye SSRF) | Requiere Atención | Alto (no verificado) | 7.0 / 10 | Puertos locales expuestos en Docker Compose (OW-02) y riesgo latente de RLS permisivo en Supabase (OW-01). SSRF (absorbida desde A10:2021) mitigada: rutas upstream fijas, rechazo de redirecciones en cliente HTTP y validación de esquemas URL. |
-| **A02:2025** | Security Misconfiguration | Requiere Atención | Medio | 7.0 / 10 | Ausencia de cabeceras defensivas HTTP (CSP, X-Frame-Options) en Nginx (OW-06) y sobrescritura en location de configuración (OW-07); corregidos en Ola 1. |
-| **A03:2025** | Software Supply Chain Failures | Requiere Atención | Medio | 8.0 / 10 | Inclusión de scripts JS y hojas CSS externas desde CDN sin hash de integridad Subresource Integrity (OW-08). Los hallazgos de CI/CD (OW-10, OW-11) se mantienen en A08 según el mapeo oficial, aunque A03:2025 también abarca la cadena CI/CD. |
-| **A04:2025** | Cryptographic Failures | Requiere Atención | Alto (no verificado) | 7.5 / 10 | Columna password en tabla usuario de snapshot (OW-03) y contraseñas sintéticas legibles en archivo Excel de datasets (OW-04). |
-| **A05:2025** | Injection | Conforme / Mitigado | Bajo | 9.5 / 10 | Consultas parametrizadas con SQLite, escape riguroso en PostgREST y listas blancas estrictas en PromQL. |
-| **A06:2025** | Insecure Design | Requiere Atención | Medio | 8.0 / 10 | Ausencia de Rate Limiting perimetral en Gateway para peticiones de inferencia pesadas (OW-05). |
-| **A07:2025** | Authentication Failures | Conforme con Observación | Medio | 8.5 / 10 | Verificación rigurosa de claims JWT en Gateway; token de sesión persistido en localStorage del navegador (OW-09). |
-| **A08:2025** | Software or Data Integrity Failures | Requiere Atención | Bajo | 7.5 / 10 | Acciones de GitHub CI referenciadas con tags mutables v4/v5 (OW-10) e imágenes base de Docker sin fijación por digest SHA256 (OW-11). |
-| **A09:2025** | Security Logging and Alerting Failures | Requiere Atención | Medio | 8.0 / 10 | Correlación distribuida con X-Request-Id y 6 alertas Prometheus; sin registro estructurado de auditoría para eventos 401/403 en Gateway (OW-12). |
-| **A10:2025** | Mishandling of Exceptional Conditions | Requiere Atención | Medio | 8.0 / 10 | Fortalezas fail-closed: manejadores globales con respuestas 500 genéricas sin traza (Prediction, Data Processing, Monitoring), JWKS no disponible rechaza el token con 503, timeouts por ruta (504) y mensajes amigables en frontend. Brechas (OW-13): gateways sin manejo explícito de fallos propios (recover en Go, manejador global en Spring Cloud Gateway) y falta de pruebas que garanticen que los catch-all no filtran detalles internos. |
+| **A01:2025** | Broken Access Control (incluye SSRF) | Requiere Atención | Alto (verificado 12/11/2026) | 7.0 / 10 | Puertos de Docker Compose publicados (OW-02): los 5 solo escuchan en 127.0.0.1 (acceso local, no desde la red; severidad baja; evidencia S29). RLS permisivo verificado en Supabase (OW-01): 3 políticas «Permitir todo» ALL/true para public en hardware, logs y usuario (evidencia S11). SSRF (absorbida desde A10:2021) mitigada: rutas upstream fijas, rechazo de redirecciones en cliente HTTP y validación de esquemas URL. |
+| **A02:2025** | Security Misconfiguration | Requiere Atención | Medio | 7.0 / 10 | Ausencia de cabeceras defensivas HTTP (CSP, X-Frame-Options) en Nginx (OW-06) y sobrescritura en location de configuración (OW-07); corregidos en Ola 1. Evidencia: S07. |
+| **A03:2025** | Software Supply Chain Failures | Requiere Atención | Medio | 8.0 / 10 | Inclusión de scripts JS y hojas CSS externas desde CDN sin hash de integridad Subresource Integrity (OW-08; evidencia S08). Los hallazgos de CI/CD (OW-10, OW-11) se mantienen en A08 según el mapeo oficial, aunque A03:2025 también abarca la cadena CI/CD. |
+| **A04:2025** | Cryptographic Failures | Requiere Atención | Alto (verificado 12/11/2026) | 7.5 / 10 | Columnas password y password_hash en la tabla usuario, verificadas en Supabase (OW-03; evidencia S12) y contraseñas sintéticas legibles en archivo Excel de datasets (OW-04; evidencia S30). |
+| **A05:2025** | Injection | Conforme / Mitigado | Bajo | 9.5 / 10 | Consultas parametrizadas con SQLite, escape riguroso en PostgREST y listas blancas estrictas en PromQL. Evidencia: S37. |
+| **A06:2025** | Insecure Design | Requiere Atención | Medio | 8.0 / 10 | Ausencia de Rate Limiting perimetral en Gateway para peticiones de inferencia pesadas (OW-05; evidencia S21). |
+| **A07:2025** | Authentication Failures | Conforme con Observación | Medio | 8.5 / 10 | Verificación rigurosa de claims JWT en Gateway; token de sesión persistido en localStorage del navegador (OW-09; evidencia S22). |
+| **A08:2025** | Software or Data Integrity Failures | Requiere Atención | Bajo | 7.5 / 10 | Acciones de GitHub CI referenciadas con tags mutables v4/v5 (OW-10; evidencia S09) e imágenes base de Docker sin fijación por digest SHA256 (OW-11; parcial: gateway-go ya fija @sha256 y el resto usa solo etiqueta; evidencia S31). |
+| **A09:2025** | Security Logging and Alerting Failures | Requiere Atención | Medio | 8.0 / 10 | Correlación distribuida con X-Request-Id y 6 alertas Prometheus; sin registro estructurado de auditoría para eventos 401/403 en Gateway (OW-12; evidencia S23). |
+| **A10:2025** | Mishandling of Exceptional Conditions | Requiere Atención | Medio | 8.0 / 10 | Fortalezas fail-closed: manejadores globales con respuestas 500 genéricas sin traza (Prediction, Data Processing, Monitoring), JWKS no disponible rechaza el token con 503, timeouts por ruta (504) y mensajes amigables en frontend. Brechas (OW-13): gateways sin manejo explícito de fallos propios (recover en Go, manejador global en Spring Cloud Gateway) y falta de pruebas que garanticen que los catch-all no filtran detalles internos. Evidencia: S24. |
 | **GLOBAL** | **OWASP Top 10:2025** | **Nivel Bueno / Robusto** | **Medio Global** | **79.0 / 100** | **Perímetro seguro con recomendaciones focalizadas de remediación.** |
 
 ## 6.2. Plan de Remediación OWASP (Entregable 05)
 
 El documento docs/calidad/05_plan_owasp.md definió la hoja de ruta técnica para subsanar los 13 hallazgos de seguridad (OW-01 a OW-13), agrupándolos estratégicamente en tres olas:
 
-* Ola 1 - Inmediata (Semana 13, 07–09/11/2026): Endurecimiento perimetral y cadena de suministro sin riesgo de regresión: incorporación de cabeceras HTTP de protección en Nginx (OW-06, OW-07), incorporación de hashes SRI en scripts y hojas de estilo de CDN (OW-08) y fijación inmutable de GitHub Actions mediante SHA (OW-10).
-* Ola 2 - Sprint 7 (17–23/11/2026): Seguridad en persistencia externa y Gateway: revisión y aplicación de políticas RLS restrictivas en Supabase (OW-01), retiro de la columna password en base de datos (OW-03), implementación de filtro de Rate Limiting por Token Bucket en Gateway (OW-05), registro estructurado de auditoría para eventos 401/403 (OW-12) y Content-Security-Policy mediante meta etiqueta HTML.
-* Ola 3 - Sprint 8 (24–30/11/2026): Endurecimiento avanzado de contenedores y sesión: fijación de imágenes Docker base por digest SHA256 (OW-11), retiro de puertos internos en compose (OW-02), depuración de contraseñas de archivo Excel (OW-04) y transición de almacenamiento de sesión de localStorage hacia cookies con atributos HttpOnly y SameSite (OW-09) y manejo explícito de condiciones excepcionales en los gateways, con pruebas de no filtración en los catch-all 500 (OW-13, A10:2025).
+* Ola 1 - Inmediata (Semana 13, 07–09/11/2026): Endurecimiento perimetral y cadena de suministro sin riesgo de regresión: incorporación de cabeceras HTTP de protección en Nginx (OW-06, OW-07), incorporación de hashes SRI en scripts y hojas de estilo de CDN (OW-08) y fijación inmutable de GitHub Actions mediante SHA (OW-10). Evidencia: OW-06 y OW-07 en S07, OW-08 en S08, OW-10 en S09.
+* Ola 2 - Sprint 7 (17–23/11/2026): Seguridad en persistencia externa y Gateway: revisión y aplicación de políticas RLS restrictivas en Supabase (OW-01), retiro de la columna password en base de datos (OW-03), implementación de filtro de Rate Limiting por Token Bucket en Gateway (OW-05), registro estructurado de auditoría para eventos 401/403 (OW-12) y Content-Security-Policy mediante meta etiqueta HTML. Evidencia: OW-01 en S11, OW-03 en S12, OW-05 en S21, OW-12 en S23.
+* Ola 3 - Sprint 8 (24–30/11/2026): Endurecimiento avanzado de contenedores y sesión: fijación de imágenes Docker base por digest SHA256 (OW-11), retiro de puertos internos en compose (OW-02), depuración de contraseñas de archivo Excel (OW-04) y transición de almacenamiento de sesión de localStorage hacia cookies con atributos HttpOnly y SameSite (OW-09) y manejo explícito de condiciones excepcionales en los gateways, con pruebas de no filtración en los catch-all 500 (OW-13, A10:2025). Evidencia: OW-02 en S29, OW-04 en S30, OW-09 en S22, OW-11 en S31, OW-13 en S24.
 
 ## 6.3. Aplicación del Plan — Ola 1 de Seguridad
 
-La ejecución de la Ola 1 de seguridad fue concretada y verificada mediante el commit d24d86f en la rama test, implementando las siguientes modificaciones:
+La ejecución de la Ola 1 de seguridad fue concretada y verificada mediante el commit d24d86f en la rama test, implementando las siguientes modificaciones. Commit verificable de la Ola 1: https://github.com/woshtsu/green-ai-workspace-cld/commit/d24d86f
 
 1. OW-06 y OW-07: Blindaje de Cabeceras HTTP en Nginx
    En software/frontend/nginx.conf se incorporaron directivas de seguridad para mitigar ataques de Clickjacking, MIME-sniffing y fugas de contexto:
@@ -281,56 +281,56 @@ La siguiente tabla refleja la evaluación técnica individual sobre las 50 pregu
 
 | FACTOR | id | PREGUNTA | ARTEFACTO | CUMPLIMIENTO | ACCIÓN CORRECTIVA O EVIDENCIA | RESPONSABLE | FECHA | PO | PD | NIVEL APEGO (%) |
 |:---:|:---:|---|:---:|:---:|---|:---:|:---:|:---:|:---:|:---:|
-| **F** | M-F01 | ¿Se ha implementado el caso de uso de visualización de métricas en tiempo real (HU-01)? | SOFTWARE | Cumple (5) | Catálogo y telemetría de 50 servidores vía Prometheus y Monitoring. Evidencia: software/monitoring y dashboard.html. Smoke 14/14. | — | — | 5 | 5 | 100.0 % |
-| **F** | M-F02 | ¿Se ha implementado el caso de uso de consulta y paginación de históricos (HU-02)? | SOFTWARE | Cumple (5) | Endpoint /api/v1/historical-logs con paginación keyset y adaptador dual SQLite/Supabase. 114 tests de contrato. | — | — | 5 | 5 | 100.0 % |
-| **F** | M-F03 | ¿Se ha implementado el caso de uso de predicción de demanda de CPU a 15 min (HU-03)? | SOFTWARE | Cumple (5) | Inferencia con Random Forest vía POST /v1/predictions con metadatos y origin=estimated. 100 pruebas pytest. | — | — | 5 | 5 | 100.0 % |
-| **F** | M-F04 | ¿Se ha implementado la comparación de alternativas de modelos y estrategias (HU-04)? | SOFTWARE | Cumple (5) | Comparación de 4 modelos en pipeline y experimento Baseline reactivo vs Green AI predictivo en UI. Evidencia: plan experimental y dashboard. | — | — | 5 | 5 | 100.0 % |
-| **F** | M-F05 | ¿Se ha implementado el registro y visualización de experimentos en MLflow (HU-05)? | HERRAMIENTA | Parcial (3) | Corridas registradas localmente en software/prediction/mlruns; falta captura de UI y servidor público en la nube. | Gina Barrera Peña | 14/11/2026 | 3 | 5 | 60.0 % |
-| **F** | M-F06 | ¿Se ha implementado el caso de uso de recomendación con restricciones de política (HU-06)? | SOFTWARE | Cumple (5) | Evaluación de CPU, memoria, latencia y errores con executionAllowed=false para control humano. Evidencia: recommendations.py. | — | — | 5 | 5 | 100.0 % |
-| **F** | M-F07 | ¿Se ha implementado la aprobación humana persistida de recomendaciones (HU-07)? | SOFTWARE | No cumple (1) | No existe flujo interactivo de aprobar/rechazar ni persistencia de decisiones en base de datos; solo bandera defensiva. | Ricardo Porras Veli | 20/11/2026 | 1 | 5 | 20.0 % |
-| **F** | M-F08 | ¿Se ha implementado el cálculo de energía y CO2e a partir de potencia (HU-09)? | SOFTWARE | Parcial (3) | Cálculo de kWh por regla del trapecio implementado; potencia modelada sintéticamente, no de hardware real. Factor CO2e manual. | Gina Barrera Peña | 21/11/2026 | 3 | 5 | 60.0 % |
-| **F** | M-F09 | ¿Se ha implementado el dashboard integrado de observabilidad (HU-11)? | SOFTWARE | Parcial (3) | Implementado en software/frontend/dashboard.html; probado en local; pendiente verificación con sesión real de Supabase en /dev/. | Leonid Huamán Collazos | 12/11/2026 | 3 | 5 | 60.0 % |
-| **F** | M-F10 | ¿Se ha implementado el sistema de reglas de alerta de infraestructura (HU-12)? | SOFTWARE | Cumple (5) | 4 reglas configuradas en software/infraestructura/prometheus/alerts.yml, validadas formalmente con promtool. | — | — | 5 | 5 | 100.0 % |
-| **F** | M-F11 | ¿Se ha implementado la generación y descarga de reportes históricos (HU-13)? | SOFTWARE | Parcial (3) | Endpoint genera resumen JSON y exportación CSV plano; exportación en formato PDF sigue pendiente. | Ricardo Porras Veli | 18/11/2026 | 3 | 5 | 60.0 % |
-| **F** | M-F12 | ¿Se ha implementado el control de acceso y autorización RBAC (HU-14)? | SOFTWARE | Cumple (5) | Gateway valida claims user_role para roles ADMIN, OPERATOR y VIEWER. Evidencia: application.yaml y routes.go. | — | — | 5 | 5 | 100.0 % |
-| **F** | M-F13 | ¿Se ha implementado el registro e inicio de sesión seguro (HU-15)? | HOSTING | Parcial (3) | Flujo PKCE y trigger SQL en supabase-auth-setup.sql; sin pruebas automatizadas con usuario real y pendiente verificar RLS. | Ricardo Porras Veli | 11/11/2026 | 3 | 5 | 60.0 % |
-| **U** | M-U01 | ¿La interfaz cuenta con navegación organizada en pestañas y consistencia visual? | SOFTWARE | Cumple (5) | Consola organizada en 5 pestañas temáticas, layout responsive y navegación común en software/frontend. | — | — | 5 | 5 | 100.0 % |
-| **U** | M-U02 | ¿El sistema dispone de soporte para temas visuales (modo oscuro y claro)? | SOFTWARE | Cumple (5) | Conmutador accesible con persistencia en localStorage y variables CSS en appearance.js. | — | — | 5 | 5 | 100.0 % |
-| **U** | M-U03 | ¿Se cuenta con visualizaciones avanzadas de infraestructura (Racks con mapa de calor)? | SOFTWARE | Cumple (5) | Matriz interactiva de 50 servidores en 5 racks con umbrales semafóricos en network.html y 20 pruebas unitarias. | — | — | 5 | 5 | 100.0 % |
-| **U** | M-U04 | ¿El sistema provee ayuda contextual comprensible y textos explicativos (botones «?»)? | SOFTWARE | Cumple (5) | Módulo de ayuda contextual detallando qué es, uso, cálculo y límites experimentales en help-content.js. | — | — | 5 | 5 | 100.0 % |
-| **U** | M-U05 | ¿Se traducen los errores técnicos de la API a mensajes amigables para el usuario? | SOFTWARE | Cumple (5) | Clasificación de fallas en lenguaje humano con botones de acción sin códigos crípticos en friendly-errors.js. | — | — | 5 | 5 | 100.0 % |
-| **U** | M-U06 | ¿La interfaz respeta estándares de accesibilidad (semántica HTML, ARIA y contraste)? | SOFTWARE | Parcial (3) | Marcado semántico y atributos ARIA completos; pendiente escaneo formal WCAG 2.1 AA con Lighthouse y tabla para Chart.js. | Leonid Huamán Collazos | 15/11/2026 | 3 | 5 | 60.0 % |
-| **U** | M-U07 | ¿Se cuenta con una guía rápida de usuario para la operación del sistema? | GUÍA INST. | Cumple (5) | Subsanado en Ola 1: entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md documenta 8 flujos en <= 3 pasos con textos reales de la interfaz. | Jhonny Quintana Carhuaricra | 07/11/2026 | 5 | 5 | 100.0 % |
-| **U** | M-U08 | ¿Se completa cualquier operación principal en tres pasos o menos? | SOFTWARE | Parcial (3) | Operaciones comunes en <= 3 pasos; cálculo de energía con archivo y factor toma 4 pasos, e inferencia CPU usa pestañas separadas. | Leonid Huamán Collazos | 17/11/2026 | 3 | 5 | 60.0 % |
-| **R** | M-R01 | ¿Se manejan los errores de las APIs mediante el estándar RFC 7807 (problem+json)? | SOFTWARE | Cumple (5) | Respuestas application/problem+json uniformes con requestId en todos los microservicios. | — | — | 5 | 5 | 100.0 % |
-| **R** | M-R02 | ¿Todos los microservicios exponen sondas de salud (health checks / liveness / readiness)? | SOFTWARE | Cumple (5) | Sondas /health/ready, Actuator y binario -healthcheck en Go operando con normalidad. | — | — | 5 | 5 | 100.0 % |
-| **R** | M-R03 | ¿El sistema implementa timeouts defensivos para mitigar caídas de servicios upstream? | SOFTWARE | Cumple (5) | Timeouts escalonados en Gateway (6 s, 15 s, 30 s) y Data Processing (10 s) para evitar bloqueos en cascada. | — | — | 5 | 5 | 100.0 % |
-| **R** | M-R04 | ¿Se cuenta con una batería de pruebas automatizadas y smoke test end-to-end? | HERRAMIENTA | Cumple (5) | 415+ pruebas automatizadas en 6 suites y smoke test de 14/14 pasos pasando satisfactoriamente. | — | — | 5 | 5 | 100.0 % |
-| **R** | M-R05 | ¿La plataforma resiste caídas y saturación sin comprometer la base de datos de producción? | HOSTING | Parcial (3) | SQLite aísla desarrollo local; falta verificar resistencia ante carga masiva en PostgREST remoto y verificar RLS en Supabase. | Ricardo Porras Veli | 13/11/2026 | 3 | 5 | 60.0 % |
-| **R** | M-R06 | ¿Se controla el retorno exitoso y no exitoso desde la base de datos? | SOFTWARE | Cumple (5) | Data Processing intercepta respuestas/errores de PostgREST y SQLite traduciéndolos a problem+json sin filtrar datos sensibles. | — | — | 5 | 5 | 100.0 % |
-| **P** | M-P01 | ¿La operación y consulta responde en promedio en menos de 7 segundos hacia el usuario? | SOFTWARE | Parcial (3) | Local responde en < 30 ms (Java) y < 4 ms (Go); en Render Free Tier el cold start toma ~60 s tras 15 min de inactividad. | Leonid Huamán Collazos | 19/11/2026 | 3 | 5 | 60.0 % |
-| **P** | M-P02 | ¿Hay un uso razonable del consumo de memoria RAM (< 512 MB por contenedor)? | SISTEMA OP. | Cumple (5) | Prediction consume 122–142 MiB; Gateway Go 2.3–9.8 MiB; Data Processing 76 MiB; Monitoring ~211 MiB. | — | — | 5 | 5 | 100.0 % |
-| **P** | M-P03 | ¿Se cuenta con imágenes de contenedor optimizadas y ligeras para inferencia? | HERRAMIENTA | Cumple (5) | Dockerfile multi-etapa en Prediction redujo imagen en 82 % (de 2.85 GB a 510 MB); Gateway Go distroless de 16.2 MB. | — | — | 5 | 5 | 100.0 % |
-| **S** | M-S01 | ¿El código fuente sigue los principios de arquitectura hexagonal (puertos y adaptadores)? | SOFTWARE | Parcial (3) | Hexagonal pura en backend; Simulator acopla adaptadores en application/runner.py importándolos directamente. | Ricardo Porras Veli | 24/11/2026 | 3 | 5 | 60.0 % |
-| **S** | M-S02 | ¿Se cuenta con especificaciones de contratos de interfaz OpenAPI versionadas? | SOFTWARE | Cumple (5) | Contratos OpenAPI versionados en Gateway, Monitoring, Data Processing y Swagger en Prediction. | — | — | 5 | 5 | 100.0 % |
-| **S** | M-S03 | ¿Se dispone de un flujo de integración continua (CI) que valide pruebas en cada cambio? | HERRAMIENTA | Cumple (5) | Workflow de GitHub Actions que ejecuta suites completas de pruebas en main y test. ci.yml y pages.yml blindados. | — | — | 5 | 5 | 100.0 % |
-| **S** | M-S04 | ¿El monorepo cuenta con estructura limpia sin repositorios Git anidados ni gitlinks? | HERRAMIENTA | Cumple (5) | Repositorio unificado en la raíz; verificación git ls-files -s sin modo 160000; ramas principales main y test. | — | — | 5 | 5 | 100.0 % |
-| **PLUS** | M-PL01 | ¿Cuenta con la guía de instalación y despliegue paso a paso para la nube? | GUÍA INST. | Cumple (5) | Guía detallada en docs/GUIA-DESPLIEGUE-RENDER.md para desplegar en Render y GitHub Pages sin secretos versionados. | — | — | 5 | 5 | 100.0 % |
-| **PLUS** | M-PL02 | ¿Se cuenta con un instalador o mecanismo automático de arranque local (docker-compose)? | HERRAMIENTA | Cumple (5) | Archivo Docker Compose multi-servicio que arranca el stack completo con docker compose up en software/infraestructura. | — | — | 5 | 5 | 100.0 % |
-| **PLUS** | M-PL03 | ¿Se cuenta con los espacios para alojar el software en calidad a costo cero? | HOSTING | Parcial (3) | Frontend en Pages y backend en Render Free Tier; limitaciones de suspensión (15 min) y cuota de 750 h/mes compartida. | Leonid Huamán Collazos | 22/11/2026 | 3 | 5 | 60.0 % |
-| **PLUS** | M-PL04 | ¿El sistema invoca a otros sistemas externos de manera desacoplada y segura? | SOFTWARE | Cumple (5) | Conexión segura a Supabase Auth por JWKS público; sin llaves service_role en frontend ni backend. | — | — | 5 | 5 | 100.0 % |
-| **PLUS** | M-PL05 | ¿El proyecto cumple con las restricciones de licencias de software y normativa legal? | SOFTWARE | Cumple (5) | Dependencias Open Source compatibles (Apache 2.0 / MIT); apego explícito a la Ley N° 29733 en el frontend. | — | — | 5 | 5 | 100.0 % |
-| **PLUS** | M-PL06 | ¿Se cuenta con una guía de inicio o arranque del sistema? | GUÍA INST. | Cumple (5) | Documentado en README.md:L22-L38 y docs/CONTINUAR-EN-NUEVO-CHAT.md para Docker Compose, puertos y ejecución de pruebas. | — | — | 5 | 5 | 100.0 % |
-| **OWASP** | OW-A01 | ¿Se tiene implementado el control de acceso contra A01:2025: Broken Access Control (incluye SSRF)? | SOFTWARE | No cumple (1) | RBAC sólido en Gateway (ADMIN/OPERATOR/VIEWER) y SSRF mitigado (rutas upstream fijas, validación de esquemas URL, rechazo de redirecciones); pendiente verificar RLS en Supabase y aislar puertos locales. | Ricardo Porras Veli (con el dueño de Supabase) | 23/11/2026 | 1 | 5 | 20.0 % |
-| **OWASP** | OW-A02 | ¿Se tiene implementada la configuración segura contra A02:2025: Security Misconfiguration? | SOFTWARE | Cumple (5) | Subsanado en Ola 1: cabeceras defensivas (X-Frame-Options, nosniff, COOP) en nginx.conf y corrección en config.local.js. | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
-| **OWASP** | OW-A03 | ¿Se tiene implementado el control contra A03:2025: Software Supply Chain Failures? | SOFTWARE | Cumple (5) | Subsanado en Ola 1: hashes Subresource Integrity (SRI) y crossorigin en todas las páginas HTML para scripts CDN. | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
-| **OWASP** | OW-A04 | ¿Se tiene implementada la protección criptográfica contra A04:2025: Cryptographic Failures? | SOFTWARE | No cumple (1) | TLS forzado y verificación JWT asimétrica; pendiente eliminar columna password en BD y contraseñas de dataset Excel. | Gina Barrera Peña (con el dueño de Supabase) | 23/11/2026 | 1 | 5 | 20.0 % |
-| **OWASP** | OW-A05 | ¿Se tiene implementada la prevención contra A05:2025: Injection? | SOFTWARE | Cumple (5) | Parámetros ligados en SQLite (?), escape en PostgREST, lista blanca PromQL y modelos Pydantic restrictivos. | — | — | 5 | 5 | 100.0 % |
-| **OWASP** | OW-A06 | ¿Se tiene implementado el diseño seguro contra A06:2025: Insecure Design? | SOFTWARE | Parcial (3) | Arquitectura hexagonal y principio fail-secure en recomendaciones; pendiente Rate Limiting perimetral en Gateway. | Ricardo Porras Veli | 23/11/2026 | 3 | 5 | 60.0 % |
-| **OWASP** | OW-A07 | ¿Se tiene implementada la autenticación robusta contra A07:2025: Authentication Failures? | SOFTWARE | Parcial (3) | Validación exhaustiva de tokens JWT y claims en Gateway; observación por persistencia de token en localStorage. | Leonid Huamán Collazos | 30/11/2026 | 3 | 5 | 60.0 % |
-| **OWASP** | OW-A08 | ¿Se tiene implementada la integridad de software contra A08:2025: Software or Data Integrity Failures? | HERRAMIENTA | Cumple (5) | Subsanado en Ola 1: anclaje inmutable del 100 % de GitHub Actions por commit SHA en ci.yml y pages.yml. | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
-| **OWASP** | OW-A09 | ¿Se tiene implementado el registro y las alertas contra A09:2025: Security Logging and Alerting Failures? | SOFTWARE | Parcial (3) | Trazabilidad con X-Request-Id y alertas Prometheus; pendiente registro de auditoría estructurado para 401/403 en Gateway. | Ricardo Porras Veli | 23/11/2026 | 3 | 5 | 60.0 % |
-| **OWASP** | OW-A10 | ¿Se tiene implementado el manejo seguro de condiciones excepcionales contra A10:2025: Mishandling of Exceptional Conditions? | SOFTWARE | Parcial (3) | Fortalezas fail-closed: catch-all 500 genéricos sin traza, JWKS no disponible rechaza el token (503), timeouts por ruta y mensajes amigables en frontend; pendiente OW-13: recover en gateway-go, manejador global en Spring Cloud Gateway y pruebas de no filtración. | Ricardo Porras Veli | 30/11/2026 | 3 | 5 | 60.0 % |
+| **F** | M-F01 | ¿Se ha implementado el caso de uso de visualización de métricas en tiempo real (HU-01)? | SOFTWARE | Cumple (5) | Catálogo y telemetría de 50 servidores vía Prometheus y Monitoring. Fuente: software/monitoring y dashboard.html. Smoke 14/14. Evidencia: S40 | — | — | 5 | 5 | 100.0 % |
+| **F** | M-F02 | ¿Se ha implementado el caso de uso de consulta y paginación de históricos (HU-02)? | SOFTWARE | Cumple (5) | Endpoint /api/v1/historical-logs con paginación keyset y adaptador dual SQLite/Supabase. 114 tests de contrato. Evidencia: S41 | — | — | 5 | 5 | 100.0 % |
+| **F** | M-F03 | ¿Se ha implementado el caso de uso de predicción de demanda de CPU a 15 min (HU-03)? | SOFTWARE | Cumple (5) | Inferencia con Random Forest vía POST /v1/predictions con metadatos y origin=estimated. 100 pruebas pytest. Evidencia: S48b | — | — | 5 | 5 | 100.0 % |
+| **F** | M-F04 | ¿Se ha implementado la comparación de alternativas de modelos y estrategias (HU-04)? | SOFTWARE | Cumple (5) | Comparación de 4 modelos en pipeline y experimento Baseline reactivo vs Green AI predictivo en UI. Fuente: plan experimental y dashboard. Evidencia: S43 | — | — | 5 | 5 | 100.0 % |
+| **F** | M-F05 | ¿Se ha implementado el registro y visualización de experimentos en MLflow (HU-05)? | HERRAMIENTA | Parcial (3) | Corridas registradas localmente en software/prediction/mlruns con captura de UI local (§9.2); falta servidor público en la nube. Evidencia: C303 (§9.2) | Gina Barrera Peña | 14/11/2026 | 3 | 5 | 60.0 % |
+| **F** | M-F06 | ¿Se ha implementado el caso de uso de recomendación con restricciones de política (HU-06)? | SOFTWARE | Cumple (5) | Evaluación de CPU, memoria, latencia y errores con executionAllowed=false para control humano. Fuente: recommendations.py. Evidencia: S48c | — | — | 5 | 5 | 100.0 % |
+| **F** | M-F07 | ¿Se ha implementado la aprobación humana persistida de recomendaciones (HU-07)? | SOFTWARE | No cumple (1) | No existe flujo interactivo de aprobar/rechazar ni persistencia de decisiones en base de datos; solo bandera defensiva. Evidencia: S15 | Ricardo Porras Veli | 20/11/2026 | 1 | 5 | 20.0 % |
+| **F** | M-F08 | ¿Se ha implementado el cálculo de energía y CO2e a partir de potencia (HU-09)? | SOFTWARE | Parcial (3) | Cálculo de kWh por regla del trapecio implementado; potencia modelada sintéticamente, no de hardware real. Factor CO2e manual. Evidencia: S16 | Gina Barrera Peña | 21/11/2026 | 3 | 5 | 60.0 % |
+| **F** | M-F09 | ¿Se ha implementado el dashboard integrado de observabilidad (HU-11)? | SOFTWARE | Parcial (3) | Implementado en software/frontend/dashboard.html; probado en local; pendiente verificación con sesión real de Supabase en /dev/. Evidencia: S01 | Leonid Huamán Collazos | 12/11/2026 | 3 | 5 | 60.0 % |
+| **F** | M-F10 | ¿Se ha implementado el sistema de reglas de alerta de infraestructura (HU-12)? | SOFTWARE | Cumple (5) | 4 reglas configuradas en software/infraestructura/prometheus/alerts.yml, validadas formalmente con promtool. Evidencia: C304 | — | — | 5 | 5 | 100.0 % |
+| **F** | M-F11 | ¿Se ha implementado la generación y descarga de reportes históricos (HU-13)? | SOFTWARE | Parcial (3) | Endpoint genera resumen JSON y exportación CSV plano; exportación en formato PDF sigue pendiente. Evidencia: S17 y S43 | Ricardo Porras Veli | 18/11/2026 | 3 | 5 | 60.0 % |
+| **F** | M-F12 | ¿Se ha implementado el control de acceso y autorización RBAC (HU-14)? | SOFTWARE | Cumple (5) | Gateway valida claims user_role para roles ADMIN, OPERATOR y VIEWER. Fuente: application.yaml y routes.go. Evidencia: prueba automática del Gateway (código), sin captura | — | — | 5 | 5 | 100.0 % |
+| **F** | M-F13 | ¿Se ha implementado el registro e inicio de sesión seguro (HU-15)? | HOSTING | Parcial (3) | Flujo PKCE y trigger SQL en supabase-auth-setup.sql; sin pruebas automatizadas con usuario real; RLS permisiva verificada (S11), pendiente de restringir. Evidencia: S13 | Ricardo Porras Veli | 11/11/2026 | 3 | 5 | 60.0 % |
+| **U** | M-U01 | ¿La interfaz cuenta con navegación organizada en pestañas y consistencia visual? | SOFTWARE | Cumple (5) | Consola organizada en 5 pestañas temáticas, layout responsive y navegación común en software/frontend. Evidencia: S40 y S13 | — | — | 5 | 5 | 100.0 % |
+| **U** | M-U02 | ¿El sistema dispone de soporte para temas visuales (modo oscuro y claro)? | SOFTWARE | Cumple (5) | Conmutador accesible con persistencia en localStorage y variables CSS en appearance.js. Evidencia: S45 y S13 | — | — | 5 | 5 | 100.0 % |
+| **U** | M-U03 | ¿Se cuenta con visualizaciones avanzadas de infraestructura (Racks con mapa de calor)? | SOFTWARE | Cumple (5) | Matriz interactiva de 50 servidores en 5 racks con umbrales semafóricos en network.html y 20 pruebas unitarias. Evidencia: S06 | — | — | 5 | 5 | 100.0 % |
+| **U** | M-U04 | ¿El sistema provee ayuda contextual comprensible y textos explicativos (botones «?»)? | SOFTWARE | Cumple (5) | Módulo de ayuda contextual detallando qué es, uso, cálculo y límites experimentales en help-content.js. Evidencia: S46 | — | — | 5 | 5 | 100.0 % |
+| **U** | M-U05 | ¿Se traducen los errores técnicos de la API a mensajes amigables para el usuario? | SOFTWARE | Cumple (5) | Clasificación de fallas en lenguaje humano con botones de acción sin códigos crípticos en friendly-errors.js. Evidencia: S45 | — | — | 5 | 5 | 100.0 % |
+| **U** | M-U06 | ¿La interfaz respeta estándares de accesibilidad (semántica HTML, ARIA y contraste)? | SOFTWARE | Parcial (3) | Marcado semántico y atributos ARIA completos; pendiente escaneo formal WCAG 2.1 AA con Lighthouse y tabla para Chart.js. Evidencia: S20 | Leonid Huamán Collazos | 15/11/2026 | 3 | 5 | 60.0 % |
+| **U** | M-U07 | ¿Se cuenta con una guía rápida de usuario para la operación del sistema? | GUÍA INST. | Cumple (5) | Subsanado en Ola 1: entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md documenta 8 flujos en <= 3 pasos con textos reales de la interfaz. Evidencia: S05 | Jhonny Quintana Carhuaricra | 09/11/2026 (hecha en la Ola 1) | 5 | 5 | 100.0 % |
+| **U** | M-U08 | ¿Se completa cualquier operación principal en tres pasos o menos? | SOFTWARE | Parcial (3) | Operaciones comunes en <= 3 pasos; cálculo de energía con archivo y factor toma 4 pasos, e inferencia CPU usa pestañas separadas. Evidencia: S48a, S48b y S48c | Leonid Huamán Collazos | 17/11/2026 | 3 | 5 | 60.0 % |
+| **R** | M-R01 | ¿Se manejan los errores de las APIs mediante el estándar RFC 7807 (problem+json)? | SOFTWARE | Parcial (3) | Gateway Go, Data Processing y Monitoring responden application/problem+json; Prediction usa su propio sobre {code, message} (S28). Evidencia: S28 | Ricardo Porras Veli | 23/11/2026 | 3 | 5 | 60.0 % |
+| **R** | M-R02 | ¿Todos los microservicios exponen sondas de salud (health checks / liveness / readiness)? | SOFTWARE | Cumple (5) | Sondas /health/ready, Actuator y binario -healthcheck en Go operando con normalidad. Evidencia: S28 | — | — | 5 | 5 | 100.0 % |
+| **R** | M-R03 | ¿El sistema implementa timeouts defensivos para mitigar caídas de servicios upstream? | SOFTWARE | Cumple (5) | Timeouts escalonados en Gateway (6 s, 15 s, 30 s) y Data Processing (10 s) para evitar bloqueos en cascada. Evidencia: S32 | — | — | 5 | 5 | 100.0 % |
+| **R** | M-R04 | ¿Se cuenta con una batería de pruebas automatizadas y smoke test end-to-end? | HERRAMIENTA | Cumple (5) | 415+ pruebas automatizadas en 6 suites y smoke test de 14/14 pasos pasando satisfactoriamente. Evidencia: S10 | — | — | 5 | 5 | 100.0 % |
+| **R** | M-R05 | ¿La plataforma resiste caídas y saturación sin comprometer la base de datos de producción? | HOSTING | Parcial (3) | SQLite aísla desarrollo local; falta verificar resistencia ante carga masiva en PostgREST remoto y restringir la RLS permisiva de Supabase (verificada, S11). Evidencia: S18 | Ricardo Porras Veli | 13/11/2026 | 3 | 5 | 60.0 % |
+| **R** | M-R06 | ¿Se controla el retorno exitoso y no exitoso desde la base de datos? | SOFTWARE | Cumple (5) | Data Processing intercepta respuestas/errores de PostgREST y SQLite traduciéndolos a problem+json sin filtrar datos sensibles. Evidencia: S33 | — | — | 5 | 5 | 100.0 % |
+| **P** | M-P01 | ¿La operación y consulta responde en promedio en menos de 7 segundos hacia el usuario? | SOFTWARE | Parcial (3) | Local responde en < 30 ms (Java) y < 4 ms (Go); en Render Free Tier el cold start toma ~60 s tras 15 min de inactividad. Evidencia: S25 | Leonid Huamán Collazos | 19/11/2026 | 3 | 5 | 60.0 % |
+| **P** | M-P02 | ¿Hay un uso razonable del consumo de memoria RAM (< 512 MB por contenedor)? | SISTEMA OP. | Cumple (5) | Prediction consume 122–142 MiB; Gateway Go 2.3–9.8 MiB; Data Processing 76 MiB; Monitoring ~211 MiB. Evidencia: S34 | — | — | 5 | 5 | 100.0 % |
+| **P** | M-P03 | ¿Se cuenta con imágenes de contenedor optimizadas y ligeras para inferencia? | HERRAMIENTA | Cumple (5) | Dockerfile multi-etapa en Prediction redujo imagen en 82 % (de 2.85 GB a 510 MB); Gateway Go distroless de 16.2 MB. Evidencia: S34 | — | — | 5 | 5 | 100.0 % |
+| **S** | M-S01 | ¿El código fuente sigue los principios de arquitectura hexagonal (puertos y adaptadores)? | SOFTWARE | Parcial (3) | Hexagonal pura en backend; Simulator acopla adaptadores en application/runner.py importándolos directamente. Evidencia: S19 | Ricardo Porras Veli | 23/11/2026 | 3 | 5 | 60.0 % |
+| **S** | M-S02 | ¿Se cuenta con especificaciones de contratos de interfaz OpenAPI versionadas? | SOFTWARE | Cumple (5) | Contratos OpenAPI versionados en Gateway, Monitoring, Data Processing y Swagger en Prediction. Evidencia: S26 | — | — | 5 | 5 | 100.0 % |
+| **S** | M-S03 | ¿Se dispone de un flujo de integración continua (CI) que valide pruebas en cada cambio? | HERRAMIENTA | Cumple (5) | Workflow de GitHub Actions que ejecuta suites completas de pruebas en main y test. ci.yml y pages.yml blindados. Evidencia: S09 | — | — | 5 | 5 | 100.0 % |
+| **S** | M-S04 | ¿El monorepo cuenta con estructura limpia sin repositorios Git anidados ni gitlinks? | HERRAMIENTA | Cumple (5) | Repositorio unificado en la raíz; verificación git ls-files -s sin modo 160000; ramas principales main y test. Evidencia: S26 | — | — | 5 | 5 | 100.0 % |
+| **PLUS** | M-PL01 | ¿Cuenta con la guía de instalación y despliegue paso a paso para la nube? | GUÍA INST. | Cumple (5) | Guía detallada en docs/GUIA-DESPLIEGUE-RENDER.md para desplegar en Render y GitHub Pages sin secretos versionados. Evidencia: S27 | — | — | 5 | 5 | 100.0 % |
+| **PLUS** | M-PL02 | ¿Se cuenta con un instalador o mecanismo automático de arranque local (docker-compose)? | HERRAMIENTA | Cumple (5) | Archivo Docker Compose multi-servicio que arranca el stack completo con docker compose up en software/infraestructura. Evidencia: S27 | — | — | 5 | 5 | 100.0 % |
+| **PLUS** | M-PL03 | ¿Se cuenta con los espacios para alojar el software en calidad a costo cero? | HOSTING | Parcial (3) | Frontend en Pages y backend en Render Free Tier; limitaciones de suspensión (15 min) y cuota de 750 h/mes compartida. Evidencia: S14 | Leonid Huamán Collazos | 22/11/2026 | 3 | 5 | 60.0 % |
+| **PLUS** | M-PL04 | ¿El sistema invoca a otros sistemas externos de manera desacoplada y segura? | SOFTWARE | Cumple (5) | Conexión segura a Supabase Auth por JWKS público; sin llaves service_role en frontend ni backend. Las APIs de datos pasan por el Gateway; el inicio de sesión va directo a Supabase Auth. Evidencia: S35 | — | — | 5 | 5 | 100.0 % |
+| **PLUS** | M-PL05 | ¿El proyecto cumple con las restricciones de licencias de software y normativa legal? | SOFTWARE | Cumple (5) | Dependencias Open Source compatibles (Apache 2.0 / MIT); apego explícito a la Ley N° 29733 en el frontend. Licencia MIT del proyecto en LICENSE (raíz del repositorio). Evidencia: S36 | — | — | 5 | 5 | 100.0 % |
+| **PLUS** | M-PL06 | ¿Se cuenta con una guía de inicio o arranque del sistema? | GUÍA INST. | Cumple (5) | Documentado en README.md:L22-L38 y docs/CONTINUAR-EN-NUEVO-CHAT.md para Docker Compose, puertos y ejecución de pruebas. Evidencia: S27 | — | — | 5 | 5 | 100.0 % |
+| **OWASP** | OW-A01 | ¿Se tiene implementado el control de acceso contra A01:2025: Broken Access Control (incluye SSRF)? | SOFTWARE | No cumple (1) | RBAC sólido en Gateway (ADMIN/OPERATOR/VIEWER) y SSRF mitigado (rutas upstream fijas, validación de esquemas URL, rechazo de redirecciones); RLS verificada como permisiva en Supabase (3 políticas «Permitir todo»); pendiente restringirla y acotar los puertos locales de compose (solo 127.0.0.1). Evidencia: S11 y S29 | Ricardo Porras Veli (con el dueño de Supabase) | 23/11/2026 | 1 | 5 | 20.0 % |
+| **OWASP** | OW-A02 | ¿Se tiene implementada la configuración segura contra A02:2025: Security Misconfiguration? | SOFTWARE | Cumple (5) | Subsanado en Ola 1: cabeceras defensivas (X-Frame-Options, nosniff, COOP) en nginx.conf y corrección en config.local.js. Evidencia: S07 | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
+| **OWASP** | OW-A03 | ¿Se tiene implementado el control contra A03:2025: Software Supply Chain Failures? | SOFTWARE | Cumple (5) | Subsanado en Ola 1: hashes Subresource Integrity (SRI) y crossorigin en todas las páginas HTML para scripts CDN. Evidencia: S08 | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
+| **OWASP** | OW-A04 | ¿Se tiene implementada la protección criptográfica contra A04:2025: Cryptographic Failures? | SOFTWARE | No cumple (1) | TLS forzado y verificación JWT asimétrica; verificadas en Supabase las columnas password y password_hash en usuario; pendiente eliminar la columna en BD y las contraseñas del dataset Excel. Evidencia: S12 y S30 | Gina Barrera Peña (con el dueño de Supabase) | 30/11/2026 | 1 | 5 | 20.0 % |
+| **OWASP** | OW-A05 | ¿Se tiene implementada la prevención contra A05:2025: Injection? | SOFTWARE | Cumple (5) | Parámetros ligados en SQLite (?), escape en PostgREST, lista blanca PromQL y modelos Pydantic restrictivos. Evidencia: S37 | — | — | 5 | 5 | 100.0 % |
+| **OWASP** | OW-A06 | ¿Se tiene implementado el diseño seguro contra A06:2025: Insecure Design? | SOFTWARE | Parcial (3) | Arquitectura hexagonal y principio fail-secure en recomendaciones; pendiente Rate Limiting perimetral en Gateway. Evidencia: S21 | Ricardo Porras Veli | 23/11/2026 | 3 | 5 | 60.0 % |
+| **OWASP** | OW-A07 | ¿Se tiene implementada la autenticación robusta contra A07:2025: Authentication Failures? | SOFTWARE | Parcial (3) | Validación exhaustiva de tokens JWT y claims en Gateway; observación por persistencia de token en localStorage. Evidencia: S22 | Leonid Huamán Collazos | 30/11/2026 | 3 | 5 | 60.0 % |
+| **OWASP** | OW-A08 | ¿Se tiene implementada la integridad de software contra A08:2025: Software or Data Integrity Failures? | HERRAMIENTA | Cumple (5) | Subsanado en Ola 1: anclaje inmutable del 100 % de GitHub Actions por commit SHA en ci.yml y pages.yml. Imágenes base Docker (OW-11) parcial: gateway-go ya fija @sha256; el resto usa solo etiqueta. Evidencia: S09 y S31 | Ricardo Porras Veli | 07/11/2026 | 5 | 5 | 100.0 % |
+| **OWASP** | OW-A09 | ¿Se tiene implementado el registro y las alertas contra A09:2025: Security Logging and Alerting Failures? | SOFTWARE | Parcial (3) | Trazabilidad con X-Request-Id y alertas Prometheus; pendiente registro de auditoría estructurado para 401/403 en Gateway. Evidencia: S23 | Ricardo Porras Veli | 23/11/2026 | 3 | 5 | 60.0 % |
+| **OWASP** | OW-A10 | ¿Se tiene implementado el manejo seguro de condiciones excepcionales contra A10:2025: Mishandling of Exceptional Conditions? | SOFTWARE | Parcial (3) | Fortalezas fail-closed: catch-all 500 genéricos sin traza, JWKS no disponible rechaza el token (503), timeouts por ruta y mensajes amigables en frontend; pendiente OW-13: recover en gateway-go, manejador global en Spring Cloud Gateway y pruebas de no filtración. Evidencia: S24 | Ricardo Porras Veli | 30/11/2026 | 3 | 5 | 60.0 % |
 
 ## 7.2. Tabla de Nivel de Apego por Factor (Inicial, Actual y Esperado)
 
@@ -340,23 +340,23 @@ Los puntajes consolidados del proyecto se resumen a continuación, reflejando el
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **F — Funcionalidad** | 13 | 65 | 51 | 78.5 % | 51 | 78.5 % | 63 | 96.9 % | 0.0 % |
 | **U — Usabilidad** | 8 | 40 | 32 | 80.0 % | 36 | 90.0 % | 40 | 100.0 % | +10.0 % |
-| **R — Confiabilidad** | 6 | 30 | 28 | 93.3 % | 28 | 93.3 % | 30 | 100.0 % | 0.0 % |
+| **R — Confiabilidad** | 6 | 30 | 26 | 86.7 % | 26 | 86.7 % | 30 | 100.0 % | 0.0 % |
 | **P — Rendimiento** | 3 | 15 | 13 | 86.7 % | 13 | 86.7 % | 15 | 100.0 % | 0.0 % |
 | **S — Soporte / Mantenibilidad** | 4 | 20 | 18 | 90.0 % | 18 | 90.0 % | 20 | 100.0 % | 0.0 % |
 | **+ — Restricciones Adicionales** | 6 | 30 | 28 | 93.3 % | 28 | 93.3 % | 28 | 93.3 % | 0.0 % |
-| **SUBTOTAL FURPS+ (01–03)** | **40** | **200** | **170** | **85.0 %** | **174** | **87.0 %** | **196** | **98.0 %** | **+2.0 %** |
+| **SUBTOTAL FURPS+ (01–03)** | **40** | **200** | **168** | **84.0 %** | **172** | **86.0 %** | **196** | **98.0 %** | **+2.0 %** |
 | **OWASP — Seguridad Web (04–06)** | 10 | 50 | 28 | 56.0 % | 34 | 68.0 % | 48 | 96.0 % | +12.0 % |
-| **TOTAL GENERAL CONSOLIDADO** | **50** | **250** | **198** | **79.2 %** | **208** | **83.2 %** | **244** | **97.6 %** | **+4.0 %** |
+| **TOTAL GENERAL CONSOLIDADO** | **50** | **250** | **196** | **78.4 %** | **206** | **82.4 %** | **244** | **97.6 %** | **+4.0 %** |
 
 Nota metodológica sobre las métricas:
-1. El informe docs/calidad/01_auditoria_furps.md reportó inicialmente un nivel de apego del 85.00 %, el cual evalúa de forma estricta las 40 preguntas del estándar FURPS+ (170 / 200 puntos). Al integrar las 10 preguntas de seguridad OWASP Top 10 en la matriz consolidada docente de 50 ítems, el puntaje inicial total fue de 198 sobre 250 puntos, lo que arroja un nivel de calidad inicial global del 79.2 %.
-2. Tras la ejecución de la Ola 1, el puntaje global ascendió a 208 sobre 250 puntos (83.2 %), impulsado por la subsanación de M-U07 en Usabilidad (+4 puntos brutos) y las remediaciones de seguridad en cabeceras Nginx, SRI y anclaje SHA de GitHub Actions (+6 puntos brutos en los factores OW-A02, OW-A03 y OW-A08).
+1. El informe docs/calidad/01_auditoria_furps.md reportó inicialmente un nivel de apego del 85.00 % (170 / 200), reajustado en la revisión del equipo del 12/11/2026 a 84.0 % (168 / 200) al pasar M-R01 a Parcial (3); evalúa de forma estricta las 40 preguntas del estándar FURPS+. Al integrar las 10 preguntas de seguridad OWASP Top 10 en la matriz consolidada docente de 50 ítems, el puntaje inicial total fue de 196 sobre 250 puntos, lo que arroja un nivel de calidad inicial global del 78.4 %.
+2. Tras la ejecución de la Ola 1, el puntaje global ascendió a 206 sobre 250 puntos (82.4 %), impulsado por la subsanación de M-U07 en Usabilidad (+4 puntos brutos) y las remediaciones de seguridad en cabeceras Nginx, SRI y anclaje SHA de GitHub Actions (+6 puntos brutos en los factores OW-A02, OW-A03 y OW-A08).
 3. El detalle exhaustivo fila por fila para cada uno de los tres escenarios se encuentra particionado en las hojas correspondientes («Inicial», «Actual» y «Esperado») dentro del libro de trabajo Excel adjunto MODELO-FURPSPLUS-Green-AI.xlsx.
-4. La parte OWASP de la matriz fue reclasificada a la edición Top 10:2025 (SSRF absorbida en A01 y nueva categoría A10:2025 valorada como Parcial). Las preguntas OW-A01 (A01:2025) y OW-A04 (A04:2025) figuran como No cumple (1), igual que en el Excel oficial; la versión previa de este documento las mostraba por error como Parcial (3), lo que era incoherente con sus propios totales. Con la lista 2021 los totales eran 200 / 80.0 % (inicial) y 210 / 84.0 % (actual).
+4. La parte OWASP de la matriz fue reclasificada a la edición Top 10:2025 (SSRF absorbida en A01 y nueva categoría A10:2025 valorada como Parcial). Las preguntas OW-A01 (A01:2025) y OW-A04 (A04:2025) figuran como No cumple (1), igual que en el Excel oficial; la versión previa de este documento las mostraba por error como Parcial (3), lo que era incoherente con sus propios totales. Con la lista 2021 los totales eran 198 / 79.2 % (inicial) y 208 / 83.2 % (actual) tras el reajuste de M-R01.
 
 # 8. Nivel de calidad inicial y esperado: análisis de brechas
 
-La progresión desde un nivel de calidad inicial del 79.2 % hasta un nivel actual del 83.2 % y una meta proyectada del 97.6 % ilustra un avance metodológico sustentado en evidencias. Sin embargo, un principio central de la ingeniería de software es reconocer con honestidad técnica por qué el sistema no alcanza —ni debe pretender alcanzar en esta fase académica— un 100.0 % de cumplimiento perfecto.
+La progresión desde un nivel de calidad inicial del 78.4 % hasta un nivel actual del 82.4 % y una meta proyectada del 97.6 % ilustra un avance metodológico sustentado en evidencias. Sin embargo, un principio central de la ingeniería de software es reconocer con honestidad técnica por qué el sistema no alcanza —ni debe pretender alcanzar en esta fase académica— un 100.0 % de cumplimiento perfecto.
 
 El análisis de brechas identifica tres condicionantes estructurales que impiden alcanzar el puntaje ideal:
 
@@ -369,7 +369,7 @@ El análisis de brechas identifica tres condicionantes estructurales que impiden
    En la pregunta M-F08 (cálculo de energía y CO2e), el sistema aplica formalmente la regla del trapecio sobre valores de potencia en vatios. Sin embargo, la potencia no proviene de mediciones de hardware reales ni sensores IPMI/PDU físicos, sino de un modelo lineal aproximado P = P_idle + (P_max - P_idle) * CPU (software/frontend/energy.js).
    Simular que esta potencia es una medición de laboratorio real violaría las directrices de integridad científica de la universidad. Por ende, la pregunta M-F08 se califica en Parcial (3 puntos) y se mantendrá en ese estado hasta que el centro de datos cuente con instrumentación de hardware real conectada por protocolos SNMP o Redfish.
 3. Desacoplamiento de Persistencia Externa en la Nube:
-   En el factor de seguridad OWASP (OW-A01 y OW-A04), persisten observaciones sobre la base de datos externa en Supabase (riesgo de políticas RLS permisivas registradas en snapshots históricos y presencia de la columna password). Mientras el administrador de la base de datos no ejecute y certifique las consultas de catálogo en vivo, la calificación se mantiene prudencialmente en No cumple (no en Parcial) hasta su verificación.
+   En el factor de seguridad OWASP (OW-A01 y OW-A04), persisten hallazgos sobre la base de datos externa en Supabase, que ya se verificaron en la consola de Supabase el 12/11/2026: 3 políticas «Permitir todo» (ALL/true para public) en hardware, logs y usuario (S11) y las columnas password y password_hash en usuario (S12). Por eso la calificación se mantiene en No cumple (no en Parcial) hasta que se restrinjan las políticas y se retire la columna.
 
 Estas brechas no constituyen negligencia técnica, sino la delimitación consciente entre el alcance demostrativo de un prototipo de ingeniería riguroso y la operación corporativa a escala productiva.
 
@@ -387,7 +387,7 @@ El Observatorio integra en una consola visual única el monitoreo de métricas e
 
 El entrenamiento y selección del modelo Random Forest para inferencia de CPU a 15 minutos se gestiona mediante MLflow, registrando parámetros de hiperparámetros, métricas de error (RMSE, MAE) y artefactos serializados.
 
-![Capturar la interfaz web de MLflow UI mostrando el experimento de predicción de CPU, las corridas registradas y la compa](evidencias/captura-C303-mlflow-run.png)
+![Interfaz web de MLflow UI (v2.22.5) con la corrida real random_forest_15m del experimento computational-demand-prediction (Run ID c7b12901e3f744b1b48ac87d3d4ae20b, dataset-sim-001, RMSE = 5.45, MAE = 3.85)](evidencias/captura-C303-mlflow-run.png)
 
 ## 9.3. Pregunta M-F10 (Sistema de Reglas de Alerta - HU-12)
 
@@ -403,7 +403,7 @@ La infraestructura de servicios contenerizados opera sobre el plan gratuito de R
 
 ## 9.5. Pregunta M-U07 (Guía Rápida de Usuario — Mejora Ola 1)
 
-Subsanación documental que estructura la interacción del usuario final en 8 tareas principales de 3 pasos o menos.
+Subsanación documental que estructura la interacción del usuario final en 8 tareas principales de 3 pasos o menos. La captura se tomó cuando la guía estaba en docs/GUIA-RAPIDA-USUARIO.md; desde el 11/11/2026 está en entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md.
 
 ```bash
 # Verificación de correspondencia de textos reales entre la guía y la interfaz
@@ -434,7 +434,7 @@ Verificación de la sintaxis y de las cabeceras servidas por el contenedor web N
 
 ```bash
 # Verificación de sintaxis de Nginx
-docker run --rm -v .../nginx.conf:/etc/nginx/conf.d/default.conf:ro nginx:1.28.0-alpine nginx -t
+docker run --rm -v "$PWD/software/frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro" nginx:1.28.0-alpine nginx -t
 ```
 
 Resultado obtenido:
@@ -460,6 +460,43 @@ X-Frame-Options: DENY
 Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
 Cross-Origin-Opener-Policy: same-origin
 ```
+
+Verificación en ejecución aportada por Leonid Huamán (12/11/2026, 22:58 GMT), con las rutas relativas a la raíz del repositorio:
+
+```bash
+docker run --rm -d -p 8088:3001 -v "$PWD/software/frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro" -v "$PWD/software/frontend:/usr/share/nginx/html:ro" nginx:1.28.0-alpine
+curl -sSI http://127.0.0.1:8088/login.html
+HTTP/1.1 200 OK
+Server: nginx/1.28.0
+Date: Thu, 12 Nov 2026 22:58:48 GMT
+Content-Type: text/html
+Content-Length: 3048
+Last-Modified: Thu, 12 Nov 2026 22:56:28 GMT
+Connection: keep-alive
+ETag: "6af6441c-be8"
+X-Content-Type-Options: nosniff
+Referrer-Policy: no-referrer
+X-Frame-Options: DENY
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Cross-Origin-Opener-Policy: same-origin
+Accept-Ranges: bytes
+
+curl -sSI http://127.0.0.1:8088/config.local.js
+HTTP/1.1 404 Not Found
+Server: nginx/1.28.0
+Date: Thu, 12 Nov 2026 22:59:25 GMT
+Content-Type: text/html
+Content-Length: 153
+Connection: keep-alive
+Cache-Control: no-store
+X-Content-Type-Options: nosniff
+Referrer-Policy: no-referrer
+X-Frame-Options: DENY
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Cross-Origin-Opener-Policy: same-origin
+```
+
+El 404 de config.local.js es esperado (archivo local no versionado) y aun así lleva Cache-Control: no-store y las cinco cabeceras (OW-07 corregido).
 
 ![Archivo software/frontend/nginx.conf en GitHub (rama main) con las cabeceras de seguridad OW-06 y su repetición en location = /config.local.js (OW-07); evidencia de configuración, no de ejecución](evidencias/captura-S07-nginx-conf.png)
 
@@ -542,10 +579,10 @@ El dictamen técnico emitido para el proyecto Green AI es:
 
 ## 10.2. Justificación Técnica del Dictamen
 
-1. Cumplimiento de Calidad (FURPS+): El sistema alcanzó un nivel de apego auditado del **87.00 %** (87.62 % ponderado) en FURPS+, superando con holgura los requerimientos exigidos para un Producto Mínimo Viable (PMV2) de demostración académica.
+1. Cumplimiento de Calidad (FURPS+): El sistema alcanzó un nivel de apego auditado del **86.0 %** (86.28 % ponderado) en FURPS+, superando con holgura los requerimientos exigidos para un Producto Mínimo Viable (PMV2) de demostración académica.
 2. Cumplimiento de Seguridad (OWASP Top 10:2025): El Score de Seguridad auditado post Ola 1 se situó en **83.5 / 100 (OWASP Top 10:2025)**, evidenciando un perímetro protegido contra falsificación de orígenes (CORS), inyecciones y adulteración de dependencias.
 3. Preservación de Funcionalidad: Cero (0) regresiones técnicas. Las 7 suites de pruebas del monorepo mantienen operativas más de 415 pruebas automatizadas pasando de manera ininterrumpida.
-4. Nivel de Riesgo Operativo: Clasificado en **Riesgo Operativo Medio**, originado no por deficiencias de codificación, sino por las dependencias externas del entorno de demostración (cuotas de Render Free Tier, datos de potencia calculados sintéticamente y políticas RLS pendientes de certificación remota).
+4. Nivel de Riesgo Operativo: Clasificado en **Riesgo Operativo Medio**, originado no por deficiencias de codificación, sino por las dependencias externas del entorno de demostración (cuotas de Render Free Tier, datos de potencia calculados sintéticamente y políticas RLS permisivas ya verificadas en Supabase y pendientes de restringir).
 
 ## 10.3. Recomendaciones Mandatorias para la Operación y Sustentación
 
@@ -562,7 +599,7 @@ El desarrollo de la sesión y la aplicación de los marcos FURPS+ y OWASP Top 10
 1. Proceso de Software Incremental y Preservación de Funcionalidad:
    Aprendimos que la calidad no se logra mediante reescrituras masivas ni alteraciones disruptivas, sino a través de incrementos delgados, controlados y reversibles (olas de mejora). La adopción de barreras de regresión basadas en suites automatizadas (415+ tests) brindó la confianza requerida para modificar archivos de configuración crítica y código de marcado sin romper los microservicios existentes.
 2. Producto de Software Web en Arquitectura Hexagonal:
-   Se consolidó la importancia práctica de desacoplar el núcleo de negocio de los adaptadores de infraestructura. El uso de contratos OpenAPI rigurosos, formatos de error estándar (RFC 7807 problem+json) y un API Gateway perimetral permitió que microservicios políglotas (Java, Python, Go) convivan de manera armoniosa y admitan implementaciones alternativas (como el gateway ligero en Go) sin alterar la experiencia del cliente web.
+   Se consolidó la importancia práctica de desacoplar el núcleo de negocio de los adaptadores de infraestructura. El uso de contratos OpenAPI rigurosos, formatos de error estándar (RFC 7807 problem+json, aplicado en Gateway, Data Processing y Monitoring; Prediction queda pendiente de migrar) y un API Gateway perimetral permitió que microservicios políglotas (Java, Python, Go) convivan de manera armoniosa y admitan implementaciones alternativas (como el gateway ligero en Go) sin alterar la experiencia del cliente web.
 3. Criterios de Calidad de Software y Evaluación Crítica:
    La aplicación del modelo FURPS+ enseñó a valorar las dimensiones no funcionales (Usabilidad, Confiabilidad, Rendimiento y Mantenibilidad) al mismo nivel de exigencia que las funcionalidades de negocio. Comprendimos que la honestidad experimental es un valor superior: reajustar una sobrecalificación inicial del 96 % al 85 % real refuerza la solidez técnica del proyecto ante cualquier auditoría externa.
 4. Herramientas de Evaluación y Seguridad Aplicada:
@@ -575,35 +612,36 @@ El desarrollo de la sesión y la aplicación de los marcos FURPS+ y OWASP Top 10
 Para fines de verificación, auditoría y trazabilidad académica, todos los artefactos documentales, archivos de configuración y suites de código citados en este informe se encuentran versionados en el repositorio oficial de GitHub del proyecto:
 
 * Repositorio oficial: https://github.com/woshtsu/green-ai-workspace-cld
-* Rama base de desarrollo y calidad: test
+* Versión del repositorio que corresponde a este informe: etiqueta semana13-entrega (rama test): https://github.com/woshtsu/green-ai-workspace-cld/tree/semana13-entrega
+* Licencia: MIT (LICENSE)
 * Matriz de Calidad en formato Excel: exportados/semana13/MODELO-FURPSPLUS-Green-AI.xlsx
 
 ## Relación de Entregables del Ciclo de Calidad y Seguridad (01–08)
 
 1. docs/calidad/01_auditoria_furps.md  
-   Auditoría Integral de Calidad de Software bajo el Modelo FURPS+ (Línea base inicial: 85.00 %).  
-   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/01_auditoria_furps.md
+   Auditoría Integral de Calidad de Software bajo el Modelo FURPS+ (Línea base inicial: 85.00 %; reajustada: 84.0 %).  
+   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/semana13-entrega/docs/calidad/01_auditoria_furps.md
 2. docs/calidad/02_plan_furps.md  
    Plan Integral de Mejora de Calidad de Software (Estrategia en tres olas y barreras de regresión).  
-   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/02_plan_furps.md
+   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/semana13-entrega/docs/calidad/02_plan_furps.md
 3. docs/calidad/03_auditoria_implementacion_furps.md  
-   Auditoría Independiente de Implementación FURPS+ (Puntaje verificado post Ola 1: 87.00 %).  
-   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/03_auditoria_implementacion_furps.md
+   Auditoría Independiente de Implementación FURPS+ (Puntaje verificado post Ola 1: 87.00 %; reajustado: 86.0 %).  
+   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/semana13-entrega/docs/calidad/03_auditoria_implementacion_furps.md
 4. docs/calidad/04_auditoria_owasp.md  
    Auditoría de Seguridad de Aplicaciones Web y APIs según OWASP Top 10:2021 (Score inicial: 80.5 / 100; reclasificado a 2025: 79.0 / 100).  
-   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/04_auditoria_owasp.md
+   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/semana13-entrega/docs/calidad/04_auditoria_owasp.md
 5. docs/calidad/05_plan_owasp.md  
    Plan de Remediación de Vulnerabilidades de Seguridad OWASP Top 10 (Roadmap en tres olas).  
-   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/05_plan_owasp.md
+   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/semana13-entrega/docs/calidad/05_plan_owasp.md
 6. docs/calidad/06_auditoria_implementacion_owasp.md  
    Auditoría Independiente de Implementación de Seguridad OWASP (Score verificado post Ola 1: 85.0 / 100 bajo 2021; 83.5 / 100 bajo 2025).  
-   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/06_auditoria_implementacion_owasp.md
+   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/semana13-entrega/docs/calidad/06_auditoria_implementacion_owasp.md
 7. docs/calidad/07_auditoria_final.md  
    Dictamen Final Integral de Calidad y Seguridad de Software («Apto para producción con observaciones»).  
-   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/07_auditoria_final.md
+   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/semana13-entrega/docs/calidad/07_auditoria_final.md
 8. docs/calidad/08_reclasificacion_owasp_2025.md  
    Reclasificación de la auditoría OWASP a Top 10:2025 y evaluación de A10:2025.  
-   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/test/docs/calidad/08_reclasificacion_owasp_2025.md
+   Enlace en repositorio: https://github.com/woshtsu/green-ai-workspace-cld/blob/semana13-entrega/docs/calidad/08_reclasificacion_owasp_2025.md
 
 ## Documentos Técnicos Complementarios de Evidencia
 
@@ -611,3 +649,151 @@ Para fines de verificación, auditoría y trazabilidad académica, todos los art
 * entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md: Manual operativo en 8 flujos de <= 3 pasos para el usuario final (M-U07).
 * docs/GUIA-DESPLIEGUE-RENDER.md: Procedimiento de despliegue contenerizado a costo cero en Render.
 * docs/HANDOFF.md: Bitácora de ingeniería, arquitectura hexagonal, inventario de pruebas y directrices de honestidad experimental.
+
+## Evidencias pendientes (se entregarán si se solicitan)
+
+Quedan pendientes de captura: S44 (rechazo de acción con rol VIEWER, M-F12); S50a a S50d (resúmenes de pytest de Prediction y Data Processing, go test del Gateway Go y mvn test de Monitoring y Gateway; respaldan M-R04 «415+ pruebas», ejecutadas en el equipo de Ricardo); y la memoria en Render (M-P02: el plan gratuito no expone la métrica; se usa el registro de 122 MiB, S34).
+
+# 13. Anexo de evidencias de la matriz
+
+Cada fila de la matriz del §7.1 cita al final su evidencia (Sxx). Las capturas S01, S04, S05, S06, S07, S08, S09, S10, C303 y C304 están insertadas en el §9 y solo se citan; las demás se presentan a continuación. El mapa completo, con las salidas de cada comando, está en docs/evidencias/semana13-mapa-evidencias.md.
+
+## 13.1. S11
+
+![S11 — OW-A01 (OW-01), M-F13, M-R05: consola de Supabase con las políticas «Permitir todo» (ALL, true) para el rol public en hardware, logs y usuario; hallazgo verificado el 12/11/2026](evidencias/captura-S11-supabase-rls.png)
+
+## 13.2. S12
+
+![S12 — OW-A04 (OW-03): consola de Supabase con las columnas password y password_hash en la tabla usuario; hallazgo verificado el 12/11/2026](evidencias/captura-S12-supabase-password.png)
+
+## 13.3. S13
+
+![S13 — M-F13, M-F12 (apoyo), M-U01, M-U02: inicio de sesión real como Ricardo Porras Veli con rol OPERATOR](evidencias/captura-S13-login-sesion.png)
+
+## 13.4. S14
+
+![S14 — M-PL03: panel de Render con los 6 servicios en plan gratuito (Free)](evidencias/captura-S14-render-servicios.png)
+
+## 13.5. S15
+
+![S15 — M-F07: búsqueda sin coincidencias de aprobar, rechazar y approv en frontend y prediction; solo existe la bandera executionAllowed: Literal[False] y no hay tabla ni endpoint de decisiones](evidencias/captura-S15-f07-aprobacion-sin-persistencia.png)
+
+## 13.6. S16
+
+![S16 — M-F08: energy.js modela P = P_idle + (P_max − P_idle) × CPU con IDLE_FRACTION = 0.4; no hay lectura de sensores](evidencias/captura-S16-f08-potencia-modelada.png)
+
+## 13.7. S17
+
+![S17 — M-F11: /reports/historical-summary solo acepta json y csv; no hay librería ni tipo MIME PDF en software/](evidencias/captura-S17-f11-reporte-sin-pdf.png)
+
+## 13.8. S18
+
+![S18 — M-R05: compose.sqlite-dev.yml aísla el desarrollo (HISTORICAL_SOURCE: sqlite, SUPABASE_ENABLED: false); no hay herramientas ni resultados de prueba de carga](evidencias/captura-S18-r05-sqlite-sin-prueba-de-carga.png)
+
+## 13.9. S19
+
+![S19 — M-S01: runner.py del Simulator (líneas 5-10) importa adaptadores; en data-processing la capa application no importa infraestructura](evidencias/captura-S19-s01-simulator-no-hexagonal.png)
+
+## 13.10. S20
+
+![S20 — M-U06: lighthouse, axe y pa11y no están instalados (sin escaneo WCAG); recuento aria- 66, role= 28, label 20, lang= 6, aria-live 11; el único canvas (dashboard.html) no tiene aria-label. El recuento no equivale a conformidad WCAG](evidencias/captura-S20-u06-accesibilidad-sin-lighthouse.png)
+
+## 13.11. S21
+
+![S21 — OW-A06 (OW-05): cero coincidencias de limitadores de tasa en gateway-go y en el Gateway Spring](evidencias/captura-S21-a06-sin-rate-limiting.png)
+
+## 13.12. S22
+
+![S22 — OW-A07 (OW-09): createClient con persistSession y sin opción storage (supabase-js usa localStorage); el código propio solo guarda greenai-theme; no se leyó ningún valor de sesión](evidencias/captura-S22-a07-sesion-localstorage.png)
+
+## 13.13. S23
+
+![S23 — OW-A09 (OW-12): server.go responde 401 y 403, pero el único slog de gateway-go es de arranque; sin registro de auditoría](evidencias/captura-S23-a09-401-403-sin-auditoria.png)
+
+## 13.14. S24
+
+![S24 — OW-A10 (OW-13): Go no está instalado, por lo que las 3 pruebas fail-closed de server_test.go no se ejecutaron; sin recover() en gateway-go ni manejador global en el Gateway Spring](evidencias/captura-S24-a10-recover-ausente.png)
+
+## 13.15. S25
+
+![S25 — M-P01: Gateway 0,47 s y 0,25 s; Prediction primer intento 9,3 s (conexión 8,48 s) y segundo 0,77 s. El primer intento no es un arranque en frío completo](evidencias/captura-S25-p01-tiempos-render.png)
+
+## 13.16. S26
+
+![S26 — M-S02, M-S04: 14 rutas versionadas con openapi/swagger (la lista incluye archivos históricos e imágenes) y monorepo con 0 gitlinks y 0 .gitmodules](evidencias/captura-S26-s02-s04-openapi-monorepo.png)
+
+## 13.17. S27
+
+![S27 — M-PL01, M-PL02, M-PL06: guías de despliegue y de arranque existentes, y docker-compose.yml con 7 servicios y 5 overlays; no se ejecutó docker compose up](evidencias/captura-S27-pl-guias-compose.png)
+
+## 13.18. S28
+
+![S28 — M-R01, M-R02: problem+json en data-processing, gateway-go y monitoring; Prediction usa su propio sobre {code, message}; rutas de salud por servicio, sin prueba en ejecución local](evidencias/captura-S28-r01-r02-errores-y-salud.png)
+
+## 13.19. S29
+
+![S29 — OW-A01 (OW-02): 5 servicios de compose con puerto publicado, todos enlazados a 127.0.0.1 (acceso local, no desde la red)](evidencias/captura-S29-ow02-puertos-compose.png)
+
+## 13.20. S30
+
+![S30 — OW-A04 (OW-04): BD_GreenAi.xlsx, hoja Usuarios, columnas password y password_hash con 10 de 10 celdas no vacías (valores no impresos)](evidencias/captura-S30-ow04-excel-passwords.png)
+
+## 13.21. S31
+
+![S31 — OW-A08 (OW-11): 11 líneas FROM en los Dockerfiles; solo gateway-go (2) usa @sha256 y el resto solo etiqueta](evidencias/captura-S31-ow11-from-sin-digest.png)
+
+## 13.22. S32
+
+![S32 — M-R03: timeouts configurados en gateway-go (6, 15 y 30 s), Gateway Spring y data-processing; evidencia de configuración en código, no de ejecución](evidencias/captura-S32-r03-timeouts.png)
+
+## 13.23. S33
+
+![S33 — M-R06: los adaptadores mapean los fallos a SourceTimeout, SourceForbidden y ServiceError, y SQLite abre en modo de solo lectura; evidencia de código](evidencias/captura-S33-r06-errores-fuente.png)
+
+## 13.24. S34
+
+![S34 — M-P03, M-P02: registro del 07/11/2026 (imagen de Prediction de 2,85 GB a 510 MB; RAM de 174 a 133, 142 y 122 MiB); no se volvió a medir en esta sesión](evidencias/captura-S34-p03-imagen-ligera.png)
+
+## 13.25. S35
+
+![S35 — M-PL04: 4 grupos de rutas del gateway y uso de GATEWAY_BASE_URL en el frontend; el inicio de sesión va directo a Supabase Auth](evidencias/captura-S35-pl04-gateway-desacoplado.png)
+
+## 13.26. S36
+
+![S36 — M-PL05: recuento del 12/11/2026 (17:38) que no encontró archivo de licencia versionado; el archivo LICENSE (MIT) se añadió después en la raíz del repositorio](evidencias/captura-S36-pl05-licencias.png)
+
+## 13.27. S37
+
+![S37 — OW-A05: consultas con parámetros en SQLite, escape en PostgREST, Pydantic con extra forbid y lista blanca de métricas PromQL; evidencia de código, no prueba de ausencia de inyección](evidencias/captura-S37-a05-inyeccion.png)
+
+## 13.28. S40
+
+![S40 — M-F01, M-U01: visualización de métricas en tiempo real; fotograma del video de sustentación del 10/11/2026](evidencias/captura-S40-f01-metricas.png)
+
+## 13.29. S41
+
+![S41 — M-F02: consulta del histórico; fotograma del video de sustentación del 10/11/2026](evidencias/captura-S41-f02-historico.png)
+
+## 13.30. S43
+
+![S43 — M-F04, M-F11: experimento de comparación en la interfaz; fotograma del video de sustentación del 10/11/2026](evidencias/captura-S43-f04-experimento.png)
+
+## 13.31. S45
+
+![S45 — M-U02, M-U05: modo claro y mensaje de error amigable mientras los servicios de Render despertaban; captura del 12/11/2026](evidencias/captura-S45-u02-u05-modo-claro-error-amigable.png)
+
+## 13.32. S46
+
+![S46 — M-U04: ayuda contextual del botón «?» de «Media del conjunto»; captura del 12/11/2026](evidencias/captura-S46-u04-ayuda.png)
+
+## 13.33. S48a
+
+![S48a — M-U08: paso 1 (servidor); fotograma del video de sustentación del 10/11/2026](evidencias/captura-S48a-u08-paso1-servidor.png)
+
+## 13.34. S48b
+
+![S48b — M-U08, M-F03: paso 2 (predicción); fotograma del video de sustentación del 10/11/2026](evidencias/captura-S48b-u08-paso2-prediccion.png)
+
+## 13.35. S48c
+
+![S48c — M-U08, M-F06: paso 3 (recomendación); fotograma del video de sustentación del 10/11/2026](evidencias/captura-S48c-u08-paso3-recomendacion.png)

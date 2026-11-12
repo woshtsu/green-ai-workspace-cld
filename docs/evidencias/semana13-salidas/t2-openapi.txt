@@ -1,0 +1,16 @@
+docs/historico/semana10/legacy/green-ai-recommendations/openapi.json
+docs/historico/trabajos-previos/evidencias-del-sistema/capturas-swagger/Prediction-1.jpg
+docs/historico/trabajos-previos/evidencias-del-sistema/capturas-swagger/Prediction-2.jpg
+entregables/informe-corregido/evidencias-nube/captura-C305-swagger-prediction.png
+software/data-processing/contracts/data-processing-v1.openapi.json
+software/data-processing/scripts/export_openapi.py
+software/gateway/src/main/resources/static/openapi/gateway-v0.1.yaml
+software/gateway/src/main/resources/static/openapi/recommendations-v1.json
+software/infraestructura/compose.swagger.yaml
+software/monitoring/src/main/resources/static/openapi/monitoring-v0.1.json
+software/monitoring/src/test/java/pe/edu/continental/greenai/monitoring/contract/OpenApiAssertions.java
+software/prediction/contracts/prediction.openapi.json
+software/prediction/contracts/recommendations-gateway.openapi.json
+software/prediction/scripts/export_openapi.py
+
+14

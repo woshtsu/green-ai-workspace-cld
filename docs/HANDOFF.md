@@ -400,3 +400,11 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Nuevo `entregables/semana13/REVISION-POR-INTEGRANTE.md`: qué secciones del Word, filas del Excel y documentos 01–08 revisa y confirma cada integrante, con una tabla de confirmación. El plazo lo fija Gina.
 - Reexportados: Excel (198 / 208 / 244 de 250, sin cambios) y Word (40 págs.). Revisada en el PDF la página de la tabla de roles.
 - Decisión del usuario: `docs/calidad/01–08` se quedan en `docs/calidad/` (no se mueven a `docs/`).
+
+## 12/11/2026 (noche, 3) — Semana 13 cerrada y exportada
+- Revisiones del equipo aplicadas (Jhonny, Gina, Leonid, Ricardo). Decisiones: M-F11 Ricardo 18/11; M-U07 09/11; M-R05 Ricardo 13/11 (sin decisión explícita: fecha de la auditoría); M-P01 Leonid; M-S01 Ricardo 23/11; OW-A04 30/11.
+- M-R01 → Parcial (Prediction usa {code, message}). Cifras finales: FURPS+ 168 → 172 / 200 (ponderado 84,78 → 86,28; el «85,00 ponderado» anterior no seguía las ponderaciones); global 196 → 206 → 244 de 250.
+- S11/S12 (consola de Supabase, tomadas por el equipo) verifican OW-01 y OW-03. Evidencias S11–S48c en `entregables/semana13/evidencias/` y anexo §13 del Word; mapa en `docs/evidencias/semana13-mapa-evidencias.md`, salidas en `docs/evidencias/semana13-salidas/`. Descartadas: S42 (duplicada), S47 (mostraba un correo), S49 (Render gratis no muestra memoria).
+- LICENSE MIT añadido (M-PL05). §9.7 con la salida real de Leonid. Enlaces del §12 fijados a la etiqueta `semana13-entrega`; Ola 1 enlazada al commit d24d86f.
+- `llenar_modelo_furps.py`: toma «Evidencia: Sxx» del Word y en «3-Esperado» escribe la meta. Exportados: Excel, Word (54 págs.) y PDF del Word. `actualizar_word.ps1` falló dos veces con COMException porque el usuario tenía el Word abierto; a la tercera, OK.
+- No ejecutado aquí (sin pytest/Go/Maven): suites de backend; el equipo dice haberlas verificado en su equipo (S50a–d pendientes si se piden).

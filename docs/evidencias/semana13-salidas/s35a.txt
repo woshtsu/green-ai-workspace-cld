@@ -1,0 +1,5 @@
+43:		routes = append(routes, Route{"GET", "/api/monitoring/v1/metrics/" + p, Monitoring, 3, "/api/v1", 0, defaultTimeout})
+46:		routes = append(routes, Route{"GET", "/api/processing/v1/" + p, DataProcessing, 3, "/api/v1", 0, 15 * time.Second})
+48:	routes = append(routes, Route{"POST", "/api/prediction/v1/predictions", Prediction, 2, "", maxBody, 30 * time.Second})
+50:		routes = append(routes, Route{"POST", "/api/recommendations/v1/" + p, Prediction, 2, "", maxBody, 30 * time.Second})
+65:	return Route{}, false

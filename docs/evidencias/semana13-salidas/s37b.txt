@@ -1,0 +1,9 @@
+               "WHERE hardware_id = ? AND timestamp >= ? AND timestamp <= ?")
+            sql += " AND (timestamp > ? OR (timestamp = ? AND log_id > ?))"
+            params += [instant, instant, after[1]]
+        sql += " ORDER BY timestamp ASC, log_id ASC LIMIT ?"
+def quoted(value):
+    # PostgREST quoted filter literals, then httpx handles URL encoding.
+    return '"' + value.replace('\\', '\\\\').replace('"', '\\"') + '"'
+12:def quoted(value):
+38:            params.append(("or", f"(timestamp.gt.{instant},and(timestamp.eq.{instant},log_id.gt.{quoted(after[1])}))"))

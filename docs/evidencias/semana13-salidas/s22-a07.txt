@@ -1,0 +1,11 @@
+--- cliente Supabase en app.js (opciones de sesion):
+14:  if (!supabaseUrl || !supabasePublishableKey || !window.supabase?.createClient) {
+17:  supabaseClient = window.supabase.createClient(supabaseUrl, supabasePublishableKey, {
+18:    auth: { flowType: 'pkce', autoRefreshToken: true, persistSession: true, detectSessionInUrl: true }
+
+--- opcion storage personalizada (sessionStorage/cookies) en el frontend:
+grep exit=1 (1 = sin coincidencias -> usa el localStorage por defecto de supabase-js)
+
+--- usos de localStorage en el frontend (solo nombre de clave):
+software/frontend/appearance.js:4:localStorage.getItem('greenai-theme'
+software/frontend/appearance.js:17:localStorage.setItem('greenai-theme'
