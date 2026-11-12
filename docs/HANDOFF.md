@@ -370,3 +370,8 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - PR #6 fusionado en `test` (02bb985) por woshtsu; `gh pr view 6` → 0 reviews: no hay aprobación formal registrada. C310 reemplazada por la captura del PR fusionado, con pie honesto.
 - `md_a_docx.py`: nuevo prefijo `PENDIENTE-EQUIPO` (mismo recuadro amarillo, no cuenta como captura). Anexo A: recuadro con el enlace del video pendiente (en edición, se subirá a Drive). Tabla del Anexo C (7.2) actualizada.
 - Informe reexportado: 118 páginas, 0 capturas pendientes; quedan el recuadro del video y NRC-PENDIENTE en la portada.
+
+## 12/11/2026 (tarde) — test sincronizada y publicada
+- `git merge origin/test` (trae el PR #6) → 857c82c; push a `origin/test` autorizado por el usuario (con el token de woshtsu, sin cambiar la cuenta activa de gh). `origin/test` = `test`.
+- En el remoto están `exportados/semana13/` (informe corregido .docx, semana 13 .docx y modelo FURPS+ .xlsx) y el PDF de semana 12. `exportados/video/` sigue ignorado (el video va a Drive).
+- Worktree `../green-ai-s7` y rama local `sprint7/7.2-proceso-pr` eliminados (ya fusionada).
