@@ -273,3 +273,19 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Guion §5 ampliado (subagente Sonnet, revisado: cifras contrastadas con fotogramas; corregidos errores 0,5 y respuesta «Mantener capacidad / Lista para revisión humana» en 16:38).
 - Corte 0:44,5–0:46,5 y desplazamiento −2 s de los minutos del guion y de `descripcion-youtube.txt`.
 - Nuevo `herramientas_IA/video/guion_a_srt.py` (188 subtítulos); render `green-ai-unidad-III-subtitulado.mp4` (local/Drive, no en GitHub). Revisión por fotogramas; la revisión visual completa la hace el equipo.
+
+## 2026-11-11 — Revisión de Dina al informe corregido (Unidad III)
+- Hallazgos verificados contra `entregables/informe-corregido/informe-unidad-III.md`. Ciertos: tablas sin «Tabla N», criterios de HU sin formato BDD, PMV3 hasta el 12/12 (texto y 3 Gantt), Anexo A sin guion y Trello sin nomenclatura PMVn-HUxx. Ya cumplidos: árbol de problemas, pruebas por PMV y discusión. El código «AG-I06» que propuso Dina no está en la consigna, así que no se usó.
+- Informe (subagente Sonnet, revisado por Claude):
+  - 34 tablas numeradas;
+  - 16 HU con criterios Dado/Cuando/Entonces;
+  - párrafo de competencia al inicio de III y de V;
+  - PMV3 del 17/11 al 30/11: Sprint 7 del 17/11 al 23/11 y Sprint 8 del 24/11 al 30/11, ambos de una semana, como adaptación al calendario lectivo;
+  - Gantt nuevos `evidencias/gantt-planificado-2026-11.png`, `gantt-ejecutado-2026-11.png` y `cronograma-pmv-2026-11.png` (fuente en `fuentes/cronograma-planificado.puml`);
+  - Anexo A con una tabla que relaciona la lista de cotejo con el guion. Los ítems 1–3 y 6–8 quedan «No cubierto en el guion» porque son del informe escrito.
+  - Las fechas de las tareas 7.1–8.6 son una propuesta y hay que revisarlas.
+- Fechas ≤ 30/11 (subagente Haiku) en `entregables/semana13/...md`, `docs/calidad/02, 05 y 06` y `llenar_modelo_furps.py`. `validar_trello.py` acepta títulos `PMVn-HUxx`.
+- Word y Excel reexportados en `entregables/word/`:
+  - informe: 102 páginas y 14 marcadores `CAPTURA-PENDIENTE`;
+  - semana 13: 34 páginas y 11 marcadores.
+- Pendiente: los cambios de la guía de Trello (títulos `PMVn-HUxx`, HU-08 para Ricardo, fechas) están en la rama local `worktree-agent-a8e294441df89aac0`, commit `f281f55`, y no se integraron. El working copy tiene cambios ajenos sin commit en `GUIA-TRELLO-POR-INTEGRANTE.md` (sección 0, export del 09/11). Antes de integrar, el dueño de esos cambios debe confirmarlos.

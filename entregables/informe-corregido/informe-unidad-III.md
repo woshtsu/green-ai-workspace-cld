@@ -106,6 +106,8 @@ En la propuesta (**TO-BE**), la telemetría se recopila periódicamente, se alma
 
 El análisis de causalidad estructurado bajo el esquema de las 6M para el efecto «Adaptación reactiva o ineficiente de recursos computacionales a la demanda» identifica los siguientes factores:
 
+Tabla 1. Análisis de causalidad del problema bajo el esquema de las 6M
+
 | Dimensión (6M) | Factores y causas identificadas |
 |---|---|
 | **Método** | Asignación basada en estado instantáneo o umbrales estáticos fijos; toma de decisiones sin predicción de demanda; ausencia de políticas operativas formalizadas. |
@@ -120,6 +122,8 @@ La causa raíz identificada consiste en la limitada integración sistemática en
 ### Análisis cuantitativo del dataset del proyecto
 
 Para estudiar cuantitativamente los patrones de demanda en ausencia de telemetría física institucional, el proyecto generó un conjunto de datos sintético representativo de 50 servidores universitarios durante el periodo del 10/07/2026 al 17/09/2026 (`software/data-processing/datasets/raw/synthetic_greenai/BD_GreenAi.xlsx`, 100 000 registros). El análisis descriptivo de este dataset refleja las siguientes características operativas:
+
+Tabla 2. Indicadores cuantitativos observados en el conjunto de datos sintético
 
 | Indicador cuantitativo | Valor observado en dataset sintético |
 |---|---|
@@ -140,7 +144,7 @@ El desarrollo de la solución se encuentra sujeto a las siguientes restricciones
 3. No equiparar directamente el porcentaje de uso de CPU con consumo eléctrico sin un modelo de potencia validado o instrumentación física.
 4. No declarar porcentajes de ahorro energético institucional ni reducción de emisiones sin una comparación experimental directa con línea base.
 5. Mantener un modo operativo estrictamente de solo recomendación (*Recommendation-Only*), sin ejecutar acciones automáticas sobre servidores.
-6. Ajustarse al ciclo académico de 16 semanas con un equipo de 4 integrantes y costo monetario directo de S/ 0,00 mediante herramientas de código abierto.
+6. Ajustarse al ciclo académico (cierre del periodo lectivo el 30/11/2026) con un equipo de 4 integrantes y costo monetario directo de S/ 0,00 mediante herramientas de código abierto.
 
 ### Formulación del problema
 
@@ -262,6 +266,8 @@ La seguridad perimetral se delega en el API Gateway, que valida tokens JWT emiti
 
 La selección de las herramientas base se efectuó mediante matrices de decisión técnica ponderadas (adecuación 30 %, ecosistema 25 %, integración 20 %, rendimiento 15 % y curva de aprendizaje 10 %):
 
+Tabla 3. Selección de las tecnologías base del proyecto
+
 | Componente | Alternativas evaluadas | Tecnología seleccionada | Justificación técnica |
 |---|---|---|---|
 | Inferencia y ML | Python (4,8) · Java (3,1) · Go (2,6) | Python (scikit-learn, pandas) | Madurez y soporte de bibliotecas especializadas en series temporales. |
@@ -272,6 +278,8 @@ La selección de las herramientas base se efectuó mediante matrices de decisió
 ---
 
 # III. EL INGENIERO Y LA SOCIEDAD
+
+Esta sección responde a la competencia profesional «El Ingeniero y la Sociedad» de la rúbrica ICACIT del curso, que evalúa el análisis y la evaluación del impacto de la solución considerando desarrollo sostenible, sociedad, economía, salud y seguridad, marcos legales y medio ambiente. Los aspectos evaluados se cubren así: la justificación social, en el apartado III.a; la justificación económica, en III.b; la justificación ambiental, en III.c; los acontecimientos tecnológicos y científicos que influenciaron la propuesta, en III.d y en los antecedentes que la siguen; el marco legal y la responsabilidad ética, en III.e; y la salud, la seguridad y los riesgos operativos, en III.f.
 
 ## a. Justificación social
 
@@ -294,6 +302,8 @@ La relevancia ambiental radica en la reducción potencial de emisiones contamina
 El proyecto se enmarca en la evolución de la computación verde (*Green Computing*), la observabilidad distribuida y el aprendizaje automático aplicado a la gestión proactiva de recursos. Si bien plataformas como Kubernetes y sistemas de mensajería como RabbitMQ son tecnologías relevantes en arquitecturas de producción a gran escala, el sistema implementado en PMV1 y PMV2 opera sobre Docker Compose en local y servicios en la nube (Render y GitHub Pages), manteniendo RabbitMQ y Kubernetes exclusivamente como referencias conceptuales de escalabilidad futura.
 
 ## e. Marco legal, institucional y responsabilidad ética
+
+Tabla 4. Normas legales y estándares aplicables y medidas técnicas de cumplimiento
 
 | Norma legal / estándar | Ámbito de aplicación en el proyecto | Medidas técnicas de cumplimiento implementadas |
 |---|---|---|
@@ -340,6 +350,8 @@ Bolón-Canedo et al. examinaron los desafíos contemporáneos de Green AI, alert
 
 ### Síntesis comparativa de antecedentes frente a Green AI
 
+Tabla 5. Síntesis comparativa de Green AI frente a los antecedentes
+
 | Dimensión | Green AI | Khan et al. (2022) [1] | Ji et al. (2021) [2] | Sharma y Garg (2020) [3] |
 |---|---|---|---|---|
 | **Fuente de datos** | Telemetría simulada (50 nodos, cadencia 5 min) | Trazas reales Bitbrains (5 min) | Trazas reales de centro de datos | Simulación sintética en CloudSim |
@@ -374,6 +386,8 @@ Bolón-Canedo et al. examinaron los desafíos contemporáneos de Green AI, alert
 
 Para el desarrollo del proyecto se seleccionó un enfoque de ciclo de vida ágil frente a los modelos predictivo e híbrido, tras evaluar criterios ponderados adaptados al entorno experimental:
 
+Tabla 6. Evaluación ponderada de los enfoques de ciclo de vida
+
 | Criterio de evaluación | Peso | Predictivo | Ágil | Híbrido |
 |---|---|---|---|---|
 | Capacidad para gestionar cambios frecuentes | 25 % | 2 | 5 | 4 |
@@ -384,6 +398,8 @@ Para el desarrollo del proyecto se seleccionó un enfoque de ciclo de vida ágil
 | **Puntaje ponderado** | **100 %** | **2,50** | **4,85** | **4,35** |
 
 Para la gestión de ingeniería se adaptó el marco Scrum sobre Kanban, XP y Scrumban, obteniendo el mayor puntaje (4,85 sobre 5,00) debido a su compatibilidad con la estructura de tres Productos Mínimos Viables (PMV) distribuidos en 8 Sprints de dos semanas:
+
+Tabla 7. Evaluación ponderada de los marcos de gestión de ingeniería
 
 | Criterio de selección del marco | Peso | Scrum | Kanban | XP | Scrumban |
 |---|---|---|---|---|---|
@@ -412,9 +428,13 @@ La ejecución de Scrum se adaptó a la disponibilidad de los estudiantes mediant
 
 # V. USO DE HERRAMIENTAS MODERNAS
 
+Esta sección responde a la competencia profesional «Uso de Herramientas Modernas» de la rúbrica ICACIT del curso (atributo AG-I11), que evalúa el uso integrado de herramientas de ingeniería, computación, gestión, modelado, desarrollo, calidad, datos, IA y comunicación, justificando su selección y sus limitaciones. Los aspectos evaluados se cubren así: el uso integrado de herramientas y la justificación de su selección, en el criterio de selección inicial y en V.1; el reconocimiento de sus limitaciones, incluida la evaluación de los asistentes de IA, en V.2; y la comprobación cuantitativa de su aplicación mediante resultados medidos, en V.3.
+
 La selección de herramientas consideró adecuación técnica (25 %), funcionalidad (20 %), integración (15 %), costo monetario cero (10 %), seguridad (10 %), escalabilidad (10 %) y usabilidad (10 %), priorizando tecnologías de código abierto e instrumentos reproducibles.
 
 ## 1. Herramientas empleadas con evidencia en el repositorio
+
+Tabla 8. Herramientas empleadas, su aplicación y limitaciones reconocidas
 
 | Categoría | Herramienta (versión) | Rol y aplicación en el proyecto | Limitación técnica reconocida |
 |---|---|---|---|
@@ -459,6 +479,8 @@ En estricto cumplimiento del atributo de competencia sobre reconocimiento de lim
 
 ### Requerimientos funcionales
 
+Tabla 9. Requerimientos funcionales y módulos de implementación
+
 | ID | Requerimiento funcional | Módulo de implementación |
 |---|---|---|
 | RF-01 | Recopilar métricas de CPU, memoria, red y almacenamiento de nodos de cómputo. | Simulator → Prometheus |
@@ -484,6 +506,8 @@ En estricto cumplimiento del atributo de competencia sobre reconocimiento de lim
 
 ### Requerimientos no funcionales
 
+Tabla 10. Requerimientos no funcionales y mecanismos de cumplimiento
+
 | ID | Requerimiento no funcional | Mecanismo técnico de cumplimiento |
 |---|---|---|
 | RNF-01 | **Seguridad:** Autenticación obligatoria, RBAC, gestión de secretos por variables de entorno y sin credenciales en código. | Supabase Auth + Gateway JWT Verifier. |
@@ -498,24 +522,26 @@ En estricto cumplimiento del atributo de competencia sobre reconocimiento de lim
 
 ### Historias de usuario por épica y PMV
 
-| Épica | Historia de Usuario | PMV | Criterio de aceptación principal |
+Tabla 11. Historias de usuario por épica y PMV con criterios de aceptación
+
+| Épica | Historia de Usuario | PMV | Criterios de aceptación (Dado / Cuando / Entonces) |
 |---|---|---|---|
-| **E1: Observabilidad** | **HU-01:** Como administrador de TI, visualizar en tiempo real métricas de CPU, memoria y red para supervisar la infraestructura. | PMV1 | Consulta de telemetría vía Gateway con datos actualizados en intervalos de 15 s. |
-| **E1: Observabilidad** | **HU-02:** Como administrador de TI, consultar métricas históricas estructuradas para análisis de patrones. | PMV1 | Endpoint de series históricas con paginación keyset y filtros temporales. |
-| **E2: Predicción** | **HU-03:** Como administrador de TI, recibir predicciones de demanda de CPU a 15 minutos para anticipar cargas. | PMV2 | Predicción servida por API REST con latencia p95 < 2 s y metadata de origen. |
-| **E2: Predicción** | **HU-04:** Como analista de datos, comparar el modelo predictivo frente a baselines bajo los mismos datos. | PMV2 | Reducción de MAE verificable en validación cronológica frente a persistencia. |
-| **E2: Predicción** | **HU-05:** Como analista de datos, versionar y registrar métricas y modelos para reproducibilidad experimental. | PMV2 | Manifiesto técnico con hashes SHA-256 de configuración y artefactos. |
-| **E3: Optimización** | **HU-06:** Como administrador de TI, recibir recomendaciones explicables de redistribución de recursos. | PMV2 | Respuesta con acción sugerida y justificación explícita de reglas evaluadas. |
-| **E3: Optimización** | **HU-07:** Como administrador de TI, validar y aprobar recomendaciones antes de cualquier ejecución técnica. | PMV2 | Modo *Recommendation-Only* (`executionAllowed=false`) sin ejecución autónoma. |
-| **E3: Optimización** | **HU-08:** Como administrador de TI, configurar restricciones operativas de SLA y márgenes de seguridad. | PMV2 | La política se abstiene si los datos son obsoletos o violan márgenes seguros. |
-| **E4: Energía** | **HU-09:** Como directivo, visualizar indicadores de energía física estimada mediante integración numérica. | PMV2-PMV3 | Endpoint `/v1/energy` con cálculo trapezoidal a partir de lecturas de potencia. |
-| **E4: Energía** | **HU-10:** Como directivo, conocer estimaciones de huella de carbono basadas en factores de emisión oficiales. | PMV3 | Rechazo de estimación si no se provee factor de emisión con fuente verificable. |
-| **E5: Visualización** | **HU-11:** Como administrador de TI, disponer de un dashboard interactivo con métricas y predicciones. | PMV2 | Interfaz web estática responsiva servida por Nginx conectada al Gateway. |
-| **E5: Visualización** | **HU-12:** Como administrador de TI, recibir alertas visuales ante saturación o riesgo de incumplimiento de SLA. | PMV2-PMV3 | Alertas en interfaz diferenciadas por código de severidad (alta, media, normal). |
-| **E5: Visualización** | **HU-13:** Como directivo, exportar reportes consolidados en formatos abiertos estructurados. | PMV3 | Exportación funcional de históricos y recomendaciones en formato CSV y JSON. |
-| **E6: Seguridad** | **HU-14:** Como administrador, restringir el acceso a endpoints operativos mediante roles diferenciados. | PMV3 | Respuestas HTTP 403 Forbidden ante solicitudes sin rol `ADMIN` requerido. |
-| **E6: Seguridad** | **HU-15:** Como usuario autorizado, registrar e iniciar sesión de forma segura mediante credenciales. | PMV1 | Emisión de tokens JWT válidos tras autenticación exitosa en Supabase Auth. |
-| **E7: Experimentación** | **HU-16:** Como investigador, ejecutar experimentos comparativos frente a una línea base equivalente. | PMV3 | Ejecución reproducible bajo cargas idénticas comparando indicadores clave. |
+| **E1: Observabilidad** | **HU-01:** Como administrador de TI, visualizar en tiempo real métricas de CPU, memoria y red para supervisar la infraestructura. | PMV1 | **Dado** un administrador de TI que accede a la telemetría a través del Gateway; **cuando** consulta las métricas de CPU, memoria y red; **entonces** recibe datos actualizados en intervalos de 15 s. |
+| **E1: Observabilidad** | **HU-02:** Como administrador de TI, consultar métricas históricas estructuradas para análisis de patrones. | PMV1 | **Dado** un administrador de TI que requiere series históricas; **cuando** consulta el endpoint de series con filtros temporales; **entonces** obtiene los datos con paginación keyset. |
+| **E2: Predicción** | **HU-03:** Como administrador de TI, recibir predicciones de demanda de CPU a 15 minutos para anticipar cargas. | PMV2 | **Dado** un administrador de TI con datos históricos disponibles; **cuando** solicita la predicción de CPU a 15 minutos mediante la API REST; **entonces** recibe la predicción con latencia p95 < 2 s y metadata de origen. |
+| **E2: Predicción** | **HU-04:** Como analista de datos, comparar el modelo predictivo frente a baselines bajo los mismos datos. | PMV2 | **Dado** un analista de datos con los mismos datos para el modelo y los baselines; **cuando** evalúa los modelos con validación cronológica; **entonces** se verifica la reducción de MAE frente a persistencia. |
+| **E2: Predicción** | **HU-05:** Como analista de datos, versionar y registrar métricas y modelos para reproducibilidad experimental. | PMV2 | **Dado** un analista de datos que entrena y registra modelos; **cuando** finaliza el registro de la configuración y los artefactos; **entonces** se genera un manifiesto técnico con hashes SHA-256 de configuración y artefactos. |
+| **E3: Optimización** | **HU-06:** Como administrador de TI, recibir recomendaciones explicables de redistribución de recursos. | PMV2 | **Dado** un administrador de TI que solicita una recomendación de redistribución de recursos; **cuando** el motor de políticas evalúa la solicitud; **entonces** la respuesta incluye la acción sugerida y la justificación explícita de las reglas evaluadas. |
+| **E3: Optimización** | **HU-07:** Como administrador de TI, validar y aprobar recomendaciones antes de cualquier ejecución técnica. | PMV2 | **Dado** una recomendación emitida por el sistema; **cuando** el administrador de TI debe validarla antes de cualquier ejecución técnica; **entonces** el modo *Recommendation-Only* (`executionAllowed=false`) impide la ejecución autónoma. |
+| **E3: Optimización** | **HU-08:** Como administrador de TI, configurar restricciones operativas de SLA y márgenes de seguridad. | PMV2 | **Dado** un administrador de TI que configura restricciones operativas de SLA y márgenes de seguridad; **cuando** los datos están obsoletos o violan los márgenes seguros; **entonces** la política se abstiene de recomendar. |
+| **E4: Energía** | **HU-09:** Como directivo, visualizar indicadores de energía física estimada mediante integración numérica. | PMV2-PMV3 | **Dado** un directivo que consulta indicadores de energía y lecturas de potencia disponibles; **cuando** invoca el endpoint `/v1/energy`; **entonces** obtiene la energía estimada mediante cálculo trapezoidal a partir de dichas lecturas. |
+| **E4: Energía** | **HU-10:** Como directivo, conocer estimaciones de huella de carbono basadas en factores de emisión oficiales. | PMV3 | **Dado** un directivo que solicita una estimación de huella de carbono; **cuando** no se provee un factor de emisión con fuente verificable; **entonces** el sistema rechaza la estimación. |
+| **E5: Visualización** | **HU-11:** Como administrador de TI, disponer de un dashboard interactivo con métricas y predicciones. | PMV2 | **Dado** un administrador de TI con acceso a la interfaz web; **cuando** abre el dashboard servido por Nginx y conectado al Gateway; **entonces** dispone de una interfaz estática responsiva con métricas y predicciones. |
+| **E5: Visualización** | **HU-12:** Como administrador de TI, recibir alertas visuales ante saturación o riesgo de incumplimiento de SLA. | PMV2-PMV3 | **Dado** un administrador de TI atento a la saturación o al riesgo de incumplimiento de SLA; **cuando** se presenta una de esas condiciones; **entonces** la interfaz muestra alertas diferenciadas por código de severidad (alta, media, normal). |
+| **E5: Visualización** | **HU-13:** Como directivo, exportar reportes consolidados en formatos abiertos estructurados. | PMV3 | **Dado** un directivo que requiere reportes consolidados; **cuando** solicita la exportación de históricos y recomendaciones; **entonces** obtiene los datos en formato CSV y JSON. |
+| **E6: Seguridad** | **HU-14:** Como administrador, restringir el acceso a endpoints operativos mediante roles diferenciados. | PMV3 | **Dado** un administrador que restringe el acceso a endpoints operativos por roles; **cuando** una solicitud llega sin el rol `ADMIN` requerido; **entonces** recibe una respuesta HTTP 403 Forbidden. |
+| **E6: Seguridad** | **HU-15:** Como usuario autorizado, registrar e iniciar sesión de forma segura mediante credenciales. | PMV1 | **Dado** un usuario autorizado con credenciales; **cuando** se registra e inicia sesión con éxito en Supabase Auth; **entonces** se emite un token JWT válido. |
+| **E7: Experimentación** | **HU-16:** Como investigador, ejecutar experimentos comparativos frente a una línea base equivalente. | PMV3 | **Dado** un investigador que ejecuta experimentos frente a una línea base equivalente; **cuando** aplica cargas idénticas a ambos escenarios; **entonces** la ejecución es reproducible y permite comparar los indicadores clave. |
 
 ### Flujo de navegación de pantallas
 
@@ -545,6 +571,8 @@ $$\text{Inicio} \longrightarrow \text{Registro} \longrightarrow \text{Confirmaci
 ### Evaluación y selección del motor de base de datos
 
 Para la gestión de metadatos de infraestructura, configuraciones de experimentos, perfiles de usuario y registros históricos de trazabilidad, se evaluaron tres alternativas de bases de datos mediante una matriz de selección con ponderación uniforme del 25 %:
+
+Tabla 12. Evaluación ponderada de los motores de base de datos
 
 | Criterio de evaluación | Peso | PostgreSQL | MySQL | MongoDB |
 |---|---|---|---|---|
@@ -586,6 +614,8 @@ CAPTURA-PENDIENTE-C101: Código y definición de la función PL/pgSQL y disparad
 ### Evaluación y selección de la arquitectura de software
 
 Se evaluaron tres estilos arquitectónicos para el prototipo experimental considerando la complejidad de operación y las restricciones académicas:
+
+Tabla 13. Evaluación ponderada de los estilos arquitectónicos
 
 | Criterio de evaluación (peso) | Monolito en capas | Microservicios clásicos | Microservicios con hexagonal (Híbrida) |
 |---|---|---|---|
@@ -640,6 +670,8 @@ La solución se despliega en dos modalidades verificadas:
 
 ### VII.1. Acta de Constitución del Proyecto (Project Charter)
 
+Tabla 14. Acta de constitución del proyecto (Project Charter)
+
 |Elemento|Descripción|
 |---|---|
 |Nombre del proyecto|Green AI: Monitoreo y predicción de demanda computacional para apoyar la gestión eficiente de recursos en entornos universitarios (Proyecto 20)|
@@ -670,17 +702,21 @@ La adopción de Scrum con elementos de flujo visual Kanban (*Scrumban*) responde
 
 #### VII.2.2. Adaptación de ceremonias y prácticas (Tailoring)
 
+Tabla 15. Adaptación de ceremonias y prácticas Scrum (tailoring)
+
 |Práctica / Ceremonia|Adaptación en el proyecto Green AI|
 |---|---|
 |Product Backlog|Catálogo de 20 requerimientos funcionales (RF-01 a RF-20) expresados como Historias de Usuario (HU) con criterios de aceptación BDD (Given-When-Then), organizadas por PMV en el tablero oficial de Trello en el workspace UC.|
-|Duración de los Sprints|Sprints de 14 días calendario (2 semanas) estructurados dentro de un ciclo académico de 16 semanas (8 Sprints en total).|
+|Duración de los Sprints|Ocho Sprints en total dentro del ciclo académico: los Sprints 1 a 6 son de 14 días calendario (2 semanas); por el calendario lectivo, que concluye el 30/11/2026, los Sprints 7 y 8 se reducen a una semana cada uno (17/11–23/11 y 24/11–30/11), adaptación (*tailoring*) propia de este proyecto.|
 |Daily Scrum adaptado|Sincronizaciones virtuales asíncronas tres veces por semana (lunes, miércoles y viernes) mediante grupo de mensajería (WhatsApp) y registro auditable en tarjetas de Trello, adecuándose a los horarios heterogéneos del equipo.|
 |Refinamiento y Planificación|Sesiones integradas de planificación al inicio de cada sprint para priorizar historias, estimar esfuerzo y revisar criterios de aceptación técnicos sin sobrecarga administrativa.|
-|Sprint Review y Retrospectiva|Demostración técnica del incremento funcional ante el asesor académico al cierre de cada sprint de 14 días, y ejecución de análisis retrospectivo formal bajo ciclo PDCA (Plan-Do-Check-Act) al término de cada PMV.|
+|Sprint Review y Retrospectiva|Demostración técnica del incremento funcional ante el asesor académico al cierre de cada sprint, y ejecución de análisis retrospectivo formal bajo ciclo PDCA (Plan-Do-Check-Act) al término de cada PMV.|
 
 #### VII.2.3. Matriz de asignación de roles y responsabilidades (RACI)
 
 La gestión operativa del proyecto distribuye las responsabilidades entre los cuatro integrantes del equipo, considerando además la asistencia técnica de inteligencia artificial como soporte de coordinación supervisado. Ante el requisito de 5 roles de la rúbrica S8 frente a un equipo de 4 integrantes, las funciones de aseguramiento de calidad (QA) y operaciones de infraestructura (DevOps) se asumen de manera transversal y compartida entre los integrantes.
+
+Tabla 16. Matriz de asignación de roles y responsabilidades (RACI)
 
 |Actividad / Entregable de ingeniería|Jhonny Quintana (PO)|Gina Barrera (SM/ML)|Ricardo Porras (Dev)|Leonid Huamán (Infra)|Claude (IA)|
 |---|---|---|---|---|---|
@@ -723,6 +759,8 @@ Figura VII.2.5. Modelado UML de partes interesadas y flujos de interacción del 
 #### VII.2.5. Registro adaptativo y cuantificado de riesgos por PMV (Cálculo del VME)
 
 La gestión de riesgos se abordó de manera cuantitativa vinculando cada amenaza identificada con su probabilidad de ocurrencia y su impacto económico estimado en horas de ingeniería (valoradas a la tarifa de referencia de S/ 30.00 / h). La suma de los Valores Monetarios Esperados (VME = Probabilidad × Impacto) sustenta directamente la Reserva de Contingencia del presupuesto PMBOK:
+
+Tabla 17. Registro cuantitativo de riesgos y planes de respuesta
 
 |ID|Riesgo identificado|PMV|Probabilidad|Impacto (h / S/)|VME (S/)|Plan de respuesta / Mitigación de ingeniería|
 |---|---|---|---|---|---|---|
@@ -783,6 +821,8 @@ Green AI
 
 #### VII.3.2. Tabla Resumen de Paquetes de Trabajo por PMV y Responsable
 
+Tabla 18. Paquetes de trabajo por PMV y responsable
+
 |Código EDT|Paquete de trabajo|Rama EDT|PMV / Ciclo|Sprint|Responsable principal|Entregable auditable|
 |---|---|---|---|---|---|---|
 |1.1|Inicio del proyecto y Project Charter|Gestión|Transversal|Sprint 1|Jhonny Quintana (PO)|Project Charter firmado y registro de partes interesadas|
@@ -811,13 +851,15 @@ Debido al contexto académico de la asignatura Taller de Proyectos de Ingenierí
 
 #### VII.4.2. Desglose del Esfuerzo Directo de Ingeniería (Horas-Hombre)
 
-La estimación de la mano de obra directa se calcula formalmente a partir de la dedicación horaria de los 4 integrantes del equipo a lo largo del cronograma de 16 semanas académicas (8 Sprints de 14 días):
+La estimación de la mano de obra directa se calcula formalmente a partir de la dedicación horaria de los 4 integrantes del equipo a lo largo del cronograma de ocho Sprints (seis de 14 días y dos de una semana, por el cierre del periodo lectivo el 30/11/2026):
 
 ![](evidencias/p043-img014.png)
 
 $$\text{Horas Totales} = 4\text{ ingenieros} \times 10\text{ horas/semana} \times 16\text{ semanas} = 640\text{ horas-hombre}$$
 
 Considerando una tarifa horaria de mercado referencial en el medio local de S/ 30.00 / h para profesionales junior de ingeniería de sistemas, el esfuerzo profesional se distribuye por rol de la siguiente manera:
+
+Tabla 19. Estimación de la mano de obra directa por rol
 
 |Código EDT|Rol de ingeniería / Responsable|Integrante|Dedicación (h)|Tarifa horaria (S/)|Subtotal comercial (S/)|
 |---|---|---|---|---|---|
@@ -830,6 +872,8 @@ Considerando una tarifa horaria de mercado referencial en el medio local de S/ 3
 #### VII.4.3. Valoración de Licencias de Software, Cloud y Equipamiento
 
 Para preservar el principio de costo de desembolso real nulo (S/ 0.00), se seleccionaron herramientas tecnológicas libres de costo de adquisición, valorando su aporte a precio de mercado:
+
+Tabla 20. Costos del componente tecnológico: desembolso real y valor comercial referencial
 
 |Componente tecnológico|Categoría de licencia / Modelo|Costo financiero real (S/)|Valor comercial referencial (S/)|Justificación técnica y operativa|
 |---|---|---|---|---|
@@ -860,6 +904,8 @@ Conforme a las directrices del PMBOK (7.a Edición), la estructura presupuestal 
 #### VII.4.5. Matriz Consolidada de Cálculo Presupuestal
 
 
+Tabla 21. Matriz consolidada de cálculo presupuestal
+
 |Nivel presupuestal|Componente|Base de estimación / Fórmula|Valor comercial referencial (S/)|Desembolso financiero real (S/)|
 |---|---|---|---|---|
 |Nivel 1|Mano de obra directa (Ingeniería)|640 horas-hombre × S/ 30.00 / h|S/ 19,200.00|S/ 0.00|
@@ -878,11 +924,13 @@ Si el jurado evaluador o el comité de acreditación consulta acerca de la consi
 
 #### VII.4.7. Plan de Comunicaciones
 
+Tabla 22. Plan de comunicaciones del proyecto
+
 |Evento / Ceremonia|Canal / Herramienta|Frecuencia|Participantes|Registro auditable|
 |---|---|---|---|---|
 |Sincronización diaria (Daily Scrum)|Grupo de WhatsApp y Trello|3 veces por semana (lun, mié, vie)|Equipo técnico de desarrollo|Tarjetas en Trello con las 3 preguntas estándar y bloqueos.|
 |Gestión del Product Backlog|Trello (Workspace oficial UC)|Continua|Equipo técnico y Product Owner|Tarjetas organizadas en las 11 listas normadas y burndown.|
-|Revisión de Sprint (Sprint Review)|Google Meet|Cada 14 días (cierre de sprint)|Equipo técnico y asesor académico|Demostración funcional del incremento y acta de feedback.|
+|Revisión de Sprint (Sprint Review)|Google Meet|Al cierre de cada sprint (cada 14 días en los Sprints 1 a 6; cada semana en los Sprints 7 y 8)|Equipo técnico y asesor académico|Demostración funcional del incremento y acta de feedback.|
 |Retrospectiva de Sprint|Google Meet / Trello|Al cierre de cada PMV (cada 3-4 sprints)|Equipo técnico completo|Matriz de compromisos y lecciones aprendidas PDCA.|
 |Seguimiento técnico y de código|GitHub Monorepo|Continua|Desarrolladores y revisores|Pull Requests, revisiones de diff y bitácora de commits.|
 |Monitoreo operativo y métricas|Prometheus y Grafana|En tiempo real|Equipo de operaciones y PO|Métricas de CPU, memoria y alertas de disponibilidad.|
@@ -891,27 +939,29 @@ Si el jurado evaluador o el comité de acreditación consulta acerca de la consi
 
 #### VII.5.1. Cronograma y Diagrama de Gantt Planificado
 
-![Figura VII.5.1. Cronograma de y diagrama de Gantt planificado](evidencias/p047-img016.png)
+![Figura VII.5.1. Cronograma y diagrama de Gantt planificado (fechas ajustadas al 30/11/2026)](evidencias/gantt-planificado-2026-11.png)
 
 Figura VII.5.1. Cronograma planificado de actividades y diagrama de Gantt de referencia.
 
 #### VII.5.2. Cronograma y Diagrama de Gantt Ejecutado
 
-![Figura VII.5.2. Cronograma de y diagrama de Gantt ejecutado](evidencias/p047-img017.png)
+![Figura VII.5.2. Cronograma y diagrama de Gantt ejecutado (corte 11/11/2026)](evidencias/gantt-ejecutado-2026-11.png)
 
-Figura VII.5.2. Cronograma de ejecución real y avance temporal por sprints.
+Figura VII.5.2. Cronograma de ejecución real y avance temporal por sprints con corte al 11/11/2026; las actividades posteriores a esa fecha se muestran como planificadas, no como realizadas.
 
 #### VII.5.3. Fundamentación de la Gestión Temporal y Control de Línea Base
 
-La planificación temporal del proyecto se estructuró originalmente sobre un ciclo de 16 semanas académicas organizadas en 8 Sprints de 14 días, divididos en tres fases o Productos Mínimos Viables (PMVs):
+La planificación temporal del proyecto se estructuró originalmente sobre el ciclo académico organizado en 8 Sprints, divididos en tres fases o Productos Mínimos Viables (PMVs). Los Sprints 1 a 6 son de 14 días; dado que el periodo lectivo concluye el 30/11/2026, los Sprints 7 y 8 se reducen a una semana cada uno (adaptación o *tailoring* del calendario), de modo que ninguna fecha planificada excede dicho cierre:
 
 - **PMV1 — Viabilidad Técnica y Pipeline de Observabilidad (Sprints 1 a 3 | Semanas 1 a 6):** recolección continua de telemetría de CPU simulada cada 15 segundos mediante Prometheus, desarrollo del pipeline ETL de limpieza e interpolación, y evaluación del modelo baseline de referencia.
 - **PMV2 — Solución Predictiva y Motor de Recomendaciones (Sprints 4 a 6 | Semanas 7 a 12):** entrenamiento y validación del modelo Random Forest a 15 minutos, integración del Policy Engine desacoplado en modo Recommendation-Only (`executionAllowed=false`), exposición de endpoints REST en FastAPI y visualización de telemetría en tiempo real.
-- **PMV3 — Validación Experimental y Consolidación (Sprints 7 y 8 | Semanas 13 a 16):** control de acceso por roles (RBAC), reportes estructurados JSON/CSV vía API, ejecución del experimento comparativo (Baseline vs. Green AI) bajo condiciones de carga controladas y análisis de consumo energético modelado en kWh.
+- **PMV3 — Validación Experimental y Consolidación (Sprints 7 y 8 | Semanas 13 y 14, 17/11/2026 – 30/11/2026):** control de acceso por roles (RBAC), reportes estructurados JSON/CSV vía API, ejecución del experimento comparativo (Baseline vs. Green AI) bajo condiciones de carga controladas y análisis de consumo energético modelado en kWh.
 
 ##### Análisis de la línea base frente a la ejecución real
 
 El calendario académico del curso avanzó con **una semana de anticipación** respecto a la línea base temporal formulada al inicio del semestre. En consecuencia, al momento de la entrega del informe de Unidad III (Semana 11 lectiva, corte al 05/11/2026), el equipo de ingeniería se encuentra ejecutando activamente el **Sprint 6 (03/11/2026 – 14/11/2026, semanas 11–12)**:
+
+Tabla 23. Línea base frente a la ejecución real por Sprint
 
 |Sprint / Fase|Compromiso planificado|Estado real de ejecución (Noviembre 2026)|
 |---|---|---|
@@ -919,12 +969,12 @@ El calendario académico del curso avanzó con **una semana de anticipación** r
 |Sprint 4 (Semanas 7–8)|Inicio de PMV2: pipeline de datos y EDA de ML|**Completado.** Ingesta en Data Processing, limpieza de valores nulos y exploración de series temporales.|
 |Sprint 5 (Semanas 9–10)|Selección de modelo predictivo y Policy Engine|**Completado.** Selección de Random Forest a 15 min (MAE 3.22 y RMSE 4.59 pp en validación; MAE 3.85 en test; 100 tests pasados en Prediction) y recomendaciones desacopladas.|
 |Sprint 6 (Semanas 11–12)|Alertas, tablero de eficiencia y empaquetado|**En ejecución.** Alertas Prometheus configuradas (promtool validado), cálculo de kWh con modelo P(u), imagen liviana de Prediction (510 MB) y preparación de staging en Render.|
-|Sprint 7 (Semanas 13–14)|RBAC, reportes estructurados y diseño experimental|**Planificado / En preparación.** Rol VIEWER de solo lectura (RBAC en Gateway), reporte estructurado JSON/CSV (`/api/processing/v1/reports/historical-summary`, 121 tests pasados) y diseño del experimento Baseline vs. Green AI.|
-|Sprint 8 (Semanas 15–16)|Experimento comparativo y cierre del proyecto|**Planificado.** Ejecución de pruebas de carga, informe final consolidado y sustentación académica.|
+|Sprint 7 (17/11–23/11, semana 13)|RBAC, reportes estructurados y diseño experimental|**Planificado / En preparación.** Rol VIEWER de solo lectura (RBAC en Gateway), reporte estructurado JSON/CSV (`/api/processing/v1/reports/historical-summary`, 121 tests pasados) y diseño del experimento Baseline vs. Green AI.|
+|Sprint 8 (24/11–30/11, semana 14)|Experimento comparativo y cierre del proyecto|**Planificado.** Ejecución de pruebas de carga, informe final consolidado y sustentación académica.|
 
 #### VII.5.4. Cronograma planificado
 
-![Figura VII.5.1: Fundamentación y Fecha de Corte Oficial del Proyecto](evidencias/p049-img018.png)
+![Figura VII.5.3. Fundamentación y fecha de corte oficial del proyecto](evidencias/cronograma-pmv-2026-11.png)
 
 Figura VII.5.3. Fundamentación metodológica y fechas de corte oficial del proyecto.
 
@@ -932,11 +982,13 @@ Figura VII.5.3. Fundamentación metodológica y fechas de corte oficial del proy
 
 La transición entre fases responde a compuertas de decisión (*Decision Gates*) sustentadas en criterios de calidad verificables:
 
+Tabla 24. Hitos de cierre y criterios de transición entre PMVs
+
 |Hito / PMV|Período|Entregables verificados / En desarrollo|Criterio de cierre y decisión técnica|Estado real de verificación|
 |---|---|---|---|---|
 |PMV1 (Hito H2)|25/08/2026 – 03/10/2026|Simulador de telemetría, Prometheus, servicio de monitoreo en Java (112 tests), API Gateway y frontend estático.|Telemetría continua cada 15 segundos sin pérdidas críticas y persistencia relacional verificada. Decisión: **Aprobado (GO a PMV2)**.|Completado y cerrado.|
 |PMV2 (Hito H5)|06/10/2026 – 14/11/2026|Modelo predictivo Random Forest a 15 min (MAE 3.22 pp, RMSE 4.59 pp en validación; MAE 3.85 pp en test), API REST en FastAPI (100 tests), Policy Engine desacoplado (`executionAllowed=false`), alertas de observabilidad y cálculo de energía modelada.|Superación de baselines clásicos (30 % de reducción de error sobre persistencia), tiempo de inferencia compatible con el ciclo de 15 s y ausencia de ejecuciones autónomas destructivas. Decisión: **En proceso de validación final**.|En ejecución activa (Sprint 6).|
-|PMV3 (Hito H7)|17/11/2026 – 12/12/2026|Control de acceso por roles (VIEWER / ADMIN), servicio de reportes históricos en JSON/CSV, experimento controlado comparativo (Baseline vs. Green AI) y análisis de consumo eléctrico modelado.|Evaluación cuantitativa de la reducción de sobreaprovisionamiento computacional y preservación estricta de SLA bajo carga simulada controlada. Decisión: **Proyectado para sustentación**.|Planificado para Sprints 7 y 8.|
+|PMV3 (Hito H7)|17/11/2026 – 30/11/2026|Control de acceso por roles (VIEWER / ADMIN), servicio de reportes históricos en JSON/CSV, experimento controlado comparativo (Baseline vs. Green AI) y análisis de consumo eléctrico modelado.|Evaluación cuantitativa de la reducción de sobreaprovisionamiento computacional y preservación estricta de SLA bajo carga simulada controlada. Decisión: **Proyectado para sustentación**.|Planificado para Sprints 7 y 8.|
 
 ### VII.6. RESULTADOS DE LA GESTIÓN DEL PROYECTO Y CONTROL DEL TABLERO TRELLO
 
@@ -1012,6 +1064,8 @@ Figura VII.6.7. Registro de evidencias y ceremonias ágiles en el tablero Trello
 
 Conforme a las directrices del PMBOK sobre el Control Integrado de Cambios, todo ajuste sobre la arquitectura, la infraestructura o el alcance del proyecto se gestiona mediante acciones preventivas o correctivas documentadas en un registro formal de cambios (Change Log). Durante el mes de noviembre de 2026, el equipo de ingeniería implementó una reestructuración técnica orientada a subsanar observaciones docentes, optimizar el uso de recursos computacionales y consolidar la reproducibilidad experimental:
 
+Tabla 25. Registro de control de cambios técnicos
+
 |ID|Fecha|Cambio técnico implementado|Tipo de acción|Motivo técnico / Justificación|Impacto en el sistema y evidencia en el repositorio|
 |---|---|---|---|---|---|
 |CHG-01|Octubre 2026|Integración del motor de recomendaciones dentro del servicio Prediction|Acción correctiva|Reducir la complejidad operacional y evitar el despliegue de un microservicio independiente adicional para toma de decisiones.|Se conserva íntegro el contrato de API `/api/recommendations/v1/*`; simplificación del despliegue en un único contenedor Python.|
@@ -1054,6 +1108,8 @@ El protocolo experimental empleó el conjunto de datos sintético `dataset-sim-0
 El vector de características para la inferencia incluyó: utilización actual de CPU ($t$), retardos temporales ($t-1$, $t-2$, $t-3$), estadísticos móviles sobre ventana deslizante (media, desviación estándar, mínimo y máximo), y componentes cíclicas temporales (hora, minuto y día codificados mediante funciones seno y coseno). Se aplicó una división cronológica estricta sin barajado (*no shuffle*): 70 % para entrenamiento, 15 % para validación ($n = 125$ muestras) y 15 % para prueba ($n = 129$ muestras). La ausencia de fuga de información hacia el futuro (*anti-leakage*) se validó mediante pruebas automatizadas unitarias (`tests/unit/test_anti_leakage.py`) con semilla determinista 42.
 
 Se evaluaron cuatro alternativas algorítmicas bajo idénticas condiciones sobre el conjunto de validación para el horizonte de 15 minutos:
+
+Tabla 26. Comparación de alternativas algorítmicas de predicción
 
 | Alternativa | Tipo de modelo | MAE (pp CPU) | RMSE (pp CPU) | sMAPE (%) | MAE alta demanda (>80 %, n=32) | MAE en picos (n=13) | Latencia media (ms) |
 |---|---|---|---|---|---|---|---|
@@ -1106,6 +1162,8 @@ Para verificar el cumplimiento funcional y contractual del sistema, se estructur
 
 La verificación automatizada comprende 333 pruebas unitarias, de integración y de contrato, más una suite de verificación de humo (*smoke test*) de 14 puntos de extremo a extremo:
 
+Tabla 27. Pruebas automatizadas por servicio
+
 | Servicio | Entorno y tecnología de prueba | Pruebas ejecutadas / aprobadas | Alcance técnico cubierto |
 |---|---|---|---|
 | Monitoring | Maven 3.9 / JUnit 5 | 112 / 112 | Pruebas unitarias, contratos HTTP y recolección desde Prometheus |
@@ -1125,7 +1183,9 @@ Figura VIII.4. Verificación de integración End-to-End mediante smoke test de 1
 
 #### Matriz de trazabilidad por historia de usuario (PMV1 y PMV2)
 
-La siguiente matriz documenta la correspondencia entre los requerimientos funcionales, los criterios de aceptación en formato Given/When/Then, los mecanismos de prueba y su estado de cumplimiento:
+La siguiente matriz (Tabla 28) documenta la correspondencia entre los requerimientos funcionales, los criterios de aceptación en formato Given/When/Then, los mecanismos de prueba y su estado de cumplimiento:
+
+Tabla 28. Matriz de trazabilidad por historia de usuario (PMV1 y PMV2)
 
 | HU | PMV | Criterio de aceptación (Given/When/Then) | Mecanismo de prueba / evidencia | Estado | Observación metodológica |
 |---|---|---|---|---|---|
@@ -1197,6 +1257,8 @@ La recolección de métricas a intervalos de 15 segundos durante una ventana de 
 Figura VIII.11. Formulación matemática de la matriz temporal volumétrica requerida para la inferencia.
 
 Debido a discontinuidades transitorias en la recolección (*scraping drops*), la extracción en bruto registró un 3,2 % de registros ausentes:
+
+Tabla 29. Calidad de la ingesta de telemetría y tratamiento aplicado
 
 | Métrica de ingesta | Conteo absoluto | Porcentaje | Estado de calidad y tratamiento |
 |---|---|---|---|
@@ -1409,7 +1471,7 @@ Figura VIII.35. Plan de experimentación comparativa de 24 horas y aseguramiento
 
 Durante las etapas recientes se alcanzaron los siguientes hitos de preparación del PMV3:
 1. **Control de acceso por roles (RBAC):** Se implementó el rol `VIEWER` (solo lectura) junto con `ADMIN` y `OPERATOR` en los perfiles de API Gateway Java y Go, garantizando que usuarios con permisos de visualización no puedan invocar endpoints de configuración.
-2. **Reportería de telemetría:** Se culminó el endpoint `GET /api/processing/v1/reports/historical-summary` en Data Processing Service con exportación en JSON y CSV, quedando la generación de PDF como tarea pendiente del Sprint 8.
+2. **Reportería de telemetría:** Se culminó el endpoint `GET /api/processing/v1/reports/historical-summary` en Data Processing Service con exportación en JSON y CSV, quedando la generación de PDF como tarea pendiente del Sprint 8 (24/11–30/11/2026).
 3. **Ejecución del protocolo baseline:** Se ejecutó el experimento comparativo formal entre aprovisionamiento reactivo (baseline) y predictivo (Green AI) utilizando los datos del conjunto de prueba.
 
 ---
@@ -1448,7 +1510,7 @@ Para evaluar si el aprovisionamiento predictivo de capacidad ofrece ventajas ope
   2. *Capacidad ociosa media (pp):* Promedio de capacidad computacional reservada en exceso respecto a la carga observada.
   3. *Energía modelada (Wh):* Consumo energético acumulado estimado a través del modelo proxy lineal $P(u) = P_{idle} + (P_{max} - P_{idle}) \times u$, con $P_{max} = 600\text{ W}$ y $P_{idle} = 300\text{ W}$ (50 % de la potencia máxima teórica para el servidor HW001).
 
-**Resultados experimentales consolidados (Split de prueba, n = 126 intervalos):**
+Tabla 30. Resultados experimentales consolidados por margen de seguridad (conjunto de prueba, n = 126 intervalos)
 
 | Margen de seguridad ($h$) | Riesgo SLA Baseline (%) | Riesgo SLA Green AI (%) | Variación de riesgo ($\Delta$ SLA) | Capacidad ociosa media Baseline / Green AI (pp) | Energía modelada Baseline / Green AI (Wh) | Variación de energía modelada |
 |---|---|---|---|---|---|---|
@@ -1467,6 +1529,8 @@ Para evaluar si el aprovisionamiento predictivo de capacidad ofrece ventajas ope
 
 Para comprobar la portabilidad del sistema, se realizaron ejecuciones en diversos entornos de desarrollo y ejecución:
 
+Tabla 31. Pruebas de portabilidad en distintos entornos
+
 | Dimensión de prueba | Entornos probados | Comportamiento observado | Dictamen de portabilidad e ingeniería |
 |---|---|---|---|
 | Sistemas operativos | • Linux Ubuntu Server 22.04 LTS<br>• Windows 11 Pro (WSL2)<br>• macOS Sonoma (Unix) | Empaquetado homogéneo mediante contenedores Docker con compilación reproducible. | Portabilidad verificada en las tres plataformas sin discrepancias de dependencias. |
@@ -1477,7 +1541,9 @@ Para comprobar la portabilidad del sistema, se realizaron ejecuciones en diverso
 
 #### VIII.3.3. Matriz maestra de estado de ejecución de componentes
 
-La siguiente tabla consolida el estado auditable de los módulos del proyecto:
+La siguiente tabla (Tabla 32) consolida el estado auditable de los módulos del proyecto:
+
+Tabla 32. Estado auditable de los módulos del proyecto
 
 | Componente / Épica | Requerimiento / HU | PMV | Estado verificado | Artefacto de soporte | Alcance y límite técnico real |
 |---|---|---|---|---|---|
@@ -1525,6 +1591,8 @@ Se rectifican las afirmaciones de consumos de RAM inferiores a 35 MB y latencias
 ### VIII.5. Discusión Académica Comparativa con los Antecedentes (Indicador 6)
 
 Para evaluar el rigor metodológico y el aporte de Green AI en relación con el estado del arte indexado, los resultados obtenidos se contrastaron cuantitativamente con tres investigaciones científicas recientes de alto impacto:
+
+Tabla 33. Comparación del prototipo Green AI con los antecedentes (discusión)
 
 | Dimensión / Criterio | Prototipo Green AI | Antecedente 1: Khan et al. (2022) [1] | Antecedente 2: Ji et al. (2021) [2] | Antecedente 3: Sharma y Garg (2020) [3] | Análisis crítico y lectura honesta |
 |---|---|---|---|---|---|
@@ -1703,6 +1771,26 @@ Figura A.8. Panel de servicios activos en la plataforma en la nube Render.
 Figura A.9. Tablero Kanban de seguimiento ágil del proyecto en el espacio de trabajo oficial.
 
 ---
+
+#### Guion de sustentación en video según la lista de cotejo
+
+La siguiente tabla (Tabla 34) relaciona cada ítem de la lista de cotejo de la Unidad III con el episodio del guion de sustentación en video (`docs/exposicion/GUION-VIDEO-UNIDAD-III.md`), el rótulo que se muestra en pantalla y el integrante que lo presenta. Los ítems que corresponden únicamente al informe escrito se señalan como no cubiertos por el guion. El enlace del video se consigna en este anexo (VIDEO-URL-PENDIENTE).
+
+Tabla 34. Correspondencia entre la lista de cotejo y el guion de sustentación en video
+
+| Ítem de la lista de cotejo | Episodio / parte del guion (minuto) | Rótulo en pantalla | Integrante |
+|---|---|---|---|
+| 1. Entrega individual dentro del plazo establecido | No cubierto en el guion | No cubierto en el guion | No cubierto en el guion |
+| 2. Título, autores, resumen y abstract | No cubierto en el guion | No cubierto en el guion | No cubierto en el guion |
+| 3. Introducción, marco teórico y antecedentes | No cubierto en el guion | No cubierto en el guion | No cubierto en el guion |
+| 4. Metodología de gestión de proyecto e ingeniería de producto (Scrum, Kanban, cronograma) | Episodio 6: Tablero Trello y contenidos (17:33 – 19:44) | «Episodio 6: Tablero Trello y contenidos» | Gina (17:33 – 18:16) y Jhonny (18:16 – 19:44) |
+| 5. Pruebas y resultados del PMV1 y PMV2 con ML (métricas de ML, arquitectura, agilidad, calidad) | Episodio 4: Pruebas con métricas (12:55 – 15:44) | «Episodio 4: Pruebas con métricas» | Gina (12:55 – 13:30) y Jhonny (13:30 – 15:44) |
+| 6. Discusión frente a tres estudios previos | No cubierto en el guion | No cubierto en el guion | No cubierto en el guion |
+| 7. Conclusiones de los objetivos del PMV1 y PMV2 | No cubierto en el guion | No cubierto en el guion | No cubierto en el guion |
+| 8. Redacción, presentación, carátula, citas y referencias ISO 690 | No cubierto en el guion | No cubierto en el guion | No cubierto en el guion |
+| 9. Demostración con 500 a 1000 transacciones del PMV1 y PMV2 en entorno de calidad | Episodios 1, 2 y 3 (00:44 – 12:55); la carga de 601 transacciones corresponde al Episodio 3 | «Episodio 3: Pruebas con data masiva (601 transacciones)» y rótulos de los Episodios 1 y 2 | Leonid (Episodios 1 y 2 hasta 03:55), Jhonny (Episodio 2 desde 03:55) y Ricardo (Episodio 3) |
+| 10. Demostración de la integración con ML (primer y segundo caso de uso de predicción) | Episodio 5: Predicciones con ML del PMV1 y PMV2 (15:44 – 17:33) | «Episodio 5: Predicciones con ML del PMV1 y PMV2» | Gina |
+| 11. Arquitectura hexagonal, procedimientos almacenados en GitHub y tablero Kanban completo | Episodios 6 y 7 (17:33 – 23:39): tablero Trello y código en GitHub | «Episodio 6: Tablero Trello y contenidos» y «Episodio 7: Arquitectura hexagonal y procedimientos almacenados» | Gina y Jhonny (Episodio 6) y Ricardo (Episodio 7) |
 
 ### Anexo B. Script de generación de datos sintéticos de prueba
 
