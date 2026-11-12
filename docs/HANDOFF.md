@@ -359,4 +359,4 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - C310: captura del usuario del PR #6 (abierto, sin revisión) insertada con pie honesto. CI del PR: 6/6 checks en verde (`gh pr checks 6`).
 - S07: captura del usuario de `nginx.conf` en GitHub insertada como evidencia de configuración.
 - C203: el Daily del 09/11 no se completó en Trello; la lista pide un Daily real posterior, sin retrofechar.
-- Reexportado solo semana 13 (38 páginas, 2 marcadores: S04, S08). El informe **no** se reexportó: estaba abierto en Word (PID con título del informe). Markdown del informe: 4 marcadores (C203, C204, C312, C313).
+- Reexportados: semana 13 (38 páginas, 2 marcadores: S04, S08) e informe (116 páginas, 4 marcadores: C203, C204, C312, C313; portada con el logo revisada en PDF).
