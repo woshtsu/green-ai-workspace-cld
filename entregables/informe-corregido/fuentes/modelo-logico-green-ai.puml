@@ -1,0 +1,73 @@
+@startuml modelo-logico-green-ai
+' Modelo lógico de la base de datos real en Supabase (proyecto green-ai), 15/11/2026.
+skinparam dpi 220
+skinparam shadowing false
+skinparam linetype ortho
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #1F4E3D
+  HeaderBackgroundColor #E3EFE7
+  ArrowColor #1F4E3D
+}
+hide circle
+hide methods
+
+package "Esquema public (datos del sistema)" #F7FAF8 {
+  entity "usuario" as usuario {
+    * usuario_id : identificador <<PK>>
+    --
+    nombre_completo
+    email <<único>>
+    rol
+    fecha_creacion
+  }
+  entity "hardware\n(servidor del centro de datos)" as hardware {
+    * hardware_id : identificador <<PK>>
+    --
+    usuario_id <<FK>>
+    hostname
+    ip_address
+    cpu_cores
+    ram_gb
+    max_watts
+    ubicacion_rack
+    estado
+    fecha_registro
+  }
+  entity "logs\n(telemetría por instante)" as logs {
+    * log_id : identificador <<PK>>
+    --
+    hardware_id <<FK>>
+    timestamp
+    cpu_utilization_pct
+    ram_utilization_pct
+    temperatura_celsius
+    energia_watts
+    prediccion_watts
+    accion_recomendada
+    cumple_sla
+  }
+}
+package "Autenticación (Supabase Auth)" #F4F6FA {
+  entity "auth.users" as authusers {
+    * id : uuid <<PK>>
+  }
+  entity "user_profiles" as profiles {
+    * id : uuid <<PK, FK>>
+    --
+    full_name
+    created_at
+  }
+  entity "user_roles" as roles {
+    * user_id : uuid <<PK, FK>>
+    --
+    role : app_role (ADMIN, OPERATOR, VIEWER)
+  }
+}
+usuario ||--o{ hardware : "administra"
+hardware ||--o{ logs : "registra"
+authusers ||--|| profiles : "tiene"
+authusers ||--|| roles : "tiene"
+@enduml

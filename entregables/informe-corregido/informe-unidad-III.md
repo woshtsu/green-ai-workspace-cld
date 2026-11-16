@@ -160,6 +160,9 @@ Tabla 2. Indicadores cuantitativos observados en el conjunto de datos sintético
 | Potencia media / percentil 95 (columna referencial `energia_watts`) | 318 W / 630 W (capacidad nominal asignada: 450 W – 800 W) |
 | Registros con incumplimiento de SLA (`cumple_sla = false`) | 6,13 % del total de muestras |
 
+![Consola de Windows (15/11/2026): pandas sobre BD_GreenAi.xlsx calcula 100 000 registros de 50 servidores, CPU media 50,1 %, p95 86,4 %, RAM 45,2 %/81,7 %, potencia 318/630 W y 6,13 % de registros sin SLA](evidencias-nube/captura-M02-dataset-estadisticos.png)
+*Figura 1.a. Cálculo de los indicadores de la Tabla 2 con pandas sobre el dataset sintético (herramienta: Python 3 + pandas).*
+
 Se subraya que estas cifras provienen de un generador sintético y no representan mediciones físicas de servidores de la Universidad Continental. Su propósito exclusivo es calibrar los componentes de ingesta, preprocesamiento y entrenamiento de modelos.
 
 ### Restricciones del proyecto
@@ -467,9 +470,9 @@ Tabla 8. Herramientas empleadas, su aplicación y limitaciones reconocidas
 |---|---|---|---|
 | **Simulación** | Simulator propio (Python 3.12 CLI) | Generación de telemetría de 50 servidores (10 pruebas unitarias). | Datos sintéticos; no reproduce perturbaciones físicas no modeladas. |
 | **Observabilidad** | Prometheus 3.13 | Recolección temporal y consultas PromQL de métricas de CPU y memoria. | Retención local orientada al corto plazo; no sustituye almacén histórico relacional. |
-| **Backend Monitoreo** | Java 21, Spring Boot 3.x | Ingesta y catálogo de métricas (`software/monitoring`, 112 pruebas). | Alto consumo de memoria de la JVM (~210 MiB en reposo). |
+| **Backend Monitoreo** | Java 21, Spring Boot 3.x | Ingesta y catálogo de métricas (`software/monitoring`, 112 pruebas). | Alto consumo de memoria de la JVM (~239 MiB en reposo, `docker stats`, 15/11/2026). |
 | **API Gateway** | Spring Cloud Gateway (Java 21) | Pasarela perimetral, JWT, RBAC y CORS (`software/gateway`, 12 pruebas). | Imagen pesada (520 MB) y huella de memoria elevada (~283 MiB en reposo). |
-| **Gateway Ligero** | Go 1.25 stdlib (`gateway-go`) | Alternativa creada de alto rendimiento (30 pruebas; 0 diferencias en 39 casos). | Imagen reducida (16,2 MB) y ~10 MiB RAM; pendiente de prueba de carga con tráfico concurrente real. |
+| **Gateway Ligero** | Go 1.25 stdlib (`gateway-go`) | Alternativa creada de alto rendimiento (32 pruebas; 0 diferencias en 39 casos). | Imagen reducida (16,2 MB) y ~8 MiB RAM; pendiente de prueba de carga con tráfico concurrente real. |
 | **Ingesta y Datos** | Python 3.12, FastAPI, pandas | Normalización y ventanas temporales (`software/data-processing`, 121 pruebas). | Pandas carga estructuras completas en memoria RAM. |
 | **Machine Learning** | scikit-learn, XGBoost, NumPy | Entrenamiento y evaluación de modelos (`software/prediction`, 100 pruebas). | Modelos de árboles no extrapolan tendencias fuera del rango de entrenamiento. |
 | **Persistencia** | Supabase (PostgreSQL + Auth) / SQLite | Almacén relacional, usuarios y roles; perfil SQLite local sin red externa. | Plan gratuito en nube; SQLite carece de RLS nativo y procedimientos PL/pgSQL. |
@@ -487,6 +490,12 @@ En estricto cumplimiento del atributo de competencia sobre reconocimiento de lim
 
 1. **Huella de recursos en lenguajes de servidor:** La pasarela original en Spring Cloud Gateway demanda 520 MB en imagen Docker y ~283 MiB de RAM en reposo. Para mitigar esta restricción en entornos con recursos limitados (planes gratuitos en la nube con techos de 512 MB), se desarrolló la pasarela alternativa en Go 1.25 (`software/gateway-go`), logrando una imagen de 16,2 MB y un consumo en reposo de ~10 MiB, superando 30 pruebas unitarias con cero discrepancias funcionales en 39 pruebas diferenciales.
 2. **Optimización de imágenes analíticas:** La imagen de Prediction demandaba inicialmente 2,85 GB debido a dependencias superfluas de experimentación (Jupyter, MLflow, Matplotlib). Mediante construcción multi-etapa y segmentación de dependencias de servicio, la imagen se redujo a 510 MB y 122 MiB de RAM en reposo, manteniendo el 100 % de las pruebas operativas (100 pruebas).
+
+![Consola de Windows (15/11/2026): docker images muestra green-ai-workspace-prediction de 2,85 GB, la imagen optimizada de Prediction de 510 MB, el Gateway Spring de 520 MB y el Gateway Go de 16,2 MB](evidencias-nube/captura-M03-imagenes-docker.png)
+*Figura 1.b. Tamaños de imagen Docker medidos con `docker images`.*
+
+![Consola de Windows (15/11/2026): docker stats --no-stream con el stack local en reposo: Gateway Go 8,0 MiB, Gateway Java 285,7 MiB, Data Processing 89,6 MiB, Monitoring 239,4 MiB, Prometheus 41,6 MiB, Simulator 32,1 MiB y Prediction 140,7 MiB](evidencias-nube/captura-M04-docker-stats.png)
+*Figura 1.c. Memoria en reposo de cada contenedor medida con `docker stats` (stack local, 15/11/2026).*
 3. **Uso de asistentes de inteligencia artificial en el desarrollo:** Se incorporó Claude Code y Antigravity CLI (con modelo Gemini Flash y Claude Sonnet) para acelerar la navegación de código e indexación de relaciones mediante Graphify. Sin embargo, su operación experimental evidenció limitaciones determinantes:
    - En auditorías automáticas de seguridad sobre el Gateway Go, 1 de cada 8 hallazgos emitidos por el agente resultó ser un falso positivo (análisis de cabeceras de proxy).
    - En ejecuciones desatendidas (*headless*), la herramienta puede registrar códigos de salida 0 con estado `SUCCESS` devolviendo respuestas vacías o interrupciones por tiempo límite.
@@ -495,7 +504,7 @@ En estricto cumplimiento del atributo de competencia sobre reconocimiento de lim
 ## 3. Resultados cuantitativos medidos con las herramientas
 
 - **Pipeline de Machine Learning (semilla 42):** Random Forest a 15 minutos alcanzó un MAE de 3,22 pp y un RMSE de 4,59 pp en validación, y un MAE de 3,85 pp en el conjunto de prueba, superando al modelo de persistencia (MAE 4,61 pp; −30 % de error) y a la media móvil (MAE 3,74 pp; −14 % de error).
-- **Pruebas automatizadas en el monorepo:** Monitoring 112, Gateway Java 12, Gateway Go 30, Data Processing 121, Prediction 100, Frontend 48, Simulator 10.
+- **Pruebas automatizadas en el monorepo:** Monitoring 112, Gateway Java 12, Gateway Go 32, Data Processing 121 (más 8 omitidas), Prediction 100, Frontend 48, Simulator 10: 435 pruebas aprobadas, ejecutadas el 15/11/2026 (Figuras VIII.3.a a VIII.3.g).
 - **Verificación integral de salud (*smoke test*):** 14 de 14 pruebas superadas sobre el stack contenerizado completo ejecutado con datos simulados.
 
 ---
@@ -617,13 +626,15 @@ Las métricas temporales de alta frecuencia se almacenan de forma complementaria
 
 El diseño lógico define las entidades principales: nodos de cómputo (`hardware`), registros temporales de telemetría (`logs`), perfiles de usuario (`user_profiles`) y asignaciones de seguridad (`user_roles`).
 
-![Diagrama del modelo lógico de datos](evidencias/p030-img007.png)  
-*Figura 7. Diagrama del modelo lógico de la base de datos relacional.*
+![Modelo lógico de la base de datos de Green AI: usuario, hardware y logs en el esquema public, y perfiles y roles asociados a Supabase Auth](evidencias/modelo-logico-green-ai.png)  
+*Figura 7. Modelo lógico de la base de datos relacional (entidades y relaciones del esquema desplegado).*
 
 El diseño físico traslada las entidades a tablas relacionales con claves foráneas, restricciones de no nulidad, índices en columnas de marca temporal (`timestamp`) y tipos de datos normalizados.
 
-![Diagrama del modelo físico en Supabase / PostgreSQL](evidencias/p031-img008.png)  
-*Figura 8. Diagrama del modelo físico implementado en Supabase / PostgreSQL.*
+![Captura del visualizador de esquema de Supabase del proyecto Green AI con las tablas logs, hardware, usuario, user_profiles y user_roles](evidencias-nube/captura-supabase-esquema-fisico.png)  
+*Figura 8. Modelo físico implementado en Supabase / PostgreSQL (captura del visualizador de esquema de Supabase, 15/11/2026).*
+
+Los diagramas de 13 entidades (proyectos, clústeres, nodos, cargas, modelos, experimentos, etc.) incluidos en versiones anteriores de este informe correspondían a un diseño conceptual inicial que no se implementó; se reemplazaron por el esquema realmente desplegado.
 
 ### Procedimientos almacenados y funciones en base de datos
 
@@ -807,7 +818,7 @@ Para garantizar la calidad técnica y la gobernanza del producto en cada increme
 2. **Pruebas automatizadas por servicio:** el código debe contar con pruebas automatizadas que verifiquen su comportamiento dentro del monorepo. Al corte actual, las suites registran:
    - Monitoring Service: 112 pruebas verificadas (0 fallos).
    - Gateway Java: 12 pruebas verificadas (0 fallos).
-   - Gateway Go: 30 pruebas unitarias y de integración (0 fallos).
+   - Gateway Go: 32 pruebas unitarias y de integración (0 fallos).
    - Data Processing Service: 121 pruebas pasadas (incluyendo 114 de contrato común entre SQLite y PostgreSQL).
    - Prediction Service: 100 pruebas pasadas (suite unitaria y de API).
    - Frontend: 48 pruebas verificadas (13 estructurales y 35 de lógica de presentación).
@@ -1157,10 +1168,10 @@ Tabla 26. Comparación de alternativas algorítmicas de predicción
 
 | Alternativa | Tipo de modelo | MAE (pp CPU) | RMSE (pp CPU) | sMAPE (%) | MAE alta demanda (>80 %, n=32) | MAE en picos (n=13) | Latencia media (ms) |
 |---|---|---|---|---|---|---|---|
-| E1: Persistencia | Baseline trivial ($y_{t+15} = y_t$) | 4,61 | 6,39 | 11,16 | 5,43 | 8,99 | 0,09 |
-| E2: Media móvil | Baseline estadístico (ventana 15 min) | 3,74 | 5,19 | 9,17 | 4,44 | 7,25 | 4,71 |
-| **E3: Random Forest** | **Ensamble de árboles (Seleccionado)** | **3,22** | **4,59** | **7,85** | **3,58** | **6,12** | **26,60** |
-| E4: XGBoost | Gradient boosting supervisado | 3,46 | 4,79 | 8,46 | 3,86 | 6,21 | 18,70 |
+| E1: Persistencia | Baseline trivial ($y_{t+15} = y_t$) | 4,61 | 6,39 | 11,16 | 5,43 | 8,99 | 0,04 |
+| E2: Media móvil | Baseline estadístico (ventana 15 min) | 3,74 | 5,19 | 9,17 | 4,44 | 7,25 | 1,10 |
+| **E3: Random Forest** | **Ensamble de árboles (Seleccionado)** | **3,22** | **4,59** | **7,85** | **3,58** | **6,12** | **9,46** |
+| E4: XGBoost | Gradient boosting supervisado | 3,46 | 4,79 | 8,46 | 3,86 | 6,21 | 5,29 |
 
 Sobre el conjunto de prueba independiente (*test set*, $n = 129$), el modelo seleccionado (**Random Forest Regressor**) alcanzó las siguientes métricas definitivas:
 
@@ -1169,8 +1180,9 @@ Sobre el conjunto de prueba independiente (*test set*, $n = 129$), el modelo sel
 * **sMAPE en test:** 7,67 %.
 * **MAE en picos de test:** 8,45 puntos porcentuales de CPU.
 
+
 **Contraste de H1 y corrección de modelo:**
-El modelo **Random Forest Regressor** superó a la persistencia con una reducción del MAE del 30,15 % (3,22 pp frente a 4,61 pp) y superó a la media móvil en 13,90 % (3,22 pp frente a 3,74 pp). La latencia media de inferencia (26,60 ms en procesamiento por lote) cumplió holgadamente con la restricción de 2 000 ms. Por consiguiente, se acepta la hipótesis H1.
+El modelo **Random Forest Regressor** superó a la persistencia con una reducción del MAE del 30,15 % (3,22 pp frente a 4,61 pp) y superó a la media móvil en 13,90 % (3,22 pp frente a 3,74 pp). La latencia media de inferencia (9,46 ms en procesamiento por lote en el equipo de desarrollo, 15/11/2026; varía según el hardware) cumplió holgadamente con la restricción de 2 000 ms. Por consiguiente, se acepta la hipótesis H1.
 
 Se rectifica formalmente que **XGBoost no fue el modelo ganador** para el horizonte de 15 minutos (obtuvo un MAE de 3,46 pp frente a 3,22 pp de Random Forest). La versión previa del informe citó a XGBoost como modelo final con un RMSE del 7,1 %, cifra que no corresponde a la ejecución determinista del pipeline. El modelo empaquetado y expuesto por el microservicio Prediction Service en el prototipo es Random Forest Regressor. Asimismo, se reitera que las métricas proceden de telemetría simulada y no de un clúster físico en producción.
 
@@ -1180,6 +1192,9 @@ Para garantizar la reproducibilidad y auditabilidad técnica exigida por el atri
 
 ![Interfaz gráfica de MLflow Tracking UI con el experimento 'computational-demand-prediction' y el run 'random_forest_15m'](evidencias-nube/captura-C303-mlflow-run.png)
 Figura VIII.1. Registro y trazabilidad del experimento de entrenamiento de Machine Learning en MLflow Tracking UI.
+
+![Consola de Windows (15/11/2026): run_pipeline.py con semilla 42 y tablas de validación (n=125) y test (n=129) de persistencia, media móvil, Random Forest y XGBoost](evidencias-nube/captura-M01-metricas-modelos.png)
+*Figura VIII.1.a. Reejecución del pipeline de entrenamiento (`scripts/run_pipeline.py`, semilla 42): métricas de la Tabla 26 y del conjunto de prueba (herramienta: Python, scikit-learn y XGBoost).*
 
 En intervalos de alta utilización (> 80 % CPU, $n = 32$), el MAE de Random Forest se mantuvo en 3,58 pp en validación. No obstante, al evaluar específicamente los intervalos de pico extremo ($n = 13$), el MAE aumentó a 6,12 pp en validación y a 8,45 pp en prueba. Este comportamiento evidencia que el error se duplica en escenarios de sobrecarga crítica, constituyendo la principal limitación del modelo. Al tratarse de una tarea de regresión continua de CPU, se utilizan métricas MAE y RMSE; no se reporta métrica F1 al no haberse implementado una tarea formal de clasificación binaria de eventos.
 
@@ -1193,7 +1208,8 @@ A partir de los resultados obtenidos, el comité técnico emitió un dictamen fo
 4. **[C4] Formalización del modelo proxy de potencia eléctrica:** Declarar explícitamente que la potencia instantánea se estima mediante el modelo lineal proxy $P(u) = P_{idle} + (P_{max} - P_{idle}) \times u$, reconociendo que los valores calculados en kWh provienen del comportamiento de CPU y no de sensores físicos de distribución de potencia (PDU) en el laboratorio.
 5. **[C5] Gobernanza en modo asistivo (Recommendation-Only):** Restringir la operación del motor de políticas al modo de solo recomendación (`executionAllowed = false`), exigiendo revisión y confirmación humana previa a cualquier ajuste en la infraestructura.
 
-![](evidencias/p058-img025.png)
+$$P(u) = P_{idle} + \left(P_{max} - P_{idle}\right) \cdot u, \qquad u \in [0,\,1]$$
+
 Figura VIII.2. Formulación del modelo proxy lineal de potencia eléctrica instantánea P(u) en función de la utilización computacional.
 
 ---
@@ -1204,7 +1220,7 @@ Para verificar el cumplimiento funcional y contractual del sistema, se estructur
 
 #### Resumen consolidado de pruebas automatizadas por servicio
 
-La verificación automatizada comprende 333 pruebas unitarias, de integración y de contrato, más una suite de verificación de humo (*smoke test*) de 14 puntos de extremo a extremo:
+La verificación automatizada comprende 435 pruebas unitarias, de integración y de contrato, más una suite de verificación de humo (*smoke test*) de 14 puntos de extremo a extremo:
 
 Tabla 27. Pruebas automatizadas por servicio
 
@@ -1212,15 +1228,36 @@ Tabla 27. Pruebas automatizadas por servicio
 |---|---|---|---|
 | Monitoring | Maven 3.9 / JUnit 5 | 112 / 112 | Pruebas unitarias, contratos HTTP y recolección desde Prometheus |
 | Gateway (Java) | Maven 3.9 / JUnit 5 | 12 / 12 | Enrutamiento perimetral, validación de JWT, roles ADMIN/OPERATOR/VIEWER y CORS |
-| Gateway (Go) | Go 1.22 (`go test -race` ×5) | 30 / 30 | Equivalencia funcional perimetral, concurrencia, límites de tasa y validación JWKS |
-| Data Processing | Python 3.11 / Pytest | 121 / 121 | Contratos SQLite/PostgreSQL, pipeline ETL, interpolación y reporte CSV |
+| Gateway (Go) | Go 1.25 (`go test -race`, imagen Docker golang:1.25) | 32 / 32 | Equivalencia funcional perimetral, concurrencia, límites de tasa y validación JWKS |
+| Data Processing | Python / Pytest | 121 aprobadas, 8 omitidas | Contratos SQLite/PostgreSQL, pipeline ETL, interpolación y reporte CSV |
 | Prediction | Python 3.11 / Pytest | 100 / 100 | Pruebas de anti-fuga temporal, validación de esquemas Pydantic, inferencia y recomendaciones |
 | Frontend | Node.js (`node --test`) | 48 / 48 | Renderizado de interfaz, lógica de pestañas, Racks, panel de energía y red de flujos |
-| Simulator | Python 3.11 / Unittest (Docker) | 10 / 10 | Generación de series sintéticas, perfiles de carga, exportador y señales de término |
+| Simulator | Python 3.12 / Unittest (Docker) | 10 / 10 | Generación de series sintéticas, perfiles de carga, exportador y señales de término |
 | Stack integral | Python 3.11 (`smoke.py`) | 14 / 14 | Validación de integración HTTP End-to-End sobre el ecosistema de servicios |
 
-![Ejecución consolidada de las suites de pruebas automatizadas por microservicio en la terminal (Monitoring 112, Gateway J](evidencias-nube/captura-C301-suites.png)
-Figura VIII.3. Ejecución consolidada de pruebas automatizadas por servicio en el monorepo de desarrollo.
+Figura VIII.3. Ejecución de las suites de pruebas automatizadas por servicio, capturada en consola de Windows el 15/11/2026.
+
+![Consola de Windows (15/11/2026). Monitoring: `mvnw verify`, Tests run: 112, Failures: 0, BUILD SUCCESS](evidencias-nube/captura-C301c-monitoring-mvn.png)
+Figura VIII.3.a. Monitoring: `mvnw verify`, Tests run: 112, Failures: 0, BUILD SUCCESS.
+
+![Consola de Windows (15/11/2026). Gateway Java: `mvnw verify`, Tests run: 12, Failures: 0, BUILD SUCCESS](evidencias-nube/captura-C301d-gateway-java.png)
+Figura VIII.3.b. Gateway Java: `mvnw verify`, Tests run: 12, Failures: 0, BUILD SUCCESS.
+
+![Consola de Windows (15/11/2026). Gateway Go: `go test -race` en Docker golang:1.25, paquetes ok y 32 pruebas PASS](evidencias-nube/captura-C301e-gateway-go.png)
+Figura VIII.3.c. Gateway Go: `go test -race` en Docker golang:1.25, paquetes ok y 32 pruebas PASS.
+
+![Consola de Windows (15/11/2026). Data Processing: pytest, 121 passed y 8 skipped](evidencias-nube/captura-C301b-data-processing-pytest.png)
+Figura VIII.3.d. Data Processing: pytest, 121 passed y 8 skipped.
+
+![Consola de Windows (15/11/2026). Prediction: pytest, 100 passed](evidencias-nube/captura-C301a-prediction-pytest.png)
+Figura VIII.3.e. Prediction: pytest, 100 passed.
+
+![Consola de Windows (15/11/2026). Frontend: node --test, 48 pass y 0 fail](evidencias-nube/captura-S10-frontend-tests.png)
+Figura VIII.3.f. Frontend: node --test, 48 pass y 0 fail.
+
+![Consola de Windows (15/11/2026). Simulator: unittest en Docker python:3.12, Ran 10 tests, OK](evidencias-nube/captura-C301f-simulator-unittest.png)
+Figura VIII.3.g. Simulator: unittest en Docker python:3.12, Ran 10 tests, OK.
+
 
 ![Resultado del smoke test de integración 14/14 registrado en docs/evidencias/smoke-20261106.json (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 4)](evidencias-nube/captura-C302-smoke.png)
 Figura VIII.4. Verificación de integración de extremo a extremo: smoke test de 14 comprobaciones sobre el stack local (06/11/2026).
@@ -1279,7 +1316,12 @@ Figura VIII.8. Panel de objetivos de recolección en Prometheus Server (`Status 
 
 La Figura VIII.8 certifica la conectividad operativa instantánea de las tres fuentes principales en estado UP: `green-ai-monitoring` (`:8080/actuator/prometheus`), `green-ai-simulator` (`:8000/metrics`) y el automonitoreo de Prometheus (`:9090/metrics`).
 
-De forma complementaria, se estructuraron cuatro reglas de alerta en el archivo `prometheus/alerts.yml`, validadas sintácticamente mediante la utilidad oficial `promtool`: `SimulatorTelemetryDown` (caída del colector por más de 1 minuto), `NodeCpuSaturationRisk` (CPU sostenida > 85 % por más de 2 minutos), `NodeMemoryPressure` (memoria RAM > 90 %) y `PredictedCpuHigh` (alerta proactiva ante estimaciones superiores al 80 % de capacidad).
+De forma complementaria, se estructuraron seis reglas de alerta en el archivo `prometheus/alerts.yml` (cuatro de operación y dos de demostración), validadas sintácticamente mediante la utilidad oficial `promtool`. Las de operación son: `SimulatorTelemetryDown` (caída del colector por más de 1 minuto), `NodeCpuSaturationRisk` (CPU sostenida > 85 % por más de 2 minutos), `NodeMemoryPressure` (memoria RAM > 90 %) y `PredictedCpuHigh` (alerta proactiva ante estimaciones superiores al 80 % de capacidad).
+
+Las dos de demostración son `RecommendationsUnavailable` y `DemoPolicyBlocked`.
+
+![Consola de Windows (15/11/2026): promtool check rules sobre prometheus/alerts.yml en la imagen prom/prometheus devuelve SUCCESS: 6 rules found](evidencias-nube/captura-M06-promtool.png)
+*Figura VIII.8.a. Validación de las reglas de alerta con `promtool check rules`.*
 
 ![Interfaz de Prometheus Server mostrando el estado de las reglas de alerta activas (SimulatorTelemetryDown, NodeCpuSatura](evidencias-nube/captura-C304-prometheus-alerts.png)
 Figura VIII.9. Panel de reglas de alerta configuradas en Prometheus Server.
@@ -1586,12 +1628,17 @@ Tabla 31. Resultados experimentales consolidados por margen de seguridad (conjun
 
 | Margen de seguridad ($h$) | Riesgo SLA Baseline (%) | Riesgo SLA Green AI (%) | Variación de riesgo ($\Delta$ SLA) | Capacidad ociosa media Baseline / Green AI (pp) | Energía modelada Baseline / Green AI (Wh) | Variación de energía modelada |
 |---|---|---|---|---|---|---|
-| 10 % | 15,9 % | **9,5 %** | **−6,4 pp** | 6,31 / 5,88 | 4 896 / 4 888 | −0,16 % |
-| 20 % | 4,0 % | 4,0 % | 0,0 pp | 10,89 / 10,60 | 5 055 / 5 046 | −0,18 % |
+| 10 % | 15,9 % | **9,5 %** | **−6,35 pp** | 6,31 / 5,88 | 4 896 / 4 888 | −0,17 % |
+| 20 % | 4,0 % | 4,0 % | 0,0 pp | 10,89 / 10,60 | 5 055 / 5 046 | −0,16 % |
 | 30 % | 2,4 % | 2,4 % | 0,0 pp | 15,72 / 15,46 | 5 211 / 5 204 | −0,13 % |
 
+El experimento evalúa 126 intervalos: los 129 del conjunto de prueba menos los 3 últimos, que no tienen el valor real a 15 minutos para comparar.
+
+![Consola de Windows (15/11/2026): run_experiment.py con márgenes de 10, 20 y 30 % muestra el riesgo de SLA, la capacidad ociosa y la energía modelada de baseline y Green AI sobre 126 intervalos](evidencias-nube/captura-M05-experimento-sla.png)
+*Figura VIII.39.a. Reejecución del experimento comparativo (`scripts/run_experiment.py`, P_max 600 W, P_idle 300 W).*
+
 **Interpretación honesta y límites de los resultados:**
-1. **Reducción de riesgo de SLA:** Con un margen de seguridad ajustado ($h = 10\,\%$), el enfoque predictivo reduce el riesgo de subaprovisionamiento de 15,9 % a 9,5 % (una reducción absoluta de 6,4 puntos porcentuales y relativa del 40,25 %). Esto valida la hipótesis técnica de que anticipar la demanda mitiga el riesgo de saturación de CPU cuando los márgenes operativos son estrechos.
+1. **Reducción de riesgo de SLA:** Con un margen de seguridad ajustado ($h = 10\,\%$), el enfoque predictivo reduce el riesgo de subaprovisionamiento de 15,9 % a 9,5 % (una reducción absoluta de 6,35 puntos porcentuales y relativa del 40,0 %, calculada con los valores sin redondear 15,87 % y 9,52 %). Esto valida la hipótesis técnica de que anticipar la demanda mitiga el riesgo de saturación de CPU cuando los márgenes operativos son estrechos.
 2. **Ausencia de ahorro energético demostrado:** La diferencia en energía modelada entre ambas estrategias es inferior al 0,2 % (4 888 Wh frente a 4 896 Wh con $h = 10\,\%$). En consecuencia, **no existe evidencia empírica de ahorro energético significativo**. Se descartan las afirmaciones previas que reclamaban reducciones del 18,4 % de energía, por carecer de fundamento experimental reproducible.
 3. **Validez externa acotada:** La potencia eléctrica reportada es resultado de un modelo matemático lineal y no de mediciones con vatímetros físicos.
 
@@ -1626,10 +1673,10 @@ Tabla 33. Estado auditable de los módulos del proyecto
 | Prediction Service | API REST de inferencia de demanda | PMV2 | Demostrado | Microservicio FastAPI; 100 pruebas aprobadas | Endpoints `/v1/predictions` y `/v1/recommendations`. Latencia en decenas de ms en reposo. |
 | Policy/Safety Engine | Reglas de SLA y guardrails de seguridad | PMV2 | Demostrado | Módulo de políticas en Prediction; modo Recommendation-Only | Modo asistivo con `executionAllowed=false`. Umbrales CPU $\le 80\,\%$, latencia $\le 2\,000\text{ ms}$. |
 | Frontend Web | Interfaz de visualización y control | PMV1–2 | Demostrado | GitHub Pages (`dev/network.html`); 48 pruebas Node | Interfaz HTML/JS estática modular (Racks, Métricas, Detalle, Flujos). Procedencia simulada explícita. |
-| Alertas operativas | Detección de saturación y caídas | PMV2 | Demostrado | `prometheus/alerts.yml` (validado con `promtool`) | 4 reglas de alerta configuradas para disponibilidad y sobrecarga. |
+| Alertas operativas | Detección de saturación y caídas | PMV2 | Demostrado | `prometheus/alerts.yml` (validado con `promtool`) | 6 reglas de alerta: 4 de operación (disponibilidad y sobrecarga) y 2 de demostración. |
 | Reportes estructurados | Resumen histórico descargable | PMV2 | Demostrado | Endpoint `/reports/historical-summary` (JSON/CSV) | Reporte CSV operativo. Exportación PDF: trabajo futuro, fuera del alcance del periodo lectivo. |
 | Control perimetral (RBAC) | Roles de seguridad en API Gateway | PMV2–3 | Demostrado | Gateway Java (12 tests) y Gateway Go (30 tests) | Roles ADMIN, OPERATOR y VIEWER implementados perimetralmente con validación JWT. |
-| Experimento comparativo | Aprovisionamiento reactivo vs predictivo | PMV3 | Demostrado | Manifiesto de experimento en test set ($n = 126$) | Margen 10 % reduce riesgo de SLA de 15,9 % a 9,5 % (−6,4 pp). Energía modelada −0,16 % (sin ahorro probado). |
+| Experimento comparativo | Aprovisionamiento reactivo vs predictivo | PMV3 | Demostrado | Manifiesto de experimento en test set ($n = 126$) | Margen 10 % reduce riesgo de SLA de 15,9 % a 9,5 % (−6,35 pp). Energía modelada −0,16 % (sin ahorro probado). |
 
 ---
 

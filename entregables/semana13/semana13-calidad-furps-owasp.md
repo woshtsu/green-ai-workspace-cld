@@ -160,7 +160,7 @@ La calificación global inicial ponderada alcanzó 85.00 / 100 puntos (170 de 20
 |---|:---:|:---:|:---:|---|
 | **Funcionalidad (F)** | 25 % | 78 / 100 | Aceptable | Aprobación humana de recomendaciones sin persistencia (HU-07), potencia eléctrica modelada sin sensores físicos (HU-09), MLflow UI sin exposición en nube (HU-05) y reporte histórico sin soporte PDF formal (HU-13). |
 | **Usabilidad (U)** | 15 % | 80 / 100 | Aceptable | Ausencia de una guía rápida de usuario para la operación del sistema (M-U07), falta de escaneo formal WCAG 2.1 AA con Lighthouse y flujo de cálculo de energía en más de 3 pasos (M-U08). |
-| **Confiabilidad (R)** | 20 % | 93 / 100 | Bueno | Excelente cobertura con 415+ pruebas y formato RFC 7807 problem+json. Brecha: riesgo de políticas permisivas en la base de datos externa de Supabase ante saturación. |
+| **Confiabilidad (R)** | 20 % | 93 / 100 | Bueno | Excelente cobertura con 435 pruebas y formato RFC 7807 problem+json. Brecha: riesgo de políticas permisivas en la base de datos externa de Supabase ante saturación. |
 | **Rendimiento (P)** | 15 % | 87 / 100 | Bueno | Latencias locales inferiores a 30 ms en Java y 4 ms en Go. Brecha: retardo por arranque en frío (cold start de ~60 s) en Render Free Tier tras 15 minutos de inactividad (M-P01). |
 | **Soporte (S)** | 15 % | 90 / 100 | Bueno | Monorepo limpio sin gitlinks ni repositorios anidados, CI automatizado en GitHub Actions y contratos OpenAPI vigentes. Brecha: acoplamiento de adaptadores en runner.py del Simulator. |
 | **Restricciones (+)** | 10 % | 93 / 100 | Bueno | Punto único perimetral, orquestación unificada con Docker Compose, compatibilidad de licencias Open Source y apego estricto a la Ley N° 29733. Brecha: cuota compartida de 750 h/mes en Render. |
@@ -170,12 +170,12 @@ La calificación global inicial ponderada alcanzó 85.00 / 100 puntos (170 de 20
 
 El plan integral de mejora de calidad se estructuró en docs/calidad/02_plan_furps.md, fundamentándose en dos principios de diseño no negociables:
 1. El sistema ya funciona: Se prohíbe cualquier refactorización agresiva o cambio de contratos que altere el comportamiento de los microservicios en producción.
-2. Barrera de regresión obligatoria: Toda tarea exige la ejecución de su suite de pruebas correspondiente antes de su integración, garantizando cero regresiones funcionales sobre la línea base de más de 415 pruebas automatizadas:
+2. Barrera de regresión obligatoria: Toda tarea exige la ejecución de su suite de pruebas correspondiente antes de su integración, garantizando cero regresiones funcionales sobre la línea base de 435 pruebas automatizadas:
    * Frontend: 48 pruebas en node:test.
    * Prediction Service: 100 pruebas en pytest.
-   * Data Processing Service: 121 pruebas en pytest.
+   * Data Processing Service: 121 pruebas en pytest (más 8 omitidas).
    * Monitoring Service: 112 pruebas en JUnit 5 / Maven.
-   * API Gateway: 12 pruebas en Spring Cloud Gateway y 30 pruebas en Go test.
+   * API Gateway: 12 pruebas en Spring Cloud Gateway y 32 pruebas en Go test (go test -race).
    * Simulator: 10 pruebas unitarias deterministas.
    * Smoke Test Global: 14/14 comprobaciones HTTP sobre el stack en ejecución.
 
@@ -276,7 +276,7 @@ La siguiente tabla refleja la evaluación técnica individual sobre las 50 pregu
 | FACTOR | id | PREGUNTA | ARTEFACTO | CUMPLIMIENTO | ACCIÓN CORRECTIVA O EVIDENCIA | RESPONSABLE | FECHA | PO | PD | NIVEL APEGO (%) |
 |:---:|:---:|---|:---:|:---:|---|:---:|:---:|:---:|:---:|:---:|
 | **F** | M-F01 | ¿Se ha implementado el caso de uso de visualización de métricas en tiempo real (HU-01)? | SOFTWARE | Cumple (5) | Catálogo y telemetría de 50 servidores vía Prometheus y Monitoring. Evidencia: software/monitoring y dashboard.html. Smoke 14/14. | — | — | 5 | 5 | 100.0 % |
-| **F** | M-F02 | ¿Se ha implementado el caso de uso de consulta y paginación de históricos (HU-02)? | SOFTWARE | Cumple (5) | Endpoint /api/v1/historical-logs con paginación keyset y adaptador dual SQLite/Supabase. 114 tests de contrato. | — | — | 5 | 5 | 100.0 % |
+| **F** | M-F02 | ¿Se ha implementado el caso de uso de consulta y paginación de históricos (HU-02)? | SOFTWARE | Cumple (5) | Endpoint /api/v1/historical-logs con paginación keyset y adaptador dual SQLite/Supabase. 121 pruebas aprobadas (contrato e integración). | — | — | 5 | 5 | 100.0 % |
 | **F** | M-F03 | ¿Se ha implementado el caso de uso de predicción de demanda de CPU a 15 min (HU-03)? | SOFTWARE | Cumple (5) | Inferencia con Random Forest vía POST /v1/predictions con metadatos y origin=estimated. 100 pruebas pytest. | — | — | 5 | 5 | 100.0 % |
 | **F** | M-F04 | ¿Se ha implementado la comparación de alternativas de modelos y estrategias (HU-04)? | SOFTWARE | Cumple (5) | Comparación de 4 modelos en pipeline y experimento Baseline reactivo vs Green AI predictivo en UI. Evidencia: plan experimental y dashboard. | — | — | 5 | 5 | 100.0 % |
 | **F** | M-F05 | ¿Se ha implementado el registro y visualización de experimentos en MLflow (HU-05)? | HERRAMIENTA | Parcial (3) | Corridas registradas localmente en software/prediction/mlruns; falta captura de UI y servidor público en la nube. | Gina Barrera Peña | 14/11/2026 | 3 | 5 | 60.0 % |
@@ -299,7 +299,7 @@ La siguiente tabla refleja la evaluación técnica individual sobre las 50 pregu
 | **R** | M-R01 | ¿Se manejan los errores de las APIs mediante el estándar RFC 7807 (problem+json)? | SOFTWARE | Cumple (5) | Respuestas application/problem+json uniformes con requestId en todos los microservicios. | — | — | 5 | 5 | 100.0 % |
 | **R** | M-R02 | ¿Todos los microservicios exponen sondas de salud (health checks / liveness / readiness)? | SOFTWARE | Cumple (5) | Sondas /health/ready, Actuator y binario -healthcheck en Go operando con normalidad. | — | — | 5 | 5 | 100.0 % |
 | **R** | M-R03 | ¿El sistema implementa timeouts defensivos para mitigar caídas de servicios upstream? | SOFTWARE | Cumple (5) | Timeouts escalonados en Gateway (6 s, 15 s, 30 s) y Data Processing (10 s) para evitar bloqueos en cascada. | — | — | 5 | 5 | 100.0 % |
-| **R** | M-R04 | ¿Se cuenta con una batería de pruebas automatizadas y smoke test end-to-end? | HERRAMIENTA | Cumple (5) | 415+ pruebas automatizadas en 6 suites y smoke test de 14/14 pasos pasando satisfactoriamente. | — | — | 5 | 5 | 100.0 % |
+| **R** | M-R04 | ¿Se cuenta con una batería de pruebas automatizadas y smoke test end-to-end? | HERRAMIENTA | Cumple (5) | 435 pruebas automatizadas en 7 suites (ejecutadas el 15/11/2026) y smoke test de 14/14 pasos pasando satisfactoriamente. | — | — | 5 | 5 | 100.0 % |
 | **R** | M-R05 | ¿La plataforma resiste caídas y saturación sin comprometer la base de datos de producción? | HOSTING | Parcial (3) | SQLite aísla desarrollo local; falta verificar resistencia ante carga masiva en PostgREST remoto y verificar RLS en Supabase. | Ricardo Porras Veli | 13/11/2026 | 3 | 5 | 60.0 % |
 | **R** | M-R06 | ¿Se controla el retorno exitoso y no exitoso desde la base de datos? | SOFTWARE | Cumple (5) | Data Processing intercepta respuestas/errores de PostgREST y SQLite traduciéndolos a problem+json sin filtrar datos sensibles. | — | — | 5 | 5 | 100.0 % |
 | **P** | M-P01 | ¿La operación y consulta responde en promedio en menos de 7 segundos hacia el usuario? | SOFTWARE | Parcial (3) | Local responde en < 30 ms (Java) y < 4 ms (Go); en Render Free Tier el cold start toma ~60 s tras 15 min de inactividad. | Leonid Huamán Collazos | 19/11/2026 | 3 | 5 | 60.0 % |
@@ -396,24 +396,11 @@ La infraestructura de servicios contenerizados opera sobre el plan gratuito de R
 
 ## 9.5. Pregunta M-U07 (Guía Rápida de Usuario — Mejora Ola 1)
 
-Subsanación documental que estructura la interacción del usuario final en 8 tareas principales de 3 pasos o menos.
+Subsanación documental que estructura la interacción del usuario final en 8 tareas principales de 3 pasos o menos. Para comprobar que la guía cita los textos reales de la interfaz, se buscaron en el código del frontend con `Select-String` (PowerShell). Todos aparecen; «Centro de operación» figura dos veces en `dashboard.html`.
 
-```bash
-# Verificación de correspondencia de textos reales entre la guía y la interfaz
-grep -o -E "Registrar operador|Entrar al sistema|Centro de operación|Predecir 15 min|Evaluar recomendación" \
-  software/frontend/*.html software/frontend/*.js
-```
+![Consola de Windows (15/11/2026): Select-String encuentra en software/frontend los textos citados en la guía: Registrar operador, Entrar al sistema, Centro de operación, Predecir 15 min y Evaluar recomendación](evidencias/captura-S05b-textos-guia.png)
 
-Resultado obtenido:
-```text
-software/frontend/dashboard.html:Centro de operación
-software/frontend/dashboard.html:Evaluar recomendación
-software/frontend/login.html:Entrar al sistema
-software/frontend/network.html:Predecir 15 min
-software/frontend/register.html:Registrar operador
-```
-
-![Capturar el documento entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md abierto y renderizado en el navegador o visor markd](evidencias/captura-S05-guia-rapida.png)
+![Guía rápida de usuario (entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md) renderizada en GitHub](evidencias/captura-S05-guia-rapida.png)
 
 ## 9.6. Pregunta M-U03 (Visualización de Racks con Mapa de Calor)
 
@@ -423,105 +410,33 @@ Consola topológica interactiva que distribuye los 50 servidores simulados en 5 
 
 ## 9.7. Pregunta OW-A05 / M-U01 / M-PL04 (Cabeceras Defensivas HTTP en Nginx — OW-06 y OW-07)
 
-Verificación de la sintaxis y de las cabeceras servidas por el contenedor web Nginx:
+Herramientas: `nginx -t` dentro de la imagen oficial `nginx:1.28.0-alpine` (Docker) para la sintaxis, y `curl -sSI` contra ese contenedor con `nginx.conf` y el frontend montados para las cabeceras servidas.
 
-```bash
-# Verificación de sintaxis de Nginx
-docker run --rm -v .../nginx.conf:/etc/nginx/conf.d/default.conf:ro nginx:1.28.0-alpine nginx -t
-```
+![Consola de Windows (15/11/2026): docker run nginx:1.28.0-alpine nginx -t devuelve «syntax is ok» y «test is successful»](evidencias/captura-S07a-nginx-t.png)
 
-Resultado obtenido:
-```text
-nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-nginx: configuration file /etc/nginx/nginx.conf test is successful
-```
+![Consola de Windows (15/11/2026): curl -sSI a /login.html y /config.local.js en el contenedor nginx; ambas rutas devuelven nosniff, no-referrer, X-Frame-Options DENY, Permissions-Policy y Cross-Origin-Opener-Policy, y config.local.js además Cache-Control: no-store](evidencias/captura-S07b-cabeceras-nginx.png)
 
-```bash
-# Inspección de cabeceras en /login.html y /config.local.js
-curl -sSI http://127.0.0.1:13099/config.local.js   # contenedor nginx:1.28.0-alpine con nginx.conf montado
-```
-
-Resultado obtenido (07/11/2026; se omiten Date, ETag y Content-Length):
-```text
-HTTP/1.1 200 OK
-Server: nginx/1.28.0
-Content-Type: application/javascript
-Cache-Control: no-store
-X-Content-Type-Options: nosniff
-Referrer-Policy: no-referrer
-X-Frame-Options: DENY
-Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-Cross-Origin-Opener-Policy: same-origin
-```
-
-![Archivo software/frontend/nginx.conf en GitHub (rama main) con las cabeceras de seguridad OW-06 y su repetición en location = /config.local.js (OW-07); evidencia de configuración, no de ejecución](evidencias/captura-S07-nginx-conf.png)
+![Archivo software/frontend/nginx.conf en GitHub (rama main) con las cabeceras de seguridad OW-06 y su repetición en location = /config.local.js (OW-07)](evidencias/captura-S07-nginx-conf.png)
 
 ## 9.8. Pregunta OW-A06 (Subresource Integrity en CDN — OW-08)
 
-Comprobación de la estabilidad y consistencia de los hashes criptográficos generados:
+Herramientas: `curl` y `openssl dgst -sha384` sobre los archivos reales del CDN, comparados con el atributo `integrity` de las páginas (`Select-String`). Los tres hashes coinciden: supabase-js 2.117.1, chart.js 4.4.8 y Font Awesome 6.4.0. Si el CDN entregara un archivo alterado, el navegador lo bloquearía.
 
-```bash
-# Verificación de hash SRI para supabase-js 2.117.1
-curl -sSfL https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1 | \
-  openssl dgst -sha384 -binary | openssl base64 -A
-```
-
-Resultado obtenido:
-```text
-q36VSR1ktH2hgqgm+0LDeyqPW8CyZHSxfDSttSPm5ReOJzB+sYThmh7D4fE+jWTs
-```
-
-Verificación en navegador sin errores de integridad:
-
-![Comprobación SRI del 12/11/2026 en GitHub Pages: login.html y los recursos de dashboard.html cargan con su atributo integrity, window.supabase y window.Chart definidos, consola sin errores](evidencias/captura-S08-sri-consola.png)
+![Consola de Windows (15/11/2026): atributos integrity de login.html y dashboard.html y hashes SHA-384 calculados con curl y openssl sobre las URLs del CDN; los tres coinciden](evidencias/captura-S08b-hash-sri.png)
 
 ## 9.9. Pregunta OW-A08 / M-S03 (Anclaje Inmutable de GitHub Actions — OW-10)
 
-Inspección de las canalizaciones automatizadas en .github/workflows/ci.yml y pages.yml:
+Herramienta: `Select-String` sobre `.github/workflows/*.yml`. Las 17 referencias `uses:` de `ci.yml` y `pages.yml` están fijadas por SHA de commit de 40 caracteres, con la versión como comentario.
 
-```bash
-# Inspección de referencias inmutables SHA en ci.yml
-grep -n "uses: actions/" .github/workflows/ci.yml
-```
+![Consola de Windows (15/11/2026): Select-String lista las 17 líneas uses: de ci.yml y pages.yml, todas fijadas por SHA](evidencias/captura-S09b-acciones-sha.png)
 
-Resultado obtenido:
-```text
-23:      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
-24:      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020  # v4
-32:      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
-33:      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
-43:      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
-44:      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
-53:      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
-54:      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff  # v5
-63:      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
-64:      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3  # v4
-72:      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
-```
-
-![Capturar el código del archivo .github/workflows/ci.yml en el editor o repositorio mostrando las acciones fijadas por co](evidencias/captura-S09-ci-sha.png)
+![Archivo .github/workflows/ci.yml en GitHub con las acciones fijadas por SHA](evidencias/captura-S09-ci-sha.png)
 
 ## 9.10. Verificación de Regresiones en Frontend (M-R04)
 
-Ejecución de la suite modular de pruebas unitarias sobre el frontend tras las modificaciones de seguridad:
+Herramienta: ejecutor de pruebas nativo de Node.js (`node --test`) sobre `software/frontend/tests/*.test.cjs`, tras las modificaciones de seguridad. Resultado: 48 pruebas, 48 aprobadas, 0 fallidas.
 
-```bash
-cd software/frontend && node --test tests/*.test.cjs
-```
-
-Resultado obtenido:
-```text
-ℹ tests 48
-ℹ suites 0
-ℹ pass 48
-ℹ fail 0
-ℹ cancelled 0
-ℹ skipped 0
-ℹ todo 0
-ℹ duration_ms 496.619
-```
-
-![Capturar la ventana de terminal con la salida exitosa del comando de pruebas de frontend mostrando los 48 tests pasados ](evidencias/captura-S10-frontend-tests.png)
+![Consola de Windows (15/11/2026): node --test en software/frontend con 48 tests, 48 pass y 0 fail](evidencias/captura-S10-frontend-tests.png)
 
 # 10. Auditoría final integral: dictamen y recomendaciones
 
@@ -537,7 +452,7 @@ El dictamen técnico emitido para el proyecto Green AI es:
 
 1. Cumplimiento de Calidad (FURPS+): El sistema alcanzó un nivel de apego auditado del **87.00 %** (87.62 % ponderado) en FURPS+, superando con holgura los requerimientos exigidos para un Producto Mínimo Viable (PMV2) de demostración académica.
 2. Cumplimiento de Seguridad (OWASP Top 10): El Score de Seguridad auditado post Ola 1 se situó en **85.0 / 100**, evidenciando un perímetro protegido contra falsificación de orígenes (CORS), inyecciones y adulteración de dependencias.
-3. Preservación de Funcionalidad: Cero (0) regresiones técnicas. Las 7 suites de pruebas del monorepo mantienen operativas más de 415 pruebas automatizadas pasando de manera ininterrumpida.
+3. Preservación de Funcionalidad: Cero (0) regresiones técnicas. Las 7 suites de pruebas del monorepo mantienen operativas 435 pruebas automatizadas pasando de manera ininterrumpida.
 4. Nivel de Riesgo Operativo: Clasificado en **Riesgo Operativo Medio**, originado no por deficiencias de codificación, sino por las dependencias externas del entorno de demostración (cuotas de Render Free Tier, datos de potencia calculados sintéticamente y políticas RLS pendientes de certificación remota).
 
 ## 10.3. Recomendaciones Mandatorias para la Operación y Sustentación
@@ -553,7 +468,7 @@ Para garantizar una sustentación académica exitosa y sentar las bases de la tr
 El desarrollo de la sesión y la aplicación de los marcos FURPS+ y OWASP Top 10 dejan aprendizajes de alto valor formativo y profesional para el equipo de ingeniería:
 
 1. Proceso de Software Incremental y Preservación de Funcionalidad:
-   Aprendimos que la calidad no se logra mediante reescrituras masivas ni alteraciones disruptivas, sino a través de incrementos delgados, controlados y reversibles (olas de mejora). La adopción de barreras de regresión basadas en suites automatizadas (415+ tests) brindó la confianza requerida para modificar archivos de configuración crítica y código de marcado sin romper los microservicios existentes.
+   Aprendimos que la calidad no se logra mediante reescrituras masivas ni alteraciones disruptivas, sino a través de incrementos delgados, controlados y reversibles (olas de mejora). La adopción de barreras de regresión basadas en suites automatizadas (435 pruebas) brindó la confianza requerida para modificar archivos de configuración crítica y código de marcado sin romper los microservicios existentes.
 2. Producto de Software Web en Arquitectura Hexagonal:
    Se consolidó la importancia práctica de desacoplar el núcleo de negocio de los adaptadores de infraestructura. El uso de contratos OpenAPI rigurosos, formatos de error estándar (RFC 7807 problem+json) y un API Gateway perimetral permitió que microservicios políglotas (Java, Python, Go) convivan de manera armoniosa y admitan implementaciones alternativas (como el gateway ligero en Go) sin alterar la experiencia del cliente web.
 3. Criterios de Calidad de Software y Evaluación Crítica:

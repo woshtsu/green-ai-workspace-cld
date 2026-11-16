@@ -77,3 +77,8 @@ Solo `guias/` (docente), `entregables/` (fuentes .md) y `exportados/` (Word/Exce
 - PR #6 abierto (Sprint 7, tarea 7.2, rama `sprint7/7.2-proceso-pr` → `test`) para la captura C310: falta CI verde y aprobación de otro integrante.
 - Logo C100/S00: confirmar con el usuario dónde lo dejó antes de reexportar (no reexportar con el Word abierto).
 - Marcadores pendientes: informe C100, C203, C204, C310, C312, C313; semana 13 S00, S04, S07, S08.
+
+### Estado 15/11/2026
+- Evidencias: solo capturas reales. Usar `herramientas_IA/capturas/captura_ventana.ps1` (consola real), nunca `terminal_a_png.py` para entregables.
+- Informe corregido: 123 páginas, cifras verificadas con capturas del 15/11 (435 pruebas). Pendiente de visto bueno del equipo y push.
+- Pendientes de captura: consola DevTools (S08), latencias locales y cold start de semana 13.
