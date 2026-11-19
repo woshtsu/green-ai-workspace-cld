@@ -179,6 +179,124 @@
         ],
         "title": "Check"
       },
+      "DecisionList": {
+        "properties": {
+          "recommendationId": {
+            "type": "string",
+            "title": "Recommendationid"
+          },
+          "decisions": {
+            "items": {
+              "$ref": "#/components/schemas/DecisionResponse"
+            },
+            "type": "array",
+            "title": "Decisions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "recommendationId",
+          "decisions"
+        ],
+        "title": "DecisionList"
+      },
+      "DecisionRequest": {
+        "properties": {
+          "decision": {
+            "$ref": "#/components/schemas/DecisionType"
+          },
+          "comment": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comment"
+          },
+          "recommendation": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Recommendation"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "decision",
+          "recommendation"
+        ],
+        "title": "DecisionRequest"
+      },
+      "DecisionResponse": {
+        "properties": {
+          "decisionId": {
+            "type": "string",
+            "title": "Decisionid"
+          },
+          "recommendationId": {
+            "type": "string",
+            "title": "Recommendationid"
+          },
+          "decision": {
+            "$ref": "#/components/schemas/DecisionType"
+          },
+          "comment": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comment"
+          },
+          "decidedBy": {
+            "type": "string",
+            "title": "Decidedby"
+          },
+          "decidedByRole": {
+            "$ref": "#/components/schemas/Role"
+          },
+          "decidedAt": {
+            "type": "string",
+            "title": "Decidedat"
+          },
+          "recommendationSha256": {
+            "type": "string",
+            "title": "Recommendationsha256"
+          },
+          "executionAllowed": {
+            "type": "boolean",
+            "title": "Executionallowed",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "decisionId",
+          "recommendationId",
+          "decision",
+          "comment",
+          "decidedBy",
+          "decidedByRole",
+          "decidedAt",
+          "recommendationSha256"
+        ],
+        "title": "DecisionResponse"
+      },
+      "DecisionType": {
+        "type": "string",
+        "enum": [
+          "APPROVED",
+          "REJECTED"
+        ],
+        "title": "DecisionType"
+      },
       "EnergyRequest": {
         "properties": {
           "origin": {
@@ -594,6 +712,15 @@
           "cluster"
         ],
         "title": "Resource"
+      },
+      "Role": {
+        "type": "string",
+        "enum": [
+          "ADMIN",
+          "OPERATOR",
+          "VIEWER"
+        ],
+        "title": "Role"
       },
       "Telemetry": {
         "properties": {

@@ -66,3 +66,7 @@ results/reports/*
 
 # Keep simulated raw fixture if present
 # data/raw is versioned when it is the official simulated fixture
+
+# Decisiones humanas (SQLite local, HU-07)
+data/decisions.db
+data/decisions.db-*
