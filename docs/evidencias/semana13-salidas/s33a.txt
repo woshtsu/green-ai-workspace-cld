@@ -1,0 +1,14 @@
+monitoring_http_adapter.py:52:            raise SourceTimeout("Monitoring no respondió a tiempo.") from exc
+monitoring_http_adapter.py:60:                raise SourceTimeout("La fuente de Monitoring excedió el tiempo permitido (504).") from exc
+monitoring_http_adapter.py:61:            raise ServiceError(f"Monitoring no está disponible ({status}).") from exc
+monitoring_http_adapter.py:63:            raise ServiceError("No fue posible comunicarse con Monitoring.") from exc
+sqlite_historical_logs_adapter.py:30:            raise ServiceError("La base SQLite de desarrollo no existe.")
+sqlite_historical_logs_adapter.py:31:        # mode=ro: el puerto es de solo lectura, igual que el token de Supabase.
+sqlite_historical_logs_adapter.py:32:        return sqlite3.connect(f"{self.path.resolve().as_uri()}?mode=ro", uri=True, timeout=5)
+sqlite_historical_logs_adapter.py:53:            raise ServiceError("La base SQLite de desarrollo no está disponible.") from exc
+sqlite_historical_logs_adapter.py:55:            raise ServiceError("La base SQLite de desarrollo no está disponible.") from exc
+supabase_historical_logs_adapter.py:54:            raise SourceTimeout("Supabase no respondió a tiempo.") from exc
+supabase_historical_logs_adapter.py:57:                raise SourceForbidden("La identidad de lectura no tiene acceso a los históricos.") f
+supabase_historical_logs_adapter.py:59:                raise SourceTimeout("Supabase no respondió a tiempo.") from exc
+supabase_historical_logs_adapter.py:62:            raise ServiceError("Supabase no está disponible.") from exc
+supabase_historical_logs_adapter.py:64:            raise ServiceError("No fue posible comunicarse con Supabase.") from exc

@@ -1,0 +1,15 @@
+$ git ls-files | grep Dockerfile | xargs grep -n "^FROM"
+software/data-processing/Dockerfile:1:FROM python:3.14-slim
+software/frontend/Dockerfile:1:FROM nginx:1.28.0-alpine
+software/gateway-go/Dockerfile:3:FROM golang:1.25.14-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59 AS build
+software/gateway-go/Dockerfile:10:FROM gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab
+software/gateway/Dockerfile:1:FROM maven:3.9.11-eclipse-temurin-21 AS build
+software/gateway/Dockerfile:7:FROM eclipse-temurin:21-jre-jammy
+software/infraestructura/prometheus/Dockerfile.render:3:FROM prom/prometheus:v3.13.3
+software/monitoring/Dockerfile:1:FROM eclipse-temurin:21-jdk-jammy AS build
+software/monitoring/Dockerfile:8:FROM eclipse-temurin:21-jre-jammy
+software/prediction/Dockerfile:2:FROM python:3.11.9-slim-bookworm AS builder
+software/prediction/Dockerfile:20:FROM python:3.11.9-slim-bookworm
+software/simulator/Dockerfile:1:FROM python:3.12-slim
+
+coincidencias con @sha256: 1

@@ -1,5 +1,7 @@
 # 06_Auditoria_Implementacion_OWASP.md — Auditoria de Implementacion de Seguridad (OWASP Top 10)
 
+> **Nota (2026-11-12):** este documento usa OWASP Top 10:2021 y se conserva como registro histórico. La clasificación vigente (OWASP Top 10:2025) y los puntajes recalculados están en [08_reclasificacion_owasp_2025.md](08_reclasificacion_owasp_2025.md).
+
 **Proyecto:** Green AI (Optimizacion Energetica y Capacidad en Data Centers con Machine Learning)  
 **Institucion:** Universidad Continental — Taller de Proyectos 1 (2026-20)  
 **Rol:** Auditor Independiente de Seguridad de Software  

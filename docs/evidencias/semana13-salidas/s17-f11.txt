@@ -1,0 +1,8 @@
+--- endpoint de reporte: formatos aceptados
+93:    "/reports/historical-summary",
+100:                "text/csv": {"schema": {"type": "string"}},
+112:    format: Literal["json", "csv"] = Query("json"),
+123:        return Response(content=summary, media_type="text/csv")
+
+--- generacion de PDF en software/ (reportlab, fpdf, weasyprint, pdfkit, jspdf, iText, application/pdf):
+grep exit=1 (1 = sin coincidencias)

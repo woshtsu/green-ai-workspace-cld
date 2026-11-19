@@ -1,0 +1,7 @@
+40:@app.exception_handler(ServiceError)
+41-async def source_error(request, exc):
+42-    return problem(request, exc.status, exc.code, str(exc))
+43-
+44-
+45-@app.exception_handler(RequestValidationError)
+46-async def validation_error(request, exc):

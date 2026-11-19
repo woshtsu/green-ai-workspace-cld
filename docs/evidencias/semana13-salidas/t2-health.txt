@@ -1,0 +1,14 @@
+rutas de salud en el codigo:
+software/prediction/src/service/app.py:94:@app.get("/health")
+software/prediction/src/service/app.py:112:@app.get("/health/live")
+software/prediction/src/service/app.py:117:@app.get("/health/ready")
+software/data-processing/infrastructure/adapters/input/api/routes.py:33:@router.get("/health", tags=["Health"])
+software/gateway-go/internal/httpapi/server.go:177:	case p == "/actuator/health":
+software/gateway-go/internal/httpapi/server.go:179:	case p == "/actuator/health/liveness" || p == "/actuator/health/readiness":
+software/gateway-go/cmd/gateway/main.go:23:	healthcheck := flag.Bool("healthcheck", false, "consulta /actuator/health/liveness y termina (para Docker)
+software/gateway-go/cmd/gateway/main.go:79:	resp, err := c.Get("http://127.0.0.1:" + port + "/actuator/health/liveness")
+
+software/monitoring/src/main/resources/application.yaml:16:        include: health,prometheus
+software/monitoring/src/main/resources/application.yaml:19:      probes:
+software/gateway/src/main/resources/application.yaml:63:        include: health,info,prometheus
+software/gateway/src/main/resources/application.yaml:66:      probes:

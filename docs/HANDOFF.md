@@ -410,3 +410,32 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Arranque en frío Render medido (`herramientas_IA/operacion/medir_arranque_frio.ps1`): 1.ª petición 12,6–69,5 s, 2.ª < 0,8 s. Doc `docs/operacion/mlflow-y-precalentamiento.md` (F-04, P-01).
 - Entregables: `entregables/semana14/reporte-icacit.md` (7.6) y `entregables/semana14/sprint7-ola2-implementacion.md`.
 - Pendiente (requiere autorización o sesión del equipo): despliegue a Render y `GATEWAY_SHARED_SECRET` remoto, migración en Supabase, F-01 RLS/`password`, F-03 sesión real en /dev/, escaneo axe/Lighthouse, R-01 carga en staging, revisión del PR por otro integrante. difftest Java↔Go no se ejecutó contra el stack.
+
+## 12/11/2026 (noche) — Semana 13: OWASP Top 10:2021 → 2025
+- Motivo: el entregable de semana 13 (no el informe corregido) usaba OWASP Top 10:2021; debe usar la edición vigente https://top10.owasp.org/2025/ (lista verificada en la web oficial).
+- Mapeo oficial: SSRF (A10:2021) absorbida en A01:2025; A05→A02 Security Misconfiguration; A06→A03 Software Supply Chain Failures; A02→A04; A03→A05; A04→A06; A07/A08/A09 renombradas; **A10:2025 Mishandling of Exceptional Conditions es nueva**.
+- A10:2025 evaluada por inspección estática del código (sin pruebas en ejecución): Parcial (3), 8,0/10. Nuevo hallazgo **OW-13** (ola 3, Ricardo Porras, 30/11/2026): `recover` en gateway-go, manejador global/`server.error.include-*=never` en el Gateway Spring, pruebas de cuerpos 500 genéricos y timeouts uniformes en el frontend.
+- Puntajes: seguridad 0–100 79,0 → 83,5 (antes 80,5 → 85,0); matriz OWASP 28/34/48 de 50; global 198/208/244 de 250 (79,2 % / 83,2 % / 97,6 %; antes 80,0 % / 84,0 %).
+- Corregida una incoherencia previa: el .md mostraba A01 y A02:2021 (ahora A01 y A04:2025) como «Parcial (3)», pero el Excel y los totales los contaban como «No cumple (1)». Se alineó el .md con el Excel.
+- Archivos: `entregables/semana13/semana13-calidad-furps-owasp.md`; nuevo `docs/calidad/08_reclasificacion_owasp_2025.md` (clasificación vigente); nota al inicio de `docs/calidad/04–07` (se conservan como registro histórico 2021); `herramientas_IA/calidad/llenar_modelo_furps.py` (lista 2025).
+- Exportados: `MODELO-FURPSPLUS-Green-AI.xlsx` (salida: Inicial 198, Actual 208, Esperado 244 de 250) y `…-semana13-calidad-FURPS-OWASP.docx` (39 págs., 0 capturas pendientes; `md_a_docx.py --encabezado "Green AI · Semana 13: calidad FURPS+ y OWASP"` + `actualizar_word.ps1`; el primer `actualizar_word.ps1` dio COMException, al reintentar terminó OK). También se añadieron líneas en blanco antes de 4 listas que pandoc unía al párrafo (§5, §6.2, §6.4).
+- Entorno `.tools/docx` recreado en esta máquina (ignorado por Git).
+
+## 12/11/2026 (noche, 2) — Semana 13: roles alineados y reparto de revisión
+- Tabla de roles (§4.3) alineada con el acta de constitución y la gestión del proyecto: Jhonny PO (documentación, pruebas, gobernanza); Gina Scrum Master y ML Lead; Ricardo backend, contratos e integración (Lead Backend & MLOps); Leonid infraestructura, Docker y observabilidad, con UI/UX. Se retiraron etiquetas que no figuraban antes («Especialista en Ciberseguridad», «Ingeniero de Frontend y UX»). Los factores asignados no cambian.
+- Responsables OWASP iguales en el Word y el Excel (antes diferían): OW-A01 Ricardo (con el dueño de Supabase) 23/11; OW-A04 Gina (con el dueño de Supabase, por el Excel del dataset) 23/11; OW-A06 y OW-A09 Ricardo 23/11; OW-A07 Leonid 30/11; OW-A10 Ricardo 30/11. Los FURPS+ ya coincidían con 01_auditoria_furps.md.
+- Nuevo `entregables/semana13/REVISION-POR-INTEGRANTE.md`: qué secciones del Word, filas del Excel y documentos 01–08 revisa y confirma cada integrante, con una tabla de confirmación. El plazo lo fija Gina.
+- Reexportados: Excel (198 / 208 / 244 de 250, sin cambios) y Word (40 págs.). Revisada en el PDF la página de la tabla de roles.
+- Decisión del usuario: `docs/calidad/01–08` se quedan en `docs/calidad/` (no se mueven a `docs/`).
+
+## 12/11/2026 (noche, 3) — Semana 13 cerrada y exportada
+- Revisiones del equipo aplicadas (Jhonny, Gina, Leonid, Ricardo). Decisiones: M-F11 Ricardo 18/11; M-U07 09/11; M-R05 Ricardo 13/11 (sin decisión explícita: fecha de la auditoría); M-P01 Leonid; M-S01 Ricardo 23/11; OW-A04 30/11.
+- M-R01 → Parcial (Prediction usa {code, message}). Cifras finales: FURPS+ 168 → 172 / 200 (ponderado 84,78 → 86,28; el «85,00 ponderado» anterior no seguía las ponderaciones); global 196 → 206 → 244 de 250.
+- S11/S12 (consola de Supabase, tomadas por el equipo) verifican OW-01 y OW-03. Evidencias S11–S48c en `entregables/semana13/evidencias/` y anexo §13 del Word; mapa en `docs/evidencias/semana13-mapa-evidencias.md`, salidas en `docs/evidencias/semana13-salidas/`. Descartadas: S42 (duplicada), S47 (mostraba un correo), S49 (Render gratis no muestra memoria).
+- LICENSE MIT añadido (M-PL05). §9.7 con la salida real de Leonid. Enlaces del §12 fijados a la etiqueta `semana13-entrega`; Ola 1 enlazada al commit d24d86f.
+- `llenar_modelo_furps.py`: toma «Evidencia: Sxx» del Word y en «3-Esperado» escribe la meta. Exportados: Excel, Word (54 págs.) y PDF del Word. `actualizar_word.ps1` falló dos veces con COMException porque el usuario tenía el Word abierto; a la tercera, OK.
+- No ejecutado aquí (sin pytest/Go/Maven): suites de backend; el equipo dice haberlas verificado en su equipo (S50a–d pendientes si se piden).
+
+## 19/11/2026 — Merge con origin/test (revisión de semana 13 del equipo)
+- `origin/test` traía 5 commits de «estudianteuc» (12/11): semana 13 migrada a OWASP Top 10:2025, evidencias S37–S48, Word y PDF de entrega final. Conflictos resueltos así: semana 13 = versión del equipo como base + reaplicadas las capturas reales del 15/11 (§9.5–9.10 sin bloques «Resultado obtenido») y las cifras verificadas (435 pruebas, Go 32, DP 121 + 8). La verificación de nginx de Leonid (12/11) queda citada en texto. Pendientes del equipo S50a–S50d cubiertos con capturas reales (S50a–S50e). HANDOFF: unión de ambas partes.
+- Semana 13 reexportada (56 páginas, Word y PDF) desde el Markdown fusionado.

@@ -1,0 +1,8 @@
+3:Cambio: `software/prediction/Dockerfile` multi-etapa (entrena con `requirements.lock.txt`; la imagen final instala solo
+4:`requirements.serve.txt`), importación diferida de `xgboost` en `src/models/xgboost_model.py`, `--no-compile`,
+9:| Tamaño de imagen | 2,85 GB | **510 MB** | `docker images`, Docker Desktop/WSL2 |
+10:| Memoria en reposo | 174 MiB | **133 MiB** (contenedor aislado) | `docker stats --no-stream`, una sola medición, sin carga |
+11:| Memoria en reposo dentro del stack | 174 MiB | **142 MiB**; con `PYTHONOPTIMIZE=2`: **122 MiB** | `docker stats --no-stream` con el stack levantado |
+13:Pruebas: suite completa de Prediction con el cambio, 100 pruebas sin fallos (entorno completo, Windows). Imagen: `/health/ready` 200
+14:y servicio sin `xgboost`, `matplotlib`, `mlflow`, `seaborn` ni `statsmodels`. Stack completo reconstruido con la imagen nueva:
+21:Quita docstrings y `assert` en tiempo de ejecución (`src/` no usa `assert`) y desinstala pip/setuptools/wheel de la imagen final. RAM en reposo en el stack: 142 → **122 MiB** (una medición, sin
