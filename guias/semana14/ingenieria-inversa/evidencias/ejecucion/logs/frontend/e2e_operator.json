@@ -1,0 +1,66 @@
+{
+ "rol": "OPERATOR",
+ "api": [
+  {
+   "status": 503,
+   "method": "GET",
+   "url": "GW/api/monitoring/v1/metrics/catalog"
+  },
+  {
+   "status": 200,
+   "method": "GET",
+   "url": "GW/api/processing/v1/reports/historical-summary"
+  },
+  {
+   "status": 200,
+   "method": "POST",
+   "url": "GW/api/recommendations/v1/energy"
+  },
+  {
+   "status": 503,
+   "method": "GET",
+   "url": "GW/api/monitoring/v1/metrics/current"
+  }
+ ],
+ "console": [
+  "[error] Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+  "[error] Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+  "[warning] No se pudieron obtener métricas en vivo: El servicio no está disponible."
+ ],
+ "pageerror": [],
+ "pasos": [
+  {
+   "paso": "Abrir dashboard",
+   "ok": true
+  },
+  {
+   "paso": "Pestaña Reportes",
+   "ok": true
+  },
+  {
+   "paso": "Ver resumen HW045",
+   "ok": true
+  },
+  {
+   "paso": "Pestaña Energía",
+   "ok": true
+  },
+  {
+   "paso": "Calcular con el ejemplo",
+   "ok": true
+  },
+  {
+   "paso": "Pestaña Predicción",
+   "ok": true
+  },
+  {
+   "paso": "Abrir Racks",
+   "ok": true
+  }
+ ],
+ "usuario_mostrado": "OPERATOR",
+ "estado_reporte": "Resumen cargado con éxito",
+ "estado_energia": "Ejemplo: 0.281 kWh calculados. Potencia modelada, no medida.",
+ "texto_prediccion": "PREDICCIÓN EXPERIMENTAL\nDemanda futura de CPU\n?\n\nHorizonte de 15 min con Random Forest sobre ventana histórica de 2 h (datos sintéticos). Elige un clúster y un servidor arriba.\n\nESTIMAR CPU DEL SERVIDOR SELECCIONADO\n\nSelecciona un servidor para comenzar.\n\nPOLÍTICA\nRecomendación con restricciones\n?\n\nPropuesta para revisión humana sobre el servidor seleccionado. No se ejecuta ningún cambio.\n\nMemoria",
+ "estado_racks": "Inventario cargado · Métricas pendientes (El servicio no está disponible.)"
+}
