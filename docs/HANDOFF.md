@@ -439,3 +439,9 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 ## 19/11/2026 — Merge con origin/test (revisión de semana 13 del equipo)
 - `origin/test` traía 5 commits de «estudianteuc» (12/11): semana 13 migrada a OWASP Top 10:2025, evidencias S37–S48, Word y PDF de entrega final. Conflictos resueltos así: semana 13 = versión del equipo como base + reaplicadas las capturas reales del 15/11 (§9.5–9.10 sin bloques «Resultado obtenido») y las cifras verificadas (435 pruebas, Go 32, DP 121 + 8). La verificación de nginx de Leonid (12/11) queda citada en texto. Pendientes del equipo S50a–S50d cubiertos con capturas reales (S50a–S50e). HANDOFF: unión de ambas partes.
 - Semana 13 reexportada (56 páginas, Word y PDF) desde el Markdown fusionado.
+
+## 19/11/2026 (noche) — PR #7, delegación y guía de despliegue
+- PR https://github.com/woshtsu/green-ai-workspace-cld/pull/7 (`test` → `main`), revisor propuesto Jhonny. Colaboradores con acceso: woshtsu (admin) y reit-art (write); `main` sin protección de rama.
+- Gateway en Render comprobado con curl: health 200, API sin token 401, CORS 200 → sin bloqueo de Cloudflare; no se crea otro gateway.
+- `usuario.password`: ningún código la usa (`git grep`). SQL para hashear con pgcrypto (bcrypt), borrar la columna y cerrar RLS/grants en `docs/operacion/despliegue-ola2-secreto-y-supabase.md` (lo ejecuta Ricardo). El Excel público también la contiene (OW-04): opción A propuesta, no ejecutada.
+- Para el equipo: `entregables/semana14/pasos-revision-pr-ola2.md` y `entregables/semana14/delegacion-sprint7.md` (Jhonny revisa PR, Leonid valida /dev/ y Lighthouse, Gina Trello/Daily/Review).
