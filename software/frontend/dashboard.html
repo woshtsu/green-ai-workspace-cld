@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Green AI | Observatorio</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="monitoring.css?v=pmv2">
+  <link rel="stylesheet" href="monitoring.css?v=pmv3">
   <link rel="stylesheet" href="ui.css?v=1">
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
@@ -56,7 +56,7 @@
       <button role="tab" id="tab-detalle" data-tab="detalle" aria-controls="panel-detalle" aria-selected="false">Detalle por servidor</button>
       <button role="tab" id="tab-prediccion" data-tab="prediccion" aria-controls="panel-prediccion" aria-selected="false">Predicción y recomendación</button>
       <button role="tab" id="tab-reportes" data-tab="reportes" aria-controls="panel-reportes" aria-selected="false">Reportes y experimento</button>
-      <button role="tab" id="tab-energia" data-tab="energia" aria-controls="panel-energia" aria-selected="false">Energía y CO₂e</button>
+      <button role="tab" id="tab-energia" data-tab="energia" aria-controls="panel-energia" aria-selected="false">Energía y CO₂e (modeladas)</button>
     </div>
 
     <!-- ============ RESUMEN ============ -->
@@ -88,7 +88,11 @@
           <span id="compare-chips" style="display:contents"></span>
         </div>
         <p id="history-status"></p>
-        <div class="monitor-chart"><canvas id="history-chart"></canvas></div>
+        <div class="monitor-chart"><canvas id="history-chart" role="img" aria-label="Gráfico de la evolución de la métrica; sin datos todavía."></canvas></div>
+        <details id="history-table-details" class="a11y-details" hidden>
+          <summary>Ver datos en tabla</summary>
+          <div id="history-table-host" class="table-wrapper a11y-table-wrap" tabindex="0" role="region" aria-label="Tabla con los datos del gráfico"></div>
+        </details>
         <p class="legend-note" id="legend-note"></p>
       </section>
     </section>
@@ -182,6 +186,21 @@
           <p id="recommendation-status" role="status" aria-live="polite" class="pmv2-status">No se ejecutan cambios de infraestructura.</p>
           <div id="recommendation-problem" hidden></div>
           <p id="recommendation-result" class="pmv2-result-box" style="white-space:pre-line"></p>
+          <section id="decision-panel" class="decision-panel" aria-labelledby="decision-title" hidden>
+            <h4 id="decision-title">Decisión humana</h4>
+            <p class="field-help"><strong>Registrar una decisión no ejecuta ningún cambio</strong>. Queda guardada solo como registro de auditoría.</p>
+            <div id="decision-actions">
+              <label for="decision-comment">Comentario (opcional, máx. 500 caracteres)</label>
+              <textarea id="decision-comment" maxlength="500" rows="2" style="width:100%"></textarea>
+              <div class="pmv2-actions-row">
+                <button id="decision-approve" class="btn btn-primary" type="button">Aprobar</button>
+                <button id="decision-reject" class="btn btn-secondary" type="button">Rechazar</button>
+              </div>
+            </div>
+            <p id="decision-status" role="status" aria-live="polite" class="pmv2-status"></p>
+            <h5>Decisiones registradas</h5>
+            <ul id="decision-list" class="decision-list"><li>Sin decisiones registradas.</li></ul>
+          </section>
         </article>
       </section>
     </section>
@@ -199,7 +218,7 @@
             <div class="pmv2-card-header">
               <span class="card-badge">Telemetría</span>
               <div class="help-host" data-help="report"><h3>Reporte de históricos</h3></div>
-              <p class="section-desc">Consulta agregada y exportación en CSV del historial de telemetría.</p>
+              <p class="section-desc">Consulta agregada y exportación en CSV o PDF del historial de telemetría.</p>
             </div>
             <form id="historical-report-form" onsubmit="event.preventDefault();">
               <div class="pmv2-form-grid">
@@ -216,6 +235,7 @@
               <div class="pmv2-actions-row">
                 <button id="report-summary-btn" class="btn btn-primary" type="button">Ver resumen</button>
                 <button id="report-csv-btn" class="btn btn-secondary" type="button">Descargar CSV</button>
+                <button id="report-pdf-btn" class="btn btn-secondary" type="button">Descargar PDF</button>
               </div>
             </form>
             <p id="report-status" role="status" aria-live="polite" class="pmv2-status">Listo para consultar.</p>
@@ -256,7 +276,7 @@
     <!-- ============ ENERGÍA Y CO2e ============ -->
     <section id="panel-energia" class="tab-panel" role="tabpanel" aria-labelledby="tab-energia" hidden>
       <section class="glass-panel monitor-panel" aria-labelledby="energy-title">
-        <div class="help-host" data-help="energy"><h2 id="energy-title">Energía y CO₂e del periodo</h2></div>
+        <div class="help-host" data-help="energy"><h2 id="energy-title">Energía y CO₂e modeladas del periodo</h2></div>
         <p class="section-desc">Cálculo de energía (kWh) y CO₂e a partir de series de potencia en vatios. <span class="honest-tag">Con datos simulados la potencia es modelada, no medida</span></p>
         <div class="energy-grid">
           <div class="energy-box">
@@ -300,6 +320,8 @@
   <script src="appearance.js"></script>
   <script src="metrics.js"></script>
   <script src="friendly-errors.js"></script>
+  <script src="a11y.js"></script>
+  <script src="decisions.js"></script>
   <script src="aggregate.js"></script>
   <script src="energy.js"></script>
   <script src="help-content.js"></script>

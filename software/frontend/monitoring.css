@@ -74,3 +74,10 @@ button:disabled { opacity:.5; cursor:wait; }
 @media(max-width: 1024px) {
   .pmv2-cards-grid { grid-template-columns: 1fr; }
 }
+
+.a11y-details { margin-top:10px; }
+.a11y-details summary { cursor:pointer; font-weight:600; padding:6px 0; }
+.a11y-table-wrap { max-height:360px; overflow:auto; }
+.a11y-table caption { text-align:left; padding:6px 0; font-size:.85rem; }
+.decision-panel { margin-top:16px; padding-top:12px; border-top:1px solid rgba(148,163,184,.25); }
+.decision-list { padding-left:18px; margin:6px 0 0; }

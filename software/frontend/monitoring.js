@@ -170,6 +170,12 @@ function drawHistory(payload) {
     const series = payload.series[0];
     datasets.push({ label: `${series.resource.id} · ${GreenMetrics.origin(series.origin)}`, data: GreenAggregate.alignedValues(series, stats.stamps, scale), borderColor: '#22d3ee', backgroundColor: '#22d3ee', borderWidth: 3, pointRadius: 0, tension: .25, spanGaps: false });
   }
+  if (typeof GreenA11y !== 'undefined') {
+    GreenA11y.attach(document, $('history-chart'), $('history-table-details'), $('history-table-host'), {
+      caption: many ? `Evolución de la métrica: media, rango y servidores comparados` : `Evolución de la métrica del servidor seleccionado`,
+      title: 'evolución de la métrica', unit: unitText(payload), labels, rowHeader: 'Hora',
+      datasets: datasets.map(d => (d.label === 'Rango mín–máx' ? { ...d, label: 'Máximo' } : d)) });
+  }
   const muted = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#94a3b8';
   historyChart = new Chart($('history-chart'), {
     type: 'line',
@@ -222,6 +228,7 @@ async function refreshMetrics() {
     } catch (error) {
       historyError = error;
       historyChart?.destroy(); historyChart = null; lastHistory = null;
+      if (typeof GreenA11y !== 'undefined') GreenA11y.clear($('history-chart'), $('history-table-details'), $('history-table-host'));
       put('history-status', `Histórico no disponible: ${error.message}`);
     }
     const definition = catalog.find(m => m.id === metric);
@@ -234,6 +241,7 @@ async function refreshMetrics() {
     for (const id of ['summary-nodes','summary-valid','stat-mean','stat-max','stat-min','stat-above']) put(id, '—');
     for (const id of ['summary-origin','summary-quality']) put(id, 'Sin consulta vigente');
     historyChart?.destroy(); historyChart = null; lastHistory = null;
+      if (typeof GreenA11y !== 'undefined') GreenA11y.clear($('history-chart'), $('history-table-details'), $('history-table-host'));
     put('current-status','Consulta no disponible'); put('history-status','Consulta no disponible'); put('warnings','');
     put('request-status', error.message);
   } finally {
