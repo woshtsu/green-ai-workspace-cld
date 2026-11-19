@@ -43,7 +43,11 @@ type env struct {
 
 func b64(b []byte) string { return base64.RawURLEncoding.EncodeToString(b) }
 
-func newEnv(t *testing.T) *env {
+func newEnv(t *testing.T) *env { return newEnvSecret(t, testSecret) }
+
+const testSecret = "test-secret-value"
+
+func newEnvSecret(t *testing.T, secret string) *env {
 	t.Helper()
 	e := &env{t: t}
 	e.ecKey, _ = ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
@@ -74,6 +78,10 @@ func newEnv(t *testing.T) *env {
 			w.Header().Set("Content-Type", "application/problem+json")
 			w.WriteHeader(422)
 			io.WriteString(w, `{"status":422,"detail":"invalid query"}`)
+		case strings.HasPrefix(r.URL.Path, "/v1/recommendations/") && strings.HasSuffix(r.URL.Path, "/decisions"):
+			b, _ := io.ReadAll(r.Body)
+			io.WriteString(w, r.Method+" "+r.URL.Path+" id="+strings.Join(r.Header.Values("X-Green-User-Id"), ",")+
+				" role="+strings.Join(r.Header.Values("X-Green-User-Role"), ",")+" secret="+strings.Join(r.Header.Values("X-Green-Gateway-Secret"), ",")+" body="+string(b))
 		case r.URL.Path == "/api/v1/metrics/catalog":
 			io.WriteString(w, "xff="+r.Header.Get("X-Forwarded-For")+";host="+r.Header.Get("X-Forwarded-Host"))
 		default:
@@ -87,7 +95,7 @@ func newEnv(t *testing.T) *env {
 	os.WriteFile(filepath.Join(dir, "gateway-v0.1.yaml"), []byte("openapi: 3.1.0\n"), 0o644)
 	verifier := auth.NewJWKSVerifier(issuer, "authenticated", upstream.URL+"/jwks")
 	srv, err := New(Config{Upstreams: map[policy.Upstream]*url.URL{policy.Monitoring: u, policy.DataProcessing: u, policy.Prediction: u},
-		AllowedOrigin: allowedOrigin, OpenAPIDir: dir}, verifier)
+		AllowedOrigin: allowedOrigin, OpenAPIDir: dir, SharedSecret: secret}, verifier)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -496,5 +504,95 @@ func TestViewerRoleIsReadOnly(t *testing.T) {
 	for _, p := range []string{"/api/prediction/v1/predictions", "/api/recommendations/v1/recommendations", "/api/recommendations/v1/energy"} {
 		resp, _ = e.do(req{method: "POST", path: p, token: e.valid("VIEWER"), body: "{}"})
 		expect(t, resp, 403)
+	}
+}
+
+const rid = "3f2b8c1e-0a5d-4e6f-9b7a-1c2d3e4f5a6b"
+const decPath = "/api/recommendations/v1/recommendations/" + rid + "/decisions"
+
+func TestDecisionRoutesForwardWithTrustedIdentity(t *testing.T) {
+	e := newEnv(t)
+	resp, _ := e.do(req{path: decPath})
+	expect(t, resp, 401)
+	for _, role := range []string{"OPERATOR", "ADMIN"} {
+		resp, body := e.do(req{method: "POST", path: decPath, token: e.valid(role), body: `{"decision":"APPROVED"}`})
+		expect(t, resp, 200)
+		if want := "POST /v1/recommendations/" + rid + "/decisions id=user-test role=" + role + " secret=" + testSecret + ` body={"decision":"APPROVED"}`; body != want {
+			t.Fatalf("POST %q", body)
+		}
+		resp, body = e.do(req{path: decPath, token: e.valid(role)})
+		expect(t, resp, 200)
+		if want := "GET /v1/recommendations/" + rid + "/decisions id=user-test role=" + role + " secret=" + testSecret + " body="; body != want {
+			t.Fatalf("GET %q", body)
+		}
+	}
+}
+
+func TestDecisionViewerCanReadButNotPost(t *testing.T) {
+	e := newEnv(t)
+	resp, _ := e.do(req{path: decPath, token: e.valid("VIEWER")})
+	expect(t, resp, 200)
+	resp, _ = e.do(req{method: "POST", path: decPath, token: e.valid("VIEWER"), body: "{}"})
+	expect(t, resp, 403)
+	resp, _ = e.do(req{path: decPath, token: e.valid("ROOT")})
+	expect(t, resp, 403)
+}
+
+func TestDecisionRouteOnlyPublishesUUIDAndGetPost(t *testing.T) {
+	e := newEnv(t)
+	jwt := e.valid("ADMIN")
+	base := "/api/recommendations/v1/recommendations/"
+	for _, bad := range []string{"abc", "1234", rid + "0", rid[1:], "zf2b8c1e-0a5d-4e6f-9b7a-1c2d3e4f5a6b"} {
+		for _, m := range []string{"GET", "POST"} {
+			resp, _ := e.do(req{method: m, path: base + bad + "/decisions", token: jwt})
+			expect(t, resp, 404)
+		}
+	}
+	resp, _ := e.do(req{path: base + "abc/decisions"}) // sin token: 401 antes que 404
+	expect(t, resp, 401)
+	for _, m := range []string{"PUT", "DELETE"} {
+		resp, _ := e.do(req{method: m, path: decPath, token: jwt})
+		expect(t, resp, 403)
+	}
+	for _, p := range []string{decPath + "/", base + rid} {
+		resp, _ := e.do(req{path: p, token: jwt})
+		expect(t, resp, 403)
+	}
+}
+
+func TestForgedIdentityHeadersAreReplacedFromToken(t *testing.T) {
+	e := newEnv(t)
+	resp, body := e.do(req{path: decPath, token: e.valid("OPERATOR"), headers: map[string]string{
+		"X-Green-User-Id": "attacker", "x-green-user-role": "ADMIN"}})
+	expect(t, resp, 200)
+	if want := "GET /v1/recommendations/" + rid + "/decisions id=user-test role=OPERATOR secret=" + testSecret + " body="; body != want {
+		t.Fatalf("identidad reenviada %q", body)
+	}
+	// Cabecera de salto (Connection) que intenta quitar la identidad del Gateway.
+	resp, body = e.do(req{path: decPath, token: e.valid("OPERATOR"), headers: map[string]string{
+		"Connection": "X-Green-User-Id, X-Green-User-Role"}})
+	expect(t, resp, 200)
+	if !strings.Contains(body, "id=user-test role=OPERATOR") {
+		t.Fatalf("la identidad debe sobrevivir a Connection: %q", body)
+	}
+}
+
+func TestDecisionBodyOver2MBIsRejected(t *testing.T) {
+	e := newEnv(t)
+	resp, _ := e.do(req{method: "POST", path: decPath, token: e.valid("ADMIN"), body: strings.Repeat("a", 2<<20+1)})
+	expect(t, resp, 413)
+}
+
+func TestGatewaySecretIsReplacedOrOmitted(t *testing.T) {
+	forged := map[string]string{"X-Green-Gateway-Secret": "forged"}
+	e := newEnv(t)
+	_, body := e.do(req{path: decPath, token: e.valid("OPERATOR"), headers: forged})
+	if !strings.Contains(body, " secret="+testSecret+" ") {
+		t.Fatalf("el secreto falsificado debe sustituirse: %q", body)
+	}
+	e2 := newEnvSecret(t, "")
+	_, body = e2.do(req{path: decPath, token: e2.valid("OPERATOR"), headers: forged})
+	if !strings.Contains(body, " secret= ") || strings.Contains(body, "forged") {
+		t.Fatalf("sin GATEWAY_SHARED_SECRET la cabecera no debe llegar: %q", body)
 	}
 }

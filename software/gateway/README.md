@@ -47,6 +47,7 @@ Invoke-RestMethod 'http://127.0.0.1:8081/api/monitoring/v1/metrics/current?metri
 | `POST /api/prediction/v1/predictions` | `/v1/predictions` |
 | `POST /api/recommendations/v1/recommendations` | `/v1/recommendations` en Prediction |
 | `POST /api/recommendations/v1/energy` | `/v1/energy` en Prediction |
+| `POST` y `GET /api/recommendations/v1/recommendations/{id}/decisions` | `/v1/recommendations/{id}/decisions` en Prediction (`{id}` solo UUID, otro valor: 404; POST: ADMIN/OPERATOR; GET: también VIEWER; 2 MB, 30 s) |
 
 Recomendaciones y cálculo energético son responsabilidades de Prediction. Ambas rutas
 usan `GATEWAY_PREDICTION_BASE_URL`; ya no existe un destino independiente
@@ -75,6 +76,9 @@ La superficie externa está versionada en [gateway-v0.1.yaml](src/main/resources
 | `GATEWAY_MONITORING_BASE_URL` | `http://127.0.0.1:8080` | URL interna de Monitoring |
 | `GATEWAY_DATA_PROCESSING_BASE_URL` | `http://data-processing:8000` | URL interna de Data Processing |
 | `GATEWAY_CORS_ALLOWED_ORIGIN` | `http://127.0.0.1:3000` | Origen exacto permitido al Frontend |
+| `GATEWAY_SHARED_SECRET` | vacío | Secreto que se envía a los servicios internos en `X-Green-Gateway-Secret`; vacío = no se envía. Solo por variable de entorno |
+
+En todas las rutas reenviadas el Gateway elimina `X-Green-User-Id`, `X-Green-User-Role` y `X-Green-Gateway-Secret` del cliente y vuelve a fijar las dos primeras desde el JWT validado (`sub`, `user_role`).
 
 En Docker Compose usar `http://monitoring:8080`. En Kubernetes usar el DNS real del Service; nunca `localhost` entre contenedores o pods.
 

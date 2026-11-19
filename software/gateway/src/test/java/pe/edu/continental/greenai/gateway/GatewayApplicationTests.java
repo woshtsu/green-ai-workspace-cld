@@ -29,6 +29,9 @@ class GatewayApplicationTests {
         .handle((req,res) -> {
             if (List.of("/v1/predictions", "/v1/recommendations", "/v1/energy").contains(req.uri())) return req.receive().aggregate().asString()
                 .flatMap(body -> res.header("Content-Type", "application/json").sendString(Mono.just(body)).then());
+            if (req.uri().startsWith("/v1/recommendations/") && req.uri().endsWith("/decisions")) return req.receive().aggregate().asString().defaultIfEmpty("")
+                .flatMap(body -> res.sendString(Mono.just(req.method() + " " + req.uri() + " id=" + req.requestHeaders().getAll("X-Green-User-Id")
+                    + " role=" + req.requestHeaders().getAll("X-Green-User-Role") + " secret=" + req.requestHeaders().getAll("X-Green-Gateway-Secret") + " body=" + body)).then());
             if (req.uri().equals("/jwks")) return res.header("Content-Type", "application/json")
                 .sendString(Mono.just(new JWKSet(KEY.toPublicJWK()).toString()));
             res.header("X-Request-Id",req.requestHeaders().get("X-Request-Id"));
@@ -41,6 +44,7 @@ class GatewayApplicationTests {
         p.add("GATEWAY_MONITORING_BASE_URL", () -> "http://127.0.0.1:" + UPSTREAM.port());
         p.add("GATEWAY_DATA_PROCESSING_BASE_URL", () -> "http://127.0.0.1:" + UPSTREAM.port());
         p.add("GATEWAY_PREDICTION_BASE_URL", () -> "http://127.0.0.1:" + UPSTREAM.port());
+        p.add("gateway.shared-secret", () -> "test-secret-value");
         p.add("gateway.auth.issuer", () -> ISSUER);
         p.add("gateway.auth.jwks", () -> "http://127.0.0.1:" + UPSTREAM.port() + "/jwks");
     }
@@ -163,5 +167,48 @@ class GatewayApplicationTests {
         for (String p : List.of("/api/prediction/v1/predictions", "/api/recommendations/v1/recommendations", "/api/recommendations/v1/energy"))
             client.post().uri(p).headers(h -> h.setBearerAuth(viewer)).header("Content-Type", "application/json")
                 .bodyValue("{}").exchange().expectStatus().isForbidden();
+    }
+    static final String RID = "3f2b8c1e-0a5d-4e6f-9b7a-1c2d3e4f5a6b";
+    static final String DEC = "/api/recommendations/v1/recommendations/" + RID + "/decisions";
+    @Test void decisionRoutesForwardForAllowedRolesWithTrustedIdentity() throws Exception {
+        client.get().uri(DEC).exchange().expectStatus().isUnauthorized();
+        for (String role : List.of("OPERATOR", "ADMIN")) {
+            String jwt = valid(role);
+            client.post().uri(DEC).headers(h -> h.setBearerAuth(jwt)).bodyValue("{\"decision\":\"APPROVED\"}")
+                .exchange().expectStatus().isOk().expectBody(String.class)
+                .isEqualTo("POST /v1/recommendations/" + RID + "/decisions id=[user-test] role=[" + role + "] secret=[test-secret-value] body={\"decision\":\"APPROVED\"}");
+            client.get().uri(DEC).headers(h -> h.setBearerAuth(jwt)).exchange().expectStatus().isOk().expectBody(String.class)
+                .isEqualTo("GET /v1/recommendations/" + RID + "/decisions id=[user-test] role=[" + role + "] secret=[test-secret-value] body=");
+        }
+    }
+    @Test void decisionViewerCanReadButNotPost() throws Exception {
+        String viewer = valid("VIEWER");
+        client.get().uri(DEC).headers(h -> h.setBearerAuth(viewer)).exchange().expectStatus().isOk();
+        client.post().uri(DEC).headers(h -> h.setBearerAuth(viewer)).header("Content-Type", "application/json")
+            .bodyValue("{}").exchange().expectStatus().isForbidden();
+        String unknown = valid("ROOT");
+        client.get().uri(DEC).headers(h -> h.setBearerAuth(unknown)).exchange().expectStatus().isForbidden();
+    }
+    @Test void decisionRouteOnlyPublishesUuidAndGetPost() throws Exception {
+        String admin = valid("ADMIN");
+        for (String bad : List.of("abc", "1234", RID + "0", RID.substring(1), "zf2b8c1e-0a5d-4e6f-9b7a-1c2d3e4f5a6b"))
+            for (var method : List.of(org.springframework.http.HttpMethod.GET, org.springframework.http.HttpMethod.POST))
+                client.method(method).uri("/api/recommendations/v1/recommendations/" + bad + "/decisions")
+                    .headers(h -> h.setBearerAuth(admin)).exchange().expectStatus().isNotFound();
+        client.put().uri(DEC).headers(h -> h.setBearerAuth(admin)).exchange().expectStatus().isForbidden();
+        client.delete().uri(DEC).headers(h -> h.setBearerAuth(admin)).exchange().expectStatus().isForbidden();
+        client.get().uri(DEC + "/").headers(h -> h.setBearerAuth(admin)).exchange().expectStatus().isForbidden();
+        client.get().uri("/api/recommendations/v1/recommendations/" + RID).headers(h -> h.setBearerAuth(admin)).exchange().expectStatus().isForbidden();
+    }
+    @Test void forgedIdentityHeadersAreReplacedFromToken() throws Exception {
+        String jwt = valid("OPERATOR");
+        client.get().uri(DEC).headers(h -> h.setBearerAuth(jwt)).header("X-Green-User-Id", "attacker").header("x-green-user-role", "ADMIN").header("X-Green-Gateway-Secret", "forged")
+            .exchange().expectStatus().isOk().expectBody(String.class)
+            .isEqualTo("GET /v1/recommendations/" + RID + "/decisions id=[user-test] role=[OPERATOR] secret=[test-secret-value] body=");
+    }
+    @Test void decisionBodyOver2MbIsRejected() throws Exception {
+        String jwt = valid("ADMIN");
+        client.post().uri(DEC).headers(h -> h.setBearerAuth(jwt)).header("Content-Type", "application/json")
+            .bodyValue("\"" + "a".repeat(2 * 1024 * 1024 + 10) + "\"").exchange().expectStatus().isEqualTo(413);
     }
 }

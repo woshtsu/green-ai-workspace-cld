@@ -1,6 +1,9 @@
 package policy
 
-import "testing"
+import (
+	"testing"
+	"time"
+)
 
 func TestUpstreamPathsMatchJavaGateway(t *testing.T) {
 	want := map[string]string{
@@ -11,8 +14,8 @@ func TestUpstreamPathsMatchJavaGateway(t *testing.T) {
 		"POST /api/recommendations/v1/energy":          "/v1/energy",
 		"POST /api/recommendations/v1/recommendations": "/v1/recommendations",
 	}
-	if n := len(Routes()); n != 10 {
-		t.Fatalf("se esperaban 10 rutas publicadas, hay %d", n)
+	if n := len(Routes()); n != 12 {
+		t.Fatalf("se esperaban 12 rutas publicadas, hay %d", n)
 	}
 	for key, path := range want {
 		var method, p string
@@ -57,5 +60,45 @@ func TestViewerIsReadOnly(t *testing.T) {
 	}
 	if !post.Allows("OPERATOR") || !post.Allows("ADMIN") || post.Allows("ROOT") || get.Allows("") {
 		t.Fatal("roles ADMIN/OPERATOR completos; desconocidos sin acceso")
+	}
+}
+
+const rid = "3f2b8c1e-0a5d-4e6f-9b7a-1c2d3e4f5a6b"
+
+func TestDecisionsRouteMatchesOnlyUUID(t *testing.T) {
+	p := "/api/recommendations/v1/recommendations/" + rid + "/decisions"
+	for _, m := range []string{"GET", "POST"} {
+		r, ok := Match(m, p)
+		if !ok || r.UpstreamPath() != "/v1/recommendations/"+rid+"/decisions" || r.MaxBody != maxBody || r.Timeout != 30*time.Second {
+			t.Errorf("%s: %+v ok=%v", m, r, ok)
+		}
+	}
+	base := "/api/recommendations/v1/recommendations/"
+	for _, bad := range []string{base + "abc/decisions", base + rid + "0/decisions", base + "zf2b8c1e-0a5d-4e6f-9b7a-1c2d3e4f5a6b/decisions",
+		base + "/decisions", base + rid + "/decisions/", base + rid, base + "{uuid}/decisions", base + rid + "/x/decisions"} {
+		for _, m := range []string{"GET", "POST"} {
+			if _, ok := Match(m, bad); ok {
+				t.Errorf("%s %s no debe estar publicada", m, bad)
+			}
+		}
+	}
+	if _, ok := Match("PUT", p); ok {
+		t.Error("PUT no debe estar publicada")
+	}
+	if !NotPublished("GET", base+"abc/decisions") || NotPublished("GET", p) || NotPublished("DELETE", base+"abc/decisions") ||
+		NotPublished("GET", base+"/decisions") || NotPublished("GET", "/api/monitoring/v1/metrics/current") {
+		t.Error("NotPublished: solo {id} no UUID de GET/POST")
+	}
+}
+
+func TestDecisionsRoles(t *testing.T) {
+	p := "/api/recommendations/v1/recommendations/" + rid + "/decisions"
+	get, _ := Match("GET", p)
+	post, _ := Match("POST", p)
+	if !get.Allows("VIEWER") || !get.Allows("ADMIN") || !get.Allows("OPERATOR") || get.Allows("ROOT") {
+		t.Error("GET: ADMIN, OPERATOR y VIEWER")
+	}
+	if post.Allows("VIEWER") || !post.Allows("ADMIN") || !post.Allows("OPERATOR") {
+		t.Error("POST: solo ADMIN y OPERATOR")
 	}
 }

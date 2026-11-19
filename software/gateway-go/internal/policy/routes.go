@@ -49,16 +49,85 @@ func buildTable() []Route {
 	for _, p := range []string{"recommendations", "energy"} {
 		routes = append(routes, Route{"POST", "/api/recommendations/v1/" + p, Prediction, 2, "", maxBody, 30 * time.Second})
 	}
+	// {uuid}: único segmento paramétrico admitido (sin comodines generales); solo UUID.
+	decisions := "/api/recommendations/v1/recommendations/{uuid}/decisions"
+	routes = append(routes,
+		Route{"POST", decisions, Prediction, 2, "", maxBody, 30 * time.Second},
+		Route{"GET", decisions, Prediction, 2, "", maxBody, 30 * time.Second})
 	return routes
+}
+
+const uuidSegment = "{uuid}"
+
+// isUUID comprueba el formato 8-4-4-4-12 hexadecimal.
+func isUUID(s string) bool {
+	if len(s) != 36 {
+		return false
+	}
+	for i := 0; i < len(s); i++ {
+		switch c := s[i]; {
+		case i == 8 || i == 13 || i == 18 || i == 23:
+			if c != '-' {
+				return false
+			}
+		case (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F'):
+		default:
+			return false
+		}
+	}
+	return true
+}
+
+// matchPattern compara segmento a segmento; {uuid} exige un UUID válido (strict) o cualquier segmento no vacío.
+func matchPattern(pattern, path string, strict bool) bool {
+	ps, xs := strings.Split(pattern, "/"), strings.Split(path, "/")
+	if len(ps) != len(xs) {
+		return false
+	}
+	for i := range ps {
+		switch {
+		case ps[i] == uuidSegment && strict:
+			if !isUUID(xs[i]) {
+				return false
+			}
+		case ps[i] == uuidSegment:
+			if xs[i] == "" {
+				return false
+			}
+		case ps[i] != xs[i]:
+			return false
+		}
+	}
+	return true
+}
+
+// NotPublished indica que la ruta tiene la forma de una ruta con {uuid} para ese método pero el
+// segmento no es un UUID: se responde 404 (el Gateway Java: sin ruta). No aplica a rutas sin {uuid}.
+func NotPublished(method, path string) bool {
+	for _, r := range table {
+		if r.Method == method && strings.Contains(r.Path, uuidSegment) &&
+			matchPattern(r.Path, path, false) && !matchPattern(r.Path, path, true) {
+			return true
+		}
+	}
+	return false
 }
 
 // Routes devuelve una copia de la tabla publicada.
 func Routes() []Route { return append([]Route(nil), table...) }
 
-// Match busca coincidencia exacta de método y ruta (sin comodines ni barra final).
+// Match busca coincidencia exacta de método y ruta (sin comodines ni barra final); el segmento {uuid}
+// solo acepta UUID. La Route devuelta lleva la ruta concreta (UpstreamPath la reenvía tal cual).
 func Match(method, path string) (Route, bool) {
 	for _, r := range table {
-		if r.Method == method && r.Path == path {
+		if r.Method != method {
+			continue
+		}
+		if !strings.Contains(r.Path, uuidSegment) && r.Path == path {
+			return r, true
+		}
+		if strings.Contains(r.Path, uuidSegment) && matchPattern(r.Path, path, true) {
+			r.Path = path
 			return r, true
 		}
 	}

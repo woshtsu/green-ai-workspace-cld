@@ -40,6 +40,7 @@ type Config struct {
 	AllowedOrigin string
 	OpenAPIDir    string // vacío = /openapi no se sirve
 	ConnectTimout time.Duration
+	SharedSecret  string // GATEWAY_SHARED_SECRET; vacío = no se envía X-Green-Gateway-Secret
 }
 
 type Server struct {
@@ -50,6 +51,14 @@ type Server struct {
 }
 
 type ctxKey struct{}
+type principalKey struct{}
+
+// Cabeceras de identidad de confianza hacia los servicios internos.
+const (
+	userIDHeader   = "X-Green-User-Id"
+	userRoleHeader = "X-Green-User-Role"
+	secretHeader   = "X-Green-Gateway-Secret"
+)
 
 func New(cfg Config, verifier auth.Verifier) (*Server, error) {
 	if cfg.ConnectTimout == 0 {
@@ -78,6 +87,18 @@ func New(cfg Config, verifier auth.Verifier) (*Server, error) {
 				pr.Out.URL.RawPath = ""
 				pr.Out.URL.RawQuery = pr.In.URL.RawQuery // la query se reenvía sin recodificar
 				pr.SetXForwarded()
+				// Identidad de confianza: se descarta lo del cliente y se fija desde el JWT validado.
+				pr.Out.Header.Del(userIDHeader)
+				pr.Out.Header.Del(userRoleHeader)
+				pr.Out.Header.Del(secretHeader)
+				if cfg.SharedSecret != "" {
+					pr.Out.Header.Set(secretHeader, cfg.SharedSecret)
+				}
+				p := pr.In.Context().Value(principalKey{}).(auth.Principal)
+				pr.Out.Header.Set(userIDHeader, p.Subject)
+				if p.Role != "" {
+					pr.Out.Header.Set(userRoleHeader, p.Role)
+				}
 			},
 			ModifyResponse: func(resp *http.Response) error {
 				resp.Header.Del(requestIDHeader) // la correlación la fija el Gateway
@@ -125,11 +146,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	route, ok := policy.Match(r.Method, r.URL.Path)
+	if !ok && policy.NotPublished(r.Method, r.URL.Path) {
+		problem(w, http.StatusNotFound, "Not Found", "Recurso no encontrado.")
+		return
+	}
 	if !ok || !route.Allows(principal.Role) {
 		problem(w, http.StatusForbidden, "Forbidden", "Tu cuenta no tiene permiso para esta operación.")
 		return
 	}
-	s.forward(w, r, route)
+	s.forward(w, r, route, principal)
 }
 
 // cors aplica la política de un único origen. Devuelve false si ya respondió.
@@ -199,7 +224,7 @@ func (s *Server) authenticate(r *http.Request) (auth.Principal, error) {
 	return s.verifier.Verify(r.Context(), strings.TrimSpace(token))
 }
 
-func (s *Server) forward(w http.ResponseWriter, r *http.Request, route policy.Route) {
+func (s *Server) forward(w http.ResponseWriter, r *http.Request, route policy.Route, principal auth.Principal) {
 	limit := route.MaxBody
 	if limit == 0 {
 		limit = defaultMaxBody // rutas GET: Java no limita; aquí se acota (endurecimiento, revisión 03)
@@ -209,7 +234,8 @@ func (s *Server) forward(w http.ResponseWriter, r *http.Request, route policy.Ro
 		return
 	}
 	r.Body = http.MaxBytesReader(w, r.Body, limit)
-	ctx, cancel := context.WithTimeout(context.WithValue(r.Context(), ctxKey{}, route), route.Timeout)
+	ctx := context.WithValue(context.WithValue(r.Context(), ctxKey{}, route), principalKey{}, principal)
+	ctx, cancel := context.WithTimeout(ctx, route.Timeout)
 	defer cancel()
 	s.proxies[route.Upstream].ServeHTTP(w, r.WithContext(ctx))
 }

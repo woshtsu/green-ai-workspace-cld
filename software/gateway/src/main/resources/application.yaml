@@ -48,6 +48,18 @@ spring:
                     maxSize: 2MB
               metadata:
                 response-timeout: 30000
+            - id: recommendation-decisions
+              uri: ${GATEWAY_PREDICTION_BASE_URL:http://prediction:8000}
+              predicates:
+                - Path=/api/recommendations/v1/recommendations/{id:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}}/decisions
+                - Method=GET,POST
+              filters:
+                - StripPrefix=2
+                - name: RequestSize
+                  args:
+                    maxSize: 2MB
+              metadata:
+                response-timeout: 30000
           httpclient:
             connect-timeout: 1000
             response-timeout: 6s
@@ -68,6 +80,8 @@ management:
       show-details: never
 
 gateway:
+  # Secreto compartido con los servicios internos (X-Green-Gateway-Secret); vacío = no se envía.
+  shared-secret: ${GATEWAY_SHARED_SECRET:}
   auth:
     issuer: ${GATEWAY_AUTH_ISSUER_URI}
     jwks: ${GATEWAY_AUTH_JWK_SET_URI}

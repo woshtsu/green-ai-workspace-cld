@@ -22,4 +22,6 @@ docker build -f software/gateway-go/Dockerfile -t green-ai-mono-gateway-go:local
 ## Variables
 `GATEWAY_PORT` (8081), `GATEWAY_MONITORING_BASE_URL`, `GATEWAY_DATA_PROCESSING_BASE_URL`, `GATEWAY_PREDICTION_BASE_URL`,
 `GATEWAY_AUTH_ISSUER_URI` y `GATEWAY_AUTH_JWK_SET_URI` (obligatorias), `GATEWAY_CORS_ALLOWED_ORIGIN`,
-`GATEWAY_OPENAPI_DIR` (la imagen la fija en `/openapi`).
+`GATEWAY_OPENAPI_DIR` (la imagen la fija en `/openapi`), `GATEWAY_SHARED_SECRET` (vacía por defecto: no se envía `X-Green-Gateway-Secret`).
+
+Rutas nuevas: `POST`/`GET /api/recommendations/v1/recommendations/{id}/decisions` (`{id}` solo UUID; otro valor: 404). Las cabeceras `X-Green-User-Id`, `X-Green-User-Role` y `X-Green-Gateway-Secret` del cliente se eliminan y se fijan desde el JWT y la variable.

@@ -53,6 +53,7 @@ func run(port string) error {
 		Upstreams:     upstreams,
 		AllowedOrigin: env("GATEWAY_CORS_ALLOWED_ORIGIN", "http://127.0.0.1:3001"),
 		OpenAPIDir:    os.Getenv("GATEWAY_OPENAPI_DIR"),
+		SharedSecret:  os.Getenv("GATEWAY_SHARED_SECRET"),
 	}, auth.NewJWKSVerifier(issuer, "authenticated", jwks))
 	if err != nil {
 		return err
