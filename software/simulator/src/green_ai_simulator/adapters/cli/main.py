@@ -69,7 +69,8 @@ def main():
     elif args.command == "run":
         try:
             from green_ai_simulator.application.runner import run_simulation
-            sys.exit(run_simulation(args))
+            from green_ai_simulator.adapters.composition import build_dependencies
+            sys.exit(run_simulation(args, build_dependencies()))
         except Exception as e:
             print(f"System Error: {e}", file=sys.stderr)
             sys.exit(1)

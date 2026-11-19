@@ -2,21 +2,19 @@ import signal
 import sys
 import time
 from typing import Any
-from green_ai_simulator.adapters.configuration.json_parser import parse_inventory_json
+from green_ai_simulator.application.ports import SimulatorDependencies
 from green_ai_simulator.domain.inventory import validate_inventory
-from green_ai_simulator.adapters.configuration.scenario_parser import parse_scenario_json
 from green_ai_simulator.domain.scenario import validate_scenario
 from green_ai_simulator.domain.engine import create_initial_state, compute_next_state
-from green_ai_simulator.adapters.persistence.run_logger import RunLogger
 
-def run_simulation(args: Any) -> int:
+def run_simulation(args: Any, deps: SimulatorDependencies) -> int:
     if args.duration_seconds <= 0:
         print("Error: duration_seconds must be > 0", file=sys.stderr)
         return 2
     try:
-        inv = parse_inventory_json(args.inventory)
+        inv = deps.read_inventory(args.inventory)
         validate_inventory(inv)
-        scn = parse_scenario_json(args.scenario)
+        scn = deps.read_scenario(args.scenario)
         validate_scenario(scn)
     except Exception as e:
         print(f"Configuration error: {e}", file=sys.stderr)
@@ -31,7 +29,7 @@ def run_simulation(args: Any) -> int:
         return 2
 
     try:
-        logger = RunLogger(
+        logger = deps.create_run_recorder(
             output_dir_base=args.output_dir,
             mode=args.mode,
             seed=args.seed,
@@ -52,16 +50,11 @@ def run_simulation(args: Any) -> int:
     collector = None
     if args.mode == "realtime":
         try:
-            from prometheus_client import start_http_server, REGISTRY
-            from green_ai_simulator.adapters.prometheus.exporter import SimulatorCollector
-            collector = SimulatorCollector(inv, logger.uuid)
-            REGISTRY.register(collector)
-            
-            # Start http server
-            port = getattr(args, "port", 9090)
-            host = getattr(args, "host", "127.0.0.1")
-            print(f"Starting Prometheus exporter on {host}:{port}/metrics")
-            start_http_server(port, addr=host)
+            collector = deps.create_metrics_exporter(
+                inv, logger.uuid,
+                getattr(args, "host", "127.0.0.1"), getattr(args, "port", 9090),
+            )
+            collector.start()
         except Exception as e:
             print(f"Failed to start Prometheus exporter: {e}", file=sys.stderr)
             logger.update_status("FAILED", "Prometheus exporter failed")
@@ -96,7 +89,7 @@ def run_simulation(args: Any) -> int:
                 logger.update_status("STOPPED", "User requested stop via signal")
                 logger.close()
                 if collector:
-                    REGISTRY.unregister(collector)
+                    collector.close()
                 return 0
                 
             if args.mode == "realtime":
@@ -120,19 +113,19 @@ def run_simulation(args: Any) -> int:
                 logger.close()
                 print("Failed: Output size limit reached", file=sys.stderr)
                 if collector:
-                    REGISTRY.unregister(collector)
+                    collector.close()
                 return 1
                  
         logger.update_status("COMPLETED", "Duration reached")
         print("Simulation COMPLETED.")
         if collector:
-            REGISTRY.unregister(collector)
+            collector.close()
         
     except Exception as e:
         logger.update_status("FAILED", f"Exception during execution: {e}")
         logger.close()
         if collector:
-             REGISTRY.unregister(collector)
+             collector.close()
         raise e
     
     logger.close()
