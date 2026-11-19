@@ -395,3 +395,18 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Riesgo observado: la tabla `usuario` de Supabase tiene columnas `password` y `password_hash` (tarjeta de Trello «Revisar RLS Supabase y password» vencida el 11/11).
 - Reexportados: informe 123 páginas (Word y PDF revisados en las páginas de las Figuras 7, 8 y VIII.2), semana 13 38 páginas. Docker Desktop quedó encendido; el stack local se bajó.
 - Sin captura todavía: consola DevTools real (S08 original, bloqueada por Cloudflare en el gateway), latencias locales <30 ms Java / <4 ms Go y cold start ~60 s de semana 13 (filas M-P01).
+
+## 19/11/2026 — Sprint 7: ola 2 implementada (subagentes en worktrees) y guías de semana 14
+- Zips del usuario («FURPS+ Y OWASP», «green-ai-ingenieria-inversa») extraídos en `guias/semana14/` (sin secretos: las coincidencias eran cursores de paginación y un ejemplo truncado) y zips borrados.
+- Contrato común: `docs/contratos/sprint7-ola2.md`. Tras el hallazgo H-01 (Prediction/Data Processing accesibles en Render sin Gateway) se añadió el secreto compartido `X-Green-Gateway-Secret` = `GATEWAY_SHARED_SECRET` (falla cerrado con 503).
+- Antigravity (`agy_task.py`) falló dos veces sin cambios: 1) intentó ejecutar un comando (bloqueado por ALWAYS_DENY), 2) una lectura de archivo denegada en headless. El encargo S-01 pasó a un subagente Sonnet.
+- Integrado en `test` (cherry-pick; las ramas de subagentes partían de `main` 27ef69f, con código idéntico a `test` salvo 2 líneas de docs):
+  - frontend `6ed72e1`: tabla accesible U-02, etiquetas F-06, botón PDF, panel de decisiones HU-07 (textContent, sin innerHTML).
+  - data-processing `e882e67`: `format=pdf` con puerto ReportRenderer + fpdf2 2.9.0 (Pillow 12.2.0 por wheel cp314). Imagen 426 → 498 MB.
+  - simulator `745fd72`: puertos en application/ports.py, composición en adapters; md5 de samples.jsonl idéntico con seed 42.
+  - prediction `41fb923`: decisiones HU-07 (src/decisions, SQLite, migración 001 no aplicada, .env.example con GATEWAY_SHARED_SECRET vacío).
+  - gateways `69da20b`: rutas `/api/recommendations/v1/recommendations/{uuid}/decisions`, IdentityHeadersFilter (Java) y cabeceras repuestas (Go).
+- Pruebas reales capturadas (consola, 19/11): Prediction 116, Data Processing 128 + 8 skipped, Gateway Java 19, Gateway Go 40 PASS, Simulator 14, Frontend 63, Monitoring 112 → 492 aprobadas. Capturas `entregables/informe-corregido/evidencias-nube/captura-S7-*.png`.
+- Arranque en frío Render medido (`herramientas_IA/operacion/medir_arranque_frio.ps1`): 1.ª petición 12,6–69,5 s, 2.ª < 0,8 s. Doc `docs/operacion/mlflow-y-precalentamiento.md` (F-04, P-01).
+- Entregables: `entregables/semana14/reporte-icacit.md` (7.6) y `entregables/semana14/sprint7-ola2-implementacion.md`.
+- Pendiente (requiere autorización o sesión del equipo): despliegue a Render y `GATEWAY_SHARED_SECRET` remoto, migración en Supabase, F-01 RLS/`password`, F-03 sesión real en /dev/, escaneo axe/Lighthouse, R-01 carga en staging, revisión del PR por otro integrante. difftest Java↔Go no se ejecutó contra el stack.

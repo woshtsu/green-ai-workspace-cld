@@ -82,3 +82,8 @@ Solo `guias/` (docente), `entregables/` (fuentes .md) y `exportados/` (Word/Exce
 - Evidencias: solo capturas reales. Usar `herramientas_IA/capturas/captura_ventana.ps1` (consola real), nunca `terminal_a_png.py` para entregables.
 - Informe corregido: 123 páginas, cifras verificadas con capturas del 15/11 (435 pruebas). Pendiente de visto bueno del equipo y push.
 - Pendientes de captura: consola DevTools (S08), latencias locales y cold start de semana 13.
+
+### Estado 19/11/2026 (Sprint 7)
+- Ola 2 implementada e integrada en `test` (HU-07 decisiones, HU-13 PDF, U-02, F-06, S-01; F-04 y P-01 documentados). 492 pruebas aprobadas con capturas reales.
+- Resumen para el equipo: `entregables/semana14/sprint7-ola2-implementacion.md`; reporte ICACIT: `entregables/semana14/reporte-icacit.md`.
+- Siguiente: autorización para desplegar (test → main, `GATEWAY_SHARED_SECRET` en Render), F-01 RLS, F-03 sesión real, informe final (Sprint 8, aplicar mejoras del reporte ICACIT).
