@@ -1,5 +1,7 @@
 # 06_Auditoria_Implementacion_OWASP.md — Auditoria de Implementacion de Seguridad (OWASP Top 10)
 
+> **Nota (2026-11-12):** este documento usa OWASP Top 10:2021 y se conserva como registro histórico. La clasificación vigente (OWASP Top 10:2025) y los puntajes recalculados están en [08_reclasificacion_owasp_2025.md](08_reclasificacion_owasp_2025.md).
+
 **Proyecto:** Green AI (Optimizacion Energetica y Capacidad en Data Centers con Machine Learning)  
 **Institucion:** Universidad Continental — Taller de Proyectos 1 (2026-20)  
 **Rol:** Auditor Independiente de Seguridad de Software  
@@ -32,18 +34,18 @@ A continuacion se dictamina el estado individual de cada una de las 12 vulnerabi
 
 | ID | Categoria OWASP | Descripcion del Hallazgo | Estado Post Ola 1 | Responsable y Plazo |
 |---|---|---|:---:|---|
-| **OW-01** | A01: Broken Access Control | Riesgo de politicas RLS permisivas («Permitir todo») en Supabase | **No corregida (planificada para Sprint 7, 17–28/11/2026 — Ola 2)** | Administrador de BD Supabase |
-| **OW-02** | A01: Broken Access Control | Puertos de monitoring (18080) y simulator (18000) expuestos en local | **No corregida (planificada para Sprint 8, 01–12/12/2026 — Ola 3)** | Ricardo Porras / Infraestructura |
-| **OW-03** | A02: Cryptographic Failures | Columna `password` en texto plano en la tabla `usuario` en Supabase | **No corregida (planificada para Sprint 7, 17–28/11/2026 — Ola 2)** | Administrador de BD Supabase |
-| **OW-04** | A02: Cryptographic Failures | Contraseñas sinteticas legibles en archivo Excel `BD_GreenAi.xlsx` | **No corregida (planificada para Sprint 8, 01–12/12/2026 — Ola 3)** | Ricardo Porras / Data Processing |
-| **OW-05** | A04: Insecure Design | Ausencia de Rate Limiting en Gateway para inferencia y recomendaciones | **No corregida (planificada para Sprint 7, 17–28/11/2026 — Ola 2)** | Ricardo Porras Veli |
+| **OW-01** | A01: Broken Access Control | Riesgo de politicas RLS permisivas («Permitir todo») en Supabase | **No corregida (planificada para Sprint 7, 17–23/11/2026 — Ola 2)** | Administrador de BD Supabase |
+| **OW-02** | A01: Broken Access Control | Puertos de monitoring (18080) y simulator (18000) expuestos en local | **No corregida (planificada para Sprint 8, 24–30/11/2026 — Ola 3)** | Ricardo Porras / Infraestructura |
+| **OW-03** | A02: Cryptographic Failures | Columna `password` en texto plano en la tabla `usuario` en Supabase | **No corregida (planificada para Sprint 7, 17–23/11/2026 — Ola 2)** | Administrador de BD Supabase |
+| **OW-04** | A02: Cryptographic Failures | Contraseñas sinteticas legibles en archivo Excel `BD_GreenAi.xlsx` | **No corregida (planificada para Sprint 8, 24–30/11/2026 — Ola 3)** | Ricardo Porras / Data Processing |
+| **OW-05** | A04: Insecure Design | Ausencia de Rate Limiting en Gateway para inferencia y recomendaciones | **No corregida (planificada para Sprint 7, 17–23/11/2026 — Ola 2)** | Ricardo Porras Veli |
 | **OW-06** | A05: Security Misconfiguration | Ausencia de cabeceras HTTP de proteccion web en Nginx | **Parcialmente corregida** (Implementadas cabeceras base; CSP reservada para Ola 2) | Ricardo Porras Veli |
 | **OW-07** | A05: Security Misconfiguration | Sobrescritura de cabeceras en bloque `location = /config.local.js` | **Corregida** (Cabeceras replicadas explicitamente con no-store) | Ricardo Porras Veli |
 | **OW-08** | A06: Vulnerable Components | Inclusion de scripts JS y CSS de CDN en frontend sin hash SRI | **Corregida** (Atributos integrity y crossorigin en las 6 paginas HTML) | Ricardo Porras Veli |
-| **OW-09** | A07: Identification Failures | Persistencia del token de sesion Supabase en `localStorage` | **No corregida (planificada para Sprint 8, 01–12/12/2026 — Ola 3)** | Ricardo Porras / Frontend |
+| **OW-09** | A07: Identification Failures | Persistencia del token de sesion Supabase en `localStorage` | **No corregida (planificada para Sprint 8, 24–30/11/2026 — Ola 3)** | Ricardo Porras / Frontend |
 | **OW-10** | A08: Integrity Failures | Acciones de GitHub CI referenciadas con tags mutables (`@v4`, `@v5`) | **Corregida** (100 % de acciones ancladas a commit SHA inmutable) | Ricardo Porras Veli |
-| **OW-11** | A08: Integrity Failures | Imagenes base Docker de microservicios sin fijacion por digest SHA256 | **No corregida (planificada para Sprint 8, 01–12/12/2026 — Ola 3)** | Ricardo Porras / DevOps |
-| **OW-12** | A09: Security Logging | Ausencia de registros y metricas de auditoria 401/403 en Gateway | **No corregida (planificada para Sprint 7, 17–28/11/2026 — Ola 2)** | Ricardo Porras / Backend |
+| **OW-11** | A08: Integrity Failures | Imagenes base Docker de microservicios sin fijacion por digest SHA256 | **No corregida (planificada para Sprint 8, 24–30/11/2026 — Ola 3)** | Ricardo Porras / DevOps |
+| **OW-12** | A09: Security Logging | Ausencia de registros y metricas de auditoria 401/403 en Gateway | **No corregida (planificada para Sprint 7, 17–23/11/2026 — Ola 2)** | Ricardo Porras / Backend |
 
 ---
 

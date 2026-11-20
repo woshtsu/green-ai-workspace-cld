@@ -126,7 +126,7 @@ function formatExperiment(data) {
 
 /**
  * Construye la URL para el reporte de históricos:
- * GET {gatewayBaseUrl}/api/processing/v1/reports/historical-summary?format=json|csv
+ * GET {gatewayBaseUrl}/api/processing/v1/reports/historical-summary?format=json|csv|pdf
  */
 function buildReportUrl(baseUrl, params = {}) {
   const cleanBase = (baseUrl || '').replace(/\/+$/, '');
@@ -186,8 +186,14 @@ async function fetchHistoricalSummary(baseUrl, params) {
   return body;
 }
 
-async function downloadReportCsv(baseUrl, params) {
-  const url = buildReportUrl(baseUrl, { ...params, format: 'csv' });
+/** Nombre de archivo de la descarga (mismo patrón para CSV y PDF). */
+function reportFileName(params, format) {
+  return `reporte_historico_${params.hardwareId || 'HW045'}_${params.start || params.desde || 'inicio'}_${params.end || params.hasta || 'fin'}.${format}`;
+}
+
+async function downloadReport(baseUrl, params, format = 'csv') {
+  if (format !== 'csv' && format !== 'pdf') throw new Error('Formato de reporte no soportado.');
+  const url = buildReportUrl(baseUrl, { ...params, format });
   const fetchFn = typeof authenticatedFetch === 'function' ? authenticatedFetch : fetch;
   const res = await fetchFn(url);
   if (!res.ok) {
@@ -202,7 +208,7 @@ async function downloadReportCsv(baseUrl, params) {
     const blobUrl = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = blobUrl;
-    a.download = `reporte_historico_${params.hardwareId || 'HW045'}_${params.start || params.desde || 'inicio'}_${params.end || params.hasta || 'fin'}.csv`;
+    a.download = reportFileName(params, format);
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -210,6 +216,9 @@ async function downloadReportCsv(baseUrl, params) {
   }
   return blob;
 }
+
+function downloadReportCsv(baseUrl, params) { return downloadReport(baseUrl, params, 'csv'); }
+function downloadReportPdf(baseUrl, params) { return downloadReport(baseUrl, params, 'pdf'); }
 
 // La API exige zona horaria: los <input type="date"> no la incluyen. Se interpretan en UTC.
 function withTimezone(value, endOfDay) {
@@ -259,6 +268,7 @@ async function initExperimentSection() {
 function initHistoricalReportForm() {
   const summaryBtn = document.getElementById('report-summary-btn');
   const csvBtn = document.getElementById('report-csv-btn');
+  const pdfBtn = document.getElementById('report-pdf-btn');
   const statusEl = document.getElementById('report-status');
   const resultContainer = document.getElementById('report-summary-container');
 
@@ -312,19 +322,20 @@ function initHistoricalReportForm() {
     });
   }
 
-  if (csvBtn) {
-    csvBtn.addEventListener('click', async () => {
+  [[csvBtn, 'csv', 'CSV'], [pdfBtn, 'pdf', 'PDF']].forEach(([btn, format, label]) => {
+    if (!btn) return;
+    btn.addEventListener('click', async () => {
       const { hardwareId, start, end } = getFormValues();
-      csvBtn.disabled = true;
+      btn.disabled = true;
       if (statusEl) {
-        statusEl.textContent = 'Descargando reporte CSV…';
+        statusEl.textContent = `Descargando reporte ${label}…`;
         statusEl.className = 'pmv2-status';
       }
 
       try {
-        await downloadReportCsv(getGatewayUrl(), { hardwareId, start, end });
+        await downloadReport(getGatewayUrl(), { hardwareId, start, end }, format);
         if (statusEl) {
-          statusEl.textContent = 'CSV descargado con éxito';
+          statusEl.textContent = `${label} descargado con éxito`;
           statusEl.className = 'pmv2-status status-success';
         }
       } catch (error) {
@@ -335,10 +346,10 @@ function initHistoricalReportForm() {
           statusEl.className = isForbidden ? 'pmv2-status status-warning' : 'pmv2-status status-error';
         }
       } finally {
-        csvBtn.disabled = false;
+        btn.disabled = false;
       }
     });
-  }
+  });
 }
 
 function initPmv2Section() {
@@ -355,6 +366,9 @@ if (typeof window !== 'undefined') {
     loadExperimentData,
     fetchHistoricalSummary,
     downloadReportCsv,
+    downloadReportPdf,
+    downloadReport,
+    reportFileName,
     renderExperimentCard,
     withTimezone,
     initPmv2Section
@@ -380,6 +394,9 @@ if (typeof module !== 'undefined' && module.exports) {
     loadExperimentData,
     fetchHistoricalSummary,
     downloadReportCsv,
+    downloadReportPdf,
+    downloadReport,
+    reportFileName,
     renderExperimentCard,
     withTimezone,
     initPmv2Section

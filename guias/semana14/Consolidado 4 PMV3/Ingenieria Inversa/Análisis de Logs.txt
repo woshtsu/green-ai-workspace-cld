@@ -1,0 +1,22 @@
+Actúa como Ingeniero de Soporte Nivel 3.
+
+Analiza los logs obtenidos durante la ejecución.
+
+Identifica:
+
+1. Errores.
+2. Advertencias.
+3. Excepciones.
+4. Dependencias faltantes.
+5. Problemas de configuración.
+6. Problemas de red.
+7. Problemas de autenticación.
+
+Clasifica cada hallazgo:
+
+- Crítico
+- Alto
+- Medio
+- Bajo
+
+Genera una matriz de hallazgos.

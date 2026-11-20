@@ -50,26 +50,28 @@ El plan se organiza en tres olas de trabajo sincronizadas con el calendario acad
 +-----------------------------------------------------------------------------------+
 | OLA 1: Semana 13 (07/11/2026 - 09/11/2026)                                        |
 | Implementación Inmediata (Documental / Usabilidad)                               |
-| -> M-U07: Guía rápida de usuario (docs/GUIA-RAPIDA-USUARIO.md)                    |
+| -> M-U07: Guía rápida de usuario (entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md)                    |
 +-----------------------------------------------------------------------------------+
                                          |
                                          v
 +-----------------------------------------------------------------------------------+
-| OLA 2: Sprint 7 (17/11/2026 - 28/11/2026)                                         |
+| OLA 2: Sprint 7 (17/11/2026 - 23/11/2026)                                         |
 | Funcionalidades Críticas, Seguridad, Despliegue y Mantenibilidad                  |
 | -> M-F07: Aprobación humana persistida HU-07 (Ricardo Porras Veli)                |
-| -> M-F11: Generación de reporte PDF formal HU-13 (Jhonny Quintana Carhuaricra)   |
+| -> M-F11: Generación de reporte PDF formal HU-13 (Ricardo Porras Veli)           |
 | -> M-F05: MLflow UI con evidencia visual HU-05 (Gina Barrera Peña)                |
 | -> M-F09: Verificación dashboard en /dev/ con sesión real (Leonid Huamán)        |
-| -> M-S01: Refactor hexagonal en Simulator runner.py (Leonid Huamán)               |
-| -> M-P01: Keep-alive / precalentamiento Render (Ricardo Porras Veli)              |
+| -> M-S01: Refactor hexagonal en Simulator runner.py (Ricardo Porras Veli)         |
+| -> M-P01: Keep-alive / precalentamiento Render (Leonid Huamán)                    |
 | -> M-U06: Auditoría Lighthouse WCAG 2.1 AA y tabla Chart.js (Leonid Huamán)      |
-| -> M-F13 / M-R05: Endurecimiento RLS Supabase (Dueño Supabase / Ricardo Porras)  |
+| -> M-F13: Endurecimiento RLS Supabase, 11/11 (Ricardo Porras / Dueño Supabase)    |
+| -> M-R05: Resistencia a carga y RLS, 13/11 (Ricardo Porras Veli)                  |
+| -> M-R01: Prediction migra errores a problem+json, 23/11 (Ricardo Porras Veli)    |
 +-----------------------------------------------------------------------------------+
                                          |
                                          v
 +-----------------------------------------------------------------------------------+
-| OLA 3: Sprint 8 (01/12/2026 - 12/12/2026)                                         |
+| OLA 3: Sprint 8 (24/11/2026 - 30/11/2026)                                         |
 | Optimizaciones Finales, Ergonomía y Gestión de Hosting                            |
 | -> M-F08: Energía y CO2e con factores certificados (Gina Barrera Peña)            |
 | -> M-U08: Flujo de energía optimizado en <= 3 pasos (Leonid Huamán)               |
@@ -81,7 +83,7 @@ El plan se organiza en tres olas de trabajo sincronizadas con el calendario acad
 
 ## 4. Fichas Detalladas de Mejora por Brecha Detectada
 
-A continuación se define la especificación técnica de intervención para cada una de las 13 brechas (calificadas como No cumple o Parcial) registradas en docs/calidad/01_auditoria_furps.md.
+A continuación se define la especificación técnica de intervención para cada una de las 14 brechas (calificadas como No cumple o Parcial) registradas en docs/calidad/01_auditoria_furps.md.
 
 ---
 
@@ -91,12 +93,12 @@ A continuación se define la especificación técnica de intervención para cada
 * **Requisito / ID Matriz:** M-U07
 * **Estado Inicial:** No cumple (1 punto)
 * **Estado Esperado:** Cumple (5 puntos)
-* **Objetivo:** Redactar y publicar en `docs/GUIA-RAPIDA-USUARIO.md` un manual conciso (máximo 2 páginas) orientado al usuario final (administrador de TI, operador de centro de datos y auditor observador), detallando requisitos, accesos, roles y tareas cotidianas en 3 pasos o menos, sin inventar botones y sustentado en los componentes reales de la interfaz.
+* **Objetivo:** Redactar y publicar en `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` un manual conciso (máximo 2 páginas) orientado al usuario final (administrador de TI, operador de centro de datos y auditor observador), detallando requisitos, accesos, roles y tareas cotidianas en 3 pasos o menos, sin inventar botones y sustentado en los componentes reales de la interfaz.
 * **Justificación:** ¿Cómo puede operar el clúster un usuario sin asistencia técnica? Actualmente carece de una síntesis operativa para ejecutar flujos críticos de telemetría, inferencia y reportes sin tener que inspeccionar el código fuente.
 * **Prioridad:** Alta (Ola 1, implementación inmediata).
 * **Nivel de Riesgo:** Mínimo (cambio documental, no altera lógica de ejecución ni contratos de API).
 * **Dependencias:** Interfaz web desplegada en `software/frontend/`.
-* **Estrategia de Validación:** Verificación documental de existencia del archivo `docs/GUIA-RAPIDA-USUARIO.md`, contraste directo contra las cadenas reales de texto de `software/frontend/dashboard.html`, `network.html`, `flows.html`, `login.html`, `register.html`, `help-content.js` y `friendly-errors.js`.
+* **Estrategia de Validación:** Verificación documental de existencia del archivo `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md`, contraste directo contra las cadenas reales de texto de `software/frontend/dashboard.html`, `network.html`, `flows.html`, `login.html`, `register.html`, `help-content.js` y `friendly-errors.js`.
 * **Estrategia de Rollback:** `git revert <commit_guia_usuario>` (eliminación limpia del archivo markdown).
 * **Responsable:** Jhonny Quintana Carhuaricra.
 * **Fecha de Compromiso:** 09/11/2026 (Semana 13).
@@ -142,7 +144,7 @@ A continuación se define la especificación técnica de intervención para cada
      `curl -sI "http://127.0.0.1:8000/api/processing/v1/reports/historical-pdf?hardware_id=HW045&start_date=2026-07-10&end_date=2026-07-11" | grep -i "content-type: application/pdf"`.
   3. Suite de regresión de Data Processing: `pytest` (121 pruebas pasando intactas).
 * **Estrategia de Rollback:** `git revert <commit_reporte_pdf>` conservando intacto el endpoint CSV.
-* **Responsable:** Jhonny Quintana Carhuaricra.
+* **Responsable:** Ricardo Porras Veli.
 * **Fecha de Compromiso:** 18/11/2026.
 
 ---
@@ -205,8 +207,8 @@ A continuación se define la especificación técnica de intervención para cada
   2. Verificación de importaciones limpias con herramienta de linting / ast check:  
      `python -c "import ast; tree = ast.parse(open('software/simulator/src/green_ai_simulator/application/runner.py').read()); print('Sintaxis e importaciones conformes')"`
 * **Estrategia de Rollback:** `git revert <commit_refactor_runner_hexagonal>`.
-* **Responsable:** Leonid Huamán Collazos.
-* **Fecha de Compromiso:** 24/11/2026.
+* **Responsable:** Ricardo Porras Veli.
+* **Fecha de Compromiso:** 23/11/2026.
 
 ---
 
@@ -227,7 +229,7 @@ A continuación se define la especificación técnica de intervención para cada
   2. Medición automatizada de tiempo de respuesta verificando `HTTP 200` con latencia inferior a 2 segundos:  
      `curl -o /dev/null -s -w "Tiempo de respuesta: %{time_total} s\n" https://green-ai-gateway.onrender.com/actuator/health`.
 * **Estrategia de Rollback:** Cancelación del script o tarea programada sin impacto en el repositorio.
-* **Responsable:** Ricardo Porras Veli.
+* **Responsable:** Leonid Huamán Collazos.
 * **Fecha de Compromiso:** 19/11/2026.
 
 ---
@@ -272,8 +274,8 @@ A continuación se define la especificación técnica de intervención para cada
      `curl -s -o /dev/null -w "%{http_code}" https://<supabase-id>.supabase.co/rest/v1/historical_logs | grep "401"`.
   3. Ejecución de pruebas de contrato: `pytest software/data-processing/tests/test_contracts.py` (114 pruebas pasando).
 * **Estrategia de Rollback:** Reaplicación de políticas de respaldo documentadas en `docs/seguridad/backup-rls-policies.sql`.
-* **Responsable:** Dueño del proyecto Supabase y Ricardo Porras Veli.
-* **Fecha de Compromiso:** 11/11/2026.
+* **Responsable:** M-F13: Ricardo Porras Veli (con el dueño del proyecto Supabase); M-R05: Ricardo Porras Veli.
+* **Fecha de Compromiso:** M-F13: 11/11/2026; M-R05: 13/11/2026.
 
 ---
 
@@ -337,24 +339,46 @@ A continuación se define la especificación técnica de intervención para cada
 
 ---
 
+### Brecha 13: M-R01 — Errores de Prediction fuera del estándar RFC 7807 (problem+json)
+
+* **Factor FURPS+:** Confiabilidad (R)
+* **Requisito / ID Matriz:** M-R01
+* **Estado Inicial:** Parcial (3 puntos)
+* **Estado Esperado:** Cumple (5 puntos)
+* **Objetivo:** Migrar los errores del servicio Prediction a `application/problem+json`. Hoy responde con su propio sobre `{code, message}` (`_error_payload`, `software/prediction/src/service/app.py`, L71 y L89), mientras que Gateway Go, Data Processing y Monitoring ya emiten problem+json.
+* **Justificación:** La revisión del equipo del 12/11/2026 reajustó M-R01 de Cumple a Parcial porque el formato de error no es uniforme en todos los microservicios.
+* **Prioridad:** Media (Ola 2, Sprint 7).
+* **Nivel de Riesgo:** Medio. Cambia el formato de la respuesta de error; hay que revisar los consumidores del sobre actual y el contrato OpenAPI de Prediction en el mismo incremento.
+* **Dependencias:** `software/prediction/src/service/app.py` y su suite pytest (100 pruebas).
+* **Estrategia de Validación:**
+  1. Prueba nueva: test de contrato de error en Prediction que verifique `Content-Type: application/problem+json` en los casos de error.
+  2. Suite de regresión de Prediction: `pytest` (100 pruebas pasando).
+* **Estrategia de Rollback:** `git revert <commit_prediction_problem_json>`.
+* **Responsable:** Ricardo Porras Veli.
+* **Fecha de Compromiso:** 23/11/2026.
+
+---
+
 ## 5. Matriz Consolidada de Mejoras y Orden Recomendado de Ejecución
 
 A continuación se presenta la secuencia lógica de ejecución recomendada, considerando dependencias técnicas, impacto académico y minimización de riesgos.
 
 | Orden | ID Brecha | Acción Principal de Mejora | Prioridad | Responsable | Fecha Límite | Suite de Validación Requerida |
 |:---:|:---:|---|:---:|---|:---:|---|
-| **1** | **M-U07** | Redacción y publicación de Guía Rápida de Usuario (`docs/GUIA-RAPIDA-USUARIO.md`) | Alta | Jhonny Quintana Carhuaricra | 09/11/2026 | Revisión documental contra interfaz real |
-| **2** | **M-F13 / M-R05** | Endurecimiento de RLS y verificación de políticas en base de datos Supabase | Crítica | Ricardo Porras / Dueño Supabase | 11/11/2026 | Pruebas de contrato Data Processing (114) |
+| **1** | **M-U07** | Redacción y publicación de Guía Rápida de Usuario (`entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md`) | Alta | Jhonny Quintana Carhuaricra | 09/11/2026 | Revisión documental contra interfaz real |
+| **2** | **M-F13** | Endurecimiento de RLS y verificación de políticas en base de datos Supabase | Crítica | Ricardo Porras / Dueño Supabase | 11/11/2026 | Pruebas de contrato Data Processing (114) |
+| **2b** | **M-R05** | Prueba de carga contra PostgREST remoto y corrección de RLS permisiva | Crítica | Ricardo Porras Veli | 13/11/2026 | Pruebas de contrato Data Processing (114) |
 | **3** | **M-F09** | Validación de observatorio en entorno `/dev/` de Pages con sesión real | Alta | Leonid Huamán Collazos | 12/11/2026 | Suite Frontend node:test (48) |
 | **4** | **M-F05** | Levantamiento y captura estandarizada de MLflow UI para modelos entrenados | Media | Gina Barrera Peña | 14/11/2026 | Verificación HTTP MLflow + capturas |
 | **5** | **M-U06** | Auditoría Lighthouse WCAG 2.1 AA y tabla accesible oculta para Chart.js | Media | Leonid Huamán Collazos | 15/11/2026 | Auditoría Lighthouse + Frontend tests (48) |
-| **6** | **M-F11** | Implementación de generación y exportación de reportes en PDF formal (HU-13) | Alta | Jhonny Quintana Carhuaricra | 18/11/2026 | Pytest Data Processing (121) |
-| **7** | **M-P01** | Script automatizado de precalentamiento y keep-alive para Render Free Tier | Alta | Ricardo Porras Veli | 19/11/2026 | Medición de latencia HTTP (< 2 s en salud) |
+| **6** | **M-F11** | Implementación de generación y exportación de reportes en PDF formal (HU-13) | Alta | Ricardo Porras Veli | 18/11/2026 | Pytest Data Processing (121) |
+| **7** | **M-P01** | Script automatizado de precalentamiento y keep-alive para Render Free Tier | Alta | Leonid Huamán Collazos | 19/11/2026 | Medición de latencia HTTP (< 2 s en salud) |
 | **8** | **M-F07** | Flujo de aprobación humana persistida de recomendaciones (HU-07) en BD | Crítica | Ricardo Porras Veli | 20/11/2026 | Pytest Prediction (100) + PMV2 tests |
-| **9** | **M-S01** | Desacoplamiento de adaptadores en `runner.py` de Simulator a puertos de aplicación | Media | Leonid Huamán Collazos | 24/11/2026 | Docker unittest Simulator (10) |
+| **9** | **M-S01** | Desacoplamiento de adaptadores en `runner.py` de Simulator a puertos de aplicación | Media | Ricardo Porras Veli | 23/11/2026 | Docker unittest Simulator (10) |
 | **10** | **M-F08** | Documentación formal de potencia modelada y factores de emisión de CO2e | Media | Gina Barrera Peña | 21/11/2026 | Energy tests (node:test) |
 | **11** | **M-U08** | Simplificación ergonómica del cálculo de energía a tres pasos o menos | Media | Leonid Huamán Collazos | 17/11/2026 | Suite Frontend node:test (48) |
 | **12** | **M-PL03** | Rutina de suspensión y control de cuota horaria en hosting gratuito de Render | Baja | Leonid Huamán Collazos | 22/11/2026 | Inspección de métricas en Render Dashboard |
+| **13** | **M-R01** | Migración de los errores de Prediction a problem+json (RFC 7807) | Media | Ricardo Porras Veli | 23/11/2026 | Test de contrato de error + Pytest Prediction (100) |
 
 ---
 

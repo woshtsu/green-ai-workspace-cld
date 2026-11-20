@@ -2,10 +2,11 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
-from unittest.mock import patch
-from dataclasses import dataclass
+from unittest.mock import patch, MagicMock
+from dataclasses import dataclass, replace
 
 from green_ai_simulator.adapters.persistence.run_logger import RunLogger
+from green_ai_simulator.adapters.composition import build_dependencies
 from green_ai_simulator.application.runner import run_simulation
 from green_ai_simulator.adapters.configuration.json_parser import parse_inventory_json
 from green_ai_simulator.adapters.configuration.scenario_parser import parse_scenario_json
@@ -24,9 +25,11 @@ class RuntimeRegressionTests(unittest.TestCase):
             inventory="unused", scenario="unused", tick_seconds=1,
             duration_seconds=0, mode="offline", output_dir="unused", seed=1,
         )
-        with patch("green_ai_simulator.application.runner.parse_inventory_json") as parse_inventory:
-            self.assertEqual(run_simulation(args), 2)
-            parse_inventory.assert_not_called()
+        deps = build_dependencies()
+        read_inventory = MagicMock()
+        deps = replace(deps, read_inventory=read_inventory)
+        self.assertEqual(run_simulation(args, deps), 2)
+        read_inventory.assert_not_called()
 
     def test_logger_refuses_record_that_would_exceed_size_limit(self):
         with tempfile.TemporaryDirectory() as temp_dir:

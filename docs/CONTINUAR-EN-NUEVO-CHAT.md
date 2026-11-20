@@ -9,8 +9,8 @@ Lee primero `AGENTS.md`, `docs/HANDOFF.md` y este archivo. Rama de trabajo: **`t
 | Documento semana 13 (Word) | `entregables/semana13/semana13-calidad-furps-owasp.md` → `exportados/semana13/…-semana13-calidad-FURPS-OWASP.docx` + `MODELO-FURPSPLUS-Green-AI.xlsx` | Listo para revisión; faltan 11 capturas y NRC |
 | Auditorías FURPS+/OWASP 01–07 | `docs/calidad/` | Ola 1 implementada (commit `d24d86f`); olas 2–3 planificadas (17/11–12/12) |
 | Capturas por integrante | `entregables/CAPTURAS-PENDIENTES.md` | Por hacer (equipo) |
-| Trello | `guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md` + `herramientas_IA/trello/validar_trello.py` | Días 1–4 (07/11–13/11) por hacer, cada uno con su cuenta; luego exportar JSON y validar |
-| Video | `docs/exposicion/GUION-VIDEO-UNIDAD-III.md` + `herramientas_IA/video/grabar_episodios.py` | **Video completo sin voz** `exportados/video/green-ai-unidad-III.mp4` (24:28; carátula + 7 episodios + cierre; no versionado) + `descripcion-youtube.txt`. Falta: voces y cámaras de los 4 encima, subir no listado y poner la URL |
+| Trello | `entregables/trello/GUIA-TRELLO-POR-INTEGRANTE.md` + `herramientas_IA/trello/validar_trello.py` | Días 1–4 (07/11–13/11) por hacer, cada uno con su cuenta; luego exportar JSON y validar |
+| Video | `entregables/video/GUION-VIDEO-UNIDAD-III.md` + `herramientas_IA/video/grabar_episodios.py` | **Video completo sin voz** `exportados/video/green-ai-unidad-III.mp4` (24:28; carátula + 7 episodios + cierre; no versionado) + `descripcion-youtube.txt`. Falta: voces y cámaras de los 4 encima, subir no listado y poner la URL |
 | Exportar a Word | `herramientas_IA/README.md` § Exportación DOCX | `md_a_docx.py` + `actualizar_word.ps1` |
 
 **Producción actualizada (PR #1 fusionado el 08/11):** https://woshtsu.github.io/green-ai-workspace-cld/ — `main` está protegida (ruleset: PR + 1 aprobación; el dueño tiene bypass). Trabajar en `test` y abrir PR.
@@ -30,11 +30,22 @@ URL real de Prediction en Render: `https://green-ai-prediction-dev-zxly.onrender
 
 URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend `https://woshtsu.github.io/green-ai-workspace-cld/dev/` (producción: raíz del mismo sitio; desde el 08/11 `GATEWAY_URL_PROD` = Gateway de desarrollo, antes estaba vacía). Los servicios gratuitos se duermen a los 15 min y pierden el historial (Simulator/Prometheus): **despertarlos ≥ 25 min antes de grabar el video**.
 
+## 2026-11-11: revisión de Dina aplicada al informe (ver HANDOFF). Pendiente integrar la rama `worktree-agent-a8e294441df89aac0` (guía Trello PMVn-HUxx) tras confirmar los cambios sin commit de la guía.
+
+## 2026-11-11 (noche): carpetas del equipo
+Solo `guias/` (docente), `entregables/` (fuentes .md) y `exportados/` (Word/Excel versionados). Informe: PMV3 = procesos de software (17/11–30/11); faltan capturas C100–C313, NRC y URL del video. Ver HANDOFF.
+
+## 2026-11-12 (noche): semana 13 migrada a OWASP Top 10:2025
+Entregable de semana 13 (.md, .docx y .xlsx) reclasificado a OWASP Top 10:2025; clasificación vigente y puntajes en `docs/calidad/08_reclasificacion_owasp_2025.md` (04–07 quedan como histórico 2021). Nuevo hallazgo OW-13 (A10:2025, ola 3). El informe corregido de la Unidad III no se tocó. Ver HANDOFF.
+Roles del §4.3 alineados con el acta; responsables OWASP iguales en Word y Excel; reparto de revisión en `entregables/semana13/REVISION-POR-INTEGRANTE.md` (falta que cada integrante confirme). Los documentos `docs/calidad/01–08` se quedan en `docs/calidad/` (decisión del usuario).
+
 ## Pendiente (en orden)
+- **Semana 13:** entregada el 12/11 (Word, PDF y Excel en `exportados/semana13/`, etiqueta `semana13-entrega`). Solo si el docente lo pide: capturas S44 (rol VIEWER) y S50a–S50d (pruebas de backend).
+0. **OW-13 (A10:2025, ola 3, hasta 30/11):** recover con problem+json en gateway-go, manejador global en el Gateway Spring, pruebas de cuerpos 500 genéricos y timeouts uniformes en el frontend (`docs/calidad/08_reclasificacion_owasp_2025.md` §4.3).
 1. **Supabase (lo hace el dueño del proyecto):** añadir a *Authentication → URL Configuration* las URLs `https://woshtsu.github.io/green-ai-workspace-cld/` y `.../dev/`; aplicar el enum `VIEWER`; revisar RLS «Permitir todo» y la columna `password` en texto plano (ver «Riesgos» en `docs/HANDOFF.md`).
 2. Fijar el *Health Check Path* en cada servicio de Render (Prediction `/health/ready`, Data Processing `/api/v1/health`, Gateway/Monitoring `/actuator/health`, Simulator `/health`, Prometheus `/-/healthy`).
 3. Verificar con sesión real el frontend nuevo en `/dev/` (cada pestaña, «Predecir 15 min», energía con el simulador, `flows.html`) y tomar capturas para el informe. Lo verificado hasta ahora fue con un arnés local (`herramientas_IA/arnes_frontend/`) que simula la sesión y usa datos reales de Render.
-4. Video: montado sin voz (`green-ai-unidad-III.mp4`, 24:28); la pantalla ya está grabada (ver «Video Unidad III» al final de este archivo). Pendiente del equipo: locución y cámara encima de cada clip con su `-pasos.md`, montaje (Jhonny), subir no listado y reemplazar `VIDEO-URL-PENDIENTE` en el informe; reexportar el Word (C309 ya insertada).
+4. Video: versión vigente `green-ai-unidad-III-subtitulado.mp4` (24:26, chat de 0:45 cortado, subtítulos del guion incrustados; `.srt` aparte); el original `green-ai-unidad-III.mp4` (24:28) queda intacto; la pantalla ya está grabada (ver «Video Unidad III» al final de este archivo). Pendiente del equipo: locución y cámara encima de cada clip con su `-pasos.md`, montaje (Jhonny), subir no listado y reemplazar `VIDEO-URL-PENDIENTE` en el informe; reexportar el Word (C309 ya insertada).
 5. Informe y semana 13: insertar capturas (`entregables/CAPTURAS-PENDIENTES.md`), NRC y URL del video; reexportar si se edita el .md. Olas 2–3 del plan de calidad: `docs/calidad/02_plan_furps.md` y `05_plan_owasp.md` (HU-07 aprobación humana, PDF HU-13, rate limiting, registro de 401/403, RLS).
 6. Mejora del modelo según `docs/MEJORA-MODELO-PREDICCION.md` (empezar por la evaluación walk-forward vs persistencia).
 7. Producción real: crear servicios `*-prod` con rama `main`, y poner `GATEWAY_URL_PROD` distinto (hoy es igual a `GATEWAY_URL_DEV`). Cuidado con las 750 h/mes gratuitas compartidas (también las gasta `SoftwareAnemia`).
@@ -61,3 +72,24 @@ URLs (desarrollo): Gateway `https://green-ai-gateway-dev.onrender.com`; frontend
 - **Regrabar un episodio:** `python herramientas_IA/video/mantener_despierto.py` ≥ 25 min antes (el Ep. 5 necesita historial del simulador; antes da 422), luego `.tools/video/Scripts/python herramientas_IA/video/grabar_episodios.py --ritmo 1.6 <N>`; ensayar antes con `--ensayo`. El perfil de Edge (`.tools/video/perfil-edge`) guarda las sesiones de la app y de Trello (Google). Edge se lanza normal y se controla por CDP (puerto 9333): cerrar cualquier Edge abierto con ese perfil antes.
 - **Históricos en la nube:** Data Processing en Render lee Supabase (`HISTORICAL_SOURCE=supabase`; clave `anon` como token de lectura, funciona por la RLS permisiva).
 - **Carátula y cierre:** `herramientas_IA/video/portada_cierre.py caratula|cierre|unir` (el cierre calcula los minutos reales; `unir` recorta blancos iniciales y recodifica). Logo UC y NRC no incluidos (pendientes).
+
+### Edición 10/11 noche (subtítulos)
+- Corte 0:44,5–0:46,5 (se veía el chat) → `green-ai-unidad-III-cortado.mp4`; todos los minutos del guion −2 s desde 00:46.
+- Guion §5 ampliado (colores de racks, suites, nueva respuesta de Ep. 5, tarjetas HU-03/HU-06, Ep. 7).
+- Subtítulos: `python herramientas_IA/video/guion_a_srt.py entregables/video/GUION-VIDEO-UNIDAD-III.md exportados/video/green-ai-unidad-III.srt --fin 24:26`, luego `python herramientas_IA/video/srt_a_ass_apilado.py exportados/video/green-ai-unidad-III.srt exportados/video/sub.ass` (cada subtítulo dura al menos su tiempo de lectura, hasta 3 apilados con el más reciente abajo, caja semitransparente) e incrustado con ffmpeg `subtitles=sub.ass` sobre el cortado → `green-ai-unidad-III-subtitulado.mp4`. Si se cambia el guion, repetir ambos pasos.
+- Pendiente: la diapositiva de cierre muestra minutos de indicadores con 2 s de más (no regrabada); filas antiguas 00:17, 00:54 y 01:00 tienen más texto que tiempo (subtítulos rápidos).
+
+### Estado 12/11/2026 (madrugada)
+- PR #6 abierto (Sprint 7, tarea 7.2, rama `sprint7/7.2-proceso-pr` → `test`) para la captura C310: falta CI verde y aprobación de otro integrante.
+- Logo C100/S00: confirmar con el usuario dónde lo dejó antes de reexportar (no reexportar con el Word abierto).
+- Marcadores pendientes: informe C100, C203, C204, C310, C312, C313; semana 13 S00, S04, S07, S08.
+
+### Estado 15/11/2026
+- Evidencias: solo capturas reales. Usar `herramientas_IA/capturas/captura_ventana.ps1` (consola real), nunca `terminal_a_png.py` para entregables.
+- Informe corregido: 123 páginas, cifras verificadas con capturas del 15/11 (435 pruebas). Pendiente de visto bueno del equipo y push.
+- Pendientes de captura: consola DevTools (S08), latencias locales y cold start de semana 13.
+
+### Estado 19/11/2026 (Sprint 7)
+- Ola 2 implementada e integrada en `test` (HU-07 decisiones, HU-13 PDF, U-02, F-06, S-01; F-04 y P-01 documentados). 492 pruebas aprobadas con capturas reales.
+- Resumen para el equipo: `entregables/semana14/sprint7-ola2-implementacion.md`; reporte ICACIT: `entregables/semana14/reporte-icacit.md`.
+- Siguiente: autorización para desplegar (test → main, `GATEWAY_SHARED_SECRET` en Render), F-01 RLS, F-03 sesión real, informe final (Sprint 8, aplicar mejoras del reporte ICACIT).

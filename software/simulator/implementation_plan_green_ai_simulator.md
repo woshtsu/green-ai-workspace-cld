@@ -17,7 +17,7 @@ El primer incremento será un simulador lógico Python, ejecutable mediante CLI,
 Desde la carpeta del simulador, leer en este orden:
 
 1. Instrucciones `AGENTS.md` que sean aplicables a su ruta. El de Monitoring no se hereda por ser un directorio hermano.
-2. `guias/TrabajosDesarrollados/2. Conocimiento de Ingenieria.md` y `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md`. Evitar volcar imágenes base64 al contexto.
+2. `docs/historico/trabajos-desarrollados/2. Conocimiento de Ingenieria.md` y `docs/historico/trabajos-desarrollados/4. Gestión de Proyecto.md`. Evitar volcar imágenes base64 al contexto.
 3. `software/monitoring/docs/integracion-simulator.md`: referencia principal de integración ya acordada.
 4. `software/monitoring/docs/contrato-monitoring-v0.1.md` y `software/monitoring/src/main/resources/static/openapi/monitoring-v0.1.json`.
 5. `software/monitoring/docs/validacion-incremento-1.md`: evidencia y limitaciones, sin ejecutar sus comandos.

@@ -24,6 +24,10 @@ import reactor.core.publisher.Mono;
 
 @Configuration
 class SecurityConfiguration {
+    private static final String DECISIONS_ANY = "/api/recommendations/v1/recommendations/*/decisions";
+    private static final String DECISIONS_UUID = "/api/recommendations/v1/recommendations/"
+        + "{id:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}}/decisions";
+
     @Bean
     ReactiveJwtDecoder jwtDecoder(@Value("${gateway.auth.issuer}") String issuer,
             @Value("${gateway.auth.jwks}") String jwks,
@@ -77,6 +81,11 @@ class SecurityConfiguration {
                 .pathMatchers(HttpMethod.POST, "/api/prediction/v1/predictions",
                     "/api/recommendations/v1/recommendations", "/api/recommendations/v1/energy")
                     .hasAnyRole("OPERATOR", "ADMIN")
+                .pathMatchers(HttpMethod.POST, DECISIONS_UUID).hasAnyRole("OPERATOR", "ADMIN")
+                .pathMatchers(HttpMethod.GET, DECISIONS_UUID).hasAnyRole("OPERATOR", "ADMIN", "VIEWER")
+                // {id} que no es UUID: sin ruta publicada; el autenticado pasa y el Gateway responde 404
+                .pathMatchers(HttpMethod.POST, DECISIONS_ANY).authenticated()
+                .pathMatchers(HttpMethod.GET, DECISIONS_ANY).authenticated()
                 .anyExchange().denyAll())
             .exceptionHandling(errors -> errors
                 .authenticationEntryPoint((exchange, error) -> problem(exchange, HttpStatus.UNAUTHORIZED))

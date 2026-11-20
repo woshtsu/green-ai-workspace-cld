@@ -4,7 +4,7 @@ Fecha: 2026-09-21. Estado: dirección aprobada con aclaraciones del usuario. Aut
 
 ## Inspección del punto de partida
 
-- Se revisaron `guias/TrabajosDesarrollados/2. Conocimiento de Ingenieria.md`, `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md`, el texto adjunto, `pom.xml` y los tres archivos de `src/`. Las imágenes embebidas de los documentos no se evaluaron visualmente.
+- Se revisaron `docs/historico/trabajos-desarrollados/2. Conocimiento de Ingenieria.md`, `docs/historico/trabajos-desarrollados/4. Gestión de Proyecto.md`, el texto adjunto, `pom.xml` y los tres archivos de `src/`. Las imágenes embebidas de los documentos no se evaluaron visualmente.
 - Repositorio Git propio en `software/monitoring/.git`; estado inicial limpio. No se encontró AGENTS.md en el workspace. Las otras tres carpetas ya existen y no se modifican. No se crea repositorio padre.
 - Coordenadas: `pe.edu.continental.greenai:monitoring-service:0.0.1-SNAPSHOT`.
 - Parent Spring Boot **4.1.1**, objetivo Java **21**, Maven Wrapper **3.3.4** con distribución Maven **3.9.16**.

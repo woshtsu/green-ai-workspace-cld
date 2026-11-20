@@ -1,4 +1,5 @@
 from datetime import datetime
+import re
 from typing import Literal
 from fastapi import APIRouter, Query, Request, Response
 
@@ -9,6 +10,7 @@ from application.use_cases.historical_report import HistoricalReportUseCase
 from domain.errors import InvalidQuery, SourceNotConfigured
 from domain.monitoring_contract import Metric
 from infrastructure.adapters.input.monitoring_http_adapter import MonitoringHttpAdapter
+from infrastructure.adapters.output.fpdf_report_renderer import FpdfReportRenderer
 from infrastructure.historical_sources import historical_source
 from infrastructure.adapters.input.api.models import HistoricalPage, HistoricalSummary, PredictionDataset, ProcessedHistory, Problem
 
@@ -94,10 +96,11 @@ def get_prediction_dataset(
     response_model=HistoricalSummary,
     responses={
         200: {
-            "description": "Reporte resumen en JSON o CSV",
+            "description": "Reporte resumen en JSON, CSV o PDF",
             "content": {
                 "application/json": {"schema": HistoricalSummary.model_json_schema()},
                 "text/csv": {"schema": {"type": "string"}},
+                "application/pdf": {"schema": {"type": "string", "format": "binary"}},
             },
         },
         **ERRORS,
@@ -109,7 +112,7 @@ def get_historical_summary(
     start: datetime,
     end: datetime,
     hardware_id: str = Query(..., alias="hardwareId", min_length=1, max_length=20),
-    format: Literal["json", "csv"] = Query("json"),
+    format: Literal["json", "csv", "pdf"] = Query("json"),
 ):
     """Reporte resumen de históricos: métricas CPU/RAM, energía trapezoidal y carga alta.
 
@@ -117,8 +120,15 @@ def get_historical_summary(
     """
     settings = request.app.state.settings
     adapter = historical_source(settings, request.state.request_id)
-    use_case = HistoricalReportUseCase(adapter, page_size=settings.historical_page_size)
+    use_case = HistoricalReportUseCase(adapter, page_size=settings.historical_page_size, pdf_renderer=FpdfReportRenderer())
     summary = use_case.execute(hardware_id, start, end, format=format)
     if format == "csv":
         return Response(content=summary, media_type="text/csv")
+    if format == "pdf":
+        def part(value):
+            return re.sub(r"[^A-Za-z0-9._-]", "_", value)
+        stamp = "%Y%m%dT%H%M%SZ"
+        name = f"reporte_historico_{part(hardware_id)}_{start.strftime(stamp)}_{end.strftime(stamp)}.pdf"
+        return Response(content=summary, media_type="application/pdf",
+                        headers={"Content-Disposition": f'attachment; filename="{name}"'})
     return summary

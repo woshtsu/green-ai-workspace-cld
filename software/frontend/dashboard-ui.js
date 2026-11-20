@@ -34,8 +34,8 @@
     const minutes = Math.max(0, (Date.parse(result.end) - Date.parse(result.start)) / 60000);
     const hours = GreenEnergy.equivalentHours(result.energyKwh, 450);
     box.replaceChildren(
-      card('Energía', `${fmt(result.energyKwh, 4)} kWh`, `Método: ${result.method || 'integración trapezoidal'}`),
-      card('CO₂e', result.co2eKg === null || result.co2eKg === undefined ? 'No evaluable' : `${fmt(result.co2eKg, 4)} kg`,
+      card('Energía (modelada)', `${fmt(result.energyKwh, 4)} kWh`, `Método: ${result.method || 'integración trapezoidal'}`),
+      card('CO₂e (estimado)', result.co2eKg === null || result.co2eKg === undefined ? 'No evaluable' : `${fmt(result.co2eKg, 4)} kg`,
         result.co2eKg === null || result.co2eKg === undefined ? 'Falta factor de emisión y su fuente' : `Factor ${fmt(result.emissionFactorKgPerKwh, 4)} kg/kWh · ${result.emissionFactorSource || ''}`),
       card('Periodo', `${fmt(minutes, 0)} min`, `${new Date(result.start).toLocaleString()} — ${new Date(result.end).toLocaleString()}`),
       card('Equivale a', hours === null ? '—' : `${fmt(hours, 1)} h`, 'de un servidor de 450 W a plena carga (kWh × 1000 ÷ 450)'),
@@ -60,7 +60,7 @@
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
       if (!Number.isFinite(result.energyKwh) || result.energyKwh < 0) throw new Error('Resultado de energía inválido.');
       showEnergyResult(result);
-      status.textContent = `${label}: ${fmt(result.energyKwh, 4)} kWh calculados. ${result.origin === 'simulated' ? 'Potencia modelada, no medida.' : ''}`;
+      status.textContent = `${label}: ${fmt(result.energyKwh, 4)} kWh modelados. ${result.origin === 'simulated' ? 'Potencia modelada, no medida.' : ''}`;
     } catch (error) {
       reportProblem('energy', error, 'energia', () => $('energy-sim').click());
     }

@@ -99,7 +99,7 @@ aleatorios en memoria y no se guardaron.
   verificar). Idea: repartir servicios entre dos proveedores, con llamadas HTTPS públicas entre ellos.
 
 ## Sprint actual frente al plan (revisado el 2026-11-06)
-Plan base: `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md` §4.8 (8 sprints de 2 semanas desde el
+Plan base: `docs/historico/trabajos-desarrollados/4. Gestión de Proyecto.md` §4.8 (8 sprints de 2 semanas desde el
 25/08/2026).
 - **Calendario:** el 06/11 corresponde al **Sprint 6** (03–14/11, semanas 11–12). La semana 13 empieza el **Sprint
   7** (17–28/11). El curso va una semana por delante del calendario del plan: el informe 9–12 ya se entregó el
@@ -120,7 +120,7 @@ plan experimental + baseline, reportes CSV/PDF, rol observador → (4) documento
 
 ## Documentación académica corregida (2026-11-06, segunda parte)
 - El usuario aportó las guías del docente (`guias/exportados_docente/`, leídas íntegras), los trabajos previos
-  (`guias/TrabajosDesarrollados/`) y 9 artículos (`guias/articulos/`).
+  (`docs/historico/trabajos-desarrollados/`) y 9 artículos (`guias/articulos/`).
 - Se creó `docs/academico/` (**sin imágenes; no se entrega**), con el índice C1–C6, la revisión docente con
   puntajes (8,5/20 según la captura) y el plan de la semana 13, más un documento por competencia.
 - Es la referencia para las próximas entregas. Lo único que se exportará será el documento de la semana 13.
@@ -218,10 +218,10 @@ Resumen para continuar en un chat nuevo: `docs/CONTINUAR-EN-NUEVO-CHAT.md`. Fron
 | Informe corregido (`entregables/informe-corregido/informe-unidad-III.md`) | 3 encargos en paralelo (partes I–VI, VII, VIII–anexos); cifras sin respaldo retiradas; RF real; discusión con 3 antecedentes; presupuesto PMBOK (S/ 24 872,40 cuadra); carátula con Claude declarado como asistente de IA | Verificado XGBoost 15 min MAE 3,457 vs RF 3,222 (`results/metrics/model_comparison.csv`) y energía 4 888/4 896 Wh; borrada imagen vieja del presupuesto (S/ 22 080 con K8s); enlace Trello corregido a PL8uQ4rF; URL de Prediction corregida (`-zxly`) |
 | Diagramas | `componentes-green-ai.puml`, `despliegue-green-ai.puml` y EDT renderizados con PlantUML local | Sustituyen las capturas C102/C103 |
 | Auditorías S13 (`docs/calidad/01..07`) | FURPS+ 85 % → 87 % tras ola 1 (esperado 98 %); OWASP 80,5 → 85,0/100; dictamen «Apto para producción con observaciones» | La 1.ª auditoría FURPS+ daba 96 % (sobrecalificada): se recalificó (HU-05/07/09/11/13/15, hexagonal del simulador, cold start). Rutas `file:///` sustituidas |
-| Ola 1 de mejoras (commit `d24d86f`) | nginx: X-Frame-Options, Permissions-Policy, COOP y cabeceras repetidas en `config.local.js`; SRI SHA-384 en CDN; Actions fijadas por SHA; `docs/GUIA-RAPIDA-USUARIO.md` | `node --test` 48/48; `nginx -t` OK; cabeceras comprobadas con curl en contenedor; SRI cargado en navegador sin errores. Evidencia: `docs/evidencias/semana13-ola1-verificacion.md`. Workflows **no ejecutados** en GitHub |
+| Ola 1 de mejoras (commit `d24d86f`) | nginx: X-Frame-Options, Permissions-Policy, COOP y cabeceras repetidas en `config.local.js`; SRI SHA-384 en CDN; Actions fijadas por SHA; `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` | `node --test` 48/48; `nginx -t` OK; cabeceras comprobadas con curl en contenedor; SRI cargado en navegador sin errores. Evidencia: `docs/evidencias/semana13-ola1-verificacion.md`. Workflows **no ejecutados** en GitHub |
 | Documento S13 (`entregables/semana13/semana13-calidad-furps-owasp.md`) | Redactado por Antigravity | Salidas de comandos **inventadas** (puerto 8080, grep, node --test) sustituidas por salidas reales; nombres de alertas corregidos |
-| Trello (`guias/trello/GUIA-TRELLO-POR-INTEGRANTE.md`) | Tarjeta por tarjeta y plan por integrante en 4 días; sin dailies retroactivos inventados | 16 rutas de evidencia inventadas corregidas; checklist HU-07 sin falso «hecho». Validador `herramientas_IA/trello/validar_trello.py` (el JSON actual: 57 errores) |
-| Video (`docs/exposicion/GUION-VIDEO-UNIDAD-III.md`) | Guion de 25 min, 7 episodios, diálogos y planes B | Quitadas cifras anticipadas (600/600, p50 128 ms); marcadores `[leer …]`. Script `herramientas_IA/video/carga_transacciones.py` **no ejecutado** |
+| Trello (`entregables/trello/GUIA-TRELLO-POR-INTEGRANTE.md`) | Tarjeta por tarjeta y plan por integrante en 4 días; sin dailies retroactivos inventados | 16 rutas de evidencia inventadas corregidas; checklist HU-07 sin falso «hecho». Validador `herramientas_IA/trello/validar_trello.py` (el JSON actual: 57 errores) |
+| Video (`entregables/video/GUION-VIDEO-UNIDAD-III.md`) | Guion de 25 min, 7 episodios, diálogos y planes B | Quitadas cifras anticipadas (600/600, p50 128 ms); marcadores `[leer …]`. Script `herramientas_IA/video/carga_transacciones.py` **no ejecutado** |
 | Exportación | `md_a_docx.py` rediseñado (plantilla de estilos, carátula, encabezado/pie, tablas verdes, horizontal para ≥ 9 columnas), `actualizar_word.ps1` | Revisado en PDF por Word. El validador XSD de la skill docx falla en Windows por su instalación (falta un archivo de esquemas), no por el documento |
 | Skills | `find-skills` (vercel-labs/skills) instalado en `.claude/skills/`; elegida la skill `docx` de Anthropic (214 k instalaciones) | Las demás opciones tenían < 1 k instalaciones |
 
@@ -242,7 +242,7 @@ Ajuste 2026-11-08 (pedido del usuario, opción B: grabar con la URL de producci�
 
 Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (quién graba qué, franja común con `mantener_despierto.py` a cargo de Ricardo, ajustes OBS, entrega de clips; edita Jhonny Cristhian), episodio 4 solo con navegador (GitHub Actions y archivos de resultados; métricas base corregidas según `model_comparison.csv`: persistencia 4,61/6,39, media móvil 3,74/5,19, XGBoost 3,46/4,79), carátula y cierre con clips individuales y URLs de producción en lugar de `/dev/`.
 
-2026-11-09: PR #4 fusionado: `entregables/word/` con los .docx y el .xlsx (excepción en .gitignore). Reexportar y volver a subir si cambian los .md.
+2026-11-09: PR #4 fusionado: `exportados/semana13/` con los .docx y el .xlsx (excepción en .gitignore). Reexportar y volver a subir si cambian los .md.
 
 ## Video Unidad III: grabador y prueba de carga (2026-11-09, chat del video; sigue en curso)
 - `carga_transacciones.py` **probado contra Render por primera vez**: `--iteraciones 5` → 16/16 HTTP 200; p95 2,8–3,5 s; recomendaciones `eligible_for_review` 5/5 (`docs/evidencias/carga-ensayo-5.csv`). Un intento previo dio 504 al descubrir nodos (pasajero entre Gateway y Monitoring): ahora el descubrimiento reintenta hasta 3 veces y registra cada intento en el CSV. Si Supabase rechaza el login, el script muestra el motivo. Estimación para 200 iteraciones: ~8–9 min.
@@ -264,3 +264,184 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - **Video completo:** `exportados/video/green-ai-unidad-III.mp4` (24:28, 1920×1080, 30 fps, sin audio, 24,7 MB; decodificado sin errores) + `descripcion-youtube.txt` (marcas de tiempo). Se tapó con fondo oscuro un `about:blank` de 5 s en 12:29–12:33 (Ep. 3, al cerrarse la terminal); quedan 3 s de carga de página (Prometheus y Trello).
 - Sin logo de la UC (no está en el repo; C100 sigue pendiente) ni NRC (pendiente). Sin voz ni cámaras: la rúbrica pide cámara y nombre completo de los 4 → grabar encima en la edición.
 - Fallos corregidos por el camino: Edge restauraba la pestaña anterior al matarlo y las diapositivas se grabaron en una pestaña de fondo (ahora cierre limpio por CDP `Browser.close` y pestaña nueva); `--start-fullscreen` no se aplica al conectar por CDP (ahora `Browser.setWindowBounds` fullscreen); `about:blank` blanco al iniciar cada clip (ahora página oscura).
+
+**PR #5 fusionado en `main`** (2026-11-10 07:36 UTC, commit 27ef69f, bypass del administrador a pedido del usuario). CI del PR 12/12 en verde. El video (`exportados/video/green-ai-unidad-III.mp4`) queda solo en local y en el Drive del equipo, no en GitHub.
+
+**Guion sincronizado con el video (2026-11-10):** `GUION-VIDEO-UNIDAD-III.md` §0.5 (voz y cámara encima del video, tramos por integrante según su rol), §2.2, §5 (locución por minuto real, con las cifras que se ven), §8 y marcas de YouTube con los minutos de 24:28. Detectado: la tabla del doc 08 que sale en el Ep. 4 no coincide con §6.2 (433/447): pendiente actualizar el doc 08.
+
+## 2026-11-10 noche — video subtitulado
+- Guion §5 ampliado (subagente Sonnet, revisado: cifras contrastadas con fotogramas; corregidos errores 0,5 y respuesta «Mantener capacidad / Lista para revisión humana» en 16:38).
+- Corte 0:44,5–0:46,5 y desplazamiento −2 s de los minutos del guion y de `descripcion-youtube.txt`.
+- Nuevo `herramientas_IA/video/guion_a_srt.py` (188 subtítulos); render `green-ai-unidad-III-subtitulado.mp4` (local/Drive, no en GitHub). Revisión por fotogramas; la revisión visual completa la hace el equipo.
+
+## 2026-11-11 — Revisión de Dina al informe corregido (Unidad III)
+- Hallazgos verificados contra `entregables/informe-corregido/informe-unidad-III.md`. Ciertos: tablas sin «Tabla N», criterios de HU sin formato BDD, PMV3 hasta el 12/12 (texto y 3 Gantt), Anexo A sin guion y Trello sin nomenclatura PMVn-HUxx. Ya cumplidos: árbol de problemas, pruebas por PMV y discusión. El código «AG-I06» que propuso Dina no está en la consigna, así que no se usó.
+- Informe (subagente Sonnet, revisado por Claude):
+  - 34 tablas numeradas;
+  - 16 HU con criterios Dado/Cuando/Entonces;
+  - párrafo de competencia al inicio de III y de V;
+  - PMV3 del 17/11 al 30/11: Sprint 7 del 17/11 al 23/11 y Sprint 8 del 24/11 al 30/11, ambos de una semana, como adaptación al calendario lectivo;
+  - Gantt nuevos `evidencias/gantt-planificado-2026-11.png`, `gantt-ejecutado-2026-11.png` y `cronograma-pmv-2026-11.png` (fuente en `fuentes/cronograma-planificado.puml`);
+  - Anexo A con una tabla que relaciona la lista de cotejo con el guion. Los ítems 1–3 y 6–8 quedan «No cubierto en el guion» porque son del informe escrito.
+  - Las fechas de las tareas 7.1–8.6 son una propuesta y hay que revisarlas.
+- Fechas ≤ 30/11 (subagente Haiku) en `entregables/semana13/...md`, `docs/calidad/02, 05 y 06` y `llenar_modelo_furps.py`. `validar_trello.py` acepta títulos `PMVn-HUxx`.
+- Word y Excel reexportados en `exportados/semana13/`:
+  - informe: 102 páginas y 14 marcadores `CAPTURA-PENDIENTE`;
+  - semana 13: 34 páginas y 11 marcadores.
+- Pendiente: los cambios de la guía de Trello (títulos `PMVn-HUxx`, HU-08 para Ricardo, fechas) están en la rama local `worktree-agent-a8e294441df89aac0`, commit `f281f55`, y no se integraron. El working copy tiene cambios ajenos sin commit en `GUIA-TRELLO-POR-INTEGRANTE.md` (sección 0, export del 09/11). Antes de integrar, el dueño de esos cambios debe confirmarlos.
+
+## 2026-11-11 (noche): PMV3 orientado a procesos, árbol de Dina y reorganización de carpetas
+- La guía de Trello del usuario (miembro único por tarjeta) se combinó con la rama del subagente: títulos `PMVn-HUxx`, sección 2.4 y fechas ≤ 30/11 (`1ad36c8`). HU-08 queda como miembro único de Gina, como dice la versión del usuario.
+- PMV3 reorientado a procesos de software (subagente Sonnet):
+  - Sprint 7: proceso de desarrollo, calidad ola 2, CI/CD documentado, Trello/DoD.
+  - Sprint 8: ola 3 y nueva medición, métricas del proceso, documento final con guía de uso, video, cierre el 30/11.
+  - CO2e (HU-10), PDF y la ampliación de HU-16 pasan a trabajo futuro.
+  - Gantt regenerados con `entregables/informe-corregido/fuentes/gantt_render.py`; EDT regenerada (`herramientas_IA/diagramas/edt-green-ai.puml`).
+  - Capturas nuevas de proceso: C310–C313.
+  - Anexo C con las observaciones del docente y una tabla de atención. El guion del Anexo A se quitó, a pedido del usuario.
+- Ediciones de Dina incorporadas: el árbol de problemas en §1.1 (Figura 1; las demás figuras se corrieron +1) y las mayúsculas de la portada. No se aplicaron dos: su «multirecurso» (lo correcto es «multirrecurso») y su RMSE, que en su Word quedó roto.
+- Reorganización por preferencia del usuario, registrada en `AGENTS.md`. La documentación del equipo va solo en `guias/` (guías del docente), `entregables/` (fuentes .md) y `exportados/` (Word/Excel versionados; video no). Movimientos:
+  - `entregables/word/` → `exportados/semana13/`
+  - `entregables/trabajos-previos/` y `guias/TrabajosDesarrollados/` → `docs/historico/`
+  - guía y revisión de Trello → `entregables/trello/`
+  - guion → `entregables/video/`
+  - guía rápida → `entregables/guia-de-uso/`
+  - Commit `7b6f600`. Rutas actualizadas con sed y verificadas solo con grep.
+- Word reexportado: `exportados/semana13/…-CORREGIDO.docx`, 109 páginas, 35 tablas, 18 marcadores `CAPTURA-PENDIENTE` (14 + C310–C313). Las exportaciones viejas de `exportados/semana13` se guardaron en el scratchpad antes de sobrescribirlas.
+
+## 2026-11-11 (cierre): guías de las semanas 14 y 15-16 y Gantt del PMV3
+- Guías nuevas en `guias/semana14/` y `guias/semana15-16/`, con su índice en `guias/README.md`. Los `.md` de «Cartel científico» y «Poster-ejemplo-1/2», que estaban vacíos, se reemplazaron por transcripciones de los PDF del docente, que solo traen imágenes. Las hizo un subagente Haiku; algunas cifras pequeñas del póster 2 son aproximadas.
+- PMV3 replanificado según la lista de cotejo de la Unidad IV:
+  - Sprint 7: ingeniería inversa (fases 1–4), proceso de desarrollo y CI/CD, ola 2 de FURPS+/OWASP, rendimiento y métricas de ML, Trello/DoD y preparación de pruebas con usuarios, borrador del informe final y del reporte ICACIT.
+  - Sprint 8: ingeniería inversa (fases 5–7), ola 3 y nueva medición, pruebas con usuarios y acta, informe final con guía de uso, artículo en inglés con trazabilidad, póster y video con 7 operaciones, cierre el 30/11.
+- Cambios en el informe (Sonnet): Gantt planificado y ejecutado regenerados (`fuentes/gantt_render.py`); cronograma regenerado con PlantUML (`.tools/plantuml/plantuml.jar`); la Tabla 30 de VIII.2.3 detalla la evidencia prevista para los indicadores 8–10.
+- Aviso: el eje del Gantt sigue la línea base (Sprint 7 = «Sem 13»). El docente lo llama semana 14 porque el calendario se adelantó una semana, como explica VII.5.3.
+
+## 2026-11-11 (22:40): capturas automáticas
+- Herramientas nuevas en `herramientas_IA/capturas/`:
+  - `capturar_web.py`: Chrome headless con perfil temporal vacío, en modo claro y en segundo plano. Solo sirve para páginas públicas o locales; no usa sesiones.
+  - `terminal_a_png.py`: convierte en imagen la salida REAL de un comando, recortada sin modificarla.
+- Pruebas ejecutadas hoy, todas en verde:
+  - frontend: `node --test`, 48/48;
+  - Prediction: `pytest`, 100 passed;
+  - Data Processing: `pytest`, 121 passed y 8 skipped;
+  - Monitoring: `mvnw -B verify`, 112 tests y BUILD SUCCESS.
+  - Gateway Go no se ejecutó: no hay Go local y Docker Desktop estaba apagado.
+- Capturas insertadas en el informe:
+  - C101: SQL en GitHub;
+  - C301: suites de pruebas;
+  - C303: MLflow, run `random_forest_15m`, servido localmente con `mlflow ui` en el puerto 5055;
+  - C304: `/alerts` de Prometheus en Render, que tiene 6 reglas (4 de operación y 2 de demostración);
+  - C305: Swagger de Prediction en Render;
+  - C311: GitHub Actions.
+- Capturas insertadas en semana 13: S02, S03, S05, S09, S10. Las imágenes están copiadas en `entregables/semana13/evidencias/`. En S03 se aclaró el texto de las «cuatro reglas».
+- Faltan:
+  - por sesión iniciada: app web (S01, S06, C306–C308, S08), Trello (C201–C204, C312, C313) y Render (S04);
+  - por Docker: C302 (smoke) y S07 (cabeceras de nginx);
+  - el logo (C100/S00);
+  - C310: PR con revisión, planificado.
+- Word reexportados: el informe tiene 113 páginas y 12 marcadores pendientes; semana 13 tiene 36 páginas y 6 marcadores.
+
+## 12/11/2026 — Capturas extraídas del video de la Unidad III
+- `ffmpeg -ss <t> -i exportados/video/epN-*.mp4 -frames:v 1 -vf crop=1920:1030:0:0` → 8 PNG en `entregables/informe-corregido/evidencias-nube/` (S01 y S06 copiadas también a `entregables/semana13/evidencias/`). Tiempos: ep1 21 s, ep2 37 s y 97 s, ep4 115 s, ep5 30 s y 70 s, ep6 10 s y 60 s.
+- Insertadas en el informe (C201, C202, C302, C306, C307, C308) y semana 13 (S01, S06). Pies de figura VII.6.1, VIII.4 y VIII.31 ajustados a lo que la imagen muestra realmente.
+- Reexportados: informe 116 páginas, 6 marcadores; semana 13 37 páginas, 4 marcadores.
+- Pendientes: C100/S00, C203, C204, C310, C312, C313, S04, S07, S08.
+
+## 12/11/2026 — Sprint 7: rama de trabajo y PR #6 (para C310)
+- Worktree `../green-ai-s7`, rama `sprint7/7.2-proceso-pr` desde `origin/test` (no incluye los commits locales de `test` sin publicar). Commit 7de9a15: `.github/pull_request_template.md` con la DoD del equipo (tarea 7.2, proceso de desarrollo).
+- Push de esa rama y PR https://github.com/woshtsu/green-ai-workspace-cld/pull/6 (`sprint7/7.2-proceso-pr` → `test`), autorizado por el usuario. La cuenta activa de `gh` (R772-cpu) no tiene permiso: se usó `GH_TOKEN=$(gh auth token --user woshtsu)` solo para el comando, sin cambiar la cuenta activa.
+- Falta para C310: CI en verde en el PR y la aprobación de otro integrante (el autor no puede aprobar su propio PR). Después, capturar la pestaña «Conversation» o «Files changed» con la revisión aprobada y fusionar.
+- Logo C100/S00: el usuario dice que lo agregó, pero no se encontró en el repo ni en Descargas/Escritorio/Imágenes; el informe estaba abierto en Word (archivo `~$…`), así que no se reexportó para no pisar cambios.
+
+## 12/11/2026 (00:40) — Logo, PR #6 y nginx
+- Logo UC del usuario (RGB con fondo negro, logo gris 34) convertido a PNG transparente con PIL → `logo-uc.png` en las carpetas `evidencias/` del informe y de semana 13; reemplaza C100 y S00.
+- C310: captura del usuario del PR #6 (abierto, sin revisión) insertada con pie honesto. CI del PR: 6/6 checks en verde (`gh pr checks 6`).
+- S07: captura del usuario de `nginx.conf` en GitHub insertada como evidencia de configuración.
+- C203: el Daily del 09/11 no se completó en Trello; la lista pide un Daily real posterior, sin retrofechar.
+- Reexportados: semana 13 (38 páginas, 2 marcadores: S04, S08) e informe (116 páginas, 4 marcadores: C203, C204, C312, C313; portada con el logo revisada en PDF).
+
+## 12/11/2026 (mediodía) — Capturas del equipo y S08
+- Insertadas C203, C204, C312 (2 imágenes), C313 y S04 con pies que describen lo que se ve (C203: solo comenta la Scrum Master; C313: sin checklist visible). Párrafo de Daily en VII.6 ajustado a lo que consta en Trello.
+- S08: navegador integrado en https://woshtsu.github.io/green-ai-workspace-cld/login.html → `window.supabase` = object, Font Awesome y supabase-js con `integrity` cargados, consola sin mensajes. `dashboard.html` sin sesión redirige a login; se cargaron sus scripts con el mismo `integrity` (supabase-js 2.117.1 y chart.js 4.4.8): ambos «integridad OK», `window.Chart` = function. Imagen con `terminal_a_png.py`.
+- Reexportados: informe 117 páginas, semana 13 38 páginas, **0 marcadores CAPTURA-PENDIENTE**. Siguen NRC-PENDIENTE y VIDEO-URL-PENDIENTE si aplican.
+
+## 12/11/2026 (tarde) — PR #6 fusionado y Word para revisión del equipo
+- PR #6 fusionado en `test` (02bb985) por woshtsu; `gh pr view 6` → 0 reviews: no hay aprobación formal registrada. C310 reemplazada por la captura del PR fusionado, con pie honesto.
+- `md_a_docx.py`: nuevo prefijo `PENDIENTE-EQUIPO` (mismo recuadro amarillo, no cuenta como captura). Anexo A: recuadro con el enlace del video pendiente (en edición, se subirá a Drive). Tabla del Anexo C (7.2) actualizada.
+- Informe reexportado: 118 páginas, 0 capturas pendientes; quedan el recuadro del video y NRC-PENDIENTE en la portada.
+
+## 12/11/2026 (tarde) — test sincronizada y publicada
+- `git merge origin/test` (trae el PR #6) → 857c82c; push a `origin/test` autorizado por el usuario (con el token de woshtsu, sin cambiar la cuenta activa de gh). `origin/test` = `test`.
+- En el remoto están `exportados/semana13/` (informe corregido .docx, semana 13 .docx y modelo FURPS+ .xlsx) y el PDF de semana 12. `exportados/video/` sigue ignorado (el video va a Drive).
+- Worktree `../green-ai-s7` y rama local `sprint7/7.2-proceso-pr` eliminados (ya fusionada).
+
+## 12/11/2026 (13:00) — Enlace del video y PDF
+- Anexo A: enlace del video en Google Drive (carpeta) dado por el usuario; recuadro PENDIENTE-EQUIPO retirado; Anexo C 7.2 «Atendido».
+- Word reexportado (117 páginas) y PDF generado con Word (`ExportAsFixedFormat`, marcadores desde títulos): `exportados/semana13/Porras-Huaman-Barrera-Quintana-informe-unidad-III-CORREGIDO.pdf`, 117 páginas, enlace en la p. 108. Único pendiente en el texto: NRC-PENDIENTE (portada).
+
+## 12/11/2026 (tarde) — NRC 30170 y nombre «Claudio»
+- NRC 30170 en las portadas del informe y de semana 13. El usuario pidió nombrar al asistente «Claudio»: portada «Claudio (Claude de Anthropic, …) – asistente/agente de IA…», se mantiene explícito que es IA.
+- Reexportados ambos Word y el PDF. El primer intento falló al guardar el informe (OSError: Word aún tenía el archivo) y se subió por error un .docx sin formato (153 p., commit 12d39ab); corregido en el commit siguiente: informe 117 p., PDF 117 p., NRC y «Claudio» en la p. 1, 0 «PENDIENTE».
+
+## 15/11/2026 — Evidencias reales en lugar de texto, Figuras 7/8/VIII.2 y cifras corregidas
+- Política del docente: solo valen capturas de la máquina real o de producción. Nueva herramienta `herramientas_IA/capturas/captura_ventana.ps1`: abre una consola real (conhost), ejecuta el comando, captura la ventana con PrintWindow y la cierra. `terminal_a_png.py` queda en desuso para entregables (es un render, no una captura).
+- Renders retirados: C301 (suites), S10 y S08. Nuevas capturas reales (subagentes Sonnet + Claude), todas revisadas:
+  - Suites: C301a Prediction 100 passed; C301b Data Processing 121 passed, 8 skipped; C301c Monitoring 112, BUILD SUCCESS; C301d Gateway Java 12; C301e Gateway Go 32 PASS (`go test -race`, Docker golang:1.25); S10 Frontend 48/48; C301f Simulator 10 OK (Docker python:3.12; pyproject exige >=3.12). Total 435 aprobadas (antes el informe decía 333 y semana 13 «415+»).
+  - Semana 13: S05b (Select-String de textos de la guía), S07a (`nginx -t`), S07b (`curl -sSI` con cabeceras), S08b (hash SRI = integrity, 3 recursos), S09b (17 `uses:` fijados por SHA). Bloques «Resultado obtenido» eliminados.
+  - Métricas del informe: M01 pipeline seed 42 (Tabla 26 coincide salvo latencia), M02 pandas sobre BD_GreenAi.xlsx (Tabla 2 coincide), M03 `docker images` (2,85 GB / 510 MB / 520 MB / 16,2 MB), M04 `docker stats` (Monitoring 239 MiB, DP 90 MiB, Go 8 MiB, Java 286 MiB, Prediction 141 MiB), M05 `run_experiment.py` (n=126 = 129−3), M06 `promtool` (6 reglas).
+- Correcciones de cifras: latencias de la Tabla 26 (las anteriores no tenían fuente; ahora las de la corrida capturada), Go 30→32, 333→435, Python del simulador 3.12, 4→6 reglas de alerta, Tabla 31 ΔSLA −6,35 pp, energía −0,17/−0,16/−0,13 %, reducción relativa 40,0 %, Monitoring ~239 MiB; semana 13 114→121 y 415+→435.
+- Figura VIII.2: el PNG era totalmente negro (extracción perdida); reemplazado por ecuación nativa. Figuras 7 y 8 mostraban un diseño de 13 tablas que nunca se implementó (no hay SQL en el repo): Figura 7 = nuevo modelo lógico (`fuentes/modelo-logico-green-ai.puml`), Figura 8 = captura del visualizador de esquema de Supabase exportada por el usuario (`evidencias-nube/captura-supabase-esquema-fisico.png`).
+- Riesgo observado: la tabla `usuario` de Supabase tiene columnas `password` y `password_hash` (tarjeta de Trello «Revisar RLS Supabase y password» vencida el 11/11).
+- Reexportados: informe 123 páginas (Word y PDF revisados en las páginas de las Figuras 7, 8 y VIII.2), semana 13 38 páginas. Docker Desktop quedó encendido; el stack local se bajó.
+- Sin captura todavía: consola DevTools real (S08 original, bloqueada por Cloudflare en el gateway), latencias locales <30 ms Java / <4 ms Go y cold start ~60 s de semana 13 (filas M-P01).
+
+## 19/11/2026 — Sprint 7: ola 2 implementada (subagentes en worktrees) y guías de semana 14
+- Zips del usuario («FURPS+ Y OWASP», «green-ai-ingenieria-inversa») extraídos en `guias/semana14/` (sin secretos: las coincidencias eran cursores de paginación y un ejemplo truncado) y zips borrados.
+- Contrato común: `docs/contratos/sprint7-ola2.md`. Tras el hallazgo H-01 (Prediction/Data Processing accesibles en Render sin Gateway) se añadió el secreto compartido `X-Green-Gateway-Secret` = `GATEWAY_SHARED_SECRET` (falla cerrado con 503).
+- Antigravity (`agy_task.py`) falló dos veces sin cambios: 1) intentó ejecutar un comando (bloqueado por ALWAYS_DENY), 2) una lectura de archivo denegada en headless. El encargo S-01 pasó a un subagente Sonnet.
+- Integrado en `test` (cherry-pick; las ramas de subagentes partían de `main` 27ef69f, con código idéntico a `test` salvo 2 líneas de docs):
+  - frontend `6ed72e1`: tabla accesible U-02, etiquetas F-06, botón PDF, panel de decisiones HU-07 (textContent, sin innerHTML).
+  - data-processing `e882e67`: `format=pdf` con puerto ReportRenderer + fpdf2 2.9.0 (Pillow 12.2.0 por wheel cp314). Imagen 426 → 498 MB.
+  - simulator `745fd72`: puertos en application/ports.py, composición en adapters; md5 de samples.jsonl idéntico con seed 42.
+  - prediction `41fb923`: decisiones HU-07 (src/decisions, SQLite, migración 001 no aplicada, .env.example con GATEWAY_SHARED_SECRET vacío).
+  - gateways `69da20b`: rutas `/api/recommendations/v1/recommendations/{uuid}/decisions`, IdentityHeadersFilter (Java) y cabeceras repuestas (Go).
+- Pruebas reales capturadas (consola, 19/11): Prediction 116, Data Processing 128 + 8 skipped, Gateway Java 19, Gateway Go 40 PASS, Simulator 14, Frontend 63, Monitoring 112 → 492 aprobadas. Capturas `entregables/informe-corregido/evidencias-nube/captura-S7-*.png`.
+- Arranque en frío Render medido (`herramientas_IA/operacion/medir_arranque_frio.ps1`): 1.ª petición 12,6–69,5 s, 2.ª < 0,8 s. Doc `docs/operacion/mlflow-y-precalentamiento.md` (F-04, P-01).
+- Entregables: `entregables/semana14/reporte-icacit.md` (7.6) y `entregables/semana14/sprint7-ola2-implementacion.md`.
+- Pendiente (requiere autorización o sesión del equipo): despliegue a Render y `GATEWAY_SHARED_SECRET` remoto, migración en Supabase, F-01 RLS/`password`, F-03 sesión real en /dev/, escaneo axe/Lighthouse, R-01 carga en staging, revisión del PR por otro integrante. difftest Java↔Go no se ejecutó contra el stack.
+
+## 12/11/2026 (noche) — Semana 13: OWASP Top 10:2021 → 2025
+- Motivo: el entregable de semana 13 (no el informe corregido) usaba OWASP Top 10:2021; debe usar la edición vigente https://top10.owasp.org/2025/ (lista verificada en la web oficial).
+- Mapeo oficial: SSRF (A10:2021) absorbida en A01:2025; A05→A02 Security Misconfiguration; A06→A03 Software Supply Chain Failures; A02→A04; A03→A05; A04→A06; A07/A08/A09 renombradas; **A10:2025 Mishandling of Exceptional Conditions es nueva**.
+- A10:2025 evaluada por inspección estática del código (sin pruebas en ejecución): Parcial (3), 8,0/10. Nuevo hallazgo **OW-13** (ola 3, Ricardo Porras, 30/11/2026): `recover` en gateway-go, manejador global/`server.error.include-*=never` en el Gateway Spring, pruebas de cuerpos 500 genéricos y timeouts uniformes en el frontend.
+- Puntajes: seguridad 0–100 79,0 → 83,5 (antes 80,5 → 85,0); matriz OWASP 28/34/48 de 50; global 198/208/244 de 250 (79,2 % / 83,2 % / 97,6 %; antes 80,0 % / 84,0 %).
+- Corregida una incoherencia previa: el .md mostraba A01 y A02:2021 (ahora A01 y A04:2025) como «Parcial (3)», pero el Excel y los totales los contaban como «No cumple (1)». Se alineó el .md con el Excel.
+- Archivos: `entregables/semana13/semana13-calidad-furps-owasp.md`; nuevo `docs/calidad/08_reclasificacion_owasp_2025.md` (clasificación vigente); nota al inicio de `docs/calidad/04–07` (se conservan como registro histórico 2021); `herramientas_IA/calidad/llenar_modelo_furps.py` (lista 2025).
+- Exportados: `MODELO-FURPSPLUS-Green-AI.xlsx` (salida: Inicial 198, Actual 208, Esperado 244 de 250) y `…-semana13-calidad-FURPS-OWASP.docx` (39 págs., 0 capturas pendientes; `md_a_docx.py --encabezado "Green AI · Semana 13: calidad FURPS+ y OWASP"` + `actualizar_word.ps1`; el primer `actualizar_word.ps1` dio COMException, al reintentar terminó OK). También se añadieron líneas en blanco antes de 4 listas que pandoc unía al párrafo (§5, §6.2, §6.4).
+- Entorno `.tools/docx` recreado en esta máquina (ignorado por Git).
+
+## 12/11/2026 (noche, 2) — Semana 13: roles alineados y reparto de revisión
+- Tabla de roles (§4.3) alineada con el acta de constitución y la gestión del proyecto: Jhonny PO (documentación, pruebas, gobernanza); Gina Scrum Master y ML Lead; Ricardo backend, contratos e integración (Lead Backend & MLOps); Leonid infraestructura, Docker y observabilidad, con UI/UX. Se retiraron etiquetas que no figuraban antes («Especialista en Ciberseguridad», «Ingeniero de Frontend y UX»). Los factores asignados no cambian.
+- Responsables OWASP iguales en el Word y el Excel (antes diferían): OW-A01 Ricardo (con el dueño de Supabase) 23/11; OW-A04 Gina (con el dueño de Supabase, por el Excel del dataset) 23/11; OW-A06 y OW-A09 Ricardo 23/11; OW-A07 Leonid 30/11; OW-A10 Ricardo 30/11. Los FURPS+ ya coincidían con 01_auditoria_furps.md.
+- Nuevo `entregables/semana13/REVISION-POR-INTEGRANTE.md`: qué secciones del Word, filas del Excel y documentos 01–08 revisa y confirma cada integrante, con una tabla de confirmación. El plazo lo fija Gina.
+- Reexportados: Excel (198 / 208 / 244 de 250, sin cambios) y Word (40 págs.). Revisada en el PDF la página de la tabla de roles.
+- Decisión del usuario: `docs/calidad/01–08` se quedan en `docs/calidad/` (no se mueven a `docs/`).
+
+## 12/11/2026 (noche, 3) — Semana 13 cerrada y exportada
+- Revisiones del equipo aplicadas (Jhonny, Gina, Leonid, Ricardo). Decisiones: M-F11 Ricardo 18/11; M-U07 09/11; M-R05 Ricardo 13/11 (sin decisión explícita: fecha de la auditoría); M-P01 Leonid; M-S01 Ricardo 23/11; OW-A04 30/11.
+- M-R01 → Parcial (Prediction usa {code, message}). Cifras finales: FURPS+ 168 → 172 / 200 (ponderado 84,78 → 86,28; el «85,00 ponderado» anterior no seguía las ponderaciones); global 196 → 206 → 244 de 250.
+- S11/S12 (consola de Supabase, tomadas por el equipo) verifican OW-01 y OW-03. Evidencias S11–S48c en `entregables/semana13/evidencias/` y anexo §13 del Word; mapa en `docs/evidencias/semana13-mapa-evidencias.md`, salidas en `docs/evidencias/semana13-salidas/`. Descartadas: S42 (duplicada), S47 (mostraba un correo), S49 (Render gratis no muestra memoria).
+- LICENSE MIT añadido (M-PL05). §9.7 con la salida real de Leonid. Enlaces del §12 fijados a la etiqueta `semana13-entrega`; Ola 1 enlazada al commit d24d86f.
+- `llenar_modelo_furps.py`: toma «Evidencia: Sxx» del Word y en «3-Esperado» escribe la meta. Exportados: Excel, Word (54 págs.) y PDF del Word. `actualizar_word.ps1` falló dos veces con COMException porque el usuario tenía el Word abierto; a la tercera, OK.
+- No ejecutado aquí (sin pytest/Go/Maven): suites de backend; el equipo dice haberlas verificado en su equipo (S50a–d pendientes si se piden).
+
+## 19/11/2026 — Merge con origin/test (revisión de semana 13 del equipo)
+- `origin/test` traía 5 commits de «estudianteuc» (12/11): semana 13 migrada a OWASP Top 10:2025, evidencias S37–S48, Word y PDF de entrega final. Conflictos resueltos así: semana 13 = versión del equipo como base + reaplicadas las capturas reales del 15/11 (§9.5–9.10 sin bloques «Resultado obtenido») y las cifras verificadas (435 pruebas, Go 32, DP 121 + 8). La verificación de nginx de Leonid (12/11) queda citada en texto. Pendientes del equipo S50a–S50d cubiertos con capturas reales (S50a–S50e). HANDOFF: unión de ambas partes.
+- Semana 13 reexportada (56 páginas, Word y PDF) desde el Markdown fusionado.
+
+## 19/11/2026 (noche) — PR #7, delegación y guía de despliegue
+- PR https://github.com/woshtsu/green-ai-workspace-cld/pull/7 (`test` → `main`), revisor propuesto Jhonny. Colaboradores con acceso: woshtsu (admin) y reit-art (write); `main` sin protección de rama.
+- Gateway en Render comprobado con curl: health 200, API sin token 401, CORS 200 → sin bloqueo de Cloudflare; no se crea otro gateway.
+- `usuario.password`: ningún código la usa (`git grep`). SQL para hashear con pgcrypto (bcrypt), borrar la columna y cerrar RLS/grants en `docs/operacion/despliegue-ola2-secreto-y-supabase.md` (lo ejecuta Ricardo). El Excel público también la contiene (OW-04): opción A propuesta, no ejecutada.
+- Para el equipo: `entregables/semana14/pasos-revision-pr-ola2.md` y `entregables/semana14/delegacion-sprint7.md` (Jhonny revisa PR, Leonid valida /dev/ y Lighthouse, Gina Trello/Daily/Review).

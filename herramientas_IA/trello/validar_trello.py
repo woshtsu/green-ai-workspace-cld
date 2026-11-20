@@ -97,7 +97,7 @@ def main() -> int:
             errors.append(f"«{c['name']}» ({lst}): falta {', '.join(miss)}")
         name = norm(c["name"])
         desc = (c.get("desc") or "").lower()
-        if name.startswith("HU"):
+        if re.match(r"(PMV\d-)?HU", name):
             if not (re.search(r"\bcomo\b", desc) and re.search(r"necesito|quiero", desc) and re.search(r"\bpara\b", desc)):
                 errors.append(f"«{c['name']}»: historia sin formato Como / necesito / para")
             if not re.search(r"ca-\d|given|dado|criterios de aceptaci", desc):

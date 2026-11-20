@@ -1,0 +1,17 @@
+Actúa como Ingeniero DevOps.
+
+A partir de las dependencias y configuraciones encontradas:
+
+Reconstruye el entorno necesario para ejecutar el proyecto.
+
+Genera:
+
+1. Software requerido.
+2. Versiones recomendadas.
+3. Servicios externos requeridos.
+4. Bases de datos requeridas.
+5. Variables de entorno.
+6. Configuración necesaria.
+7. Procedimiento completo de instalación.
+
+Incluye comandos para Linux Ubuntu.

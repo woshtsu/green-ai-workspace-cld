@@ -1,6 +1,6 @@
 # C5 · Uso de herramientas modernas (AG-I11: crear, seleccionar, aplicar, reconocer limitaciones)
 
-Base: `guias/TrabajosDesarrollados/5.Uso de herramientas modernas.md` y la guía `5.Uso de herramientas modernas.md`.
+Base: `docs/historico/trabajos-desarrollados/5.Uso de herramientas modernas.md` y la guía `5.Uso de herramientas modernas.md`.
 **Correcciones:**
 - Solo figuran herramientas **usadas con evidencia**. Se retiran SonarQube, JMeter y OWASP ZAP como «usadas»:
   no hay reportes; se pueden incorporar en el PMV3.

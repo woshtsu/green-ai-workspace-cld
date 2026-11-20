@@ -1,0 +1,15 @@
+Actúa como experto en Domain Driven Design.
+
+Analiza el código fuente.
+
+Reconstruye:
+
+1. Entidades.
+2. Value Objects.
+3. Servicios de dominio.
+4. Reglas de negocio.
+5. Agregados.
+6. Repositorios.
+7. Casos de uso.
+
+Genera diagramas UML textuales y explicación detallada.

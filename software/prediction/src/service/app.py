@@ -14,6 +14,7 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.exception_handlers import request_validation_exception_handler
 from src.service.recommendations import router as recommendations_router
+from src.service.decisions import ProblemError, problem_response, router as decisions_router
 
 from src.exceptions import (
     ArtifactIntegrityError,
@@ -36,10 +37,19 @@ app = FastAPI(
 
 
 app.include_router(recommendations_router)
+app.include_router(decisions_router)
+
+
+@app.exception_handler(ProblemError)
+async def problem_error_handler(request: Request, exc: ProblemError) -> JSONResponse:
+    return problem_response(exc.status, exc.title, exc.detail)
 
 
 @app.exception_handler(RequestValidationError)
 async def recommendation_validation_error(request, exc):
+    if request.url.path.endswith('/decisions'):
+        return problem_response(422, 'Unprocessable Entity', 'Cuerpo de la decisión inválido.',
+            [{'loc': list(e['loc']), 'msg': e['msg']} for e in exc.errors()])
     if request.url.path in ('/v1/recommendations', '/v1/energy'):
         return JSONResponse(status_code=422, content={
             'detail': 'Revisa los tipos, rangos, fechas con zona horaria y campos requeridos.'})

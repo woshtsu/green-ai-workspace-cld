@@ -46,9 +46,8 @@ node_modules/
 dist/
 .vite/
 
-# Exportados (DOCX generados desde Markdown; se publican como artefactos de CI)
-exportados/*
-!exportados/.gitkeep
+# Exportados: versiones exportadas para el equipo (se versionan); los videos no (pesan)
+exportados/video/
 
 # Herramientas locales y salidas de agentes
 .tools/
@@ -86,5 +85,6 @@ guias/articulos/*
 # Worktrees temporales de agentes
 green-ai-monorepo-wt-*/
 
-# Entregables Word para revisión del equipo (excepción explícita)
-!entregables/word/*.docx
+# Exportados para el equipo (excepción explícita)
+!exportados/**/*.docx
+!exportados/**/*.pdf

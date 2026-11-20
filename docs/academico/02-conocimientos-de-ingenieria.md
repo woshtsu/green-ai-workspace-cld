@@ -1,6 +1,6 @@
 # C2 · Conocimientos de ingeniería (AG-I07)
 
-Base: `guias/TrabajosDesarrollados/2. Conocimiento de Ingenieria.md` (fundamentos matemáticos correctos y
+Base: `docs/historico/trabajos-desarrollados/2. Conocimiento de Ingenieria.md` (fundamentos matemáticos correctos y
 extensos) y la guía `2.Conocimientos de Ingenieria.md` (11 secciones). **Corrección principal:** cada
 conocimiento se enlaza con el **módulo real del repositorio** donde se aplica, y se retiran los resultados no
 obtenidos (XGBoost como modelo final, RMSE 7,1 %).

@@ -13,7 +13,7 @@
 *** 2.2 Arquitectura: componentes, despliegue, contratos OpenAPI
 *** 2.3 PMV1 Observabilidad: Simulator, Prometheus, Monitoring, Gateway, Frontend, Auth
 *** 2.4 PMV2 Inteligencia: Data Processing, PoC, Prediction, política de recomendación, energía
-*** 2.5 PMV3 Validación: experimento baseline vs Green AI, reportes, carbono
+*** 2.5 PMV3 Procesos: desarrollo y CI/CD documentados, calidad FURPS+/OWASP, métricas del proceso, guía de uso
 *** 2.6 Infraestructura y despliegue: Docker Compose, nube de staging, CI
 *** 2.7 Pruebas: unitarias, contrato, integración, smoke, carga
 @endwbs

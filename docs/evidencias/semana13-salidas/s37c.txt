@@ -1,0 +1,12 @@
+21:                ? properties.clusterLabel() + "=~" + quote(query.cluster().replace(".", "\\.") + "|")
+22:                : properties.clusterLabel() + "=" + quote(query.cluster()));
+24:        filters.add(properties.instanceLabel() + (query.resourceId() == null ? "!=\"\"" : "=" + quote(query.resourceId())));
+28:            case "node.cpu.utilization" -> {
+32:            case "node.memory.used" -> "node_memory_MemTotal_bytes" + selector + " - node_memory_MemAvailable_bytes" + selector;
+33:            case "node.network.receive" -> "rate(node_network_receive_bytes_total" + selector + "[1m])";
+34:            case "node.network.transmit" -> "rate(node_network_transmit_bytes_total" + selector + "[1m])";
+35:            case "node.filesystem.used" -> {
+36:                filters.add("fstype=~" + quote(FILESYSTEM_TYPES));
+37:                filters.add("mountpoint!~" + quote(EXCLUDED_MOUNTS));
+42:            default -> throw MonitoringFailure.invalid("Métrica no permitida.");
+47:    private String quote(String value) {

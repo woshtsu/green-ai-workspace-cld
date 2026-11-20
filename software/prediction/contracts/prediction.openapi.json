@@ -126,6 +126,234 @@
         }
       }
     },
+    "/v1/recommendations/{recommendationId}/decisions": {
+      "post": {
+        "tags": [
+          "Decisions"
+        ],
+        "summary": "Create Decision",
+        "operationId": "create_decision_v1_recommendations__recommendationId__decisions_post",
+        "parameters": [
+          {
+            "name": "recommendationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Recommendationid"
+            }
+          },
+          {
+            "name": "X-Green-User-Id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Green-User-Id"
+            }
+          },
+          {
+            "name": "X-Green-User-Role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Green-User-Role"
+            }
+          },
+          {
+            "name": "X-Green-Gateway-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Green-Gateway-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecisionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DecisionResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Secreto del Gateway o cabeceras de identidad ausentes/inválidos",
+            "content": {
+              "application/problem+json": {}
+            }
+          },
+          "503": {
+            "description": "Falta GATEWAY_SHARED_SECRET (falla cerrado)",
+            "content": {
+              "application/problem+json": {}
+            }
+          },
+          "404": {
+            "description": "Decisiones desactivadas (DECISIONS_ENABLED=false)",
+            "content": {
+              "application/problem+json": {}
+            }
+          },
+          "422": {
+            "description": "Parámetros o cuerpo inválidos",
+            "content": {
+              "application/problem+json": {}
+            }
+          },
+          "403": {
+            "description": "Rol VIEWER",
+            "content": {
+              "application/problem+json": {}
+            }
+          },
+          "409": {
+            "description": "Decisión duplicada del usuario",
+            "content": {
+              "application/problem+json": {}
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Decisions"
+        ],
+        "summary": "List Decisions",
+        "operationId": "list_decisions_v1_recommendations__recommendationId__decisions_get",
+        "parameters": [
+          {
+            "name": "recommendationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Recommendationid"
+            }
+          },
+          {
+            "name": "X-Green-User-Id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Green-User-Id"
+            }
+          },
+          {
+            "name": "X-Green-User-Role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Green-User-Role"
+            }
+          },
+          {
+            "name": "X-Green-Gateway-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Green-Gateway-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DecisionList"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Secreto del Gateway o cabeceras de identidad ausentes/inválidos",
+            "content": {
+              "application/problem+json": {}
+            }
+          },
+          "503": {
+            "description": "Falta GATEWAY_SHARED_SECRET (falla cerrado)",
+            "content": {
+              "application/problem+json": {}
+            }
+          },
+          "404": {
+            "description": "Decisiones desactivadas (DECISIONS_ENABLED=false)",
+            "content": {
+              "application/problem+json": {}
+            }
+          },
+          "422": {
+            "description": "Parámetros o cuerpo inválidos",
+            "content": {
+              "application/problem+json": {}
+            }
+          }
+        }
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -334,6 +562,124 @@
           "status"
         ],
         "title": "Check"
+      },
+      "DecisionList": {
+        "properties": {
+          "recommendationId": {
+            "type": "string",
+            "title": "Recommendationid"
+          },
+          "decisions": {
+            "items": {
+              "$ref": "#/components/schemas/DecisionResponse"
+            },
+            "type": "array",
+            "title": "Decisions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "recommendationId",
+          "decisions"
+        ],
+        "title": "DecisionList"
+      },
+      "DecisionRequest": {
+        "properties": {
+          "decision": {
+            "$ref": "#/components/schemas/DecisionType"
+          },
+          "comment": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comment"
+          },
+          "recommendation": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Recommendation"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "decision",
+          "recommendation"
+        ],
+        "title": "DecisionRequest"
+      },
+      "DecisionResponse": {
+        "properties": {
+          "decisionId": {
+            "type": "string",
+            "title": "Decisionid"
+          },
+          "recommendationId": {
+            "type": "string",
+            "title": "Recommendationid"
+          },
+          "decision": {
+            "$ref": "#/components/schemas/DecisionType"
+          },
+          "comment": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comment"
+          },
+          "decidedBy": {
+            "type": "string",
+            "title": "Decidedby"
+          },
+          "decidedByRole": {
+            "$ref": "#/components/schemas/Role"
+          },
+          "decidedAt": {
+            "type": "string",
+            "title": "Decidedat"
+          },
+          "recommendationSha256": {
+            "type": "string",
+            "title": "Recommendationsha256"
+          },
+          "executionAllowed": {
+            "type": "boolean",
+            "title": "Executionallowed",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "decisionId",
+          "recommendationId",
+          "decision",
+          "comment",
+          "decidedBy",
+          "decidedByRole",
+          "decidedAt",
+          "recommendationSha256"
+        ],
+        "title": "DecisionResponse"
+      },
+      "DecisionType": {
+        "type": "string",
+        "enum": [
+          "APPROVED",
+          "REJECTED"
+        ],
+        "title": "DecisionType"
       },
       "EnergyRequest": {
         "properties": {
@@ -750,6 +1096,15 @@
           "cluster"
         ],
         "title": "Resource"
+      },
+      "Role": {
+        "type": "string",
+        "enum": [
+          "ADMIN",
+          "OPERATOR",
+          "VIEWER"
+        ],
+        "title": "Role"
       },
       "Telemetry": {
         "properties": {

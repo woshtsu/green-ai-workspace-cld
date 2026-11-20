@@ -1,0 +1,20 @@
+Analiza todos los archivos de configuración.
+
+Ejemplos:
+
+.env
+.env.example
+config.py
+settings.py
+docker-compose.yml
+
+Genera una tabla:
+
+| Variable | Obligatoria | Descripción | Valor de Ejemplo |
+
+Además identifica:
+
+- Secretos
+- Tokens
+- Configuración de base de datos
+- Configuración de APIs externas

@@ -1,0 +1,8 @@
+17:17:05 intento 1 https://green-ai-gateway-dev.onrender.com/actuator/health
+  HTTP 200  total=0.473251s  conexion=0.233198s  primer_byte=0.473136s
+17:17:06 intento 2 https://green-ai-gateway-dev.onrender.com/actuator/health
+  HTTP 200  total=0.250499s  conexion=0.015252s  primer_byte=0.250361s
+17:17:06 intento 1 https://green-ai-prediction-dev-zxly.onrender.com/health/ready
+  HTTP 200  total=9.302610s  conexion=8.484356s  primer_byte=9.302493s
+17:17:16 intento 2 https://green-ai-prediction-dev-zxly.onrender.com/health/ready
+  HTTP 200  total=0.774555s  conexion=0.274866s  primer_byte=0.774485s

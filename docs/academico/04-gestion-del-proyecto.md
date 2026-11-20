@@ -1,6 +1,6 @@
 # C4 · Gestión del proyecto (ICACIT + PMBOK 7 + Scrum)
 
-Base: `guias/TrabajosDesarrollados/4. Gestión de Proyecto.md`, §VII del informe entregado
+Base: `docs/historico/trabajos-desarrollados/4. Gestión de Proyecto.md`, §VII del informe entregado
 (`entregables/informe-corregido/informe-unidad-III.md`) y las guías `4.Gestiòn de Proyecto.md`, `semana1.md`,
 `PROJECT-CHARTER.md`, `S10.Evaluacion-formativa…`. **Correcciones exigidas por el docente:**
 1. Presupuesto con componentes válidos.

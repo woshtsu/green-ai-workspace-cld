@@ -1,0 +1,5 @@
+26:                response-timeout: 15000
+38:                response-timeout: 30000
+50:                response-timeout: 30000
+52:            connect-timeout: 1000
+53:            response-timeout: 6s

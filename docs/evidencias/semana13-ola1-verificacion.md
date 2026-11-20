@@ -1,7 +1,7 @@
 # Verificación de la ola 1 de mejoras (semana 13, 07/11/2026)
 
 Ejecutado por Claude Code en la PC del equipo, rama `test`. Commit de código: `d24d86f`
-(«fix(seguridad): ola 1 OWASP de la semana 13»). Documentación: `docs/GUIA-RAPIDA-USUARIO.md`.
+(«fix(seguridad): ola 1 OWASP de la semana 13»). Documentación: `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md`.
 
 ## Cambios
 | Hallazgo | Cambio | Archivo |
@@ -10,7 +10,7 @@ Ejecutado por Claude Code en la PC del equipo, rama `test`. Commit de código: `
 | OW-07 | Cabeceras de seguridad repetidas en `location = /config.local.js` (nginx no hereda `add_header` si el bloque define uno propio) | `software/frontend/nginx.conf` |
 | OW-08 | `integrity="sha384-…"` y `crossorigin="anonymous"` en supabase-js 2.117.1, chart.js 4.4.8 y Font Awesome 6.4.0 (6 páginas HTML) | `software/frontend/*.html` |
 | OW-10 | 8 acciones de GitHub fijadas por SHA de commit con la etiqueta como comentario (`# v4`) | `.github/workflows/ci.yml`, `pages.yml` |
-| M-U07 | Guía rápida de usuario con 8 tareas en ≤ 3 pasos, basada en los textos reales de la interfaz | `docs/GUIA-RAPIDA-USUARIO.md` |
+| M-U07 | Guía rápida de usuario con 8 tareas en ≤ 3 pasos, basada en los textos reales de la interfaz | `entregables/guia-de-uso/GUIA-RAPIDA-USUARIO.md` |
 
 ## Pruebas y resultados
 | Verificación | Comando | Resultado |

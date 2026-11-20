@@ -1,11 +1,14 @@
-# Guías docentes y material de referencia
+# Guías del docente
+
+Aquí solo van las guías del docente. Las versiones editables del equipo están en `entregables/` y las exportadas en `exportados/`. El desarrollo previo del equipo (guías 1–6) se movió a `docs/historico/trabajos-desarrollados/`.
 
 | Carpeta | Contenido | Uso |
 |---|---|---|
 | `exportados_docente/` | **Guías originales del docente** (Markdown), numeradas por competencia (0–6) y por semana (S6–S11) | Fuente de requisitos. Leídas íntegramente el 2026-11-06 |
-| `TrabajosDesarrollados/` | Desarrollo previo del equipo de las guías 1–6, acta con la Dirección de TI y formulario de workloads | Base para mejorar; **no** es fuente de verdad: contiene cifras sin respaldo (p. ej. la PoC) |
 | `articulos/` | 9 artículos usados como antecedentes | Fichas y referencias en `docs/academico/09-antecedentes-y-referencias.md` |
-| `semana09/`, `semana12/` | Lineamientos del artículo (S9), consigna y lista de cotejo de la Unidad III (S12) | Instrumentos de la entrega 9–12 |
+| `semana09/`, `semana12/`, `semana13/` | Lineamientos del artículo (S9), consigna y lista de cotejo de la Unidad III (S12) | Instrumentos de la entrega 9–12 |
+| `semana14/` | Consolidado 4 PMV3: evaluación del artículo y del informe (rúbrica, calidad, trazabilidad), FURPS+/OWASP (igual que S13), ingeniería inversa (12 prompts), reporte ICACIT, estructura del informe final (`informeFinal.md`), póster. `modelo-de-informe.md` es un ejemplo de otro proyecto | Plan del PMV3 (Sprint 7) |
+| `semana15-16/` | Lista de cotejo de la Unidad IV (informe final + artículo, video por episodios con 7 operaciones, calidad, pruebas con usuarios + acta, rendimiento + métricas ML) y cartel científico | Cierre del PMV3 (Sprint 8) |
 
 Mapa guía → requisito → documento desarrollado: `docs/academico/README.md`.
 Observación: `exportados_docente/S6.Arquitectura Híbrida.md` está **vacío (0 KB)**; pedir el original.

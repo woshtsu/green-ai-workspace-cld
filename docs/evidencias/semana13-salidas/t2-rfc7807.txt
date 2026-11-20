@@ -1,0 +1,11 @@
+Formato de error por servicio (codigo de produccion, sin pruebas):
+data-processing  problem+json/ProblemDetail: 2
+gateway-go       problem+json/ProblemDetail: 1
+monitoring       problem+json/ProblemDetail: 5
+prediction       problem+json: 0 | sobre propio {code,message} (_error_payload): 3
+
+Respuesta 500 de Monitoring:
+46:        return ResponseEntity.status(status).contentType(MediaType.APPLICATION_PROBLEM_JSON).body(body);
+Respuesta 500 de Prediction (app.py):
+71:    return 500, "INFERENCE_ERROR", "Inference failed", {}
+89:        content=_error_payload("INFERENCE_ERROR", "Inference failed"),

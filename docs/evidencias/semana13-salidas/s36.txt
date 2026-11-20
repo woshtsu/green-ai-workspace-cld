@@ -1,0 +1,7 @@
+git ls-files | grep -i licen -> 0 archivos
+ls raiz: 0 archivos LICENSE/COPYING
+grep -i licen README.md -> 0 coincidencias
+pom.xml monitoring:
+	<licenses>
+		<license/>
+	</licenses>

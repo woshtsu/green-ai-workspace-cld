@@ -1,0 +1,87 @@
+{
+ "index.html": {
+  "console": [
+   "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "pageerror": [],
+  "failed": [
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=sw -> net::ERR_BLOCKED_BY_ORB",
+   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css -> net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "responses": [],
+  "final_url": "index.html",
+  "title": "Green AI | Cyber Fleet"
+ },
+ "login.html": {
+  "console": [
+   "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+   "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+   "[verbose] [DOM] Input elements should have autocomplete attributes (suggested: \"current-password\"): (More info: https://goo.gl/9p2vKq) %o"
+  ],
+  "pageerror": [],
+  "failed": [
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=sw -> net::ERR_BLOCKED_BY_ORB",
+   "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1 -> net::ERR_TUNNEL_CONNECTION_FAILED",
+   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css -> net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "responses": [],
+  "final_url": "login.html",
+  "title": "Green AI | Login"
+ },
+ "register.html": {
+  "console": [
+   "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+   "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+   "[verbose] [DOM] Input elements should have autocomplete attributes (suggested: \"new-password\"): (More info: https://goo.gl/9p2vKq) %o",
+   "[verbose] [DOM] Input elements should have autocomplete attributes (suggested: \"new-password\"): (More info: https://goo.gl/9p2vKq) %o"
+  ],
+  "pageerror": [],
+  "failed": [
+   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css -> net::ERR_TUNNEL_CONNECTION_FAILED",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=sw -> net::ERR_BLOCKED_BY_ORB",
+   "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1 -> net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "responses": [],
+  "final_url": "register.html",
+  "title": "Green AI | Registro"
+ },
+ "dashboard.html": {
+  "console": [
+   "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+   "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "pageerror": [],
+  "failed": [
+   "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1 -> net::ERR_TUNNEL_CONNECTION_FAILED",
+   "https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js -> net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "responses": [],
+  "final_url": "dashboard.html",
+  "title": "Green AI | Observatorio"
+ },
+ "network.html": {
+  "console": [
+   "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+   "[warning] No se pudieron obtener métricas en vivo: Supabase Auth no está configurado. Copia config.example.js como config.local.js y completa sus valores."
+  ],
+  "pageerror": [],
+  "failed": [
+   "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1 -> net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "responses": [],
+  "final_url": "network.html",
+  "title": "Green AI | Racks con calor"
+ },
+ "flows.html": {
+  "console": [
+   "[error] Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "pageerror": [],
+  "failed": [
+   "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1 -> net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "responses": [],
+  "final_url": "flows.html",
+  "title": "Green AI | Red de flujos"
+ }
+}

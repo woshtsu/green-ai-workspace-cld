@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import csv
-from datetime import datetime
+from datetime import datetime, timezone
 import io
 import math
 from typing import Any
@@ -9,6 +9,7 @@ from typing import Any
 from application.use_cases.read_historical_logs import ReadHistoricalLogsUseCase
 from domain.errors import InvalidQuery
 from domain.ports.historical_logs_source import HistoricalLogsSource
+from domain.ports.report_renderer import ReportRenderer
 from domain.validation import interval, timestamp, utc
 
 CSV_COLUMNS = [
@@ -55,11 +56,13 @@ class HistoricalReportUseCase:
         source: HistoricalLogsSource | ReadHistoricalLogsUseCase,
         max_pages: int = MAX_PAGES,
         page_size: int = DEFAULT_PAGE_SIZE,
+        pdf_renderer: ReportRenderer | None = None,
     ):
         if isinstance(source, ReadHistoricalLogsUseCase):
             self.read_use_case = source
         else:
             self.read_use_case = ReadHistoricalLogsUseCase(source, max_page_size=page_size)
+        self.pdf_renderer = pdf_renderer
         self.max_pages = max_pages
         self.page_size = min(page_size, 500)
 
@@ -91,15 +94,24 @@ class HistoricalReportUseCase:
         writer.writerow(flat)
         return output.getvalue()
 
+    def _format(self, summary: dict[str, Any], format: str) -> dict[str, Any] | str | bytes:
+        if format == "csv":
+            return self.to_csv(summary)
+        if format == "pdf":
+            return self.pdf_renderer.render(summary, datetime.now(timezone.utc))
+        return summary
+
     def execute(
         self,
         hardware_id: str,
         start: datetime | str,
         end: datetime | str,
         format: str = "json",
-    ) -> dict[str, Any] | str:
-        if format not in ("json", "csv"):
-            raise InvalidQuery("format debe ser json o csv.")
+    ) -> dict[str, Any] | str | bytes:
+        if format not in ("json", "csv", "pdf"):
+            raise InvalidQuery("format debe ser json, csv o pdf.")
+        if format == "pdf" and self.pdf_renderer is None:
+            raise InvalidQuery("format pdf no está disponible en este ensamblaje.")
 
         if not isinstance(hardware_id, str) or not 1 <= len(hardware_id) <= 20:
             raise InvalidQuery("hardwareId debe tener entre 1 y 20 caracteres.")
@@ -146,7 +158,7 @@ class HistoricalReportUseCase:
                 "origin": "unknown",
                 "warnings": [ENERGY_WARNING],
             }
-            return self.to_csv(summary) if format == "csv" else summary
+            return self._format(summary, format)
 
         actual_source = all_records[0].get("source", source_name)
 
@@ -225,6 +237,4 @@ class HistoricalReportUseCase:
             "warnings": [ENERGY_WARNING],
         }
 
-        if format == "csv":
-            return self.to_csv(summary)
-        return summary
+        return self._format(summary, format)

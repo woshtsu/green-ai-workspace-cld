@@ -1204,7 +1204,8 @@
             "schema": {
               "enum": [
                 "json",
-                "csv"
+                "csv",
+                "pdf"
               ],
               "type": "string",
               "default": "json",
@@ -1214,7 +1215,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Reporte resumen en JSON o CSV",
+            "description": "Reporte resumen en JSON, CSV o PDF",
             "content": {
               "application/json": {
                 "schema": {
@@ -1403,6 +1404,12 @@
               "text/csv": {
                 "schema": {
                   "type": "string"
+                }
+              },
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
                 }
               }
             }

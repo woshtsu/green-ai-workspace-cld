@@ -1,0 +1,9 @@
+--- 1) botones/flujo de aprobar o rechazar (frontend y prediction):
+grep exit=1 (1 = sin coincidencias)
+
+--- 2) solo existe la bandera defensiva executionAllowed:
+software/frontend/recommendations.js:58:      if (!statuses[result.status] || !actions[result.action] || result.executionAllowed !== false
+software/prediction/src/service/recommendations.py:112:    executionAllowed: Literal[False] = False
+
+--- 3) tabla/endpoint de decisiones persistidas:
+grep exit=1 (1 = sin coincidencias)

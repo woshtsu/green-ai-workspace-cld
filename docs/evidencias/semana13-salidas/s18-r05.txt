@@ -1,0 +1,12 @@
+--- compose de desarrollo con SQLite (aislado de Supabase):
+# No sustituye a Supabase: sin Auth, RLS ni procedimientos. El servicio rechaza este perfil con APP_ENV=production.
+software/infraestructura/compose.sqlite-dev.yml:10:      HISTORICAL_SOURCE: sqlite
+software/infraestructura/compose.sqlite-dev.yml:11:      SQLITE_PATH: /data/greenai-dev.sqlite
+software/infraestructura/compose.sqlite-dev.yml:12:      SUPABASE_ENABLED: "false"
+software/data-processing/compose.yaml:7:      SUPABASE_ENABLED: ${SUPABASE_ENABLED:-false}
+
+--- herramientas de prueba de carga (locust, k6, jmeter, vegeta) en software/ y docs/evidencias:
+grep exit=1 (1 = sin coincidencias)
+
+--- HANDOFF: RLS permisiva sin corregir
+151:- **Supabase con RLS permisiva (según el snapshot `software/simulator/docs/assets/esquema-verificado.json`, 2026-09
