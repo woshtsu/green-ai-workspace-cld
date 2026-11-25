@@ -1582,8 +1582,11 @@ Evidencia que se generará para los indicadores 8, 9 y 10 de la lista de cotejo 
 ![](evidencias/p076-img044.png)
 Figura VIII.35. Plan de experimentación comparativa de 24 horas y aseguramiento de calidad (PMV3), referencia de los Sprints previos.
 
-![Pull Request #6 del Sprint 7 (tarea 7.2) fusionado en test el 12/11/2026, con la plantilla de PR y la Definición de Terminado; 6 checks de CI en verde y sin revisión formal registrada en GitHub](evidencias-nube/captura-C310-pr-sprint7.png)
-Figura VIII.36. Pull Request #6 del Sprint 7 fusionado en la rama test (12/11/2026), con CI en verde. La aprobación de otro integrante no quedó registrada en GitHub; desde el siguiente PR se exigirá antes de fusionar.
+![Pull Request #7 del Sprint 7 (test hacia main) aprobado por Jhonny Quintana (CristhianQuintana) con «Changes approved» y 12 checks de CI en verde](evidencias-nube/captura-C310-pr7-aprobado.png)
+Figura VIII.36. Pull Request #7 del Sprint 7 (ola 2) aprobado por otro integrante antes de fusionar, con los 12 checks de CI en verde, conforme al criterio 3 de la Definición de Terminado.
+
+![Pull Request #7 fusionado en main por woshtsu tras la aprobación de CristhianQuintana, con 12 checks aprobados](evidencias-nube/captura-C310b-pr7-fusionado.png)
+Figura VIII.36.a. Fusión del Pull Request #7 en main después de la aprobación.
 
 ![Historial de ejecuciones del workflow ci.yml en la pestaña Actions de GitHub, con las ejecuciones recientes y su resulta](evidencias-nube/captura-C311-actions.png)
 Figura VIII.37. Historial de ejecuciones de GitHub Actions (workflow ci.yml).

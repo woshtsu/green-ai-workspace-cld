@@ -445,3 +445,9 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 - Gateway en Render comprobado con curl: health 200, API sin token 401, CORS 200 → sin bloqueo de Cloudflare; no se crea otro gateway.
 - `usuario.password`: ningún código la usa (`git grep`). SQL para hashear con pgcrypto (bcrypt), borrar la columna y cerrar RLS/grants en `docs/operacion/despliegue-ola2-secreto-y-supabase.md` (lo ejecuta Ricardo). El Excel público también la contiene (OW-04): opción A propuesta, no ejecutada.
 - Para el equipo: `entregables/semana14/pasos-revision-pr-ola2.md` y `entregables/semana14/delegacion-sprint7.md` (Jhonny revisa PR, Leonid valida /dev/ y Lighthouse, Gina Trello/Daily/Review).
+
+## 25/11/2026 — «No me deja aprobar» (403) y PR #7
+- PR #7 aprobado por CristhianQuintana (Jhonny) y fusionado en `main` (51234b4) con 12 checks en verde. C310 del informe = captura del PR #7 aprobado + fusionado (Figuras VIII.36 y VIII.36.a). Informe reexportado: 124 páginas.
+- Causa del 403 al pulsar «Aprobar» con rol OPERATOR: los servicios de Render (rama `test`, autoDeploy **off**) siguen en commits del 07–09/11 (gateway Go b7f7712, prediction 886b034, data-processing 5c6dd2d). GitHub Pages sí publicó el frontend nuevo; el gateway viejo no conoce la ruta de decisiones y responde 403. No es un problema de rol.
+- Frontend: `friendlyError` distingue 403 con rol ADMIN/OPERATOR (función no desplegada), 404 y 503; prueba nueva (64/64).
+- Pendiente: desplegar manualmente gateway, prediction y data-processing desde `test` (con `GATEWAY_SHARED_SECRET` configurado en gateway y prediction).

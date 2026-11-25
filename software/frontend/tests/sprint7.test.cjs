@@ -140,3 +140,12 @@ test('F-06: la UI etiqueta energía, potencia y CO2e como modelada/estimada', ()
   assert.match(ui, /card\('CO₂e \(estimado\)'/);
   assert.match(read('recommendations.js'), /kWh \(modelada\)/);
 });
+
+test('friendlyError: 403 con rol OPERATOR/ADMIN no culpa al rol (ruta sin desplegar); 404 y 503 explicados', () => {
+  assert.match(decisions.friendlyError(403, '', 'OPERATOR'), /no desplegada/);
+  assert.match(decisions.friendlyError(403, '', 'ADMIN'), /no desplegada/);
+  assert.match(decisions.friendlyError(403, '', 'VIEWER'), /Solo ADMIN y OPERATOR/);
+  assert.match(decisions.friendlyError(403, ''), /Solo ADMIN y OPERATOR/);
+  assert.match(decisions.friendlyError(404), /no está disponible/);
+  assert.match(decisions.friendlyError(503), /deshabilitado temporalmente/);
+});

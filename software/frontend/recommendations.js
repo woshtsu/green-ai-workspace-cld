@@ -41,7 +41,7 @@ async function decisionRequest(recommendationId, options = {}) {
   const body = await response.json().catch(() => ({}));
   if (!response.ok) {
     const detail = typeof body.detail === 'string' ? body.detail : (body.message || '');
-    const text = GreenDecisions.friendlyError(response.status, detail)
+    const text = GreenDecisions.friendlyError(response.status, detail, currentRole())
       || (typeof GreenErrors !== 'undefined' ? GreenErrors.classify({status: response.status, body, context: 'recomendacion'}).mensaje : 'No se pudo completar la operación.');
     throw new Error(text);
   }

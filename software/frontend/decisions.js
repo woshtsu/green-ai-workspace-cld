@@ -38,12 +38,18 @@
     return payload;
   }
 
-  /** Mensaje amigable por estado HTTP (401/403/409/422); null si no aplica. */
-  function friendlyError(status, detail) {
+  /** Mensaje amigable por estado HTTP (401/403/404/409/422/503); null si no aplica.
+   *  role: rol de la sesión. Un 403 con rol ADMIN/OPERATOR no es de permisos: el servidor
+   *  aún no publica la ruta (backend sin desplegar), y se dice así en lugar de culpar al rol. */
+  function friendlyError(status, detail, role) {
     const extra = typeof detail === 'string' && detail && detail.length < 160 ? ` ${detail}` : '';
     switch (status) {
       case 401: return 'Tu sesión venció. Inicia sesión de nuevo y repite la decisión.';
-      case 403: return 'Tu rol no permite registrar decisiones. Solo ADMIN y OPERATOR pueden hacerlo.';
+      case 403: return canDecide(role)
+        ? 'El servidor todavía no admite registrar decisiones (función no desplegada). Avisa al administrador.'
+        : 'Tu rol no permite registrar decisiones. Solo ADMIN y OPERATOR pueden hacerlo.';
+      case 404: return 'El registro de decisiones no está disponible en el servidor. Avisa al administrador.';
+      case 503: return 'El registro de decisiones está deshabilitado temporalmente en el servidor (falta su configuración). Avisa al administrador.';
       case 409: return 'Ya registraste una decisión para esta recomendación. Solo se permite una por usuario.';
       case 422: return `La decisión no se pudo validar.${extra || ' Evalúa de nuevo la recomendación y vuelve a intentarlo.'}`;
       default: return null;
