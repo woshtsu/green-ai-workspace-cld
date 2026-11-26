@@ -156,3 +156,31 @@ Tabla D.1. Ubicación de cada apartado de la plantilla del docente en este infor
 | Pruebas, resultados y discusión | Capítulo VIII (PMV3 en §VIII.2.3) |
 | Lecciones aprendidas y conclusiones | Capítulos IX y X |
 | Anexos (video, GitHub, experto, evidencias) | Anexos A a C |
+
+<<<chg>>>
+### VII.8. Gestión de cambios derivada del Congreso de Ingeniería (CHG-001-2026)
+
+La participación del equipo en el VIII Congreso Internacional de Ingeniería y Arquitectura motivó una solicitud de cambio formal sobre la línea base del PMV3. La ponencia «Tecnología satelital y su impacto en ciudades inteligentes y sostenibilidad urbana» (Alejandro Manuel Martínez, Universidad de Buenos Aires) mostró que los datos meteorológicos y de observación terrestre derivados de satélites, combinados con inteligencia artificial, permiten anticipar fenómenos y que el reto es acercarlos al tiempo real. Aplicado a Green AI, el hallazgo revela una causa no modelada del consumo: el modelo energético $P(u)$ considera solo los servidores, con un PUE implícito de 1,0, mientras que la refrigeración depende de la temperatura exterior (la encuesta global del Uptime Institute reporta un PUE medio de 1,56 en 2024 [15]).
+
+Tabla VII.8. Solicitud de cambio CHG-001-2026
+
+| Campo | Contenido |
+|---|---|
+| Descripción | Incorporar la temperatura exterior horaria derivada de satélite (API de NASA POWER [16]) para estimar el PUE y la energía de refrigeración modelada, y evaluar la temperatura como variable exógena del modelo de demanda. |
+| Historias nuevas | HU-17 (contexto climático y refrigeración estimada en el dashboard, con falla segura «no disponible») y HU-18 (comparación del modelo con y sin temperatura en validación cronológica, adoptada solo si reduce el MAE). |
+| PMV | PMV3, Sprint 8 (ampliación del alcance); PMV1 y PMV2 no cambian. |
+| Arquitectura hexagonal | Puerto de salida `ClimaExternoPort` en la capa de aplicación de Prediction; adaptadores `NasaPowerClimaAdapter` (HTTP con *timeout* y caché) y `ClimaSinteticoAdapter` (pruebas sin red). Campo opcional `climate` en OpenAPI, compatible hacia atrás. |
+| Esfuerzo estimado | 26 horas-hombre. |
+| Dictamen del CCB | Aprobado para el backlog del PMV3, priorizado después de F-01 y F-03; planificado y no implementado al 25/11/2026. |
+
+<<<anexo_e>>>
+### Anexo E. Evidencia de participación en el Congreso de Ingeniería
+
+![](evidencias/foto-congreso-ricardo-porras.jpg){width=75%}
+
+Figura E.1. Ricardo Porras Veli siguiendo en modalidad virtual (Zoom) la transmisión del VIII Congreso Internacional de Ingeniería y Arquitectura.
+
+<<<refs_chg>>>
+[15] UPTIME INSTITUTE. *Global Data Center Survey 2024* [en línea]. Nueva York: Uptime Institute, 2024. Disponible en: https://uptimeinstitute.com/resources/research-and-reports/uptime-institute-global-data-center-survey-results-2024
+
+[16] NASA LANGLEY RESEARCH CENTER. *POWER: Prediction Of Worldwide Energy Resources* [en línea]. Disponible en: https://power.larc.nasa.gov/

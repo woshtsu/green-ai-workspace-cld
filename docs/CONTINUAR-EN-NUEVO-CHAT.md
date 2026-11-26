@@ -97,7 +97,8 @@ Roles del §4.3 alineados con el acta; responsables OWASP iguales en Word y Exce
 ### Estado 25/11/2026 (noche) — entrega S15 generada
 - Informe final: `exportados/semana15/Porras-Huaman-Barrera-Quintana-informe-unidad-IV.pdf` (129 págs.), fuente `entregables/semana15/informe-unidad-IV.md`, regenerable con `herramientas_IA/exportacion/construir_informe_iv.py` + `md_a_docx.py` + `actualizar_word.ps1` + Word COM.
 - Póster: `exportados/semana15/poster-green-ai.pdf` / `.png`, fuente `entregables/semana15/poster/poster-green-ai.html`.
-- Pendientes en orden: 1) acta de usuarios finales (recuadro PENDIENTE-EQUIPO, §VIII.2.3); 2) F-01 RLS y columna `password` en Supabase; 3) F-03 sesión real; 4) migración de decisiones HU-07 a Supabase; 5) QR en el póster (falta paquete qrcode).
+- Congreso: informe `exportados/semana15/Porras-Huaman-Barrera-Quintana-informe-congreso.pdf`, resumen para el equipo `exportados/semana15/resumen-hallazgo-congreso-equipo.pdf`; CHG-001-2026 aprobado, no implementado (§VII.8 del informe final, ahora 136 págs.).
+- Pendientes en orden: 1) acta de usuarios finales (§VIII.2.3 dice que no hay); 2) F-01 RLS y columna `password` en Supabase; 3) F-03 sesión real; 4) migración de decisiones HU-07 a Supabase; 5) QR en el póster (falta paquete qrcode).
 
 ### Estado 25/11/2026 (tarde) — para el chat del entregable S15
 - Ola 2 desplegada en Render (gateway Go, prediction y data-processing en `c807af9`, servicios en rama `test` con autoDeploy OFF → desplegar manualmente). `GATEWAY_SHARED_SECRET` configurado por el usuario. PDF y decisiones verificados (curl y logs de Render).

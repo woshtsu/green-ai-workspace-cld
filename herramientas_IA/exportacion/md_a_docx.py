@@ -394,7 +394,47 @@ def header_footer(doc, encabezado: str) -> None:
         r.font.size = Pt(8.5)
 
 
+def leyenda_style(doc, nombre: str):
+    try:
+        return doc.styles[nombre]
+    except KeyError:
+        st = doc.styles.add_style(nombre, WD_STYLE_TYPE.PARAGRAPH)
+        st.base_style = doc.styles["Image Caption"]
+        return st
+
+
+def insert_indices(doc) -> None:
+    """Índices de tablas y de figuras (campos TOC por estilo) tras el índice general."""
+    toc = next((p for p in doc.paragraphs if r"TOC \o" in p._p.xml), None)
+    if toc is None:
+        return
+    nxt = toc._p.getnext()
+    from docx.text.paragraph import Paragraph
+    ancla = Paragraph(nxt, toc._parent)
+    for titulo, estilo in (("Índice de tablas", "Leyenda Tabla"), ("Índice de figuras", "Leyenda Figura")):
+        t = ancla.insert_paragraph_before()
+        t.paragraph_format.page_break_before = True
+        t.paragraph_format.space_after = Pt(12)
+        r = t.add_run(titulo)
+        r.bold = True
+        r.font.size = Pt(18)
+        r.font.color.rgb = RGBColor.from_string(VERDE)
+        f = ancla.insert_paragraph_before()
+        add_field(f, rf'TOC \h \z \t "{estilo};1"', "Se genera al actualizar los campos (F9).")
+
+
+def quitar_filetes(doc) -> None:
+    for el in (doc.styles.element, doc.element.body, doc.sections[0].header._element):
+        for b in list(el.iter(qn("w:pBdr"))):
+            b.getparent().remove(b)
+
+
+INDICES = False
+SIN_FILETES = False
+
+
 def postprocess(path: Path, encabezado: str, toc_before: str | None) -> int:
+    import re as _re
     doc = Document(str(path))
     header_footer(doc, encabezado)
     sec = doc.sections[0]
@@ -410,6 +450,11 @@ def postprocess(path: Path, encabezado: str, toc_before: str | None) -> int:
         elif (txt.startswith(("Figura ", "Tabla ")) and len(txt) < 400
               and p.runs and all(r.italic for r in p.runs if r.text.strip())):
             p.style = doc.styles["Image Caption"]
+        if INDICES and not p._p.findall(".//" + qn("w:drawing")) and _re.match(r"^(Tabla|Figura) [A-Z0-9][\w.]*\. ", txt) and len(txt) < 400:
+            p.style = leyenda_style(doc, "Leyenda Tabla" if txt.startswith("Tabla") else "Leyenda Figura")
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            if txt.startswith("Tabla"):
+                p.paragraph_format.keep_with_next = True
         if p._p.findall(".//" + qn("w:drawing")):
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
             p.paragraph_format.keep_with_next = True
@@ -438,6 +483,10 @@ def postprocess(path: Path, encabezado: str, toc_before: str | None) -> int:
     # El primer H1 tras la carátula no necesita salto extra si ya lo pone el índice
     if toc_before:
         insert_toc(doc, toc_before)
+        if INDICES:
+            insert_indices(doc)
+    if SIN_FILETES:
+        quitar_filetes(doc)
     fix_ppr(doc.element.body)
     for part in (doc.sections[0].header, doc.sections[0].footer):
         fix_ppr(part._element)
@@ -452,7 +501,11 @@ def main() -> int:
     ap.add_argument("--encabezado", default="Green AI")
     ap.add_argument("--toc-antes", default=None, metavar="TEXTO",
                     help="Inserta el índice antes del primer párrafo que empieza por TEXTO")
+    ap.add_argument("--indices", action="store_true", help="Añade índices de tablas y figuras")
+    ap.add_argument("--sin-filetes", action="store_true", help="Sin líneas divisorias")
     a = ap.parse_args()
+    global INDICES, SIN_FILETES
+    INDICES, SIN_FILETES = a.indices, a.sin_filetes
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     src, out = a.entrada.resolve(), a.salida.resolve()

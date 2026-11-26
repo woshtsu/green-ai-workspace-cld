@@ -1134,6 +1134,21 @@ Tabla 25. Registro de control de cambios técnicos
 |CHG-08|Noviembre 2026|Preparación de entorno de Staging en Render desde la rama `test`|Acción preventiva (observación docente)|La Guía de laboratorio 11 exige demostrar los servicios en un entorno cloud de calidad accesible mediante URLs públicas y no solo en localhost.|Configuración de servicios web para Gateway Go, Prediction y Data Processing; documentación en `docs/GUIA-DESPLIEGUE-RENDER.md` y decisión D-07.|
 |CHG-09|11/11/2026|Reenfoque del PMV3 hacia procesos de software y documento final con guía de uso|Acción correctiva (alineación con el curso)|El curso es de procesos de software; los Sprints 7 y 8 (17/11–30/11) se redefinen para documentar y verificar los procesos y entregar el documento final.|Tareas 7.1–8.7 en §VII.5.3 (ampliadas el 11/11 para cubrir los entregables de la Unidad IV) y Gantt actualizados; RBAC VIEWER y reportes JSON/CSV se mantienen como hechos del Sprint 6; PDF, CO2e (HU-10) y ampliación del experimento (HU-16) pasan a trabajo futuro.|
 
+### VII.8. Gestión de cambios derivada del Congreso de Ingeniería (CHG-001-2026)
+
+La participación del equipo en el VIII Congreso Internacional de Ingeniería y Arquitectura motivó una solicitud de cambio formal sobre la línea base del PMV3. La ponencia «Tecnología satelital y su impacto en ciudades inteligentes y sostenibilidad urbana» (Alejandro Manuel Martínez, Universidad de Buenos Aires) mostró que los datos meteorológicos y de observación terrestre derivados de satélites, combinados con inteligencia artificial, permiten anticipar fenómenos y que el reto es acercarlos al tiempo real. Aplicado a Green AI, el hallazgo revela una causa no modelada del consumo: el modelo energético $P(u)$ considera solo los servidores, con un PUE implícito de 1,0, mientras que la refrigeración depende de la temperatura exterior (la encuesta global del Uptime Institute reporta un PUE medio de 1,56 en 2024 [15]).
+
+Tabla VII.8. Solicitud de cambio CHG-001-2026
+
+| Campo | Contenido |
+|---|---|
+| Descripción | Incorporar la temperatura exterior horaria derivada de satélite (API de NASA POWER [16]) para estimar el PUE y la energía de refrigeración modelada, y evaluar la temperatura como variable exógena del modelo de demanda. |
+| Historias nuevas | HU-17 (contexto climático y refrigeración estimada en el dashboard, con falla segura «no disponible») y HU-18 (comparación del modelo con y sin temperatura en validación cronológica, adoptada solo si reduce el MAE). |
+| PMV | PMV3, Sprint 8 (ampliación del alcance); PMV1 y PMV2 no cambian. |
+| Arquitectura hexagonal | Puerto de salida `ClimaExternoPort` en la capa de aplicación de Prediction; adaptadores `NasaPowerClimaAdapter` (HTTP con *timeout* y caché) y `ClimaSinteticoAdapter` (pruebas sin red). Campo opcional `climate` en OpenAPI, compatible hacia atrás. |
+| Esfuerzo estimado | 26 horas-hombre. |
+| Dictamen del CCB | Aprobado para el backlog del PMV3, priorizado después de F-01 y F-03; planificado y no implementado al 25/11/2026. |
+
 # VIII. PRUEBAS, RESULTADOS Y DISCUSIÓN
 
 ### VIII.1. Prueba de Concepto (PoC) de Inteligencia Artificial
@@ -1193,6 +1208,7 @@ Se rectifica formalmente que **XGBoost no fue el modelo ganador** para el horizo
 Para garantizar la reproducibilidad y auditabilidad técnica exigida por el atributo ICACIT AG-I11 (Uso de Herramientas Modernas), el entrenamiento y registro de métricas se integró con MLflow Tracking. El experimento se registró bajo el identificador formal `computational-demand-prediction`, con el run `random_forest_15m` reportando el MAE de test de 3,85 pp, complementado con el manifiesto `software/prediction/results/manifest.json` que fija el hash SHA-256 del código, datos y parámetros de configuración.
 
 ![Interfaz gráfica de MLflow Tracking UI con el experimento 'computational-demand-prediction' y el run 'random_forest_15m'](../informe-corregido/evidencias-nube/captura-C303-mlflow-run.png)
+
 Figura VIII.1. Registro y trazabilidad del experimento de entrenamiento de Machine Learning en MLflow Tracking UI.
 
 ![Consola de Windows (15/11/2026): run_pipeline.py con semilla 42 y tablas de validación (n=125) y test (n=129) de persistencia, media móvil, Random Forest y XGBoost](../informe-corregido/evidencias-nube/captura-M01-metricas-modelos.png)
@@ -1240,28 +1256,36 @@ Tabla 27. Pruebas automatizadas por servicio
 Figura VIII.3. Ejecución de las suites de pruebas automatizadas por servicio, capturada en consola de Windows el 15/11/2026.
 
 ![Consola de Windows (15/11/2026). Monitoring: `mvnw verify`, Tests run: 112, Failures: 0, BUILD SUCCESS](../informe-corregido/evidencias-nube/captura-C301c-monitoring-mvn.png)
+
 Figura VIII.3.a. Monitoring: `mvnw verify`, Tests run: 112, Failures: 0, BUILD SUCCESS.
 
 ![Consola de Windows (15/11/2026). Gateway Java: `mvnw verify`, Tests run: 12, Failures: 0, BUILD SUCCESS](../informe-corregido/evidencias-nube/captura-C301d-gateway-java.png)
+
 Figura VIII.3.b. Gateway Java: `mvnw verify`, Tests run: 12, Failures: 0, BUILD SUCCESS.
 
 ![Consola de Windows (15/11/2026). Gateway Go: `go test -race` en Docker golang:1.25, paquetes ok y 32 pruebas PASS](../informe-corregido/evidencias-nube/captura-C301e-gateway-go.png)
+
 Figura VIII.3.c. Gateway Go: `go test -race` en Docker golang:1.25, paquetes ok y 32 pruebas PASS.
 
 ![Consola de Windows (15/11/2026). Data Processing: pytest, 121 passed y 8 skipped](../informe-corregido/evidencias-nube/captura-C301b-data-processing-pytest.png)
+
 Figura VIII.3.d. Data Processing: pytest, 121 passed y 8 skipped.
 
 ![Consola de Windows (15/11/2026). Prediction: pytest, 100 passed](../informe-corregido/evidencias-nube/captura-C301a-prediction-pytest.png)
+
 Figura VIII.3.e. Prediction: pytest, 100 passed.
 
 ![Consola de Windows (15/11/2026). Frontend: node --test, 48 pass y 0 fail](../informe-corregido/evidencias-nube/captura-S10-frontend-tests.png)
+
 Figura VIII.3.f. Frontend: node --test, 48 pass y 0 fail.
 
 ![Consola de Windows (15/11/2026). Simulator: unittest en Docker python:3.12, Ran 10 tests, OK](../informe-corregido/evidencias-nube/captura-C301f-simulator-unittest.png)
+
 Figura VIII.3.g. Simulator: unittest en Docker python:3.12, Ran 10 tests, OK.
 
 
 ![Resultado del smoke test de integración 14/14 registrado en docs/evidencias/smoke-20261106.json (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 4)](../informe-corregido/evidencias-nube/captura-C302-smoke.png)
+
 Figura VIII.4. Verificación de integración de extremo a extremo: smoke test de 14 comprobaciones sobre el stack local (06/11/2026).
 
 #### Matriz de trazabilidad por historia de usuario (PMV1 y PMV2)
@@ -1297,16 +1321,19 @@ Tabla 28. Matriz de trazabilidad por historia de usuario (PMV1 y PMV2)
 El entorno de desarrollo local se estructuró mediante Docker Compose, aislando los servicios en redes internas para evitar conflictos de puertos y versiones de bibliotecas.
 
 ![Figura VIII.1: Estado operativo de contenedores en Docker Desktop Dashboard.](../informe-corregido/evidencias/p059-img026.png)
+
 Figura VIII.5. Estado operativo de los contenedores locales en Docker Desktop Dashboard.
 
 Como se observa en la Figura VIII.5, la arquitectura local comprende los contenedores del API Gateway, recolector de monitoreo en Java, simulador de telemetría en Python, servidor Prometheus, microservicio de procesamiento y frontend web. La compilación multi-etapa (*multi-stage build*) se audita en la salida estándar de integración continua:
 
 ![](../informe-corregido/evidencias/p060-img027.png)
+
 Figura VIII.6. Construcción y arranque de servicios mediante Docker Compose CLI (`docker compose up -d --build`).
 
 En cumplimiento con los requerimientos de entornos de calidad en la nube (Laboratorio 11), el ecosistema se desplegó en la nube pública de Render utilizando contenedores Docker independientes para cada microservicio:
 
 ![Figura VIII.2. Render: 6 microservicios desplegados en la nube.](../informe-corregido/evidencias-nube/render-6-servicios-desplegados.png)
+
 Figura VIII.7. Despliegue operativo de los 6 microservicios del sistema Green AI en Render (región Oregon) utilizando imágenes de contenedores Docker. Prueba: Disponibilidad y compilación limpia de la arquitectura distribuida en la nube pública sin dependencia de localhost. No prueba: No acredita tráfico concurrente de producción institucional ni ausencia de latencia por arranque en frío en instancias compartidas.
 
 ##### b) Verificación de agentes e ingesta de telemetría en Prometheus
@@ -1314,6 +1341,7 @@ Figura VIII.7. Despliegue operativo de los 6 microservicios del sistema Green AI
 Prometheus Server se configuró con sondeos de recolección periódica cada 15 segundos hacia los endpoints expuestos por los colectores de métricas.
 
 ![](../informe-corregido/evidencias/p060-img028.png)
+
 Figura VIII.8. Panel de objetivos de recolección en Prometheus Server (`Status > Target health`).
 
 La Figura VIII.8 certifica la conectividad operativa instantánea de las tres fuentes principales en estado UP: `green-ai-monitoring` (`:8080/actuator/prometheus`), `green-ai-simulator` (`:8000/metrics`) y el automonitoreo de Prometheus (`:9090/metrics`).
@@ -1326,6 +1354,7 @@ Las dos de demostración son `RecommendationsUnavailable` y `DemoPolicyBlocked`.
 *Figura VIII.8.a. Validación de las reglas de alerta con `promtool check rules`.*
 
 ![Interfaz de Prometheus Server mostrando el estado de las reglas de alerta activas (SimulatorTelemetryDown, NodeCpuSatura](../informe-corregido/evidencias-nube/captura-C304-prometheus-alerts.png)
+
 Figura VIII.9. Panel de reglas de alerta configuradas en Prometheus Server.
 
 ##### c) Visualización en tiempo real y muestreo en Grafana
@@ -1333,6 +1362,7 @@ Figura VIII.9. Panel de reglas de alerta configuradas en Prometheus Server.
 Para auditar visualmente las series temporales en el entorno local, se configuró Grafana conectado a Prometheus como origen de datos.
 
 ![](../informe-corregido/evidencias/p061-img029.png)
+
 Figura VIII.10. Tablero de observabilidad operativa en tiempo real en Grafana (`Dashboards > Green AI | Prometheus en vivo`).
 
 La Figura VIII.10 documenta la recepción de flujos con una tasa de muestreo agregada de 1,05k ops/s, graficando las variaciones simuladas de CPU, oscilaciones de memoria RAM entre 44 % y 56 %, tráfico de red y consumo de almacenamiento sobre los nodos sintéticos.
@@ -1342,6 +1372,7 @@ La Figura VIII.10 documenta la recepción de flujos con una tasa de muestreo agr
 La recolección de métricas a intervalos de 15 segundos durante una ventana de observación de 14 días genera teóricamente la siguiente estructura volumétrica:
 
 ![](../informe-corregido/evidencias/p062-img030.png)
+
 Figura VIII.11. Formulación matemática de la matriz temporal volumétrica requerida para la inferencia.
 
 Debido a discontinuidades transitorias en la recolección (*scraping drops*), la extracción en bruto registró un 3,2 % de registros ausentes:
@@ -1440,15 +1471,19 @@ df_logs = pd.DataFrame({
 La persistencia de estos conjuntos en PostgreSQL / Supabase y en la base local SQLite de desarrollo se verifica en las vistas relacionales correspondientes:
 
 ![](../informe-corregido/evidencias/p066-img031.png)
+
 Figura VIII.12. Registros de servidores en la tabla `hardware` en PostgreSQL / Supabase.
 
 ![](../informe-corregido/evidencias/p066-img032.png)
+
 Figura VIII.13. Registros de cuentas de acceso en la tabla `usuario` en PostgreSQL / Supabase.
 
 ![](../informe-corregido/evidencias/p067-img033.png)
+
 Figura VIII.14. Registros de series temporales en la tabla `logs` en PostgreSQL / Supabase.
 
 ![](../informe-corregido/evidencias/p067-img034.png)
+
 Figura VIII.15. Diagrama Entidad-Relación (ERD) del modelo de persistencia relacional en PostgreSQL / Supabase.
 
 ---
@@ -1465,9 +1500,11 @@ El sistema contempla dos casos de uso asistivos principales:
 2. **Caso de uso predictivo 2 (Recomendación con restricciones operativas):** Evaluación de la predicción y telemetría reciente por el Policy/Safety Engine para generar sugerencias de optimización bajo guardrails de SLA.
 
 ![](../informe-corregido/evidencias/p068-img035.png)
+
 Figura VIII.16. Esquema conceptual del caso de uso de inferencia de demanda de CPU a 15 minutos.
 
 ![Figura VIII.2.2.a: Especificación y contratos OpenAPI (Swagger UI) del Data Processing Service (http://127.0.0.1:8003/docs).](../informe-corregido/evidencias/p069-img036.png)
+
 Figura VIII.17. Especificación y contratos OpenAPI (Swagger UI) del Data Processing Service (`/docs`).
 
 En Data Processing Service se auditan los endpoints `GET /api/v1/health`, `GET /api/v1/metrics/history`, `GET /api/v1/historical-logs` y `GET /api/v1/prediction/dataset`. La especificación formaliza los esquemas `HistoricalPage`, `MetricRecord` y `PredictionDataset`.
@@ -1475,14 +1512,17 @@ En Data Processing Service se auditan los endpoints `GET /api/v1/health`, `GET /
 En el microservicio de inferencia (Prediction Service), se validan las operaciones de disponibilidad y predicción:
 
 ![Figura VIII.7a: Especificación y contratos OpenAPI (Swagger UI) del Prediction Service (http://127.0.0.1:8002/docs).](../informe-corregido/evidencias/p070-img037.png)
+
 Figura VIII.18. Especificación interactiva OpenAPI (Swagger UI) del microservicio Prediction Service (`/docs`).
 
 ![Figura VIII.2.2.a. Esquemas Pydantic y DTOs de validación de datos del Prediction Service (Swagger UI Schemas).](../informe-corregido/evidencias/p071-img038.png)
+
 Figura VIII.19. Esquemas Pydantic y estructuras DTO de validación de datos del Prediction Service.
 
 En Prediction Service se comprueban las sondas `GET /health/live` y `GET /health/ready` (que comprueba la carga efectiva del binario Random Forest en memoria), los endpoints de inferencia `POST /v1/predictions` y `POST /predict`, y el endpoint de recomendaciones `POST /v1/recommendations`.
 
 ![Especificación interactiva OpenAPI (Swagger UI) del Prediction Service detallando endpoints /health/live, /health/ready,](../informe-corregido/evidencias-nube/captura-C305-swagger-prediction.png)
+
 Figura VIII.20. Documentación interactiva OpenAPI (Swagger UI) del microservicio Prediction Service en el entorno desplegado.
 
 ##### b) Interfaz web e inferencia predictiva de demanda (Frontend HTML/JS estático)
@@ -1490,42 +1530,53 @@ Figura VIII.20. Documentación interactiva OpenAPI (Swagger UI) del microservici
 La capa de presentación web se desarrolló como una aplicación cliente ligera basada en HTML5, CSS3 y JavaScript moderno sin frameworks pesados, servida de manera estática a través de GitHub Pages y empaquetada en contenedores Nginx. Esta decisión de diseño garantiza bajo consumo de memoria en el navegador y elimina la necesidad de capas intermedias de renderizado del lado del servidor.
 
 ![Figura VIII.2.2.b. Dashboard principal de Métricas de Infraestructura de Green AI Web Frontend.](../informe-corregido/evidencias/p072-img039.png)
+
 Figura VIII.21. Dashboard de métricas de infraestructura en la interfaz web de usuario.
 
 ![](../informe-corregido/evidencias/p072-img040.png)
+
 Figura VIII.22. Interfaz web de inferencia predictiva de CPU e integración HTTP End-to-End.
 
 Como se ilustra en las Figuras VIII.21 y VIII.22, la interfaz web consulta métricas en tiempo real a través del API Gateway, indicando de forma explícita la etiqueta de transparencia metodológica `Procedencia: Simulado` y `Modelo entrenado con datos sintéticos`.
 
 ![](../informe-corregido/evidencias/p073-img041.png)
+
 Figura VIII.23. Interfaz web del Policy/Safety Engine y evaluación de recomendaciones con guardrails de SLA.
 
 Para acreditar la ejecución en el entorno en la nube de calidad (GitHub Pages conectado a Render), se capturaron las vistas operativas con sesión real de usuario bajo el rol OPERATOR:
 
 ![Figura VIII.21. Vista de infraestructura Racks con calor en la nube con sesión activa de usuario bajo rol OPERATOR.](../informe-corregido/evidencias-nube/racks-nube-sesion-real-operator.png)
+
 Figura VIII.24. Vista de infraestructura "Racks con calor" en la nube con sesión activa de usuario bajo rol OPERATOR. Prueba: Visualización en vivo de la matriz de 50 servidores distribuidos en 5 racks y consulta de detalle de servidor con autenticación real en GitHub Pages y Render. No prueba: Los valores de telemetría desplegados son sintéticos generados por el simulador; no representan servidores físicos de un centro de cómputo universitario.
 
 ![Figura VIII.22. Inspección de red con DevTools ante respuesta HTTP 422 Unprocessable Content por historial insuficiente.](../informe-corregido/evidencias-nube/racks-nube-devtools-422-datos-insuficientes.png)
+
 Figura VIII.25. Inspección de red con DevTools ante respuesta HTTP 422 Unprocessable Content por historial insuficiente (`INSUFFICIENT_DATA`). Prueba: Comunicación asíncrona real entre frontend estático en GitHub Pages y API Gateway en Render, validando que el sistema rechaza solicitudes de inferencia cuando no se cuenta con los minutos mínimos de telemetría requeridos. No prueba: No representa una falla de software o caída de servicio, sino el comportamiento defensivo contractual previsto ante datos incompletos.
 
 ![Figura VIII.23. Tablero de evolución temporal multi-servidor mostrando la media del conjunto y comparación de 5 servidores críticos.](../informe-corregido/evidencias-nube/grafico-media-max-min-comparacion.jpg)
+
 Figura VIII.26. Tablero de evolución temporal multi-servidor mostrando la media del conjunto (85,4 %), área de dispersión mín-máx y comparación de 5 servidores críticos. Prueba: Procesamiento estadístico en cliente y renderizado dinámico de series temporales con procedencia simulada explícita. No prueba: No mide directamente la potencia eléctrica consumida en la toma de pared.
 
 ![Figura VIII.24. Tabla paginada de telemetría por servidor con filtros y atributos de calidad.](../informe-corregido/evidencias-nube/tabla-paginada-detalle.jpg)
+
 Figura VIII.27. Tabla paginada de telemetría por servidor (HW001 a HW010) con filtros y atributos de calidad. Prueba: Integración con la paginación y ordenamiento del API Gateway para conjuntos de datos de 50 servidores. No prueba: No valida almacenamiento a largo plazo superior al horizonte de retención temporal.
 
 ![Figura VIII.25. Vista analítica Red de flujos en topología circular para evaluación de balanceo de cargas entre racks.](../informe-corregido/evidencias-nube/red-de-flujos-tela-de-arana.jpg)
+
 Figura VIII.28. Vista analítica "Red de flujos" en topología circular para evaluación de balanceo de cargas entre racks. Prueba: Capacidad de cálculo del frontend para modelar sugerencias de reubicación de carga térmica entre racks a partir de desviaciones estándar. No prueba: Es una herramienta visual de apoyo; no ejecuta migraciones automáticas ni reconfiguraciones de red física.
 
 A continuación se insertan las referencias de evidencia complementarias solicitadas para los casos de uso principales:
 
 ![Predicción de CPU a 15 minutos para HW045 desde la aplicación en GitHub Pages: 59,44 % estimado, modelo 1.0.0 (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 5)](../informe-corregido/evidencias-nube/captura-C306-prediccion.png)
+
 Figura VIII.29. Primer caso de uso de IA: predicción de demanda de CPU a 15 minutos visualizada desde la aplicación web desplegada.
 
 ![Recomendación con restricciones: Mantener capacidad, lista para revisión humana, cada restricción evaluada (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 5)](../informe-corregido/evidencias-nube/captura-C307-recomendacion.png)
+
 Figura VIII.30. Segundo caso de uso de IA: recomendación asistiva con restricciones de seguridad visualizada desde la aplicación web.
 
 ![Reporte histórico de HW045 (10–11/07/2026) con el CSV descargado desde la aplicación (fotograma del video de la Unidad III grabado el 10/11/2026, episodio 2)](../informe-corregido/evidencias-nube/captura-C308-csv.png)
+
 Figura VIII.31. Reporte histórico consolidado de HW045 y descarga en CSV desde la aplicación (Data Processing Service).
 
 ![Figura VIII.32. Prueba de carga masiva sobre el API Gateway en Render (10/11/2026, 01:49–01:56): 601 transacciones autenticadas (1 descubrimiento + 200 × dataset, predicción y recomendación), 601 con HTTP 200; p95 de 1,5 s (dataset) y 3,5 s (predicción y recomendación). Telemetría simulada. Fotograma del episodio 3 del video; datos en docs/evidencias/carga-video.csv.](../informe-corregido/evidencias-nube/carga-601-transacciones-render.png)
@@ -1541,9 +1592,11 @@ El microservicio de políticas (Policy/Safety Engine) opera en estricto modo **R
 Cuando la telemetría es insuficiente o se violan los márgenes de seguridad, el motor emite veredictos preventivos como `"Sin evidencia suficiente"` o `"eligible_for_review"`, garantizando que ninguna acción de reconfiguración se proponga sin respaldo técnico auditable.
 
 ![](../informe-corregido/evidencias/p075-img042.png)
+
 Figura VIII.33. Interfaz web para estimación experimental de demanda de CPU sobre el nodo HW001.
 
 ![](../informe-corregido/evidencias/p075-img043.png)
+
 Figura VIII.34. Manejo de error contractual HTTP 422 Unprocessable Entity en la interfaz web ante telemetría temporal insuficiente para inferencia.
 
 Las Figuras VIII.33 y VIII.34 demuestran la interacción real con el endpoint de predicción y el tratamiento de errores contractuales cuando el historial temporal no alcanza la cantidad mínima requerida de muestras.
@@ -1592,46 +1645,59 @@ Tabla 30.a. Pruebas automatizadas por servicio antes y después del Sprint 7
 | **Total** | **492 aprobadas** | 435 |
 
 ![Consola de Windows (19/11/2026): pytest en software/prediction, 116 passed](../informe-corregido/evidencias-nube/captura-S7-prediction-pytest.png)
+
 Figura VIII.38. Prediction Service: 116 pruebas aprobadas, incluidas las 16 de decisiones HU-07.
 
 ![Consola de Windows (19/11/2026): pytest en software/data-processing, 128 passed y 8 skipped](../informe-corregido/evidencias-nube/captura-S7-data-processing-pytest.png)
+
 Figura VIII.39. Data Processing: 128 aprobadas y 8 omitidas, incluidas las 7 del reporte PDF.
 
 ![Consola de Windows (19/11/2026): mvnw verify en software/gateway, 19 pruebas y BUILD SUCCESS](../informe-corregido/evidencias-nube/captura-S7-gateway-java-mvn.png)
+
 Figura VIII.40. Gateway Java: 19 pruebas, BUILD SUCCESS.
 
 ![Consola de Windows (19/11/2026): go test -race en Docker golang:1.25, 40 PASS](../informe-corregido/evidencias-nube/captura-S7-gateway-go.png)
+
 Figura VIII.41. Gateway Go: 40 pruebas con detector de carreras, 0 fallos.
 
 ![Consola de Windows (19/11/2026): unittest del Simulator en Docker python:3.12, Ran 14 tests, OK](../informe-corregido/evidencias-nube/captura-S7-simulator-unittest.png)
+
 Figura VIII.42. Simulator: 14 pruebas, incluida la que verifica que la aplicación no importa adaptadores.
 
 ![Consola de Windows (19/11/2026): node --test en software/frontend, 63 pass y 0 fail](../informe-corregido/evidencias-nube/captura-S7-frontend-tests.png)
+
 Figura VIII.43. Frontend: 63 pruebas (tabla accesible, URL del PDF, decisiones y etiquetas modeladas).
 
 ![Consola de Windows (19/11/2026): mvnw verify en software/monitoring, 112 pruebas y BUILD SUCCESS](../informe-corregido/evidencias-nube/captura-S7-monitoring-mvn.png)
+
 Figura VIII.44. Monitoring sin regresiones: 112 pruebas.
 
 ##### c) Despliegue y rendimiento en la nube
 
 ![Consola de Windows (19/11/2026 17:45): curl a las rutas de salud de los 6 servicios de Render; primera petición entre 12,6 y 69,5 s y segunda entre 0,36 y 0,78 s](../semana13/evidencias/captura-P01-arranque-frio-render.png)
+
 Figura VIII.45. Arranque en frío medido en Render Free: primera petición tras inactividad (12,6–69,5 s) y segunda (< 0,8 s).
 
 ![Consola de Windows (25/11/2026 22:11): curl directo a Prediction en Render con cabeceras de identidad falsas responde 401 «Petición no originada en el Gateway» y el Gateway sin token responde 401](evidencias/captura-S15-ola2-render-401.png)
+
 Figura VIII.46. Ola 2 desplegada en Render: Prediction rechaza con 401 la identidad falsificada sin el secreto del Gateway y el Gateway exige token en la ruta de decisiones HU-07.
 
 ![Panel de Render con los 6 servicios desplegados](../informe-corregido/evidencias-nube/render-6-servicios-desplegados.png)
+
 Figura VIII.47. Servicios del proyecto desplegados en Render.
 
 ##### d) Proceso: revisión por pares e integración continua
 
 ![Pull Request #7 del Sprint 7 (test hacia main) aprobado por Jhonny Quintana (CristhianQuintana) con «Changes approved» y 12 checks de CI en verde](../informe-corregido/evidencias-nube/captura-C310-pr7-aprobado.png)
+
 Figura VIII.36. Pull Request #7 del Sprint 7 (ola 2) aprobado por otro integrante antes de fusionar, con los 12 checks de CI en verde, conforme al criterio 3 de la Definición de Terminado.
 
 ![Pull Request #7 fusionado en main por woshtsu tras la aprobación de CristhianQuintana, con 12 checks aprobados](../informe-corregido/evidencias-nube/captura-C310b-pr7-fusionado.png)
+
 Figura VIII.36.a. Fusión del Pull Request #7 en main después de la aprobación.
 
 ![Historial de ejecuciones del workflow ci.yml en la pestaña Actions de GitHub](../informe-corregido/evidencias-nube/captura-C311-actions.png)
+
 Figura VIII.37. Historial de ejecuciones de GitHub Actions (workflow ci.yml).
 
 ##### e) Indicadores 8, 9 y 10 de la lista de cotejo de la Unidad IV
@@ -1639,7 +1705,6 @@ Figura VIII.37. Historial de ejecuciones de GitHub Actions (workflow ci.yml).
 - **Indicador 8 (arquitectura hexagonal, entorno de calidad y reportes):** arquitectura hexagonal por servicio (S-01 completó el Simulator), ejecución sobre la rama `test` y su despliegue de desarrollo, y reportes de ingeniería inversa, FURPS+ y OWASP con dictamen. **Cumple, con el dictamen de seguridad parcial.**
 - **Indicador 9 (usuarios finales):** no hay acta de reunión con usuarios finales registrada a la fecha de corte.
 
-PENDIENTE-EQUIPO: adjuntar el acta de la sesión con usuarios finales (fecha, asistentes ajenos al desarrollo, tareas de la guía rápida ejecutadas, retroalimentación y acuerdos) y su captura. Si no se realizó, dejar constancia de ello aquí.
 
 - **Indicador 10 (rendimiento y métricas de ML):** métricas de ML de §VIII.1.3 (MAE 3,22 en validación y 3,85 en test), latencia y *throughput* con concurrencia (Tabla 30) y arranque en frío medido (Figura VIII.45).
 
@@ -1660,9 +1725,11 @@ En cumplimiento con el atributo de egreso ICACIT AG-I11 (Uso de Herramientas Mod
 La evaluación por historia de usuario se sintetiza en la comprobación de interfaces de consulta de métricas y de inferencia:
 
 ![](../informe-corregido/evidencias/p078-img045.png)
+
 Figura VIII.38. Evidencia de consulta y graficación de métricas de telemetría (HU-01).
 
 ![](../informe-corregido/evidencias/p079-img046.png)
+
 Figura VIII.39. Evidencia de consulta de predicción de utilización de CPU a 15 minutos (HU-03).
 
 #### VIII.3.1. Evaluación experimental comparativa: Baseline vs. Green AI (Experimento reproducible)
@@ -1849,6 +1916,7 @@ Los procesos del PMV3 se ejecutaron y tienen evidencia: ingeniería inversa en 7
 - Aplicar la migración `001_recommendation_decisions.sql` en Supabase, endurecer RLS y retirar la columna `password` (F-01), y validar el dashboard con sesión real (F-03).
 - Volver privados Prediction y Data Processing o exigir el secreto del Gateway en todas sus rutas, e implementar *rate limiting* y auditoría de 401/403 (OW-05, OW-12).
 - Implementar la estimación de huella de carbono CO2e (HU-10) con factores de emisión oficiales verificables (fuera del alcance del periodo lectivo).
+- Implementar el cambio aprobado CHG-001-2026 (HU-17 y HU-18): temperatura exterior satelital, PUE y energía de refrigeración modeladas (§VII.8).
 - Ampliar el experimento comparativo (HU-16) con trazas reales y barridos finos, e incorporar herramientas de análisis estático y carga (SonarQube, JMeter, OWASP ZAP) cuando el calendario lo permita.
 - Explorar algoritmos de calibración y análisis de iso-SLA mediante barridos finos del margen de seguridad.
 
@@ -1884,6 +1952,10 @@ Los procesos del PMV3 se ejecutaron y tienen evidencia: ingeniería inversa en 7
 
 [14] ARIAS CHÁVEZ, Dennis. *Manual para citar y referenciar fuentes en textos de ingeniería según la norma ISO 690-2*. 1.a ed. Huancayo: Universidad Continental, Fondo Editorial, 2019. 83 p. ISBN 978-612-4443-04-6.
 
+[15] UPTIME INSTITUTE. *Global Data Center Survey 2024* [en línea]. Nueva York: Uptime Institute, 2024. Disponible en: https://uptimeinstitute.com/resources/research-and-reports/uptime-institute-global-data-center-survey-results-2024
+
+[16] NASA LANGLEY RESEARCH CENTER. *POWER: Prediction Of Worldwide Energy Resources* [en línea]. Disponible en: https://power.larc.nasa.gov/
+
 ---
 
 # ANEXOS
@@ -1895,12 +1967,13 @@ Los procesos del PMV3 se ejecutaron y tienen evidencia: ingeniería inversa en 7
 * **API Gateway perimetral desplegado (Render):** https://green-ai-gateway-dev.onrender.com
 * **Video demostrativo del producto (Google Drive; es el mismo video entregado en la Unidad III, sin cambios para la Unidad IV):** https://drive.google.com/drive/folders/16ttIT6vfV2NXIxz0k5bjwtlNyJETCkQj?usp=drive_link
 
-* **Póster científico del proyecto (Unidad IV):** `exportados/semana15/poster-green-ai.pdf` (fuente editable en `entregables/semana15/poster/`).
+* **Póster científico del proyecto (Unidad IV):** entregado junto con este informe (`poster-green-ai.pdf`).
 
 * **Formulario de consulta con el experto temático:**
   https://drive.google.com/file/d/1bRDtlPNSknHKYgtX5wHdiWbGDrtZlgeG/view?usp=drive_link
 
 ![](../informe-corregido/evidencias/p094-img047.png)
+
 Figura A.1. Formulario de entrevista de requerimientos con el experto temático de infraestructura.
 
 * **Repositorios de componentes de software del monorepo:**
@@ -1909,36 +1982,42 @@ Figura A.1. Formulario de entrevista de requerimientos con el experto temático 
 https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/prediction
 
 ![](../informe-corregido/evidencias/p095-img048.png)
+
 Figura A.2. Repositorio de código fuente del microservicio Prediction Service.
 
 ● Microservicio Data Processing Service:
 https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/data-processing
 
 ![](../informe-corregido/evidencias/p095-img049.png)
+
 Figura A.3. Repositorio de código fuente del microservicio Data Processing Service.
 
 ● Microservicio Monitoring Service:
 https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/monitoring
 
 ![](../informe-corregido/evidencias/p096-img050.png)
+
 Figura A.4. Repositorio de código fuente del microservicio Monitoring Service.
 
 ● Microservicio API Gateway:
 https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/gateway
 
 ![](../informe-corregido/evidencias/p096-img051.png)
+
 Figura A.5. Repositorio de código fuente del microservicio API Gateway.
 
 ● Frontend Web Application:
 https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/frontend
 
 ![](../informe-corregido/evidencias/p097-img052.png)
+
 Figura A.6. Repositorio de código fuente de la aplicación frontend web.
 
 ● Simulador de Workloads de Telemetría:
 https://github.com/woshtsu/green-ai-workspace-cld/tree/main/software/simulator
 
 ![](../informe-corregido/evidencias/p097-img053.png)
+
 Figura A.7. Repositorio de código fuente del simulador de infraestructura.
 
 * **Microservicios publicados en la nube pública de Render:**
@@ -1949,12 +2028,14 @@ Figura A.7. Repositorio de código fuente del simulador de infraestructura.
   - Prediction Service: `https://green-ai-prediction-dev-zxly.onrender.com`
 
 ![](../informe-corregido/evidencias/p098-img054.png)
+
 Figura A.8. Panel de servicios activos en la plataforma en la nube Render.
 
 * **Tablero Ágil de Gestión del Proyecto (Trello Oficial):**
   https://trello.com/b/PL8uQ4rF/green-ai-para-centros-de-datos-universitarios
 
 ![](../informe-corregido/evidencias/p051-img019.png)
+
 Figura A.9. Tablero Kanban de seguimiento ágil del proyecto en el espacio de trabajo oficial.
 
 ---
@@ -2165,4 +2246,11 @@ Tabla D.1. Ubicación de cada apartado de la plantilla del docente en este infor
 | Gestión del proyecto (Gantt y tablero) | Capítulo VII |
 | Pruebas, resultados y discusión | Capítulo VIII (PMV3 en §VIII.2.3) |
 | Lecciones aprendidas y conclusiones | Capítulos IX y X |
-| Anexos (video, GitHub, experto, evidencias) | Anexos A a C |
+| Gestión de cambios del congreso (CHG-001-2026) | §VII.8 |
+| Anexos (video, GitHub, experto, evidencias, congreso) | Anexos A a E |
+
+### Anexo E. Evidencia de participación en el Congreso de Ingeniería
+
+![](evidencias/foto-congreso-ricardo-porras.jpg){width=75%}
+
+Figura E.1. Ricardo Porras Veli siguiendo en modalidad virtual (Zoom) la transmisión del VIII Congreso Internacional de Ingeniería y Arquitectura.

@@ -99,9 +99,25 @@ rep("- Culminar la exportación automatizada de reportes consolidados en formato
 rep("* **Video de sustentación de la Unidad III (Google Drive):**",
     "* **Video demostrativo del producto (Google Drive; es el mismo video entregado en la Unidad III, sin cambios para la Unidad IV):**")
 rep("* **Formulario de consulta con el experto temático:**",
-    "* **Póster científico del proyecto (Unidad IV):** `exportados/semana15/poster-green-ai.pdf` (fuente editable en `entregables/semana15/poster/`).\n\n* **Formulario de consulta con el experto temático:**")
+    "* **Póster científico del proyecto (Unidad IV):** entregado junto con este informe (`poster-green-ai.pdf`).\n\n* **Formulario de consulta con el experto temático:**")
 
-t = t.rstrip("\n") + "\n\n" + S["anexo_d"] + "\n"
+# Hallazgo del congreso (CHG-001-2026)
+rep("\n# VIII. PRUEBAS, RESULTADOS Y DISCUSIÓN", "\n" + S["chg"] + "\n\n# VIII. PRUEBAS, RESULTADOS Y DISCUSIÓN")
+rep("- Ampliar el experimento comparativo (HU-16)",
+    "- Implementar el cambio aprobado CHG-001-2026 (HU-17 y HU-18): temperatura exterior satelital, PUE y energía de refrigeración modeladas (§VII.8).\n- Ampliar el experimento comparativo (HU-16)")
+i = t.index("\n# ANEXOS")
+j = t.rindex("\n[14] ", 0, i)
+k = t.index("\n", j + 1)
+t = t[:k] + "\n\n" + S["refs_chg"] + t[k:]
+S["anexo_d"] = S["anexo_d"].replace("| Anexos (video, GitHub, experto, evidencias) | Anexos A a C |",
+    "| Gestión de cambios del congreso (CHG-001-2026) | §VII.8 |\n| Anexos (video, GitHub, experto, evidencias, congreso) | Anexos A a E |")
+
+# Informe limpio: sin recuadros de pendientes
+t = re.sub(r"\nPENDIENTE-EQUIPO:[^\n]*\n", "\n", t)
+# Pies de figura en su propio párrafo (para el índice de figuras)
+t = re.sub(r"(\n!\[[^\n]*\)(\{[^}\n]*\})?)\n(Figura )", r"\1\n\n\3", t)
+
+t = t.rstrip("\n") + "\n\n" + S["anexo_d"] + "\n\n" + S["anexo_e"] + "\n"
 out.parent.mkdir(parents=True, exist_ok=True)
 out.write_text(t, encoding="utf-8")
 print("OK", out, len(t.split()), "palabras")
