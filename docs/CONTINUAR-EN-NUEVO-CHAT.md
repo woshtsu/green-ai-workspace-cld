@@ -94,6 +94,11 @@ Roles del §4.3 alineados con el acta; responsables OWASP iguales en Word y Exce
 - Resumen para el equipo: `entregables/semana14/sprint7-ola2-implementacion.md`; reporte ICACIT: `entregables/semana14/reporte-icacit.md`.
 - Siguiente: autorización para desplegar (test → main, `GATEWAY_SHARED_SECRET` en Render), F-01 RLS, F-03 sesión real, informe final (Sprint 8, aplicar mejoras del reporte ICACIT).
 
+### Estado 25/11/2026 (noche) — entrega S15 generada
+- Informe final: `exportados/semana15/Porras-Huaman-Barrera-Quintana-informe-unidad-IV.pdf` (129 págs.), fuente `entregables/semana15/informe-unidad-IV.md`, regenerable con `herramientas_IA/exportacion/construir_informe_iv.py` + `md_a_docx.py` + `actualizar_word.ps1` + Word COM.
+- Póster: `exportados/semana15/poster-green-ai.pdf` / `.png`, fuente `entregables/semana15/poster/poster-green-ai.html`.
+- Pendientes en orden: 1) acta de usuarios finales (recuadro PENDIENTE-EQUIPO, §VIII.2.3); 2) F-01 RLS y columna `password` en Supabase; 3) F-03 sesión real; 4) migración de decisiones HU-07 a Supabase; 5) QR en el póster (falta paquete qrcode).
+
 ### Estado 25/11/2026 (tarde) — para el chat del entregable S15
 - Ola 2 desplegada en Render (gateway Go, prediction y data-processing en `c807af9`, servicios en rama `test` con autoDeploy OFF → desplegar manualmente). `GATEWAY_SHARED_SECRET` configurado por el usuario. PDF y decisiones verificados (curl y logs de Render).
 - PR #7 aprobado por CristhianQuintana (Jhonny) y fusionado en main (51234b4). Evidencia C310 actualizada en el informe corregido (124 páginas).
