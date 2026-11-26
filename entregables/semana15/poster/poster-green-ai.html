@@ -1,101 +1,322 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><title>Póster Green AI</title>
 <style>
+/* Lienzo 2384 x 3370 px; el PDF se escala a A1 (594 x 841 mm) */
 @page{size:2384px 3370px;margin:0}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{position:relative;width:2384px;height:3370px;overflow:hidden;font-family:"Segoe UI",Arial,sans-serif;font-size:30px;line-height:1.38;color:#16261e;background:#f3f8f5}
-header{height:680px;background:linear-gradient(100deg,#0b4f3a,#116a52 55%,#0e4a7a);color:#fff;padding:40px 60px;display:flex;align-items:center;gap:50px}
-header .logo{background:#fff;border-radius:16px;padding:20px 26px;flex:none}
-header .logo img{width:430px;display:block}
-header h1{margin:0;font-size:92px;line-height:1.08;font-weight:700}
-header .au{font-size:34px;margin-top:20px;font-weight:600}
-header .in{font-size:29px;margin-top:8px;opacity:.95}
-.cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:36px;padding:36px 48px 0;height:2470px}
-.col{display:flex;flex-direction:column;gap:30px}
-section{background:#fff;border:3px solid #cfe3d8;border-radius:18px;padding:26px 32px 28px}
-h2{margin:0 0 14px;font-size:50px;color:#0b4f3a;border-bottom:6px solid #1c7ec2;padding-bottom:8px}
-p{margin:0 0 12px}
-ul{margin:0;padding-left:34px}li{margin-bottom:8px}
-figure{margin:14px 0 4px;text-align:center}
-figure img{width:100%;border:2px solid #9bb8aa;border-radius:8px}
-figcaption{font-size:25px;color:#355;margin-top:6px}
-b{color:#0b4f3a}
-.kpi{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:10px 0}
-.kpi div{background:#e8f3ee;border-left:10px solid #1c7ec2;padding:12px 18px;border-radius:8px;font-size:28px}
-.kpi strong{display:block;font-size:46px;color:#0e4a7a}
-.warn{background:#fff6e0;border-left:10px solid #d9941b;padding:12px 18px;border-radius:8px}
-footer{height:220px;padding:24px 60px;background:#0b4f3a;color:#fff;font-size:26px;position:absolute;bottom:0;left:0;right:0}
-footer a{color:#bfe8d4}
-.ref{font-size:25px;line-height:1.3}
+@media print{@page{size:594mm 841mm}html{zoom:.9418}}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--azul:#2f5be0;--azul2:#1f43b8;--claro:#e9eefc;--tinta:#14192b}
+html,body{width:2384px;height:3370px;overflow:hidden;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:"Segoe UI",Arial,sans-serif;font-size:28px;line-height:1.26;color:var(--tinta);display:flex;flex-direction:column}
+b{color:var(--azul2)}
+svg{display:block;width:100%;height:auto;font-family:"Segoe UI",Arial,sans-serif;fill:#14192b}
+header{height:320px;background:var(--azul);color:#fff;padding:20px 56px 16px;display:grid;grid-template-columns:1fr 470px;gap:40px;flex:none}
+header h1{font-size:57px;line-height:1.08;font-weight:700}
+header .au{font-size:36px;font-style:italic;margin-top:4px}
+header .in{font-size:24px;font-style:italic;line-height:1.2}
+sup{font-size:.6em}
+.marca{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+.proy{display:flex;align-items:center;gap:24px}
+.proy img{width:150px;height:150px;border:5px solid #fff;border-radius:44px}
+.proy div{font-size:68px;font-weight:800;line-height:1}
+.proy small{display:block;font-size:29px;font-weight:400;letter-spacing:5px;margin-top:10px}
+.uc{background:#fff;border-radius:12px;padding:10px 18px}
+.uc img{display:block;width:230px}
+main{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:18px 44px 24px;min-height:0}
+.fila{display:grid;gap:44px}
+.f1{grid-template-columns:780px 1fr}
+.f3{grid-template-columns:1290px 1fr}
+section{display:flex;flex-direction:column;min-width:0}
+.barra{height:66px;background:var(--azul);border-radius:33px;display:flex;align-items:center;color:#fff;margin-bottom:12px;flex:none}
+.barra i{width:82px;height:82px;border-radius:50%;background:#fff;border:7px solid var(--azul);color:var(--azul);font-style:normal;font-weight:800;font-size:46px;display:flex;align-items:center;justify-content:center;margin-right:26px;flex:none}
+.barra h2{font-size:42px;font-weight:500}
+p{margin-bottom:8px}
+ul{padding-left:32px}li{margin-bottom:2px}
+h3{font-size:30px;color:var(--azul);line-height:1.18;margin-bottom:5px}
+.objetivo{border:4px solid var(--azul);border-radius:34px;padding:10px 24px 8px}
+.objetivo h3{text-align:center}
+.fig{font-size:24px;font-weight:600;line-height:1.2;margin-top:3px}
+table{width:100%;border-collapse:collapse;font-size:25px;line-height:1.18}
+th{background:var(--azul);color:#fff;font-weight:600;padding:4px 9px;text-align:left}
+td{padding:3px 9px;border-bottom:2px solid #cfd8f3;vertical-align:top}
+tr:nth-child(even) td{background:var(--claro)}
+.num td:not(:first-child),.num th:not(:first-child){text-align:center}
+.sel td{font-weight:700}
+.met{display:grid;grid-template-columns:710px 1fr;gap:22px;align-items:start}
+.bloque{border-top:4px solid var(--claro);padding-top:6px;margin-top:6px}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px}
+.u{border:3px solid #cfd8f3;border-radius:20px;padding:9px 18px 11px;display:flex;flex-direction:column;gap:7px}
+.u h3{display:flex;align-items:center;gap:14px;margin:0}
+.u h3 i{background:var(--azul);color:#fff;border-radius:50%;width:42px;height:42px;font-style:normal;display:flex;align-items:center;justify-content:center;font-size:30px;flex:none}
+.dos{display:grid;gap:22px;align-items:start}
+.nota{background:var(--claro);border-radius:12px;padding:6px 14px;font-size:25px;line-height:1.22}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:2px 0 8px}
+.kpi div{background:var(--claro);border-radius:14px;padding:5px 10px;font-size:23.5px;line-height:1.12}
+.kpi strong{display:block;font-size:34px;white-space:nowrap;color:var(--azul2);line-height:1.15}
+.refs{display:grid;grid-template-columns:1fr 225px;gap:14px;align-items:stretch}
+.refs ol{list-style:none;padding:0;font-size:23px;line-height:1.13}
+.refs li{padding-left:42px;text-indent:-42px;margin-bottom:3px}
+.qr{background:var(--azul);color:#fff;border-radius:22px;padding:14px;text-align:center;align-self:start}
+.qr img{width:100%;display:block;border-radius:8px}
+.qr div{font-size:28px;font-weight:700;margin-top:10px;line-height:1.2}
+.qr span{display:block;font-size:24px;font-weight:400;margin-top:4px}
 </style></head><body>
+
 <header>
-<div class="logo"><img src="img/logo-uc.png" alt="Universidad Continental"></div>
 <div>
 <h1>Green AI: sistema de monitoreo y predicción de demanda computacional para apoyar la gestión eficiente de recursos en entornos universitarios</h1>
-<div class="au">Ricardo Porras Veli · Leonid Kisley Orlando Huamán Collazos · Gina Diana Barrera Peña · Jhonny Cristhian Quintana Carhuaricra</div>
-<div class="in">Docente: Jorge Alfredo Guevara Jiménez · Universidad Continental, EAP Ingeniería de Sistemas e Informática · Taller de Proyectos 1, NRC 30170 · Huancayo, 2026-20</div>
-</div></header>
-<div class="cols">
-<div class="col">
-<section><h2>1. Problema</h2>
-<ul><li>La demanda de CPU en centros de datos universitarios es <b>variable</b>.</li>
-<li>Sin predicción, se recurre al <b>sobreaprovisionamiento</b> de recursos.</li>
-<li>Falta de herramientas que anticipen la carga y apoyen la decisión operativa.</li></ul>
-<p style="margin-top:12px"><b>ODS:</b> 7, 9, 12 y 13. El ODS 13 se aborda solo como método de estimación de CO2e, <b>sin reducción medida</b>.</p></section>
-<section><h2>2. Objetivo</h2>
-<p>Monitorear telemetría, <b>predecir la demanda de CPU a 15 minutos</b> y emitir recomendaciones con supervisión humana (<i>Recommendation-Only</i>): <b>nada se ejecuta automáticamente</b>.</p></section>
-<section><h2>3. Metodología</h2>
-<ul><li><b>Scrum adaptado + PMBOK</b>, con 3 PMV:</li>
-<li><b>PMV1:</b> telemetría, ingesta y persistencia.</li>
-<li><b>PMV2:</b> predicción, OpenAPI y dashboard.</li>
-<li><b>PMV3:</b> calidad FURPS+/OWASP, ingeniería inversa y ola 2 de mejoras.</li></ul>
-<p style="margin-top:12px"><b>Arquitectura:</b> microservicios con diseño hexagonal por servicio: Simulator, Monitoring (Java), Data Processing (Python), Prediction (Python, Random Forest), API Gateway (Java y alternativa Go) y Frontend estático. Prometheus/Grafana; Supabase (PostgreSQL + Auth); despliegue en Render.</p>
-<figure><img src="img/despliegue-green-ai.png" alt="Despliegue" style="width:72%"><figcaption>Figura 1. Diagrama de despliegue (desarrollo, nov. 2026).</figcaption></figure></section>
+<div class="au">Porras R.<sup>1</sup>, Huamán L.<sup>1</sup>, Barrera G.<sup>1</sup>, Quintana J.<sup>1</sup></div>
+<div class="in"><sup>1</sup> Universidad Continental, EAP Ingeniería de Sistemas e Informática · Taller de Proyectos 1, NRC 30170<br>Docente: Jorge Alfredo Guevara Jiménez · Huancayo, 2026-20</div>
 </div>
-<div class="col">
-<section><h2>4. Resultados: predicción</h2>
-<p><i>Datos simulados, entorno controlado.</i> Random Forest, horizonte 15 min:</p>
-<div class="kpi"><div><strong>3,22</strong>MAE validación (p.p.)</div><div><strong>4,59</strong>RMSE validación (p.p.)</div><div><strong>3,85</strong>MAE en test (p.p.)</div><div><strong style="font-size:38px">−30 % / −14 %</strong>error vs persistencia / media móvil</div></div>
-<svg viewBox="0 0 700 380" width="100%" role="img" aria-label="MAE por modelo">
-<text x="350" y="34" text-anchor="middle" font-size="28" font-weight="700" fill="#0b4f3a">MAE en validación (p.p.; menor es mejor)</text>
-<line x1="60" y1="320" x2="680" y2="320" stroke="#555" stroke-width="2"/>
-<rect x="100" y="115" width="130" height="205" fill="#9aa5a0"/><text x="165" y="104" text-anchor="middle" font-size="30" font-weight="700">4,61</text>
-<rect x="290" y="148" width="130" height="172" fill="#1c7ec2"/><text x="355" y="137" text-anchor="middle" font-size="30" font-weight="700">3,74</text>
-<rect x="480" y="172" width="130" height="148" fill="#0b8a5f"/><text x="545" y="161" text-anchor="middle" font-size="30" font-weight="700">3,22</text>
-<text x="165" y="355" text-anchor="middle" font-size="24">Persistencia</text><text x="355" y="355" text-anchor="middle" font-size="24">Media móvil</text><text x="545" y="355" text-anchor="middle" font-size="24">Random Forest</text></svg>
-<p style="font-size:25px;margin-top:4px">Figura 2. MAE de Random Forest frente a los dos baselines (informe, sección VIII.4.1).</p></section>
-<section><h2>5. Resultados: calidad</h2>
-<div class="kpi"><div><strong>492</strong>pruebas automatizadas aprobadas (19/11/2026)</div><div><strong>14/14</strong>smoke test</div></div>
-<svg viewBox="0 0 700 330" width="100%" role="img" aria-label="Pruebas por servicio">
-<text x="350" y="30" text-anchor="middle" font-size="26" font-weight="700" fill="#0b4f3a">Pruebas aprobadas por servicio</text>
-<g font-size="22"><text x="205" y="68" text-anchor="end">Data Processing</text><rect x="215" y="46" width="384" height="30" fill="#1c7ec2"/><text x="606" y="68">128</text>
-<text x="205" y="108" text-anchor="end">Prediction</text><rect x="215" y="86" width="348" height="30" fill="#0b8a5f"/><text x="570" y="108">116</text>
-<text x="205" y="148" text-anchor="end">Monitoring</text><rect x="215" y="126" width="336" height="30" fill="#1c7ec2"/><text x="558" y="148">112</text>
-<text x="205" y="188" text-anchor="end">Frontend</text><rect x="215" y="166" width="189" height="30" fill="#0b8a5f"/><text x="412" y="188">63</text>
-<text x="205" y="228" text-anchor="end">Gateway Go</text><rect x="215" y="206" width="120" height="30" fill="#1c7ec2"/><text x="342" y="228">40</text>
-<text x="205" y="268" text-anchor="end">Gateway Java</text><rect x="215" y="246" width="57" height="30" fill="#0b8a5f"/><text x="280" y="268">19</text>
-<text x="205" y="308" text-anchor="end">Simulator</text><rect x="215" y="286" width="42" height="30" fill="#1c7ec2"/><text x="265" y="308">14</text></g></svg>
-<p style="font-size:25px;margin:4px 0 8px">Figura 3. Pruebas por servicio (Data Processing: 128 y 8 omitidas).</p>
-<figure><img src="img/captura-S7-prediction-pytest.png" alt="pytest Prediction"><figcaption>Figura 4. Ejecución de pruebas del servicio Prediction (captura real).</figcaption></figure></section>
+<div class="marca">
+<div class="proy"><img src="img/logo-green-ai.svg" alt="Logo Green AI"><div>Green AI<small>OBSERVATORIO</small></div></div>
+<div class="uc"><img src="img/logo-uc.png" alt="Universidad Continental"></div>
 </div>
-<div class="col">
-<section><h2>6. Resultados: despliegue</h2>
-<ul><li><b>Arranque en frío en Render Free:</b> primera petición 12,6–69,5 s; segunda &lt; 0,8 s.</li>
-<li><b>Ola 2 desplegada en Render:</b> decisión humana aprobar/rechazar (HU-07), reporte PDF (HU-13), tabla accesible (U-02), etiquetas modelada/estimada (F-06).</li></ul>
-<figure><img src="img/captura-S01-dashboard.png" alt="Dashboard"><figcaption>Figura 5. Dashboard del Observatorio Green AI (datos simulados).</figcaption></figure>
-<div class="warn"><b>Pendientes honestos:</b> las decisiones se guardan en SQLite efímero (migración a Supabase no aplicada); RLS de Supabase (F-01) y validación con sesión real (F-03) son parciales.</div></section>
-<section><h2>7. Conclusiones</h2>
-<ol style="margin:0;padding-left:38px"><li>Random Forest a 15 min supera a persistencia (−30 %) y media móvil (−14 %) en datos simulados; no se generaliza aún a datos reales.</li>
-<li>El enfoque <i>Recommendation-Only</i> mantiene la supervisión humana: el sistema no ejecuta acciones sobre la infraestructura.</li>
-<li>Los 492 tests y el smoke test 14/14 respaldan la calidad, con pendientes declarados (persistencia y RLS). No se afirma ahorro energético medido.</li></ol></section>
-<section><h2>8. Referencias</h2>
-<div class="ref"><p>[1] KHAN, T., TIAN, W., ILAGER, S. y BUYYA, R. Workload forecasting and energy state estimation in cloud data centres: ML-centric approach. <i>Future Generation Computer Systems</i>. 2022, vol. 128, pp. 320–332. DOI: 10.1016/j.future.2021.10.019.</p>
-<p>[6] VERDECCHIA, R., SALLOU, J. y CRUZ, L. A systematic review of Green AI. <i>WIREs Data Mining and Knowledge Discovery</i>. 2023, vol. 13, art. e1507. DOI: 10.1002/widm.1507.</p>
-<p>[12] SCHWABER, K. y SUTHERLAND, J. <i>The Scrum Guide</i> [en línea]. Noviembre 2020. Disponible en: https://scrumguides.org/scrum-guide.html</p></div></section>
-</div></div>
-<footer>
-<b style="color:#fff">Repositorio:</b> <a>https://github.com/woshtsu/green-ai-workspace-cld</a> &nbsp;·&nbsp; <b style="color:#fff">Frontend desplegado:</b> <a>https://woshtsu.github.io/green-ai-workspace-cld/dev/</a><br>
-Nota: desarrollado con apoyo del asistente de IA Claudio (Claude, de Anthropic) bajo supervisión del equipo. Resultados con datos simulados en entorno controlado.
-</footer>
+</header>
+
+<main>
+<div class="fila f1">
+
+<section>
+<div class="barra"><i>1</i><h2>Introducción</h2></div>
+<p>La demanda de cómputo en plataformas universitarias <b>fluctúa con el calendario académico</b> y suele atenderse de forma reactiva, con riesgo de saturación o de sobreaprovisionamiento. A escala mundial, los centros de datos consumieron <b>≈ 415 TWh en 2024 (1,5 % de la electricidad)</b>, con proyección de 945 TWh a 2030 [1]; no es una medición de la universidad. Como antecedente, Khan et al. predijeron cargas con ML sobre trazas reales: una red GRU obtuvo el menor RMSE [2].</p>
+<div class="objetivo">
+<h3>Objetivo general</h3>
+<p>Desarrollar y validar un prototipo experimental que integre monitoreo de infraestructura, series temporales y predicción de demanda para apoyar <b>recomendaciones explicables</b> de asignación de recursos, con trazabilidad, niveles de servicio y evaluación de eficiencia energética.</p>
+<ul>
+<li><b>Predecir</b> la CPU a 15 minutos.</li>
+<li><b>La persona decide:</b> <i>Recommendation-Only</i>, nada se ejecuta solo.</li>
+<li><b>Honestidad:</b> datos simulados y energía modelada.</li>
+</ul>
+</div>
+</section>
+
+<section>
+<div class="barra"><i>2</i><h2>Métodos y Materiales</h2></div>
+<h3>a) Herramientas, UML y arquitectura</h3>
+<div class="met">
+<div>
+<svg viewBox="0 0 830 440" role="img" aria-label="Diagrama de componentes UML">
+<defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#33406b"/></marker></defs>
+<g stroke="#33406b" stroke-width="2.5" fill="none" marker-end="url(#f)">
+<path d="M225 47H300"/><path d="M530 47H600" stroke-dasharray="8 6"/>
+<path d="M370 82L145 150"/><path d="M415 82V150"/><path d="M460 82L690 150"/>
+<path d="M135 232V300"/><path d="M135 408V380"/><path d="M415 232V300"/><path d="M260 340C400 262 560 275 640 236"/>
+</g>
+<g fill="#e9eefc" stroke="#2f5be0" stroke-width="3">
+<rect x="10" y="12" width="215" height="70" rx="6"/><rect x="300" y="12" width="230" height="70" rx="6"/><rect x="600" y="12" width="220" height="70" rx="6"/>
+<rect x="10" y="152" width="250" height="80" rx="6"/><rect x="290" y="152" width="250" height="80" rx="6"/><rect x="570" y="152" width="250" height="80" rx="6"/>
+<rect x="10" y="302" width="250" height="76" rx="6"/><rect x="290" y="302" width="250" height="76" rx="14"/>
+</g>
+<rect x="10" y="408" width="250" height="30" rx="6" fill="#e9eefc" stroke="#2f5be0" stroke-width="3"/>
+<g text-anchor="middle" font-size="28" font-weight="700">
+<text x="117" y="42">Frontend web</text><text x="415" y="42">API Gateway</text><text x="710" y="42">Supabase Auth</text>
+<text x="135" y="185">Monitoring</text><text x="415" y="185">Data Processing</text><text x="695" y="185">Prediction</text>
+<text x="135" y="333">Prometheus</text><text x="415" y="333">PostgreSQL</text><text x="135" y="432">Simulator</text>
+</g>
+<g text-anchor="middle" font-size="25">
+<text x="117" y="70">HTML · JavaScript</text><text x="415" y="70">Go / Java · JWT</text><text x="710" y="70">JWKS</text>
+<text x="135" y="216">Java · Spring Boot</text><text x="415" y="216">Python · FastAPI</text><text x="695" y="216">Python · Random F.</text>
+<text x="135" y="362">+ Grafana</text><text x="415" y="362">o SQLite (local)</text>
+</g>
+<g transform="translate(570,280)">
+<polygon points="45,0 215,0 255,70 215,140 45,140 5,70" fill="#fff" stroke="#2f5be0" stroke-width="3" stroke-dasharray="10 6"/>
+<polygon points="85,35 175,35 197,70 175,105 85,105 63,70" fill="#2f5be0"/>
+<text x="130" y="79" text-anchor="middle" font-size="24" font-weight="700" fill="#fff">Dominio</text>
+<text x="130" y="27" text-anchor="middle" font-size="21">Puertos</text><text x="130" y="130" text-anchor="middle" font-size="21">Adaptadores</text>
+</g>
+</svg>
+<div class="fig">Fig. 1. Componentes UML (simplificado) y arquitectura hexagonal aplicada por servicio.</div>
+</div>
+<div>
+<ul>
+<li><b>Programación:</b> Python 3 (FastAPI, pandas), Java 21 (Spring Boot), Go 1.25, JavaScript.</li>
+<li><b>ML:</b> scikit-learn, XGBoost, MLflow.</li>
+<li><b>Diseño:</b> UML (componentes y despliegue), OpenAPI 3.1, hexagonal (puertos y adaptadores).</li>
+<li><b>Operación:</b> Docker Compose, Render, GitHub Pages y Actions.</li>
+<li><b>Gestión:</b> Scrum adaptado + PMBOK, Trello, Git <i>test</i> → <i>main</i>; citas ISO 690 [3].</li>
+<li><b>Pruebas:</b> JUnit, Pytest, <i>go test</i>, <i>node --test</i>.</li>
+<li><b>Apoyo IA:</b> Claude Code y Antigravity, con revisión del equipo.</li>
+<li><b>Código:</b> github.com/woshtsu/green-ai-workspace-cld</li>
+</ul>
+</div>
+</div>
+<div class="bloque">
+<h3>b) Resumen por unidades</h3>
+<table>
+<tr><th style="width:100px">Unidad</th><th style="width:540px">Trabajo realizado</th><th>Método / datos</th></tr>
+<tr><td><b>I</b></td><td>Problema, acta y prueba de concepto de ML</td><td>Ishikawa 6M; división cronológica 70/15/15</td></tr>
+<tr><td><b>II</b></td><td>PMV1: telemetría, persistencia; competencias</td><td>50 servidores simulados, muestreo 15 s</td></tr>
+<tr><td><b>III</b></td><td>PMV2: predicción, recomendación y dashboard</td><td>4 modelos, MAE/RMSE; reactivo vs. predictivo</td></tr>
+<tr><td><b>IV</b></td><td>PMV3: calidad, ingeniería inversa, ola 2</td><td>FURPS+, OWASP 2025, pruebas, rendimiento</td></tr>
+</table>
+</div>
+</section>
+</div>
+
+<section>
+<div class="barra"><i>3</i><h2>Resultados</h2></div>
+<div class="res">
+
+<div class="u">
+<h3><i>I</i>Problema y prueba de concepto</h3>
+<div class="dos" style="grid-template-columns:650px 1fr">
+<div>
+<table class="num">
+<tr><th>Dataset sintético: 100 000 registros, 50 servidores</th><th style="width:180px">Valor</th></tr>
+<tr><td>CPU media / percentil 95</td><td>50,1 / 86,4 %</td></tr>
+<tr><td>RAM media / percentil 95</td><td>45,2 / 81,7 %</td></tr>
+<tr><td>Potencia simulada media / p95</td><td>318 / 630 W</td></tr>
+<tr><td>Registros sin cumplir SLA</td><td>6,13 %</td></tr>
+<tr><td>CPU &gt; 80 % / CPU &lt; 30 %</td><td>11,3 / 24,6 %</td></tr>
+</table>
+
+</div>
+<div>
+<svg viewBox="0 40 478 205" role="img" aria-label="Distribución del uso de CPU">
+<g fill="none" stroke-width="48" transform="rotate(-90 118 142)">
+<circle cx="118" cy="142" r="88" stroke="#9db4f5" pathLength="100" stroke-dasharray="24.6 75.4"/>
+<circle cx="118" cy="142" r="88" stroke="#2f5be0" pathLength="100" stroke-dasharray="64.1 35.9" stroke-dashoffset="-24.6"/>
+<circle cx="118" cy="142" r="88" stroke="#162a78" pathLength="100" stroke-dasharray="11.3 88.7" stroke-dashoffset="-88.7"/>
+</g>
+<text x="118" y="151" text-anchor="middle" font-size="27" font-weight="700">Uso CPU</text>
+<g font-size="26"><rect x="246" y="64" width="22" height="22" fill="#9db4f5"/><text x="278" y="83">&lt; 30 %: 24,6 %</text>
+<rect x="246" y="130" width="22" height="22" fill="#2f5be0"/><text x="278" y="149">30–80 %: 64,1 %</text>
+<rect x="246" y="196" width="22" height="22" fill="#162a78"/><text x="278" y="215">&gt; 80 %: 11,3 %</text></g>
+</svg>
+<div class="fig">Fig. 2. Registros por nivel de CPU (datos simulados).</div>
+</div>
+</div>
+<div class="nota"><b>Gestión:</b> ciclo ágil seleccionado (4,85/5) frente a híbrido (4,35) y predictivo (2,50).<br><b>PoC (dataset-sim-001, 80 640 muestras):</b> hipótesis H1 aceptada; Random Forest con menor error que persistencia y media móvil. Dictamen: <b>GO con condiciones</b> (trazas reales, picos, respaldo, potencia declarada como modelo y decisión humana).</div>
+</div>
+
+<div class="u">
+<h3><i>II</i>PMV1 y resultados de competencias</h3>
+<table>
+<tr><th style="width:350px">Competencia</th><th>Resultado alcanzado (evidencia en el informe)</th></tr>
+<tr><td><b>Análisis de problemas</b></td><td>Causa raíz y árbol de problemas; dataset analizado</td></tr>
+<tr><td><b>Conocimientos de ingeniería</b></td><td>Series temporales, MAE/RMSE, E = ∫P dt, hexagonal</td></tr>
+<tr><td><b>Ingeniero y sociedad</b></td><td>ODS 7, 9 y 12; ODS 13 solo como método de CO2e</td></tr>
+<tr><td><b>Gestión de proyectos</b></td><td>3 PMV, 8 sprints, 4 integrantes; desembolso real S/ 0,00</td></tr>
+<tr><td><b>Herramientas modernas</b></td><td>Prediction 2,85 GB → 510 MB; Gateway Go 16,2 MB</td></tr>
+<tr><td><b>PoC y arquitectura</b></td><td>PoC: GO con condiciones; hexagonal por servicio</td></tr>
+</table>
+<div class="nota"><b>PMV1 demostrado:</b> telemetría de 50 servidores en 5 racks cada 15 s hacia Prometheus; persistencia con contrato dual SQLite y Supabase; nulos del 3,2 % → 0,0 % tras interpolación e imputación. <b>Referencia sin IA:</b> persistencia, MAE 4,61 p.p.<br><b>Memoria en reposo (15/11):</b> Gateway Go 8,0 MiB frente a 285,7 MiB del Gateway Java.</div>
+</div>
+
+<div class="u">
+<h3><i>III</i>PMV2: predicción a 15 minutos</h3>
+<table class="num">
+<tr><th>Validación (n = 125), p.p. de CPU</th><th>MAE</th><th>RMSE</th><th>MAE alta demanda*</th><th>MAE picos (n = 13)</th></tr>
+<tr><td>Persistencia</td><td>4,61</td><td>6,39</td><td>5,43</td><td>8,99</td></tr>
+<tr><td>Media móvil</td><td>3,74</td><td>5,19</td><td>4,44</td><td>7,25</td></tr>
+<tr class="sel"><td>Random Forest (elegido)</td><td>3,22</td><td>4,59</td><td>3,58</td><td>6,12</td></tr>
+<tr><td>XGBoost</td><td>3,46</td><td>4,79</td><td>3,86</td><td>6,21</td></tr>
+</table>
+<div style="font-size:25px;margin-top:-4px">* Subconjunto n = 32 con CPU sobre el percentil 75 (umbral 52,09 %).</div>
+<div class="dos" style="grid-template-columns:490px 1fr">
+<div>
+<svg viewBox="0 0 520 218" role="img" aria-label="Riesgo de SLA por margen">
+<g font-size="24.5"><rect x="40" y="2" width="20" height="20" fill="#9aa3b8"/><text x="68" y="20">Reactivo</text><rect x="200" y="2" width="20" height="20" fill="#2f5be0"/><text x="228" y="20">Predictivo (Green AI)</text></g>
+<path d="M20 180H505" stroke="#55607f" stroke-width="2"/>
+<g fill="#9aa3b8"><rect x="55" y="53" width="55" height="127"/><rect x="225" y="148" width="55" height="32"/><rect x="395" y="161" width="55" height="19"/></g>
+<g fill="#2f5be0"><rect x="112" y="104" width="55" height="76"/><rect x="282" y="148" width="55" height="32"/><rect x="452" y="161" width="48" height="19"/></g>
+<g font-size="24.5" font-weight="700" text-anchor="middle"><text x="82" y="46">15,9</text><text x="139" y="97">9,5</text><text x="252" y="141">4,0</text><text x="309" y="141">4,0</text><text x="422" y="154">2,4</text><text x="476" y="154">2,4</text></g>
+<g font-size="24.5" text-anchor="middle"><text x="111" y="209">Margen 10 %</text><text x="281" y="209">20 %</text><text x="448" y="209">30 %</text></g>
+</svg>
+<div class="fig">Fig. 3. Intervalos con CPU real &gt; capacidad reservada (%), n = 126.</div>
+</div>
+<div class="nota"><b>Prueba (n = 129):</b> MAE 3,85 y RMSE 5,45 p.p.; en picos el MAE sube a 8,45.<br><b>Frente a baselines:</b> −30 % de error vs. persistencia y −14 % vs. media móvil.<br><b>Energía modelada:</b> diferencia &lt; 0,2 %; <b>sin ahorro demostrado</b>.<br><b>Integración:</b> 435 pruebas (15/11) y <i>smoke test</i> 14/14 (06/11).</div>
+</div>
+</div>
+
+<div class="u">
+<h3><i>IV</i>PMV3: calidad, pruebas y despliegue</h3>
+<div class="dos" style="grid-template-columns:490px 490px;justify-content:space-between">
+<div>
+<svg viewBox="0 0 520 262" role="img" aria-label="Pruebas por servicio">
+<g font-size="24.5"><g text-anchor="end"><text x="185" y="25">Data Processing</text><text x="185" y="62">Prediction</text><text x="185" y="99">Monitoring</text><text x="185" y="136">Frontend</text><text x="185" y="173">Gateway Go</text><text x="185" y="210">Gateway Java</text><text x="185" y="247">Simulator</text></g>
+<g fill="#2f5be0"><rect x="196" y="4" width="270" height="28"/><rect x="196" y="41" width="245" height="28"/><rect x="196" y="78" width="236" height="28"/><rect x="196" y="115" width="133" height="28"/><rect x="196" y="152" width="84" height="28"/><rect x="196" y="189" width="40" height="28"/><rect x="196" y="226" width="30" height="28"/></g>
+<text x="472" y="25">128</text><text x="447" y="62">116</text><text x="438" y="99">112</text><text x="335" y="136">63</text><text x="286" y="173">40</text><text x="242" y="210">19</text><text x="232" y="247">14</text></g>
+</svg>
+<div class="fig">Fig. 4. <b>492 pruebas aprobadas</b> al 19/11 (8 omitidas en Data Processing).</div>
+</div>
+<div>
+<svg viewBox="0 0 520 262" role="img" aria-label="FURPS+ y OWASP antes y después de la ola 1">
+<g font-size="24.5"><rect x="40" y="2" width="20" height="20" fill="#9aa3b8"/><text x="68" y="20">Línea base</text><rect x="240" y="2" width="20" height="20" fill="#2f5be0"/><text x="268" y="20">Post ola 1</text></g>
+<path d="M30 225H500" stroke="#55607f" stroke-width="2"/>
+<g fill="#9aa3b8"><rect x="80" y="74" width="75" height="151"/><rect x="320" y="83" width="75" height="142"/></g>
+<g fill="#2f5be0"><rect x="160" y="70" width="75" height="155"/><rect x="400" y="75" width="75" height="150"/></g>
+<g font-size="25" font-weight="700" text-anchor="middle"><text x="117" y="66">84,0</text><text x="197" y="61">86,0</text><text x="357" y="74">79,0</text><text x="437" y="66">83,5</text></g>
+<g font-size="24.5" text-anchor="middle"><text x="157" y="253">FURPS+ (%)</text><text x="397" y="253">OWASP (/100)</text></g>
+</svg>
+<div class="fig">Fig. 5. Auditoría oficial (semana 13): <b>apto para producción con observaciones</b>.</div>
+</div>
+</div>
+<table>
+<tr><th style="width:300px">Verificación</th><th>Resultado</th></tr>
+<tr><td><b>Ingeniería inversa</b></td><td>7 fases; 23 hallazgos (2 críticos, 4 altos, 10 medios, 7 bajos)</td></tr>
+<tr><td><b>Ola 2 (Render, 25/11)</b></td><td>Decisión humana, PDF, tabla accesible y etiquetas</td></tr>
+<tr><td><b>Rendimiento</b></td><td>Mediana 97 ms (1 usuario), 1,14 s (8); en frío 12,6–69,5 s</td></tr>
+<tr><td><b>Pendiente</b></td><td>RLS, sesión real, acta de usuarios; SQLite efímero</td></tr>
+</table>
+</div>
+</div>
+</section>
+
+<div class="fila f3">
+<section>
+<div class="barra"><i>4</i><h2>Discusión</h2></div>
+<h3>a) Comparación con antecedentes, por PMV</h3>
+<table>
+<tr><th style="width:265px">PMV · antecedente</th><th style="width:370px">Similitud</th><th>Diferencia</th></tr>
+<tr><td><b>PMV1</b> · Khan et al. [2]</td><td>Series de telemetría agregadas a 5 min</td><td>Ellos: trazas reales Bitbrains. Green AI: telemetría simulada de 50 nodos</td></tr>
+<tr><td><b>PMV2</b> · Khan et al. [2]</td><td>El ML supera a las referencias simples comparadas</td><td>Menor RMSE con GRU; aquí Random Forest. Su +87,48 % es de agrupamiento, no de predicción</td></tr>
+<tr><td><b>PMV2</b> · Ji et al. [4]</td><td>Separa monitoreo, predicción y decisión</td><td>MM-GRU con migración de tareas y refrigeración; Green AI solo recomienda</td></tr>
+<tr><td><b>PMV3</b> · Sharma y Garg [5]</td><td>Evalúa el efecto de predecir sobre los recursos</td><td>Reportan −45 % a −71 % de energía en CloudSim; aquí &lt; 0,2 % modelado: sin ahorro</td></tr>
+<tr><td><b>PMV1–3</b> · Verdecchia et al. [6]</td><td>Cuidar el costo de la propia IA (<i>Green-in-AI</i>)</td><td>Es una revisión sistemática; Green AI mide imagen y memoria, no energía física</td></tr>
+</table>
+<div class="fig">Las magnitudes <b>no son comparables directamente</b>: difieren datos y entornos.</div>
+<div class="bloque">
+<h3>b) Cómo continuar el proyecto</h3>
+<ul>
+<li><b>Seguridad:</b> endurecer RLS y validar con sesión real.</li>
+<li><b>Datos reales:</b> evaluar con Bitbrains o telemetría autorizada; mejorar picos.</li>
+<li><b>Energía:</b> medir con SNMP/IPMI antes de afirmar ahorros.</li>
+<li><b>Ideas fuerza:</b> la persona decide · origen de datos declarado · medir antes de prometer.</li>
+</ul>
+</div>
+<div style="margin-top:2px">
+<h3>c) Ruta de continuidad</h3>
+<svg viewBox="0 0 1290 138" style="width:94%" role="img" aria-label="Ruta de continuidad en cinco pasos">
+<g><path d="M0 4H232L268 69L232 134H0L36 69Z" fill="#162a78"/><path d="M255 4H487L523 69L487 134H255L291 69Z" fill="#1f3a9e"/><path d="M510 4H742L778 69L742 134H510L546 69Z" fill="#2a4fc9"/><path d="M765 4H997L1033 69L997 134H765L801 69Z" fill="#3f6ae8"/><path d="M1020 4H1252L1288 69L1252 134H1020L1056 69Z" fill="#5a82f0"/></g>
+<g fill="#fff" text-anchor="middle" font-size="25"><g font-weight="700" font-size="27"><text x="134" y="55">1. Seguridad</text><text x="389" y="55">2. Usuarios</text><text x="644" y="55">3. Datos reales</text><text x="899" y="55">4. Energía</text><text x="1154" y="55">5. Ampliar</text></g>
+<g fill="#fff"><text x="134" y="94">RLS y sesión</text><text x="389" y="94">pruebas y acta</text><text x="644" y="94">y picos</text><text x="899" y="94">medición física</text><text x="1154" y="94">clima y CO2e</text></g></g>
+</svg>
+<div class="fig">Fig. 6. Orden propuesto de trabajo futuro (no implementado).</div>
+</div>
+</section>
+
+<div style="display:flex;flex-direction:column;justify-content:space-between;gap:8px;min-width:0">
+<section>
+<div class="barra"><i>5</i><h2>Conclusión</h2></div>
+<p style="font-size:30px;line-height:1.27">Green AI logró un <b>prototipo funcional que predice la CPU a 15 minutos</b> y recomienda bajo decisión humana. Con datos simulados, Random Forest alcanzó un <b>MAE de 3,22 p.p.</b> en validación (3,85 en prueba), <b>30 % menos error</b> que la persistencia, y con 10 % de margen redujo el riesgo de exceder la capacidad reservada de <b>15,9 % a 9,5 %</b>. <b>No demostró ahorro de energía</b> ni validez en datos reales.</p>
+</section>
+<section>
+<div class="barra"><i>6</i><h2>Referencias</h2></div>
+<div class="refs">
+<ol>
+<li>[1] INTERNATIONAL ENERGY AGENCY (IEA). <i>Energy and AI</i> [en línea]. París: IEA, 2025 [consulta: 25 octubre 2026]. Disponible en: https://www.iea.org/reports/energy-and-ai</li>
+<li>[2] KHAN, T. <i>et al.</i> Workload forecasting and energy state estimation in cloud data centres: ML-centric approach. <i>Future Generation Computer Systems</i>. 2022, vol. 128, pp. 320–332. DOI: 10.1016/j.future.2021.10.019.</li>
+<li>[3] ARIAS CHÁVEZ, Dennis. <i>Manual para citar y referenciar fuentes en textos de ingeniería según la norma ISO 690-2</i>. 1.a ed. Huancayo: Universidad Continental, Fondo Editorial, 2019. 83 p. ISBN 978-612-4443-04-6.</li>
+<li>[4] JI, K. <i>et al.</i> A joint energy efficiency optimization scheme in data centers. <i>Sustainable Computing: Informatics and Systems</i>. 2021, vol. 32, art. 100596. DOI: 10.1016/j.suscom.2021.100596.</li>
+<li>[5] SHARMA, M. y GARG, R. AGEN: ANN based energy-efficient scheduler for cloud data centers. <i>Sustainable Computing: Informatics and Systems</i>. 2020, vol. 26, art. 100373. DOI: 10.1016/j.suscom.2020.100373.</li>
+<li>[6] VERDECCHIA, R., SALLOU, J. y CRUZ, L. A systematic review of Green AI. <i>WIREs Data Mining and Knowledge Discovery</i>. 2023, vol. 13, art. e1507. DOI: 10.1002/widm.1507.</li>
+</ol>
+<div class="qr"><img src="img/qr-video.svg" alt="Código QR al video demostrativo"><div>Video demostrativo<span>Escanee el código QR</span></div></div>
+</div>
+</section>
+</div>
+</div>
+</main>
 </body></html>

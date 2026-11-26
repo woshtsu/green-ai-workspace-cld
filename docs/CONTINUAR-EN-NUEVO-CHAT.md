@@ -94,6 +94,22 @@ Roles del §4.3 alineados con el acta; responsables OWASP iguales en Word y Exce
 - Resumen para el equipo: `entregables/semana14/sprint7-ola2-implementacion.md`; reporte ICACIT: `entregables/semana14/reporte-icacit.md`.
 - Siguiente: autorización para desplegar (test → main, `GATEWAY_SHARED_SECRET` en Render), F-01 RLS, F-03 sesión real, informe final (Sprint 8, aplicar mejoras del reporte ICACIT).
 
+### Estado 26/11/2026 — levantamiento de observaciones (entrega en ~1 semana)
+Decisiones del usuario:
+- Informe: por ahora solo cambios en `entregables/` (.md), sin reexportar. El póster nuevo se revisa el 26/11: guía en `guias/semana15-16/plantillas-poster/`.
+- Referencias solo al final. Factores ponderados para **todas** las herramientas (Claude redacta, equipo valida).
+- Cap. VI (ingeniería): wireframes explicados en vez de capturas de la app; prototipos por PMV (wireframes) tras cada flujo; capturas reales solo en pruebas.
+- 4 conclusiones, una por objetivo específico (sin conclusión aparte del general).
+- Discusión de pruebas y resultados respecto a los entregables, **en párrafos** (no tablas).
+- FURPS+/OWASP oficial: semana 13 (86 %, OWASP 83,5, apto) más correcciones posteriores. El equipo informa que la columna `password` ya se corrigió (falta evidencia).
+- ICACIT: el docente lo evalúa con NotebookLM (prompt no revelado); mejorar el informe/reporte y volver a ejecutarlo.
+
+**Anotado para hacer después (desde otra PC):**
+1. Recapturar las evidencias mostrando el link (lista: auditoría del 26/11; Cap. VI Fig. 2–4, 6, 8, 9; Trello VII.6.3–6.9; Cap. VIII; Anexo A.2–A.9) y tapar las contraseñas de la Fig. VIII.13 y Anexo B.
+2. Actualizar % de avance del PMV y Gantt ejecutado (corte actual 11/11: PMV1 13/13, PMV2 8/13, PMV3 0/14); confirmar tareas de Sprints 7–8 y Trello. Corregir la tarea «Cluster Kubernetes desplegado» marcada como completada.
+3. Programar el adaptador Supabase para las decisiones HU-07 (hoy solo `software/prediction/src/decisions/adapters/sqlite_repository.py` y la migración `001_recommendation_decisions.sql` sin aplicar), con pruebas. Mientras tanto, en anexos enlazar los adaptadores existentes (Supabase y SQLite de históricos en `software/data-processing/infrastructure/adapters/input/`, SQLite de decisiones) y declarar este pendiente.
+4. Validación con usuarios finales: **sigue declarada como pendiente** en el informe (decisión del usuario, 26/11). La consulta con el experto (Fig. A.1) no se presenta como acta; revisar su pie, porque la imagen es una foto y no un formulario.
+
 ### Estado 25/11/2026 (noche) — entrega S15 generada
 - Informe final: `exportados/semana15/Porras-Huaman-Barrera-Quintana-informe-unidad-IV.pdf` (129 págs.), fuente `entregables/semana15/informe-unidad-IV.md`, regenerable con `herramientas_IA/exportacion/construir_informe_iv.py` + `md_a_docx.py` + `actualizar_word.ps1` + Word COM.
 - Póster: `exportados/semana15/poster-green-ai.pdf` / `.png`, fuente `entregables/semana15/poster/poster-green-ai.html`.
