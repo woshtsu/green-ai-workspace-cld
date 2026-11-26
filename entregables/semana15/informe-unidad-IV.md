@@ -2251,6 +2251,10 @@ Tabla D.1. Ubicación de cada apartado de la plantilla del docente en este infor
 
 ### Anexo E. Evidencia de participación en el Congreso de Ingeniería
 
-![](evidencias/foto-congreso-ricardo-porras.jpg){width=75%}
+![](evidencias/foto-congreso-ricardo-porras.jpg){width=60%}
 
 Figura E.1. Ricardo Porras Veli siguiendo en modalidad virtual (Zoom) la transmisión del VIII Congreso Internacional de Ingeniería y Arquitectura.
+
+![](evidencias/congreso-evidencias-collage.jpg)
+
+Figura E.2. Evidencias del equipo siguiendo la transmisión del VIII Congreso Internacional de Ingeniería y Arquitectura (Zoom, «Universidad Continental Eventos 4») desde aulas de la universidad, 19/11/2026; en la imagen central inferior se proyecta la ponencia «Tecnología Espacial al Servicio de las Ciudades» del Ing. Alejandro M. Martínez.

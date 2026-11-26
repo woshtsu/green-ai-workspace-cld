@@ -176,9 +176,13 @@ Tabla VII.8. Solicitud de cambio CHG-001-2026
 <<<anexo_e>>>
 ### Anexo E. Evidencia de participación en el Congreso de Ingeniería
 
-![](evidencias/foto-congreso-ricardo-porras.jpg){width=75%}
+![](evidencias/foto-congreso-ricardo-porras.jpg){width=60%}
 
 Figura E.1. Ricardo Porras Veli siguiendo en modalidad virtual (Zoom) la transmisión del VIII Congreso Internacional de Ingeniería y Arquitectura.
+
+![](evidencias/congreso-evidencias-collage.jpg)
+
+Figura E.2. Evidencias del equipo siguiendo la transmisión del VIII Congreso Internacional de Ingeniería y Arquitectura (Zoom, «Universidad Continental Eventos 4») desde aulas de la universidad, 19/11/2026; en la imagen central inferior se proyecta la ponencia «Tecnología Espacial al Servicio de las Ciudades» del Ing. Alejandro M. Martínez.
 
 <<<refs_chg>>>
 [15] UPTIME INSTITUTE. *Global Data Center Survey 2024* [en línea]. Nueva York: Uptime Institute, 2024. Disponible en: https://uptimeinstitute.com/resources/research-and-reports/uptime-institute-global-data-center-survey-results-2024
