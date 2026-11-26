@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="664" viewBox="0 0 640 664" font-family="Segoe UI, Arial, sans-serif">
+<rect x="1" y="1" width="638" height="662" rx="4" fill="#f7f7f7" stroke="#666666" stroke-width="1.5"/>
+<rect x="90" y="24" width="460" height="616" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="120" y="66" font-size="20" fill="#222222" text-anchor="start" font-weight="bold">Green AI</text>
+<rect x="390" y="48" width="52" height="26" rx="13" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<circle cx="403" cy="61" r="10" fill="#666666"/>
+<text x="522" y="66" font-size="15" fill="#222222" text-anchor="end">← Volver</text>
+<circle cx="90" cy="61" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="90" y="66" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">1</text>
+<text x="320" y="124" font-size="28" fill="#222222" text-anchor="middle" font-weight="bold">Crear Cuenta</text>
+<text x="320" y="154" font-size="15" fill="#666666" text-anchor="middle">Registra un operador para acceder a paneles, métricas y topología.</text>
+<rect x="120" y="180" width="400" height="40" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="132" y="205.0" font-size="16" fill="#666666" text-anchor="start">Nombre completo</text>
+<circle cx="90" cy="200" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="90" y="205" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">2</text>
+<rect x="120" y="232" width="400" height="40" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="132" y="257.0" font-size="16" fill="#666666" text-anchor="start">Correo institucional</text>
+<circle cx="90" cy="252" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="90" y="257" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">3</text>
+<rect x="120" y="284" width="400" height="40" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="132" y="309.0" font-size="16" fill="#666666" text-anchor="start">Contraseña</text>
+<circle cx="90" cy="304" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="90" y="309" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">4</text>
+<rect x="120" y="336" width="400" height="40" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="132" y="361.0" font-size="16" fill="#666666" text-anchor="start">Confirmar contraseña</text>
+<circle cx="90" cy="356" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="90" y="361" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">5</text>
+<text x="120" y="402" font-size="15" fill="#666666" text-anchor="start">Tu cuenta recibirá los permisos asignados por el sistema.</text>
+<rect x="120" y="428" width="400" height="44" rx="4" fill="#555555" stroke="#444444" stroke-width="1.5"/>
+<text x="320.0" y="455.0" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">Registrar operador</text>
+<circle cx="90" cy="450" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="90" y="455" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">6</text>
+<rect x="120" y="492" width="400" height="40" rx="4" fill="#e6e6e6" stroke="#999999" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="320" y="517" font-size="14" fill="#222222" text-anchor="middle">Revisa tu correo y confirma la cuenta antes de iniciar sesión.</text>
+<circle cx="90" cy="512" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="90" y="517" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">7</text>
+<text x="320" y="570" font-size="15" fill="#666666" text-anchor="end">¿Ya tienes una cuenta? </text>
+<text x="326" y="570" font-size="15" fill="#222222" text-anchor="start" text-decoration="underline">Iniciar sesión</text>
+<circle cx="90" cy="565" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="90" y="570" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">8</text>
+</svg>

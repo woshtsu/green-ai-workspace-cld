@@ -144,11 +144,11 @@ tr:nth-child(even) td{background:var(--claro)}
 <div class="bloque">
 <h3>b) Resumen por unidades</h3>
 <table>
-<tr><th style="width:100px">Unidad</th><th style="width:540px">Trabajo realizado</th><th>Método / datos</th></tr>
-<tr><td><b>I</b></td><td>Problema, acta y prueba de concepto de ML</td><td>Ishikawa 6M; división cronológica 70/15/15</td></tr>
-<tr><td><b>II</b></td><td>PMV1: telemetría, persistencia; competencias</td><td>50 servidores simulados, muestreo 15 s</td></tr>
-<tr><td><b>III</b></td><td>PMV2: predicción, recomendación y dashboard</td><td>4 modelos, MAE/RMSE; reactivo vs. predictivo</td></tr>
-<tr><td><b>IV</b></td><td>PMV3: calidad, ingeniería inversa, ola 2</td><td>FURPS+, OWASP 2025, pruebas, rendimiento</td></tr>
+<tr><th style="width:610px">Unidad según el sílabo</th><th style="width:500px">Trabajo realizado</th><th>Método / datos</th></tr>
+<tr><td><b>I</b> · Gestión del proyecto: iniciación y planificación</td><td>Idea, requisitos, arquitectura y PoC</td><td>Ishikawa 6M; Scrum</td></tr>
+<tr><td><b>II</b> · Diseño y construcción</td><td>Interfaces, base de datos, costos y PMV1</td><td>50 nodos simulados</td></tr>
+<tr><td><b>III</b> · Gestión del proyecto</td><td>Hitos, línea base, cambios y PMV2</td><td>4 modelos; MAE/RMSE</td></tr>
+<tr><td><b>IV</b> · Pruebas y planes de aseguramiento de la calidad</td><td>Criterios, pruebas, resultados y PMV3</td><td>FURPS+, OWASP</td></tr>
 </table>
 </div>
 </section>
@@ -159,7 +159,7 @@ tr:nth-child(even) td{background:var(--claro)}
 <div class="res">
 
 <div class="u">
-<h3><i>I</i>Problema y prueba de concepto</h3>
+<h3><i>I</i>Gestión: iniciación y planificación</h3>
 <div class="dos" style="grid-template-columns:650px 1fr">
 <div>
 <table class="num">
@@ -187,25 +187,27 @@ tr:nth-child(even) td{background:var(--claro)}
 <div class="fig">Fig. 2. Registros por nivel de CPU (datos simulados).</div>
 </div>
 </div>
-<div class="nota"><b>Gestión:</b> ciclo ágil seleccionado (4,85/5) frente a híbrido (4,35) y predictivo (2,50).<br><b>PoC (dataset-sim-001, 80 640 muestras):</b> hipótesis H1 aceptada; Random Forest con menor error que persistencia y media móvil. Dictamen: <b>GO con condiciones</b> (trazas reales, picos, respaldo, potencia declarada como modelo y decisión humana).</div>
+<div class="nota"><b>Planificación:</b> ágil (4,85/5) frente a híbrido (4,35) y predictivo (2,50); 3 PMV en 8 sprints.<br><b>Requisitos y arquitectura:</b> 20 RF y 9 RNF; hexagonal (4,30/5).<br><b>PoC (dataset-sim-001, 80 640 muestras):</b> hipótesis H1 aceptada; Random Forest con menor error que persistencia y media móvil. Dictamen: <b>GO con condiciones</b> (trazas reales, picos, respaldo, potencia modelada, decisión humana).</div>
 </div>
 
 <div class="u">
-<h3><i>II</i>PMV1 y resultados de competencias</h3>
+<h3><i>II</i>Diseño y construcción · competencias</h3>
 <table>
-<tr><th style="width:350px">Competencia</th><th>Resultado alcanzado (evidencia en el informe)</th></tr>
-<tr><td><b>Análisis de problemas</b></td><td>Causa raíz y árbol de problemas; dataset analizado</td></tr>
-<tr><td><b>Conocimientos de ingeniería</b></td><td>Series temporales, MAE/RMSE, E = ∫P dt, hexagonal</td></tr>
-<tr><td><b>Ingeniero y sociedad</b></td><td>ODS 7, 9 y 12; ODS 13 solo como método de CO2e</td></tr>
-<tr><td><b>Gestión de proyectos</b></td><td>3 PMV, 8 sprints, 4 integrantes; desembolso real S/ 0,00</td></tr>
-<tr><td><b>Herramientas modernas</b></td><td>Prediction 2,85 GB → 510 MB; Gateway Go 16,2 MB</td></tr>
-<tr><td><b>PoC y arquitectura</b></td><td>PoC: GO con condiciones; hexagonal por servicio</td></tr>
+<tr><th style="width:420px">Competencia del sílabo*</th><th>Resultado (evidencia en el informe)</th></tr>
+<tr><td><b>Conocimientos de ingeniería</b></td><td>Series temporales, MAE/RMSE, E = ∫P dt</td></tr>
+<tr><td><b>Medioambiente y sostenibilidad</b></td><td>ODS 7, 9, 12; ODS 13 solo como método CO2e</td></tr>
+<tr><td><b>El ingeniero y la sociedad</b></td><td>Impacto, marco legal, riesgos; decisión humana</td></tr>
+<tr><td><b>Gestión de proyectos</b></td><td>Acta, RACI, riesgos, presupuesto y Trello</td></tr>
+<tr><td><b>Diseño y desarrollo de soluciones</b></td><td>Requisitos, base de datos y arquitectura</td></tr>
+<tr><td><b>Análisis de problemas</b></td><td>Causa raíz, árbol de problemas y dataset</td></tr>
+<tr><td><b>Uso de herramientas modernas</b></td><td>Prediction 2,85 GB → 510 MB; Gateway Go 16,2 MB</td></tr>
 </table>
-<div class="nota"><b>PMV1 demostrado:</b> telemetría de 50 servidores en 5 racks cada 15 s hacia Prometheus; persistencia con contrato dual SQLite y Supabase; nulos del 3,2 % → 0,0 % tras interpolación e imputación. <b>Referencia sin IA:</b> persistencia, MAE 4,61 p.p.<br><b>Memoria en reposo (15/11):</b> Gateway Go 8,0 MiB frente a 285,7 MiB del Gateway Java.</div>
+<div style="font-size:23px;margin-top:-4px">* Transversales y específicas.</div>
+<div class="nota"><b>Diseño:</b> PostgreSQL (19/20) sobre Supabase; tablas de equipos, telemetría, perfiles y roles.<br><b>Costos:</b> valor referencial S/ 24 872,40 (640 h); desembolso real S/ 0,00.<br><b>PMV1 (GO a PMV2):</b> telemetría de 50 servidores cada 15 s; nulos 3,2 % → 0,0 %.</div>
 </div>
 
 <div class="u">
-<h3><i>III</i>PMV2: predicción a 15 minutos</h3>
+<h3><i>III</i>Gestión del proyecto: PMV2 y cambios</h3>
 <table class="num">
 <tr><th>Validación (n = 125), p.p. de CPU</th><th>MAE</th><th>RMSE</th><th>MAE alta demanda*</th><th>MAE picos (n = 13)</th></tr>
 <tr><td>Persistencia</td><td>4,61</td><td>6,39</td><td>5,43</td><td>8,99</td></tr>
@@ -226,12 +228,12 @@ tr:nth-child(even) td{background:var(--claro)}
 </svg>
 <div class="fig">Fig. 3. Intervalos con CPU real &gt; capacidad reservada (%), n = 126.</div>
 </div>
-<div class="nota"><b>Prueba (n = 129):</b> MAE 3,85 y RMSE 5,45 p.p.; en picos el MAE sube a 8,45.<br><b>Frente a baselines:</b> −30 % de error vs. persistencia y −14 % vs. media móvil.<br><b>Energía modelada:</b> diferencia &lt; 0,2 %; <b>sin ahorro demostrado</b>.<br><b>Integración:</b> 435 pruebas (15/11) y <i>smoke test</i> 14/14 (06/11).</div>
+<div class="nota"><b>Prueba (n = 129):</b> MAE 3,85 y RMSE 5,45 p.p.; en picos el MAE sube a 8,45.<br><b>Error:</b> −30 % vs. persistencia; −14 % vs. media móvil.<br><b>Energía modelada:</b> &lt; 0,2 %; <b>sin ahorro</b>.<br><b>Cambios:</b> CHG-01 a 09; CHG-001-2026 sin implementar.</div>
 </div>
 </div>
 
 <div class="u">
-<h3><i>IV</i>PMV3: calidad, pruebas y despliegue</h3>
+<h3><i>IV</i>Pruebas y calidad: PMV3</h3>
 <div class="dos" style="grid-template-columns:490px 490px;justify-content:space-between">
 <div>
 <svg viewBox="0 0 520 262" role="img" aria-label="Pruebas por servicio">

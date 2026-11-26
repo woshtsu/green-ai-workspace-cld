@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" font-family="Segoe UI, Arial, sans-serif">
+<rect x="1" y="1" width="998" height="758" rx="4" fill="#f7f7f7" stroke="#666666" stroke-width="1.5"/>
+<rect x="40" y="20" width="920" height="56" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="58" y="55" font-size="18" fill="#222222" text-anchor="start" font-weight="bold">Green AI Observatorio</text>
+<rect x="252" y="36" width="116" height="24" rx="12" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="310" y="52" font-size="10.5" fill="#666666" text-anchor="middle">PMV 2 · Demostración</text>
+<text x="376" y="54" font-size="15" fill="#222222" text-anchor="start" text-decoration="underline">Resumen</text>
+<text x="450" y="54" font-size="15" fill="#222222" text-anchor="start">Racks</text>
+<text x="505" y="54" font-size="15" fill="#222222" text-anchor="start">Red de flujos</text>
+<text x="624" y="54" font-size="14" fill="#666666" text-anchor="start">Usuario</text>
+<rect x="684" y="36" width="82" height="24" rx="12" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="725" y="53" font-size="12" fill="#222222" text-anchor="middle" font-weight="bold">ROL</text>
+<rect x="776" y="30" width="50" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="801.0" y="53.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="bold">◐</text>
+<rect x="836" y="30" width="112" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="892.0" y="53.0" font-size="13" fill="#222222" text-anchor="middle" font-weight="bold">Cerrar sesión</text>
+<rect x="40" y="92" width="108" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="94.0" y="115.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Resumen</text>
+<rect x="154" y="92" width="180" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="244.0" y="115.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Detalle por servidor</text>
+<rect x="340" y="92" width="232" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="456.0" y="115.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Predicción y recomendación</text>
+<rect x="578" y="92" width="190" height="36" rx="4" fill="#555555" stroke="#444444" stroke-width="1.5"/>
+<text x="673.0" y="115.0" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Reportes y experimento</text>
+<rect x="774" y="92" width="186" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="867.0" y="115.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Energía y CO2e</text>
+<circle cx="30" cy="110" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="115" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">1</text>
+<rect x="40" y="144" width="440" height="596" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="60" y="178" font-size="19" fill="#222222" text-anchor="start" font-weight="bold">Reporte de históricos</text>
+<text x="60" y="202" font-size="14" fill="#666666" text-anchor="start">Exportación en CSV o PDF del historial.</text>
+<text x="60" y="232" font-size="14" fill="#666666" text-anchor="start">Código de hardware</text>
+<rect x="60" y="240" width="400" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="72" y="263.0" font-size="15" fill="#666666" text-anchor="start">HW045</text>
+<text x="60" y="298" font-size="14" fill="#666666" text-anchor="start">Desde</text>
+<rect x="60" y="306" width="400" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="72" y="329.0" font-size="15" fill="#666666" text-anchor="start">dd/mm/aaaa</text>
+<text x="60" y="364" font-size="14" fill="#666666" text-anchor="start">Hasta</text>
+<rect x="60" y="372" width="400" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="72" y="395.0" font-size="15" fill="#666666" text-anchor="start">dd/mm/aaaa</text>
+<circle cx="30" cy="258" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="263" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">2</text>
+<rect x="60" y="436" width="124" height="38" rx="4" fill="#555555" stroke="#444444" stroke-width="1.5"/>
+<text x="122.0" y="460.0" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Ver resumen</text>
+<rect x="192" y="436" width="132" height="38" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="258.0" y="460.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Descargar CSV</text>
+<rect x="332" y="436" width="128" height="38" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="396.0" y="460.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Descargar PDF</text>
+<circle cx="30" cy="455" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="460" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">3</text>
+<text x="60" y="508" font-size="15" fill="#666666" text-anchor="start">PDF descargado con éxito</text>
+<circle cx="30" cy="503" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="508" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">4</text>
+<text x="260" y="560" font-size="14" fill="#666666" text-anchor="middle" font-style="italic">La API genera el archivo y el</text>
+<text x="260" y="580" font-size="14" fill="#666666" text-anchor="middle" font-style="italic">navegador lo descarga  →</text>
+<rect x="520" y="144" width="440" height="596" rx="0" fill="#ffffff" stroke="#222222" stroke-width="1.5"/>
+<text x="548" y="184" font-size="21" fill="#222222" text-anchor="start" font-weight="bold">Green AI - Reporte histórico</text>
+<text x="548" y="208" font-size="14" fill="#666666" text-anchor="start">Generado: fecha y hora UTC</text>
+<circle cx="520" cy="188" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="520" y="193" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">5</text>
+<text x="548" y="244" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Hardware</text>
+<text x="790" y="244" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="253" x2="932" y2="253" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="274" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Periodo inicio</text>
+<text x="790" y="274" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="283" x2="932" y2="283" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="304" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Periodo fin</text>
+<text x="790" y="304" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="313" x2="932" y2="313" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="334" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Fuente</text>
+<text x="790" y="334" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="343" x2="932" y2="343" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="364" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Registros</text>
+<text x="790" y="364" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="373" x2="932" y2="373" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="394" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">CPU media</text>
+<text x="790" y="394" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="403" x2="932" y2="403" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="424" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">CPU p95</text>
+<text x="790" y="424" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="433" x2="932" y2="433" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="454" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">CPU máxima</text>
+<text x="790" y="454" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="463" x2="932" y2="463" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="484" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">RAM media</text>
+<text x="790" y="484" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="493" x2="932" y2="493" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="514" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">RAM p95</text>
+<text x="790" y="514" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="523" x2="932" y2="523" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="544" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Carga alta (CPU &gt; 80 %)</text>
+<text x="790" y="544" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="553" x2="932" y2="553" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="574" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Energía modelada</text>
+<text x="790" y="574" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="583" x2="932" y2="583" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="548" y="604" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Huecos ignorados</text>
+<text x="790" y="604" font-size="15" fill="#666666" text-anchor="start">—</text>
+<line x1="548" y1="613" x2="932" y2="613" stroke="#e6e6e6" stroke-width="1.5"/>
+<circle cx="520" cy="360" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="520" y="365" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">6</text>
+<text x="548" y="660" font-size="15" fill="#222222" text-anchor="start" font-style="italic">Datos simulados; energía modelada, no medida.</text>
+<circle cx="520" cy="655" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="520" y="660" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">7</text>
+<text x="548" y="690" font-size="14" fill="#666666" text-anchor="start" font-style="italic">Advertencias del resumen (si existen)</text>
+</svg>

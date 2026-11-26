@@ -1,11 +1,16 @@
 """Genera entregables/semana15/informe-unidad-IV.md a partir del informe corregido de la Unidad III,
 aplicando las mejoras de prioridad Alta del reporte ICACIT (semana 14) y los resultados del PMV3 (Sprint 7).
-Uso: python herramientas_IA/exportacion/construir_informe_iv.py
+Uso: python herramientas_IA/exportacion/construir_informe_iv.py [--forzar]
 """
 from pathlib import Path
 import re
+import sys
 
 R = Path(__file__).resolve().parents[2]
+# Guarda: desde el 26/11/2026 el .md de la Unidad IV es la fuente de verdad y se edita a mano.
+# Regenerarlo descarta esos cambios; solo se sobrescribe si se pide con --forzar.
+if (R / "entregables/semana15/informe-unidad-IV.md").exists() and "--forzar" not in sys.argv:
+    raise SystemExit("informe-unidad-IV.md se edita a mano; use --forzar para sobrescribirlo (se perderán los cambios).")
 src = (R / "entregables/informe-corregido/informe-unidad-III.md").read_text(encoding="utf-8")
 out = R / "entregables/semana15/informe-unidad-IV.md"
 ext = (R / "herramientas_IA/exportacion/informe_iv_secciones.md").read_text(encoding="utf-8")

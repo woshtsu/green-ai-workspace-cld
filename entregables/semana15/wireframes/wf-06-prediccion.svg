@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" font-family="Segoe UI, Arial, sans-serif">
+<rect x="1" y="1" width="998" height="758" rx="4" fill="#f7f7f7" stroke="#666666" stroke-width="1.5"/>
+<rect x="40" y="20" width="920" height="56" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="58" y="55" font-size="18" fill="#222222" text-anchor="start" font-weight="bold">Green AI Observatorio</text>
+<rect x="252" y="36" width="116" height="24" rx="12" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="310" y="52" font-size="10.5" fill="#666666" text-anchor="middle">PMV 2 · Demostración</text>
+<text x="376" y="54" font-size="15" fill="#222222" text-anchor="start" text-decoration="underline">Resumen</text>
+<text x="450" y="54" font-size="15" fill="#222222" text-anchor="start">Racks</text>
+<text x="505" y="54" font-size="15" fill="#222222" text-anchor="start">Red de flujos</text>
+<text x="624" y="54" font-size="14" fill="#666666" text-anchor="start">Usuario</text>
+<rect x="684" y="36" width="82" height="24" rx="12" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="725" y="53" font-size="12" fill="#222222" text-anchor="middle" font-weight="bold">ROL</text>
+<rect x="776" y="30" width="50" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="801.0" y="53.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="bold">◐</text>
+<rect x="836" y="30" width="112" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="892.0" y="53.0" font-size="13" fill="#222222" text-anchor="middle" font-weight="bold">Cerrar sesión</text>
+<rect x="40" y="92" width="920" height="150" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="60" y="124" font-size="22" fill="#222222" text-anchor="start" font-weight="bold">Tu infraestructura, en contexto</text>
+<text x="60" y="154" font-size="14" fill="#666666" text-anchor="start">Métrica</text>
+<rect x="60" y="162" width="178" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="72" y="185.0" font-size="14" fill="#666666" text-anchor="start">CPU</text>
+<text x="226" y="185.0" font-size="15" fill="#666666" text-anchor="end">▾</text>
+<text x="252" y="154" font-size="14" fill="#666666" text-anchor="start">Clúster</text>
+<rect x="252" y="162" width="178" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="264" y="185.0" font-size="14" fill="#666666" text-anchor="start">Todos los clústeres</text>
+<text x="418" y="185.0" font-size="15" fill="#666666" text-anchor="end">▾</text>
+<text x="444" y="154" font-size="14" fill="#666666" text-anchor="start">Servidor</text>
+<rect x="444" y="162" width="178" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="456" y="185.0" font-size="14" fill="#666666" text-anchor="start">Todos los servidores</text>
+<text x="610" y="185.0" font-size="15" fill="#666666" text-anchor="end">▾</text>
+<text x="636" y="154" font-size="14" fill="#666666" text-anchor="start">Histórico</text>
+<rect x="636" y="162" width="178" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="648" y="185.0" font-size="14" fill="#666666" text-anchor="start">15 minutos</text>
+<text x="802" y="185.0" font-size="15" fill="#666666" text-anchor="end">▾</text>
+<rect x="832" y="162" width="112" height="36" rx="4" fill="#555555" stroke="#444444" stroke-width="1.5"/>
+<text x="888.0" y="185.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">Actualizar</text>
+<text x="60" y="226" font-size="14" fill="#666666" text-anchor="start">Estado de la consulta (hora y zona) · descripción y unidad de la métrica</text>
+<circle cx="30" cy="170" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="175" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">1</text>
+<rect x="40" y="256" width="108" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="94.0" y="279.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Resumen</text>
+<rect x="154" y="256" width="180" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="244.0" y="279.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Detalle por servidor</text>
+<rect x="340" y="256" width="232" height="36" rx="4" fill="#555555" stroke="#444444" stroke-width="1.5"/>
+<text x="456.0" y="279.0" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Predicción y recomendación</text>
+<rect x="578" y="256" width="190" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="673.0" y="279.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Reportes y experimento</text>
+<rect x="774" y="256" width="186" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="867.0" y="279.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Energía y CO2e</text>
+<circle cx="30" cy="274" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="279" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">2</text>
+<rect x="40" y="308" width="920" height="432" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<rect x="60" y="324" width="180" height="24" rx="12" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="150" y="341" font-size="13" fill="#222222" text-anchor="middle">Predicción experimental</text>
+<text x="60" y="384" font-size="21" fill="#222222" text-anchor="start" font-weight="bold">Demanda futura de CPU</text>
+<rect x="332" y="364" width="28" height="28" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="346.0" y="383.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="bold">?</text>
+<text x="60" y="414" font-size="15" fill="#666666" text-anchor="start">Horizonte de 15 min con Random Forest sobre ventana histórica de 2 h (datos sintéticos).</text>
+<rect x="60" y="432" width="350" height="42" rx="4" fill="#555555" stroke="#444444" stroke-width="1.5"/>
+<text x="235.0" y="458.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">Estimar CPU del servidor seleccionado</text>
+<circle cx="30" cy="453" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="458" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">3</text>
+<text x="60" y="506" font-size="15" fill="#666666" text-anchor="start">Mensaje de estado: estimación generada (no se actualiza automáticamente)</text>
+<circle cx="30" cy="501" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="506" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">4</text>
+<rect x="60" y="530" width="284" height="62" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="72" y="553" font-size="14" fill="#666666" text-anchor="start">CPU estimada</text>
+<text x="72" y="578" font-size="18" fill="#222222" text-anchor="start" font-weight="bold">— % · Estimado</text>
+<rect x="360" y="530" width="284" height="62" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="372" y="553" font-size="14" fill="#666666" text-anchor="start">Recurso consultado</text>
+<text x="372" y="578" font-size="18" fill="#222222" text-anchor="start" font-weight="bold">clúster / servidor</text>
+<rect x="660" y="530" width="284" height="62" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="672" y="553" font-size="14" fill="#666666" text-anchor="start">Instante estimado</text>
+<text x="672" y="578" font-size="18" fill="#222222" text-anchor="start" font-weight="bold">t + 15 min</text>
+<rect x="60" y="606" width="284" height="62" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="72" y="629" font-size="14" fill="#666666" text-anchor="start">Horizonte / modelo</text>
+<text x="72" y="654" font-size="18" fill="#222222" text-anchor="start" font-weight="bold">15m / versión</text>
+<rect x="360" y="606" width="284" height="62" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="372" y="629" font-size="14" fill="#666666" text-anchor="start">Procedencia de entrada</text>
+<text x="372" y="654" font-size="18" fill="#222222" text-anchor="start" font-weight="bold">Simulado</text>
+<rect x="660" y="606" width="284" height="62" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="672" y="629" font-size="14" fill="#666666" text-anchor="start">Dataset utilizado</text>
+<text x="672" y="654" font-size="18" fill="#222222" text-anchor="start" font-weight="bold">identificador</text>
+<circle cx="30" cy="561" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="566" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">5</text>
+<circle cx="30" cy="637" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="642" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">6</text>
+<rect x="60" y="686" width="884" height="40" rx="4" fill="#e6e6e6" stroke="#999999" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="74" y="711" font-size="14" fill="#222222" text-anchor="start">Advertencias del servicio (muestras excluidas, remuestreo)</text>
+<circle cx="30" cy="706" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="711" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">7</text>
+</svg>

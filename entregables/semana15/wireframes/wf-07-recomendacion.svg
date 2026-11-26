@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="860" viewBox="0 0 1000 860" font-family="Segoe UI, Arial, sans-serif">
+<rect x="1" y="1" width="998" height="858" rx="4" fill="#f7f7f7" stroke="#666666" stroke-width="1.5"/>
+<rect x="40" y="20" width="920" height="56" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="58" y="55" font-size="18" fill="#222222" text-anchor="start" font-weight="bold">Green AI Observatorio</text>
+<rect x="252" y="36" width="116" height="24" rx="12" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="310" y="52" font-size="10.5" fill="#666666" text-anchor="middle">PMV 2 · Demostración</text>
+<text x="376" y="54" font-size="15" fill="#222222" text-anchor="start" text-decoration="underline">Resumen</text>
+<text x="450" y="54" font-size="15" fill="#222222" text-anchor="start">Racks</text>
+<text x="505" y="54" font-size="15" fill="#222222" text-anchor="start">Red de flujos</text>
+<text x="624" y="54" font-size="14" fill="#666666" text-anchor="start">Usuario</text>
+<rect x="684" y="36" width="82" height="24" rx="12" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="725" y="53" font-size="12" fill="#222222" text-anchor="middle" font-weight="bold">ROL</text>
+<rect x="776" y="30" width="50" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="801.0" y="53.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="bold">◐</text>
+<rect x="836" y="30" width="112" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="892.0" y="53.0" font-size="13" fill="#222222" text-anchor="middle" font-weight="bold">Cerrar sesión</text>
+<rect x="40" y="92" width="108" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="94.0" y="115.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Resumen</text>
+<rect x="154" y="92" width="180" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="244.0" y="115.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Detalle por servidor</text>
+<rect x="340" y="92" width="232" height="36" rx="4" fill="#555555" stroke="#444444" stroke-width="1.5"/>
+<text x="456.0" y="115.0" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Predicción y recomendación</text>
+<rect x="578" y="92" width="190" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="673.0" y="115.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Reportes y experimento</text>
+<rect x="774" y="92" width="186" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="867.0" y="115.0" font-size="14" fill="#222222" text-anchor="middle" font-weight="bold">Energía y CO2e</text>
+<rect x="40" y="144" width="920" height="696" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<rect x="60" y="160" width="80" height="24" rx="12" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="100" y="177" font-size="13" fill="#222222" text-anchor="middle">Política</text>
+<text x="60" y="218" font-size="21" fill="#222222" text-anchor="start" font-weight="bold">Recomendación con restricciones</text>
+<text x="60" y="246" font-size="15" fill="#666666" text-anchor="start">Propuesta para revisión humana sobre el servidor seleccionado. No se ejecuta ningún cambio.</text>
+<text x="60" y="278" font-size="14" fill="#666666" text-anchor="start">Memoria (%)  ?</text>
+<rect x="60" y="286" width="284" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="72" y="309.0" font-size="15" fill="#666666" text-anchor="start">Ej. 65</text>
+<text x="360" y="278" font-size="14" fill="#666666" text-anchor="start">Latencia p95 (ms)  ?</text>
+<rect x="360" y="286" width="284" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="372" y="309.0" font-size="15" fill="#666666" text-anchor="start">Ej. 120</text>
+<text x="660" y="278" font-size="14" fill="#666666" text-anchor="start">Errores (%)  ?</text>
+<rect x="660" y="286" width="284" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="672" y="309.0" font-size="15" fill="#666666" text-anchor="start">Ej. 0.5</text>
+<circle cx="30" cy="304" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="309" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">1</text>
+<text x="60" y="350" font-size="14" fill="#666666" text-anchor="start">Instante de telemetría  ?</text>
+<rect x="60" y="358" width="280" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="72" y="381.0" font-size="15" fill="#666666" text-anchor="start">dd/mm/aaaa hh:mm:ss</text>
+<rect x="352" y="358" width="110" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="407.0" y="381.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="bold">Usar ahora</text>
+<text x="660" y="350" font-size="14" fill="#666666" text-anchor="start">Procedencia declarada  ?</text>
+<rect x="660" y="358" width="284" height="36" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="672" y="381.0" font-size="15" fill="#666666" text-anchor="start">Simulada</text>
+<text x="932" y="381.0" font-size="15" fill="#666666" text-anchor="end">▾</text>
+<circle cx="30" cy="376" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="381" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">2</text>
+<rect x="60" y="414" width="220" height="38" rx="4" fill="#555555" stroke="#444444" stroke-width="1.5"/>
+<text x="170.0" y="438.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">Evaluar recomendación</text>
+<rect x="292" y="414" width="230" height="38" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="407.0" y="438.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="bold">Usar valores de ejemplo</text>
+<circle cx="30" cy="433" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="438" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">3</text>
+<text x="60" y="484" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Estado: Lista para revisión humana / Bloqueada por restricciones / No evaluable · clúster / servidor</text>
+<circle cx="30" cy="479" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="484" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">4</text>
+<rect x="60" y="504" width="884" height="316" rx="4" fill="#f7f7f7" stroke="#999999" stroke-width="1.5"/>
+<text x="78" y="536" font-size="17" fill="#222222" text-anchor="start" font-weight="bold">Acción: Mantener capacidad (u otra propuesta, o Sin propuesta)</text>
+<circle cx="30" cy="530" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="535" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">5</text>
+<rect x="78" y="552" width="848" height="180" rx="0" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<rect x="78" y="552" width="848" height="30" rx="0" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="86" y="572.0" font-size="14" fill="#222222" text-anchor="start" font-weight="bold">Restricción evaluada</text>
+<text x="86" y="602.0" font-size="14" fill="#666666" text-anchor="start">Vigencia de la predicción</text>
+<text x="86" y="632.0" font-size="14" fill="#666666" text-anchor="start">Recurso y vigencia de telemetría</text>
+<text x="86" y="662.0" font-size="14" fill="#666666" text-anchor="start">Memoria</text>
+<text x="86" y="692.0" font-size="14" fill="#666666" text-anchor="start">Latencia p95</text>
+<text x="86" y="722.0" font-size="14" fill="#666666" text-anchor="start">Errores</text>
+<line x1="548" y1="552" x2="548" y2="732" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="556" y="572.0" font-size="14" fill="#222222" text-anchor="start" font-weight="bold">Resultado</text>
+<text x="556" y="602.0" font-size="14" fill="#666666" text-anchor="start">Cumple / Excede límite / Sin evidencia suficiente</text>
+<text x="556" y="632.0" font-size="14" fill="#666666" text-anchor="start">Cumple / Excede límite / Sin evidencia suficiente</text>
+<text x="556" y="662.0" font-size="14" fill="#666666" text-anchor="start">Cumple / Excede límite / Sin evidencia suficiente</text>
+<text x="556" y="692.0" font-size="14" fill="#666666" text-anchor="start">Cumple / Excede límite / Sin evidencia suficiente</text>
+<text x="556" y="722.0" font-size="14" fill="#666666" text-anchor="start">Cumple / Excede límite / Sin evidencia suficiente</text>
+<line x1="78" y1="582" x2="926" y2="582" stroke="#999999" stroke-width="1.5"/>
+<line x1="78" y1="612" x2="926" y2="612" stroke="#999999" stroke-width="1.5"/>
+<line x1="78" y1="642" x2="926" y2="642" stroke="#999999" stroke-width="1.5"/>
+<line x1="78" y1="672" x2="926" y2="672" stroke="#999999" stroke-width="1.5"/>
+<line x1="78" y1="702" x2="926" y2="702" stroke="#999999" stroke-width="1.5"/>
+<circle cx="30" cy="582" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="587" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">6</text>
+<text x="78" y="756" font-size="14" fill="#666666" text-anchor="start">Límites demo: CPU, memoria, p95 y errores (valores devueltos por la política)</text>
+<text x="78" y="780" font-size="14" fill="#666666" text-anchor="start">Advertencias de la política</text>
+<text x="78" y="804" font-size="14" fill="#666666" text-anchor="start">Referencia: identificador de la recomendación</text>
+<circle cx="30" cy="774" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="30" y="779" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">7</text>
+</svg>

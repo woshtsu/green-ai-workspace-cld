@@ -68,7 +68,7 @@ Huancayo – Perú, 2026-20
 
 ## RESUMEN EJECUTIVO
 
-El proyecto Green AI aborda la variabilidad de la demanda computacional y el sobreaprovisionamiento de recursos en centros de datos universitarios. Su objetivo fue desarrollar y validar un prototipo que monitorea la telemetría de la infraestructura, predice la utilización de CPU a 15 minutos y emite recomendaciones explicables bajo supervisión humana (*Recommendation-Only*: ninguna recomendación se ejecuta automáticamente). Se desarrolló en tres PMV con Scrum adaptado y la guía PMBOK: PMV1 (telemetría, ingesta y persistencia), PMV2 (predicción, contratos OpenAPI y dashboard) y PMV3 (procesos de software, calidad FURPS+/OWASP, ingeniería inversa y ola 2 de mejoras). La solución usa microservicios con arquitectura hexagonal por servicio (Python/FastAPI, Java/Spring Boot y Go), Prometheus y Grafana, Supabase (PostgreSQL y Auth) y despliegue en Render y GitHub Pages. Con datos simulados, Random Forest obtuvo un MAE de 3,22 y un RMSE de 4,59 puntos porcentuales en validación (MAE de 3,85 en test), con un 30 % menos de error que la persistencia y un 14 % menos que la media móvil. Se aprobaron 492 pruebas automatizadas y el *smoke test* 14/14, y la ola 2 (decisión humana persistente, reporte PDF, tabla accesible y etiquetas de energía modelada) quedó desplegada en Render. La auditoría final dictaminó «cumple parcialmente» (FURPS+ 87 %, OWASP 86/100 estimado) y «no apto para producción» mientras no se cierren los hallazgos de RLS y de sesión real. El proyecto aporta a los ODS 7, 9 y 12, y al ODS 13 solo como método de estimación de CO2e, sin reducción medida.
+El proyecto Green AI aborda la variabilidad de la demanda computacional y el sobreaprovisionamiento de recursos en centros de datos universitarios. Su objetivo fue desarrollar y validar un prototipo que monitorea la telemetría de la infraestructura, predice la utilización de CPU a 15 minutos y emite recomendaciones explicables bajo supervisión humana (*Recommendation-Only*: ninguna recomendación se ejecuta automáticamente). Se desarrolló en tres PMV con Scrum adaptado y la guía PMBOK: PMV1 (telemetría, ingesta y persistencia), PMV2 (predicción, contratos OpenAPI y dashboard) y PMV3 (procesos de software, calidad FURPS+/OWASP, ingeniería inversa y ola 2 de mejoras). La solución usa microservicios con arquitectura hexagonal por servicio (Python/FastAPI, Java/Spring Boot y Go), Prometheus y Grafana, Supabase (PostgreSQL y Auth) y despliegue en Render y GitHub Pages. Con datos simulados, Random Forest obtuvo un MAE de 3,22 y un RMSE de 4,59 puntos porcentuales en validación (MAE de 3,85 en test), con un 30 % menos de error que la persistencia y un 14 % menos que la media móvil. El 19/11/2026 se aprobaron 492 pruebas (y el *smoke test* 14/14, el 06/11); la ola 2 se desplegó en Render. La evaluación oficial (semana 13) dio FURPS+ 86 % y OWASP 83,5/100, «apto para producción con observaciones»; persisten pendientes de seguridad, sesión real y validación con usuarios. El proyecto aporta a los ODS 7, 9 y 12, y al ODS 13 solo como método de estimación de CO2e, sin reducción medida.
 
 **Palabras clave:** Green AI, predicción de demanda computacional, arquitectura hexagonal, microservicios, eficiencia energética, Recommendation-Only.
 
@@ -78,7 +78,7 @@ El proyecto Green AI aborda la variabilidad de la demanda computacional y el sob
 
 ## ABSTRACT
 
-The Green AI project addresses computational workload variability and resource over-provisioning in university data centers. Its goal was to develop and validate a prototype that monitors infrastructure telemetry, forecasts CPU utilization 15 minutes ahead, and issues explainable recommendations under human supervision (recommendation-only: nothing is executed automatically). It was built in three minimum viable products with adapted Scrum and PMBOK: MVP1 (telemetry, ingestion and persistence), MVP2 (forecasting, OpenAPI contracts and dashboard) and MVP3 (software processes, FURPS+/OWASP quality, reverse engineering and a second wave of improvements). The solution uses microservices with a hexagonal architecture per service (Python/FastAPI, Java/Spring Boot and Go), Prometheus and Grafana, Supabase, and deployment on Render and GitHub Pages. On simulated data, Random Forest achieved a validation MAE of 3.22 and RMSE of 4.59 percentage points (test MAE 3.85), 30% lower error than persistence and 14% lower than moving average. 492 automated tests and the 14/14 smoke test passed, and the second wave (persistent human decision, PDF report, accessible table and modeled-energy labels) was deployed on Render. The final audit rated the system "partially compliant" (FURPS+ 87%, OWASP 86/100 estimated) and "not production-ready" until the row-level security and real-session findings are closed. The project contributes to SDGs 7, 9 and 12, and to SDG 13 only as a CO2e estimation method, with no measured reduction.
+The Green AI project addresses computational workload variability and resource over-provisioning in university data centers. Its goal was to develop and validate a prototype that monitors infrastructure telemetry, forecasts CPU utilization 15 minutes ahead, and issues explainable recommendations under human supervision (recommendation-only: nothing is executed automatically). It was built in three minimum viable products with adapted Scrum and PMBOK: MVP1 (telemetry, ingestion and persistence), MVP2 (forecasting, OpenAPI contracts and dashboard) and MVP3 (software processes, FURPS+/OWASP quality, reverse engineering and a second wave of improvements). The solution uses microservices with a hexagonal architecture per service (Python/FastAPI, Java/Spring Boot and Go), Prometheus and Grafana, Supabase, and deployment on Render and GitHub Pages. On simulated data, Random Forest achieved a validation MAE of 3.22 and RMSE of 4.59 percentage points (test MAE 3.85), 30% lower error than persistence and 14% lower than moving average. On November 19, 492 automated tests passed, and the second wave was deployed on Render. The official week-13 assessment scored FURPS+ 86% and OWASP 83.5/100, "production-ready with observations"; security, real-session and end-user validation items remain open. The project contributes to SDGs 7, 9 and 12, and to SDG 13 only as a CO2e estimation method, with no measured reduction.
 
 **Keywords:** Green AI, computational workload forecasting, hexagonal architecture, microservices, energy efficiency, recommendation-only.
 
@@ -88,7 +88,7 @@ The Green AI project addresses computational workload variability and resource o
 
 Las variaciones de carga en los servicios digitales universitarios pueden provocar situaciones de saturación o baja utilización de recursos computacionales. El problema central consiste en cómo identificar y anticipar estos cambios para fundamentar decisiones de asignación de capacidad, evaluando rigurosamente su efecto energético mediante experimentación verificable.
 
-A escala internacional, la Agencia Internacional de Energía estimó que los centros de datos consumieron aproximadamente 415 TWh de electricidad en 2024, equivalentes al 1,5 % de la demanda eléctrica mundial [8], con proyecciones que alcanzan 945 TWh para 2030. Si bien estas cifras evidencian la relevancia global de la eficiencia energética en infraestructuras digitales, no constituyen mediciones del consumo en la Universidad Continental.
+A escala internacional, la Agencia Internacional de Energía estimó que los centros de datos consumieron aproximadamente 415 TWh de electricidad en 2024, equivalentes al 1,5 % de la demanda eléctrica mundial [10], con proyecciones que alcanzan 945 TWh para 2030. Si bien estas cifras evidencian la relevancia global de la eficiencia energética en infraestructuras digitales, no constituyen mediciones del consumo en la Universidad Continental.
 
 Green AI investiga el problema en un entorno experimental controlado mediante métricas simuladas. La plataforma utiliza Prometheus para la recolección de telemetría temporal, Python para el preprocesamiento de variables y modelos de aprendizaje automático para pronosticar la utilización de CPU. La comparación formal entre valores observados y predichos mediante MAE y RMSE permite evaluar la exactitud predictiva frente a modelos de referencia. Este entorno permite comprobar la viabilidad técnica del sistema sin intervenir infraestructura institucional en producción ni imputar ahorros de energía no medidos físicamente.
 
@@ -277,7 +277,7 @@ La estimación de emisiones de dióxido de carbono equivalente ($CO_2e$) se mode
 
 $$\text{Emisiones } CO_2e = E \cdot FE$$
 
-Donde $FE$ corresponde al factor de emisión del sistema eléctrico interconectado correspondiente. En concordancia con la norma internacional ISO/IEC 21031:2024 (*Software Carbon Intensity* - SCI) [9], el servicio rechaza solicitudes de cálculo de emisiones si el cliente no proporciona un factor de emisión respaldado por una fuente oficial y verificable.
+Donde $FE$ corresponde al factor de emisión del sistema eléctrico interconectado correspondiente. En concordancia con la norma internacional ISO/IEC 21031:2024 (*Software Carbon Intensity* - SCI) [11], el servicio rechaza solicitudes de cálculo de emisiones si el cliente no proporciona un factor de emisión respaldado por una fuente oficial y verificable.
 
 ## c. Conocimientos de ingeniería de software y sistemas distribuidos
 
@@ -296,7 +296,7 @@ La seguridad perimetral se delega en el API Gateway, que valida tokens JWT emiti
 
 ### Selección tecnológica ponderada
 
-La selección de las herramientas base se efectuó mediante matrices de decisión técnica ponderadas (adecuación 30 %, ecosistema 25 %, integración 20 %, rendimiento 15 % y curva de aprendizaje 10 %):
+La selección de las herramientas base se resume en la Tabla 3 y se detalla en las Tablas 3.a a 3.d mediante matrices ponderadas (adecuación 30 %, ecosistema 25 %, integración 20 %, rendimiento 15 % y curva de aprendizaje 10 %; escala de 1 a 5). La Tabla 3 muestra los totales redondeados a un decimal. Los puntajes son juicio del equipo, no mediciones; el detalle por criterio se documentó con posterioridad a la selección, con apoyo de un asistente de IA, y está pendiente de validación del equipo.
 
 Tabla 3. Selección de las tecnologías base del proyecto
 
@@ -304,8 +304,60 @@ Tabla 3. Selección de las tecnologías base del proyecto
 |---|---|---|---|
 | Inferencia y ML | Python (4,8) · Java (3,1) · Go (2,6) | Python (scikit-learn, pandas) | Madurez y soporte de bibliotecas especializadas en series temporales. |
 | Observabilidad | Prometheus (4,7) · InfluxDB (3,9) · Zabbix (3,4) | Prometheus | Modelo *pull* eficiente, lenguaje PromQL y estándar de facto. |
-| API Gateway | Go stdlib (4,3) · Spring Cloud (4,0) · Nginx (3,2) | Spring Cloud (base) / Go (alternativa) | Spring Cloud como pasarela vigente; Go validado como alternativa ligera (16 MB imagen). |
+| API Gateway | Go stdlib (4,3) · Spring Cloud (4,0) · Nginx (3,2) | Spring Cloud (base) / Go (alternativa) | Spring Cloud como pasarela base (Docker Compose); `render.yaml` declara la alternativa ligera en Go (16 MB imagen) para el entorno de desarrollo en Render. |
 | Persistencia | Supabase/Postgres (4,6) · MySQL (3,8) · MongoDB (3,3) | PostgreSQL (Supabase) + SQLite local | Integridad relacional, soporte SQL y perfil SQLite sin dependencias externas. |
+
+Tabla 3.a. Detalle ponderado de la Tabla 3: Inferencia y ML
+
+| Criterio de evaluación | Peso | Python | Java | Go |
+|---|---|---|---|---|
+| Adecuación | 30 % | 5 | 3 | 2 |
+| Ecosistema | 25 % | 5 | 3 | 2 |
+| Integración | 20 % | 5 | 3 | 3 |
+| Rendimiento | 15 % | 4 | 4 | 4 |
+| Curva de aprendizaje | 10 % | 4 | 2 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,75** | **3,05** | **2,60** |
+
+**Justificación.** Python obtiene el mayor total por adecuación, ecosistema e integración; empata en rendimiento con Java y Go dentro de esta matriz.
+
+Tabla 3.b. Detalle ponderado de la Tabla 3: Observabilidad
+
+| Criterio de evaluación | Peso | Prometheus | InfluxDB | Zabbix |
+|---|---|---|---|---|
+| Adecuación | 30 % | 5 | 4 | 3 |
+| Ecosistema | 25 % | 5 | 4 | 4 |
+| Integración | 20 % | 5 | 3 | 3 |
+| Rendimiento | 15 % | 4 | 5 | 3 |
+| Curva de aprendizaje | 10 % | 3 | 3 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,65** | **3,85** | **3,35** |
+
+**Justificación.** Prometheus obtiene el mayor total; InfluxDB se valora mejor en rendimiento y Zabbix en curva de aprendizaje.
+
+Tabla 3.c. Detalle ponderado de la Tabla 3: API Gateway
+
+| Criterio de evaluación | Peso | Go stdlib | Spring Cloud | Nginx |
+|---|---|---|---|---|
+| Adecuación | 30 % | 5 | 4 | 3 |
+| Ecosistema | 25 % | 3 | 5 | 3 |
+| Integración | 20 % | 5 | 4 | 3 |
+| Rendimiento | 15 % | 5 | 3 | 5 |
+| Curva de aprendizaje | 10 % | 3 | 3 | 2 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,30** | **4,00** | **3,20** |
+
+**Justificación.** Go obtiene el mayor total (4,30) frente a Spring Cloud Gateway (4,00). Spring Cloud fue la pasarela base, mejor valorada en ecosistema; la alternativa en Go es la que declara `render.yaml` para el entorno de desarrollo en Render.
+
+Tabla 3.d. Detalle ponderado de la Tabla 3: Persistencia
+
+| Criterio de evaluación | Peso | Supabase/Postgres | MySQL | MongoDB |
+|---|---|---|---|---|
+| Adecuación | 30 % | 5 | 4 | 3 |
+| Ecosistema | 25 % | 5 | 4 | 4 |
+| Integración | 20 % | 4 | 3 | 3 |
+| Rendimiento | 15 % | 4 | 4 | 3 |
+| Curva de aprendizaje | 10 % | 4 | 4 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,55** | **3,80** | **3,25** |
+
+**Justificación.** Supabase/PostgreSQL obtiene el mayor total; empata con MySQL en rendimiento y curva de aprendizaje. La Tabla 12 evalúa solo el motor, con otros criterios, por lo que sus puntajes no son comparables con estos.
 
 ---
 
@@ -327,7 +379,7 @@ En términos de ahorro económico, el proyecto no declara cifras de reducción m
 
 ## c. Justificación ambiental
 
-La relevancia ambiental radica en la reducción potencial de emisiones contaminantes indirectas asociadas al consumo eléctrico de servidores ociosos. Sin embargo, el proyecto reconoce que el propio funcionamiento del software analítico (Prometheus, API Gateway, servicios de procesamiento y modelos de Machine Learning) consume memoria y ciclos de CPU. Por ello, el análisis de impacto ambiental en el PMV3 evaluará el balance energético neto, distinguiendo estrictamente entre potencia medida (W), energía acumulada (kWh) y emisiones calculadas ($CO_2e$).
+La relevancia ambiental radica en la reducción potencial de emisiones contaminantes indirectas asociadas al consumo eléctrico de servidores ociosos. Sin embargo, el proyecto reconoce que el propio funcionamiento del software analítico (Prometheus, API Gateway, servicios de procesamiento y modelos de Machine Learning) consume memoria y ciclos de CPU. Por ello, un balance energético neto queda pendiente; todo análisis de impacto ambiental debe distinguir estrictamente entre potencia medida (W), energía acumulada (kWh) y emisiones calculadas ($CO_2e$).
 
 ## d. Acontecimientos tecnológicos y científicos relacionados
 
@@ -339,12 +391,12 @@ Tabla 4. Normas legales y estándares aplicables y medidas técnicas de cumplimi
 
 | Norma legal / estándar | Ámbito de aplicación en el proyecto | Medidas técnicas de cumplimiento implementadas |
 |---|---|---|
-| **Ley N.° 29733 y D.S. N.° 016-2024-JUS** (Protección de Datos Personales) | Cuentas de usuario para administradores y operadores técnicos. | **Implementado:** la telemetría técnica no contiene datos personales; Supabase Auth gestiona correos y roles. **Pendiente (H-02 / F-01):** el snapshot del repositorio registra políticas RLS «Permitir todo» y una columna `password` en texto plano; su revisión y corrección en Supabase requiere acceso administrativo y **no está verificada** al 25/11/2026. |
+| **Ley N.° 29733 y D.S. N.° 016-2024-JUS** (Protección de Datos Personales) | Cuentas de usuario para administradores y operadores técnicos. | **Implementado:** la telemetría técnica no contiene datos personales; Supabase Auth gestiona correos y roles. **Parcial (H-02 / F-01):** el 12/11/2026 se verificaron en la consola de Supabase 3 políticas «Permitir todo» y las columnas `password` y `password_hash`. La columna `password` está corregida según el equipo, sin evidencia adjunta aún; las políticas RLS siguen pendientes. |
 | **D. Leg. N.° 1412** (Ley de Gobierno Digital) | Interoperabilidad e intercambio de datos en el sector público/académico. | Adopción de arquitecturas abiertas basadas en estándares REST y especificaciones OpenAPI 3.1. |
 | **Ley N.° 30096** (Delitos Informáticos) | Seguridad perimetral y prevención de accesos no autorizados. | **Implementado y verificado:** JWT y RBAC (ADMIN, OPERATOR, VIEWER) en los Gateways Java y Go (19 y 40 pruebas al 19/11/2026). **Parcial (H-01):** Prediction y Data Processing siguen accesibles directamente en Render; desde el Sprint 7 las rutas de decisiones de Prediction exigen el secreto `X-Green-Gateway-Secret` y responden 401 sin él (verificado el 25/11/2026). **Pendiente:** *rate limiting* y auditoría de 401/403 (OW-05, OW-12). |
 | **ISO/IEC 21031:2024 (SCI)** | Especificación de intensidad de carbono del software. | **Implementado:** la energía y el CO2e se muestran con la etiqueta «modelada/estimada» (F-06). **Pendiente:** factor de emisión oficial aplicado a mediciones reales (HU-10 sin resultado medido). |
 
-**Responsabilidad ética:** El equipo asume el compromiso de reportar exclusivamente resultados reproducibles, absteniéndose de imputar reducciones de consumo eléctrico o emisiones ambientales sin mediciones experimentales físicas directas. Asimismo, la ingeniería inversa (Unidad IV) registró dos hallazgos críticos de seguridad: H-01 (los servicios Prediction y Data Processing pueden invocarse en Render sin pasar por el Gateway) y H-02 (políticas RLS «Permitir todo» y columna `password` en texto plano según el snapshot del repositorio). H-01 está mitigado de forma parcial con el secreto compartido del Gateway en las rutas de decisiones; H-02 no está verificado ni corregido en Supabase a la fecha de corte (25/11/2026). Su estado y plan se detallan en §VIII.2.3.
+**Responsabilidad ética:** El equipo asume el compromiso de reportar exclusivamente resultados reproducibles, absteniéndose de imputar reducciones de consumo eléctrico o emisiones ambientales sin mediciones experimentales físicas directas. Asimismo, la ingeniería inversa (Unidad IV) registró dos hallazgos críticos: H-01 (Prediction y Data Processing pueden invocarse en Render sin pasar por el Gateway) y H-02 (políticas RLS «Permitir todo» y columna `password` en texto plano). H-01 está mitigado de forma parcial; de H-02, la columna está corregida según el equipo, sin evidencia adjunta aún, y las políticas RLS siguen pendientes (§VIII.7).
 
 ## f. Salud, seguridad y riesgos operativos
 
@@ -358,7 +410,7 @@ La fundamentación teórica se estructura a partir de la literatura científica 
 
 ### Antecedentes sobre eficiencia energética y gestión de recursos
 
-#### Antecedente 1. Beloglazov, Abawajy y Buyya (2012) [4]
+#### Antecedente 1. Beloglazov, Abawajy y Buyya (2012) [17]
 Beloglazov, Abawajy y Buyya investigaron la gestión eficiente de recursos en centros de datos en la nube mediante técnicas de consolidación dinámica de máquinas virtuales. Los autores demostraron que mantener servidores subutilizados genera un desperdicio significativo de energía, proponiendo heurísticas para migrar cargas y suspender nodos ociosos manteniendo acuerdos de nivel de servicio (SLA). Este antecedente respalda en Green AI la necesidad de evaluar el compromiso entre ahorro energético y calidad del servicio, si bien Green AI restringe su alcance a recomendaciones consultivas sin apagado autónomo de servidores.
 
 #### Antecedente 2. Ji et al. (2021) [2]
@@ -392,26 +444,6 @@ Tabla 5. Síntesis comparativa de Green AI frente a los antecedentes
 | **Gestión energética** | Estimación trapezoidal ($E = \int P dt$); sin ahorro inventado | Estimación de estados de energía | Optimización conjunta con climatización | Asignación y planificación de tareas |
 | **Modo de operación** | *Recommendation-Only* con supervisión humana | Soporte a consolidación autónoma | Planificación y migración dinámica | Planificación autónoma de tareas |
 
-### Referencias bibliográficas (Norma ISO 690-2)
-
-[1] KHAN, T., TIAN, W., ILAGER, S. y BUYYA, R. Workload forecasting and energy state estimation in cloud data centres: ML-centric approach. *Future Generation Computer Systems*. 2022, vol. 128, pp. 320–332. DOI 10.1016/j.future.2021.10.019.
-
-[2] JI, K., ZHANG, F., CHI, C., SONG, P., ZHOU, B., MARAHATTA, A. y LIU, Z. A joint energy efficiency optimization scheme in data centers. *Sustainable Computing: Informatics and Systems*. 2021, vol. 32, art. 100596. DOI 10.1016/j.suscom.2021.100596.
-
-[3] SHARMA, M. y GARG, R. AGEN: ANN based energy-efficient scheduler for cloud data centers. *Sustainable Computing: Informatics and Systems*. 2020, vol. 26, art. 100373. DOI 10.1016/j.suscom.2020.100373.
-
-[4] BELOGLAZOV, A., ABAWAJY, J. y BUYYA, R. Energy-aware resource allocation heuristics for efficient management of data centers for Cloud computing. *Future Generation Computer Systems*. 2012, vol. 28, no. 5, pp. 755–768. DOI 10.1016/j.future.2011.04.017.
-
-[5] ALI, Q. I. Intelligent energy governance in solar-powered data centers: a multi-stage framework for sustainable operation and AI-driven optimization. *Discover Artificial Intelligence*. 2026, vol. 6, art. 124. DOI 10.1007/s44163-025-00823-7.
-
-[6] VERDECCHIA, R., SALLOU, J. y CRUZ, L. A systematic review of Green AI. *WIREs Data Mining and Knowledge Discovery*. 2023, vol. 13, art. e1507. DOI 10.1002/widm.1507.
-
-[7] BOLÓN-CANEDO, V., MORÁN-FERNÁNDEZ, L., CANCELA, B. y ALONSO-BETANZOS, A. A review on green artificial intelligence. *Neurocomputing*. 2024, vol. 599, art. 128096. DOI 10.1016/j.neucom.2024.128096.
-
-[8] INTERNATIONAL ENERGY AGENCY. *Energy and AI*. París: IEA, 2025.
-
-[9] ISO/IEC. *ISO/IEC 21031:2024 Information technology — Software Carbon Intensity (SCI) specification*. Ginebra: ISO, 2024.
-
 ---
 
 # IV. METODOLOGÍA EMPLEADA
@@ -429,7 +461,7 @@ Tabla 6. Evaluación ponderada de los enfoques de ciclo de vida
 | Gestión de restricciones académicas y temporales | 15 % | 4 | 4 | 5 |
 | **Puntaje ponderado** | **100 %** | **2,50** | **4,85** | **4,35** |
 
-Para la gestión de ingeniería se adaptó el marco Scrum sobre Kanban, XP y Scrumban, obteniendo el mayor puntaje (4,85 sobre 5,00) debido a su compatibilidad con la estructura de tres Productos Mínimos Viables (PMV) distribuidos en 8 Sprints de dos semanas:
+Para la gestión de ingeniería se adaptó el marco Scrum [12] sobre Kanban, XP y Scrumban, obteniendo el mayor puntaje (4,85 sobre 5,00) debido a su compatibilidad con la estructura de tres Productos Mínimos Viables (PMV) distribuidos en 8 Sprints de dos semanas:
 
 Tabla 7. Evaluación ponderada de los marcos de gestión de ingeniería
 
@@ -448,7 +480,7 @@ Tabla 7. Evaluación ponderada de los marcos de gestión de ingeniería
 La ejecución de Scrum se adaptó a la disponibilidad de los estudiantes mediante sincronizaciones técnicas tres veces por semana y refinamiento del backlog integrado a la planificación del Sprint. El trabajo técnico se estructuró en tres hitos:
 1. **PMV1 (Semanas 1–6):** Observabilidad y viabilidad técnica. Se diseñó el generador de telemetría, la recolección en Prometheus, el servicio de monitoreo en Spring Boot y el API Gateway, validando contratos OpenAPI y persistencia inicial.
 2. **PMV2 (Semanas 7–12):** Predicción de demanda y recomendaciones explicables. Se implementó el pipeline de Machine Learning (Random Forest a 15 min), el servicio Data Processing con adaptadores de datos y el motor de recomendaciones consultivas (*Recommendation-Only* con `executionAllowed=false`).
-3. **PMV3 (Semanas 13–14, planificado):** Procesos de software, calidad y entregables finales de la Unidad IV. Definición del proceso de desarrollo y de CI/CD, ingeniería inversa del sistema, reportes de calidad FURPS+/OWASP (olas 2 y 3, con re-medición), pruebas con usuarios finales y pruebas de rendimiento y de ML, informe final con guía de uso, artículo científico, póster y video de sustentación. La comparación frente a la línea base ya se ejecutó sobre el conjunto de prueba (§VIII.3.1).
+3. **PMV3 (Semanas 13–14; resultados del Sprint 7 en §VIII.2.3, con pendientes):** Procesos de software, calidad y entregables finales de la Unidad IV. Definición del proceso de desarrollo y de CI/CD, ingeniería inversa del sistema, reportes de calidad FURPS+/OWASP (olas 2 y 3, con re-medición), pruebas con usuarios finales y pruebas de rendimiento y de ML, informe final con guía de uso, artículo científico, póster y video de sustentación. La comparación frente a la línea base ya se ejecutó sobre el conjunto de prueba (§VIII.3.1).
 
 #### Aportes principales identificados
 
@@ -462,9 +494,11 @@ La ejecución de Scrum se adaptó a la disponibilidad de los estudiantes mediant
 
 Esta sección responde a la competencia profesional «Uso de Herramientas Modernas» de la rúbrica ICACIT del curso (atributo AG-I11), que evalúa el uso integrado de herramientas de ingeniería, computación, gestión, modelado, desarrollo, calidad, datos, IA y comunicación, justificando su selección y sus limitaciones. Los aspectos evaluados se cubren así: el uso integrado de herramientas y la justificación de su selección, en el criterio de selección inicial y en V.1; el reconocimiento de sus limitaciones, incluida la evaluación de los asistentes de IA, en V.2; y la comprobación cuantitativa de su aplicación mediante resultados medidos, en V.3.
 
-La selección de herramientas consideró adecuación técnica (25 %), funcionalidad (20 %), integración (15 %), costo monetario cero (10 %), seguridad (10 %), escalabilidad (10 %) y usabilidad (10 %), priorizando tecnologías de código abierto e instrumentos reproducibles.
+La selección de herramientas se evaluó con factores ponderados: adecuación técnica (25 %), funcionalidad (20 %), integración (15 %), costo monetario (10 %), seguridad (10 %), escalabilidad (10 %) y usabilidad (10 %), priorizando tecnologías de código abierto e instrumentos reproducibles. La Tabla 8.0 indica en qué matriz se evalúa cada herramienta (Tablas 3.a a 3.d, 6, 7, 12, 13 y 8.1 a 8.47).
 
 ## 1. Herramientas empleadas con evidencia en el repositorio
+
+*Las cantidades de pruebas de este capítulo corresponden a la ejecución del 15/11/2026 (435 aprobadas). Tras el Sprint 7, la ejecución del 19/11/2026 registró 492 aprobadas (Tabla 30.a).*
 
 Tabla 8. Herramientas empleadas, su aplicación y limitaciones reconocidas
 
@@ -486,11 +520,806 @@ Tabla 8. Herramientas empleadas, su aplicación y limitaciones reconocidas
 
 *Nota de honestidad técnica:* Herramientas como SonarQube, JMeter, Kubernetes y OWASP ZAP no se reportan como utilizadas con evidencia en esta etapa, quedando catalogadas como trabajo futuro, fuera del alcance del periodo lectivo.
 
+### Evaluación ponderada de las herramientas utilizadas
+
+**Método.** Cada alternativa se califica de 1 (deficiente) a 5 (muy adecuada) en los siete criterios; en costo monetario, 5 significa sin desembolso para el alcance académico. El puntaje ponderado es la suma de cada puntaje por su peso. **Los puntajes son juicio del equipo, no mediciones ni pruebas comparativas**: las alternativas no se implementaron salvo cuando se indica. La evaluación se documentó con posterioridad a la adopción de las herramientas; los criterios y puntajes fueron redactados con apoyo de un asistente de IA y están pendientes de validación del equipo. Los totales se calcularon mediante un script. Una diferencia pequeña entre totales no debe interpretarse como superioridad concluyente. Cuando la herramienta usada no obtiene el mayor puntaje, se declara en la justificación.
+
+Tabla 8.0. Resumen de herramientas utilizadas y tabla de evaluación correspondiente
+
+| Herramienta | Categoría | Aplicación | Tabla | Puntaje (sobre 5,00) | ¿Mayor puntaje? |
+|---|---|---|---|---|---|
+| Python (lenguaje de inferencia y ML) | Lenguajes | Data Processing, Prediction, Simulator | 3 y 3.a | 4,75 | Sí |
+| Prometheus 3.13 | Observabilidad | métricas y PromQL | 3 y 3.b | 4,65 | Sí |
+| Go 1.25, biblioteca estándar | Pasarela | `software/gateway-go` | 3 y 3.c | 4,30 | Sí |
+| Spring Cloud Gateway 2025.1.3 + Spring Security (OAuth2) | Pasarela | `software/gateway` | 3 y 3.c | 4,00 | No |
+| Supabase (PostgreSQL administrado) | Persistencia | nube | 3, 3.d y 12 | 4,55 (3.d) | Sí |
+| PostgreSQL (motor) | Persistencia | modelo relacional | 12 | 4,75 | Sí |
+| Scrum con apoyo Kanban | Gestión (marco) | Sprints y PMV | 6 y 7 | 4,85 | Sí |
+| Arquitectura hexagonal en microservicios | Diseño (estilo) | servicios del backend | 13 | 4,30 | Sí |
+| Java 21 + Spring Boot 4.1.1 | Lenguajes, frameworks y bibliotecas de servidor | `software/monitoring` | 8.1 | 4,80 | Sí |
+| FastAPI 0.141.1 (con Pydantic y Uvicorn 0.53.0) | Lenguajes, frameworks y bibliotecas de servidor | `software/data-processing`, `software/prediction` | 8.2 | 4,80 | Sí |
+| httpx 0.28.1 | Lenguajes, frameworks y bibliotecas de servidor | adaptadores de Data Processing y pruebas | 8.3 | 4,70 | Sí |
+| Simulator propio (Python 3.12 + prometheus-client) | Lenguajes, frameworks y bibliotecas de servidor | `software/simulator` | 8.4 | 4,40 | Sí |
+| pandas + NumPy | Lenguajes, frameworks y bibliotecas de servidor | Data Processing y Prediction | 8.5 | 4,60 | Sí |
+| fpdf2 2.9.0 | Lenguajes, frameworks y bibliotecas de servidor | reporte histórico (HU-13) | 8.6 | 4,40 | Sí |
+| HTML5, CSS3 y JavaScript nativo | Frontend | `software/frontend` | 8.7 | 4,30 | No |
+| Chart.js 4.4.8 | Frontend | dashboard de telemetría | 8.8 | 4,50 | Sí |
+| Font Awesome 6.4.0 y Google Fonts (Inter, Fira Code) | Frontend | páginas del frontend | 8.9 | 4,70 | Sí |
+| Nginx 1.28.0 | Frontend | contenedor local del frontend | 8.10 | 4,70 | Sí |
+| Supabase Auth (cliente supabase-js 2.117.1) | Datos, autenticación y persistencia | registro, inicio de sesión y JWT | 8.11 | 4,50 | Sí |
+| PostgREST (incluido en Supabase; imagen v13.0.7 en pruebas de contrato) | Datos, autenticación y persistencia | adaptador Supabase de Data Processing | 8.12 | 4,50 | Sí |
+| SQLite | Datos, autenticación y persistencia | perfil local y repositorio de decisiones HU-07 | 8.13 | 4,30 | Sí |
+| scikit-learn 1.9.1 (Random Forest); XGBoost 2.1.4 como alternativa entrenada | Aprendizaje automático | `software/prediction` | 8.14 | 4,50 | Sí |
+| MLflow | Aprendizaje automático | trazabilidad del entrenamiento | 8.15 | 4,60 | Sí |
+| Jupyter + statsmodels | Aprendizaje automático | cuaderno de análisis exploratorio | 8.16 | 4,50 | Sí |
+| Matplotlib + seaborn | Aprendizaje automático | gráficas de evaluación | 8.17 | 4,40 | Sí |
+| joblib | Aprendizaje automático | artefacto del modelo | 8.18 | 4,30 | Sí |
+| YAML (PyYAML 6.0.3) | Aprendizaje automático | `software/prediction/config` | 8.19 | 4,70 | Sí |
+| Docker + Docker Compose | Contenedores, nube, repositorio y automatización | imágenes y stack local | 8.20 | 4,70 | Sí |
+| Render (plan gratuito) | Contenedores, nube, repositorio y automatización | `render.yaml` | 8.21 | 4,40 | Sí |
+| GitHub Pages | Contenedores, nube, repositorio y automatización | `.github/workflows/pages.yml` | 8.22 | 4,20 | No |
+| Git + GitHub | Contenedores, nube, repositorio y automatización | monorepo, ramas `main` y `test` | 8.23 | 4,90 | Sí |
+| GitHub Actions | Contenedores, nube, repositorio y automatización | `.github/workflows/ci.yml` | 8.24 | 4,80 | Sí |
+| Maven | Contenedores, nube, repositorio y automatización | `pom.xml` de Monitoring y Gateway | 8.25 | 4,60 | Sí |
+| pip con versiones declaradas (Data Processing y Prediction) y uv + Hatchling (Simulator) | Contenedores, nube, repositorio y automatización | `requirements*.txt`, `uv.lock` | 8.26 | 4,05 | No |
+| PowerShell y scripts Python | Contenedores, nube, repositorio y automatización | `herramientas_IA`, scripts de verificación | 8.27 | 4,60 | Sí |
+| Grafana 12.4.0 | Observabilidad y contratos | entorno local de observabilidad | 8.28 | 4,80 | Sí |
+| Micrometer/Actuator (Java) y prometheus-client (Python) | Observabilidad y contratos | exposición de métricas | 8.29 | 4,50 | Sí |
+| OpenAPI 3.1 + Swagger UI | Observabilidad y contratos | documentación de las API | 8.30 | 4,80 | Sí |
+| pytest + pytest-cov (unittest en el Simulator) | Pruebas y calidad | pruebas de servicios Python | 8.31 | 4,80 | Sí |
+| JUnit 5 + Spring Boot Test (con json-schema-validator en Monitoring) | Pruebas y calidad | Monitoring y Gateway Java | 8.32 | 4,80 | Sí |
+| Paquete `testing` con `go vet` y detector de carreras | Pruebas y calidad | `software/gateway-go` | 8.33 | 4,60 | Sí |
+| `node --test` (Node.js 22) | Pruebas y calidad | `software/frontend/tests` | 8.34 | 4,30 | No |
+| promtool | Pruebas y calidad | reglas de Prometheus | 8.35 | 4,50 | Sí |
+| Contenedores PostgreSQL 17.6 + PostgREST | Pruebas y calidad | `compose.contract-postgres.yml` | 8.36 | 4,60 | Sí |
+| Script propio en Python (`carga_transacciones.py`) | Pruebas y calidad | carga de 601 transacciones contra Render | 8.37 | 3,65 | No |
+| Trello | Gestión, diseño, documentación y difusión | tablero Kanban del proyecto | 8.38 | 4,20 | No |
+| PlantUML | Gestión, diseño, documentación y difusión | diagramas de componentes, despliegue y EDT | 8.39 | 4,60 | Sí |
+| Pandoc + python-docx + Microsoft Word (pypdfium2 para revisión) | Gestión, diseño, documentación y difusión | `herramientas_IA/exportacion` | 8.40 | 4,50 | Sí |
+| Scripts con Pillow | Gestión, diseño, documentación y difusión | `gantt_render.py`, `terminal_a_png.py` | 8.41 | 4,10 | No |
+| openpyxl | Gestión, diseño, documentación y difusión | matriz FURPS+ en Excel | 8.42 | 4,50 | Sí |
+| Playwright + Microsoft Edge + ffmpeg | Gestión, diseño, documentación y difusión | `herramientas_IA/video` | 8.43 | 4,20 | Sí |
+| Claude Code | Asistentes de inteligencia artificial y apoyo a agentes | coordinación, refactorización, redacción y revisión | 8.44 | 4,50 | Sí |
+| Antigravity CLI 1.5.2 (`agy`) | Asistentes de inteligencia artificial y apoyo a agentes | encargos delegados y revisiones | 8.45 | 4,30 | Sí |
+| Graphify 0.9.96 | Asistentes de inteligencia artificial y apoyo a agentes | consulta del grafo del código | 8.46 | 4,45 | Sí |
+| Skill Ponytail (copia local) | Asistentes de inteligencia artificial y apoyo a agentes | `.agents/skills` | 8.47 | 4,40 | Sí |
+
+#### Lenguajes, frameworks y bibliotecas de servidor
+
+Tabla 8.1. Evaluación ponderada del lenguaje y framework del Monitoring Service
+
+| Criterio de evaluación | Peso | Java 21 + Spring Boot | Python + FastAPI | Go (net/http) |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 5 | 4 | 3 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 5 | 4 | 5 |
+| Escalabilidad | 10 % | 5 | 3 | 4 |
+| Usabilidad | 10 % | 3 | 5 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,80** | **4,10** | **4,00** |
+
+**Justificación.** Se mantiene Spring Boot por su tipado, validación, Actuator y soporte de pruebas integrado. Sus debilidades son el consumo en reposo (~239 MiB, `docker stats`, 15/11/2026) y una puesta en marcha más compleja que las alternativas. Java 21 + Spring Boot obtiene 4,80, frente a 4,10 de Python + FastAPI, la siguiente alternativa. Al menos una alternativa la supera en: usabilidad.
+
+Tabla 8.2. Evaluación ponderada del framework de API para los servicios Python
+
+| Criterio de evaluación | Peso | FastAPI + Uvicorn | Flask + Gunicorn | Django REST Framework |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 5 | 3 | 4 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 5 |
+| Escalabilidad | 10 % | 4 | 3 | 4 |
+| Usabilidad | 10 % | 5 | 4 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,80** | **3,80** | **3,85** |
+
+**Justificación.** FastAPI genera el contrato OpenAPI a partir de los tipos y valida las entradas con Pydantic. Django REST incluye más controles de seguridad y administración, a cambio de una estructura mayor que la requerida. FastAPI + Uvicorn obtiene 4,80, frente a 3,85 de Django REST Framework, la siguiente alternativa. Al menos una alternativa la supera en: seguridad.
+
+Tabla 8.3. Evaluación ponderada del cliente HTTP
+
+| Criterio de evaluación | Peso | httpx | requests | aiohttp |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 5 | 3 | 4 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 4 | 4 | 5 |
+| Usabilidad | 10 % | 4 | 5 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,70** | **4,00** | **4,10** |
+
+**Justificación.** httpx ofrece modo síncrono y asíncrono y se usa también en las pruebas. requests es más sencillo y aiohttp puede rendir mejor con alta concurrencia asíncrona, escenario que no se midió. httpx obtiene 4,70, frente a 4,10 de aiohttp, la siguiente alternativa. Al menos una alternativa la supera en: escalabilidad, usabilidad.
+
+Tabla 8.4. Evaluación ponderada de la solución de simulación de telemetría
+
+| Criterio de evaluación | Peso | Simulator propio | CloudSim Plus | stress-ng sobre equipos reales |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 3 | 2 |
+| Funcionalidad | 20 % | 4 | 4 | 3 |
+| Integración | 15 % | 5 | 2 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 2 |
+| Escalabilidad | 10 % | 3 | 5 | 2 |
+| Usabilidad | 10 % | 4 | 3 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,40** | **3,55** | **2,75** |
+
+**Justificación.** El simulador propio controla semilla, inventario y escenarios y publica métricas en el formato que consume Prometheus. CloudSim Plus está orientado a modelar centros de datos a mayor escala; los datos del simulador propio son sintéticos y no validan comportamiento físico. Simulator propio obtiene 4,40, frente a 3,55 de CloudSim Plus, la siguiente alternativa. Al menos una alternativa la supera en: escalabilidad.
+
+Tabla 8.5. Evaluación ponderada de las bibliotecas de procesamiento de datos
+
+| Criterio de evaluación | Peso | pandas + NumPy | Polars | Biblioteca estándar de Python |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 2 |
+| Funcionalidad | 20 % | 5 | 4 | 2 |
+| Integración | 15 % | 5 | 3 | 2 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 5 | 2 |
+| Usabilidad | 10 % | 4 | 4 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,60** | **4,05** | **2,60** |
+
+**Justificación.** pandas y NumPy se integran directamente con scikit-learn y las ventanas temporales. pandas conserva las estructuras completas en memoria. pandas + NumPy obtiene 4,60, frente a 4,05 de Polars, la siguiente alternativa. Al menos una alternativa la supera en: escalabilidad.
+
+Tabla 8.6. Evaluación ponderada de la generación de reportes PDF
+
+| Criterio de evaluación | Peso | fpdf2 | ReportLab | WeasyPrint |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 4 | 5 | 4 |
+| Integración | 15 % | 5 | 3 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 3 | 4 | 4 |
+| Usabilidad | 10 % | 4 | 3 | 2 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,40** | **4,05** | **3,55** |
+
+**Justificación.** El reporte es tabular y breve, por lo que bastó una biblioteca ligera. ReportLab tiene más capacidades de composición. fpdf2 obtiene 4,40, frente a 4,05 de ReportLab, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, escalabilidad.
+
+
+#### Frontend
+
+Tabla 8.7. Evaluación ponderada de la tecnología base del frontend
+
+| Criterio de evaluación | Peso | HTML/CSS/JS nativo | React + Vite | Vue + Vite |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 3 | 5 | 5 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 5 | 5 |
+| Usabilidad | 10 % | 5 | 3 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,30** | **4,30** | **4,40** |
+
+**Justificación.** La opción nativa se eligió porque no requiere compilación ni dependencias de construcción y se publica directamente como sitio estático. La diferencia con Vue es pequeña; si la interfaz crece, conviene reevaluar. **No es la opción mejor puntuada:** HTML/CSS/JS nativo obtiene 4,30 y Vue + Vite 4,40. Al menos una alternativa la supera en: funcionalidad, escalabilidad.
+
+Tabla 8.8. Evaluación ponderada de la biblioteca de gráficos
+
+| Criterio de evaluación | Peso | Chart.js | Apache ECharts | D3.js |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 4 | 5 | 5 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 5 | 4 |
+| Usabilidad | 10 % | 5 | 4 | 2 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,50** | **4,40** | **3,70** |
+
+**Justificación.** Chart.js cubre las series temporales requeridas con poca configuración. ECharts y D3 ofrecen mayor funcionalidad y mejor manejo de volúmenes grandes. Chart.js obtiene 4,50, frente a 4,40 de Apache ECharts, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, escalabilidad.
+
+Tabla 8.9. Evaluación ponderada de los iconos y tipografías
+
+| Criterio de evaluación | Peso | Font Awesome + Google Fonts | Bootstrap Icons + fuentes del sistema | Material Symbols + fuentes locales |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 5 | 3 | 4 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 3 | 5 | 5 |
+| Escalabilidad | 10 % | 4 | 4 | 4 |
+| Usabilidad | 10 % | 5 | 4 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,70** | **4,00** | **4,10** |
+
+**Justificación.** La combinación usada es completa y fácil de incorporar. Depende de CDN de terceros, por lo que puntúa menos en seguridad y privacidad que las fuentes del sistema o alojadas localmente. Font Awesome + Google Fonts obtiene 4,70, frente a 4,10 de Material Symbols + fuentes locales, la siguiente alternativa. Al menos una alternativa la supera en: seguridad.
+
+Tabla 8.10. Evaluación ponderada del servidor de archivos estáticos
+
+| Criterio de evaluación | Peso | Nginx | Caddy | Apache HTTP Server |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 5 | 4 | 4 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 5 | 4 |
+| Escalabilidad | 10 % | 5 | 4 | 3 |
+| Usabilidad | 10 % | 3 | 5 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,70** | **4,30** | **3,90** |
+
+**Justificación.** Nginx es suficiente y conocido para servir archivos estáticos en Docker. Caddy simplifica la configuración y HTTPS, ventaja que no se aprovecha en el entorno local. Nginx obtiene 4,70, frente a 4,30 de Caddy, la siguiente alternativa. Al menos una alternativa la supera en: seguridad, usabilidad.
+
+
+#### Datos, autenticación y persistencia
+
+Tabla 8.11. Evaluación ponderada del servicio de autenticación
+
+| Criterio de evaluación | Peso | Supabase Auth | Firebase Authentication | Keycloak autoalojado |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 4 | 4 | 5 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 5 |
+| Escalabilidad | 10 % | 4 | 5 | 5 |
+| Usabilidad | 10 % | 4 | 4 | 2 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,50** | **4,20** | **3,90** |
+
+**Justificación.** Supabase Auth comparte proyecto con la base de datos y emite JWT que valida el Gateway. Keycloak ofrece más control, con un costo operativo mayor. Supabase Auth obtiene 4,50, frente a 4,20 de Firebase Authentication, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, seguridad, escalabilidad.
+
+Tabla 8.12. Evaluación ponderada de la interfaz de acceso a datos en la nube
+
+| Criterio de evaluación | Peso | PostgREST | Hasura | API propia con SQLAlchemy |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 3 | 4 |
+| Funcionalidad | 20 % | 4 | 5 | 4 |
+| Integración | 15 % | 5 | 3 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 3 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 4 | 4 | 4 |
+| Usabilidad | 10 % | 4 | 3 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,50** | **3,80** | **3,80** |
+
+**Justificación.** PostgREST expone el esquema sin escribir una capa adicional. La seguridad depende de que las políticas RLS sean correctas; su verificación en Supabase sigue pendiente (hallazgo H-02). PostgREST obtiene 4,50, frente a 3,80 de Hasura, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad.
+
+Tabla 8.13. Evaluación ponderada de la base de datos local de desarrollo y pruebas
+
+| Criterio de evaluación | Peso | SQLite | PostgreSQL en contenedor | DuckDB |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 4 | 5 | 4 |
+| Integración | 15 % | 5 | 3 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 3 | 5 | 3 |
+| Escalabilidad | 10 % | 2 | 5 | 2 |
+| Usabilidad | 10 % | 5 | 3 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,30** | **4,25** | **3,45** |
+
+**Justificación.** SQLite permite trabajar sin red ni servidor. PostgreSQL en contenedor es más fiel a producción; SQLite carece de RLS y de PL/pgSQL. SQLite obtiene 4,30, frente a 4,25 de PostgreSQL en contenedor, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, seguridad, escalabilidad.
+
+
+#### Aprendizaje automático
+
+Tabla 8.14. Evaluación ponderada de la biblioteca de modelado
+
+| Criterio de evaluación | Peso | scikit-learn | XGBoost | TensorFlow/Keras |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 2 |
+| Funcionalidad | 20 % | 4 | 5 | 5 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 5 | 5 |
+| Usabilidad | 10 % | 5 | 3 | 2 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,50** | **4,30** | **3,55** |
+
+**Justificación.** scikit-learn aporta el modelo seleccionado y una interfaz uniforme. XGBoost se entrenó y comparó (Tabla 26): obtuvo menor latencia (5,29 frente a 9,46 ms) pero mayor MAE de validación (3,46 frente a 3,22 pp). TensorFlow no se evaluó experimentalmente. scikit-learn obtiene 4,50, frente a 4,30 de XGBoost, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, escalabilidad.
+
+Tabla 8.15. Evaluación ponderada del registro de experimentos
+
+| Criterio de evaluación | Peso | MLflow | Weights & Biases | DVC |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 5 | 5 | 4 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 3 | 5 |
+| Seguridad | 10 % | 3 | 4 | 4 |
+| Escalabilidad | 10 % | 4 | 5 | 4 |
+| Usabilidad | 10 % | 4 | 5 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,60** | **4,30** | **3,75** |
+
+**Justificación.** MLflow funciona en local y sin cuenta. Weights & Biases se valora mejor en escala y facilidad de uso; el MLflow local no tiene control de acceso configurado como parte del proyecto. MLflow obtiene 4,60, frente a 4,30 de Weights & Biases, la siguiente alternativa. Al menos una alternativa la supera en: seguridad, escalabilidad, usabilidad.
+
+Tabla 8.16. Evaluación ponderada del entorno de análisis exploratorio
+
+| Criterio de evaluación | Peso | Jupyter + statsmodels | Google Colab + statsmodels | Scripts de Python |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 5 | 4 | 3 |
+| Integración | 15 % | 5 | 3 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 3 | 3 | 4 |
+| Escalabilidad | 10 % | 3 | 4 | 2 |
+| Usabilidad | 10 % | 4 | 5 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,50** | **3,95** | **3,45** |
+
+**Justificación.** El cuaderno local permite inspeccionar autocorrelación y gráficos junto al texto. Los cuadernos dificultan la revisión de cambios y la reproducibilidad frente a un script. Jupyter + statsmodels obtiene 4,50, frente a 3,95 de Google Colab + statsmodels, la siguiente alternativa. Al menos una alternativa la supera en: seguridad, escalabilidad, usabilidad.
+
+Tabla 8.17. Evaluación ponderada de las bibliotecas de visualización de resultados
+
+| Criterio de evaluación | Peso | Matplotlib + seaborn | Plotly | Altair |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 4 | 5 | 4 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 4 | 3 |
+| Usabilidad | 10 % | 4 | 4 | 5 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,40** | **4,30** | **3,85** |
+
+**Justificación.** Producen figuras estáticas adecuadas para el informe. Plotly ofrece interactividad. Matplotlib + seaborn obtiene 4,40, frente a 4,30 de Plotly, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, escalabilidad, usabilidad.
+
+Tabla 8.18. Evaluación ponderada del formato de serialización del modelo
+
+| Criterio de evaluación | Peso | joblib | pickle | ONNX |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 4 | 3 | 4 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 2 | 2 | 4 |
+| Escalabilidad | 10 % | 3 | 2 | 4 |
+| Usabilidad | 10 % | 5 | 5 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,30** | **3,60** | **3,60** |
+
+**Justificación.** joblib es la vía directa para modelos de scikit-learn. No es seguro cargar artefactos de origen no confiable. joblib obtiene 4,30, frente a 3,60 de pickle, la siguiente alternativa. Al menos una alternativa la supera en: seguridad, escalabilidad.
+
+Tabla 8.19. Evaluación ponderada del formato de configuración del pipeline
+
+| Criterio de evaluación | Peso | YAML (PyYAML) | JSON | TOML |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 3 | 4 |
+| Funcionalidad | 20 % | 5 | 3 | 4 |
+| Integración | 15 % | 5 | 5 | 5 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 3 | 3 |
+| Usabilidad | 10 % | 5 | 4 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,70** | **3,70** | **4,15** |
+
+**Justificación.** YAML admite comentarios y estructuras anidadas legibles. Debe cargarse con funciones seguras. YAML (PyYAML) obtiene 4,70, frente a 4,15 de TOML, la siguiente alternativa.
+
+
+#### Contenedores, nube, repositorio y automatización
+
+Tabla 8.20. Evaluación ponderada de la solución de contenedores
+
+| Criterio de evaluación | Peso | Docker + Compose | Podman + Compose | Entornos nativos sin contenedores |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 2 |
+| Funcionalidad | 20 % | 5 | 4 | 2 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 5 | 2 |
+| Escalabilidad | 10 % | 3 | 3 | 2 |
+| Usabilidad | 10 % | 5 | 3 | 2 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,70** | **4,00** | **2,45** |
+
+**Justificación.** Docker aporta reproducibilidad local y Render construye los servicios desde Dockerfile. Podman se valora mejor en seguridad por operar sin demonio; Compose no orquesta varios equipos. Docker + Compose obtiene 4,70, frente a 4,00 de Podman + Compose, la siguiente alternativa. Al menos una alternativa la supera en: seguridad.
+
+Tabla 8.21. Evaluación ponderada de la plataforma de despliegue de servicios
+
+| Criterio de evaluación | Peso | Render | Railway | Fly.io |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 4 | 4 | 5 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 3 | 3 |
+| Seguridad | 10 % | 3 | 3 | 4 |
+| Escalabilidad | 10 % | 3 | 4 | 5 |
+| Usabilidad | 10 % | 5 | 4 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,40** | **3,80** | **4,10** |
+
+**Justificación.** Render despliega desde el repositorio con un Blueprint y sin desembolso. El plan usado suspende servicios por inactividad (arranque en frío medido de 12,6 a 69,5 s). Las condiciones comerciales de las alternativas no se verificaron para esta tabla. Render obtiene 4,40, frente a 4,10 de Fly.io, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, seguridad, escalabilidad.
+
+Tabla 8.22. Evaluación ponderada del alojamiento del frontend
+
+| Criterio de evaluación | Peso | GitHub Pages | Netlify | Vercel |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 3 | 5 | 5 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 4 | 4 |
+| Seguridad | 10 % | 3 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 5 | 4 |
+| Usabilidad | 10 % | 5 | 4 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,20** | **4,30** | **4,10** |
+
+**Justificación.** GitHub Pages se integra con el repositorio y basta para un sitio estático. Las alternativas aportan vistas previas y mayor control de cabeceras. **No es la opción mejor puntuada:** GitHub Pages obtiene 4,20 y Netlify 4,30. Al menos una alternativa la supera en: funcionalidad, seguridad, escalabilidad.
+
+Tabla 8.23. Evaluación ponderada del control de versiones y repositorio
+
+| Criterio de evaluación | Peso | Git + GitHub | Git + GitLab | Git + Bitbucket |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 5 | 5 | 4 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 4 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 5 | 5 | 4 |
+| Usabilidad | 10 % | 5 | 4 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,90** | **4,40** | **3,75** |
+
+**Justificación.** GitHub concentra repositorio, revisiones, Actions y Pages. Git + GitHub obtiene 4,90, frente a 4,40 de Git + GitLab, la siguiente alternativa.
+
+Tabla 8.24. Evaluación ponderada de la integración continua
+
+| Criterio de evaluación | Peso | GitHub Actions | GitLab CI/CD | Jenkins |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 5 | 5 | 5 |
+| Integración | 15 % | 5 | 3 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 4 | 5 | 5 |
+| Usabilidad | 10 % | 5 | 4 | 2 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,80** | **4,25** | **3,70** |
+
+**Justificación.** Actions no requiere servidor propio. Jenkins ofrece mayor control a cambio de administración. GitHub Actions obtiene 4,80, frente a 4,25 de GitLab CI/CD, la siguiente alternativa. Al menos una alternativa la supera en: escalabilidad.
+
+Tabla 8.25. Evaluación ponderada de la construcción de los servicios Java
+
+| Criterio de evaluación | Peso | Maven | Gradle | Ant + Ivy |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 2 |
+| Funcionalidad | 20 % | 4 | 5 | 3 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 4 | 5 | 2 |
+| Usabilidad | 10 % | 5 | 3 | 2 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,60** | **4,30** | **2,75** |
+
+**Justificación.** Maven es la herramienta ya configurada en los proyectos Spring, con su ejecutor `mvnw` en el repositorio. Maven obtiene 4,60, frente a 4,30 de Gradle, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, escalabilidad.
+
+Tabla 8.26. Evaluación ponderada de la gestión de dependencias Python
+
+| Criterio de evaluación | Peso | pip + requirements | uv + Hatchling | Poetry |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 4 | 5 | 4 |
+| Funcionalidad | 20 % | 3 | 5 | 4 |
+| Integración | 15 % | 5 | 5 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 5 | 4 |
+| Usabilidad | 10 % | 5 | 4 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,05** | **4,80** | **4,00** |
+
+**Justificación.** pip se conserva en Data Processing y Prediction por simplicidad; uv ya se usa en el Simulator por su archivo de bloqueo. Unificar la gestión en uv queda como mejora. **No es la opción mejor puntuada:** pip + requirements obtiene 4,05 y uv + Hatchling 4,80. Al menos una alternativa la supera en: adecuación técnica, funcionalidad, escalabilidad.
+
+Tabla 8.27. Evaluación ponderada del lenguaje de automatización operativa
+
+| Criterio de evaluación | Peso | PowerShell + Python | Bash + Python | Make + Python |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 5 | 4 | 3 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 3 | 3 | 2 |
+| Usabilidad | 10 % | 4 | 4 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,60** | **4,00** | **3,20** |
+
+**Justificación.** El equipo trabaja en Windows. La portabilidad a otros sistemas es menor que con herramientas POSIX. PowerShell + Python obtiene 4,60, frente a 4,00 de Bash + Python, la siguiente alternativa.
+
+
+#### Observabilidad y contratos
+
+Tabla 8.28. Evaluación ponderada de la herramienta de tableros
+
+| Criterio de evaluación | Peso | Grafana | Kibana | Interfaz web de Prometheus |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 2 | 3 |
+| Funcionalidad | 20 % | 5 | 4 | 2 |
+| Integración | 15 % | 5 | 3 | 5 |
+| Costo monetario | 10 % | 5 | 4 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 5 | 5 | 3 |
+| Usabilidad | 10 % | 4 | 2 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,80** | **3,25** | **3,40** |
+
+**Justificación.** Grafana consume Prometheus y admite tableros versionados. En el proyecto se ejecuta en local; no figura en el despliegue de Render. Grafana obtiene 4,80, frente a 3,40 de Interfaz web de Prometheus, la siguiente alternativa.
+
+Tabla 8.29. Evaluación ponderada de la instrumentación de métricas
+
+| Criterio de evaluación | Peso | Micrometer + prometheus-client | OpenTelemetry | StatsD |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 2 |
+| Funcionalidad | 20 % | 4 | 5 | 3 |
+| Integración | 15 % | 5 | 4 | 5 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 2 |
+| Escalabilidad | 10 % | 3 | 5 | 2 |
+| Usabilidad | 10 % | 5 | 2 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,50** | **4,20** | **3,05** |
+
+**Justificación.** Son las bibliotecas más directas para Prometheus. OpenTelemetry cubre además trazas y registros, que el proyecto no implementa. Micrometer + prometheus-client obtiene 4,50, frente a 4,20 de OpenTelemetry, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, escalabilidad.
+
+Tabla 8.30. Evaluación ponderada de la especificación de contratos
+
+| Criterio de evaluación | Peso | OpenAPI + Swagger UI | Colecciones de Postman | Esquema GraphQL |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 3 | 2 |
+| Funcionalidad | 20 % | 5 | 4 | 4 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 3 | 5 |
+| Seguridad | 10 % | 4 | 3 | 4 |
+| Escalabilidad | 10 % | 4 | 3 | 4 |
+| Usabilidad | 10 % | 5 | 5 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,80** | **3,55** | **3,35** |
+
+**Justificación.** OpenAPI se corresponde con las API REST. La exposición de Swagger UI debe restringirse en producción. OpenAPI + Swagger UI obtiene 4,80, frente a 3,55 de Colecciones de Postman, la siguiente alternativa.
+
+
+#### Pruebas y calidad
+
+Tabla 8.31. Evaluación ponderada del marco de pruebas Python
+
+| Criterio de evaluación | Peso | pytest + pytest-cov | unittest | nose2 |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 5 | 3 | 3 |
+| Integración | 15 % | 5 | 5 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 4 | 3 | 3 |
+| Usabilidad | 10 % | 5 | 5 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,80** | **4,05** | **3,35** |
+
+**Justificación.** pytest ofrece accesorios y parametrización. El Simulator usa unittest, sin dependencias añadidas. pytest + pytest-cov obtiene 4,80, frente a 4,05 de unittest, la siguiente alternativa.
+
+Tabla 8.32. Evaluación ponderada de las pruebas Java
+
+| Criterio de evaluación | Peso | JUnit 5 + Spring Test | TestNG | Spock |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 5 | 4 | 4 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 4 | 4 | 4 |
+| Usabilidad | 10 % | 5 | 3 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,80** | **4,00** | **3,60** |
+
+**Justificación.** Es el soporte incluido en los iniciadores de pruebas de Spring. JUnit 5 + Spring Test obtiene 4,80, frente a 4,00 de TestNG, la siguiente alternativa.
+
+Tabla 8.33. Evaluación ponderada de las pruebas Go
+
+| Criterio de evaluación | Peso | testing estándar | testing + Testify | Ginkgo + Gomega |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 4 | 5 | 5 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 5 | 4 | 3 |
+| Escalabilidad | 10 % | 4 | 4 | 4 |
+| Usabilidad | 10 % | 4 | 5 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,60** | **4,40** | **3,70** |
+
+**Justificación.** La biblioteca estándar evita dependencias en la pasarela. Testify aporta aserciones más legibles. testing estándar obtiene 4,60, frente a 4,40 de testing + Testify, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, usabilidad.
+
+Tabla 8.34. Evaluación ponderada de las pruebas del frontend
+
+| Criterio de evaluación | Peso | node --test | Vitest | Jest |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 3 | 5 | 5 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 5 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 4 | 4 |
+| Usabilidad | 10 % | 4 | 5 | 5 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,30** | **4,40** | **4,40** |
+
+**Justificación.** Se eligió `node --test` porque no agrega dependencias; la diferencia total es pequeña. No sustituye las pruebas de interfaz en navegador. **No es la opción mejor puntuada:** node --test obtiene 4,30 y Vitest 4,40. Al menos una alternativa la supera en: funcionalidad, escalabilidad, usabilidad.
+
+Tabla 8.35. Evaluación ponderada de la validación de reglas de alerta
+
+| Criterio de evaluación | Peso | promtool | pint | Revisión manual |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 2 |
+| Funcionalidad | 20 % | 4 | 5 | 1 |
+| Integración | 15 % | 5 | 3 | 2 |
+| Costo monetario | 10 % | 5 | 3 | 5 |
+| Seguridad | 10 % | 4 | 4 | 2 |
+| Escalabilidad | 10 % | 3 | 4 | 1 |
+| Usabilidad | 10 % | 5 | 3 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,50** | **3,85** | **2,20** |
+
+**Justificación.** promtool acompaña a Prometheus y valida las reglas; pint agrega comprobaciones de calidad. promtool obtiene 4,50, frente a 3,85 de pint, la siguiente alternativa. Al menos una alternativa la supera en: funcionalidad, escalabilidad.
+
+Tabla 8.36. Evaluación ponderada de las pruebas de contrato con base de datos
+
+| Criterio de evaluación | Peso | PostgreSQL + PostgREST en Compose | Testcontainers | Dobles simulados (mocks) |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 2 |
+| Funcionalidad | 20 % | 5 | 4 | 2 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 4 | 4 | 2 |
+| Usabilidad | 10 % | 3 | 4 | 5 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,60** | **4,10** | **2,85** |
+
+**Justificación.** Reproduce la interfaz usada por el adaptador sin tocar la nube. Requiere Docker y no replica Supabase Auth. PostgreSQL + PostgREST en Compose obtiene 4,60, frente a 4,10 de Testcontainers, la siguiente alternativa. Al menos una alternativa la supera en: usabilidad.
+
+Tabla 8.37. Evaluación ponderada de las pruebas de carga
+
+| Criterio de evaluación | Peso | Script propio | k6 | Apache JMeter |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 4 | 5 | 4 |
+| Funcionalidad | 20 % | 2 | 5 | 5 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 2 | 5 | 5 |
+| Usabilidad | 10 % | 4 | 4 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **3,65** | **4,65** | **4,15** |
+
+**Justificación.** Se usó porque reproduce el flujo autenticado de la aplicación con poco código; no constituye una prueba de estrés. Se recomienda k6 como trabajo futuro. **No es la opción mejor puntuada:** Script propio obtiene 3,65 y k6 4,65. Al menos una alternativa la supera en: adecuación técnica, funcionalidad, escalabilidad.
+
+
+#### Gestión, diseño, documentación y difusión
+
+Tabla 8.38. Evaluación ponderada de la herramienta de gestión del tablero
+
+| Criterio de evaluación | Peso | Trello | GitHub Projects | Jira |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 3 | 4 | 5 |
+| Integración | 15 % | 5 | 5 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 4 |
+| Seguridad | 10 % | 3 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 4 | 5 |
+| Usabilidad | 10 % | 5 | 4 | 2 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,20** | **4,25** | **3,95** |
+
+**Justificación.** Trello se mantiene por su sencillez y porque el historial del proyecto y sus evidencias ya están en ese tablero. **No es la opción mejor puntuada:** Trello obtiene 4,20 y GitHub Projects 4,25. Al menos una alternativa la supera en: funcionalidad, seguridad, escalabilidad.
+
+Tabla 8.39. Evaluación ponderada de la herramienta de modelado
+
+| Criterio de evaluación | Peso | PlantUML | Mermaid | draw.io |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 5 | 4 | 4 |
+| Integración | 15 % | 5 | 5 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 4 | 4 | 3 |
+| Usabilidad | 10 % | 3 | 4 | 5 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,60** | **4,25** | **4,00** |
+
+**Justificación.** El texto de PlantUML se versiona junto al código. draw.io es más fácil para la edición visual. PlantUML obtiene 4,60, frente a 4,25 de Mermaid, la siguiente alternativa. Al menos una alternativa la supera en: usabilidad.
+
+Tabla 8.40. Evaluación ponderada de la producción de documentos
+
+| Criterio de evaluación | Peso | Pandoc + python-docx + Word | LaTeX (Overleaf) | Google Docs |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 5 | 4 | 3 |
+| Integración | 15 % | 5 | 3 | 4 |
+| Costo monetario | 10 % | 5 | 4 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 3 | 4 | 4 |
+| Usabilidad | 10 % | 3 | 2 | 5 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,50** | **3,65** | **3,65** |
+
+**Justificación.** El flujo genera el documento desde Markdown versionado. Word requiere licencia (el proyecto no registró desembolso por ella) y el flujo es menos amigable que un editor colaborativo. Pandoc + python-docx + Word obtiene 4,50, frente a 3,65 de LaTeX (Overleaf), la siguiente alternativa. Al menos una alternativa la supera en: escalabilidad, usabilidad.
+
+Tabla 8.41. Evaluación ponderada de la generación del diagrama de Gantt y de imágenes de evidencia
+
+| Criterio de evaluación | Peso | Scripts con Pillow | GanttProject | Microsoft Project |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 3 |
+| Funcionalidad | 20 % | 3 | 4 | 5 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 2 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 3 | 4 | 4 |
+| Usabilidad | 10 % | 3 | 5 | 2 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,10** | **4,20** | **3,40** |
+
+**Justificación.** Los scripts permiten regenerar las figuras desde el repositorio, aunque exigen programar cada cambio visual. **No es la opción mejor puntuada:** Scripts con Pillow obtiene 4,10 y GanttProject 4,20. Al menos una alternativa la supera en: funcionalidad, escalabilidad, usabilidad.
+
+Tabla 8.42. Evaluación ponderada del llenado de la matriz de calidad
+
+| Criterio de evaluación | Peso | openpyxl | Edición manual en Excel | XlsxWriter |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 3 | 2 |
+| Funcionalidad | 20 % | 5 | 3 | 3 |
+| Integración | 15 % | 5 | 3 | 4 |
+| Costo monetario | 10 % | 5 | 3 | 5 |
+| Seguridad | 10 % | 3 | 3 | 4 |
+| Escalabilidad | 10 % | 3 | 4 | 3 |
+| Usabilidad | 10 % | 4 | 5 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,50** | **3,30** | **3,30** |
+
+**Justificación.** openpyxl permite modificar la plantilla existente del docente; XlsxWriter está orientado a crear libros nuevos. openpyxl obtiene 4,50, frente a 3,30 de Edición manual en Excel, la siguiente alternativa. Al menos una alternativa la supera en: seguridad, escalabilidad, usabilidad.
+
+Tabla 8.43. Evaluación ponderada de la grabación y edición del video
+
+| Criterio de evaluación | Peso | Playwright + ffmpeg | OBS Studio | Barra de juegos de Windows |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 2 |
+| Funcionalidad | 20 % | 4 | 4 | 2 |
+| Integración | 15 % | 5 | 4 | 5 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 3 | 3 | 3 |
+| Escalabilidad | 10 % | 3 | 4 | 2 |
+| Usabilidad | 10 % | 3 | 5 | 5 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,20** | **4,10** | **3,15** |
+
+**Justificación.** La automatización hace repetibles los recorridos y la codificación. OBS Studio es más fácil de operar manualmente. Playwright + ffmpeg obtiene 4,20, frente a 4,10 de OBS Studio, la siguiente alternativa. Al menos una alternativa la supera en: escalabilidad, usabilidad.
+
+
+#### Asistentes de inteligencia artificial y apoyo a agentes
+
+Tabla 8.44. Evaluación ponderada del asistente de IA coordinador
+
+| Criterio de evaluación | Peso | Claude Code | GitHub Copilot | Cursor |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 4 |
+| Funcionalidad | 20 % | 5 | 4 | 4 |
+| Integración | 15 % | 5 | 4 | 4 |
+| Costo monetario | 10 % | 3 | 4 | 3 |
+| Seguridad | 10 % | 4 | 4 | 4 |
+| Escalabilidad | 10 % | 4 | 4 | 4 |
+| Usabilidad | 10 % | 4 | 5 | 4 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,50** | **4,10** | **3,90** |
+
+**Justificación.** Se valoró su trabajo sobre el repositorio y desde la terminal. Requiere suscripción (ya disponible) y verificación humana; no se hizo una comparación experimental con las alternativas. Declaración de posible sesgo: el borrador de esta matriz se redactó con la propia herramienta evaluada. Claude Code obtiene 4,50, frente a 4,10 de GitHub Copilot, la siguiente alternativa. Al menos una alternativa la supera en: costo monetario, usabilidad.
+
+Tabla 8.45. Evaluación ponderada del agente de IA delegado
+
+| Criterio de evaluación | Peso | Antigravity CLI | Codex CLI | Gemini CLI |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 2 |
+| Funcionalidad | 20 % | 4 | 4 | 3 |
+| Integración | 15 % | 5 | 4 | 3 |
+| Costo monetario | 10 % | 4 | 3 | 3 |
+| Seguridad | 10 % | 3 | 4 | 3 |
+| Escalabilidad | 10 % | 4 | 4 | 4 |
+| Usabilidad | 10 % | 4 | 4 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,30** | **3,90** | **2,85** |
+
+**Justificación.** Se usa con la cuota del plan y sin créditos de pago. Presentó respuestas vacías con estado `SUCCESS`. Gemini CLI quedó descartada porque, según la verificación del 06/11/2026 (`docs/TOOLS_EVALUATION.md`), ya no atendía la cuenta disponible. Antigravity CLI obtiene 4,30, frente a 3,90 de Codex CLI, la siguiente alternativa. Al menos una alternativa la supera en: seguridad.
+
+Tabla 8.46. Evaluación ponderada de la herramienta de indexación de código
+
+| Criterio de evaluación | Peso | Graphify | Universal Ctags | Búsqueda textual (ripgrep) |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 3 | 3 |
+| Funcionalidad | 20 % | 5 | 3 | 2 |
+| Integración | 15 % | 4 | 3 | 4 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 5 |
+| Escalabilidad | 10 % | 4 | 3 | 2 |
+| Usabilidad | 10 % | 3 | 4 | 5 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,45** | **3,40** | **3,45** |
+
+**Justificación.** Aporta relaciones entre elementos y consultas acotadas en local. El grafo es un índice y no prueba la ejecución. Graphify obtiene 4,45, frente a 3,45 de Búsqueda textual (ripgrep), la siguiente alternativa. Al menos una alternativa la supera en: seguridad, usabilidad.
+
+Tabla 8.47. Evaluación ponderada de la guía de simplicidad para agentes
+
+| Criterio de evaluación | Peso | Skill Ponytail | Reglas propias en AGENTS.md | Sin guía específica |
+|---|---|---|---|---|
+| Adecuación técnica | 25 % | 5 | 4 | 2 |
+| Funcionalidad | 20 % | 4 | 3 | 1 |
+| Integración | 15 % | 5 | 5 | 3 |
+| Costo monetario | 10 % | 5 | 5 | 5 |
+| Seguridad | 10 % | 4 | 4 | 3 |
+| Escalabilidad | 10 % | 3 | 3 | 2 |
+| Usabilidad | 10 % | 4 | 5 | 3 |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,40** | **4,05** | **2,45** |
+
+**Justificación.** Orienta a los agentes hacia cambios mínimos. Su efecto no se midió. Skill Ponytail obtiene 4,40, frente a 4,05 de Reglas propias en AGENTS.md, la siguiente alternativa. Al menos una alternativa la supera en: usabilidad.
+
 ## 2. Reconocimiento de limitaciones y evaluación de asistentes de IA
 
 En estricto cumplimiento del atributo de competencia sobre reconocimiento de limitaciones tecnológicas y conforme a la evaluación documentada en `docs/TOOLS_EVALUATION.md`, se sistematizan las restricciones críticas de las herramientas utilizadas:
 
-1. **Huella de recursos en lenguajes de servidor:** La pasarela original en Spring Cloud Gateway demanda 520 MB en imagen Docker y ~283 MiB de RAM en reposo. Para mitigar esta restricción en entornos con recursos limitados (planes gratuitos en la nube con techos de 512 MB), se desarrolló la pasarela alternativa en Go 1.25 (`software/gateway-go`), logrando una imagen de 16,2 MB y un consumo en reposo de ~10 MiB, superando 30 pruebas unitarias con cero discrepancias funcionales en 39 pruebas diferenciales.
+1. **Huella de recursos en lenguajes de servidor:** La pasarela original en Spring Cloud Gateway demanda 520 MB en imagen Docker y ~283 MiB de RAM en reposo. Para mitigar esta restricción en entornos con recursos limitados (planes gratuitos en la nube con techos de 512 MB), se desarrolló la pasarela alternativa en Go 1.25 (`software/gateway-go`), logrando una imagen de 16,2 MB y un consumo en reposo de ~10 MiB, con 32 pruebas al 15/11/2026, con cero discrepancias funcionales en 39 pruebas diferenciales.
 2. **Optimización de imágenes analíticas:** La imagen de Prediction demandaba inicialmente 2,85 GB debido a dependencias superfluas de experimentación (Jupyter, MLflow, Matplotlib). Mediante construcción multi-etapa y segmentación de dependencias de servicio, la imagen se redujo a 510 MB y 122 MiB de RAM en reposo, manteniendo el 100 % de las pruebas operativas (100 pruebas).
 
 ![Consola de Windows (15/11/2026): docker images muestra green-ai-workspace-prediction de 2,85 GB, la imagen optimizada de Prediction de 510 MB, el Gateway Spring de 520 MB y el Gateway Go de 16,2 MB](../informe-corregido/evidencias-nube/captura-M03-imagenes-docker.png)
@@ -506,7 +1335,7 @@ En estricto cumplimiento del atributo de competencia sobre reconocimiento de lim
 ## 3. Resultados cuantitativos medidos con las herramientas
 
 - **Pipeline de Machine Learning (semilla 42):** Random Forest a 15 minutos alcanzó un MAE de 3,22 pp y un RMSE de 4,59 pp en validación, y un MAE de 3,85 pp en el conjunto de prueba, superando al modelo de persistencia (MAE 4,61 pp; −30 % de error) y a la media móvil (MAE 3,74 pp; −14 % de error).
-- **Pruebas automatizadas en el monorepo:** Monitoring 112, Gateway Java 12, Gateway Go 32, Data Processing 121 (más 8 omitidas), Prediction 100, Frontend 48, Simulator 10: 435 pruebas aprobadas, ejecutadas el 15/11/2026 (Figuras VIII.3.a a VIII.3.g).
+- **Pruebas automatizadas en el monorepo:** Monitoring 112, Gateway Java 12, Gateway Go 32, Data Processing 121 (más 8 omitidas), Prediction 100, Frontend 48, Simulator 10: 435 pruebas aprobadas, ejecutadas el 15/11/2026 (Figuras VIII.3.a a VIII.3.g). El 19/11/2026, tras el Sprint 7, fueron 492 (Tabla 30.a).
 - **Verificación integral de salud (*smoke test*):** 14 de 14 pruebas superadas sobre el stack contenerizado completo ejecutado con datos simulados.
 
 ---
@@ -570,7 +1399,7 @@ Tabla 11. Historias de usuario por épica y PMV con criterios de aceptación
 | **E2: Predicción** | **HU-04:** Como analista de datos, comparar el modelo predictivo frente a baselines bajo los mismos datos. | PMV2 | **Dado** un analista de datos con los mismos datos para el modelo y los baselines; **cuando** evalúa los modelos con validación cronológica; **entonces** se verifica la reducción de MAE frente a persistencia. |
 | **E2: Predicción** | **HU-05:** Como analista de datos, versionar y registrar métricas y modelos para reproducibilidad experimental. | PMV2 | **Dado** un analista de datos que entrena y registra modelos; **cuando** finaliza el registro de la configuración y los artefactos; **entonces** se genera un manifiesto técnico con hashes SHA-256 de configuración y artefactos. |
 | **E3: Optimización** | **HU-06:** Como administrador de TI, recibir recomendaciones explicables de redistribución de recursos. | PMV2 | **Dado** un administrador de TI que solicita una recomendación de redistribución de recursos; **cuando** el motor de políticas evalúa la solicitud; **entonces** la respuesta incluye la acción sugerida y la justificación explícita de las reglas evaluadas. |
-| **E3: Optimización** | **HU-07:** Como administrador de TI, validar y aprobar recomendaciones antes de cualquier ejecución técnica. | PMV2 | **Dado** una recomendación emitida por el sistema; **cuando** el administrador de TI debe validarla antes de cualquier ejecución técnica; **entonces** el modo *Recommendation-Only* (`executionAllowed=false`) impide la ejecución autónoma. |
+| **E3: Optimización** | **HU-07:** Como administrador de TI, validar y aprobar recomendaciones antes de cualquier ejecución técnica. | PMV2 | **Dado** una recomendación emitida por el sistema; **cuando** el administrador de TI debe validarla antes de cualquier ejecución técnica; **entonces** el modo *Recommendation-Only* (`executionAllowed=false`) impide la ejecución autónoma. Aprobación persistente añadida en el Sprint 7; estado actual: parcial (§VIII.2.3). |
 | **E3: Optimización** | **HU-08:** Como administrador de TI, configurar restricciones operativas de SLA y márgenes de seguridad. | PMV2 | **Dado** un administrador de TI que configura restricciones operativas de SLA y márgenes de seguridad; **cuando** los datos están obsoletos o violan los márgenes seguros; **entonces** la política se abstiene de recomendar. |
 | **E4: Energía** | **HU-09:** Como directivo, visualizar indicadores de energía física estimada mediante integración numérica. | PMV2-PMV3 | **Dado** un directivo que consulta indicadores de energía y lecturas de potencia disponibles; **cuando** invoca el endpoint `/v1/energy`; **entonces** obtiene la energía estimada mediante cálculo trapezoidal a partir de dichas lecturas. |
 | **E4: Energía** | **HU-10:** Como directivo, conocer estimaciones de huella de carbono basadas en factores de emisión oficiales. | PMV3 (trabajo futuro) | **Dado** un directivo que solicita una estimación de huella de carbono; **cuando** no se provee un factor de emisión con fuente verificable; **entonces** el sistema rechaza la estimación. |
@@ -587,20 +1416,239 @@ El flujo implementado en la aplicación web estática (HTML5/JS servido mediante
 
 $$\text{Inicio} \longrightarrow \text{Registro} \longrightarrow \text{Confirmación} \longrightarrow \text{Inicio de Sesión} \longrightarrow \text{Dashboard Principal} \longrightarrow \text{Consulta de Métricas}$$
 
-![Pantalla de registro de usuario](../informe-corregido/evidencias/p026-img002.png)  
-*Figura 2. Pantalla de registro de usuario en el frontend web.*
+Las pantallas se presentan como **wireframes de baja fidelidad** (escala de grises, con valores ilustrativos o vacíos), elaborados a partir del HTML y JavaScript de `software/frontend` en su versión actual. Los números en círculos negros identifican los elementos que se explican debajo de cada figura. Las capturas del software en funcionamiento se presentan en el Capítulo VIII como evidencia de pruebas. Las Figuras 2 a 5 cubren el acceso; los dos últimos pasos del flujo se muestran como prototipos del PMV1 (Figuras 6 y 7).
 
-![Confirmación del registro](../informe-corregido/evidencias/p027-img003.png)  
-*Figura 3. Confirmación del registro de usuario mediante Supabase Auth.*
+El flujo comienza en la página pública `index.html`.
 
-![Inicio de sesión y validación](../informe-corregido/evidencias/p027-img004.png)  
-*Figura 4. Pantalla de inicio de sesión y autenticación con validación de credenciales.*
+![Wireframe de la página de inicio.](wireframes/wf-00-inicio.png){width=90%}
 
-![Dashboard y visualización histórica](../informe-corregido/evidencias/p028-img005.png)  
-*Figura 5. Dashboard principal con visualización histórica de telemetría de CPU y memoria.*
+*Figura 2. Wireframe de la página de inicio.*
 
-![Visualización de métricas en tiempo real](../informe-corregido/evidencias/p028-img006.png)  
-*Figura 6. Dashboard de visualización en tiempo real de nodos de cómputo.*
+**(1) Barra de navegación.** Accesos a Inicio, Dashboard, Login y Registro, y cambio de tema claro u oscuro.
+
+**(2) Iniciar sesión.** Lleva al formulario de acceso (Figura 5).
+
+**(3) Registrarse.** Lleva al formulario de creación de cuenta (Figura 3).
+
+**(4) Tarjetas de características.** Resumen informativo. Las tarjetas de predicción e infraestructura conservan en el código el rótulo «En desarrollo».
+
+**Relación con el flujo.** Es el punto de entrada: según tenga o no una cuenta, el usuario pasa al inicio de sesión o al registro.
+
+La página `register.html` crea la cuenta en Supabase Auth (HU-15).
+
+![Wireframe del formulario de registro de usuario.](wireframes/wf-01-registro.png){width=60%}
+
+*Figura 3. Wireframe del formulario de registro de usuario.*
+
+**(1) Encabezado.** Identidad del producto, cambio de tema y enlace «Volver» al inicio.
+
+**(2) Nombre completo.** Se envía como metadato `full_name`, que el disparador copia a `user_profiles`.
+
+**(3) Correo institucional.** Identificador de acceso y destino del correo de confirmación.
+
+**(4) Contraseña.** Credencial gestionada por Supabase Auth.
+
+**(5) Confirmar contraseña.** El formulario rechaza el envío si no coincide o si falta algún campo.
+
+**(6) Registrar operador.** Ejecuta el alta y se deshabilita mientras la solicitud está en curso.
+
+**(7) Mensaje de estado.** Muestra errores o pide revisar el correo para confirmar la cuenta.
+
+**(8) Enlace a inicio de sesión.** Para usuarios que ya tienen cuenta.
+
+**Relación con el flujo.** Tras un alta sin sesión inmediata, el flujo continúa en el correo de confirmación (Figura 4).
+
+La confirmación ocurre fuera de la aplicación, en el cliente de correo del usuario; el texto en inglés corresponde a la plantilla de Supabase Auth.
+
+![Wireframe del correo de confirmación de cuenta (plantilla externa de Supabase Auth).](wireframes/wf-02-correo-confirmacion.png){width=90%}
+
+*Figura 4. Wireframe del correo de confirmación de cuenta (plantilla externa de Supabase Auth).*
+
+**(1) Asunto.** Identifica el mensaje de confirmación de la dirección de correo.
+
+**(2) Remitente y destinatario.** Supabase Auth envía el mensaje al correo registrado.
+
+**(3) Enlace de confirmación.** Valida la dirección; la aplicación indica `login.html` como destino de retorno (`emailRedirectTo`).
+
+**Relación con el flujo.** Conecta el registro con el inicio de sesión.
+
+La página `login.html` autentica al usuario y obtiene el token JWT (HU-15).
+
+![Wireframe del formulario de inicio de sesión.](wireframes/wf-03-login.png){width=60%}
+
+*Figura 5. Wireframe del formulario de inicio de sesión.*
+
+**(1) Encabezado.** Identidad, cambio de tema y retorno al inicio.
+
+**(2) Correo institucional.** Cuenta registrada.
+
+**(3) Contraseña.** Credencial verificada por Supabase Auth.
+
+**(4) Entrar al sistema.** Comprueba que ambos campos estén completos y solicita la sesión.
+
+**(5) Mensaje de estado.** Muestra la bienvenida o el error de autenticación.
+
+**(6) Crear usuario.** Enlace al registro.
+
+**Relación con el flujo.** Con una sesión válida se redirige al dashboard; sin sesión, el dashboard devuelve al usuario a esta página.
+
+### Prototipos representativos por PMV
+
+Se muestran las pantallas más representativas de cada Producto Mínimo Viable. Los wireframes reflejan la interfaz **actual**: las pestañas y la barra superior se consolidaron en incrementos posteriores al PMV1, por lo que su presencia en las figuras no implica que existieran desde ese hito. En las Figuras 9, 10, 11 y 12 se omite el bloque de filtros compartidos para concentrar la vista en la función explicada.
+
+#### PMV1: observabilidad (HU-01 y HU-02)
+
+Corresponde al paso «Dashboard Principal» del flujo.
+
+![Prototipo PMV1: dashboard principal, pestaña Resumen.](wireframes/wf-04-dashboard-resumen.png){width=90%}
+
+*Figura 6. Prototipo PMV1: dashboard principal, pestaña Resumen.*
+
+**(1) Barra superior.** Navegación (Resumen, Racks, Red de flujos), usuario, rol tomado del token, tema y cierre de sesión.
+
+**(2) Filtros compartidos.** Métrica, clúster, servidor y ventana histórica (5, 15 o 60 minutos), con botón de actualización y estado de la consulta.
+
+**(3) Pestañas.** Organizan las funciones del observatorio; las de predicción, reportes y energía pertenecen a incrementos posteriores.
+
+**(4) Indicadores del conjunto.** Media, servidor más y menos cargado y cantidad por encima del 80 %, calculados en pantalla.
+
+**(5) Respuesta, procedencia y cobertura.** Servidores recibidos, origen del dato (simulado, observado o estimado) y completitud de la telemetría.
+
+**(6) Comparación.** Añade servidores al gráfico o selecciona los más y los menos cargados.
+
+**(7) Gráfico histórico.** Evolución temporal de la métrica (media y rango, o la serie del servidor elegido).
+
+**(8) Ver datos en tabla.** Alternativa textual del gráfico, incorporada en el PMV3 (Figura 12).
+
+**Relación con el flujo.** Se llega desde el inicio de sesión; desde aquí se abre el detalle por servidor.
+
+Corresponde al último paso del flujo, «Consulta de Métricas».
+
+![Prototipo PMV1: consulta de métricas por servidor.](wireframes/wf-05-dashboard-detalle.png){width=90%}
+
+*Figura 7. Prototipo PMV1: consulta de métricas por servidor.*
+
+**(1) Pestaña activa.** «Detalle por servidor», con los mismos filtros de la parte superior.
+
+**(2) Estado y advertencias.** Informa el resultado de la consulta.
+
+**(3) Búsqueda.** Filtra por código de servidor e indica cuántos se listan.
+
+**(4) Tabla de valores.** Clúster, servidor, interfaz o sistema de archivos, valor, procedencia, calidad e instante; permite ordenar por clúster, servidor y valor.
+
+**(5) Paginación.** Recorre el listado por páginas.
+
+**Relación con el flujo.** Cierra el recorrido de observabilidad: del resumen agregado se pasa al dato puntual y su calidad.
+
+#### PMV2: predicción y recomendación (HU-03 y HU-06)
+
+Pestaña «Predicción y recomendación», bloque de demanda futura.
+
+![Prototipo PMV2: predicción de CPU a 15 minutos.](wireframes/wf-06-prediccion.png){width=90%}
+
+*Figura 8. Prototipo PMV2: predicción de CPU a 15 minutos.*
+
+**(1) Selección del recurso.** Exige elegir clúster y servidor en los filtros.
+
+**(2) Pestaña activa.** Agrupa predicción y recomendación.
+
+**(3) Estimar CPU.** Solicita el conjunto de datos a Data Processing y la inferencia a Prediction a través del Gateway.
+
+**(4) Estado.** Informa el avance, el resultado o el error (por ejemplo, historial insuficiente).
+
+**(5) Resultado.** CPU estimada (rotulada como estimada), recurso consultado e instante estimado.
+
+**(6) Trazabilidad.** Horizonte y versión del modelo, procedencia de la entrada y dataset utilizado.
+
+**(7) Advertencias.** Limitaciones reportadas por el servicio sobre los datos usados.
+
+**Relación con el flujo.** Parte de la consulta de métricas (Figura 7) y anticipa la demanda que una recomendación debe considerar.
+
+Bloque «Recomendación con restricciones» de la misma pestaña.
+
+![Prototipo PMV2: recomendación con restricciones operativas.](wireframes/wf-07-recomendacion.png){width=90%}
+
+*Figura 9. Prototipo PMV2: recomendación con restricciones operativas.*
+
+**(1) Telemetría complementaria.** Memoria, latencia p95 y porcentaje de errores ingresados por el operador.
+
+**(2) Instante y procedencia.** Fecha del dato (con la opción «Usar ahora») y origen declarado.
+
+**(3) Evaluar.** Envía la solicitud a la política; también pueden cargarse valores de ejemplo.
+
+**(4) Estado.** Lista para revisión humana, bloqueada por restricciones o no evaluable.
+
+**(5) Acción propuesta.** Mantener capacidad, revisar un aumento o una reducción, o sin propuesta.
+
+**(6) Restricciones evaluadas.** Cada comprobación indica si cumple, excede el límite o carece de evidencia. La aplicación las lista como texto; el wireframe las ordena en filas.
+
+**(7) Límites, advertencias y referencia.** Umbrales de demostración (no son un SLA aprobado) e identificador de la recomendación.
+
+**Relación con el flujo.** Toma el servidor seleccionado, calcula su predicción y entrega una propuesta que no se ejecuta (`executionAllowed=false`).
+
+#### PMV3: aprobación humana, reporte y accesibilidad (HU-07, HU-13 y U-02)
+
+La historia HU-07 figura en el PMV2 del backlog (Tabla 11); el registro persistente de la decisión se implementó en el Sprint 7, dentro del PMV3.
+
+![Prototipo PMV3: decisión humana sobre una recomendación (HU-07).](wireframes/wf-08-aprobacion-hu07.png){width=90%}
+
+*Figura 10. Prototipo PMV3: decisión humana sobre una recomendación (HU-07).*
+
+**(1) Recomendación vigente.** Solo puede decidirse la última evaluada; si cambian los datos hay que evaluar de nuevo.
+
+**(2) Aviso.** Registrar una decisión no ejecuta ningún cambio; es un registro de auditoría.
+
+**(3) Comentario.** Opcional, de hasta 500 caracteres.
+
+**(4) Aprobar o Rechazar.** Disponibles para ADMIN y OPERATOR; los demás roles no ven los botones.
+
+**(5) Confirmación.** Informa el registro o el motivo del rechazo (se admite una decisión por usuario y recomendación).
+
+**(6) Historial.** Decisión, usuario, rol, fecha y comentario.
+
+**Relación con el flujo.** Continúa la Figura 9 y añade la revisión humana. En Render la persistencia es SQLite efímera y no se validó de punta a punta con sesión real (§VIII.2.3).
+
+Pestaña «Reportes y experimento» (a la izquierda) y estructura del documento que genera Data Processing (a la derecha, no es una vista dentro de la aplicación). La tarjeta del experimento de la misma pestaña no se dibuja.
+
+![Prototipo PMV3: reporte histórico en PDF (HU-13).](wireframes/wf-09-reporte-pdf.png){width=90%}
+
+*Figura 11. Prototipo PMV3: reporte histórico en PDF (HU-13).*
+
+**(1) Pestaña activa.** Reportes y experimento.
+
+**(2) Filtro.** Código de hardware y rango de fechas.
+
+**(3) Acciones.** Ver el resumen en pantalla o descargar CSV o PDF.
+
+**(4) Estado.** Confirma la descarga o muestra el error.
+
+**(5) Cabecera del PDF.** Título y fecha de generación en UTC.
+
+**(6) Tabla de indicadores.** Hardware, periodo, fuente, registros, CPU, RAM, carga alta, energía modelada y huecos ignorados.
+
+**(7) Leyenda y advertencias.** Incluye «Datos simulados; energía modelada, no medida».
+
+**Relación con el flujo.** Es una salida del análisis histórico para quien decide; usa los registros históricos del servidor y periodo indicados.
+
+Despliegue de «Ver datos en tabla» bajo el gráfico de la pestaña Resumen.
+
+![Prototipo PMV3: tabla accesible equivalente al gráfico (U-02).](wireframes/wf-10-tabla-accesible.png){width=90%}
+
+*Figura 12. Prototipo PMV3: tabla accesible equivalente al gráfico (U-02).*
+
+**(1) Gráfico.** Lleva una descripción textual (`aria-label`) que remite a la tabla.
+
+**(2) Control desplegable.** Muestra u oculta la tabla.
+
+**(3) Título de la tabla.** Describe el contenido y la unidad.
+
+**(4) Encabezados.** Hora y una columna por serie (mínimo, máximo, media y servidores comparados).
+
+**(5) Filas.** Los mismos datos del gráfico; un guion largo indica ausencia de dato.
+
+**Relación con el flujo.** Ofrece una alternativa textual para el paso de consulta de métricas (Figura 6). No se realizó un escaneo axe o Lighthouse.
+
+---
 
 ---
 
@@ -619,6 +1667,7 @@ Tabla 12. Evaluación ponderada de los motores de base de datos
 | Reproducibilidad y soporte de contratos | 25 % | 5 | 5 | 4 |
 | Facilidad de operación y mantenimiento | 25 % | 4 | 4 | 4 |
 | **Puntaje total (sobre 20)** | **100 %** | **19** | **18** | **16** |
+| **Puntaje ponderado (sobre 5,00)** | **100 %** | **4,75** | **4,50** | **4,00** |
 
 Se seleccionó **PostgreSQL** por su robustez relacional, soporte nativo de extensiones temporales y capacidades avanzadas de integridad referencial. Para el despliegue en la nube se emplea **Supabase**, que proporciona PostgreSQL administrado junto con servicios integrados de autenticación (Supabase Auth) y políticas de seguridad por fila (RLS). En paralelo, para garantizar reproducibilidad local y ejecución de pruebas sin dependencia de red externa, se diseñó un perfil con **SQLite** en desarrollo, compartiendo contratos de consulta idénticos con PostgREST.
 
@@ -629,12 +1678,54 @@ Las métricas temporales de alta frecuencia se almacenan de forma complementaria
 El diseño lógico define las entidades principales: nodos de cómputo (`hardware`), registros temporales de telemetría (`logs`), perfiles de usuario (`user_profiles`) y asignaciones de seguridad (`user_roles`).
 
 ![Modelo lógico de la base de datos de Green AI: usuario, hardware y logs en el esquema public, y perfiles y roles asociados a Supabase Auth](../informe-corregido/evidencias/modelo-logico-green-ai.png)  
-*Figura 7. Modelo lógico de la base de datos relacional (entidades y relaciones del esquema desplegado).*
+*Figura 13. Modelo lógico de la base de datos relacional (entidades y relaciones del esquema desplegado).*
 
-El diseño físico traslada las entidades a tablas relacionales con claves foráneas, restricciones de no nulidad, índices en columnas de marca temporal (`timestamp`) y tipos de datos normalizados.
+El diseño físico traslada las entidades a tablas relacionales con claves foráneas, restricciones de no nulidad, índices en columnas de marca temporal (`timestamp`) y tipos de datos normalizados. El Listado 1 reproduce definiciones versionadas en el repositorio. Las tablas `hardware` y `logs` provienen del esquema de **pruebas de contrato**, que replica el snapshot del 22/09/2026 y omite la tabla `usuario` y su clave foránea; no es un volcado completo de Supabase. Las tablas de perfiles y roles provienen del script de autenticación.
 
-![Captura del visualizador de esquema de Supabase del proyecto Green AI con las tablas logs, hardware, usuario, user_profiles y user_roles](../informe-corregido/evidencias-nube/captura-supabase-esquema-fisico.png)  
-*Figura 8. Modelo físico implementado en Supabase / PostgreSQL (captura del visualizador de esquema de Supabase, 15/11/2026).*
+**Listado 1.** Definición física de tablas e índices.
+
+```sql
+-- Extracto de software/data-processing/infrastructure/persistence/postgres/contract-schema.sql
+CREATE TABLE public.hardware (
+    hardware_id     varchar(20) PRIMARY KEY,
+    usuario_id      varchar(20) NOT NULL,
+    hostname        varchar(100) NOT NULL,
+    ip_address      varchar(45) NOT NULL,
+    cpu_cores       integer NOT NULL,
+    ram_gb          numeric(6,2) NOT NULL,
+    max_watts       numeric(6,2) NOT NULL,
+    ubicacion_rack  varchar(50),
+    estado          varchar(20) DEFAULT 'activo',
+    fecha_registro  timestamptz DEFAULT now()
+);
+
+CREATE TABLE public.logs (
+    log_id               varchar(20) PRIMARY KEY,
+    hardware_id          varchar(20) NOT NULL REFERENCES public.hardware(hardware_id) ON DELETE CASCADE,
+    "timestamp"          timestamptz NOT NULL,
+    cpu_utilization_pct  numeric(5,2) NOT NULL,
+    ram_utilization_pct  numeric(5,2) NOT NULL,
+    temperatura_celsius  numeric(5,2) NOT NULL,
+    energia_watts        numeric(6,2) NOT NULL,
+    prediccion_watts     numeric(6,2) NOT NULL,
+    accion_recomendada   varchar(100),
+    cumple_sla           boolean DEFAULT true
+);
+CREATE INDEX idx_logs_hardware_timestamp ON public.logs (hardware_id, "timestamp" DESC);
+CREATE INDEX idx_logs_timestamp ON public.logs ("timestamp" DESC);
+
+-- Extracto de software/frontend/supabase-auth-setup.sql
+create table if not exists public.user_profiles (
+  id uuid primary key references auth.users(id) on delete cascade,
+  full_name text not null default '',
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.user_roles (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  role public.app_role not null default 'OPERATOR'
+);
+```
 
 Los diagramas de 13 entidades (proyectos, clústeres, nodos, cargas, modelos, experimentos, etc.) incluidos en versiones anteriores de este informe correspondían a un diseño conceptual inicial que no se implementó; se reemplazaron por el esquema realmente desplegado.
 
@@ -644,8 +1735,32 @@ En atención a las observaciones docentes respecto a la evidencia de lógica de 
 
 Esta función sincroniza de manera segura la creación de cuentas de usuario en el subsistema de autenticación con la tabla relacional `public.user_profiles`, asignando por defecto el rol de `OPERATOR` y configurando las políticas de aislamiento RLS (*Row Level Security*) correspondientes.
 
-![Código y definición de la función PL/pgSQL y disparador en software/frontend/supabase-auth-setup.sql en el repositorio G](../informe-corregido/evidencias-nube/captura-C101-github-sql.png)
-*Figura 9. Procedimiento almacenado y disparador de sincronización de usuarios en Supabase (GitHub).*
+**Listado 2.** Función y disparador de sincronización de usuarios (`software/frontend/supabase-auth-setup.sql`).
+
+```sql
+create or replace function public.handle_new_auth_user()
+returns trigger
+language plpgsql
+security definer set search_path = ''
+as $$
+begin
+  insert into public.user_profiles (id, full_name)
+  values (new.id, coalesce(new.raw_user_meta_data ->> 'full_name', ''))
+  on conflict (id) do nothing;
+
+  insert into public.user_roles (user_id, role)
+  values (new.id, 'OPERATOR')
+  on conflict (user_id) do nothing;
+
+  return new;
+end;
+$$;
+
+drop trigger if exists on_auth_user_created_green_ai on auth.users;
+create trigger on_auth_user_created_green_ai
+after insert on auth.users
+for each row execute procedure public.handle_new_auth_user();
+```
 
 ---
 
@@ -675,17 +1790,17 @@ La solución se organiza en servicios independientes que aplican arquitectura he
 - **Monitoring (`software/monitoring`):** Microservicio en Java 21 y Spring Boot con arquitectura hexagonal estricta (puerto `QueryMetrics` y adaptadores Prometheus/Fixture) que expone el catálogo y series de recursos (112 pruebas unitarias).
 - **Data Processing (`software/data-processing`):** Servicio en Python y FastAPI que normaliza series temporales y gestiona el acceso a históricos mediante adaptadores intercambiables para Supabase/PostgREST y SQLite local (121 pruebas unitarias).
 - **Prediction (`software/prediction`):** Servicio en Python y FastAPI que encapsula el modelo predictivo (Random Forest), el cálculo de energía trapezoidal y el motor de políticas de recomendación (*Recommendation-Only*) (100 pruebas unitarias).
-- **API Gateway (`software/gateway` / `gateway-go`):** Pasarela de acceso con validación JWT, RBAC y enrutamiento perimetral. La implementación Java Spring Cloud cuenta con 12 pruebas; la alternativa ligera en Go 1.25 stdlib cuenta con 30 pruebas automatizadas.
+- **API Gateway (`software/gateway` / `gateway-go`):** Pasarela de acceso con validación JWT, RBAC y enrutamiento perimetral. La implementación Java Spring Cloud cuenta con 12 pruebas (19 al 19/11/2026); la alternativa ligera en Go 1.25 stdlib contaba con 32 pruebas automatizadas al 15/11/2026 (40 al 19/11/2026).
 - **Frontend (`software/frontend`):** Aplicación web estática en HTML5/JS servida por Nginx que consume exclusivamente los endpoints expuestos por el API Gateway (48 pruebas).
 
 ![Vista de paquetes UML](../informe-corregido/evidencias/p033-img009.png)  
-*Figura 10. Vista de paquetes UML conceptual inicial (incluye componentes previstos).*
+*Figura 14. Vista de paquetes UML conceptual inicial (incluye componentes previstos).*
 
-> **Nota aclaratoria sobre la Figura 10:** El diagrama inicial representaba la visión conceptual preliminar con un bus de eventos en RabbitMQ y orquestación externa. La arquitectura implementada en PMV1 y PMV2 opera de forma síncrona mediante APIs REST bajo el API Gateway, integrando la política de recomendación dentro del Prediction Service sin requerir RabbitMQ.
+> **Nota aclaratoria sobre la Figura 14:** El diagrama inicial representaba la visión conceptual preliminar con un bus de eventos en RabbitMQ y orquestación externa. La arquitectura implementada en PMV1 y PMV2 opera de forma síncrona mediante APIs REST bajo el API Gateway, integrando la política de recomendación dentro del Prediction Service sin requerir RabbitMQ.
 
 ![Vista de componentes actualizada](../informe-corregido/evidencias/componentes-green-ai.png)
 
-*Figura 11. Vista de componentes actualizada: arquitectura hexagonal por microservicio, comunicación REST por el API Gateway y sin RabbitMQ (fuente: herramientas_IA/diagramas/componentes-green-ai.puml).*
+*Figura 15. Vista de componentes actualizada: arquitectura hexagonal por microservicio, comunicación REST por el API Gateway y sin RabbitMQ (fuente: herramientas_IA/diagramas/componentes-green-ai.puml).*
 
 ### Vista de despliegue y topología física
 
@@ -698,13 +1813,13 @@ La solución se despliega en dos modalidades verificadas:
 2. **Entorno de calidad en la nube (*Staging* en Render + GitHub Pages):** Los microservicios analíticos se despliegan como servicios web en contenedores sobre Render (`*-dev.onrender.com`), el frontend estático se publica en GitHub Pages mediante HTTPS, y la persistencia de autenticación e históricos opera sobre Supabase en la nube.
 
 ![Vista de despliegue UML](../informe-corregido/evidencias/p034-img010.png)  
-*Figura 12. Vista de despliegue UML conceptual inicial (incluye orquestación prevista en Kubernetes).*
+*Figura 16. Vista de despliegue UML conceptual inicial (incluye orquestación prevista en Kubernetes).*
 
-> **Nota aclaratoria sobre la Figura 12:** El diagrama original mostraba la planificación tentativa con despliegue en clúster Kubernetes. En la implementación real, la solución opera de forma verificada sobre Docker Compose en local y servicios web en Render y GitHub Pages. Kubernetes queda considerado exclusivamente como trabajo futuro para escalamiento a gran escala.
+> **Nota aclaratoria sobre la Figura 16:** El diagrama original mostraba la planificación tentativa con despliegue en clúster Kubernetes. En la implementación real, la solución opera de forma verificada sobre Docker Compose en local y servicios web en Render y GitHub Pages. Kubernetes queda considerado exclusivamente como trabajo futuro para escalamiento a gran escala.
 
 ![Vista de despliegue actualizada](../informe-corregido/evidencias/despliegue-green-ai.png)
 
-*Figura 13. Vista de despliegue actualizada: GitHub Pages, seis servicios en Render (rama test), Supabase y Docker Compose local; sin Kubernetes (fuente: herramientas_IA/diagramas/despliegue-green-ai.puml).*
+*Figura 17. Vista de despliegue actualizada: GitHub Pages, seis servicios en Render (rama test), Supabase y Docker Compose local; sin Kubernetes (fuente: herramientas_IA/diagramas/despliegue-green-ai.puml).*
 
 # VII. GESTIÓN DEL PROYECTO
 
@@ -732,7 +1847,7 @@ Tabla 14. Acta de constitución del proyecto (Project Charter)
 
 La definición del enfoque metodológico se sustentó en una evaluación multicriterio ponderada, contrastando el marco ágil frente a modelos tradicionales predictivos e híbridos:
 
-- Enfoque ágil (Scrum / Scrumban): 4.85 / 5.00.
+- Enfoque ágil: 4.85 / 5.00.
 - Enfoque híbrido: 4.35 / 5.00.
 - Enfoque predictivo (Waterfall): 2.50 / 5.00.
 
@@ -817,7 +1932,7 @@ Tabla 17. Registro cuantitativo de riesgos y planes de respuesta
 Para garantizar la calidad técnica y la gobernanza del producto en cada incremento funcional, se establecieron criterios rigurosos de cierre que condicionan el paso de cualquier Historia de Usuario a la columna *Done*:
 
 1. **Criterios de aceptación BDD:** la funcionalidad debe cumplir estrictamente con los escenarios definidos bajo la sintaxis Given-When-Then (Dado-Cuando-Entonces).
-2. **Pruebas automatizadas por servicio:** el código debe contar con pruebas automatizadas que verifiquen su comportamiento dentro del monorepo. Al corte actual, las suites registran:
+2. **Pruebas automatizadas por servicio:** el código debe contar con pruebas automatizadas que verifiquen su comportamiento dentro del monorepo. Al 15/11/2026, las suites registraban (las cifras del 19/11/2026 están en la Tabla 30.a):
    - Monitoring Service: 112 pruebas verificadas (0 fallos).
    - Gateway Java: 12 pruebas verificadas (0 fallos).
    - Gateway Go: 32 pruebas unitarias y de integración (0 fallos).
@@ -875,7 +1990,7 @@ Tabla 18. Paquetes de trabajo por PMV y responsable
 |2.2|Arquitectura de software y contratos|Ingeniería|PMV1|Sprints 1–2|Ricardo Porras (Dev) + Leonid Huamán (Infra)|Diagramas de componentes, contratos OpenAPI y vista de datos|
 |2.3|PMV1: Pipeline de observabilidad|Ingeniería|PMV1|Sprints 1–3|Leonid Huamán (Infra) + Ricardo Porras (Dev)|Simulator, Prometheus, Monitoring (112 tests), Gateway y Frontend|
 |2.4|PMV2: Modelado predictivo y decisiones|Ingeniería|PMV2|Sprints 4–6|Gina Barrera (ML) + Ricardo Porras (Dev)|Dataset sintético, Random Forest (100 tests), Policy Engine y energía|
-|2.5|PMV3: Procesos de software, calidad y entregables finales|Ingeniería|PMV3|Sprints 7–8|Todo el equipo (J, G, R, L)|Ingeniería inversa (7 fases), proceso de desarrollo y CI/CD documentados, calidad FURPS+/OWASP (olas 2 y 3), pruebas con usuarios finales, pruebas de rendimiento y métricas de ML, informe final con guía de uso, artículo, póster y video (planificado)|
+|2.5|PMV3: Procesos de software, calidad y entregables finales|Ingeniería|PMV3|Sprints 7–8|Todo el equipo (J, G, R, L)|Ingeniería inversa (7 fases), proceso de desarrollo y CI/CD documentados, calidad FURPS+/OWASP (olas 2 y 3), pruebas con usuarios finales, pruebas de rendimiento y métricas de ML, informe final con guía de uso, artículo, póster y video|
 |2.6|Infraestructura, Docker Compose y Staging|Ingeniería|Transversal|Sprints 2–7|Leonid Huamán (Infra) + Ricardo Porras (Dev)|Docker Compose unificado, Gateway Go y preparación Render|
 |2.7|Suites de pruebas y aseguramiento|Ingeniería|Transversal|Sprints 1–8|Todo el equipo|Pruebas unitarias, de contrato, integración y smoke 14/14|
 
@@ -997,7 +2112,7 @@ La planificación temporal del proyecto se estructuró originalmente sobre el ci
 
 - **PMV1 — Viabilidad Técnica y Pipeline de Observabilidad (Sprints 1 a 3 | Semanas 1 a 6):** recolección continua de telemetría de CPU simulada cada 15 segundos mediante Prometheus, desarrollo del pipeline ETL de limpieza e interpolación, y evaluación del modelo baseline de referencia.
 - **PMV2 — Solución Predictiva y Motor de Recomendaciones (Sprints 4 a 6 | Semanas 7 a 12):** entrenamiento y validación del modelo Random Forest a 15 minutos, integración del Policy Engine desacoplado en modo Recommendation-Only (`executionAllowed=false`), exposición de endpoints REST en FastAPI y visualización de telemetría en tiempo real.
-- **PMV3 — Procesos de software, calidad y entregables finales (Sprints 7 y 8 | Semanas 13 y 14, 17/11/2026 – 30/11/2026, planificado):** el PMV3 reúne los procesos de ingeniería del curso y los entregables de la Unidad IV. Tareas del Sprint 7 (17/11–23/11): 7.1 ingeniería inversa, fases 1–4 (descubrimiento tecnológico y funcional, detección arquitectónica, dependencias) (R); 7.2 proceso de desarrollo (flujo Git `test`→`main`, *pull request* con revisión) y de CI/CD (GitHub Actions + Render) documentados (L/R); 7.3 ola 2 del plan FURPS+/OWASP (`docs/calidad/02_plan_furps.md`, `05_plan_owasp.md`) (G); 7.4 pruebas de rendimiento y métricas de ML (indicador 10) (G/L); 7.5 gestión en Trello (`PMVn-HUxx`, dailies, DoD) y preparación de las pruebas con usuarios finales (J); 7.6 borrador del informe final y del reporte de cumplimiento ICACIT (J); 7.7 Sprint Review y Retrospectiva del Sprint 7 (todo el equipo). Tareas del Sprint 8 (24/11–30/11): 8.1 ingeniería inversa, fases 5–7 y reporte final (R/L); 8.2 ola 3 y re-medición FURPS+/OWASP (G); 8.3 pruebas con usuarios finales, retroalimentación y acta de reunión (indicador 9) (J); 8.4 informe final con la estructura del docente, guía de uso, reporte ICACIT y métricas del proceso (cumplimiento de DoD, HU por sprint, hallazgos cerrados) (J/R); 8.5 artículo científico en inglés y validación de trazabilidad artículo↔informe (G); 8.6 póster científico y video con episodios y 7 operaciones demostradas (todo el equipo); 8.7 cierre del PMV3: Sprint Review, Retrospectiva y Sustentación el 30/11 (todo el equipo). Los **productos finales del PMV3** son el informe final con guía de uso, el artículo, el póster y el video. El control de acceso por roles (VIEWER) y los reportes JSON/CSV ya se implementaron en el Sprint 6 (PMV2); la exportación PDF, la huella de carbono CO2e (HU-10) y la ampliación del experimento comparativo (HU-16) quedan como trabajo futuro, fuera del alcance del periodo lectivo.
+- **PMV3 — Procesos de software, calidad y entregables finales (Sprints 7 y 8 | Semanas 13 y 14, 17/11/2026 – 30/11/2026):** el PMV3 reúne los procesos de ingeniería del curso y los entregables de la Unidad IV. Tareas del Sprint 7 (17/11–23/11): 7.1 ingeniería inversa, fases 1–4 (descubrimiento tecnológico y funcional, detección arquitectónica, dependencias) (R); 7.2 proceso de desarrollo (flujo Git `test`→`main`, *pull request* con revisión) y de CI/CD (GitHub Actions + Render) documentados (L/R); 7.3 ola 2 del plan FURPS+/OWASP (`docs/calidad/02_plan_furps.md`, `05_plan_owasp.md`) (G); 7.4 pruebas de rendimiento y métricas de ML (indicador 10) (G/L); 7.5 gestión en Trello (`PMVn-HUxx`, dailies, DoD) y preparación de las pruebas con usuarios finales (J); 7.6 borrador del informe final y del reporte de cumplimiento ICACIT (J); 7.7 Sprint Review y Retrospectiva del Sprint 7 (todo el equipo). Tareas del Sprint 8 (24/11–30/11): 8.1 ingeniería inversa, fases 5–7 y reporte final (R/L); 8.2 ola 3 y re-medición FURPS+/OWASP (G); 8.3 pruebas con usuarios finales, retroalimentación y acta de reunión (indicador 9) (J); 8.4 informe final con la estructura del docente, guía de uso, reporte ICACIT y métricas del proceso (cumplimiento de DoD, HU por sprint, hallazgos cerrados) (J/R); 8.5 artículo científico en inglés y validación de trazabilidad artículo↔informe (G); 8.6 póster científico y video con episodios y 7 operaciones demostradas (todo el equipo); 8.7 cierre del PMV3: Sprint Review, Retrospectiva y Sustentación el 30/11 (todo el equipo). Los **productos finales del PMV3** son el informe final con guía de uso, el artículo, el póster y el video. El control de acceso por roles (VIEWER) y los reportes JSON/CSV se implementaron en el Sprint 6 (PMV2) y la exportación PDF en el Sprint 7 (§VIII.2.3); la huella de carbono CO2e (HU-10) y la ampliación del experimento comparativo (HU-16) quedan como trabajo futuro.
 
 ##### Análisis de la línea base frente a la ejecución real
 
@@ -1068,9 +2183,9 @@ Figura VII.6.3. Registro histórico del tablero de trabajo Kanban en Trello.
 
 Al corte de auditoría registrado en el tablero previo con fecha 29 de octubre de 2026 (Semana 10 / Sprint 5), se reportó un avance de 22 de 41 actividades técnicas de ingeniería completadas (53.6 % de avance global referencial). Con la migración y estandarización al workspace oficial UC, el estado de avance se consolida en función de las Historias de Usuario y los compromisos de cada PMV:
 
-- **PMV1 (Sprints 1 a 3 | 100 % Ejecutado):** el 100 % de las historias asociadas a la observabilidad y persistencia de telemetría (HU-01 [Visualización de telemetría multirrecurso], HU-02 [Persistencia de métricas] y HU-15 [Autenticación y sesiones]) se encuentran en la columna **Done**, con sus criterios Given-When-Then validados y suites automatizadas superadas (Monitoring: 112 pruebas, Gateway Java: 12 pruebas, Gateway Go: 30 pruebas).
-- **PMV2 (Sprints 4 a 6 | En ejecución avanzada):** las historias HU-03 (Predicción de demanda de CPU con Random Forest), HU-04 (Comparación empírica frente a baselines), HU-06 (Generación de recomendaciones desacopladas), HU-07 (Modo Recommendation-Only con `executionAllowed=false`), HU-08 (Guardrails de SLA en Policy Engine) y HU-11 (Métricas de consumo energético modelado P(u)) cuentan con implementación y pruebas unitarias completas (Prediction: 100 pruebas, Data Processing: 121 pruebas). Se encuentran en transición entre **QA-Testing** e **In Progress** las actividades de visualización avanzada en frontend y afianzamiento de alertas en Grafana.
-- **PMV3 (Sprints 7 y 8 | Planificado):** el trabajo se centra en procesos y entregables de la Unidad IV (tareas 7.1–8.7, §VII.5.3) y no en nuevas historias funcionales. HU-13 y HU-14 ya cuentan con implementación en el Sprint 6; el experimento comparativo (HU-16) se ejecutó sobre el conjunto de prueba (§VIII.3.1) y su ampliación, junto con la huella de carbono CO2e (HU-10), queda como trabajo futuro, fuera del alcance del periodo lectivo.
+- **PMV1 (Sprints 1 a 3 | 100 % Ejecutado):** el 100 % de las historias asociadas a la observabilidad y persistencia de telemetría (HU-01 [Visualización de telemetría multirrecurso], HU-02 [Persistencia de métricas] y HU-15 [Autenticación y sesiones]) se encuentran en la columna **Done**, con sus criterios Given-When-Then validados y suites automatizadas superadas (Monitoring: 112 pruebas, Gateway Java: 12 pruebas, Gateway Go: 30 pruebas, cifra de un corte anterior).
+- **PMV2 (Sprints 4 a 6 | En ejecución avanzada):** las historias HU-03 (Predicción de demanda de CPU con Random Forest), HU-04 (Comparación empírica frente a baselines), HU-06 (Generación de recomendaciones desacopladas), HU-07 (en esa fecha, solo el modo Recommendation-Only con `executionAllowed=false`; la decisión persistente llegó en el Sprint 7 y sigue parcial), HU-08 (Guardrails de SLA en Policy Engine) y HU-11 (Métricas de consumo energético modelado P(u)) cuentan con implementación y pruebas unitarias completas (Prediction: 100 pruebas, Data Processing: 121 pruebas). Se encuentran en transición entre **QA-Testing** e **In Progress** las actividades de visualización avanzada en frontend y afianzamiento de alertas en Grafana.
+- **PMV3 (Sprints 7 y 8):** al corte del 29/10/2026 estaba planificado. Su estado al 25/11/2026, con la exportación PDF y la decisión humana implementadas en el Sprint 7 y los pendientes abiertos, se reporta en §VIII.2.3 y §VIII.6.
 
 ![](../informe-corregido/evidencias/p052-img020.png)
 
@@ -1104,7 +2219,7 @@ Figura VII.6.7. Registro de evidencias y ceremonias ágiles en el tablero Trello
 
 #### VII.6.4. Evidencias de la gestión del proceso en Trello (PMV3)
 
-En el PMV3 la gestión del proceso se evidencia con la convención `PMVn-HUxx` en el título de cada tarjeta y con el checklist de la *Definition of Done* (§VII.3) completo antes de mover una tarjeta a *Done*. Las capturas siguientes se incorporarán cuando el equipo aplique la guía del tablero; hasta entonces permanecen como marcadores pendientes.
+En el PMV3 la gestión del proceso se evidencia con la convención `PMVn-HUxx` en el título de cada tarjeta y con el checklist de la *Definition of Done* (§VII.3) completo antes de mover una tarjeta a *Done*. Las Figuras VII.6.8 y VII.6.9 muestran el tablero y una tarjeta terminada; el checklist de la DoD no aparece en la vista capturada.
 
 ![Tablero de Trello, listas 1 a 6, con tarjetas tituladas PMVn-HU-xx](../informe-corregido/evidencias-nube/captura-C312-trello-tablero-1.png)
 
@@ -1127,12 +2242,12 @@ Tabla 25. Registro de control de cambios técnicos
 |CHG-01|Octubre 2026|Integración del motor de recomendaciones dentro del servicio Prediction|Acción correctiva|Reducir la complejidad operacional y evitar el despliegue de un microservicio independiente adicional para toma de decisiones.|Se conserva íntegro el contrato de API `/api/recommendations/v1/*`; simplificación del despliegue en un único contenedor Python.|
 |CHG-02|06/11/2026|Migración integral a monorepo unificado con un solo Git y ramas `main` (prod) y `test` (dev)|Acción correctiva y preventiva|Existencia de múltiples repositorios Git anidados y desincronizados que dificultaban la trazabilidad y las pruebas integradas.|Eliminación de gitlinks huérfanos; adopción de ramas estándar; decisiones arquitecturales D-01 a D-04 documentadas en `docs/DECISIONES.md`.|
 |CHG-03|06/11/2026|Implementación de perfil SQLite para desarrollo local desacoplado|Acción preventiva|Eliminar la dependencia estricta de conectividad a bases de datos cloud Supabase durante la ejecución de pruebas unitarias y desarrollo local.|Data Processing ejecuta 114 pruebas de contrato común entre SQLite y PostgreSQL/PostgREST; decisión D-05; soporte para 100,000 registros sintéticos.|
-|CHG-04|06/11/2026|Desarrollo de API Gateway alternativo en Go|Acción de optimización preventiva|El Gateway original en Spring Boot consumía ~283 MiB de RAM en reposo (imagen de 520 MB), comprometiendo el límite de planes gratuitos en la nube (< 512 MiB).|El Gateway en Go reduce el consumo a ~10-16 MiB de RAM (imagen de 16 MB); 30 pruebas unitarias y 0 diferencias en diff-testing (39 casos verificados; D-06).|
+|CHG-04|06/11/2026|Desarrollo de API Gateway alternativo en Go|Acción de optimización preventiva|El Gateway original en Spring Boot consumía ~283 MiB de RAM en reposo (imagen de 520 MB), comprometiendo el límite de planes gratuitos en la nube (< 512 MiB).|El Gateway en Go reduce el consumo a ~10-16 MiB de RAM (imagen de 16 MB); 30 pruebas unitarias registradas en la ficha del cambio (32 al 15/11/2026) y 0 diferencias en diff-testing (39 casos verificados; D-06).|
 |CHG-05|06/11/2026|Honestidad experimental: corrección de métricas de ML (Random Forest como modelo oficial)|Acción correctiva (observación docente)|El informe previo reportaba cifras sin respaldo experimental reproducible (XGBoost con RMSE 7.1 %, 45 ms, etc.).|Adopción transparente del pipeline de Random Forest a 15 min: MAE de 3.22 y RMSE de 4.59 pp en validación, MAE de 3.85 en test; explicitación de telemetría simulada.|
 |CHG-06|07/11/2026|Optimización multi-etapa de la imagen Docker de Prediction Service|Acción de optimización técnica|La imagen Docker original pesaba 2.85 GB debido a herramientas de notebook y librerías de entrenamiento no requeridas en inferencia en vivo.|Reducción del tamaño de la imagen a 510 MB y memoria en reposo a ~122 MiB mediante compilación multi-etapa; 100 pruebas pasadas y verificación en smoke.|
 |CHG-07|06/11/2026|Adaptación de formato de reportes históricos a JSON/CSV estructurado vía API|Acción correctiva|La generación de documentos PDF en el backend introducía dependencias pesadas y riesgo de fallos de memoria en contenedores pequeños.|Implementación del endpoint `GET /api/processing/v1/reports/historical-summary` con exportación JSON/CSV (121 pruebas pasadas en Data Processing) y Markdown.|
 |CHG-08|Noviembre 2026|Preparación de entorno de Staging en Render desde la rama `test`|Acción preventiva (observación docente)|La Guía de laboratorio 11 exige demostrar los servicios en un entorno cloud de calidad accesible mediante URLs públicas y no solo en localhost.|Configuración de servicios web para Gateway Go, Prediction y Data Processing; documentación en `docs/GUIA-DESPLIEGUE-RENDER.md` y decisión D-07.|
-|CHG-09|11/11/2026|Reenfoque del PMV3 hacia procesos de software y documento final con guía de uso|Acción correctiva (alineación con el curso)|El curso es de procesos de software; los Sprints 7 y 8 (17/11–30/11) se redefinen para documentar y verificar los procesos y entregar el documento final.|Tareas 7.1–8.7 en §VII.5.3 (ampliadas el 11/11 para cubrir los entregables de la Unidad IV) y Gantt actualizados; RBAC VIEWER y reportes JSON/CSV se mantienen como hechos del Sprint 6; PDF, CO2e (HU-10) y ampliación del experimento (HU-16) pasan a trabajo futuro.|
+|CHG-09|11/11/2026|Reenfoque del PMV3 hacia procesos de software y documento final con guía de uso|Acción correctiva (alineación con el curso)|El curso es de procesos de software; los Sprints 7 y 8 (17/11–30/11) se redefinen para documentar y verificar los procesos y entregar el documento final.|Tareas 7.1–8.7 en §VII.5.3 (ampliadas el 11/11 para cubrir los entregables de la Unidad IV) y Gantt actualizados; RBAC VIEWER y reportes JSON/CSV se mantienen como hechos del Sprint 6; PDF, CO2e (HU-10) y ampliación del experimento (HU-16) pasan a trabajo futuro (el PDF se implementó después, en el Sprint 7).|
 
 ### VII.8. Gestión de cambios derivada del Congreso de Ingeniería (CHG-001-2026)
 
@@ -1183,12 +2298,14 @@ Se evaluaron cuatro alternativas algorítmicas bajo idénticas condiciones sobre
 
 Tabla 26. Comparación de alternativas algorítmicas de predicción
 
-| Alternativa | Tipo de modelo | MAE (pp CPU) | RMSE (pp CPU) | sMAPE (%) | MAE alta demanda (>80 %, n=32) | MAE en picos (n=13) | Latencia media (ms) |
+| Alternativa | Tipo de modelo | MAE (pp CPU) | RMSE (pp CPU) | sMAPE (%) | MAE alta demanda (≥ percentil 75, n=32) | MAE en picos (n=13) | Latencia media (ms) |
 |---|---|---|---|---|---|---|---|
 | E1: Persistencia | Baseline trivial ($y_{t+15} = y_t$) | 4,61 | 6,39 | 11,16 | 5,43 | 8,99 | 0,04 |
 | E2: Media móvil | Baseline estadístico (ventana 15 min) | 3,74 | 5,19 | 9,17 | 4,44 | 7,25 | 1,10 |
 | **E3: Random Forest** | **Ensamble de árboles (Seleccionado)** | **3,22** | **4,59** | **7,85** | **3,58** | **6,12** | **9,46** |
 | E4: XGBoost | Gradient boosting supervisado | 3,46 | 4,79 | 8,46 | 3,86 | 6,21 | 5,29 |
+
+*Alta demanda: intervalos de validación con CPU igual o superior al percentil 75 (umbral de 52,09 % de CPU, n = 32). Picos: percentil 90 (n = 13).*
 
 Sobre el conjunto de prueba independiente (*test set*, $n = 129$), el modelo seleccionado (**Random Forest Regressor**) alcanzó las siguientes métricas definitivas:
 
@@ -1205,7 +2322,7 @@ Se rectifica formalmente que **XGBoost no fue el modelo ganador** para el horizo
 
 #### VIII.1.4. Trazabilidad MLOps y comportamiento en alta demanda y picos
 
-Para garantizar la reproducibilidad y auditabilidad técnica exigida por el atributo ICACIT AG-I11 (Uso de Herramientas Modernas), el entrenamiento y registro de métricas se integró con MLflow Tracking. El experimento se registró bajo el identificador formal `computational-demand-prediction`, con el run `random_forest_15m` reportando el MAE de test de 3,85 pp, complementado con el manifiesto `software/prediction/results/manifest.json` que fija el hash SHA-256 del código, datos y parámetros de configuración.
+Para garantizar la reproducibilidad y auditabilidad técnica exigida por el atributo ICACIT AG-I11 (Uso de Herramientas Modernas), el entrenamiento y registro de métricas se integró con MLflow Tracking, siguiendo el concepto de trazabilidad de MLOps [13]. El experimento se registró bajo el identificador formal `computational-demand-prediction`, con el run `random_forest_15m` reportando el MAE de test de 3,85 pp, complementado con el manifiesto `software/prediction/results/manifest.json` que fija el hash SHA-256 del código, datos y parámetros de configuración.
 
 ![Interfaz gráfica de MLflow Tracking UI con el experimento 'computational-demand-prediction' y el run 'random_forest_15m'](../informe-corregido/evidencias-nube/captura-C303-mlflow-run.png)
 
@@ -1214,7 +2331,7 @@ Figura VIII.1. Registro y trazabilidad del experimento de entrenamiento de Machi
 ![Consola de Windows (15/11/2026): run_pipeline.py con semilla 42 y tablas de validación (n=125) y test (n=129) de persistencia, media móvil, Random Forest y XGBoost](../informe-corregido/evidencias-nube/captura-M01-metricas-modelos.png)
 *Figura VIII.1.a. Reejecución del pipeline de entrenamiento (`scripts/run_pipeline.py`, semilla 42): métricas de la Tabla 26 y del conjunto de prueba (herramienta: Python, scikit-learn y XGBoost).*
 
-En intervalos de alta utilización (> 80 % CPU, $n = 32$), el MAE de Random Forest se mantuvo en 3,58 pp en validación. No obstante, al evaluar específicamente los intervalos de pico extremo ($n = 13$), el MAE aumentó a 6,12 pp en validación y a 8,45 pp en prueba. Este comportamiento evidencia que el error se duplica en escenarios de sobrecarga crítica, constituyendo la principal limitación del modelo. Al tratarse de una tarea de regresión continua de CPU, se utilizan métricas MAE y RMSE; no se reporta métrica F1 al no haberse implementado una tarea formal de clasificación binaria de eventos.
+En los intervalos de alta demanda, definidos como los iguales o superiores al percentil 75 de la CPU observada en validación (52,09 %, n = 32), el MAE de Random Forest fue 3,58 pp. En los picos (percentil 90, n = 13) subió a 6,12 pp en validación y a 8,45 pp en prueba, es decir, cerca del doble del error global en validación (3,22 pp) y más del doble en prueba (3,85 pp). Esta es la principal limitación del modelo. El umbral de alta demanda es relativo a la distribución del dataset y no equivale a una sobrecarga superior al 80 % de CPU. Al ser una regresión continua se usan MAE y RMSE; no se reporta F1 porque no se implementó una tarea de clasificación de eventos.
 
 #### VIII.1.5. Dictamen oficial de gobierno de la PoC: GO CON CONDICIONES
 
@@ -1238,9 +2355,9 @@ Para verificar el cumplimiento funcional y contractual del sistema, se estructur
 
 #### Resumen consolidado de pruebas automatizadas por servicio
 
-La verificación automatizada comprende 435 pruebas unitarias, de integración y de contrato, más una suite de verificación de humo (*smoke test*) de 14 puntos de extremo a extremo:
+La verificación automatizada del 15/11/2026 comprendió 435 pruebas unitarias, de integración y de contrato, más una suite de verificación de humo (*smoke test*) de 14 puntos de extremo a extremo. La ejecución posterior del 19/11/2026 (492) figura en la Tabla 30.a. Resultados de la primera:
 
-Tabla 27. Pruebas automatizadas por servicio
+Tabla 27. Pruebas automatizadas por servicio (15/11/2026)
 
 | Servicio | Entorno y tecnología de prueba | Pruebas ejecutadas / aprobadas | Alcance técnico cubierto |
 |---|---|---|---|
@@ -1297,19 +2414,19 @@ Tabla 28. Matriz de trazabilidad por historia de usuario (PMV1 y PMV2)
 | HU | PMV | Criterio de aceptación (Given/When/Then) | Mecanismo de prueba / evidencia | Estado | Observación metodológica |
 |---|---|---|---|---|---|
 | HU-01 | 1 | Dado un usuario OPERATOR autenticado, cuando consulta la telemetría actual, entonces recibe series de utilización con metadato `origin=simulated`. | Smoke test de monitoreo (HTTP 200, 50 nodos); `MetricsHttpContractTest` (112 tests). | Aprobado | Telemetría provista por simulador sintético. |
-| HU-01 (Seg.) | 1 | Dado un cliente sin token o con firma JWT inválida, cuando invoca el endpoint perimetral, entonces recibe código HTTP 401 Unauthorized. | Smoke test perimetral; suites de Gateway Java (12 tests) y Gateway Go (30 tests). | Aprobado | Filtro perimetral validado en ambos gateways. |
+| HU-01 (Seg.) | 1 | Dado un cliente sin token o con firma JWT inválida, cuando invoca el endpoint perimetral, entonces recibe código HTTP 401 Unauthorized. | Smoke test perimetral; suites de Gateway Java (12 tests) y Gateway Go (32 tests al 15/11/2026). | Aprobado | Filtro perimetral validado en ambos gateways. |
 | HU-02 | 1 | Dado un rango temporal de hasta 31 días, cuando solicita registros históricos, entonces obtiene datos paginados y ordenados sin duplicados. | `test_historical_logs_contract.py` (121 tests en Data Processing, contratos duales SQLite y PostgreSQL). | Aprobado | Resuelto con paginación por cursor. |
 | HU-03 | 2 | Dada una ventana histórica reciente válida (al menos 6 intervalos), cuando solicita predecir a 15 min, entonces recibe la estimación con metadato `origin=estimated`. | Smoke test de predicción (HTTP 200); 100 pruebas en Prediction Service. | Aprobado | Modelo Random Forest cargado en memoria. |
 | HU-03 (Err.) | 2 | Dado un dataset insuficiente (< 20 min) o esquema corrupto, cuando solicita inferencia, entonces el servicio rechaza con HTTP 422 Unprocessable Entity. | `tests/api/test_health_and_predict.py`; verificación DevTools en la nube. | Aprobado | Comportamiento defensivo contractual validado. |
 | HU-04 | 2 | Dados idénticos datos y partición temporal, cuando se evalúan los modelos, entonces se generan métricas reproducibles comparativas. | Ejecución de pipeline determinista; `results/metrics/model_comparison.csv`. | Aprobado | Random Forest seleccionado frente a 3 alternativas. |
-| HU-05 | 2 | Dado el entrenamiento del modelo, cuando finaliza la ejecución, entonces los parámetros y métricas quedan auditados en MLflow Tracking. | Experimento `computational-demand-prediction`, run `random_forest_15m` en `mlruns/`. | Aprobado con run registrado | Run registrado en almacén local; pendiente captura UI. |
+| HU-05 | 2 | Dado el entrenamiento del modelo, cuando finaliza la ejecución, entonces los parámetros y métricas quedan auditados en MLflow Tracking. | Experimento `computational-demand-prediction`, run `random_forest_15m` en `mlruns/`. | Aprobado con run registrado | Run registrado en almacén local; captura de la UI local en la Figura VIII.1; sin servidor público. |
 | HU-06 / 08 | 2 | Dada una estimación de CPU y telemetría de contexto, cuando se evalúa la política, entonces se retorna una recomendación con `executionAllowed=false`. | Smoke test de recomendación (HTTP 200, `eligible_for_review`); 13 pruebas de política. | Aprobado | Modo asistivo con guardrails de seguridad activos. |
-| HU-07 | 2 | Dada una recomendación emitida, cuando el operador la evalúa en la interfaz, entonces puede registrar su decisión asistiva. | Validación visual en panel web; bloqueo de ejecución autónoma. | Parcial | Bloqueo garantizado; flujo de firma digital en backlog. |
+| HU-07 | 2 | Dada una recomendación emitida, cuando el operador la evalúa en la interfaz, entonces puede registrar su decisión asistiva. | Corte Unidad III: validación visual. Sprint 7: 16 pruebas en Prediction y rechazo 401 sin secreto en Render (Figuras VIII.38 y VIII.46). | Parcial | Decisión persistente implementada; en Render usa SQLite efímero, no hay adaptador Supabase y falta validar con sesión real (F-03). |
 | HU-09 | 2 | Dadas muestras de potencia instantánea, cuando se calcula el consumo, entonces se integra la energía en kWh mediante regla trapezoidal. | Endpoint `/v1/energy`; prueba frontend `energy displays absence of carbon factor`. | Aprobado | Estimación matemática; sin PDU física en laboratorio. |
 | HU-11 | 2 | Dado un operador en el frontend, cuando navega entre módulos, entonces visualiza un dashboard integrado con pestañas temáticas. | Archivo `software/frontend/network.html`, estilos modulares y 48 pruebas de UI. | Aprobado | Pestañas de Racks, Métricas, Detalle y Red de flujos. |
 | HU-12 | 2 | Dado un escenario de saturación o caída de colector, cuando la métrica cruza el umbral, Prometheus activa la alerta correspondiente. | Reglas `SimulatorTelemetryDown`, `NodeCpuSaturationRisk`, `NodeMemoryPressure`, `PredictedCpuHigh` (promtool OK). | Aprobado | Reglas de alerta validadas sintácticamente. |
-| HU-13 | 2 | Dado un operador autenticado, cuando solicita el resumen histórico, entonces puede exportar los datos en formato estructurado JSON y CSV. | Endpoint `GET /api/processing/v1/reports/historical-summary` (suite Data Processing 121 tests). | Aprobado | JSON y CSV operativos; reporte PDF: trabajo futuro, fuera del alcance del periodo lectivo. |
-| HU-14 | 3 | Dado un usuario con credenciales, el sistema asigna y restringe accesos según roles ADMIN, OPERATOR y VIEWER (solo lectura). | Gateway Java (12 tests) y Gateway Go (30 tests) validando rechazo HTTP 403 ante permisos insuficientes. | Aprobado | Rol VIEWER incorporado en perfiles perimetrales. |
+| HU-13 | 2 | Dado un operador autenticado, cuando solicita el resumen histórico, entonces puede exportar los datos en formato estructurado JSON y CSV. | Endpoint `GET /api/processing/v1/reports/historical-summary` (suite Data Processing 121 tests). | Aprobado | JSON y CSV operativos al corte de la Unidad III; el PDF se implementó en el Sprint 7 (Figura VIII.39). |
+| HU-14 | 3 | Dado un usuario con credenciales, el sistema asigna y restringe accesos según roles ADMIN, OPERATOR y VIEWER (solo lectura). | Gateway Java (12 tests) y Gateway Go (32 tests al 15/11/2026) validando rechazo HTTP 403 ante permisos insuficientes. | Aprobado | Rol VIEWER incorporado en perfiles perimetrales. |
 | HU-15 | 1 | Dado un usuario nuevo, cuando completa el formulario de registro, entonces se crea un perfil en Supabase con rol OPERATOR por defecto. | Script `supabase-auth-setup.sql` con trigger sobre auth.users. | Pendiente de evidencia | Implementado en base de datos; requiere prueba con usuario final. |
 
 ---
@@ -1320,7 +2437,7 @@ Tabla 28. Matriz de trazabilidad por historia de usuario (PMV1 y PMV2)
 
 El entorno de desarrollo local se estructuró mediante Docker Compose, aislando los servicios en redes internas para evitar conflictos de puertos y versiones de bibliotecas.
 
-![Figura VIII.1: Estado operativo de contenedores en Docker Desktop Dashboard.](../informe-corregido/evidencias/p059-img026.png)
+![Estado operativo de contenedores en Docker Desktop Dashboard.](../informe-corregido/evidencias/p059-img026.png)
 
 Figura VIII.5. Estado operativo de los contenedores locales en Docker Desktop Dashboard.
 
@@ -1332,7 +2449,7 @@ Figura VIII.6. Construcción y arranque de servicios mediante Docker Compose CLI
 
 En cumplimiento con los requerimientos de entornos de calidad en la nube (Laboratorio 11), el ecosistema se desplegó en la nube pública de Render utilizando contenedores Docker independientes para cada microservicio:
 
-![Figura VIII.2. Render: 6 microservicios desplegados en la nube.](../informe-corregido/evidencias-nube/render-6-servicios-desplegados.png)
+![Render: 6 microservicios desplegados en la nube.](../informe-corregido/evidencias-nube/render-6-servicios-desplegados.png)
 
 Figura VIII.7. Despliegue operativo de los 6 microservicios del sistema Green AI en Render (región Oregon) utilizando imágenes de contenedores Docker. Prueba: Disponibilidad y compilación limpia de la arquitectura distribuida en la nube pública sin dependencia de localhost. No prueba: No acredita tráfico concurrente de producción institucional ni ausencia de latencia por arranque en frío en instancias compartidas.
 
@@ -1476,7 +2593,7 @@ Figura VIII.12. Registros de servidores en la tabla `hardware` en PostgreSQL / S
 
 ![](../informe-corregido/evidencias/p066-img032.png)
 
-Figura VIII.13. Registros de cuentas de acceso en la tabla `usuario` en PostgreSQL / Supabase.
+Figura VIII.13. Registros de cuentas de acceso en la tabla `usuario` en PostgreSQL / Supabase. Muestra datos sintéticos de un estado anterior, con la columna password; ver §VIII.7.
 
 ![](../informe-corregido/evidencias/p067-img033.png)
 
@@ -1485,6 +2602,38 @@ Figura VIII.14. Registros de series temporales en la tabla `logs` en PostgreSQL 
 ![](../informe-corregido/evidencias/p067-img034.png)
 
 Figura VIII.15. Diagrama Entidad-Relación (ERD) del modelo de persistencia relacional en PostgreSQL / Supabase.
+
+![Modelo físico en Supabase / PostgreSQL (visualizador de esquema de Supabase, 15/11/2026).](../informe-corregido/evidencias-nube/captura-supabase-esquema-fisico.png)
+
+Figura VIII.15.a. Modelo físico en Supabase / PostgreSQL (visualizador de esquema de Supabase, 15/11/2026).
+
+![Procedimiento almacenado y disparador de sincronización de usuarios en el repositorio (GitHub).](../informe-corregido/evidencias-nube/captura-C101-github-sql.png)
+
+Figura VIII.15.b. Procedimiento almacenado y disparador de sincronización de usuarios en el repositorio (GitHub).
+
+##### e) Evidencia de registro, acceso y consulta de métricas (HU-15, HU-01 y HU-02)
+
+Capturas del software en ejecución que respaldan el flujo diseñado en el Capítulo VI. Corresponden a la interfaz de la fecha de captura, anterior a la organización actual por pestañas.
+
+![Pantalla de registro de usuario en el frontend web.](../informe-corregido/evidencias/p026-img002.png)
+
+Figura VIII.15.c. Pantalla de registro de usuario en el frontend web.
+
+![Correo de confirmación del registro enviado por Supabase Auth.](../informe-corregido/evidencias/p027-img003.png)
+
+Figura VIII.15.d. Correo de confirmación del registro enviado por Supabase Auth.
+
+![Inicio de sesión y autenticación con validación de credenciales.](../informe-corregido/evidencias/p027-img004.png)
+
+Figura VIII.15.e. Inicio de sesión y autenticación con validación de credenciales.
+
+![Dashboard local con telemetría de CPU e inspección de red.](../informe-corregido/evidencias/p028-img005.png)
+
+Figura VIII.15.f. Dashboard local con telemetría de CPU e inspección de red.
+
+![Valores actuales e histórico de CPU por nodo (datos simulados).](../informe-corregido/evidencias/p028-img006.png)
+
+Figura VIII.15.g. Valores actuales e histórico de CPU por nodo (datos simulados).
 
 ---
 
@@ -1503,7 +2652,7 @@ El sistema contempla dos casos de uso asistivos principales:
 
 Figura VIII.16. Esquema conceptual del caso de uso de inferencia de demanda de CPU a 15 minutos.
 
-![Figura VIII.2.2.a: Especificación y contratos OpenAPI (Swagger UI) del Data Processing Service (http://127.0.0.1:8003/docs).](../informe-corregido/evidencias/p069-img036.png)
+![Especificación y contratos OpenAPI (Swagger UI) del Data Processing Service (http://127.0.0.1:8003/docs).](../informe-corregido/evidencias/p069-img036.png)
 
 Figura VIII.17. Especificación y contratos OpenAPI (Swagger UI) del Data Processing Service (`/docs`).
 
@@ -1515,7 +2664,7 @@ En el microservicio de inferencia (Prediction Service), se validan las operacion
 
 Figura VIII.18. Especificación interactiva OpenAPI (Swagger UI) del microservicio Prediction Service (`/docs`).
 
-![Figura VIII.2.2.a. Esquemas Pydantic y DTOs de validación de datos del Prediction Service (Swagger UI Schemas).](../informe-corregido/evidencias/p071-img038.png)
+![Esquemas Pydantic y DTOs de validación de datos del Prediction Service (Swagger UI Schemas).](../informe-corregido/evidencias/p071-img038.png)
 
 Figura VIII.19. Esquemas Pydantic y estructuras DTO de validación de datos del Prediction Service.
 
@@ -1529,7 +2678,7 @@ Figura VIII.20. Documentación interactiva OpenAPI (Swagger UI) del microservici
 
 La capa de presentación web se desarrolló como una aplicación cliente ligera basada en HTML5, CSS3 y JavaScript moderno sin frameworks pesados, servida de manera estática a través de GitHub Pages y empaquetada en contenedores Nginx. Esta decisión de diseño garantiza bajo consumo de memoria en el navegador y elimina la necesidad de capas intermedias de renderizado del lado del servidor.
 
-![Figura VIII.2.2.b. Dashboard principal de Métricas de Infraestructura de Green AI Web Frontend.](../informe-corregido/evidencias/p072-img039.png)
+![Dashboard principal de Métricas de Infraestructura de Green AI Web Frontend.](../informe-corregido/evidencias/p072-img039.png)
 
 Figura VIII.21. Dashboard de métricas de infraestructura en la interfaz web de usuario.
 
@@ -1612,12 +2761,12 @@ Tabla 30. Verificaciones del PMV3 y su estado real al 25/11/2026
 | Proceso | Verificación | Resultado | Evidencia | Estado |
 | --- | --- | --- | --- | --- |
 | Ingeniería inversa | 7 fases sobre el repositorio | 23 hallazgos (2 críticos, 4 altos, 10 medios y 7 bajos); críticos H-01 (elusión del Gateway en la nube) y H-02 (RLS permisiva y `password` en texto plano) | `guias/semana14/ingenieria-inversa/docs/ingenieria_inversa.md` | Ejecutada |
-| Calidad FURPS+ y OWASP | Auditoría final con re-medición | FURPS+ 87,00 % bruto (174/200) y 87,62 % ponderado; OWASP 86,0/100 estimado; dictamen «cumple parcialmente» y **«no apto para producción»** | `08_Auditoria_Final.md` (FURPS+ y OWASP) | Ejecutada |
+| Calidad FURPS+ y OWASP | Evaluación oficial de la semana 13, tras la ola 1 | FURPS+ 86,0 % (86,28 ponderado); OWASP 83,5/100; «apto para producción con observaciones» | §VIII.7 y Anexo F | Ejecutada; sin re-medición tras la ola 2 |
 | Ola 2 de mejoras | HU-07, HU-13, U-02, F-06 y S-01 | Implementadas, probadas (492 pruebas) y desplegadas en Render el 25/11/2026 | Figuras VIII.38 a VIII.46 | Ejecutada |
-| Desarrollo (flujo Git) | PR revisado por otro integrante | PR #7 (`test`→`main`) aprobado por Jhonny Quintana y fusionado con 12 checks en verde | Figuras VIII.36 y VIII.36.a | Ejecutada |
-| Integración continua | Historial de `ci.yml` | Ejecuciones en verde en los PR integrados | Figura VIII.37 | Ejecutada |
+| Desarrollo (flujo Git) | PR revisado por otro integrante | PR #7 (`test`→`main`) aprobado por Jhonny Quintana y fusionado con 12 checks en verde | Figuras VIII.48 y VIII.48.a | Ejecutada |
+| Integración continua | Historial de `ci.yml` | Ejecuciones en verde en los PR integrados | Figura VIII.49 | Ejecutada |
 | Rendimiento y ML | Latencia, *throughput* y métricas de ML | Prediction: latencia mediana de 97 ms con 1 usuario y 1,14 s con 8 concurrentes; *throughput* de 9,8 a 7,0 req/s (H-03). Arranque en frío de 12,6–69,5 s. Métricas de ML sin cambios (§VIII.1.3) | Ingeniería inversa; Figura VIII.45 | Ejecutada |
-| Seguridad de datos (F-01) | RLS y columna `password` en Supabase | No verificado: requiere acceso administrativo | — | **Pendiente** |
+| Seguridad de datos (F-01) | RLS y columna `password` en Supabase | Columna corregida según el equipo, sin evidencia adjunta aún; RLS sin corregir | Capturas S11 y S12 (estado del 12/11/2026) | **Parcial** |
 | Sesión real (F-03) | Dashboard `/dev/` con cuenta del equipo | Validación de punta a punta no realizada | — | **Parcial** |
 | Usuarios finales | Sesión con usuarios ajenos al desarrollo y acta | Sin acta registrada en el repositorio a la fecha de corte | — | **Pendiente** |
 | Video y póster | Lista de cotejo de la Unidad IV | Video de la Unidad III reutilizado sin cambios (Anexo A); póster en `exportados/semana15/` | Anexo A | Ejecutada |
@@ -1690,19 +2839,19 @@ Figura VIII.47. Servicios del proyecto desplegados en Render.
 
 ![Pull Request #7 del Sprint 7 (test hacia main) aprobado por Jhonny Quintana (CristhianQuintana) con «Changes approved» y 12 checks de CI en verde](../informe-corregido/evidencias-nube/captura-C310-pr7-aprobado.png)
 
-Figura VIII.36. Pull Request #7 del Sprint 7 (ola 2) aprobado por otro integrante antes de fusionar, con los 12 checks de CI en verde, conforme al criterio 3 de la Definición de Terminado.
+Figura VIII.48. Pull Request #7 del Sprint 7 (ola 2) aprobado por otro integrante antes de fusionar, con los 12 checks de CI en verde, conforme al criterio 3 de la Definición de Terminado.
 
 ![Pull Request #7 fusionado en main por woshtsu tras la aprobación de CristhianQuintana, con 12 checks aprobados](../informe-corregido/evidencias-nube/captura-C310b-pr7-fusionado.png)
 
-Figura VIII.36.a. Fusión del Pull Request #7 en main después de la aprobación.
+Figura VIII.48.a. Fusión del Pull Request #7 en main después de la aprobación.
 
 ![Historial de ejecuciones del workflow ci.yml en la pestaña Actions de GitHub](../informe-corregido/evidencias-nube/captura-C311-actions.png)
 
-Figura VIII.37. Historial de ejecuciones de GitHub Actions (workflow ci.yml).
+Figura VIII.49. Historial de ejecuciones de GitHub Actions (workflow ci.yml).
 
 ##### e) Indicadores 8, 9 y 10 de la lista de cotejo de la Unidad IV
 
-- **Indicador 8 (arquitectura hexagonal, entorno de calidad y reportes):** arquitectura hexagonal por servicio (S-01 completó el Simulator), ejecución sobre la rama `test` y su despliegue de desarrollo, y reportes de ingeniería inversa, FURPS+ y OWASP con dictamen. **Cumple, con el dictamen de seguridad parcial.**
+- **Indicador 8 (arquitectura hexagonal, entorno de calidad y reportes):** arquitectura hexagonal por servicio (S-01 corrigió el Simulator), rama `test` con despliegue de desarrollo y reportes de ingeniería inversa, FURPS+ y OWASP (§VIII.7). **Cumple parcialmente:** hay observaciones de seguridad abiertas.
 - **Indicador 9 (usuarios finales):** no hay acta de reunión con usuarios finales registrada a la fecha de corte.
 
 
@@ -1726,11 +2875,11 @@ La evaluación por historia de usuario se sintetiza en la comprobación de inter
 
 ![](../informe-corregido/evidencias/p078-img045.png)
 
-Figura VIII.38. Evidencia de consulta y graficación de métricas de telemetría (HU-01).
+Figura VIII.50. Evidencia de consulta y graficación de métricas de telemetría (HU-01).
 
 ![](../informe-corregido/evidencias/p079-img046.png)
 
-Figura VIII.39. Evidencia de consulta de predicción de utilización de CPU a 15 minutos (HU-03).
+Figura VIII.51. Evidencia de consulta de predicción de utilización de CPU a 15 minutos (HU-03).
 
 #### VIII.3.1. Evaluación experimental comparativa: Baseline vs. Green AI (Experimento reproducible)
 
@@ -1755,7 +2904,7 @@ Tabla 31. Resultados experimentales consolidados por margen de seguridad (conjun
 El experimento evalúa 126 intervalos: los 129 del conjunto de prueba menos los 3 últimos, que no tienen el valor real a 15 minutos para comparar.
 
 ![Consola de Windows (15/11/2026): run_experiment.py con márgenes de 10, 20 y 30 % muestra el riesgo de SLA, la capacidad ociosa y la energía modelada de baseline y Green AI sobre 126 intervalos](../informe-corregido/evidencias-nube/captura-M05-experimento-sla.png)
-*Figura VIII.39.a. Reejecución del experimento comparativo (`scripts/run_experiment.py`, P_max 600 W, P_idle 300 W).*
+*Figura VIII.51.a. Reejecución del experimento comparativo (`scripts/run_experiment.py`, P_max 600 W, P_idle 300 W).*
 
 **Interpretación honesta y límites de los resultados:**
 1. **Reducción de riesgo de SLA:** Con un margen de seguridad ajustado ($h = 10\,\%$), el enfoque predictivo reduce el riesgo de subaprovisionamiento de 15,9 % a 9,5 % (una reducción absoluta de 6,35 puntos porcentuales y relativa del 40,0 %, calculada con los valores sin redondear 15,87 % y 9,52 %). Esto valida la hipótesis técnica de que anticipar la demanda mitiga el riesgo de saturación de CPU cuando los márgenes operativos son estrechos.
@@ -1789,16 +2938,16 @@ Tabla 33. Estado auditable de los módulos del proyecto
 | PoC de Machine Learning | Predicción de demanda de CPU a 15 min | PMV1 | Demostrado | `software/prediction/results/manifest.json` | Dictamen GO CON CONDICIONES. Random Forest con MAE 3,22 pp en validación y 3,85 pp en test. Datos simulados. |
 | Observabilidad e ingesta | Recolección continua de telemetría a 15 s | PMV1 | Demostrado | Prometheus targets en UP; 112 pruebas en Monitoring | Recolección activa desde simulador sintético. No prueba disponibilidad anual del 100 %. |
 | Pipeline ETL y limpieza | Tratamiento de brechas temporales (3,2 % nulos) | PMV1 | Demostrado | Suite Data Processing (128 aprobadas y 8 omitidas al 19/11/2026) | Interpolación lineal en brechas breves (< 1 min) e imputación por mediana. 0,0 % nulos post-tratamiento. |
-| Persistencia y datos | Esquema relacional y adaptadores duales | PMV1 | Demostrado | Contratos duales SQLite y PostgreSQL / Supabase | Perfil de desarrollo SQLite con 121 tests compartidos con PostgreSQL. Procedimientos en Supabase. |
+| Persistencia y datos | Esquema relacional y adaptadores duales | PMV1 | Demostrado | Contratos duales SQLite y PostgreSQL / Supabase | Perfil de desarrollo SQLite con 121 tests compartidos con PostgreSQL (15/11/2026). Procedimientos en Supabase. |
 | Prediction Service | API REST de inferencia de demanda | PMV2 | Demostrado | Microservicio FastAPI; 116 pruebas aprobadas al 19/11/2026 | Endpoints `/v1/predictions` y `/v1/recommendations`. Latencia mediana de 97 ms con un usuario; 1,14 s con 8 concurrentes (cuello de botella H-03, ingeniería inversa). |
 | Policy/Safety Engine | Reglas de SLA y guardrails de seguridad | PMV2 | Demostrado | Módulo de políticas en Prediction; modo Recommendation-Only | Modo asistivo con `executionAllowed=false`. Umbrales CPU $\le 80\,\%$, latencia $\le 2\,000\text{ ms}$. |
 | Frontend Web | Interfaz de visualización y control | PMV1–3 | Demostrado | GitHub Pages (`dev/`); 63 pruebas Node al 19/11/2026 | Interfaz HTML/JS estática (Racks, Métricas, Detalle, Flujos), tabla accesible (U-02) y etiquetas «modelada/estimada» (F-06). Sin escaneo axe/Lighthouse ni validación con sesión real (F-03 parcial). |
 | Alertas operativas | Detección de saturación y caídas | PMV2 | Demostrado | `prometheus/alerts.yml` (validado con `promtool`) | 6 reglas de alerta: 4 de operación (disponibilidad y sobrecarga) y 2 de demostración. |
 | Reportes estructurados | Resumen histórico descargable | PMV2–3 | Demostrado | `/reports/historical-summary` (JSON, CSV y PDF desde el Sprint 7) | PDF con la leyenda «Datos simulados; energía modelada, no medida»; desplegado en Render el 25/11/2026. |
 | Control perimetral (RBAC) | Roles de seguridad en API Gateway | PMV2–3 | Demostrado en el Gateway; elusible en la nube (H-01), mitigado parcialmente | Gateway Java (19 pruebas) y Gateway Go (40 pruebas); secreto `X-Green-Gateway-Secret` | ADMIN, OPERATOR y VIEWER con validación JWT. Prediction y Data Processing siguen siendo accesibles directamente en Render; solo las rutas de decisiones exigen el secreto del Gateway (401 sin él, verificado el 25/11/2026). |
-| Experimento comparativo | Aprovisionamiento reactivo vs predictivo | PMV3 | Demostrado | Manifiesto de experimento en test set ($n = 126$) | Margen 10 % reduce riesgo de SLA de 15,9 % a 9,5 % (−6,35 pp). Energía modelada −0,16 % (sin ahorro probado). |
-| Decisión humana (HU-07) | Aprobar o rechazar recomendaciones con auditoría | PMV3 | Demostrado (persistencia efímera) | Rutas `/v1/recommendations/{id}/decisions`; 16 pruebas en Prediction | Registro con usuario, rol, comentario y SHA-256; `executionAllowed=false`. En Render se guarda en SQLite efímero: la migración a Supabase no está aplicada. |
-| Seguridad de datos (RLS) | Políticas RLS y columna `password` en Supabase (F-01 / H-02) | PMV3 | Parcial / pendiente | Snapshot del repositorio; captura S11 y S12 (semana 13) | Requiere acceso administrativo a Supabase; no verificado ni corregido al 25/11/2026. |
+| Experimento comparativo | Aprovisionamiento reactivo vs predictivo | PMV3 | Demostrado | Manifiesto de experimento en test set ($n = 126$) | Margen 10 % reduce riesgo de SLA de 15,9 % a 9,5 % (−6,35 pp). Energía modelada −0,17 % con margen del 10 % (sin ahorro probado). |
+| Decisión humana (HU-07) | Aprobar o rechazar recomendaciones con auditoría | PMV3 | Parcial (probado de forma automatizada; persistencia efímera) | Rutas `/v1/recommendations/{id}/decisions`; 16 pruebas en Prediction | Registro con usuario, rol, comentario y SHA-256; `executionAllowed=false`. En Render se guarda en SQLite efímero: la migración a Supabase no está aplicada. No existe adaptador Supabase; falta la validación con sesión real. |
+| Seguridad de datos (RLS) | Políticas RLS y columna `password` en Supabase (F-01 / H-02) | PMV3 | Parcial | Capturas S11 y S12 del 12/11/2026 (estado previo) | Columna `password`: corregida según el equipo, sin evidencia adjunta aún. Políticas RLS: pendientes. |
 | Sesión real en el dashboard | Validación con cuenta del equipo (F-03) | PMV3 | Parcial | Captura S13 (semana 13) | Sesión en `localStorage`; falta la validación de punta a punta con sesión real de Aprobar/Rechazar, PDF y tabla accesible. |
 
 ---
@@ -1841,7 +2990,7 @@ Tabla 34. Comparación del prototipo Green AI con los antecedentes (discusión)
 | **Datos y entorno evaluado** | Telemetría sintética (`dataset-sim-001`), cadencia base 15 s remuestreada a 5 min (80 640 muestras brutas). | Trazas reales de producción de centros de datos Bitbrains (fastStorage: 1 250 VM, 30 días; Rnd: 500 VM, 90 días, a 5 min). | Trazas de centros de datos heterogéneos reales con variables combinadas de servidores y refrigeración. | Simulación sintética mediante CloudSim (~18 millones de instancias generadas mediante algoritmos genéticos). | Green AI coincide en la cadencia de agregación (5 min) con [1], pero adolece de validación en trazas reales de producción. Los estudios [1] y [2] evalúan distribuciones de carga realistas con perturbaciones estocásticas complejas. |
 | **Arquitectura de Machine Learning** | Ensamble de árboles Random Forest Regressor con retardos temporales ($t-1 \dots t-15$) y codificación cíclica. | Redes neuronales recurrentes GRU y clustering TSSAP para estimación de estados energéticos (E-states). | Red neuronal profunda multivariable y multipaso MM-GRU coordinada con scheduling de tareas. | Red neuronal artificial (ANN) de dos niveles denominada AGEN (Artificial Genetic Energy-aware Network). | Green AI prioriza modelos de bajo costo computacional (*Green-in-AI* [6], [7]), evitando el overhead de entrenamiento e inferencia de arquitecturas recurrentes profundas (GRU/BiLSTM) en hardware restringido. |
 | **Desempeño predictivo obtenido** | MAE de 3,22 pp en validación y 3,85 pp en test a 15 min (−30,15 % vs persistencia). En picos, MAE sube a 6,12–8,45 pp. | GRU logró el menor RMSE frente a modelos lineales. El 87,48 % citado en la literatura corresponde a la mejora de clustering TSSAP sobre AP (§8.2 de [1]). | MM-GRU demostró capturar interacciones no lineales multivariables superando a baselines ARIMA y lineales. | Reducción de error cuadrático medio frente a heurísticas tradicionales de umbral estático. | Coincidencia en la tendencia general: el aprendizaje supervisado supera a las referencias heurísticas. No obstante, las magnitudes numéricas no son directamente comparables debido a diferencias en los datos y a que las métricas de [1] se evalúan en escalas multivariables normalizadas. |
-| **Impacto energético evaluado** | Estimación matemática mediante modelo proxy lineal $P(u)$. En el experimento comparativo la diferencia energética fue de −0,16 % (sin ahorro demostrado). | La predicción de carga permite identificar ventanas para transición entre estados energéticos (E-states) y consolidación. | Optimización conjunta de servidores IT y sistemas de refrigeración (cooling), mejorando el factor PUE. | Reportan reducciones modeladas de consumo de −45 % bajo carga pesada y −71 % bajo carga ligera en simulación CloudSim. | Los ahorros energéticos elevados reportados en la literatura ([3] con hasta −71 %) provienen de simulaciones teóricas que asumen apagados instantáneos de servidores sin latencias de reactivación. La revisión sistemática [6] documenta que los ahorros reportados varían entre 13 % y 115 % por disparidades metodológicas. Green AI no reclama ahorro energético hasta contar con medición física. |
+| **Impacto energético evaluado** | Estimación matemática mediante modelo proxy lineal $P(u)$. En el experimento comparativo la diferencia de energía modelada fue de −0,17 %, −0,16 % y −0,13 % con márgenes del 10 %, 20 % y 30 % (sin ahorro demostrado). | La predicción de carga permite identificar ventanas para transición entre estados energéticos (E-states) y consolidación. | Optimización conjunta de servidores IT y sistemas de refrigeración (cooling), mejorando el factor PUE. | Reportan reducciones modeladas de consumo de −45 % bajo carga pesada y −71 % bajo carga ligera en simulación CloudSim. | Los ahorros energéticos elevados reportados en la literatura ([3] con hasta −71 %) provienen de simulaciones teóricas que asumen apagados instantáneos de servidores sin latencias de reactivación. La revisión sistemática [6] documenta que los ahorros reportados varían entre 13 % y 115 % por disparidades metodológicas. Green AI no reclama ahorro energético hasta contar con medición física. |
 | **Gobernanza operativa y decisión** | Modo estricto **Recommendation-Only** (`executionAllowed = false`) con guardrails de SLA (CPU $\le 80\,\%$, latencia $\le 2\,000\text{ ms}$) y validación humana obligatoria. | Consolidación dinámica automatizada de máquinas virtuales en clúster. | Planificación y asignación autónoma de recursos combinada con control térmico. | Algoritmo autónomo de asignación y migración de tareas en tiempo real. | A diferencia de los enfoques autónomos ([1], [2], [3]), Green AI adopta una gobernanza asistiva. En el entorno universitario, salvaguardar la estabilidad de las plataformas académicas tiene prioridad sobre la optimización autónoma agresiva, evitando degradaciones de servicio por falsos positivos en picos de demanda. |
 
 **Análisis discursivo de implicancias técnicas y de ingeniería:**
@@ -1849,6 +2998,89 @@ Tabla 34. Comparación del prototipo Green AI con los antecedentes (discusión)
 1. **Eficiencia algorítmica y principio *Green-in-AI*:** Las investigaciones de Khan et al. (2022) [1] y Ji et al. (2021) [2] demuestran que las redes neuronales recurrentes (GRU y MM-GRU) destacan en la modelización de series temporales no lineales. No obstante, estas redes imponen un footprint de memoria y un costo de cálculo apreciable. Para el contexto de laboratorios universitarios con servidores de capacidad acotada, Green AI evidenció que un ensamble de árboles como Random Forest Regressor, combinado con ingeniería de retardos temporales, provee un compromiso adecuado: reduce el error predictivo en un 30,15 % respecto a la persistencia con una latencia de inferencia contenida en decenas de milisegundos y un footprint de memoria de 122–142 MiB en reposo.
 2. **Gobernanza operacional frente a control autónomo:** Frente a las propuestas de orquestación autónoma directa predominantes en la literatura ([1], [3]), Green AI formaliza un desacoplamiento estricto mediante el Policy/Safety Engine. Dado que la indisponibilidad de plataformas universitarias durante jornadas de evaluación representa un impacto crítico, el prototipo opera exclusivamente bajo la modalidad de recomendación asistiva con aprobación humana, incorporando guardrails defensivos que bloquean propuestas riesgosas o se abstienen cuando la ventana temporal es insuficiente (`INSUFFICIENT_DATA`).
 3. **Modelo proxy energético lineal:** Ante la carencia de sensores físicos de distribución de potencia (PDU) instrumentados en el laboratorio, Green AI adopta transparentemente el modelo proxy lineal $P(u) = P_{idle} + (P_{max} - P_{idle}) \times u$. A diferencia de los centros de datos industriales analizados por Ji et al. [2], se reconoce explícitamente que los consumos modelados en Wh e indicadores derivados constituyen estimaciones matemáticas de primer orden y no mediciones de campo.
+
+---
+
+### VIII.6. Pruebas, resultados y discusión por entregable de cada PMV
+
+Esta sección contrasta lo comprometido en cada PMV (§VII.5 y Tabla 24) con la forma en que se probó, el resultado, su interpretación y lo que falta. Las cifras de pruebas llevan fecha porque las suites crecieron: 435 aprobadas el 15/11/2026 y 492 el 19/11/2026.
+
+#### VIII.6.1. PMV1: observabilidad, ingesta y persistencia
+
+**Comprometido.** El PMV1 debía entregar un simulador de telemetría, recolección cada 15 segundos con Prometheus, el servicio Monitoring, el API Gateway, un frontend estático, el pipeline de limpieza, la persistencia relacional, el acceso autenticado y un modelo de referencia, correspondientes principalmente a HU-01, HU-02 y HU-15.
+
+**Cómo se probó y qué resultó.** Se usaron pruebas automatizadas y de contrato, el estado de los objetivos de Prometheus, la visualización en Grafana y el *smoke test* de extremo a extremo. El 15/11/2026 aprobaron 112 pruebas de Monitoring, 12 del Gateway Java, 32 del Gateway Go, 121 de Data Processing (8 omitidas) y 10 del Simulator; el *smoke test* del 06/11/2026 superó 14 de 14 comprobaciones. Los objetivos figuraron en estado UP (Figura VIII.8) y la serie de referencia, con 3,2 % de registros ausentes, quedó sin nulos tras el tratamiento (Tabla 29). El modelo de persistencia fijó la referencia de MAE 4,61 pp.
+
+**Discusión.** El resultado demuestra que la cadena de observabilidad funciona de forma reproducible y que el cambio entre SQLite y Supabase se resuelve con adaptadores del mismo puerto. No demuestra comportamiento con servidores físicos ni continuidad prolongada, porque los objetivos en UP son un estado instantáneo y la telemetría es sintética. Las suites actuales incluyen cambios posteriores al cierre del PMV1, así que verifican el estado vigente y no reconstruyen el de esa fecha.
+
+**Pendiente.** Evidencia del registro de un usuario final (HU-15), restricción de las políticas RLS, prueba de carga representativa y contraste con telemetría real.
+
+#### VIII.6.2. PMV2: predicción, recomendaciones y visualización
+
+**Comprometido.** El PMV2 debía entregar un modelo de predicción de CPU a 15 minutos superior a los modelos de referencia, la API en FastAPI con contrato OpenAPI, el motor de políticas sin ejecución autónoma, alertas, energía modelada y el dashboard.
+
+**Cómo se probó y qué resultó.** El modelo se comparó con partición cronológica 70/15/15, semilla 42 y pruebas contra la fuga temporal; la API y la política se verificaron con pruebas automatizadas, casos de error y el *smoke test*. Random Forest obtuvo MAE 3,22 pp en validación y 3,85 pp en prueba, con 30,15 % menos error que la persistencia y 13,90 % menos que la media móvil en validación, y una latencia media por lote de 9,46 ms en el equipo de desarrollo. Prediction aprobó 100 pruebas y el frontend 48 (15/11/2026); las seis reglas de alerta pasaron `promtool`; el historial insuficiente produjo HTTP 422.
+
+**Discusión.** La hipótesis H1 se acepta dentro del dataset sintético: el modelo supera a las referencias y cumple la restricción de latencia. La utilidad es menor en los picos, donde el error llega a 6,12 pp en validación y 8,45 pp en prueba, precisamente cuando una recomendación sería más delicada; por ello se mantiene la supervisión humana. La latencia del servicio desplegado es otra medida: mediana de 97 ms con un usuario y 1,14 s con ocho concurrentes, con caída del rendimiento. Las alertas se validaron en sintaxis, no ante incidentes reales.
+
+**Pendiente.** Evaluación con trazas reales, tratamiento de picos, corrección del cuello de botella de carga del modelo (H-04) y validación del dashboard con sesión real.
+
+#### VIII.6.3. PMV3: procesos, calidad, experimentación y entregables
+
+**Comprometido.** El PMV3 debía entregar la ingeniería inversa, el proceso de desarrollo con CI/CD, los reportes FURPS+/OWASP con re-medición, el experimento comparativo, las pruebas de rendimiento y de ML, la validación con usuarios finales con acta, y el informe, la guía, el artículo, el póster y el video con siete operaciones.
+
+**Cómo se probó y qué resultó.** Se revisó el código en siete fases, se integró el PR #7 con revisión de otro integrante y 12 verificaciones en verde, se ejecutaron las siete suites el 19/11/2026 (492 aprobadas y 8 omitidas) y se comprobó en Render el 25/11/2026 que la identidad falsificada recibe HTTP 401. La ingeniería inversa registró 23 hallazgos. La evaluación oficial de calidad, anterior a la ola 2, dio FURPS+ 86,0 % y OWASP 83,5/100. En 126 intervalos, con margen del 10 %, el riesgo de superar la capacidad reservada bajó de 15,9 % a 9,5 %, sin diferencia con 20 % y 30 %; la energía modelada varió menos de 0,2 %.
+
+**Discusión.** El proceso de integración y las pruebas automatizadas respaldan los cambios del Sprint 7, pero una prueba aprobada no equivale a validación en uso: la decisión humana persiste solo en SQLite efímero y no se probó de punta a punta con sesión real. El experimento apoya la predicción como ayuda para ajustar reservas estrechas, no como medida de ahorro energético. Como no hubo re-medición, no puede afirmarse cuánto mejoró la calidad con la ola 2.
+
+**Pendiente.** Validación con usuarios finales y acta (no realizada o no documentada a la fecha de corte), políticas RLS, evidencia de la corrección de la columna `password`, adaptador Supabase para HU-07, cierre de H-01, sesión real, re-medición de calidad, artículo en inglés y video propio de la Unidad IV.
+
+---
+
+### VIII.7. Calidad FURPS+ y OWASP: resultados, hallazgos y correcciones
+
+La versión oficial de la evaluación es la entregada en la semana 13, realizada sobre FURPS+ y OWASP Top 10:2025. Tras la ola 1 obtuvo 86,0 % en FURPS+ (172 de 200 puntos; 86,28 ponderado), frente a 84,0 % inicial, y 83,5 de 100 en el puntaje de seguridad OWASP, frente a 79,0. Su dictamen fue **«apto para producción con observaciones»**, con riesgo operativo medio. La matriz docente de 50 preguntas, que usa otra escala, pasó de 78,4 % a 82,4 % (206 de 250), con 68,0 % en el bloque OWASP. El dictamen corresponde a un prototipo académico con datos simulados y no elimina las observaciones abiertas.
+
+Existe además una auditoría distinta, fechada el 19/11/2026 y ejecutada con las plantillas de la semana 14, que reportó FURPS+ 87,00 %, OWASP 86,0 estimado y «no apto para producción». No se adopta como resultado oficial ni se mezcla con las cifras anteriores; se conserva como respaldo porque sus condiciones de cierre (autorización en Supabase, servicios expuestos, *rate limiting*, sesión y trazabilidad) siguen siendo pertinentes. La ingeniería inversa, también posterior, calificó H-01 y H-02 como críticos.
+
+Las correcciones posteriores se informan por hallazgo. No se volvió a medir ningún puntaje después de la ola 2, por lo que las cifras oficiales no incorporan esas mejoras.
+
+Tabla 34.a. Hallazgos FURPS+ y estado de corrección al 25/11/2026
+
+| Hallazgo | Corrección y evidencia | Estado |
+|---|---|---|
+| M-U07 sin guía de usuario | Guía rápida publicada (captura S05) | Corregido (ola 1) |
+| M-F07 sin decisión persistente (HU-07) | Commits `41fb923`, `69da20b`, `6ed72e1`; Figuras VIII.38 y VIII.46 | Parcial: SQLite efímero, sin adaptador Supabase ni sesión real |
+| M-F11 sin PDF (HU-13) | Commit `e882e67`; pruebas del reporte, Figura VIII.39 | Corregido |
+| M-S01 Simulator acoplado | Commit `745fd72`; Figura VIII.42 | Corregido |
+| M-U06 accesibilidad | Tabla equivalente al gráfico, commit `6ed72e1`; Figura VIII.43 | Parcial: sin escaneo axe/Lighthouse |
+| M-P01 arranque en frío | Medición y precalentamiento documentado, commit `104aad5`; Figura VIII.45 (12,6–69,5 s) | Parcial: la latencia persiste |
+| M-F05 MLflow sin nube | UI local (Figura VIII.1) | Parcial |
+| M-F08 potencia modelada | Etiqueta «modelada/estimada», commit `6ed72e1` | Parcial: sin sensores físicos |
+| M-F09 y M-F13 sesión y registro reales | Sin validación de punta a punta | Parcial |
+| M-U08 operaciones en tres pasos | Sin cambio evidenciado | Pendiente |
+| M-R01 errores RFC 7807 | Prediction mantiene el sobre `{code, message}` | Pendiente |
+| M-R05 resistencia ante saturación | Sin re-evaluación | Pendiente |
+| M-PL03 alojamiento gratuito | Limitación del plan de Render | Parcial |
+
+Tabla 34.b. Hallazgos OWASP y estado de corrección al 25/11/2026
+
+| Hallazgo (categoría 2025) | Corrección y evidencia | Estado |
+|---|---|---|
+| OW-01 políticas RLS permisivas (A01) | Verificado el 12/11/2026 (S11) | Pendiente |
+| OW-02 puertos de Compose (A01) | Publicados solo en 127.0.0.1 (S29) | Pendiente (severidad baja) |
+| OW-03 columna `password` (A04) | Estado previo en S12 | Corregido según el equipo, sin evidencia adjunta aún |
+| OW-04 contraseñas sintéticas en Excel (A04) | El archivo sigue versionado (S30) | Pendiente |
+| OW-05 sin *rate limiting* (A06) | S21 | Pendiente |
+| OW-06 y OW-07 cabeceras HTTP (A02) | Commit `d24d86f`; S07, S07a y S07b | Corregido (ola 1) |
+| OW-08 CDN sin SRI (A03) | Commit `d24d86f`; S08b | Corregido (ola 1) |
+| OW-09 sesión en `localStorage` (A07) | S22 | Pendiente |
+| OW-10 acciones de CI sin SHA (A08) | Commit `d24d86f`; S09 y S09b | Corregido (ola 1) |
+| OW-11 imágenes sin digest (A08) | Solo `gateway-go` fija `@sha256` (S31) | Parcial |
+| OW-12 sin auditoría de 401/403 (A09) | S23 | Pendiente |
+| OW-13 condiciones excepcionales (A10) | S24 | Pendiente |
+
+El hallazgo H-01 de la ingeniería inversa está mitigado de forma parcial: las rutas de decisiones exigen el secreto del Gateway y responden 401 sin él (commits `41fb923` y `69da20b`; Figura VIII.46), mientras que las demás rutas de Prediction y Data Processing siguen públicas. La lectura de las dos tablas es que la ola 1 cerró riesgos de configuración y cadena de suministro, y la ola 2 cerró brechas funcionales y de mantenibilidad, pero los riesgos ligados a la base de datos externa, la limitación de tasa y la auditoría de accesos permanecen. Los enlaces a los archivos de respaldo están en el Anexo F.
 
 ---
 
@@ -1867,28 +3099,19 @@ La optimización energética de sistemas de software debe considerar el consumo 
 
 # X. CONCLUSIONES
 
-### X.1. Conclusiones por objetivo
+### X.1. Conclusiones por objetivo específico
 
-#### Conclusión del objetivo general
-Se diseñó e integró un prototipo experimental para la gestión eficiente de recursos computacionales que articula componentes de simulación, monitoreo en tiempo real, procesamiento relacional y servicios predictivos de Machine Learning. El prototipo resolvió la incertidumbre técnica inicial en un entorno controlado, demostrando viabilidad predictiva algorítmica sobre series de telemetría simulada. Se concluye que la solución provee una base arquitectónica funcional para la asistencia operativa; no obstante, la cuantificación de ahorro energético real queda sujeta a la instrumentación de mediciones físicas en etapas posteriores.
+#### Conclusión del objetivo específico 1 — Observabilidad y viabilidad técnica (PMV1)
+Se integraron Simulator, Prometheus, Monitoring y API Gateway para recolectar y consultar cada 15 segundos las métricas de 50 nodos simulados distribuidos en 5 racks, con persistencia relacional en PostgreSQL (Supabase) y un perfil SQLite para desarrollo, contratos OpenAPI y autenticación. La evidencia son las pruebas automatizadas y el *smoke test* de 14 comprobaciones del 06/11/2026. En la serie de referencia, el 3,2 % de registros ausentes se trató con interpolación e imputación. Se concluye que el objetivo se alcanzó en un entorno experimental; no se demostró disponibilidad prolongada ni funcionamiento con telemetría física.
 
-#### Conclusión del objetivo específico 1 — Monitoreo y telemetría (PMV1)
-Se implementó la recolección y visualización continua de telemetría de infraestructura mediante la integración de Simulator, Monitoring Service, Prometheus Server, Grafana y la aplicación web, capturando métricas de CPU, memoria RAM y red a intervalos de 15 segundos sobre una matriz de 50 servidores sintéticos distribuidos en 5 racks. Se concluye que la arquitectura de observabilidad satisface la granularidad requerida para el entrenamiento supervisado; no obstante, se reconoce que la disponibilidad histórica prolongada debe ser sustentada mediante registros cronológicos acumulados y no a partir de estados instantáneos de sondeo.
+#### Conclusión del objetivo específico 2 — Predicción y recomendación explicable (PMV2)
+Random Forest obtuvo en validación cronológica (n = 125) un MAE de 3,22 pp y un RMSE de 4,59 pp, con 30,15 % menos error absoluto que la persistencia y 13,90 % menos que la media móvil; en prueba (n = 129) el MAE fue 3,85 pp. El modelo se sirve por API y las recomendaciones mantienen `executionAllowed=false`. Se concluye que se logró un error menor que el de los dos modelos de referencia sobre datos sintéticos de un nodo; el error en picos (6,12 pp en validación y 8,45 pp en prueba) y la falta de datos reales impiden generalizar el resultado. La decisión humana persistente (HU-07) quedó parcial.
 
-#### Conclusión del objetivo específico 2 — Preparación y trazabilidad de datos (PMV1)
-Se estructuró el pipeline de procesamiento y persistencia relacional con PostgreSQL / Supabase y perfil de desarrollo en SQLite, validando contratos de API idénticos en ambos motores. El tratamiento de brechas temporales breves mediante interpolación lineal e imputación por mediana permitió recuperar la regularidad de la matriz de características temporales alcanzando un 0,0 % de valores nulos post-tratamiento. Se concluye que el esquema asegura la reproducibilidad de los conjuntos de entrenamiento, manteniendo la debida transparencia metodológica al identificar la procedencia como sintética.
+#### Conclusión del objetivo específico 3 — Experimentación comparativa y eficiencia (PMV3)
+En 126 intervalos del conjunto de prueba, con margen del 10 %, el aprovisionamiento predictivo redujo el riesgo de superar la capacidad reservada de 15,9 % a 9,5 % y la capacidad ociosa media de 6,31 a 5,88 pp; con márgenes del 20 % y 30 % el riesgo fue igual en ambas estrategias (4,0 % y 2,4 %). La energía modelada varió −0,17 %, −0,16 % y −0,13 %. Se concluye que hubo una mejora de riesgo solo con el margen más ajustado y que no se demostró ahorro de energía: la potencia procede de un modelo lineal y no de mediciones físicas.
 
-#### Conclusión del objetivo específico 3 — Predicción de demanda computacional (PMV2)
-Se integró el microservicio Prediction Service exponiendo contratos OpenAPI para inferencia a 15 minutos. El modelo supervisado Random Forest Regressor demostró el mejor desempeño en validación ($n = 125$), obteniendo un MAE de 3,22 pp y RMSE de 4,59 pp de utilización de CPU, lo que representó una reducción de error absoluto del 30,15 % respecto al baseline de persistencia y del 13,90 % respecto a la media móvil, alcanzando un MAE de 3,85 pp en el conjunto de prueba independiente ($n = 129$). Se concluye que el modelo aporta ventaja predictiva con latencias contenidas en decenas de milisegundos; no obstante, la duplicación del error observada durante picos extremos (MAE de 6,12 a 8,45 pp) confirma la necesidad de mantener mecanismos de respaldo heurísticos.
-
-#### Conclusión del objetivo específico 4 — Recomendaciones y restricciones operativas (PMV2)
-Se implementó el Policy/Safety Engine operando bajo el estándar Recommendation-Only, asegurando que las propuestas de optimización no ejecuten comandos directos sobre la infraestructura. Se concluye que la incorporación de guardrails operacionales (utilización máxima de CPU $\le 80\,\%$ y latencia $\le 2\,000\text{ ms}$) protege la continuidad del servicio al clasificar solicitudes con información incompleta como no evaluables (`INSUFFICIENT_DATA`), garantizando la primacía del criterio humano en la gestión de capacidad.
-
-#### Conclusión del objetivo específico 5 — Evaluación de eficiencia y experimentación comparativa (PMV2 y proyección a PMV3)
-Se ejecutó la prueba comparativa formal entre la estrategia baseline reactiva y el aprovisionamiento predictivo de Green AI sobre el conjunto de prueba ($n = 126$ intervalos). Con un margen de seguridad del 10 %, Green AI redujo el riesgo de violación de SLA de 15,9 % a 9,5 % (una reducción absoluta de 6,4 pp), demostrando la utilidad de la anticipación de carga para evitar saturaciones. En contraste, la variación en energía modelada fue de −0,16 %, concluyendo que bajo las condiciones de prueba actuales no existe ahorro energético demostrable y que el beneficio operativo reside en la mitigación del riesgo de servicio con márgenes de reserva más ajustados.
-
-#### Conclusión del objetivo específico 4 de proceso — Procesos de software, calidad y entregables (PMV3)
-Los procesos del PMV3 se ejecutaron y tienen evidencia: ingeniería inversa en 7 fases (23 hallazgos), auditoría final FURPS+ (87 %) y OWASP (86/100 estimado), ola 2 de mejoras implementada con 492 pruebas aprobadas y desplegada en Render, y revisión por pares del PR #7 con CI en verde. Se concluye que el flujo `test`→`main` con PR revisado y CI es operativo. Sin embargo, el producto **no es apto para producción**: H-01 está mitigado solo en las rutas de decisiones, H-02 (RLS y columna `password`) no está verificado en Supabase, la sesión real (F-03) es parcial y las decisiones se guardan en SQLite efímero. La prueba con usuarios finales y su acta quedan pendientes de registro.
+#### Conclusión del objetivo específico 4 — Procesos de software, calidad y entregables (PMV3)
+Se ejecutaron la ingeniería inversa (23 hallazgos), la evaluación oficial FURPS+ 86,0 % y OWASP 83,5/100 tras la ola 1 («apto para producción con observaciones», semana 13), el flujo `test`→`main` con PR revisado e integración continua, y la ola 2, verificada con 492 pruebas aprobadas el 19/11/2026 y desplegada en Render el 25/11/2026. No se volvió a medir la calidad después de la ola 2. Se concluye que el objetivo se cumplió parcialmente: siguen pendientes las políticas RLS, el cierre completo de H-01, la sesión real, la validación con usuarios finales y su acta, y la corrección de la columna `password` carece todavía de evidencia adjunta. El video es el de la Unidad III y el repositorio no contiene el artículo científico en inglés.
 
 ---
 
@@ -1905,7 +3128,9 @@ Los procesos del PMV3 se ejecutaron y tienen evidencia: ingeniería inversa en 7
 - Carencia de instrumentación eléctrica de medición directa (PDU inteligentes).
 - Incremento del error de predicción durante eventos de pico extremo de demanda.
 - Despliegue en capa gratuita de nube pública sujeto a latencias por arranques en frío.
-- Seguridad parcial: H-01 solo mitigado en las rutas de decisiones y H-02 (RLS y columna `password`) sin verificar en Supabase; la auditoría final dictamina «no apto para producción».
+- Seguridad parcial: H-01 mitigado solo en las rutas de decisiones; políticas RLS «Permitir todo» pendientes (verificadas el 12/11/2026); columna `password` corregida según el equipo, sin evidencia adjunta aún; sin *rate limiting* ni auditoría de 401/403.
+- Según la ingeniería inversa (H-14), el modelo se entrenó con un nodo sintético y 864 registros y se aplica a 50 nodos.
+- La calidad FURPS+/OWASP no se volvió a medir después de la ola 2.
 - Las decisiones HU-07 se guardan en SQLite efímero en Render y se pierden al reiniciar el servicio.
 - La prueba con usuarios finales y su acta están pendientes de registro por el equipo.
 
@@ -1913,7 +3138,8 @@ Los procesos del PMV3 se ejecutaron y tienen evidencia: ingeniería inversa en 7
 - Validar el pipeline con trazas de centros de datos abiertos (Bitbrains) o mediciones reales del campus universitario.
 - Instrumentar medidores de energía física mediante protocolos SNMP o IPMI para contrastar la precisión del modelo proxy $P(u)$.
 - Automatizar la ingeniería inversa y las auditorías FURPS+/OWASP en el flujo de CI para repetirlas en cada versión.
-- Aplicar la migración `001_recommendation_decisions.sql` en Supabase, endurecer RLS y retirar la columna `password` (F-01), y validar el dashboard con sesión real (F-03).
+- Adjuntar la evidencia de la corrección de la columna `password`, restringir las políticas RLS previendo un rol de solo lectura para los históricos (H-03), implementar el adaptador Supabase de decisiones HU-07, aplicar la migración `001_recommendation_decisions.sql` y validar el dashboard con sesión real (F-03).
+- Realizar la validación con usuarios finales, registrar el acta y volver a medir FURPS+ y OWASP.
 - Volver privados Prediction y Data Processing o exigir el secreto del Gateway en todas sus rutas, e implementar *rate limiting* y auditoría de 401/403 (OW-05, OW-12).
 - Implementar la estimación de huella de carbono CO2e (HU-10) con factores de emisión oficiales verificables (fuera del alcance del periodo lectivo).
 - Implementar el cambio aprobado CHG-001-2026 (HU-17 y HU-18): temperatura exterior satelital, PUE y energía de refrigeración modeladas (§VII.8).
@@ -1956,6 +3182,8 @@ Los procesos del PMV3 se ejecutaron y tienen evidencia: ingeniería inversa en 7
 
 [16] NASA LANGLEY RESEARCH CENTER. *POWER: Prediction Of Worldwide Energy Resources* [en línea]. Disponible en: https://power.larc.nasa.gov/
 
+[17] BELOGLAZOV, A., ABAWAJY, J. y BUYYA, R. Energy-aware resource allocation heuristics for efficient management of data centers for Cloud computing. *Future Generation Computer Systems*. 2012, vol. 28, no. 5, pp. 755–768. DOI: 10.1016/j.future.2011.04.017.
+
 ---
 
 # ANEXOS
@@ -1967,14 +3195,14 @@ Los procesos del PMV3 se ejecutaron y tienen evidencia: ingeniería inversa en 7
 * **API Gateway perimetral desplegado (Render):** https://green-ai-gateway-dev.onrender.com
 * **Video demostrativo del producto (Google Drive; es el mismo video entregado en la Unidad III, sin cambios para la Unidad IV):** https://drive.google.com/drive/folders/16ttIT6vfV2NXIxz0k5bjwtlNyJETCkQj?usp=drive_link
 
-* **Póster científico del proyecto (Unidad IV):** entregado junto con este informe (`poster-green-ai.pdf`).
+* **Póster científico del proyecto (Unidad IV):** incluido en el Anexo H.
 
-* **Formulario de consulta con el experto temático:**
+* **Consulta con el experto temático (archivo en Google Drive):**
   https://drive.google.com/file/d/1bRDtlPNSknHKYgtX5wHdiWbGDrtZlgeG/view?usp=drive_link
 
 ![](../informe-corregido/evidencias/p094-img047.png)
 
-Figura A.1. Formulario de entrevista de requerimientos con el experto temático de infraestructura.
+Figura A.1. Fotografía tomada con el experto temático de infraestructura durante la consulta de requerimientos. No constituye evidencia de validación con usuarios finales, que sigue pendiente.
 
 * **Repositorios de componentes de software del monorepo:**
 
@@ -2041,6 +3269,8 @@ Figura A.9. Tablero Kanban de seguimiento ágil del proyecto en el espacio de tr
 ---
 
 ### Anexo B. Script de generación de datos sintéticos de prueba
+
+El script es histórico y genera una columna password con datos sintéticos que no debe cargarse en la base de datos.
 
 A continuación se transcribe el código Python completo utilizado para la generación de datos de prueba para las tablas `usuario`, `hardware` y `logs` en PostgreSQL / Supabase y SQLite:
 
@@ -2218,14 +3448,14 @@ Tabla 35. Atención de las observaciones del docente
 | 2.2 Competencia Uso de Herramientas Modernas | Capítulo V | Atendida |
 | 3.1 Criterios de aceptación en el cuadro de HU | §VI.1, historias de usuario por épica y PMV (Given-When-Then) | Atendida |
 | 3.2 Diseño de ingeniería | Capítulo VI (requerimientos, base de datos, arquitectura) | Atendida |
-| 3.3 Numeración de tablas | Todo el documento (Tablas 1 a 35) | Atendida |
+| 3.3 Numeración de tablas | Todo el documento (Tablas 1 a 35, con subtablas 3.a-3.d y 8.0-8.47, entre otras) | Atendida |
 | 4.1 Tabla de trazabilidad de hitos | §VII.5.5, Tabla 24 (fechas hasta el 30/11/2026) | Atendida |
 | 4.2 Cronograma general | §VII.5 y Gantt planificado y ejecutado | Atendida |
-| 5.1 a 5.3 Pruebas por PMV, vinculadas a HU y criterios de aceptación | §VIII.2, Tabla 28 (PMV1 y PMV2) y Tabla 30 (PMV3) | Atendida parcialmente: faltan las capturas de evidencia (C301 a C311) y la ejecución de las verificaciones del PMV3 |
+| 5.1 a 5.3 Pruebas por PMV, vinculadas a HU y criterios de aceptación | §VIII.2 (Tablas 28 y 30) y §VIII.6 | Atendida parcialmente: capturas insertadas y verificaciones del Sprint 7 ejecutadas; pendientes la validación con usuarios finales, F-01 (RLS) y F-03 (sesión real) |
 | 6. Discusión con el marco teórico y antecedentes | §VIII.5, Tabla 34 | Atendida |
-| 7.1 Citas y referencias ISO | Referencias bibliográficas (ISO 690-2 numérico) | Atendida |
-| 7.2 Video de sustentación | Anexo A | Atendido: video publicado en Google Drive (enlace en el Anexo A) |
-| 7.3 Tablero Trello (estado real, evidencias, PMVn-HUxx) | §VII.6 y guía de Trello | Atendida parcialmente: depende de que el equipo aplique la guía; faltan capturas (C201 a C204, C312, C313) |
+| 7.1 Citas y referencias ISO | Referencias bibliográficas (ISO 690-2 numérico), según la norma ISO 690-2 [14] | Atendida |
+| 7.2 Video de sustentación | Anexo A | Atendida parcialmente: video publicado (es el de la Unidad III); no se verificó contra la lista de cotejo de la Unidad IV |
+| 7.3 Tablero Trello (estado real, evidencias, PMVn-HUxx) | §VII.6 | Atendida parcialmente: capturas insertadas; el checklist de la DoD no es visible |
 
 ### Anexo D. Correspondencia con la plantilla del informe final (semana 14)
 
@@ -2248,6 +3478,20 @@ Tabla D.1. Ubicación de cada apartado de la plantilla del docente en este infor
 | Lecciones aprendidas y conclusiones | Capítulos IX y X |
 | Gestión de cambios del congreso (CHG-001-2026) | §VII.8 |
 | Anexos (video, GitHub, experto, evidencias, congreso) | Anexos A a E |
+| Pruebas y discusión por PMV; calidad y correcciones | §VIII.6 y §VIII.7 |
+| Respaldo de calidad, adaptadores y póster | Anexos F, G y H |
+
+Tabla D.2. Trazabilidad de las siete competencias transversales y específicas del sílabo
+
+| Competencia (sílabo) | Tipo | Evidencia en el informe | Brecha declarada |
+|---|---|---|---|
+| Conocimientos de Ingeniería | Transversal | Capítulo II; §VIII.1 | Sin factor de emisión aplicado ni potencia medida |
+| Medioambiente y Sostenibilidad | Transversal | §III.c; ODS (§1.2); estimación de energía y emisiones (§II.b) | Balance energético neto no medido; sin ahorro de energía demostrado |
+| El Ingeniero y la Sociedad | Transversal | Capítulo III; §VII.2.4 | Accesibilidad sin escaneo; políticas RLS pendientes; sin validación con usuarios finales |
+| Gestión de Proyectos | Transversal | Capítulo VII, incluidas §VII.7 y §VII.8 | Cambio CHG-001-2026 no implementado; evidencias de ceremonias incompletas |
+| Diseño y Desarrollo de Soluciones | Específica | §VIII.1; §VI.3; Anexo G | Sin trazas reales; sin adaptador Supabase para HU-07 |
+| Análisis de Problemas | Específica | §1.1: Ishikawa, árbol de problemas y análisis del dataset; §1.2 | Causas sin priorización cuantitativa; sin validación con usuarios finales |
+| Uso de Herramientas Modernas | Específica | Capítulo V; §VIII.2.4; Figuras VIII.1 y VIII.3 | MLflow solo local; sin JMeter ni OWASP ZAP |
 
 ### Anexo E. Evidencia de participación en el Congreso de Ingeniería
 
@@ -2258,3 +3502,36 @@ Figura E.1. Ricardo Porras Veli siguiendo en modalidad virtual (Zoom) la transmi
 ![](evidencias/congreso-evidencias-collage.jpg)
 
 Figura E.2. Evidencias del equipo siguiendo la transmisión del VIII Congreso Internacional de Ingeniería y Arquitectura (Zoom, «Universidad Continental Eventos 4») desde aulas de la universidad, 19/11/2026; en la imagen central inferior se proyecta la ponencia «Tecnología Espacial al Servicio de las Ciudades» del Ing. Alejandro M. Martínez.
+
+### Anexo F. Archivos de respaldo de calidad y seguridad
+
+- [Informe FURPS+ y OWASP de la semana 13 (versión oficial)](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/entregables/semana13/semana13-calidad-furps-owasp.md)
+- [Reclasificación a OWASP Top 10:2025](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/docs/calidad/08_reclasificacion_owasp_2025.md)
+- [Auditorías 01–08](https://github.com/woshtsu/green-ai-workspace-cld/tree/main/docs/calidad)
+- [Matriz en Excel](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/exportados/semana13/MODELO-FURPSPLUS-Green-AI.xlsx)
+- [Mapa de evidencias](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/docs/evidencias/semana13-mapa-evidencias.md) y [capturas](https://github.com/woshtsu/green-ai-workspace-cld/tree/main/entregables/semana13/evidencias)
+- [Ingeniería inversa](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/guias/semana14/ingenieria-inversa/docs/ingenieria_inversa.md)
+- [Auditoría distinta del 19/11/2026 (no oficial)](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/guias/semana14/FURPS%2B%20Y%20OWASP/Ejecuciones/08_Auditoria_Final.md)
+- [Guía de corrección en Supabase (procedimiento, no evidencia de ejecución)](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/docs/operacion/despliegue-ola2-secreto-y-supabase.md)
+- Commits: [ola 1](https://github.com/woshtsu/green-ai-workspace-cld/commit/d24d86f), [HU-07](https://github.com/woshtsu/green-ai-workspace-cld/commit/41fb923), [Gateway](https://github.com/woshtsu/green-ai-workspace-cld/commit/69da20b), [PDF](https://github.com/woshtsu/green-ai-workspace-cld/commit/e882e67), [frontend](https://github.com/woshtsu/green-ai-workspace-cld/commit/6ed72e1), [Simulator](https://github.com/woshtsu/green-ai-workspace-cld/commit/745fd72), [arranque en frío](https://github.com/woshtsu/green-ai-workspace-cld/commit/104aad5)
+- [Captura del rechazo 401 en Render, 25/11/2026](https://github.com/woshtsu/green-ai-workspace-cld/blob/test/entregables/semana15/evidencias/captura-S15-ola2-render-401.png)
+
+### Anexo G. Adaptadores de persistencia Supabase y SQLite (rama `main`)
+
+| Elemento | Clase o función | Enlace |
+|---|---|---|
+| Puerto de históricos | `HistoricalLogsSource` | [línea 5](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/software/data-processing/domain/ports/historical_logs_source.py#L5) |
+| Históricos en Supabase (PostgREST) | `SupabaseHistoricalLogsAdapter` | [línea 17](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/software/data-processing/infrastructure/adapters/input/supabase_historical_logs_adapter.py#L17) |
+| Históricos en SQLite | `SqliteHistoricalLogsAdapter` | [línea 22](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/software/data-processing/infrastructure/adapters/input/sqlite_historical_logs_adapter.py#L22) |
+| Selección por configuración | `historical_source` | [línea 8](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/software/data-processing/infrastructure/historical_sources.py#L8) |
+| Puerto de decisiones HU-07 | `DecisionRepository` | [línea 46](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/software/prediction/src/decisions/domain/decision.py#L46) |
+| Decisiones en SQLite | `SqliteDecisionRepository` | [línea 30](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/software/prediction/src/decisions/adapters/sqlite_repository.py#L30) |
+| Migración para Supabase, no aplicada | `recommendation_decisions` | [SQL](https://github.com/woshtsu/green-ai-workspace-cld/blob/main/software/prediction/migrations/001_recommendation_decisions.sql) |
+
+**Pendiente:** no existe un adaptador Supabase para las decisiones HU-07. La migración SQL no sustituye al adaptador y no está aplicada.
+
+### Anexo H. Póster científico
+
+![](../../exportados/semana15/poster-green-ai.png){width=85%}
+
+Figura H.1. Póster científico del proyecto Green AI (Unidad IV).

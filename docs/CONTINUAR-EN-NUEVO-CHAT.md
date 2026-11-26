@@ -104,6 +104,8 @@ Decisiones del usuario:
 - FURPS+/OWASP oficial: semana 13 (86 %, OWASP 83,5, apto) más correcciones posteriores. El equipo informa que la columna `password` ya se corrigió (falta evidencia).
 - ICACIT: el docente lo evalúa con NotebookLM (prompt no revelado); mejorar el informe/reporte y volver a ejecutarlo.
 
+Avance 26/11 (tarde): informe `.md` corregido (ahora es la fuente de verdad; el script exige `--forzar`), póster ajustado al sílabo. Siguiente: revisión del equipo (póster hoy), validar factores ponderados, mejorar y volver a ejecutar el ICACIT, y solo entonces reexportar Word/PDF. Dudas abiertas al final de `docs/HANDOFF.md`.
+
 **Anotado para hacer después (desde otra PC):**
 1. Recapturar las evidencias mostrando el link (lista: auditoría del 26/11; Cap. VI Fig. 2–4, 6, 8, 9; Trello VII.6.3–6.9; Cap. VIII; Anexo A.2–A.9) y tapar las contraseñas de la Fig. VIII.13 y Anexo B.
 2. Actualizar % de avance del PMV y Gantt ejecutado (corte actual 11/11: PMV1 13/13, PMV2 8/13, PMV3 0/14); confirmar tareas de Sprints 7–8 y Trello. Corregir la tarea «Cluster Kubernetes desplegado» marcada como completada.

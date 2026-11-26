@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" font-family="Segoe UI, Arial, sans-serif">
+<rect x="1" y="1" width="998" height="618" rx="4" fill="#f7f7f7" stroke="#666666" stroke-width="1.5"/>
+<rect x="40" y="24" width="920" height="56" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="60" y="59" font-size="19" fill="#222222" text-anchor="start" font-weight="bold">Green AI Cyber Ops</text>
+<text x="420" y="58" font-size="15" fill="#222222" text-anchor="start" text-decoration="underline">Inicio</text>
+<text x="500" y="58" font-size="15" fill="#222222" text-anchor="start">Dashboard</text>
+<text x="620" y="58" font-size="15" fill="#222222" text-anchor="start">Login</text>
+<text x="700" y="58" font-size="15" fill="#222222" text-anchor="start">Registro</text>
+<rect x="820" y="34" width="124" height="36" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="882.0" y="57.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="bold">Tema claro</text>
+<circle cx="40" cy="24" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="40" y="29" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">1</text>
+<rect x="40" y="100" width="920" height="300" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="70" y="140" font-size="14" fill="#666666" text-anchor="start" font-weight="bold">ESTACIÓN DE OPERACIÓN</text>
+<text x="70" y="184" font-size="31" fill="#222222" text-anchor="start" font-weight="bold">Plataforma Green AI para</text>
+<text x="70" y="222" font-size="31" fill="#222222" text-anchor="start" font-weight="bold">data centers inteligentes.</text>
+<text x="70" y="258" font-size="16" fill="#666666" text-anchor="start">Consulta CPU, memoria, red y almacenamiento por nodo.</text>
+<text x="70" y="282" font-size="16" fill="#666666" text-anchor="start">Valores actuales e histórico con la procedencia de cada medición.</text>
+<rect x="70" y="304" width="170" height="38" rx="4" fill="#555555" stroke="#444444" stroke-width="1.5"/>
+<text x="155.0" y="328.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">Iniciar sesión</text>
+<rect x="256" y="304" width="150" height="38" rx="4" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+<text x="331.0" y="328.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="bold">Registrarse</text>
+<circle cx="70" cy="304" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="70" y="309" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">2</text>
+<circle cx="406" cy="304" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="406" y="309" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">3</text>
+<rect x="70" y="358" width="175" height="28" rx="4" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="157" y="377" font-size="14" fill="#222222" text-anchor="middle">Acceso autenticado</text>
+<rect x="260" y="358" width="175" height="28" rx="4" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="347" y="377" font-size="14" fill="#222222" text-anchor="middle">Métricas por nodo</text>
+<rect x="450" y="358" width="175" height="28" rx="4" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="537" y="377" font-size="14" fill="#222222" text-anchor="middle">Histórico disponible</text>
+<rect x="680" y="125" width="250" height="250" rx="4" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<line x1="680" y1="125" x2="930" y2="375" stroke="#999999" stroke-width="1.5"/>
+<line x1="930" y1="125" x2="680" y2="375" stroke="#999999" stroke-width="1.5"/>
+<rect x="735" y="232" width="140" height="34" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<text x="805" y="254" font-size="15" fill="#666666" text-anchor="middle">Ilustración</text>
+<rect x="40" y="424" width="296" height="130" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<rect x="58" y="440" width="30" height="30" rx="4" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="58" y="498" font-size="17" fill="#222222" text-anchor="start" font-weight="bold">Telemetría en tiempo real</text>
+<text x="58" y="522" font-size="14" fill="#666666" text-anchor="start">CPU, memoria, red y disco.</text>
+<text x="58" y="542" font-size="14" fill="#666666" text-anchor="start">Actualización cada 30 segundos.</text>
+<rect x="352" y="424" width="296" height="130" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<rect x="370" y="440" width="30" height="30" rx="4" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="370" y="498" font-size="17" fill="#222222" text-anchor="start" font-weight="bold">IA predictiva</text>
+<text x="370" y="522" font-size="14" fill="#666666" text-anchor="start">Rótulo «En desarrollo»:</text>
+<text x="370" y="542" font-size="14" fill="#666666" text-anchor="start">predicciones y recomendaciones.</text>
+<rect x="664" y="424" width="296" height="130" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+<rect x="682" y="440" width="30" height="30" rx="4" fill="#e6e6e6" stroke="#999999" stroke-width="1.5"/>
+<text x="682" y="498" font-size="17" fill="#222222" text-anchor="start" font-weight="bold">Infraestructura resiliente</text>
+<text x="682" y="522" font-size="14" fill="#666666" text-anchor="start">Rótulo «En desarrollo»:</text>
+<text x="682" y="542" font-size="14" fill="#666666" text-anchor="start">inventario y topología.</text>
+<circle cx="40" cy="424" r="13" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+<text x="40" y="429" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="bold">4</text>
+<text x="500" y="592" font-size="14" fill="#666666" text-anchor="middle">© 2026 Universidad Continental | Proyecto Green AI | Ley N° 29733</text>
+</svg>
