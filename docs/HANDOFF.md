@@ -483,3 +483,8 @@ Guion del video adaptado a grabación por partes (2026-11-08): sección 0.5 (qui
 ## 26/11/2026 (noche) — Reporte ICACIT reevaluado
 - `entregables/semana15/reporte-icacit.md` (autoevaluación asistida por IA sobre el informe corregido, commit 9e2d172): 1 atributo satisfactorio y 6 parciales. Redactado por subagente (no pudo escribir el archivo; lo guardó Claude).
 - Hallazgo crítico: el informe declara 80 640 muestras cada 15 s en `sample_dataset.json`; el repositorio tiene 864 registros de 5 min (3 días, 1 nodo). También: p95 3,5 s frente a RNF-02 < 2 s con HU-03 «Aprobado», H-03/H-04 confundidos, versiones de Spring/Go. El informe **aún no** se corrigió con esta lista (§5 del reporte). Sin exportar ni ejecutar pruebas.
+
+## 26/11/2026 (cierre) — Traspaso a otra PC
+- Usuario confirmó que el dataset de 14 días **no existe**; la corrección del informe queda como tarea 1 de `docs/CHECKLIST-OBSERVACIONES-2026-11-26.md` (no aplicada).
+- Docente pide una imagen del MVP en el póster (una representativa o una por PMV): anotada como tarea 21, sin implementar.
+- Añadidos: checklist, copias de las auditorías en `docs/evidencias/auditoria-20261126/` y `herramientas_IA/exportacion/render_poster.sh` (portable; probado, código 0). Push a `origin/test` autorizado por el usuario.

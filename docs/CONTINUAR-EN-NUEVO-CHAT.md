@@ -1,4 +1,14 @@
-# Continuar en un chat nuevo (resumen al 2026-11-07, tarde — semana 13)
+# Continuar en un chat nuevo (resumen al 2026-11-26)
+
+## EMPEZAR AQUÍ (26/11/2026)
+- Rama **`test`**, publicada en `origin/test` (push autorizado el 26/11). `main` sin tocar: no abrir PR ni fusionar sin autorización.
+- Lista de trabajo con casillas: **[CHECKLIST-OBSERVACIONES-2026-11-26.md](CHECKLIST-OBSERVACIONES-2026-11-26.md)** (seguirla en orden; primero el dataset, y la imagen del MVP en el póster que pidió el docente).
+- Hecho: informe U-IV `.md` corregido, wireframes, factores ponderados, póster según plantilla y sílabo, reporte ICACIT reevaluado (`entregables/semana15/reporte-icacit.md`). Sin reexportar Word/PDF del informe.
+- Auditorías de apoyo: `docs/evidencias/auditoria-20261126/`. Póster: `bash herramientas_IA/exportacion/render_poster.sh`.
+- Entrega aproximada: primera semana de diciembre; la revisión del póster era el 26/11.
+- Trabajo: Claude coordina y delega en subagentes baratos (ahorro de tokens); preguntar antes de corregir si algo no está claro.
+
+Lo que sigue más abajo es historial.
 
 Lee primero `AGENTS.md`, `docs/HANDOFF.md` y este archivo. Rama de trabajo: **`test`** (publicada en `origin/test`). `main` no se tocó desde el retiro del workspace antiguo.
 
