@@ -93,3 +93,9 @@ Roles del §4.3 alineados con el acta; responsables OWASP iguales en Word y Exce
 - Ola 2 implementada e integrada en `test` (HU-07 decisiones, HU-13 PDF, U-02, F-06, S-01; F-04 y P-01 documentados). 492 pruebas aprobadas con capturas reales.
 - Resumen para el equipo: `entregables/semana14/sprint7-ola2-implementacion.md`; reporte ICACIT: `entregables/semana14/reporte-icacit.md`.
 - Siguiente: autorización para desplegar (test → main, `GATEWAY_SHARED_SECRET` en Render), F-01 RLS, F-03 sesión real, informe final (Sprint 8, aplicar mejoras del reporte ICACIT).
+
+### Estado 25/11/2026 (tarde) — para el chat del entregable S15
+- Ola 2 desplegada en Render (gateway Go, prediction y data-processing en `c807af9`, servicios en rama `test` con autoDeploy OFF → desplegar manualmente). `GATEWAY_SHARED_SECRET` configurado por el usuario. PDF y decisiones verificados (curl y logs de Render).
+- PR #7 aprobado por CristhianQuintana (Jhonny) y fusionado en main (51234b4). Evidencia C310 actualizada en el informe corregido (124 páginas).
+- Pruebas al 19/11: 492 aprobadas (capturas `entregables/informe-corregido/evidencias-nube/captura-S7-*.png`).
+- Entrega S15 (cierre 25/11/2026 23:59): informe final PDF `Porras-Huaman-Barrera-Quintana-informe-unidad-IV.pdf`, video en anexo (enlace Drive, no se sube), póster. Ver prompt del usuario.
